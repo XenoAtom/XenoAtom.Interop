@@ -203,6 +203,10 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_oid_pathfmt::out").NoByRef(),
                 e => e.Map<CppParameter>("git_oid_tostr::out").NoByRef(),
                 e => e.Map<CppParameter>("git_oidarray_dispose::array").NoByRef(),
+                e => e.Map<CppParameter>("git_patch_line_stats::total_context").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_patch_line_stats::total_additions").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_patch_line_stats::total_deletions").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_patch_get_hunk::lines_in_hunk").ByRef(CSharpRefKind.Out),
                 
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),

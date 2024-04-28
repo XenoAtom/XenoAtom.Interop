@@ -257,7 +257,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_line_stats")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_patch_line_stats(ref libgit2.size_t total_context, ref libgit2.size_t total_additions, ref libgit2.size_t total_deletions, libgit2.git_patch patch);
+        public static partial libgit2.git_result git_patch_line_stats(out libgit2.size_t total_context, out libgit2.size_t total_additions, out libgit2.size_t total_deletions, libgit2.git_patch patch);
         
         /// <summary>
         /// Get the information about a hunk in a patch
@@ -276,7 +276,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_get_hunk")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_patch_get_hunk(out libgit2.git_diff_hunk* @out, ref libgit2.size_t lines_in_hunk, libgit2.git_patch patch, libgit2.size_t hunk_idx);
+        public static partial libgit2.git_result git_patch_get_hunk(out libgit2.git_diff_hunk* @out, out libgit2.size_t lines_in_hunk, libgit2.git_patch patch, libgit2.size_t hunk_idx);
         
         /// <summary>
         /// Get the number of lines in a hunk.
@@ -286,7 +286,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Number of lines in hunk or GIT_ENOTFOUND if invalid hunk index</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_num_lines_in_hunk")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_patch_num_lines_in_hunk(libgit2.git_patch patch, libgit2.size_t hunk_idx);
+        public static partial libgit2.git_result git_patch_num_lines_in_hunk(libgit2.git_patch patch, libgit2.size_t hunk_idx);
         
         /// <summary>
         /// Get data about a line in a hunk of a patch.

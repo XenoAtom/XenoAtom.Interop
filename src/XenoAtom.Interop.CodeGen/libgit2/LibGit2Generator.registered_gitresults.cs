@@ -314,6 +314,7 @@ partial class LibGit2Generator
         "git_patch_line_stats",
         "git_patch_print",
         "git_patch_to_buf",
+        "git_patch_num_lines_in_hunk",
         // pathspec.h
         "git_pathspec_match_diff",
         "git_pathspec_match_index",
