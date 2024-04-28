@@ -162,7 +162,12 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_index_conflict_get::ancestor_out").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_index_conflict_iterator_new::iterator_out").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_index_conflict_next::.*_out").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_indexer_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_indexer_new::opts").ByRef(CSharpRefKind.In),
+                e => e.Map<CppParameter>("git_indexer_append::stats").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_indexer_commit::stats").ByRef(CSharpRefKind.Out),
                 
+
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                 //e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),

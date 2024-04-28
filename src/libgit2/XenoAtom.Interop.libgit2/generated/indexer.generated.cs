@@ -144,7 +144,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_indexer_options_init(ref libgit2.git_indexer_options opts, uint version);
+        public static partial libgit2.git_result git_indexer_options_init(out libgit2.git_indexer_options opts, uint version);
         
         /// <summary>
         /// Create a new indexer instance
@@ -160,7 +160,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_indexer_new(out libgit2.git_indexer @out, byte* path, uint mode, libgit2.git_odb odb, ref libgit2.git_indexer_options opts);
+        public static partial libgit2.git_result git_indexer_new(out libgit2.git_indexer @out, byte* path, uint mode, libgit2.git_odb odb, in libgit2.git_indexer_options opts);
         
         /// <summary>
         /// Create a new indexer instance
@@ -176,7 +176,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_indexer_new(out libgit2.git_indexer @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, uint mode, libgit2.git_odb odb, ref libgit2.git_indexer_options opts);
+        public static partial libgit2.git_result git_indexer_new(out libgit2.git_indexer @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, uint mode, libgit2.git_odb odb, in libgit2.git_indexer_options opts);
         
         /// <summary>
         /// Add data to the indexer
@@ -188,7 +188,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_append")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_indexer_append(libgit2.git_indexer idx, void* data, libgit2.size_t size, ref libgit2.git_indexer_progress stats);
+        public static partial libgit2.git_result git_indexer_append(libgit2.git_indexer idx, void* data, libgit2.size_t size, out libgit2.git_indexer_progress stats);
         
         /// <summary>
         /// Finalize the pack and index
@@ -201,7 +201,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_commit")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_indexer_commit(libgit2.git_indexer idx, ref libgit2.git_indexer_progress stats);
+        public static partial libgit2.git_result git_indexer_commit(libgit2.git_indexer idx, out libgit2.git_indexer_progress stats);
         
         /// <summary>
         /// Get the unique name for the resulting packfile.
