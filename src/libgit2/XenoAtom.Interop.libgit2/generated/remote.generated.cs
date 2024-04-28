@@ -250,7 +250,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Additional flags for the remote. See git_remote_create_flags.
             /// </summary>
-            public uint flags;
+            public libgit2.git_remote_create_flags flags;
         }
         
         /// <summary>
@@ -578,7 +578,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_create_options_init(ref libgit2.git_remote_create_options opts, uint version);
+        public static partial libgit2.git_result git_remote_create_options_init(out libgit2.git_remote_create_options opts, uint version);
         
         /// <summary>
         /// Create a remote, with options.
@@ -740,7 +740,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_dup(ref libgit2.git_remote dest, libgit2.git_remote source);
+        public static partial libgit2.git_result git_remote_dup(out libgit2.git_remote dest, libgit2.git_remote source);
         
         /// <summary>
         /// Get the remote's repository
@@ -1018,7 +1018,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_get_push_refspecs")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_get_push_refspecs(ref libgit2.git_strarray array, libgit2.git_remote remote);
+        public static partial libgit2.git_result git_remote_get_push_refspecs(out libgit2.git_strarray array, libgit2.git_remote remote);
         
         /// <summary>
         /// Get the number of refspecs for a remote
@@ -1057,7 +1057,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_ls")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_ls(out libgit2.git_remote_head** @out, ref libgit2.size_t size, libgit2.git_remote remote);
+        public static partial libgit2.git_result git_remote_ls(out libgit2.git_remote_head** @out, out libgit2.size_t size, libgit2.git_remote remote);
         
         /// <summary>
         /// Check whether the remote is connected
@@ -1131,7 +1131,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_init_callbacks")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_init_callbacks(ref libgit2.git_remote_callbacks opts, uint version);
+        public static partial libgit2.git_result git_remote_init_callbacks(out libgit2.git_remote_callbacks opts, uint version);
         
         /// <summary>
         /// Initialize git_fetch_options structure
@@ -1145,7 +1145,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_fetch_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_fetch_options_init(ref libgit2.git_fetch_options opts, uint version);
+        public static partial libgit2.git_result git_fetch_options_init(out libgit2.git_fetch_options opts, uint version);
         
         /// <summary>
         /// Initialize git_push_options structure
@@ -1159,7 +1159,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_push_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_push_options_init(ref libgit2.git_push_options opts, uint version);
+        public static partial libgit2.git_result git_push_options_init(out libgit2.git_push_options opts, uint version);
         
         /// <summary>
         /// Initialize git_remote_connect_options structure.
@@ -1174,7 +1174,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_connect_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_connect_options_init(ref libgit2.git_remote_connect_options opts, uint version);
+        public static partial libgit2.git_result git_remote_connect_options_init(out libgit2.git_remote_connect_options opts, uint version);
         
         /// <summary>
         /// Open a connection to a remote.

@@ -215,7 +215,16 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_proxy_options_init::opts").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_rebase_options_init::opts").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_rebase_commit::id").ByRef(CSharpRefKind.Out),
-               
+                e => e.Map<CppField>("git_remote_create_options::flags").Type("git_remote_create_flags"),
+                e => e.Map<CppParameter>("git_remote_create_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_remote_dup::dest").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_remote_get_push_refspecs::array").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_remote_ls::size").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_remote_init_callbacks::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_fetch_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_push_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_remote_connect_options_init::opts").ByRef(CSharpRefKind.Out),
+                
 
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
