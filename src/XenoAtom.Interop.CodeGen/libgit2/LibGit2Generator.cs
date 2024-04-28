@@ -25,7 +25,8 @@ internal partial class LibGit2Generator
         "git_diff_from_buffer",
         "git_filter_list_apply_to_buffer",
         "git_filter_list_stream_buffer",
-        "git_mailmap_from_buffer"
+        "git_mailmap_from_buffer",
+        "git_object_rawcontent_is_valid"
     ];
 
     public LibGit2Generator()
@@ -180,6 +181,11 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_note_next::.*_id").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_note_commit_create::.*_out").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_note_commit_remove::notes_commit_out").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_object_lookup::object").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_object_lookup_prefix::object_out").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_object_peel::peeled").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_object_dup::dest").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_object_rawcontent_is_valid::valid").ByRef(CSharpRefKind.Out),
                 
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),

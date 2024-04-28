@@ -35,7 +35,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_object_lookup(ref libgit2.git_object @object, libgit2.git_repository repo, in libgit2.git_oid id, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_object_lookup(out libgit2.git_object @object, libgit2.git_repository repo, in libgit2.git_oid id, libgit2.git_object_t type);
         
         /// <summary>
         /// Lookup a reference to one of the objects in a repository,
@@ -62,7 +62,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_lookup_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_object_lookup_prefix(ref libgit2.git_object object_out, libgit2.git_repository repo, in libgit2.git_oid id, libgit2.size_t len, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_object_lookup_prefix(out libgit2.git_object object_out, libgit2.git_repository repo, in libgit2.git_oid id, libgit2.size_t len, libgit2.git_object_t type);
         
         /// <summary>
         /// Lookup an object that represents a tree entry.
@@ -231,7 +231,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_peel")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_object_peel(ref libgit2.git_object peeled, libgit2.git_object @object, libgit2.git_object_t target_type);
+        public static partial libgit2.git_result git_object_peel(out libgit2.git_object peeled, libgit2.git_object @object, libgit2.git_object_t target_type);
         
         /// <summary>
         /// Create an in-memory copy of a Git object. The copy must be
@@ -242,7 +242,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_object_dup(ref libgit2.git_object dest, libgit2.git_object source);
+        public static partial libgit2.git_result git_object_dup(out libgit2.git_object dest, libgit2.git_object source);
         
         /// <summary>
         /// Analyzes a buffer of raw object content and determines its validity.
@@ -262,26 +262,6 @@ namespace XenoAtom.Interop
         /// </warning>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_rawcontent_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_object_rawcontent_is_valid(ref int valid, byte* buf, libgit2.size_t len, libgit2.git_object_t object_type);
-        
-        /// <summary>
-        /// Analyzes a buffer of raw object content and determines its validity.
-        /// Tree, commit, and tag objects will be parsed and ensured that they
-        /// are valid, parseable content.  (Blobs are always valid by definition.)
-        /// An error message will be set with an informative message if the object
-        /// is not valid.
-        /// </summary>
-        /// <param name="valid">Output pointer to set with validity of the object content</param>
-        /// <param name="buf">The contents to validate</param>
-        /// <param name="len">The length of the buffer</param>
-        /// <param name="object_type">The type of the object in the buffer</param>
-        /// <returns>@return 0 on success or an error code</returns>
-        /// <warning>
-        /// @warning This function is experimental and its signature may change in
-        /// the future.
-        /// </warning>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_rawcontent_is_valid")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_object_rawcontent_is_valid(ref int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string buf, libgit2.size_t len, libgit2.git_object_t object_type);
+        public static partial libgit2.git_result git_object_rawcontent_is_valid(out int valid, byte* buf, libgit2.size_t len, libgit2.git_object_t object_type);
     }
 }
