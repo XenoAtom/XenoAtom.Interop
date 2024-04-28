@@ -109,7 +109,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fmt")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_oid_fmt(out byte @out, in libgit2.git_oid id);
+        public static partial libgit2.git_result git_oid_fmt(byte* @out, in libgit2.git_oid id);
         
         /// <summary>
         /// Format a git_oid into a partial hex string.
@@ -124,7 +124,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_nfmt")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_oid_nfmt(out byte @out, libgit2.size_t n, in libgit2.git_oid id);
+        public static partial libgit2.git_result git_oid_nfmt(byte* @out, libgit2.size_t n, in libgit2.git_oid id);
         
         /// <summary>
         /// Format a git_oid into a loose-object path string.
@@ -145,7 +145,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_pathfmt")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_oid_pathfmt(out byte @out, in libgit2.git_oid id);
+        public static partial libgit2.git_result git_oid_pathfmt(byte* @out, in libgit2.git_oid id);
         
         /// <summary>
         /// Format a git_oid into a statically allocated c-string.
@@ -181,7 +181,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_tostr")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_oid_tostr(out byte @out, libgit2.size_t n, in libgit2.git_oid id);
+        public static partial byte* git_oid_tostr(byte* @out, libgit2.size_t n, in libgit2.git_oid id);
         
         /// <summary>
         /// Copy an oid from one structure to another.

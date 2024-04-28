@@ -198,6 +198,10 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_odb_open_rstream::type").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_odb_object_dup::dest").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppField>("git_odb_backend_loose_options::flags").Type("git_odb_backend_loose_flag_t"),
+                e => e.Map<CppParameter>("git_oid_fmt::out").NoByRef(),
+                e => e.Map<CppParameter>("git_oid_nfmt::out").NoByRef(),
+                e => e.Map<CppParameter>("git_oid_pathfmt::out").NoByRef(),
+                e => e.Map<CppParameter>("git_oid_tostr::out").NoByRef(),
                 
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
