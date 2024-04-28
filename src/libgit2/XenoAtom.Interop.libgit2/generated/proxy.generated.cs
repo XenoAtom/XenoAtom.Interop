@@ -119,6 +119,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_proxy_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_proxy_options_init(ref libgit2.git_proxy_options opts, uint version);
+        public static partial libgit2.git_result git_proxy_options_init(out libgit2.git_proxy_options opts, uint version);
     }
 }
