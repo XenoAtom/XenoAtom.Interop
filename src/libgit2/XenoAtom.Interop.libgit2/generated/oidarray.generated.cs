@@ -39,6 +39,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oidarray_dispose")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_oidarray_dispose(ref libgit2.git_oidarray array);
+        public static partial void git_oidarray_dispose(libgit2.git_oidarray* array);
     }
 }
