@@ -442,6 +442,10 @@ partial class LibGit2Generator
         "git_repository_set_namespace",
         "git_repository_set_workdir",
         "git_repository_state_cleanup",
+        "git_repository_head_detached",
+        "git_repository_head_detached_for_worktree",
+        "git_repository_head_unborn",
+        "git_repository_is_empty",
         // reset.h
         "git_reset",
         "git_reset_default",

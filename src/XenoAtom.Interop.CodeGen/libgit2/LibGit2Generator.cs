@@ -224,8 +224,12 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_fetch_options_init::opts").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_push_options_init::opts").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_remote_connect_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppField>("git_repository_init_options::flags").Type("git_repository_init_flag_t"),
+                e => e.Map<CppParameter>("git_repository_init_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_repository_init_ext::opts").ByRef(CSharpRefKind.In),
+                e => e.Map<CppParameter>("git_repository_ident::name").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_repository_ident::email").ByRef(CSharpRefKind.Out),
                 
-
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                 //e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),

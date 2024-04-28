@@ -404,7 +404,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Combination of GIT_REPOSITORY_INIT flags above.
             /// </summary>
-            public uint flags;
+            public libgit2.git_repository_init_flag_t flags;
             
             /// <summary>
             /// Set to one of the standard GIT_REPOSITORY_INIT_SHARED_... constants
@@ -748,7 +748,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_init_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_init_options_init(ref libgit2.git_repository_init_options opts, uint version);
+        public static partial libgit2.git_result git_repository_init_options_init(out libgit2.git_repository_init_options opts, uint version);
         
         /// <summary>
         /// Create a new Git repository in the given folder with extended controls.
@@ -765,7 +765,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_init_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_init_ext(out libgit2.git_repository @out, byte* repo_path, ref libgit2.git_repository_init_options opts);
+        public static partial libgit2.git_result git_repository_init_ext(out libgit2.git_repository @out, byte* repo_path, in libgit2.git_repository_init_options opts);
         
         /// <summary>
         /// Create a new Git repository in the given folder with extended controls.
@@ -782,7 +782,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_init_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_init_ext(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string repo_path, ref libgit2.git_repository_init_options opts);
+        public static partial libgit2.git_result git_repository_init_ext(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string repo_path, in libgit2.git_repository_init_options opts);
         
         /// <summary>
         /// Retrieve and resolve the reference pointed at by HEAD.
@@ -834,7 +834,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_head_detached")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_repository_head_detached(libgit2.git_repository repo);
+        public static partial libgit2.git_result git_repository_head_detached(libgit2.git_repository repo);
         
         /// <summary>
         /// Check if a worktree's HEAD is detached
@@ -849,7 +849,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_head_detached_for_worktree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_repository_head_detached_for_worktree(libgit2.git_repository repo, byte* name);
+        public static partial libgit2.git_result git_repository_head_detached_for_worktree(libgit2.git_repository repo, byte* name);
         
         /// <summary>
         /// Check if a worktree's HEAD is detached
@@ -864,7 +864,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_head_detached_for_worktree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_repository_head_detached_for_worktree(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
+        public static partial libgit2.git_result git_repository_head_detached_for_worktree(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
         
         /// <summary>
         /// Check if the current branch is unborn
@@ -878,7 +878,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_head_unborn")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_repository_head_unborn(libgit2.git_repository repo);
+        public static partial libgit2.git_result git_repository_head_unborn(libgit2.git_repository repo);
         
         /// <summary>
         /// Check if a repository is empty
@@ -894,7 +894,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_is_empty")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_repository_is_empty(libgit2.git_repository repo);
+        public static partial libgit2.git_result git_repository_is_empty(libgit2.git_repository repo);
         
         /// <summary>
         /// Get the location of a specific repository file or directory
@@ -1422,7 +1422,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_ident")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_ident(ref byte* name, ref byte* email, libgit2.git_repository repo);
+        public static partial libgit2.git_result git_repository_ident(out byte* name, out byte* email, libgit2.git_repository repo);
         
         /// <summary>
         /// Set the identity to be used for writing reflogs
