@@ -458,7 +458,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// see `git_merge_file_flag_t` above
             /// </summary>
-            public uint flags;
+            public libgit2.git_merge_file_flag_t flags;
             
             /// <summary>
             /// The size of conflict markers (eg, "&lt;&lt;&lt;&lt;&lt;&lt;&lt;").  Default is
@@ -510,7 +510,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// See `git_merge_flag_t` above
             /// </summary>
-            public uint flags;
+            public libgit2.git_merge_flag_t flags;
             
             /// <summary>
             /// Similarity to consider a file renamed (default 50).  If
@@ -559,7 +559,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// see `git_merge_file_flag_t` above
             /// </summary>
-            public uint file_flags;
+            public libgit2.git_merge_file_flag_t file_flags;
         }
         
         /// <summary>
@@ -572,7 +572,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_file_input_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_merge_file_input_init(ref libgit2.git_merge_file_input opts, uint version);
+        public static partial libgit2.git_result git_merge_file_input_init(out libgit2.git_merge_file_input opts, uint version);
         
         /// <summary>
         /// Initialize git_merge_file_options structure
@@ -586,7 +586,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_file_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_merge_file_options_init(ref libgit2.git_merge_file_options opts, uint version);
+        public static partial libgit2.git_result git_merge_file_options_init(out libgit2.git_merge_file_options opts, uint version);
         
         /// <summary>
         /// Initialize git_merge_options structure
@@ -600,7 +600,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_merge_options_init(ref libgit2.git_merge_options opts, uint version);
+        public static partial libgit2.git_result git_merge_options_init(out libgit2.git_merge_options opts, uint version);
         
         /// <summary>
         /// Analyzes the given branch(es) and determines the opportunities for
@@ -614,7 +614,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_analysis")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_merge_analysis(ref libgit2.git_merge_analysis_t analysis_out, ref libgit2.git_merge_preference_t preference_out, libgit2.git_repository repo, ref libgit2.git_annotated_commit their_heads, libgit2.size_t their_heads_len);
+        public static partial libgit2.git_result git_merge_analysis(out libgit2.git_merge_analysis_t analysis_out, out libgit2.git_merge_preference_t preference_out, libgit2.git_repository repo, libgit2.git_annotated_commit* their_heads, libgit2.size_t their_heads_len);
         
         /// <summary>
         /// Analyzes the given branch(es) and determines the opportunities for
@@ -629,7 +629,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_analysis_for_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_merge_analysis_for_ref(ref libgit2.git_merge_analysis_t analysis_out, ref libgit2.git_merge_preference_t preference_out, libgit2.git_repository repo, libgit2.git_reference our_ref, ref libgit2.git_annotated_commit their_heads, libgit2.size_t their_heads_len);
+        public static partial libgit2.git_result git_merge_analysis_for_ref(out libgit2.git_merge_analysis_t analysis_out, out libgit2.git_merge_preference_t preference_out, libgit2.git_repository repo, libgit2.git_reference our_ref, libgit2.git_annotated_commit* their_heads, libgit2.size_t their_heads_len);
         
         /// <summary>
         /// Find a merge base between two commits
@@ -795,6 +795,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_merge(libgit2.git_repository repo, ref libgit2.git_annotated_commit their_heads, libgit2.size_t their_heads_len, in libgit2.git_merge_options merge_opts, in libgit2.git_checkout_options checkout_opts);
+        public static partial libgit2.git_result git_merge(libgit2.git_repository repo, libgit2.git_annotated_commit* their_heads, libgit2.size_t their_heads_len, in libgit2.git_merge_options merge_opts, in libgit2.git_checkout_options checkout_opts);
     }
 }
