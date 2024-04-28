@@ -106,7 +106,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// See `git_filter_flag_t` above
             /// </summary>
-            public uint flags;
+            public libgit2.git_filter_flag_t flags;
             
             public void* reserved;
             
@@ -197,7 +197,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_load")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_filter_list_load(ref libgit2.git_filter_list filters, libgit2.git_repository repo, libgit2.git_blob blob, byte* path, libgit2.git_filter_mode_t mode, uint flags);
+        public static partial libgit2.git_result git_filter_list_load(out libgit2.git_filter_list filters, libgit2.git_repository repo, libgit2.git_blob blob, byte* path, libgit2.git_filter_mode_t mode, libgit2.git_filter_flag_t flags);
         
         /// <summary>
         /// Load the filter list for a given path.
@@ -218,7 +218,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_load")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_filter_list_load(ref libgit2.git_filter_list filters, libgit2.git_repository repo, libgit2.git_blob blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, libgit2.git_filter_mode_t mode, uint flags);
+        public static partial libgit2.git_result git_filter_list_load(out libgit2.git_filter_list filters, libgit2.git_repository repo, libgit2.git_blob blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, libgit2.git_filter_mode_t mode, libgit2.git_filter_flag_t flags);
         
         /// <summary>
         /// Load the filter list for a given path.
@@ -239,7 +239,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_load_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_filter_list_load_ext(ref libgit2.git_filter_list filters, libgit2.git_repository repo, libgit2.git_blob blob, byte* path, libgit2.git_filter_mode_t mode, ref libgit2.git_filter_options opts);
+        public static partial libgit2.git_result git_filter_list_load_ext(out libgit2.git_filter_list filters, libgit2.git_repository repo, libgit2.git_blob blob, byte* path, libgit2.git_filter_mode_t mode, ref libgit2.git_filter_options opts);
         
         /// <summary>
         /// Load the filter list for a given path.
@@ -260,7 +260,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_load_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_filter_list_load_ext(ref libgit2.git_filter_list filters, libgit2.git_repository repo, libgit2.git_blob blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, libgit2.git_filter_mode_t mode, ref libgit2.git_filter_options opts);
+        public static partial libgit2.git_result git_filter_list_load_ext(out libgit2.git_filter_list filters, libgit2.git_repository repo, libgit2.git_blob blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, libgit2.git_filter_mode_t mode, ref libgit2.git_filter_options opts);
         
         /// <summary>
         /// Query the filter list to see if a given filter (by name) will run.
@@ -276,7 +276,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_contains")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_filter_list_contains(libgit2.git_filter_list filters, byte* name);
+        public static partial libgit2.git_result git_filter_list_contains(libgit2.git_filter_list filters, byte* name);
         
         /// <summary>
         /// Query the filter list to see if a given filter (by name) will run.
@@ -292,7 +292,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_contains")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_filter_list_contains(libgit2.git_filter_list filters, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
+        public static partial libgit2.git_result git_filter_list_contains(libgit2.git_filter_list filters, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
         
         /// <summary>
         /// Apply filter list to a data buffer.
@@ -305,18 +305,6 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_apply_to_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_apply_to_buffer(out libgit2.git_buf @out, libgit2.git_filter_list filters, byte* @in, libgit2.size_t in_len);
-        
-        /// <summary>
-        /// Apply filter list to a data buffer.
-        /// </summary>
-        /// <param name="out">Buffer to store the result of the filtering</param>
-        /// <param name="filters">A loaded git_filter_list (or NULL)</param>
-        /// <param name="in">Buffer containing the data to filter</param>
-        /// <param name="in_len">The length of the input buffer</param>
-        /// <returns>@return 0 on success, an error code otherwise</returns>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_apply_to_buffer")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_filter_list_apply_to_buffer(out libgit2.git_buf @out, libgit2.git_filter_list filters, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string @in, libgit2.size_t in_len);
         
         /// <summary>
         /// Apply a filter list to the contents of a file on disk
@@ -366,18 +354,6 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_stream_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_stream_buffer(libgit2.git_filter_list filters, byte* buffer, libgit2.size_t len, ref libgit2.git_writestream target);
-        
-        /// <summary>
-        /// Apply a filter list to an arbitrary buffer as a stream
-        /// </summary>
-        /// <param name="filters">the list of filters to apply</param>
-        /// <param name="buffer">the buffer to filter</param>
-        /// <param name="len">the size of the buffer</param>
-        /// <param name="target">the stream into which the data will be written</param>
-        /// <returns>@return 0 or an error code.</returns>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_stream_buffer")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_filter_list_stream_buffer(libgit2.git_filter_list filters, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string buffer, libgit2.size_t len, ref libgit2.git_writestream target);
         
         /// <summary>
         /// Apply a filter list to a file as a stream

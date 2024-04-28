@@ -22,7 +22,9 @@ internal partial class LibGit2Generator
     private static readonly HashSet<string> FunctionsWithNoStringMarshalling =
     [
         "git_blob_data_is_binary",
-        "git_diff_from_buffer"
+        "git_diff_from_buffer",
+        "git_filter_list_apply_to_buffer",
+        "git_filter_list_stream_buffer"
     ];
 
     public LibGit2Generator()
@@ -144,7 +146,13 @@ typedef int git_result;
                 e => e.Map<CppField>("git_email_create_options::flags").Type("git_email_create_flags_t"),
                 e => e.Map<CppParameter>("git_error_set::error_class").Type("git_error_t"),
                 e => e.Map<CppParameter>("git_error_set_str::error_class").Type("git_error_t"),
+                e => e.Map<CppField>("git_filter_options::flags").Type("git_filter_flag_t"),
+                e => e.Map<CppParameter>("git_filter_list_load::filters").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_filter_list_load::flags").Type("git_filter_flag_t"),
+                e => e.Map<CppParameter>("git_filter_list_load_ext::filters").ByRef(CSharpRefKind.Out),
+
                 
+
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                 //e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),

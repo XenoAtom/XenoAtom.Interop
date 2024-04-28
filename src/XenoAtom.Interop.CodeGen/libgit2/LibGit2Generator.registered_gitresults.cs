@@ -175,6 +175,7 @@ partial class LibGit2Generator
         "git_filter_list_stream_blob",
         "git_filter_list_stream_buffer",
         "git_filter_list_stream_file",
+        "git_filter_list_contains",
         // graph.h
         "git_graph_ahead_behind",
         // ignore.h
