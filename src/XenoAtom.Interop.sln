@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", "{BBC4B16D-083F-47E6-BFAE-9064E600F230}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\.github\workflows\ci.yml = ..\.github\workflows\ci.yml
+		dotnet-releaser.toml = dotnet-releaser.toml
+		global.json = global.json
+		..\license.txt = ..\license.txt
+		..\readme.md = ..\readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libgit2", "libgit2", "{9ECFE155-3AA4-4385-B45A-4274D1FA27AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libgit2", "libgit2\XenoAtom.Interop.libgit2\XenoAtom.Interop.libgit2.csproj", "{EABB8FB1-97B7-4A72-87A8-48D2F07AB7B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.CodeGen", "XenoAtom.Interop.CodeGen\XenoAtom.Interop.CodeGen.csproj", "{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CppAst.CodeGen", "..\..\..\CppAst.CodeGen\src\CppAst.CodeGen\CppAst.CodeGen.csproj", "{D40A6127-25BA-4230-8FF0-6841163707CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EABB8FB1-97B7-4A72-87A8-48D2F07AB7B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EABB8FB1-97B7-4A72-87A8-48D2F07AB7B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EABB8FB1-97B7-4A72-87A8-48D2F07AB7B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EABB8FB1-97B7-4A72-87A8-48D2F07AB7B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D40A6127-25BA-4230-8FF0-6841163707CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D40A6127-25BA-4230-8FF0-6841163707CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D40A6127-25BA-4230-8FF0-6841163707CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D40A6127-25BA-4230-8FF0-6841163707CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EABB8FB1-97B7-4A72-87A8-48D2F07AB7B2} = {9ECFE155-3AA4-4385-B45A-4274D1FA27AE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95E8F3B3-49E8-400E-97A1-38D8B946DFCA}
+	EndGlobalSection
+EndGlobal
