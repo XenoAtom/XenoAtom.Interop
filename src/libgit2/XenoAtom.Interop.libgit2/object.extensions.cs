@@ -19,7 +19,6 @@ static unsafe partial class libgit2
     /// </summary>
     /// <param name="valid">Output pointer to set with validity of the object content</param>
     /// <param name="buf">The contents to validate</param>
-    /// <param name="len">The length of the buffer</param>
     /// <param name="object_type">The type of the object in the buffer</param>
     /// <returns>@return 0 on success or an error code</returns>
     /// <warning>
@@ -30,7 +29,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* bufPtr = buf)
         {
-            return git_object_rawcontent_is_valid(out valid, bufPtr, (UIntPtr)buf.Length, object_type);
+            return git_object_rawcontent_is_valid(out valid, bufPtr, buf.Length, object_type);
         }
     }
 }
