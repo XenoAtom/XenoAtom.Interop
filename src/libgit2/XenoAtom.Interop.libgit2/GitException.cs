@@ -19,7 +19,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="errorCode">The error code</param>
             /// <param name="message">The message</param>
-            public LibGit2Exception(git_error_code errorCode, string message) : base(message)
+            public LibGit2Exception(git_error_code errorCode, string? message) : base(message)
             {
                 ErrorCode = errorCode;
             }

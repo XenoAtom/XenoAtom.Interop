@@ -78,17 +78,6 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_mailmap_from_buffer(out libgit2.git_mailmap @out, byte* buf, libgit2.size_t len);
         
         /// <summary>
-        /// Create a new mailmap instance containing a single mailmap file
-        /// </summary>
-        /// <param name="out">pointer to store the new mailmap</param>
-        /// <param name="buf">buffer to parse the mailmap from</param>
-        /// <param name="len">the length of the input buffer</param>
-        /// <returns>@return 0 on success, or an error code</returns>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_mailmap_from_buffer")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_mailmap_from_buffer(out libgit2.git_mailmap @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string buf, libgit2.size_t len);
-        
-        /// <summary>
         /// Create a new mailmap instance from a repository, loading mailmap files based
         /// on the repository's configuration.
         /// </summary>
@@ -120,7 +109,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_mailmap_resolve")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_mailmap_resolve(ref byte* real_name, ref byte* real_email, libgit2.git_mailmap mm, byte* name, byte* email);
+        public static partial libgit2.git_result git_mailmap_resolve(out byte* real_name, out byte* real_email, libgit2.git_mailmap mm, byte* name, byte* email);
         
         /// <summary>
         /// Resolve a name and email to the corresponding real name and email.
@@ -136,7 +125,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_mailmap_resolve")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_mailmap_resolve(ref byte* real_name, ref byte* real_email, libgit2.git_mailmap mm, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string email);
+        public static partial libgit2.git_result git_mailmap_resolve(out byte* real_name, out byte* real_email, libgit2.git_mailmap mm, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string email);
         
         /// <summary>
         /// Resolve a signature to use real names and emails with a mailmap.

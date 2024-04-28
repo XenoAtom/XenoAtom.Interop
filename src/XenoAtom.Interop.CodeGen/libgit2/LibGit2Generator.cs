@@ -24,7 +24,8 @@ internal partial class LibGit2Generator
         "git_blob_data_is_binary",
         "git_diff_from_buffer",
         "git_filter_list_apply_to_buffer",
-        "git_filter_list_stream_buffer"
+        "git_filter_list_stream_buffer",
+        "git_mailmap_from_buffer"
     ];
 
     public LibGit2Generator()
@@ -166,8 +167,8 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_indexer_new::opts").ByRef(CSharpRefKind.In),
                 e => e.Map<CppParameter>("git_indexer_append::stats").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_indexer_commit::stats").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_mailmap_resolve::real_.*").ByRef(CSharpRefKind.Out),
                 
-
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                 //e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
