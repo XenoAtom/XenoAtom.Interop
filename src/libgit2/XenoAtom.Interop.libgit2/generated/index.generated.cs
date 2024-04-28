@@ -291,7 +291,7 @@ namespace XenoAtom.Interop
         /// <returns>@return A combination of GIT_INDEX_CAPABILITY values</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_caps")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_index_caps(libgit2.git_index index);
+        public static partial libgit2.git_index_capability_t git_index_caps(libgit2.git_index index);
         
         /// <summary>
         /// Set index capabilities flags.
@@ -306,7 +306,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_set_caps")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_set_caps(libgit2.git_index index, int caps);
+        public static partial libgit2.git_result git_index_set_caps(libgit2.git_index index, libgit2.git_index_capability_t caps);
         
         /// <summary>
         /// Get index on-disk version.
@@ -601,7 +601,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_iterator_new(ref libgit2.git_index_iterator iterator_out, libgit2.git_index index);
+        public static partial libgit2.git_result git_index_iterator_new(out libgit2.git_index_iterator iterator_out, libgit2.git_index index);
         
         /// <summary>
         /// Return the next index entry in-order from the iterator.
@@ -751,7 +751,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_add_all")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_add_all(libgit2.git_index index, in libgit2.git_strarray pathspec, uint flags, libgit2.git_index_matched_path_cb callback, void* payload);
+        public static partial libgit2.git_result git_index_add_all(libgit2.git_index index, in libgit2.git_strarray pathspec, libgit2.git_index_add_option_t flags, libgit2.git_index_matched_path_cb callback, void* payload);
         
         /// <summary>
         /// Remove all matching index entries.
@@ -813,7 +813,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_find(ref libgit2.size_t at_pos, libgit2.git_index index, byte* path);
+        public static partial libgit2.git_result git_index_find(out libgit2.size_t at_pos, libgit2.git_index index, byte* path);
         
         /// <summary>
         /// Find the first position of any entries which point to given
@@ -825,7 +825,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_find(ref libgit2.size_t at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
+        public static partial libgit2.git_result git_index_find(out libgit2.size_t at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
         
         /// <summary>
         /// Find the first position of any entries matching a prefix. To find the first position
@@ -837,7 +837,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_find_prefix(ref libgit2.size_t at_pos, libgit2.git_index index, byte* prefix);
+        public static partial libgit2.git_result git_index_find_prefix(out libgit2.size_t at_pos, libgit2.git_index index, byte* prefix);
         
         /// <summary>
         /// Find the first position of any entries matching a prefix. To find the first position
@@ -849,7 +849,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_find_prefix(ref libgit2.size_t at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string prefix);
+        public static partial libgit2.git_result git_index_find_prefix(out libgit2.size_t at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string prefix);
         
         /// <summary>
         /// Add or update index entries to represent a conflict.  Any staged
@@ -886,7 +886,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_conflict_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_conflict_get(ref libgit2.git_index_entry* ancestor_out, ref libgit2.git_index_entry* our_out, ref libgit2.git_index_entry* their_out, libgit2.git_index index, byte* path);
+        public static partial libgit2.git_result git_index_conflict_get(out libgit2.git_index_entry* ancestor_out, ref libgit2.git_index_entry* our_out, ref libgit2.git_index_entry* their_out, libgit2.git_index index, byte* path);
         
         /// <summary>
         /// Get the index entries that represent a conflict of a single file.
@@ -904,7 +904,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_conflict_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_conflict_get(ref libgit2.git_index_entry* ancestor_out, ref libgit2.git_index_entry* our_out, ref libgit2.git_index_entry* their_out, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
+        public static partial libgit2.git_result git_index_conflict_get(out libgit2.git_index_entry* ancestor_out, ref libgit2.git_index_entry* our_out, ref libgit2.git_index_entry* their_out, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
         
         /// <summary>
         /// Removes the index entries that represent a conflict of a single file.
@@ -955,7 +955,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_conflict_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_conflict_iterator_new(ref libgit2.git_index_conflict_iterator iterator_out, libgit2.git_index index);
+        public static partial libgit2.git_result git_index_conflict_iterator_new(out libgit2.git_index_conflict_iterator iterator_out, libgit2.git_index index);
         
         /// <summary>
         /// Returns the current conflict (ancestor, ours and theirs entry) and
@@ -969,7 +969,7 @@ namespace XenoAtom.Interop
         /// (negative value)</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_conflict_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_conflict_next(ref libgit2.git_index_entry* ancestor_out, ref libgit2.git_index_entry* our_out, ref libgit2.git_index_entry* their_out, libgit2.git_index_conflict_iterator iterator);
+        public static partial libgit2.git_result git_index_conflict_next(out libgit2.git_index_entry* ancestor_out, out libgit2.git_index_entry* our_out, out libgit2.git_index_entry* their_out, libgit2.git_index_conflict_iterator iterator);
         
         /// <summary>
         /// Frees a `git_index_conflict_iterator`.
