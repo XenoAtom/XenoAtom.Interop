@@ -74,7 +74,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A combination of the `git_odb_backend_loose_flag_t` types.
             /// </summary>
-            public uint flags;
+            public libgit2.git_odb_backend_loose_flag_t flags;
             
             /// <summary>
             /// zlib compression level to use (0-9), where 1 is the fastest
