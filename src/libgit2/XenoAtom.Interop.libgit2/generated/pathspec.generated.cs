@@ -189,7 +189,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_matches_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_pathspec_matches_path(libgit2.git_pathspec ps, uint flags, byte* path);
+        public static partial int git_pathspec_matches_path(libgit2.git_pathspec ps, libgit2.git_pathspec_flag_t flags, byte* path);
         
         /// <summary>
         /// Try to match a path against a pathspec
@@ -206,7 +206,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_matches_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_pathspec_matches_path(libgit2.git_pathspec ps, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
+        public static partial int git_pathspec_matches_path(libgit2.git_pathspec ps, libgit2.git_pathspec_flag_t flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
         
         /// <summary>
         /// Match a pathspec against the working directory of a repository.
@@ -230,7 +230,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_match_workdir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_pathspec_match_workdir(out libgit2.git_pathspec_match_list @out, libgit2.git_repository repo, uint flags, libgit2.git_pathspec ps);
+        public static partial libgit2.git_result git_pathspec_match_workdir(out libgit2.git_pathspec_match_list @out, libgit2.git_repository repo, libgit2.git_pathspec_flag_t flags, libgit2.git_pathspec ps);
         
         /// <summary>
         /// Match a pathspec against entries in an index.
@@ -253,7 +253,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_match_index")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_pathspec_match_index(out libgit2.git_pathspec_match_list @out, libgit2.git_index index, uint flags, libgit2.git_pathspec ps);
+        public static partial libgit2.git_result git_pathspec_match_index(out libgit2.git_pathspec_match_list @out, libgit2.git_index index, libgit2.git_pathspec_flag_t flags, libgit2.git_pathspec ps);
         
         /// <summary>
         /// Match a pathspec against files in a tree.
@@ -273,7 +273,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_match_tree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_pathspec_match_tree(out libgit2.git_pathspec_match_list @out, libgit2.git_tree tree, uint flags, libgit2.git_pathspec ps);
+        public static partial libgit2.git_result git_pathspec_match_tree(out libgit2.git_pathspec_match_list @out, libgit2.git_tree tree, libgit2.git_pathspec_flag_t flags, libgit2.git_pathspec ps);
         
         /// <summary>
         /// Match a pathspec against files in a diff list.
@@ -293,7 +293,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_match_diff")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_pathspec_match_diff(out libgit2.git_pathspec_match_list @out, libgit2.git_diff diff, uint flags, libgit2.git_pathspec ps);
+        public static partial libgit2.git_result git_pathspec_match_diff(out libgit2.git_pathspec_match_list @out, libgit2.git_diff diff, libgit2.git_pathspec_flag_t flags, libgit2.git_pathspec ps);
         
         /// <summary>
         /// Free memory associates with a git_pathspec_match_list

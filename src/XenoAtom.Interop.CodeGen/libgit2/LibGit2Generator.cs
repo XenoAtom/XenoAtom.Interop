@@ -207,7 +207,13 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_patch_line_stats::total_additions").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_patch_line_stats::total_deletions").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_patch_get_hunk::lines_in_hunk").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_pathspec_matches_path::flags").Type("git_pathspec_flag_t"),
+                e => e.Map<CppParameter>("git_pathspec_match_workdir::flags").Type("git_pathspec_flag_t"),
+                e => e.Map<CppParameter>("git_pathspec_match_index::flags").Type("git_pathspec_flag_t"),
+                e => e.Map<CppParameter>("git_pathspec_match_tree::flags").Type("git_pathspec_flag_t"),
+                e => e.Map<CppParameter>("git_pathspec_match_diff::flags").Type("git_pathspec_flag_t"),
                 
+
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                 //e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
