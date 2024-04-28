@@ -213,7 +213,10 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_pathspec_match_tree::flags").Type("git_pathspec_flag_t"),
                 e => e.Map<CppParameter>("git_pathspec_match_diff::flags").Type("git_pathspec_flag_t"),
                 e => e.Map<CppParameter>("git_proxy_options_init::opts").ByRef(CSharpRefKind.Out),
-                
+                e => e.Map<CppParameter>("git_rebase_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_rebase_commit::id").ByRef(CSharpRefKind.Out),
+               
+
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                 //e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),

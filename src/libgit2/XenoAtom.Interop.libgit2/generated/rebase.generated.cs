@@ -208,7 +208,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_rebase_options_init(ref libgit2.git_rebase_options opts, uint version);
+        public static partial libgit2.git_result git_rebase_options_init(out libgit2.git_rebase_options opts, uint version);
         
         /// <summary>
         /// Initializes a rebase operation to rebase the changes in `branch`
@@ -385,7 +385,7 @@ namespace XenoAtom.Interop
         /// -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_commit")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_rebase_commit(ref libgit2.git_oid id, libgit2.git_rebase rebase, in libgit2.git_signature author, in libgit2.git_signature committer, byte* message_encoding, byte* message);
+        public static partial libgit2.git_result git_rebase_commit(out libgit2.git_oid id, libgit2.git_rebase rebase, in libgit2.git_signature author, in libgit2.git_signature committer, byte* message_encoding, byte* message);
         
         /// <summary>
         /// Commits the current patch.  You must have resolved any conflicts that
@@ -410,7 +410,7 @@ namespace XenoAtom.Interop
         /// -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_commit")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_rebase_commit(ref libgit2.git_oid id, libgit2.git_rebase rebase, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string message);
+        public static partial libgit2.git_result git_rebase_commit(out libgit2.git_oid id, libgit2.git_rebase rebase, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string message);
         
         /// <summary>
         /// Aborts a rebase that is currently in progress, resetting the repository
