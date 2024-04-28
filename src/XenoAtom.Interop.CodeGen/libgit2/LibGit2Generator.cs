@@ -177,6 +177,9 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_merge_analysis.*::.*_out").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_merge_analysis.*::their_heads").NoByRef(),
                 e => e.Map<CppParameter>("git_merge::their_heads").NoByRef(),
+                e => e.Map<CppParameter>("git_note_next::.*_id").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_note_commit_create::.*_out").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_note_commit_remove::notes_commit_out").ByRef(CSharpRefKind.Out),
                 
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),

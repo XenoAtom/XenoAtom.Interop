@@ -111,7 +111,7 @@ namespace XenoAtom.Interop
         /// (negative value)</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_next(ref libgit2.git_oid note_id, ref libgit2.git_oid annotated_id, libgit2.git_iterator it);
+        public static partial libgit2.git_result git_note_next(out libgit2.git_oid note_id, out libgit2.git_oid annotated_id, libgit2.git_iterator it);
         
         /// <summary>
         /// Read the note for an object
@@ -261,7 +261,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_commit_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_commit_create(ref libgit2.git_oid notes_commit_out, ref libgit2.git_oid notes_blob_out, libgit2.git_repository repo, libgit2.git_commit parent, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid, byte* note, int allow_note_overwrite);
+        public static partial libgit2.git_result git_note_commit_create(out libgit2.git_oid notes_commit_out, out libgit2.git_oid notes_blob_out, libgit2.git_repository repo, libgit2.git_commit parent, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid, byte* note, int allow_note_overwrite);
         
         /// <summary>
         /// Add a note for an object from a commit
@@ -284,7 +284,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_commit_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_commit_create(ref libgit2.git_oid notes_commit_out, ref libgit2.git_oid notes_blob_out, libgit2.git_repository repo, libgit2.git_commit parent, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string note, int allow_note_overwrite);
+        public static partial libgit2.git_result git_note_commit_create(out libgit2.git_oid notes_commit_out, out libgit2.git_oid notes_blob_out, libgit2.git_repository repo, libgit2.git_commit parent, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string note, int allow_note_overwrite);
         
         /// <summary>
         /// Remove the note for an object
@@ -332,7 +332,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_commit_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_commit_remove(ref libgit2.git_oid notes_commit_out, libgit2.git_repository repo, libgit2.git_commit notes_commit, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid);
+        public static partial libgit2.git_result git_note_commit_remove(out libgit2.git_oid notes_commit_out, libgit2.git_repository repo, libgit2.git_commit notes_commit, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid);
         
         /// <summary>
         /// Free a git_note object
