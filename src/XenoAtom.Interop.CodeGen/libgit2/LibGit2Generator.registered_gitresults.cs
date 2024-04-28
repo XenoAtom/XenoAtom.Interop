@@ -264,6 +264,9 @@ partial class LibGit2Generator
         "git_object_rawcontent_is_valid",
         "git_object_short_id",
         // odb.h
+        "git_odb_read",
+        "git_odb_read_prefix",
+        "git_odb_read_header",
         "git_odb_add_alternate",
         "git_odb_add_backend",
         "git_odb_add_disk_alternate",
@@ -282,6 +285,9 @@ partial class LibGit2Generator
         "git_odb_write",
         "git_odb_write_multi_pack_index",
         "git_odb_write_pack",
+        "git_odb_hash",
+        "git_odb_hashfile",
+
         // oid.h
         "git_oid_cpy",
         "git_oid_fmt",

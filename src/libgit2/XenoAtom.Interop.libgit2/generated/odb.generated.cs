@@ -173,7 +173,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_read")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_read(out libgit2.git_odb_object @out, libgit2.git_odb db, in libgit2.git_oid id);
+        public static partial libgit2.git_result git_odb_read(out libgit2.git_odb_object @out, libgit2.git_odb db, in libgit2.git_oid id);
         
         /// <summary>
         /// Read an object from the database, given a prefix
@@ -201,7 +201,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_read_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_read_prefix(out libgit2.git_odb_object @out, libgit2.git_odb db, in libgit2.git_oid short_id, libgit2.size_t len);
+        public static partial libgit2.git_result git_odb_read_prefix(out libgit2.git_odb_object @out, libgit2.git_odb db, in libgit2.git_oid short_id, libgit2.size_t len);
         
         /// <summary>
         /// Read the header of an object from the database, without
@@ -220,7 +220,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_read_header")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_read_header(ref libgit2.size_t len_out, ref libgit2.git_object_t type_out, libgit2.git_odb db, in libgit2.git_oid id);
+        public static partial libgit2.git_result git_odb_read_header(out libgit2.size_t len_out, out libgit2.git_object_t type_out, libgit2.git_odb db, in libgit2.git_oid id);
         
         /// <summary>
         /// Determine if the given object can be found in the object database.
@@ -242,7 +242,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 1 if the object was found, 0 otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_exists_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_exists_ext(libgit2.git_odb db, in libgit2.git_oid id, uint flags);
+        public static partial int git_odb_exists_ext(libgit2.git_odb db, in libgit2.git_oid id, libgit2.git_odb_lookup_flags_t flags);
         
         /// <summary>
         /// Determine if an object can be found in the object database by an
@@ -279,7 +279,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_expand_ids")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_expand_ids(libgit2.git_odb db, ref libgit2.git_odb_expand_id ids, libgit2.size_t count);
+        public static partial libgit2.git_result git_odb_expand_ids(libgit2.git_odb db, libgit2.git_odb_expand_id* ids, libgit2.size_t count);
         
         /// <summary>
         /// Refresh the object database to load newly added files.
@@ -372,21 +372,6 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_odb_stream_write(ref libgit2.git_odb_stream stream, byte* buffer, libgit2.size_t len);
         
         /// <summary>
-        /// Write to an odb stream
-        /// </summary>
-        /// <param name="stream">the stream</param>
-        /// <param name="buffer">the data to write</param>
-        /// <param name="len">the buffer's length</param>
-        /// <returns>@return 0 if the write succeeded, error code otherwise</returns>
-        /// <remarks>
-        /// This method will fail if the total number of received bytes exceeds the
-        /// size declared with `git_odb_open_wstream()`
-        /// </remarks>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_stream_write")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_stream_write(ref libgit2.git_odb_stream stream, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string buffer, libgit2.size_t len);
-        
-        /// <summary>
         /// Finish writing to an odb stream
         /// </summary>
         /// <param name="out">pointer to store the resulting object's id</param>
@@ -399,7 +384,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_stream_finalize_write")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_stream_finalize_write(out libgit2.git_oid @out, ref libgit2.git_odb_stream stream);
+        public static partial libgit2.git_result git_odb_stream_finalize_write(out libgit2.git_oid @out, libgit2.git_odb_stream* stream);
         
         /// <summary>
         /// Read from an odb stream
@@ -413,7 +398,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_stream_read")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_stream_read(ref libgit2.git_odb_stream stream, byte* buffer, libgit2.size_t len);
+        public static partial libgit2.git_result git_odb_stream_read(libgit2.git_odb_stream* stream, byte* buffer, libgit2.size_t len);
         
         /// <summary>
         /// Free an odb stream
@@ -421,7 +406,7 @@ namespace XenoAtom.Interop
         /// <param name="stream">the stream to free</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_stream_free")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_odb_stream_free(ref libgit2.git_odb_stream stream);
+        public static partial void git_odb_stream_free(libgit2.git_odb_stream* stream);
         
         /// <summary>
         /// Open a stream to read an object from the ODB
@@ -442,7 +427,7 @@ namespace XenoAtom.Interop
         /// <seealso cref="git_odb_stream"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_open_rstream")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_open_rstream(out libgit2.git_odb_stream* @out, ref libgit2.size_t len, ref libgit2.git_object_t type, libgit2.git_odb db, in libgit2.git_oid oid);
+        public static partial libgit2.git_result git_odb_open_rstream(out libgit2.git_odb_stream* @out, out libgit2.size_t len, out libgit2.git_object_t type, libgit2.git_odb db, in libgit2.git_oid oid);
         
         /// <summary>
         /// Open a stream for writing a pack file to the ODB.
@@ -484,15 +469,15 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_hash")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_hash(out libgit2.git_oid @out, void* data, libgit2.size_t len, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_odb_hash(out libgit2.git_oid @out, void* data, libgit2.size_t len, libgit2.git_object_t type);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_hashfile")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_hashfile(out libgit2.git_oid @out, byte* path, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_odb_hashfile(out libgit2.git_oid @out, byte* path, libgit2.git_object_t type);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_hashfile")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_hashfile(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_odb_hashfile(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, libgit2.git_object_t type);
         
         /// <summary>
         /// Create a copy of an odb_object
@@ -508,7 +493,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_object_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_object_dup(ref libgit2.git_odb_object dest, libgit2.git_odb_object source);
+        public static partial libgit2.git_result git_odb_object_dup(out libgit2.git_odb_object dest, libgit2.git_odb_object source);
         
         /// <summary>
         /// Close an ODB object

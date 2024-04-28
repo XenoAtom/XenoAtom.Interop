@@ -26,7 +26,8 @@ internal partial class LibGit2Generator
         "git_filter_list_apply_to_buffer",
         "git_filter_list_stream_buffer",
         "git_mailmap_from_buffer",
-        "git_object_rawcontent_is_valid"
+        "git_object_rawcontent_is_valid",
+        "git_odb_stream_write"
     ];
 
     public LibGit2Generator()
@@ -186,6 +187,16 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_object_peel::peeled").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_object_dup::dest").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_object_rawcontent_is_valid::valid").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_odb_read_header::.*_out").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_odb_exists_ext::flags").Type("git_odb_lookup_flags_t"),
+                e => e.Map<CppParameter>("git_odb_expand_ids::ids").NoByRef(),
+                e => e.Map<CppParameter>("git_odb_stream_write::buffer").NoByRef(),
+                e => e.Map<CppParameter>("git_odb_stream_finalize_write::stream").NoByRef(),
+                e => e.Map<CppParameter>("git_odb_stream_read::stream").NoByRef(),
+                e => e.Map<CppParameter>("git_odb_stream_free::stream").NoByRef(),
+                e => e.Map<CppParameter>("git_odb_open_rstream::len").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_odb_open_rstream::type").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_odb_object_dup::dest").ByRef(CSharpRefKind.Out),
                 
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
