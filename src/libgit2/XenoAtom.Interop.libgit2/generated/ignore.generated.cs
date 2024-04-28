@@ -35,7 +35,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_ignore_add_rule")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_ignore_add_rule(libgit2.git_repository repo, byte* rules);
+        public static partial libgit2.git_result git_ignore_add_rule(libgit2.git_repository repo, byte* rules);
         
         /// <summary>
         /// Add ignore rules for a repository.
@@ -55,7 +55,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_ignore_add_rule")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_ignore_add_rule(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string rules);
+        public static partial libgit2.git_result git_ignore_add_rule(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string rules);
         
         /// <summary>
         /// Clear ignore rules that were explicitly added.
@@ -68,7 +68,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_ignore_clear_internal_rules")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_ignore_clear_internal_rules(libgit2.git_repository repo);
+        public static partial libgit2.git_result git_ignore_clear_internal_rules(libgit2.git_repository repo);
         
         /// <summary>
         /// Test if the ignore rules apply to a given path.
@@ -88,7 +88,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_ignore_path_is_ignored")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_ignore_path_is_ignored(ref int ignored, libgit2.git_repository repo, byte* path);
+        public static partial libgit2.git_result git_ignore_path_is_ignored(out int ignored, libgit2.git_repository repo, byte* path);
         
         /// <summary>
         /// Test if the ignore rules apply to a given path.
@@ -108,6 +108,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_ignore_path_is_ignored")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_ignore_path_is_ignored(ref int ignored, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
+        public static partial libgit2.git_result git_ignore_path_is_ignored(out int ignored, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
     }
 }

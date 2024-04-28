@@ -182,6 +182,8 @@ partial class LibGit2Generator
         "git_graph_reachable_from_any",
         // ignore.h
         "git_ignore_path_is_ignored",
+        "git_ignore_add_rule",
+        "git_ignore_clear_internal_rules",
         // index.h
         "git_index_add",
         "git_index_add_all",
