@@ -178,6 +178,8 @@ partial class LibGit2Generator
         "git_filter_list_contains",
         // graph.h
         "git_graph_ahead_behind",
+        "git_graph_descendant_of",
+        "git_graph_reachable_from_any",
         // ignore.h
         "git_ignore_path_is_ignored",
         // index.h

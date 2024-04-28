@@ -150,9 +150,9 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_filter_list_load::filters").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_filter_list_load::flags").Type("git_filter_flag_t"),
                 e => e.Map<CppParameter>("git_filter_list_load_ext::filters").ByRef(CSharpRefKind.Out),
-
+                e => e.Map<CppParameter>("git_graph_ahead_behind::ahead").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_graph_ahead_behind::behind").ByRef(CSharpRefKind.Out),
                 
-
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                 //e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),

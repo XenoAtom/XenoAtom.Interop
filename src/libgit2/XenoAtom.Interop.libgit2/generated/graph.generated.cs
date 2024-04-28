@@ -34,7 +34,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_graph_ahead_behind")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_graph_ahead_behind(ref libgit2.size_t ahead, ref libgit2.size_t behind, libgit2.git_repository repo, in libgit2.git_oid local, in libgit2.git_oid upstream);
+        public static partial libgit2.git_result git_graph_ahead_behind(out libgit2.size_t ahead, out libgit2.size_t behind, libgit2.git_repository repo, in libgit2.git_oid local, in libgit2.git_oid upstream);
         
         /// <summary>
         /// Determine if a commit is the descendant of another commit.
@@ -50,7 +50,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_graph_descendant_of")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_graph_descendant_of(libgit2.git_repository repo, in libgit2.git_oid commit, in libgit2.git_oid ancestor);
+        public static partial libgit2.git_result git_graph_descendant_of(libgit2.git_repository repo, in libgit2.git_oid commit, in libgit2.git_oid ancestor);
         
         /// <summary>
         /// Determine if a commit is reachable from any of a list of commits by
@@ -64,6 +64,6 @@ namespace XenoAtom.Interop
         /// descendants, 0 if not, error code otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_graph_reachable_from_any")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_graph_reachable_from_any(libgit2.git_repository repo, in libgit2.git_oid commit, libgit2.git_oid* descendant_array, libgit2.size_t length);
+        public static partial libgit2.git_result git_graph_reachable_from_any(libgit2.git_repository repo, in libgit2.git_oid commit, libgit2.git_oid* descendant_array, libgit2.size_t length);
     }
 }
