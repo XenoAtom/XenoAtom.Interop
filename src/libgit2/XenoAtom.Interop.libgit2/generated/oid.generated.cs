@@ -51,7 +51,7 @@ namespace XenoAtom.Interop
         {
             public git_oid_shorten(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_oid_shorten other) => Handle.Equals(other.Handle);
             
@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstr")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_oid_fromstr(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> str);
+        public static partial int git_oid_fromstr(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstrp")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -80,7 +80,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstrp")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_oid_fromstrp(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> str);
+        public static partial int git_oid_fromstrp(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstrn")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -88,7 +88,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstrn")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_oid_fromstrn(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> str, libgit2.size_t length);
+        public static partial int git_oid_fromstrn(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str, libgit2.size_t length);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromraw")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -246,7 +246,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 in case of a match, -1 otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_streq")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_oid_streq(in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> str);
+        public static partial int git_oid_streq(in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str);
         
         /// <summary>
         /// Compare an oid to an hex formatted object id.
@@ -272,7 +272,7 @@ namespace XenoAtom.Interop
         /// 0 if id matches str, &gt;0 if id sorts after str.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_strcmp")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_oid_strcmp(in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> str);
+        public static partial int git_oid_strcmp(in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str);
         
         /// <summary>
         /// Check is an oid is all zeros.
@@ -348,7 +348,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_shorten_add")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_oid_shorten_add(libgit2.git_oid_shorten os, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> text_id);
+        public static partial int git_oid_shorten_add(libgit2.git_oid_shorten os, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> text_id);
         
         /// <summary>
         /// Free an OID shortener instance

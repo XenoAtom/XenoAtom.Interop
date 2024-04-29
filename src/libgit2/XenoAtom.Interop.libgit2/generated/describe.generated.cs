@@ -61,7 +61,7 @@ namespace XenoAtom.Interop
             /// </summary>
             public libgit2.git_describe_strategy_t describe_strategy;
             
-            public readonly byte* pattern;
+            public byte* pattern;
             
             /// <summary>
             /// When calculating the distance from the matching tag or
@@ -105,7 +105,7 @@ namespace XenoAtom.Interop
             /// If the workdir is dirty and this is set, this string will
             /// be appended to the description string.
             /// </summary>
-            public readonly byte* dirty_suffix;
+            public byte* dirty_suffix;
         }
         
         /// <summary>
@@ -115,7 +115,7 @@ namespace XenoAtom.Interop
         {
             public git_describe_result(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_describe_result other) => Handle.Equals(other.Handle);
             

@@ -16,9 +16,12 @@ internal partial class LibGit2Generator
 {
     private CppTypedef _gitResultType;
     private readonly Dictionary<string, List<string>> _gitResultFunctionsDetectedButNotRegistered;
-    private List<CSharpStruct> _structs;
-    private Dictionary<CSharpStruct, HashSet<CSharpRefKind>> _structRefUsages;
+    private readonly List<CSharpStruct> _structs;
+    private readonly Dictionary<CSharpStruct, HashSet<CSharpRefKind>> _structRefUsages;
 
+    /// <summary>
+    /// List of functions that should not use string marshalling for byte* buffers
+    /// </summary>
     private static readonly HashSet<string> FunctionsWithNoStringMarshalling =
     [
         "git_blob_data_is_binary",
@@ -27,7 +30,7 @@ internal partial class LibGit2Generator
         "git_filter_list_stream_buffer",
         "git_mailmap_from_buffer",
         "git_object_rawcontent_is_valid",
-        "git_odb_stream_write"
+        "git_odb_stream_write",
     ];
 
     public LibGit2Generator()
@@ -41,7 +44,6 @@ internal partial class LibGit2Generator
     {
         var srcFolder = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\..\..\..\..\libgit2\include"));
         var destFolder = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\..\libgit2\XenoAtom.Interop.libgit2\generated"));
-        //var destTestsFolder = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\..\GitLib.Tests"));
             
         if (!Directory.Exists(srcFolder))
         {
@@ -51,10 +53,6 @@ internal partial class LibGit2Generator
         {
             throw new DirectoryNotFoundException($"The destination folder `{destFolder}` doesn't exist");
         }
-        //if (!Directory.Exists(destTestsFolder))
-        //{
-        //    throw new DirectoryNotFoundException($"The destination tests folder `{destTestsFolder}` doesn't exist");
-        //}
 
         var csOptions = new CSharpConverterOptions()
         {
@@ -75,9 +73,6 @@ typedef int git_result;
             DisableRuntimeMarshalling = true,
             AllowMarshalForString = false,
 
-            //DefaultMarshalForString = new CSharpMarshalUsingAttribute("typeof(UTF8CustomMarshaller)"),
-            //ManagedToUnmanagedStringTypeForParameter = "ReadOnlySpan<char>",
-
             MappingRules =
             {
                 // Remove this function as it is not supported (varargs)
@@ -91,8 +86,6 @@ typedef int git_result;
                 e => e.MapMacroToConst("LIBGIT2_VER_REVISION", "int"),
                 e => e.MapMacroToConst("LIBGIT2_VER_PATCH", "int"),
                 e => e.MapMacroToConst("GIT_.*_VERSION", "unsigned int"),
-
-                //e => e.Map<CppClass>("_LIBSSH2_.*").Discard(),
 
                 e => e.Map<CppParameter>(".*::out").ByRef(CSharpRefKind.Out),
 
@@ -179,6 +172,7 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_merge_analysis.*::.*_out").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_merge_analysis.*::their_heads").NoByRef(),
                 e => e.Map<CppParameter>("git_merge::their_heads").NoByRef(),
+                e => e.Map<CppParameter>("git_message_trailers::arr").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_note_next::.*_id").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_note_commit_create::.*_out").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_note_commit_remove::notes_commit_out").ByRef(CSharpRefKind.Out),
@@ -215,6 +209,7 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_proxy_options_init::opts").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_rebase_options_init::opts").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_rebase_commit::id").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_rebase_next::operation").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppField>("git_remote_create_options::flags").Type("git_remote_create_flags"),
                 e => e.Map<CppParameter>("git_remote_create_options_init::opts").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_remote_dup::dest").ByRef(CSharpRefKind.Out),
@@ -248,29 +243,25 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_submodule_open::repo").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_submodule_status::status").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_submodule_location::location_status").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tag_target::target_out").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tag_create::oid").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tag_annotation_create::oid").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tag_create_from_buffer::oid").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tag_create_lightweight::oid").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tag_list::tag_names").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tag_list_match::tag_names").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tag_peel::tag_target_out").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tag_name_is_valid::valid").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tree_entry_dup::dest").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tree_entry_to_object::object_out").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_tree_create_updated::updates").NoByRef(),
+                e => e.Map<CppParameter>("git_treebuilder_write::id").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppField>("git_worktree_prune_options::flags").Type("git_worktree_prune_t"),
+                e => e.Map<CppParameter>("git_worktree_add_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_worktree_prune_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_worktree_is_prunable::opts").ByRef(CSharpRefKind.In),
+                e => e.Map<CppParameter>("git_worktree_prune::opts").ByRef(CSharpRefKind.In),
                 
-                //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
-                //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
-                //e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
-                //e => e.Map<CppParameter>("git_repository_init_init_options::version").InitValue("GIT_REPOSITORY_INIT_OPTIONS_VERSION"),
-                //e => e.Map<CppParameter>("git_repository_set_workdir::update_gitlink").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
-                //e => e.Map<CppField>("git_repository_init_options::flags").Type("git_repository_init_flag_t"),
-                //e => e.Map<CppField>("git_repository_init_options::mode").Type("git_repository_init_mode_t"),
-                //e => e.Map<CppFunction>("git_repository_state").Type("git_repository_state_t"),
-                //e => e.Map<CppFunction>("git_repository_ident").Type("git_result"),
-                //e => e.Map<CppFunction>("git_repository_set_ident").Type("git_result"),
-                //e => e.Map<CppFunction>("git_repository_fetchhead_foreach").Type("git_result"),
-                    
-                //e => e.Map<CppFunction>(@"git_\w+_is_\w+").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
-                    
-                //// Mappings for revwalk.h
-                //e => e.Map<CppParameter>("git_revwalk_sorting::sort_mode").Type("git_sort_t"),
-                //e => e.Map<CppFunction>("git_revwalk_next").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
-                    
-                //e => e.Map<CppField>("git_strarray::strings").Private(),
-                //e => e.Map<CppField>("git_strarray::count").Private(),
-                //e => e.Map<CppClass>().CSharpAction(ProcessCSharpStruct),
-                //e => e.Map<CppField>("LIBGIT2_.*VERSION").CppAction(ProcessVersion),
                 e => e.MapAll<CppFunction>().CppAction(ProcessCppFunctions).CSharpAction(ProcessCSharpMethods)
             },
         };
@@ -292,12 +283,40 @@ typedef int git_result;
             if (csCompilation.HasErrors)
             {
                 Console.Error.WriteLine("Unexpected parsing errors");
-                Environment.Exit(1);
+                Environment.Exit(1);    
             }
         }
-            
-        //ProcessStringMarshallingForStructs();
-            
+
+        var structsWithStringMarshalling = new List<CSharpStruct>();
+
+        foreach (var csStruct in csCompilation.AllStructs)
+        {
+            var cppStruct = csStruct.CppElement as CppClass;
+            if (cppStruct == null) continue;
+            foreach (var cppField in cppStruct.Fields)
+            {
+                if (cppField.Type is CppPointerType cppPointerType)
+                {
+                    var elementType = cppPointerType.ElementType;
+                    if (elementType is CppQualifiedType qualifiedType)
+                    {
+                        elementType = qualifiedType.ElementType;
+                    }
+
+                    if (elementType is CppPrimitiveType cppPrimitiveType && cppPrimitiveType.Kind == CppPrimitiveKind.Char)
+                    {
+                        structsWithStringMarshalling.Add(csStruct);
+                    }
+                    break;
+                }
+            }
+        }
+        
+        foreach (var csStruct in structsWithStringMarshalling)
+        {
+            Console.WriteLine($"{csStruct.Name} -> {csStruct.MarshallingUsage}");
+        }
+        
         var fs = new PhysicalFileSystem();
             
         {
@@ -306,85 +325,6 @@ typedef int git_result;
             csCompilation.DumpTo(codeWriter);
         }
 
-        /*
-        // --------------------------------------------------------------------------
-        // Generate test files
-        // --------------------------------------------------------------------------
-        var testGeneratedCompilation = new CSharpCompilation();
-        foreach (var file in csCompilation.Members.OfType<CSharpGeneratedFile>())
-        {
-            var name = file.FilePath.GetName();
-            var nameWithoutGenerated = name.Substring(0, name.IndexOf("."));
-            name = ToPascalCase(nameWithoutGenerated);
-
-            var allMethods = file.Members.OfType<CSharpNamespace>().First().Members.OfType<CSharpClass>().First().Members.OfType<CSharpMethod>().Where(x => x.Visibility == CSharpVisibility.Public).ToList();
-
-            // Generate all tests: generated/xxx.generated.cs
-            {
-                var testGeneratedFile = new CSharpGeneratedFile(UPath.Combine("/generated/", file.FilePath.GetName()));
-                testGeneratedCompilation.Members.Add(testGeneratedFile);
-
-                var ns = new CSharpNamespace("GitLib.Tests");
-                testGeneratedFile.Members.Add(ns);
-
-                var csTest = new CSharpClass($"{name}Tests") {Modifiers = CSharpModifiers.Partial};
-                csTest.BaseTypes.Add(new CSharpFreeType("GitLibTestsBase"));
-                ns.Members.Add(csTest);
-
-                csTest.Members.Add(new CSharpLineElement($"public {csTest.Name}() : base(\"{nameWithoutGenerated}\") {{}}"));
-
-                var csCheckMethod = new CSharpMethod() {Name = "Check", Visibility = CSharpVisibility.Private, ReturnType = new CSharpPrimitiveType(CSharpPrimitiveKind.Void)};
-                csTest.Members.Add(csCheckMethod);
-
-                csCheckMethod.Body = (writer, element) =>
-                {
-                    foreach (var method in allMethods)
-                    {
-                        writer.WriteLine($"Test_{method.Name}();");
-                    }
-                };
-            }
-
-            // Generate all tests: xxx.cs (WARNING, THIS IS NOT INTENDED TO BE USED AFTER A FIRST RUN)
-            // The following code is now disabled as it was only used once for generating all tests methods
-//                {
-//                    var testGeneratedFile = new CSharpGeneratedFile($"/{nameWithoutGenerated}.cs") { EmitAutoGenerated = false };
-//                    testGeneratedCompilation.Members.Add(testGeneratedFile);
-//
-//                    testGeneratedFile.Members.Add(new CSharpUsingDeclaration("System"));
-//                    testGeneratedFile.Members.Add(new CSharpUsingDeclaration("System.IO"));
-//                    testGeneratedFile.Members.Add(new CSharpUsingDeclaration("NUnit.Framework"));
-//
-//                    var ns = new CSharpNamespace("GitLib.Tests");
-//                    testGeneratedFile.Members.Add(ns);
-//
-//                    ns.Members.Add(new CSharpUsingDeclaration("libgit2") { IsStatic =  true });
-//
-//                    var csTest = new CSharpClass($"{name}Tests") {Modifiers = CSharpModifiers.Partial};
-//                    ns.Members.Add(csTest);
-//
-//                    foreach (var method in allMethods)
-//                    {
-//                        var csTestMethod = new CSharpMethod() {Name = $"Test_{method.Name}", Visibility = CSharpVisibility.Public, ReturnType = CSharpPrimitiveType.Void};
-//                        csTestMethod.Attributes.Add(new CSharpFreeAttribute("Test"));
-//                        csTest.Members.Add(csTestMethod);
-//
-//                        csTestMethod.Body = (writer, element) => { writer.WriteLine($"Assert.Fail($\"Tests for method `{{nameof({method.Name})}}` are not yet implemented\");"); };
-//                    }
-//                }
-        }
-
-
-
-
-        {
-            var subfs = new SubFileSystem(fs, fs.ConvertPathFromInternal(destTestsFolder));
-            var codeWriter = new CodeWriter(new CodeWriterOptions(subfs));
-            testGeneratedCompilation.DumpTo(codeWriter);
-        }
-
-
-        */
         ReportFunctionWithPossibleGitResultNotRegistered();
     }
 
@@ -408,29 +348,6 @@ typedef int git_result;
         }
 
         return builder.ToString();
-    }
-
-    /// <summary>
-    /// List of functions to not modify regarding strarray handling
-    /// </summary>
-    private static readonly HashSet<string> KeepRefForStrArrayMethods = new HashSet<string>()
-    {
-        "git_strarray_dispose",
-        "git_strarray_copy",
-    };
-
-    private static bool IsStrArray(CSharpParameter csParam, out CSharpRefKind refKind)
-    {
-        refKind = CSharpRefKind.None;
-        if (csParam.ParameterType is CSharpRefType refType)
-        {
-            refKind = refType.Kind;
-            if (refType.ElementType is CSharpStruct csStruct && csStruct.Name == "git_strarray")
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     private void ReportFunctionWithPossibleGitResultNotRegistered()
@@ -577,7 +494,7 @@ typedef int git_result;
                         newManagedMethod ??= csMethod.Clone();
                         newManagedMethod.Parameters[i].ParameterType = new CSharpTypeWithAttributes(new CSharpFreeType("ReadOnlySpan<char>"))
                         {
-                            Attributes = { new CSharpMarshalUsingAttribute("typeof(UTF8CustomMarshaller)") }
+                            Attributes = { new CSharpMarshalUsingAttribute("typeof(Utf8CustomMarshaller)") }
                         };
                     }
                 }
@@ -591,7 +508,7 @@ typedef int git_result;
                     newManagedMethod.Name = $"{newManagedMethod.Name}_string";
                     newManagedMethod.ReturnType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String())
                     {
-                        Attributes = { new CSharpMarshalUsingAttribute("typeof(UTF8CustomMarshaller)") { Scope = CSharpAttributeScope.Return } }
+                        Attributes = { new CSharpMarshalUsingAttribute("typeof(Utf8CustomMarshaller)") { Scope = CSharpAttributeScope.Return } }
                     };
                 }
             }
@@ -600,166 +517,6 @@ typedef int git_result;
             {
                 ((ICSharpContainer)csMethod.Parent!).Members.Add(newManagedMethod);
             }
-
-            //DefaultMarshalForString = new CSharpMarshalUsingAttribute("typeof(UTF8CustomMarshaller)"),
-            //ManagedToUnmanagedStringTypeForParameter = "ReadOnlySpan<char>",
-
-            /*
-            if (_gitResultType != null)
-            {
-                bool hasGitStrarray = false;
-                if (!KeepRefForStrArrayMethods.Contains(csMethod.Name))
-                {
-                    foreach (var csParam in csMethod.Parameters)
-                    {
-                        if (IsStrArray(csParam, out _))
-                        {
-                            hasGitStrarray = true;
-                            break;
-                        }
-                    }
-                }
-
-                var isGitResultMethod = csMethod.ReturnType.CppElement == _gitResultType || csMethod.ReturnType.CppElement == _gitResultBoolType;
-
-                if (hasGitStrarray || isGitResultMethod)
-                {
-                    var csWrapMethod = csMethod.Wrap();
-
-                    StrArrayParam[] strArrayParams = null;
-                    var hasInStrArray = false;
-                    if (hasGitStrarray)
-                    {
-                        strArrayParams = new StrArrayParam[csWrapMethod.Parameters.Count];
-                        for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
-                        {
-                            var csParam = csWrapMethod.Parameters[i];
-                            if (IsStrArray(csParam, out var refKind))
-                            {
-                                strArrayParams[i] = new StrArrayParam(csParam, refKind);
-                                if (refKind == CSharpRefKind.Out)
-                                {
-                                    csParam.ParameterType = new CSharpRefType(refKind, new CSharpArrayType(new CSharpPrimitiveType(CSharpPrimitiveKind.String)));
-                                }
-                                else if (refKind == CSharpRefKind.In)
-                                {
-                                    csParam.ParameterType = new CSharpArrayType(new CSharpPrimitiveType(CSharpPrimitiveKind.String));
-                                    hasInStrArray = true;
-                                }
-                            }
-                        }
-                    }
-
-                    csWrapMethod.Body = (writer, sharpElement) =>
-                    {
-                        if (strArrayParams != null)
-                        {
-                            for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
-                            {
-                                var strArrayParam = strArrayParams[i];
-                                if (strArrayParam != null)
-                                {
-                                    var csParam = strArrayParam.CsParameter;
-                                    if (strArrayParam.RefKind == CSharpRefKind.In)
-                                    {
-                                        writer.WriteLine($"var {csParam.Name}__ = git_strarray.Allocate({csParam.Name});");
-                                    }
-                                    else
-                                    {
-                                        writer.WriteLine($"git_strarray {csParam.Name}__;");
-                                    }
-                                }
-                            }
-                        }
-
-                        bool isVoidReturn = (csMethod.ReturnType is CSharpPrimitiveType cSharpPrimitiveType && cSharpPrimitiveType.Kind == CSharpPrimitiveKind.Void);
-                        if (!isVoidReturn)
-                        {
-                            writer.Write("var __result__ = ");
-                        }
-
-                        writer.Write(csMethod.Name).Write("(");
-                        for (var i = 0; i < csMethod.Parameters.Count; i++)
-                        {
-                            var p = csMethod.Parameters[i];
-                            if (i > 0) writer.Write(", ");
-                            if (strArrayParams != null && strArrayParams[i] != null)
-                            {
-                                var strArrayParam = strArrayParams[i];
-                                strArrayParam.RefKind.DumpTo(writer);
-                                writer.Write($"{strArrayParam.CsParameter.Name}__");
-                            }
-                            else
-                            {
-                                p.DumpArgTo(writer);
-                            }
-                        }
-
-                        writer.Write(")");
-
-                        if (hasInStrArray)
-                        {
-                            writer.WriteLine(";");
-                            for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
-                            {
-                                var strParamArray = strArrayParams[i];
-                                if (strParamArray != null && strParamArray.RefKind == CSharpRefKind.In)
-                                {
-                                    writer.WriteLine($"{strParamArray.CsParameter.Name}__.Free();");
-                                }
-                            }
-                        }
-
-                        if (isGitResultMethod)
-                        {
-                            if (hasInStrArray)
-                            {
-                                writer.WriteLine("__result__.Check();");
-                            }
-                            else
-                            {
-                                writer.WriteLine(".Check();");
-                            }
-                        }
-                        else
-                        {
-                            writer.WriteLine(";");
-                        }
-
-                        if (strArrayParams != null)
-                        {
-                            for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
-                            {
-                                var strParamArray = strArrayParams[i];
-                                if (strParamArray != null && strParamArray.RefKind == CSharpRefKind.Out)
-                                {
-                                    writer.WriteLine($"{strParamArray.CsParameter.Name} = {strParamArray.CsParameter.Name}__.ToArray();");
-                                    writer.WriteLine($"git_strarray_dispose(ref {strParamArray.CsParameter.Name}__);");
-                                }
-                            }
-                        }
-
-                        if (!isVoidReturn)
-                        {
-                            writer.WriteLine("return __result__;");
-                        }
-                    };
-                }
-            }
-            */
         }
-    }
-
-    private class StrArrayParam
-    {
-        public StrArrayParam(CSharpParameter csParameter, CSharpRefKind refKind)
-        {
-            CsParameter = csParameter;
-            RefKind = refKind;
-        }
-
-        public readonly CSharpParameter CsParameter;
-
-        public readonly CSharpRefKind RefKind;
     }
 }

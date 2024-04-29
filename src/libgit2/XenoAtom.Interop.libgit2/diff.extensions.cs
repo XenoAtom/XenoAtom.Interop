@@ -10,6 +10,31 @@ namespace XenoAtom.Interop;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 static unsafe partial class libgit2
 {
+    partial struct git_diff_binary_file
+    {
+        /// <summary>
+        /// The binary data, deflated.
+        /// </summary>
+        public ReadOnlySpan<byte> AsSpan() => data == null ? default : new((void*)data, (int)datalen);
+    }
+
+    partial struct git_diff_file
+    {
+        /// <summary>
+        /// The NUL-terminated path to the entry relative to the working
+        /// directory of the repository.
+        /// </summary>
+        public string? path_string => LibGit2Helper.UnmanagedUtf8StringToString(path);
+    }
+
+    partial struct git_diff_line
+    {
+        /// <summary>
+        /// Diff text.
+        /// </summary>
+        public string? content_string => LibGit2Helper.UnmanagedUtf8StringToString(content, (int)content_len);
+    }
+
     /// <summary>
     /// Read the contents of a git patch file into a `git_diff` object.
     /// </summary>

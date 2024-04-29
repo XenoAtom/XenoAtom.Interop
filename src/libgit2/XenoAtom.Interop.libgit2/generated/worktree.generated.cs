@@ -96,7 +96,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A combination of `git_worktree_prune_t`
             /// </summary>
-            public uint flags;
+            public libgit2.git_worktree_prune_t flags;
         }
         
         /// <summary>
@@ -133,7 +133,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_worktree_lookup(out libgit2.git_worktree @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_worktree_lookup(out libgit2.git_worktree @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Open a worktree of a given repository
@@ -184,7 +184,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_add_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_worktree_add_options_init(ref libgit2.git_worktree_add_options opts, uint version);
+        public static partial libgit2.git_result git_worktree_add_options_init(out libgit2.git_worktree_add_options opts, uint version);
         
         /// <summary>
         /// Add a new working tree
@@ -220,7 +220,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_add")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_worktree_add(out libgit2.git_worktree @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, in libgit2.git_worktree_add_options opts);
+        public static partial libgit2.git_result git_worktree_add(out libgit2.git_worktree @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, in libgit2.git_worktree_add_options opts);
         
         /// <summary>
         /// Lock worktree if not already locked
@@ -248,7 +248,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_lock")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_worktree_lock(libgit2.git_worktree wt, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> reason);
+        public static partial int git_worktree_lock(libgit2.git_worktree wt, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> reason);
         
         /// <summary>
         /// Unlock a locked worktree
@@ -294,7 +294,7 @@ namespace XenoAtom.Interop
         /// lifetime of the git_worktree</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_worktree_name_string(libgit2.git_worktree wt);
         
         /// <summary>
@@ -315,7 +315,7 @@ namespace XenoAtom.Interop
         /// is valid for the lifetime of the git_worktree.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_worktree_path_string(libgit2.git_worktree wt);
         
         /// <summary>
@@ -330,7 +330,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_prune_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_worktree_prune_options_init(ref libgit2.git_worktree_prune_options opts, uint version);
+        public static partial libgit2.git_result git_worktree_prune_options_init(out libgit2.git_worktree_prune_options opts, uint version);
         
         /// <summary>
         /// Is the worktree prunable with the given options?
@@ -350,7 +350,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_is_prunable")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_worktree_is_prunable(libgit2.git_worktree wt, ref libgit2.git_worktree_prune_options opts);
+        public static partial int git_worktree_is_prunable(libgit2.git_worktree wt, in libgit2.git_worktree_prune_options opts);
         
         /// <summary>
         /// Prune working tree
@@ -366,6 +366,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_prune")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_worktree_prune(libgit2.git_worktree wt, ref libgit2.git_worktree_prune_options opts);
+        public static partial libgit2.git_result git_worktree_prune(libgit2.git_worktree wt, in libgit2.git_worktree_prune_options opts);
     }
 }

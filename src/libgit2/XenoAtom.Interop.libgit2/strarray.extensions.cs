@@ -16,37 +16,23 @@ public static unsafe partial class libgit2
 {
 
     [DebuggerDisplay("Count = {count}")]
-    public partial struct git_strarray : IEnumerable<string>
+    public partial struct git_strarray : IEnumerable<string?>, IDisposable
     {
         /// <summary>
         /// gets the number of strings in this array.
         /// </summary>
         public int Length => count;
-            
-        /// <summary>
-        /// Gets the string from the specified array index.
-        /// </summary>
-        /// <param name="index">An index into the array</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public string? this[int index]
-        {
-            get
-            {
-                if (index < 0 || index > count) throw new ArgumentOutOfRangeException();
-                return UTF8CustomMarshaller.ConvertToManaged(strings[index]);
-            }
-        }
 
         /// <summary>
         /// Creates a managed array of string from this git native array of string.
         /// </summary>
         /// <returns>A managed array of string from this git native array of string.</returns>
-        public string[] ToArray()
+        public string?[] ToArray()
         {
-            var array = new string[count];
+            var array = new string?[count];
             for(int i = 0; i < count; i++)
             {
-                array[i] = this[i];
+                array[i] = LibGit2Helper.UnmanagedUtf8StringToString(strings[i]);
             }
 
             return array;
@@ -69,7 +55,7 @@ public static unsafe partial class libgit2
             };
             for (int i = 0; i < array.Length; i++)
             {
-                nativeArray.strings[i] = UTF8CustomMarshaller.ConvertToUnmanaged(array[i]);
+                nativeArray.strings[i] = LibGit2Helper.StringToUnmanagedUtf8String(array[i]);
             }
 
             return nativeArray;
@@ -79,11 +65,11 @@ public static unsafe partial class libgit2
         /// Frees this instance. Must have been created by <see cref="Allocate"/>. This method should not be call
         /// on <see cref="git_strarray"/> returned by git methods. 
         /// </summary>
-        public unsafe void Free()
+        public void Dispose()
         {
             for (int i = 0; i < count; i++)
             {
-                UTF8CustomMarshaller.Free(strings[i]);
+                LibGit2Helper.FreeUnmanagedUtf8String(strings[i]);
             }
 
             count = 0;
@@ -96,7 +82,7 @@ public static unsafe partial class libgit2
             return new Enumerator(this);
         }
 
-        IEnumerator<string> IEnumerable<string>.GetEnumerator()
+        IEnumerator<string?> IEnumerable<string?>.GetEnumerator()
         {
             return GetEnumerator();
         }
@@ -106,14 +92,14 @@ public static unsafe partial class libgit2
             return GetEnumerator();
         }
 
-        public struct Enumerator : IEnumerator<string>
+        public struct Enumerator : IEnumerator<string?>
         {
-            private git_strarray _array;
+            private readonly string?[] _array;
             private int index;
 
             public Enumerator(git_strarray array) : this()
             {
-                _array = array;
+                _array = array.ToArray();
                 index = -1;
             }
 
@@ -123,7 +109,7 @@ public static unsafe partial class libgit2
 
             public bool MoveNext()
             {
-                if ((index + 1) < _array.count)
+                if ((index + 1) < _array.Length)
                 {
                     index++;
                     return true;
@@ -136,19 +122,19 @@ public static unsafe partial class libgit2
                 index = -1;
             }
 
-            public string Current
+            public string? Current
             {
                 get
                 {
                     if (index < 0) throw new InvalidOperationException("Must call MoveNext() before Current");
                         
-                    if (index >= _array.count) throw new InvalidOperationException("Cannot call Current after last element");
+                    if (index >= _array.Length) throw new InvalidOperationException("Cannot call Current after last element");
                         
                     return _array[index];
                 }
             }
 
-            object IEnumerator.Current => Current;
+            object IEnumerator.Current => Current!;
         }
     }
 }

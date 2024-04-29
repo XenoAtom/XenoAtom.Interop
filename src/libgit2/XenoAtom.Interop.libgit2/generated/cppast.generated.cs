@@ -22,7 +22,7 @@ namespace XenoAtom.Interop
         {
             public git_result(int value) => this.Value = value;
             
-            public readonly int Value;
+            public int Value { get; }
             
             public bool Equals(git_result other) =>  Value.Equals(other.Value);
             

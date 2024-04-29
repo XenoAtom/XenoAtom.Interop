@@ -139,7 +139,7 @@ namespace XenoAtom.Interop
         {
             public git_credential(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_credential other) => Handle.Equals(other.Handle);
             
@@ -158,7 +158,7 @@ namespace XenoAtom.Interop
         {
             public git_credential_userpass_plaintext(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_credential_userpass_plaintext other) => Handle.Equals(other.Handle);
             
@@ -180,7 +180,7 @@ namespace XenoAtom.Interop
         {
             public git_credential_username(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_credential_username other) => Handle.Equals(other.Handle);
             
@@ -202,7 +202,7 @@ namespace XenoAtom.Interop
         {
             public git_credential_ssh_key(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_credential_ssh_key other) => Handle.Equals(other.Handle);
             
@@ -224,7 +224,7 @@ namespace XenoAtom.Interop
         {
             public git_credential_ssh_interactive(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_credential_ssh_interactive other) => Handle.Equals(other.Handle);
             
@@ -246,7 +246,7 @@ namespace XenoAtom.Interop
         {
             public git_credential_ssh_custom(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_credential_ssh_custom other) => Handle.Equals(other.Handle);
             
@@ -285,9 +285,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_credential_acquire_cb : IEquatable<git_credential_acquire_cb>
         {
-            public git_credential_acquire_cb(delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int>* value) => this.Value = value;
+            public git_credential_acquire_cb(delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int> Value { get; }
             
             public bool Equals(git_credential_acquire_cb other) =>  Value == other.Value;
             
@@ -297,9 +297,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int>*(git_credential_acquire_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int>(git_credential_acquire_cb from) => from.Value;
             
-            public static implicit operator git_credential_acquire_cb(delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int>* from) => new git_credential_acquire_cb(from);
+            public static implicit operator git_credential_acquire_cb(delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int> from) => new git_credential_acquire_cb(from);
             
             public static bool operator ==(git_credential_acquire_cb left, git_credential_acquire_cb right) => left.Equals(right);
             
@@ -308,9 +308,9 @@ namespace XenoAtom.Interop
         
         public readonly partial struct git_credential_ssh_interactive_cb : IEquatable<git_credential_ssh_interactive_cb>
         {
-            public git_credential_ssh_interactive_cb(delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void>* value) => this.Value = value;
+            public git_credential_ssh_interactive_cb(delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void>* Value;
+            public delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> Value { get; }
             
             public bool Equals(git_credential_ssh_interactive_cb other) =>  Value == other.Value;
             
@@ -320,9 +320,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void>*(git_credential_ssh_interactive_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void>(git_credential_ssh_interactive_cb from) => from.Value;
             
-            public static implicit operator git_credential_ssh_interactive_cb(delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void>* from) => new git_credential_ssh_interactive_cb(from);
+            public static implicit operator git_credential_ssh_interactive_cb(delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> from) => new git_credential_ssh_interactive_cb(from);
             
             public static bool operator ==(git_credential_ssh_interactive_cb left, git_credential_ssh_interactive_cb right) => left.Equals(right);
             
@@ -331,9 +331,9 @@ namespace XenoAtom.Interop
         
         public readonly partial struct git_credential_sign_cb : IEquatable<git_credential_sign_cb>
         {
-            public git_credential_sign_cb(delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, libgit2.size_t*, byte*, libgit2.size_t, void**, int>* value) => this.Value = value;
+            public git_credential_sign_cb(delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, libgit2.size_t*, byte*, libgit2.size_t, void**, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, libgit2.size_t*, byte*, libgit2.size_t, void**, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, libgit2.size_t*, byte*, libgit2.size_t, void**, int> Value { get; }
             
             public bool Equals(git_credential_sign_cb other) =>  Value == other.Value;
             
@@ -343,9 +343,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, libgit2.size_t*, byte*, libgit2.size_t, void**, int>*(git_credential_sign_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, libgit2.size_t*, byte*, libgit2.size_t, void**, int>(git_credential_sign_cb from) => from.Value;
             
-            public static implicit operator git_credential_sign_cb(delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, libgit2.size_t*, byte*, libgit2.size_t, void**, int>* from) => new git_credential_sign_cb(from);
+            public static implicit operator git_credential_sign_cb(delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, libgit2.size_t*, byte*, libgit2.size_t, void**, int> from) => new git_credential_sign_cb(from);
             
             public static bool operator ==(git_credential_sign_cb left, git_credential_sign_cb right) => left.Equals(right);
             
@@ -389,7 +389,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the credential username, or NULL if not applicable</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_get_username")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_credential_get_username_string(libgit2.git_credential cred);
         
         /// <summary>
@@ -414,7 +414,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 for success or an error code for failure</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_userpass_plaintext_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_userpass_plaintext_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> username, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> password);
+        public static partial libgit2.git_result git_credential_userpass_plaintext_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> username, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> password);
         
         /// <summary>
         /// Create a "default" credential usable for Negotiate mechanisms like NTLM
@@ -452,7 +452,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_username_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_username_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> username);
+        public static partial libgit2.git_result git_credential_username_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> username);
         
         /// <summary>
         /// Create a new passphrase-protected ssh key credential object.
@@ -480,7 +480,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 for success or an error code for failure</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_ssh_key_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_ssh_key_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> username, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> publickey, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> privatekey, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> passphrase);
+        public static partial libgit2.git_result git_credential_ssh_key_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> username, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> publickey, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> privatekey, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> passphrase);
         
         /// <summary>
         /// Create a new ssh key credential object reading the keys from memory.
@@ -506,7 +506,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 for success or an error code for failure</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_ssh_key_memory_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_ssh_key_memory_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> username, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> publickey, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> privatekey, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> passphrase);
+        public static partial libgit2.git_result git_credential_ssh_key_memory_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> username, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> publickey, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> privatekey, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> passphrase);
         
         /// <summary>
         /// Create a new ssh keyboard-interactive based credential object.
@@ -532,7 +532,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 for success or an error code for failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_ssh_interactive_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_ssh_interactive_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> username, libgit2.git_credential_ssh_interactive_cb prompt_callback, void* payload);
+        public static partial libgit2.git_result git_credential_ssh_interactive_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> username, libgit2.git_credential_ssh_interactive_cb prompt_callback, void* payload);
         
         /// <summary>
         /// Create a new ssh key credential object used for querying an ssh-agent.
@@ -554,7 +554,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 for success or an error code for failure</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_ssh_key_from_agent")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_ssh_key_from_agent(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> username);
+        public static partial libgit2.git_result git_credential_ssh_key_from_agent(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> username);
         
         /// <summary>
         /// Create an ssh key credential with a custom signing function.
@@ -590,6 +590,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_ssh_custom_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_ssh_custom_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> username, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> publickey, libgit2.size_t publickey_len, libgit2.git_credential_sign_cb sign_callback, void* payload);
+        public static partial libgit2.git_result git_credential_ssh_custom_new(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> username, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> publickey, libgit2.size_t publickey_len, libgit2.git_credential_sign_cb sign_callback, void* payload);
     }
 }

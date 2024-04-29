@@ -53,7 +53,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_signature_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_signature_new(out libgit2.git_signature* @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> email, libgit2.git_time_t time, int offset);
+        public static partial libgit2.git_result git_signature_new(out libgit2.git_signature* @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> email, libgit2.git_time_t time, int offset);
         
         /// <summary>
         /// Create a new action signature with a timestamp of 'now'.
@@ -81,7 +81,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_signature_now")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_signature_now(out libgit2.git_signature* @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> email);
+        public static partial libgit2.git_result git_signature_now(out libgit2.git_signature* @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> email);
         
         /// <summary>
         /// Create a new action signature with default user and now timestamp.
@@ -125,7 +125,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success, GIT_EINVALID if the signature is not parseable, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_signature_from_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_signature_from_buffer(out libgit2.git_signature* @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> buf);
+        public static partial libgit2.git_result git_signature_from_buffer(out libgit2.git_signature* @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> buf);
         
         /// <summary>
         /// Create a copy of an existing signature.  All internal strings are also

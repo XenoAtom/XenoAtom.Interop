@@ -1098,7 +1098,7 @@ namespace XenoAtom.Interop
         {
             public git_diff(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_diff other) => Handle.Equals(other.Handle);
             
@@ -1134,7 +1134,7 @@ namespace XenoAtom.Interop
             /// The NUL-terminated path to the entry relative to the working
             /// directory of the repository.
             /// </summary>
-            public readonly byte* path;
+            public byte* path;
             
             /// <summary>
             /// The size of the entry in bytes.
@@ -1307,13 +1307,13 @@ namespace XenoAtom.Interop
             /// The virtual "directory" prefix for old file names in hunk headers.
             /// Default is "a".
             /// </summary>
-            public readonly byte* old_prefix;
+            public byte* old_prefix;
             
             /// <summary>
             /// The virtual "directory" prefix for new file names in hunk headers.
             /// Defaults to "b".
             /// </summary>
-            public readonly byte* new_prefix;
+            public byte* new_prefix;
         }
         
         /// <summary>
@@ -1332,9 +1332,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_diff_notify_cb : IEquatable<git_diff_notify_cb>
         {
-            public git_diff_notify_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int>* value) => this.Value = value;
+            public git_diff_notify_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int> Value { get; }
             
             public bool Equals(git_diff_notify_cb other) =>  Value == other.Value;
             
@@ -1344,9 +1344,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int>*(git_diff_notify_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int>(git_diff_notify_cb from) => from.Value;
             
-            public static implicit operator git_diff_notify_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int>* from) => new git_diff_notify_cb(from);
+            public static implicit operator git_diff_notify_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int> from) => new git_diff_notify_cb(from);
             
             public static bool operator ==(git_diff_notify_cb left, git_diff_notify_cb right) => left.Equals(right);
             
@@ -1365,9 +1365,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_diff_progress_cb : IEquatable<git_diff_progress_cb>
         {
-            public git_diff_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int>* value) => this.Value = value;
+            public git_diff_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int> Value { get; }
             
             public bool Equals(git_diff_progress_cb other) =>  Value == other.Value;
             
@@ -1377,9 +1377,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int>*(git_diff_progress_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int>(git_diff_progress_cb from) => from.Value;
             
-            public static implicit operator git_diff_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int>* from) => new git_diff_progress_cb(from);
+            public static implicit operator git_diff_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int> from) => new git_diff_progress_cb(from);
             
             public static bool operator ==(git_diff_progress_cb left, git_diff_progress_cb right) => left.Equals(right);
             
@@ -1399,7 +1399,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// The binary data, deflated.
             /// </summary>
-            public readonly byte* data;
+            public byte* data;
             
             /// <summary>
             /// The length of the binary data.
@@ -1536,7 +1536,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Pointer to diff text, not NUL-byte terminated
             /// </summary>
-            public readonly byte* content;
+            public byte* content;
         }
         
         /// <summary>
@@ -1544,13 +1544,13 @@ namespace XenoAtom.Interop
         /// </summary>
         public partial struct git_diff_similarity_metric
         {
-            public delegate*unmanaged[Cdecl]<void**, libgit2.git_diff_file*, byte*, void*, int>* file_signature;
+            public delegate*unmanaged[Cdecl]<void**, libgit2.git_diff_file*, byte*, void*, int> file_signature;
             
-            public delegate*unmanaged[Cdecl]<void**, libgit2.git_diff_file*, byte*, libgit2.size_t, void*, int>* buffer_signature;
+            public delegate*unmanaged[Cdecl]<void**, libgit2.git_diff_file*, byte*, libgit2.size_t, void*, int> buffer_signature;
             
-            public delegate*unmanaged[Cdecl]<void*, void*, void>* free_signature;
+            public delegate*unmanaged[Cdecl]<void*, void*, void> free_signature;
             
-            public delegate*unmanaged[Cdecl]<int*, void*, void*, void*, int>* similarity;
+            public delegate*unmanaged[Cdecl]<int*, void*, void*, void*, int> similarity;
             
             public void* payload;
         }
@@ -1637,7 +1637,7 @@ namespace XenoAtom.Interop
         {
             public git_diff_stats(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_diff_stats other) => Handle.Equals(other.Handle);
             
@@ -1672,9 +1672,9 @@ namespace XenoAtom.Interop
         /// <param name="payload">User-specified pointer from foreach function</param>
         public readonly partial struct git_diff_file_cb : IEquatable<git_diff_file_cb>
         {
-            public git_diff_file_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int>* value) => this.Value = value;
+            public git_diff_file_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int> Value { get; }
             
             public bool Equals(git_diff_file_cb other) =>  Value == other.Value;
             
@@ -1684,9 +1684,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int>*(git_diff_file_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int>(git_diff_file_cb from) => from.Value;
             
-            public static implicit operator git_diff_file_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int>* from) => new git_diff_file_cb(from);
+            public static implicit operator git_diff_file_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int> from) => new git_diff_file_cb(from);
             
             public static bool operator ==(git_diff_file_cb left, git_diff_file_cb right) => left.Equals(right);
             
@@ -1699,9 +1699,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public readonly partial struct git_diff_binary_cb : IEquatable<git_diff_binary_cb>
         {
-            public git_diff_binary_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int>* value) => this.Value = value;
+            public git_diff_binary_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int> Value { get; }
             
             public bool Equals(git_diff_binary_cb other) =>  Value == other.Value;
             
@@ -1711,9 +1711,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int>*(git_diff_binary_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int>(git_diff_binary_cb from) => from.Value;
             
-            public static implicit operator git_diff_binary_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int>* from) => new git_diff_binary_cb(from);
+            public static implicit operator git_diff_binary_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int> from) => new git_diff_binary_cb(from);
             
             public static bool operator ==(git_diff_binary_cb left, git_diff_binary_cb right) => left.Equals(right);
             
@@ -1725,9 +1725,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public readonly partial struct git_diff_hunk_cb : IEquatable<git_diff_hunk_cb>
         {
-            public git_diff_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int>* value) => this.Value = value;
+            public git_diff_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int> Value { get; }
             
             public bool Equals(git_diff_hunk_cb other) =>  Value == other.Value;
             
@@ -1737,9 +1737,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int>*(git_diff_hunk_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int>(git_diff_hunk_cb from) => from.Value;
             
-            public static implicit operator git_diff_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int>* from) => new git_diff_hunk_cb(from);
+            public static implicit operator git_diff_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int> from) => new git_diff_hunk_cb(from);
             
             public static bool operator ==(git_diff_hunk_cb left, git_diff_hunk_cb right) => left.Equals(right);
             
@@ -1757,9 +1757,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_diff_line_cb : IEquatable<git_diff_line_cb>
         {
-            public git_diff_line_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int>* value) => this.Value = value;
+            public git_diff_line_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int> Value { get; }
             
             public bool Equals(git_diff_line_cb other) =>  Value == other.Value;
             
@@ -1769,9 +1769,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int>*(git_diff_line_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int>(git_diff_line_cb from) => from.Value;
             
-            public static implicit operator git_diff_line_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int>* from) => new git_diff_line_cb(from);
+            public static implicit operator git_diff_line_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int> from) => new git_diff_line_cb(from);
             
             public static bool operator ==(git_diff_line_cb left, git_diff_line_cb right) => left.Equals(right);
             
@@ -2156,7 +2156,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_blobs")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_diff_blobs(libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> old_as_path, libgit2.git_blob new_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> new_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
+        public static partial libgit2.git_result git_diff_blobs(libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> old_as_path, libgit2.git_blob new_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> new_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
         
         /// <summary>
         /// Directly run a diff between a blob and a buffer.
@@ -2210,7 +2210,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_blob_to_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_diff_blob_to_buffer(libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> old_as_path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> buffer, libgit2.size_t buffer_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> buffer_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
+        public static partial libgit2.git_result git_diff_blob_to_buffer(libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> old_as_path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> buffer, libgit2.size_t buffer_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> buffer_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
         
         /// <summary>
         /// Directly run a diff between two buffers.
@@ -2260,7 +2260,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_buffers")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_diff_buffers(void* old_buffer, libgit2.size_t old_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> old_as_path, void* new_buffer, libgit2.size_t new_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> new_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
+        public static partial libgit2.git_result git_diff_buffers(void* old_buffer, libgit2.size_t old_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> old_as_path, void* new_buffer, libgit2.size_t new_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> new_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
         
         /// <summary>
         /// Read the contents of a git patch file into a `git_diff` object.

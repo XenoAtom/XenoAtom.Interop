@@ -88,9 +88,9 @@ namespace XenoAtom.Interop
         /// <returns>@return non-zero to hide the commmit and it parent.</returns>
         public readonly partial struct git_revwalk_hide_cb : IEquatable<git_revwalk_hide_cb>
         {
-            public git_revwalk_hide_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>* value) => this.Value = value;
+            public git_revwalk_hide_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> Value { get; }
             
             public bool Equals(git_revwalk_hide_cb other) =>  Value == other.Value;
             
@@ -100,9 +100,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>*(git_revwalk_hide_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>(git_revwalk_hide_cb from) => from.Value;
             
-            public static implicit operator git_revwalk_hide_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>* from) => new git_revwalk_hide_cb(from);
+            public static implicit operator git_revwalk_hide_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> from) => new git_revwalk_hide_cb(from);
             
             public static bool operator ==(git_revwalk_hide_cb left, git_revwalk_hide_cb right) => left.Equals(right);
             
@@ -198,7 +198,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_push_glob")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_push_glob(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> glob);
+        public static partial libgit2.git_result git_revwalk_push_glob(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> glob);
         
         /// <summary>
         /// Push the repository's HEAD
@@ -264,7 +264,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_hide_glob")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_hide_glob(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> glob);
+        public static partial libgit2.git_result git_revwalk_hide_glob(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> glob);
         
         /// <summary>
         /// Hide the repository's HEAD
@@ -299,7 +299,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_push_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_push_ref(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
+        public static partial libgit2.git_result git_revwalk_push_ref(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Hide the OID pointed to by a reference
@@ -325,7 +325,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_hide_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_hide_ref(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
+        public static partial libgit2.git_result git_revwalk_hide_ref(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Get the next commit from the revision walk.
@@ -399,7 +399,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_push_range")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_push_range(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> range);
+        public static partial libgit2.git_result git_revwalk_push_range(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> range);
         
         /// <summary>
         /// Simplify the history by first-parent

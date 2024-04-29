@@ -44,9 +44,9 @@ namespace XenoAtom.Interop
         /// and return a failure</returns>
         public readonly partial struct git_commit_create_cb : IEquatable<git_commit_create_cb>
         {
-            public git_commit_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, libgit2.size_t, libgit2.git_commit*, void*, int>* value) => this.Value = value;
+            public git_commit_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, libgit2.size_t, libgit2.git_commit*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, libgit2.size_t, libgit2.git_commit*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, libgit2.size_t, libgit2.git_commit*, void*, int> Value { get; }
             
             public bool Equals(git_commit_create_cb other) =>  Value == other.Value;
             
@@ -56,9 +56,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, libgit2.size_t, libgit2.git_commit*, void*, int>*(git_commit_create_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, libgit2.size_t, libgit2.git_commit*, void*, int>(git_commit_create_cb from) => from.Value;
             
-            public static implicit operator git_commit_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, libgit2.size_t, libgit2.git_commit*, void*, int>* from) => new git_commit_create_cb(from);
+            public static implicit operator git_commit_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, libgit2.size_t, libgit2.git_commit*, void*, int> from) => new git_commit_create_cb(from);
             
             public static bool operator ==(git_commit_create_cb left, git_commit_create_cb right) => left.Equals(right);
             
@@ -157,7 +157,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message_encoding")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_commit_message_encoding_string(libgit2.git_commit commit);
         
         /// <summary>
@@ -184,7 +184,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_commit_message_string(libgit2.git_commit commit);
         
         /// <summary>
@@ -203,7 +203,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the raw message of a commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message_raw")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_commit_message_raw_string(libgit2.git_commit commit);
         
         /// <summary>
@@ -230,7 +230,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_summary")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_commit_summary_string(libgit2.git_commit commit);
         
         /// <summary>
@@ -261,7 +261,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_body")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_commit_body_string(libgit2.git_commit commit);
         
         /// <summary>
@@ -346,7 +346,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the header text of the commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_raw_header")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_commit_raw_header_string(libgit2.git_commit commit);
         
         /// <summary>
@@ -446,7 +446,7 @@ namespace XenoAtom.Interop
         /// or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_header_field")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_commit_header_field(out libgit2.git_buf @out, libgit2.git_commit commit, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> field);
+        public static partial libgit2.git_result git_commit_header_field(out libgit2.git_buf @out, libgit2.git_commit commit, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> field);
         
         /// <summary>
         /// Extract the signature from a commit
@@ -490,7 +490,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_extract_signature")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_commit_extract_signature(ref libgit2.git_buf signature, libgit2.git_buf* signed_data, libgit2.git_repository repo, in libgit2.git_oid commit_id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> field);
+        public static partial int git_commit_extract_signature(ref libgit2.git_buf signature, libgit2.git_buf* signed_data, libgit2.git_repository repo, in libgit2.git_oid commit_id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> field);
         
         /// <summary>
         /// Create new commit in the repository from a list of `git_object` pointers
@@ -566,7 +566,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_commit_create(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree, libgit2.size_t parent_count, libgit2.git_commit* parents);
+        public static partial libgit2.git_result git_commit_create(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree, libgit2.size_t parent_count, libgit2.git_commit* parents);
         
         /// <summary>
         /// Create new commit in the repository using a variable argument list.
@@ -594,7 +594,7 @@ namespace XenoAtom.Interop
         /// <seealso cref="git_commit_create"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_create_v")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_commit_create_v(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree, libgit2.size_t parent_count);
+        public static partial libgit2.git_result git_commit_create_v(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree, libgit2.size_t parent_count);
         
         /// <summary>
         /// Amend an existing commit by replacing only non-NULL values.
@@ -632,7 +632,7 @@ namespace XenoAtom.Interop
         /// <seealso cref="git_commit_create"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_amend")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_commit_amend(out libgit2.git_oid id, libgit2.git_commit commit_to_amend, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree);
+        public static partial libgit2.git_result git_commit_amend(out libgit2.git_oid id, libgit2.git_commit commit_to_amend, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree);
         
         /// <summary>
         /// Create a commit and write it into a buffer
@@ -692,7 +692,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_create_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_commit_create_buffer(out libgit2.git_buf @out, libgit2.git_repository repo, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree, libgit2.size_t parent_count, libgit2.git_commit* parents);
+        public static partial libgit2.git_result git_commit_create_buffer(out libgit2.git_buf @out, libgit2.git_repository repo, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree, libgit2.size_t parent_count, libgit2.git_commit* parents);
         
         /// <summary>
         /// Create a commit object from the given buffer and signature
@@ -732,7 +732,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_create_with_signature")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_commit_create_with_signature(out libgit2.git_oid @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> commit_content, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> signature, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> signature_field);
+        public static partial libgit2.git_result git_commit_create_with_signature(out libgit2.git_oid @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> commit_content, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> signature, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> signature_field);
         
         /// <summary>
         /// Create an in-memory copy of a commit. The copy must be explicitly

@@ -94,7 +94,7 @@ namespace XenoAtom.Interop
             /// prefix.  If the subject_prefix is empty and patch numbers
             /// are not being shown, the prefix will be omitted entirely.
             /// </summary>
-            public readonly byte* subject_prefix;
+            public byte* subject_prefix;
             
             /// <summary>
             /// The starting patch number; this cannot be 0.  By default,
@@ -138,7 +138,7 @@ namespace XenoAtom.Interop
         /// <param name="opts">email creation options</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_email_create_from_diff")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_email_create_from_diff(out libgit2.git_buf @out, libgit2.git_diff diff, libgit2.size_t patch_idx, libgit2.size_t patch_count, in libgit2.git_oid commit_id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> summary, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> body, in libgit2.git_signature author, in libgit2.git_email_create_options opts);
+        public static partial libgit2.git_result git_email_create_from_diff(out libgit2.git_buf @out, libgit2.git_diff diff, libgit2.size_t patch_idx, libgit2.size_t patch_count, in libgit2.git_oid commit_id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> summary, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> body, in libgit2.git_signature author, in libgit2.git_email_create_options opts);
         
         /// <summary>
         /// Create a diff for a commit in mbox format for sending via email.

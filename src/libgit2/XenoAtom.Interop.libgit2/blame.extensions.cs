@@ -15,6 +15,6 @@ static unsafe partial class libgit2
         /// The path to the file where this hunk originated, as of the commit
         /// specified by `orig_commit_id`.
         /// </summary>
-        public string orig_path_managed => GetStringFromUTF8(orig_path)!;
+        public string orig_path_managed => LibGit2Helper.UnmanagedUtf8StringToString(orig_path)!;
     }
 }

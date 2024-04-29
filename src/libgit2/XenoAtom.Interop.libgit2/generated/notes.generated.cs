@@ -28,9 +28,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_note_foreach_cb : IEquatable<git_note_foreach_cb>
         {
-            public git_note_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int>* value) => this.Value = value;
+            public git_note_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> Value { get; }
             
             public bool Equals(git_note_foreach_cb other) =>  Value == other.Value;
             
@@ -40,9 +40,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int>*(git_note_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int>(git_note_foreach_cb from) => from.Value;
             
-            public static implicit operator git_note_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int>* from) => new git_note_foreach_cb(from);
+            public static implicit operator git_note_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> from) => new git_note_foreach_cb(from);
             
             public static bool operator ==(git_note_foreach_cb left, git_note_foreach_cb right) => left.Equals(right);
             
@@ -77,7 +77,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_iterator_new(out libgit2.git_iterator @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> notes_ref);
+        public static partial libgit2.git_result git_note_iterator_new(out libgit2.git_iterator @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> notes_ref);
         
         /// <summary>
         /// Creates a new iterator for notes from a commit
@@ -143,7 +143,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_read")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_read(out libgit2.git_note @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> notes_ref, in libgit2.git_oid oid);
+        public static partial libgit2.git_result git_note_read(out libgit2.git_note @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> notes_ref, in libgit2.git_oid oid);
         
         /// <summary>
         /// Read the note for an object from a note commit
@@ -194,7 +194,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the note message</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_note_message_string(libgit2.git_note note);
         
         /// <summary>
@@ -238,7 +238,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_create(out libgit2.git_oid @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> notes_ref, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> note, int force);
+        public static partial libgit2.git_result git_note_create(out libgit2.git_oid @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> notes_ref, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> note, int force);
         
         /// <summary>
         /// Add a note for an object from a commit
@@ -284,7 +284,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_commit_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_commit_create(out libgit2.git_oid notes_commit_out, out libgit2.git_oid notes_blob_out, libgit2.git_repository repo, libgit2.git_commit parent, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> note, int allow_note_overwrite);
+        public static partial libgit2.git_result git_note_commit_create(out libgit2.git_oid notes_commit_out, out libgit2.git_oid notes_blob_out, libgit2.git_repository repo, libgit2.git_commit parent, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> note, int allow_note_overwrite);
         
         /// <summary>
         /// Remove the note for an object
@@ -312,7 +312,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_remove(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> notes_ref, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid);
+        public static partial libgit2.git_result git_note_remove(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> notes_ref, in libgit2.git_signature author, in libgit2.git_signature committer, in libgit2.git_oid oid);
         
         /// <summary>
         /// Remove the note for an object
@@ -380,6 +380,6 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_foreach")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_foreach(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> notes_ref, libgit2.git_note_foreach_cb note_cb, void* payload);
+        public static partial libgit2.git_result git_note_foreach(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> notes_ref, libgit2.git_note_foreach_cb note_cb, void* payload);
     }
 }

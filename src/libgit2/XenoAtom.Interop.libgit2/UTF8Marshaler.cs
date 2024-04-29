@@ -13,14 +13,9 @@ namespace XenoAtom.Interop;
 static partial class libgit2
 {
 
-    internal static unsafe string? GetStringFromUTF8(byte* pNativeData) => UTF8CustomMarshaller.ConvertToManaged(pNativeData);
-
-    internal static unsafe string? GetStringFromUTF8(byte* pNativeData, int size) => pNativeData == null ? null : new((sbyte*)pNativeData, 0, size, UTF8EncodingRelaxed.Default);
-
-
-    [CustomMarshaller(typeof(string), MarshalMode.Default, typeof(UTF8CustomMarshaller))]
-    [CustomMarshaller(typeof(ReadOnlySpan<char>), MarshalMode.ManagedToUnmanagedIn, typeof(UTF8CustomMarshaller.ManagedToUnmanagedIn))]
-    private static unsafe class UTF8CustomMarshaller
+    [CustomMarshaller(typeof(string), MarshalMode.Default, typeof(Utf8CustomMarshaller))]
+    [CustomMarshaller(typeof(ReadOnlySpan<char>), MarshalMode.ManagedToUnmanagedIn, typeof(Utf8CustomMarshaller.ManagedToUnmanagedIn))]
+    private static unsafe class Utf8CustomMarshaller
     {
         /// <summary>Converts a string to an unmanaged version.</summary>
         /// <param name="managed">The managed string to convert.</param>
@@ -30,7 +25,7 @@ static partial class libgit2
             if (managed == null)
                 return (byte*)null;
             int lengthPlus1 = UTF8EncodingRelaxed.Default.GetByteCount(managed) + 1;
-            byte* pointer = (byte*)Marshal.AllocCoTaskMem(lengthPlus1);
+            byte* pointer = (byte*)NativeMemory.Alloc((nuint)lengthPlus1);
             var span = new Span<byte>(pointer, lengthPlus1);
             int length = UTF8EncodingRelaxed.Default.GetBytes((ReadOnlySpan<char>)managed, span);
             span[length] = 0;
@@ -42,12 +37,15 @@ static partial class libgit2
         /// <returns>A managed string.</returns>
         public static string? ConvertToManaged(byte* unmanaged)
         {
-            return Marshal.PtrToStringUTF8((nint)unmanaged);
+            if (unmanaged == null)
+                return null;
+
+            return UTF8EncodingRelaxed.Default.GetString(unmanaged, new ReadOnlySpan<byte>(unmanaged, int.MaxValue).IndexOf((byte)0));
         }
 
         /// <summary>Free the memory for a specified unmanaged string.</summary>
         /// <param name="unmanaged">The memory allocated for the unmanaged string.</param>
-        public static void Free(byte* unmanaged) => Marshal.FreeCoTaskMem((nint)unmanaged);
+        public static void Free(byte* unmanaged) => NativeMemory.Free(unmanaged);
         
         /// <summary>Custom marshaller to marshal a managed string as a UTF-8 unmanaged string.</summary>
         public ref struct ManagedToUnmanagedIn

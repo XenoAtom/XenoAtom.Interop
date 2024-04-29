@@ -419,20 +419,20 @@ namespace XenoAtom.Interop
             /// directory, a .git gitlink file will be created here linking to the
             /// repo_path.
             /// </summary>
-            public readonly byte* workdir_path;
+            public byte* workdir_path;
             
             /// <summary>
             /// If set, this will be used to initialize the "description" file in the
             /// repository, instead of using the template content.
             /// </summary>
-            public readonly byte* description;
+            public byte* description;
             
             /// <summary>
             /// When GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE is set, this contains
             /// the path to use for the template directory. If this is NULL, the config
             /// or default directory options will be used instead.
             /// </summary>
-            public readonly byte* template_path;
+            public byte* template_path;
             
             /// <summary>
             /// The name of the head to point HEAD at. If NULL, then this will be
@@ -440,14 +440,14 @@ namespace XenoAtom.Interop
             /// If this begins with "refs/" it will be used verbatim;
             /// otherwise "refs/heads/" will be prefixed.
             /// </summary>
-            public readonly byte* initial_head;
+            public byte* initial_head;
             
             /// <summary>
             /// If this is non-NULL, then after the rest of the repository
             /// initialization is completed, an "origin" remote will be added
             /// pointing to this URL.
             /// </summary>
-            public readonly byte* origin_url;
+            public byte* origin_url;
         }
         
         /// <summary>
@@ -462,9 +462,9 @@ namespace XenoAtom.Interop
         /// <seealso cref="git_repository_fetchhead_foreach"/>
         public readonly partial struct git_repository_fetchhead_foreach_cb : IEquatable<git_repository_fetchhead_foreach_cb>
         {
-            public git_repository_fetchhead_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int>* value) => this.Value = value;
+            public git_repository_fetchhead_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int> Value { get; }
             
             public bool Equals(git_repository_fetchhead_foreach_cb other) =>  Value == other.Value;
             
@@ -474,9 +474,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int>*(git_repository_fetchhead_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int>(git_repository_fetchhead_foreach_cb from) => from.Value;
             
-            public static implicit operator git_repository_fetchhead_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int>* from) => new git_repository_fetchhead_foreach_cb(from);
+            public static implicit operator git_repository_fetchhead_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int> from) => new git_repository_fetchhead_foreach_cb(from);
             
             public static bool operator ==(git_repository_fetchhead_foreach_cb left, git_repository_fetchhead_foreach_cb right) => left.Equals(right);
             
@@ -492,9 +492,9 @@ namespace XenoAtom.Interop
         /// <seealso cref="git_repository_mergehead_foreach"/>
         public readonly partial struct git_repository_mergehead_foreach_cb : IEquatable<git_repository_mergehead_foreach_cb>
         {
-            public git_repository_mergehead_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>* value) => this.Value = value;
+            public git_repository_mergehead_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> Value { get; }
             
             public bool Equals(git_repository_mergehead_foreach_cb other) =>  Value == other.Value;
             
@@ -504,9 +504,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>*(git_repository_mergehead_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>(git_repository_mergehead_foreach_cb from) => from.Value;
             
-            public static implicit operator git_repository_mergehead_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>* from) => new git_repository_mergehead_foreach_cb(from);
+            public static implicit operator git_repository_mergehead_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> from) => new git_repository_mergehead_foreach_cb(from);
             
             public static bool operator ==(git_repository_mergehead_foreach_cb left, git_repository_mergehead_foreach_cb right) => left.Equals(right);
             
@@ -541,7 +541,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_open(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_repository_open(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Open working tree as a repository
@@ -611,7 +611,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_discover")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_discover(out libgit2.git_buf @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> start_path, int across_fs, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> ceiling_dirs);
+        public static partial libgit2.git_result git_repository_discover(out libgit2.git_buf @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> start_path, int across_fs, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> ceiling_dirs);
         
         /// <summary>
         /// Find and open a repository with extended controls.
@@ -653,7 +653,7 @@ namespace XenoAtom.Interop
         /// (such as repo corruption or system errors).</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_open_ext(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> ceiling_dirs);
+        public static partial libgit2.git_result git_repository_open_ext(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> ceiling_dirs);
         
         /// <summary>
         /// Open a bare repository on the serverside.
@@ -683,7 +683,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open_bare")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_open_bare(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> bare_path);
+        public static partial libgit2.git_result git_repository_open_bare(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> bare_path);
         
         /// <summary>
         /// Free a previously allocated repository
@@ -734,7 +734,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_init(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, uint is_bare);
+        public static partial libgit2.git_result git_repository_init(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, uint is_bare);
         
         /// <summary>
         /// Initialize git_repository_init_options structure
@@ -782,7 +782,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_init_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_init_ext(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> repo_path, in libgit2.git_repository_init_options opts);
+        public static partial libgit2.git_result git_repository_init_ext(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> repo_path, in libgit2.git_repository_init_options opts);
         
         /// <summary>
         /// Retrieve and resolve the reference pointed at by HEAD.
@@ -820,7 +820,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 when successful, error-code otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_head_for_worktree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_head_for_worktree(out libgit2.git_reference @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_repository_head_for_worktree(out libgit2.git_reference @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Check if a repository's HEAD is detached
@@ -864,7 +864,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_head_detached_for_worktree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_head_detached_for_worktree(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_repository_head_detached_for_worktree(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Check if the current branch is unborn
@@ -938,7 +938,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_repository_path_string(libgit2.git_repository repo);
         
         /// <summary>
@@ -965,7 +965,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_workdir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_repository_workdir_string(libgit2.git_repository repo);
         
         /// <summary>
@@ -994,7 +994,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_commondir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_repository_commondir_string(libgit2.git_repository repo);
         
         /// <summary>
@@ -1033,7 +1033,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_set_workdir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_set_workdir(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> workdir, int update_gitlink);
+        public static partial libgit2.git_result git_repository_set_workdir(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> workdir, int update_gitlink);
         
         /// <summary>
         /// Check if a repository is bare
@@ -1256,7 +1256,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_hashfile")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_hashfile(out libgit2.git_oid @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_object_t type, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> as_path);
+        public static partial libgit2.git_result git_repository_hashfile(out libgit2.git_oid @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_object_t type, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> as_path);
         
         /// <summary>
         /// Make the repository HEAD point to the specified reference.
@@ -1292,7 +1292,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_set_head")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_set_head(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
+        public static partial libgit2.git_result git_repository_set_head(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Make the repository HEAD directly point to the Commit.
@@ -1379,7 +1379,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_set_namespace")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_set_namespace(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> nmspace);
+        public static partial libgit2.git_result git_repository_set_namespace(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> nmspace);
         
         /// <summary>
         /// Get the currently active namespace for this repository
@@ -1397,7 +1397,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the active namespace, or NULL if there isn't one</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_get_namespace")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_repository_get_namespace_string(libgit2.git_repository repo);
         
         /// <summary>
@@ -1454,7 +1454,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_set_ident")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_set_ident(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> email);
+        public static partial libgit2.git_result git_repository_set_ident(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> email);
         
         /// <summary>
         /// Gets the object type used by this repository.

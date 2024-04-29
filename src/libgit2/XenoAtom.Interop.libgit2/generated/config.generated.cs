@@ -135,12 +135,12 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Name of the entry (normalised)
             /// </summary>
-            public readonly byte* name;
+            public byte* name;
             
             /// <summary>
             /// String value of the entry
             /// </summary>
-            public readonly byte* value;
+            public byte* value;
             
             /// <summary>
             /// Depth of includes where this variable was found
@@ -155,7 +155,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Free function for this entry
             /// </summary>
-            public delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void>* free;
+            public delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void> free;
             
             /// <summary>
             /// Opaque value for the free function. Do not read or write
@@ -170,7 +170,7 @@ namespace XenoAtom.Interop
         {
             public git_config_iterator(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_config_iterator other) => Handle.Equals(other.Handle);
             
@@ -192,7 +192,7 @@ namespace XenoAtom.Interop
         {
             public libgit2.git_configmap_t type;
             
-            public readonly byte* str_match;
+            public byte* str_match;
             
             public int map_value;
         }
@@ -205,9 +205,9 @@ namespace XenoAtom.Interop
         /// <returns>@return non-zero to terminate the iteration.</returns>
         public readonly partial struct git_config_foreach_cb : IEquatable<git_config_foreach_cb>
         {
-            public git_config_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int>* value) => this.Value = value;
+            public git_config_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> Value { get; }
             
             public bool Equals(git_config_foreach_cb other) =>  Value == other.Value;
             
@@ -217,9 +217,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int>*(git_config_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int>(git_config_foreach_cb from) => from.Value;
             
-            public static implicit operator git_config_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int>* from) => new git_config_foreach_cb(from);
+            public static implicit operator git_config_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> from) => new git_config_foreach_cb(from);
             
             public static bool operator ==(git_config_foreach_cb left, git_config_foreach_cb right) => left.Equals(right);
             
@@ -370,7 +370,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_add_file_ondisk")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_add_file_ondisk(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_config_level_t level, libgit2.git_repository repo, int force);
+        public static partial libgit2.git_result git_config_add_file_ondisk(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_config_level_t level, libgit2.git_repository repo, int force);
         
         /// <summary>
         /// Create a new config instance containing a single on-disk file
@@ -402,7 +402,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_open_ondisk")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_open_ondisk(out libgit2.git_config @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_config_open_ondisk(out libgit2.git_config @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Build a single-level focused config object from a multi-level one.
@@ -489,7 +489,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_entry(out libgit2.git_config_entry* @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_config_get_entry(out libgit2.git_config_entry* @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Get the value of an integer config variable.
@@ -521,7 +521,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_int32")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_int32(out int @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_config_get_int32(out int @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Get the value of a long integer config variable.
@@ -553,7 +553,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_int64(out long @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_config_get_int64(out long @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Get the value of a boolean config variable.
@@ -587,7 +587,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_bool")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_bool(out int @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_config_get_bool(out int @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Get the value of a path config variable.
@@ -623,7 +623,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_path(out libgit2.git_buf @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_config_get_path(out libgit2.git_buf @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Get the value of a string config variable.
@@ -659,7 +659,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_string(out byte* @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_config_get_string(out byte* @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Get the value of a string config variable.
@@ -691,7 +691,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_string_buf")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_string_buf(out libgit2.git_buf @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_config_get_string_buf(out libgit2.git_buf @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Get each value of a multivar in a foreach callback
@@ -729,7 +729,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_multivar_foreach")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_multivar_foreach(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> regexp, libgit2.git_config_foreach_cb callback, void* payload);
+        public static partial libgit2.git_result git_config_get_multivar_foreach(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> regexp, libgit2.git_config_foreach_cb callback, void* payload);
         
         /// <summary>
         /// Get each value of a multivar
@@ -765,7 +765,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_multivar_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_multivar_iterator_new(out libgit2.git_config_iterator @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> regexp);
+        public static partial libgit2.git_result git_config_multivar_iterator_new(out libgit2.git_config_iterator @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> regexp);
         
         /// <summary>
         /// Return the current entry and advance the iterator
@@ -811,7 +811,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_int32")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_set_int32(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, int value);
+        public static partial libgit2.git_result git_config_set_int32(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, int value);
         
         /// <summary>
         /// Set the value of a long integer config variable in the config file
@@ -835,7 +835,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_set_int64(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, long value);
+        public static partial libgit2.git_result git_config_set_int64(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, long value);
         
         /// <summary>
         /// Set the value of a boolean config variable in the config file
@@ -859,7 +859,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_bool")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_set_bool(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, int value);
+        public static partial libgit2.git_result git_config_set_bool(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, int value);
         
         /// <summary>
         /// Set the value of a string config variable in the config file
@@ -891,7 +891,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_set_string(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> value);
+        public static partial libgit2.git_result git_config_set_string(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
         
         /// <summary>
         /// Set a multivar in the local config file.
@@ -921,7 +921,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_multivar")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_set_multivar(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> regexp, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> value);
+        public static partial libgit2.git_result git_config_set_multivar(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> regexp, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
         
         /// <summary>
         /// Delete a config variable from the config file
@@ -943,7 +943,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_delete_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_delete_entry(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_config_delete_entry(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Deletes one or several entries from a multivar in the local config file.
@@ -971,7 +971,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_delete_multivar")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_delete_multivar(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> regexp);
+        public static partial libgit2.git_result git_config_delete_multivar(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> regexp);
         
         /// <summary>
         /// Perform an operation on each config variable.
@@ -1037,7 +1037,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_iterator_glob_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_iterator_glob_new(out libgit2.git_config_iterator @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> regexp);
+        public static partial libgit2.git_result git_config_iterator_glob_new(out libgit2.git_config_iterator @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> regexp);
         
         /// <summary>
         /// Perform an operation on each config variable matching a regular expression.
@@ -1077,7 +1077,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_foreach_match")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_config_foreach_match(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> regexp, libgit2.git_config_foreach_cb callback, void* payload);
+        public static partial int git_config_foreach_match(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> regexp, libgit2.git_config_foreach_cb callback, void* payload);
         
         /// <summary>
         /// Query the value of a config variable and return it mapped to
@@ -1129,7 +1129,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_mapped")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_mapped(out int @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_configmap* maps, libgit2.size_t map_n);
+        public static partial libgit2.git_result git_config_get_mapped(out int @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_configmap* maps, libgit2.size_t map_n);
         
         /// <summary>
         /// Maps a string value to an integer constant
@@ -1153,7 +1153,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_lookup_map_value")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_lookup_map_value(out int @out, libgit2.git_configmap* maps, libgit2.size_t map_n, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> value);
+        public static partial libgit2.git_result git_config_lookup_map_value(out int @out, libgit2.git_configmap* maps, libgit2.size_t map_n, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
         
         /// <summary>
         /// Parse a string value as a bool.
@@ -1183,7 +1183,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_parse_bool")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_parse_bool(out int @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> value);
+        public static partial libgit2.git_result git_config_parse_bool(out int @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
         
         /// <summary>
         /// Parse a string value as an int32.
@@ -1213,7 +1213,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_parse_int32")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_parse_int32(out int @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> value);
+        public static partial libgit2.git_result git_config_parse_int32(out int @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
         
         /// <summary>
         /// Parse a string value as an int64.
@@ -1243,7 +1243,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_parse_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_parse_int64(out long @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> value);
+        public static partial libgit2.git_result git_config_parse_int64(out long @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
         
         /// <summary>
         /// Parse a string value as a path.
@@ -1275,7 +1275,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_parse_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_parse_path(out libgit2.git_buf @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> value);
+        public static partial libgit2.git_result git_config_parse_path(out libgit2.git_buf @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
         
         /// <summary>
         /// Perform an operation on each config variable in a given config backend,
@@ -1313,7 +1313,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_backend_foreach_match")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_backend_foreach_match(libgit2.git_config_backend backend, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> regexp, libgit2.git_config_foreach_cb callback, void* payload);
+        public static partial libgit2.git_result git_config_backend_foreach_match(libgit2.git_config_backend backend, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> regexp, libgit2.git_config_foreach_cb callback, void* payload);
         
         /// <summary>
         /// Lock the backend with the highest priority

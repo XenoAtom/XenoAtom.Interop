@@ -22,9 +22,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public partial struct git_credential_userpass_payload
         {
-            public readonly byte* username;
+            public byte* username;
             
-            public readonly byte* password;
+            public byte* password;
         }
         
         /// <summary>
@@ -59,6 +59,6 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_userpass")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_userpass(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> user_from_url, uint allowed_types, void* payload);
+        public static partial libgit2.git_result git_credential_userpass(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> user_from_url, uint allowed_types, void* payload);
     }
 }

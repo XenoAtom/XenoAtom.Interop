@@ -407,7 +407,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Pointer to the contents of the file.
             /// </summary>
-            public readonly byte* ptr;
+            public byte* ptr;
             
             /// <summary>
             /// Size of the contents pointed to in `ptr`.
@@ -417,7 +417,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// File name of the conflicted file, or `NULL` to not merge the path.
             /// </summary>
-            public readonly byte* path;
+            public byte* path;
             
             /// <summary>
             /// File mode of the conflicted file, or `0` to not merge the mode.
@@ -436,19 +436,19 @@ namespace XenoAtom.Interop
             /// Label for the ancestor file side of the conflict which will be prepended
             /// to labels in diff3-format merge files.
             /// </summary>
-            public readonly byte* ancestor_label;
+            public byte* ancestor_label;
             
             /// <summary>
             /// Label for our file side of the conflict which will be prepended
             /// to labels in merge files.
             /// </summary>
-            public readonly byte* our_label;
+            public byte* our_label;
             
             /// <summary>
             /// Label for their file side of the conflict which will be prepended
             /// to labels in merge files.
             /// </summary>
-            public readonly byte* their_label;
+            public byte* their_label;
             
             /// <summary>
             /// The file to favor in region conflicts.
@@ -482,7 +482,7 @@ namespace XenoAtom.Interop
             /// The path that the resultant merge file should use, or NULL if a
             /// filename conflict would occur.
             /// </summary>
-            public readonly byte* path;
+            public byte* path;
             
             /// <summary>
             /// The mode that the resultant merge file should use.
@@ -492,7 +492,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// The contents of the merge.
             /// </summary>
-            public readonly byte* ptr;
+            public byte* ptr;
             
             /// <summary>
             /// The length of the merge contents.
@@ -548,7 +548,7 @@ namespace XenoAtom.Interop
             /// Default merge driver to be used when both sides of a merge have
             /// changed.  The default is the `text` driver.
             /// </summary>
-            public readonly byte* default_driver;
+            public byte* default_driver;
             
             /// <summary>
             /// Flags for handling conflicting content, to be used with the standard

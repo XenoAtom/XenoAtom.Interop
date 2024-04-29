@@ -136,9 +136,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_apply_delta_cb : IEquatable<git_apply_delta_cb>
         {
-            public git_apply_delta_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int>* value) => this.Value = value;
+            public git_apply_delta_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int> Value { get; }
             
             public bool Equals(git_apply_delta_cb other) =>  Value == other.Value;
             
@@ -148,9 +148,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int>*(git_apply_delta_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int>(git_apply_delta_cb from) => from.Value;
             
-            public static implicit operator git_apply_delta_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int>* from) => new git_apply_delta_cb(from);
+            public static implicit operator git_apply_delta_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int> from) => new git_apply_delta_cb(from);
             
             public static bool operator ==(git_apply_delta_cb left, git_apply_delta_cb right) => left.Equals(right);
             
@@ -177,9 +177,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_apply_hunk_cb : IEquatable<git_apply_hunk_cb>
         {
-            public git_apply_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int>* value) => this.Value = value;
+            public git_apply_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int> Value { get; }
             
             public bool Equals(git_apply_hunk_cb other) =>  Value == other.Value;
             
@@ -189,9 +189,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int>*(git_apply_hunk_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int>(git_apply_hunk_cb from) => from.Value;
             
-            public static implicit operator git_apply_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int>* from) => new git_apply_hunk_cb(from);
+            public static implicit operator git_apply_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int> from) => new git_apply_hunk_cb(from);
             
             public static bool operator ==(git_apply_hunk_cb left, git_apply_hunk_cb right) => left.Equals(right);
             

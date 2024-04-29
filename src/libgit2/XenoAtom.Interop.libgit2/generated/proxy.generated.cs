@@ -80,7 +80,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// The URL of the proxy.
             /// </summary>
-            public readonly byte* url;
+            public byte* url;
             
             /// <summary>
             /// This will be called if the remote host requires

@@ -85,9 +85,9 @@ static unsafe partial class libgit2
     /// The message will **not** be cleaned up automatically. You can do that
     /// with the `git_message_prettify()` function.
     /// </remarks>
-    public static libgit2.git_result git_commit_create(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] string update_ref,
-        in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] string message_encoding,
-        [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] string message, libgit2.git_tree tree, ReadOnlySpan<libgit2.git_commit> parents)
+    public static libgit2.git_result git_commit_create(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] string update_ref,
+        in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] string message_encoding,
+        [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] string message, libgit2.git_tree tree, ReadOnlySpan<libgit2.git_commit> parents)
     {
         fixed (libgit2.git_commit* parentsPtr = parents)
         {
@@ -155,8 +155,8 @@ static unsafe partial class libgit2
     /// buffer.
     /// </remarks>
     public static libgit2.git_result git_commit_create_buffer(out libgit2.git_buf @out, libgit2.git_repository repo, in libgit2.git_signature author, in libgit2.git_signature committer,
-        [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] string message_encoding,
-        [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] string message, libgit2.git_tree tree, ReadOnlySpan<libgit2.git_commit> parents)
+        [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] string message_encoding,
+        [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] string message, libgit2.git_tree tree, ReadOnlySpan<libgit2.git_commit> parents)
     {
         fixed (libgit2.git_commit* parentsPtr = parents)
         {

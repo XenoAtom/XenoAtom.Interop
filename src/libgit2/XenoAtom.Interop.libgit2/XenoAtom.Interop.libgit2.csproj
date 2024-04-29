@@ -9,6 +9,8 @@
     <!-- Enable AOT analyzers -->
     <IsAotCompatible>true</IsAotCompatible>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <NoWarn>CS8909</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>

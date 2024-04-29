@@ -92,7 +92,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// The full path from the root tree
             /// </summary>
-            public readonly byte* path;
+            public byte* path;
         }
         
         /// <summary>
@@ -105,9 +105,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_treebuilder_filter_cb : IEquatable<git_treebuilder_filter_cb>
         {
-            public git_treebuilder_filter_cb(delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int>* value) => this.Value = value;
+            public git_treebuilder_filter_cb(delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> Value { get; }
             
             public bool Equals(git_treebuilder_filter_cb other) =>  Value == other.Value;
             
@@ -117,9 +117,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int>*(git_treebuilder_filter_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int>(git_treebuilder_filter_cb from) => from.Value;
             
-            public static implicit operator git_treebuilder_filter_cb(delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int>* from) => new git_treebuilder_filter_cb(from);
+            public static implicit operator git_treebuilder_filter_cb(delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> from) => new git_treebuilder_filter_cb(from);
             
             public static bool operator ==(git_treebuilder_filter_cb left, git_treebuilder_filter_cb right) => left.Equals(right);
             
@@ -131,9 +131,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public readonly partial struct git_treewalk_cb : IEquatable<git_treewalk_cb>
         {
-            public git_treewalk_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int>* value) => this.Value = value;
+            public git_treewalk_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> Value { get; }
             
             public bool Equals(git_treewalk_cb other) =>  Value == other.Value;
             
@@ -143,9 +143,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int>*(git_treewalk_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int>(git_treewalk_cb from) => from.Value;
             
-            public static implicit operator git_treewalk_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int>* from) => new git_treewalk_cb(from);
+            public static implicit operator git_treewalk_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> from) => new git_treewalk_cb(from);
             
             public static bool operator ==(git_treewalk_cb left, git_treewalk_cb right) => left.Equals(right);
             
@@ -242,7 +242,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_byname")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_tree_entry git_tree_entry_byname(libgit2.git_tree tree, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> filename);
+        public static partial libgit2.git_tree_entry git_tree_entry_byname(libgit2.git_tree tree, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> filename);
         
         /// <summary>
         /// Lookup a tree entry by its position in the tree
@@ -302,7 +302,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_bypath")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_tree_entry_bypath(out libgit2.git_tree_entry @out, libgit2.git_tree root, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial int git_tree_entry_bypath(out libgit2.git_tree_entry @out, libgit2.git_tree root, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Duplicate a tree entry
@@ -316,7 +316,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tree_entry_dup(ref libgit2.git_tree_entry dest, libgit2.git_tree_entry source);
+        public static partial libgit2.git_result git_tree_entry_dup(out libgit2.git_tree_entry dest, libgit2.git_tree_entry source);
         
         /// <summary>
         /// Free a user-owned tree entry
@@ -347,7 +347,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the name of the file</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_tree_entry_name_string(libgit2.git_tree_entry entry);
         
         /// <summary>
@@ -413,7 +413,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_to_object")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tree_entry_to_object(ref libgit2.git_object object_out, libgit2.git_repository repo, libgit2.git_tree_entry entry);
+        public static partial libgit2.git_result git_tree_entry_to_object(out libgit2.git_object object_out, libgit2.git_repository repo, libgit2.git_tree_entry entry);
         
         /// <summary>
         /// Create a new tree builder.
@@ -489,7 +489,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_tree_entry git_treebuilder_get(libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> filename);
+        public static partial libgit2.git_tree_entry git_treebuilder_get(libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> filename);
         
         /// <summary>
         /// Add or update an entry to the builder
@@ -541,7 +541,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_insert")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_treebuilder_insert(out libgit2.git_tree_entry @out, libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> filename, in libgit2.git_oid id, libgit2.git_filemode_t filemode);
+        public static partial libgit2.git_result git_treebuilder_insert(out libgit2.git_tree_entry @out, libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> filename, in libgit2.git_oid id, libgit2.git_filemode_t filemode);
         
         /// <summary>
         /// Remove an entry from the builder by its filename
@@ -561,7 +561,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_treebuilder_remove(libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> filename);
+        public static partial libgit2.git_result git_treebuilder_remove(libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> filename);
         
         /// <summary>
         /// Selectively remove entries in the tree
@@ -591,7 +591,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_write")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_treebuilder_write(ref libgit2.git_oid id, libgit2.git_treebuilder bld);
+        public static partial libgit2.git_result git_treebuilder_write(out libgit2.git_oid id, libgit2.git_treebuilder bld);
         
         /// <summary>
         /// Traverse the entries in a tree and its subtrees in post or pre order.
@@ -642,6 +642,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_create_updated")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tree_create_updated(out libgit2.git_oid @out, libgit2.git_repository repo, libgit2.git_tree baseline, libgit2.size_t nupdates, in libgit2.git_tree_update updates);
+        public static partial libgit2.git_result git_tree_create_updated(out libgit2.git_oid @out, libgit2.git_repository repo, libgit2.git_tree baseline, libgit2.size_t nupdates, libgit2.git_tree_update* updates);
     }
 }

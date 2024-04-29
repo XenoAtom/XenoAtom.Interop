@@ -41,9 +41,9 @@ namespace XenoAtom.Interop
         /// <seealso cref="git_packbuilder_foreach"/>
         public readonly partial struct git_packbuilder_foreach_cb : IEquatable<git_packbuilder_foreach_cb>
         {
-            public git_packbuilder_foreach_cb(delegate*unmanaged[Cdecl]<void*, libgit2.size_t, void*, int>* value) => this.Value = value;
+            public git_packbuilder_foreach_cb(delegate*unmanaged[Cdecl]<void*, libgit2.size_t, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<void*, libgit2.size_t, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<void*, libgit2.size_t, void*, int> Value { get; }
             
             public bool Equals(git_packbuilder_foreach_cb other) =>  Value == other.Value;
             
@@ -53,9 +53,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<void*, libgit2.size_t, void*, int>*(git_packbuilder_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<void*, libgit2.size_t, void*, int>(git_packbuilder_foreach_cb from) => from.Value;
             
-            public static implicit operator git_packbuilder_foreach_cb(delegate*unmanaged[Cdecl]<void*, libgit2.size_t, void*, int>* from) => new git_packbuilder_foreach_cb(from);
+            public static implicit operator git_packbuilder_foreach_cb(delegate*unmanaged[Cdecl]<void*, libgit2.size_t, void*, int> from) => new git_packbuilder_foreach_cb(from);
             
             public static bool operator ==(git_packbuilder_foreach_cb left, git_packbuilder_foreach_cb right) => left.Equals(right);
             
@@ -67,9 +67,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public readonly partial struct git_packbuilder_progress : IEquatable<git_packbuilder_progress>
         {
-            public git_packbuilder_progress(delegate*unmanaged[Cdecl]<int, uint, uint, void*, int>* value) => this.Value = value;
+            public git_packbuilder_progress(delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<int, uint, uint, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> Value { get; }
             
             public bool Equals(git_packbuilder_progress other) =>  Value == other.Value;
             
@@ -79,9 +79,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<int, uint, uint, void*, int>*(git_packbuilder_progress from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<int, uint, uint, void*, int>(git_packbuilder_progress from) => from.Value;
             
-            public static implicit operator git_packbuilder_progress(delegate*unmanaged[Cdecl]<int, uint, uint, void*, int>* from) => new git_packbuilder_progress(from);
+            public static implicit operator git_packbuilder_progress(delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> from) => new git_packbuilder_progress(from);
             
             public static bool operator ==(git_packbuilder_progress left, git_packbuilder_progress right) => left.Equals(right);
             
@@ -141,7 +141,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_insert")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_packbuilder_insert(libgit2.git_packbuilder pb, in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_packbuilder_insert(libgit2.git_packbuilder pb, in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Insert a root tree object
@@ -209,7 +209,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_insert_recur")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_packbuilder_insert_recur(libgit2.git_packbuilder pb, in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_packbuilder_insert_recur(libgit2.git_packbuilder pb, in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Write the contents of the packfile to an in-memory buffer
@@ -249,7 +249,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_write")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_packbuilder_write(libgit2.git_packbuilder pb, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, uint mode, libgit2.git_indexer_progress_cb progress_cb, void* progress_cb_payload);
+        public static partial libgit2.git_result git_packbuilder_write(libgit2.git_packbuilder pb, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, uint mode, libgit2.git_indexer_progress_cb progress_cb, void* progress_cb_payload);
         
         /// <summary>
         /// Get the unique name for the resulting packfile.
@@ -275,7 +275,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_packbuilder_name_string(libgit2.git_packbuilder pb);
         
         /// <summary>

@@ -147,9 +147,9 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or error code</returns>
         public readonly partial struct git_submodule_cb : IEquatable<git_submodule_cb>
         {
-            public git_submodule_cb(delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int>* value) => this.Value = value;
+            public git_submodule_cb(delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> Value { get; }
             
             public bool Equals(git_submodule_cb other) =>  Value == other.Value;
             
@@ -159,9 +159,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int>*(git_submodule_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int>(git_submodule_cb from) => from.Value;
             
-            public static implicit operator git_submodule_cb(delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int>* from) => new git_submodule_cb(from);
+            public static implicit operator git_submodule_cb(delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> from) => new git_submodule_cb(from);
             
             public static bool operator ==(git_submodule_cb left, git_submodule_cb right) => left.Equals(right);
             
@@ -251,7 +251,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_submodule_lookup(out libgit2.git_submodule @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_submodule_lookup(out libgit2.git_submodule @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Create an in-memory copy of a submodule. The copy must be explicitly
@@ -342,7 +342,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_add_setup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_submodule_add_setup(out libgit2.git_submodule @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, int use_gitlink);
+        public static partial libgit2.git_result git_submodule_add_setup(out libgit2.git_submodule @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, int use_gitlink);
         
         /// <summary>
         /// Perform the clone step for a newly created submodule.
@@ -419,7 +419,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Pointer to the submodule name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_submodule_name_string(libgit2.git_submodule submodule);
         
         /// <summary>
@@ -446,7 +446,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_submodule_path_string(libgit2.git_submodule submodule);
         
         /// <summary>
@@ -465,7 +465,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Pointer to the submodule url</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_submodule_url_string(libgit2.git_submodule submodule);
         
         /// <summary>
@@ -488,7 +488,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_resolve_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_submodule_resolve_url(out libgit2.git_buf @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url);
+        public static partial libgit2.git_result git_submodule_resolve_url(out libgit2.git_buf @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
         
         /// <summary>
         /// Get the branch for the submodule.
@@ -506,7 +506,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Pointer to the submodule branch</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_branch")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_submodule_branch_string(libgit2.git_submodule submodule);
         
         /// <summary>
@@ -541,7 +541,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_set_branch")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_submodule_set_branch(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> branch);
+        public static partial libgit2.git_result git_submodule_set_branch(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> branch);
         
         /// <summary>
         /// Set the URL for the submodule in the configuration
@@ -575,7 +575,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_set_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_submodule_set_url(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url);
+        public static partial libgit2.git_result git_submodule_set_url(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
         
         /// <summary>
         /// Get the OID for the submodule in the index.
@@ -661,7 +661,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_set_ignore")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_submodule_set_ignore(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_submodule_ignore_t ignore);
+        public static partial libgit2.git_result git_submodule_set_ignore(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_submodule_ignore_t ignore);
         
         /// <summary>
         /// Get the update rule that will be used for the submodule.
@@ -703,7 +703,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_set_update")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_submodule_set_update(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_submodule_update_t update);
+        public static partial libgit2.git_result git_submodule_set_update(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_submodule_update_t update);
         
         /// <summary>
         /// Read the fetchRecurseSubmodules rule for a submodule.
@@ -746,7 +746,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_set_fetch_recurse_submodules")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_submodule_set_fetch_recurse_submodules(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_submodule_recurse_t fetch_recurse_submodules);
+        public static partial int git_submodule_set_fetch_recurse_submodules(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_submodule_recurse_t fetch_recurse_submodules);
         
         /// <summary>
         /// Copy submodule info into ".git/config" file.
@@ -873,7 +873,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_status")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_submodule_status(out uint status, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_submodule_ignore_t ignore);
+        public static partial libgit2.git_result git_submodule_status(out uint status, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, libgit2.git_submodule_ignore_t ignore);
         
         /// <summary>
         /// Get the locations of submodule information.

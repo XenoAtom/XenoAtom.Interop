@@ -26,7 +26,7 @@ static unsafe partial class libgit2
     {
         byte* @ref_name;
         var result = git_branch_name(out @ref_name, @ref);
-        @out = result == 0 ? GetStringFromUTF8(@ref_name) : null;
+        @out = result == 0 ? LibGit2Helper.UnmanagedUtf8StringToString(@ref_name) : null;
         return result;
     }
 }

@@ -19,7 +19,7 @@ namespace XenoAtom.Interop
         {
             public _LIBSSH2_SESSION(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(_LIBSSH2_SESSION other) => Handle.Equals(other.Handle);
             
@@ -38,7 +38,7 @@ namespace XenoAtom.Interop
         {
             public _LIBSSH2_USERAUTH_KBDINT_PROMPT(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(_LIBSSH2_USERAUTH_KBDINT_PROMPT other) => Handle.Equals(other.Handle);
             
@@ -57,7 +57,7 @@ namespace XenoAtom.Interop
         {
             public _LIBSSH2_USERAUTH_KBDINT_RESPONSE(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(_LIBSSH2_USERAUTH_KBDINT_RESPONSE other) => Handle.Equals(other.Handle);
             
@@ -76,7 +76,7 @@ namespace XenoAtom.Interop
         {
             public git_iterator(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_iterator other) => Handle.Equals(other.Handle);
             

@@ -22,9 +22,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public partial struct git_message_trailer
         {
-            public readonly byte* key;
+            public byte* key;
             
-            public readonly byte* value;
+            public byte* value;
         }
         
         /// <summary>
@@ -78,7 +78,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_message_prettify")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_message_prettify(out libgit2.git_buf @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message, int strip_comments, byte comment_char);
+        public static partial libgit2.git_result git_message_prettify(out libgit2.git_buf @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message, int strip_comments, byte comment_char);
         
         /// <summary>
         /// Parse trailers out of a message, filling the array pointed to by +arr+.
@@ -93,7 +93,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_message_trailers")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_message_trailers(ref libgit2.git_message_trailer_array arr, byte* message);
+        public static partial libgit2.git_result git_message_trailers(out libgit2.git_message_trailer_array arr, byte* message);
         
         /// <summary>
         /// Parse trailers out of a message, filling the array pointed to by +arr+.
@@ -108,7 +108,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_message_trailers")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_message_trailers(ref libgit2.git_message_trailer_array arr, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message);
+        public static partial libgit2.git_result git_message_trailers(out libgit2.git_message_trailer_array arr, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message);
         
         /// <summary>
         /// Clean's up any allocated memory in the git_message_trailer_array filled by

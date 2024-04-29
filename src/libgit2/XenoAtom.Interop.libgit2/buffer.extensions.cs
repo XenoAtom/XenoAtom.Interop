@@ -19,9 +19,9 @@ static unsafe partial class libgit2
         public Span<byte> AsSpan() => ptr != null ? new Span<byte>(ptr, (int)size) : Span<byte>.Empty;
 
         /// <summary>
-        /// Gets the string associated to this buffer.
+        /// Gets the string associated to this buffer using UTF8 encoding.
         /// </summary>
         /// <returns>The span associated to this buffer</returns>
-        public string? AsString() => GetStringFromUTF8(ptr, size);
+        public string? AsString() => LibGit2Helper.UnmanagedUtf8StringToString(ptr, size);
     }
 }

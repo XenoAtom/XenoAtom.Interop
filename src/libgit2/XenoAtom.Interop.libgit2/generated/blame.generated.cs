@@ -232,7 +232,7 @@ namespace XenoAtom.Interop
             /// The path to the file where this hunk originated, as of the commit
             /// specified by `orig_commit_id`.
             /// </summary>
-            public readonly byte* orig_path;
+            public byte* orig_path;
             
             /// <summary>
             /// The 1-based line number where this hunk begins in the file named by
@@ -260,7 +260,7 @@ namespace XenoAtom.Interop
         {
             public git_blame(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_blame other) => Handle.Equals(other.Handle);
             
@@ -344,7 +344,7 @@ namespace XenoAtom.Interop
         /// about the error.)</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_blame_file(out libgit2.git_blame @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, ref libgit2.git_blame_options options);
+        public static partial libgit2.git_result git_blame_file(out libgit2.git_blame @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, ref libgit2.git_blame_options options);
         
         /// <summary>
         /// Get blame data for a file that has been modified in memory. The `reference`
@@ -386,7 +386,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_blame_buffer(out libgit2.git_blame @out, libgit2.git_blame reference, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> buffer, libgit2.size_t buffer_len);
+        public static partial libgit2.git_result git_blame_buffer(out libgit2.git_blame @out, libgit2.git_blame reference, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> buffer, libgit2.size_t buffer_len);
         
         /// <summary>
         /// Free memory allocated by git_blame_file or git_blame_buffer.

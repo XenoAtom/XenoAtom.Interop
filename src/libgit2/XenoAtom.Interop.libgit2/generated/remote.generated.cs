@@ -240,12 +240,12 @@ namespace XenoAtom.Interop
             /// The remote's name.
             /// Setting this to NULL results in an in-memory/anonymous remote.
             /// </summary>
-            public readonly byte* name;
+            public byte* name;
             
             /// <summary>
             /// The fetchspec the remote should use.
             /// </summary>
-            public readonly byte* fetchspec;
+            public byte* fetchspec;
             
             /// <summary>
             /// Additional flags for the remote. See git_remote_create_flags.
@@ -424,9 +424,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public readonly partial struct git_push_transfer_progress_cb : IEquatable<git_push_transfer_progress_cb>
         {
-            public git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, libgit2.size_t, void*, int>* value) => this.Value = value;
+            public git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, libgit2.size_t, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<uint, uint, libgit2.size_t, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<uint, uint, libgit2.size_t, void*, int> Value { get; }
             
             public bool Equals(git_push_transfer_progress_cb other) =>  Value == other.Value;
             
@@ -436,9 +436,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<uint, uint, libgit2.size_t, void*, int>*(git_push_transfer_progress_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<uint, uint, libgit2.size_t, void*, int>(git_push_transfer_progress_cb from) => from.Value;
             
-            public static implicit operator git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, libgit2.size_t, void*, int>* from) => new git_push_transfer_progress_cb(from);
+            public static implicit operator git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, libgit2.size_t, void*, int> from) => new git_push_transfer_progress_cb(from);
             
             public static bool operator ==(git_push_transfer_progress_cb left, git_push_transfer_progress_cb right) => left.Equals(right);
             
@@ -454,9 +454,9 @@ namespace XenoAtom.Interop
         /// <param name="payload">Payload provided by the caller</param>
         public readonly partial struct git_push_negotiation : IEquatable<git_push_negotiation>
         {
-            public git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, libgit2.size_t, void*, int>* value) => this.Value = value;
+            public git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, libgit2.size_t, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_push_update**, libgit2.size_t, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_push_update**, libgit2.size_t, void*, int> Value { get; }
             
             public bool Equals(git_push_negotiation other) =>  Value == other.Value;
             
@@ -466,9 +466,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_push_update**, libgit2.size_t, void*, int>*(git_push_negotiation from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_push_update**, libgit2.size_t, void*, int>(git_push_negotiation from) => from.Value;
             
-            public static implicit operator git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, libgit2.size_t, void*, int>* from) => new git_push_negotiation(from);
+            public static implicit operator git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, libgit2.size_t, void*, int> from) => new git_push_negotiation(from);
             
             public static bool operator ==(git_push_negotiation left, git_push_negotiation right) => left.Equals(right);
             
@@ -489,9 +489,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_push_update_reference_cb : IEquatable<git_push_update_reference_cb>
         {
-            public git_push_update_reference_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>* value) => this.Value = value;
+            public git_push_update_reference_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> Value { get; }
             
             public bool Equals(git_push_update_reference_cb other) =>  Value == other.Value;
             
@@ -501,9 +501,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>*(git_push_update_reference_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>(git_push_update_reference_cb from) => from.Value;
             
-            public static implicit operator git_push_update_reference_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>* from) => new git_push_update_reference_cb(from);
+            public static implicit operator git_push_update_reference_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new git_push_update_reference_cb(from);
             
             public static bool operator ==(git_push_update_reference_cb left, git_push_update_reference_cb right) => left.Equals(right);
             
@@ -521,9 +521,9 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success, or an error</returns>
         public readonly partial struct git_remote_ready_cb : IEquatable<git_remote_ready_cb>
         {
-            public git_remote_ready_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int>* value) => this.Value = value;
+            public git_remote_ready_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> Value { get; }
             
             public bool Equals(git_remote_ready_cb other) =>  Value == other.Value;
             
@@ -533,9 +533,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int>*(git_remote_ready_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int>(git_remote_ready_cb from) => from.Value;
             
-            public static implicit operator git_remote_ready_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int>* from) => new git_remote_ready_cb(from);
+            public static implicit operator git_remote_ready_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> from) => new git_remote_ready_cb(from);
             
             public static bool operator ==(git_remote_ready_cb left, git_remote_ready_cb right) => left.Equals(right);
             
@@ -564,7 +564,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_create(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url);
+        public static partial libgit2.git_result git_remote_create(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
         
         /// <summary>
         /// Initialize git_remote_create_options structure
@@ -606,7 +606,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create_with_opts")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_create_with_opts(out libgit2.git_remote @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url, in libgit2.git_remote_create_options opts);
+        public static partial libgit2.git_result git_remote_create_with_opts(out libgit2.git_remote @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url, in libgit2.git_remote_create_options opts);
         
         /// <summary>
         /// Add a remote with the provided fetch refspec (or default if NULL) to the repository's
@@ -634,7 +634,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create_with_fetchspec")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_create_with_fetchspec(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> fetch);
+        public static partial libgit2.git_result git_remote_create_with_fetchspec(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> fetch);
         
         /// <summary>
         /// Create an anonymous remote
@@ -664,7 +664,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create_anonymous")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_create_anonymous(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url);
+        public static partial libgit2.git_result git_remote_create_anonymous(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
         
         /// <summary>
         /// Create a remote without a connected local repo
@@ -696,7 +696,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create_detached")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_create_detached(out libgit2.git_remote @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url);
+        public static partial libgit2.git_result git_remote_create_detached(out libgit2.git_remote @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
         
         /// <summary>
         /// Get the information for a particular remote
@@ -726,7 +726,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_lookup(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_remote_lookup(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Create a copy of an existing remote.  All internal strings are also
@@ -767,7 +767,7 @@ namespace XenoAtom.Interop
         /// <returns>@return a pointer to the name or NULL for in-memory remotes</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_remote_name_string(libgit2.git_remote remote);
         
         /// <summary>
@@ -796,7 +796,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_remote_url_string(libgit2.git_remote remote);
         
         /// <summary>
@@ -825,7 +825,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_pushurl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_remote_pushurl_string(libgit2.git_remote remote);
         
         /// <summary>
@@ -856,7 +856,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_set_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_set_url(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url);
+        public static partial libgit2.git_result git_remote_set_url(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
         
         /// <summary>
         /// Set the remote's url for pushing in the configuration.
@@ -886,7 +886,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_set_pushurl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_set_pushurl(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url);
+        public static partial libgit2.git_result git_remote_set_pushurl(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
         
         /// <summary>
         /// Set the url for this particular url instance.  The URL in the
@@ -908,7 +908,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error value</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_set_instance_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_set_instance_url(libgit2.git_remote remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url);
+        public static partial libgit2.git_result git_remote_set_instance_url(libgit2.git_remote remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
         
         /// <summary>
         /// Set the push url for this particular url instance.  The URL in the
@@ -930,7 +930,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error value</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_set_instance_pushurl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_set_instance_pushurl(libgit2.git_remote remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url);
+        public static partial libgit2.git_result git_remote_set_instance_pushurl(libgit2.git_remote remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
         
         /// <summary>
         /// Add a fetch refspec to the remote's configuration
@@ -960,7 +960,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_add_fetch")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_add_fetch(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refspec);
+        public static partial libgit2.git_result git_remote_add_fetch(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refspec);
         
         /// <summary>
         /// Get the remote's list of fetch refspecs
@@ -1004,7 +1004,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_add_push")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_add_push(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refspec);
+        public static partial libgit2.git_result git_remote_add_push(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refspec);
         
         /// <summary>
         /// Get the remote's list of push refspecs
@@ -1298,7 +1298,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_update_tips")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_update_tips(libgit2.git_remote remote, in libgit2.git_remote_callbacks callbacks, int update_fetchhead, libgit2.git_remote_autotag_option_t download_tags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> reflog_message);
+        public static partial libgit2.git_result git_remote_update_tips(libgit2.git_remote remote, in libgit2.git_remote_callbacks callbacks, int update_fetchhead, libgit2.git_remote_autotag_option_t download_tags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> reflog_message);
         
         /// <summary>
         /// Download new data and update tips.
@@ -1338,7 +1338,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_fetch")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_fetch(libgit2.git_remote remote, in libgit2.git_strarray refspecs, in libgit2.git_fetch_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> reflog_message);
+        public static partial libgit2.git_result git_remote_fetch(libgit2.git_remote remote, in libgit2.git_strarray refspecs, in libgit2.git_fetch_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> reflog_message);
         
         /// <summary>
         /// Prune tracking refs that are no longer present on remote.
@@ -1415,7 +1415,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_set_autotag")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_set_autotag(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> remote, libgit2.git_remote_autotag_option_t value);
+        public static partial libgit2.git_result git_remote_set_autotag(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> remote, libgit2.git_remote_autotag_option_t value);
         
         /// <summary>
         /// Retrieve the ref-prune setting
@@ -1464,7 +1464,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_rename")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_rename(ref libgit2.git_strarray problems, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> new_name);
+        public static partial libgit2.git_result git_remote_rename(ref libgit2.git_strarray problems, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> new_name);
         
         /// <summary>
         /// Ensure the remote name is well-formed.
@@ -1484,7 +1484,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_name_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_name_is_valid(ref int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> remote_name);
+        public static partial libgit2.git_result git_remote_name_is_valid(ref int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> remote_name);
         
         /// <summary>
         /// Delete an existing persisted remote.
@@ -1512,7 +1512,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_delete")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_delete(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_remote_delete(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Retrieve the name of the remote's default branch

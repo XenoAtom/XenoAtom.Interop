@@ -440,9 +440,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_status_cb : IEquatable<git_status_cb>
         {
-            public git_status_cb(delegate*unmanaged[Cdecl]<byte*, uint, void*, int>* value) => this.Value = value;
+            public git_status_cb(delegate*unmanaged[Cdecl]<byte*, uint, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<byte*, uint, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<byte*, uint, void*, int> Value { get; }
             
             public bool Equals(git_status_cb other) =>  Value == other.Value;
             
@@ -452,9 +452,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, uint, void*, int>*(git_status_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, uint, void*, int>(git_status_cb from) => from.Value;
             
-            public static implicit operator git_status_cb(delegate*unmanaged[Cdecl]<byte*, uint, void*, int>* from) => new git_status_cb(from);
+            public static implicit operator git_status_cb(delegate*unmanaged[Cdecl]<byte*, uint, void*, int> from) => new git_status_cb(from);
             
             public static bool operator ==(git_status_cb left, git_status_cb right) => left.Equals(right);
             
@@ -563,7 +563,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_status_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_status_file(out libgit2.git_status_t status_flags, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_status_file(out libgit2.git_status_t status_flags, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Gather file status information and populate the `git_status_list`.
@@ -654,6 +654,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_status_should_ignore")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_status_should_ignore(out int ignored, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_status_should_ignore(out int ignored, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
     }
 }

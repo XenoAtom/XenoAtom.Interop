@@ -57,7 +57,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_transaction_lock_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_transaction_lock_ref(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
+        public static partial libgit2.git_result git_transaction_lock_ref(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Set the target of a reference
@@ -91,7 +91,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_transaction_set_target")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_transaction_set_target(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname, in libgit2.git_oid target, in libgit2.git_signature sig, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> msg);
+        public static partial libgit2.git_result git_transaction_set_target(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname, in libgit2.git_oid target, in libgit2.git_signature sig, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> msg);
         
         /// <summary>
         /// Set the target of a reference
@@ -125,7 +125,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_transaction_set_symbolic_target")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_transaction_set_symbolic_target(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> target, in libgit2.git_signature sig, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> msg);
+        public static partial libgit2.git_result git_transaction_set_symbolic_target(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> target, in libgit2.git_signature sig, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> msg);
         
         /// <summary>
         /// Set the reflog of a reference
@@ -155,7 +155,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_transaction_set_reflog")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_transaction_set_reflog(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname, libgit2.git_reflog reflog);
+        public static partial libgit2.git_result git_transaction_set_reflog(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname, libgit2.git_reflog reflog);
         
         /// <summary>
         /// Remove a reference
@@ -175,7 +175,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_transaction_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_transaction_remove(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
+        public static partial libgit2.git_result git_transaction_remove(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Commit the changes from the transaction

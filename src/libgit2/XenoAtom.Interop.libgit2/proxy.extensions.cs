@@ -10,8 +10,11 @@ namespace XenoAtom.Interop;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 static unsafe partial class libgit2
 {
-    public partial struct git_error
+    partial struct git_proxy_options
     {
-        public override string? ToString() => LibGit2Helper.UnmanagedUtf8StringToString(message);
+        /// <summary>
+        /// The URL of the proxy.
+        /// </summary>
+        public string? url_string => LibGit2Helper.UnmanagedUtf8StringToString(url);
     }
 }

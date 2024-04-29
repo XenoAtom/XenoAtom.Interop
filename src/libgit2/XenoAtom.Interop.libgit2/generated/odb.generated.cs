@@ -86,9 +86,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public readonly partial struct git_odb_foreach_cb : IEquatable<git_odb_foreach_cb>
         {
-            public git_odb_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>* value) => this.Value = value;
+            public git_odb_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> Value { get; }
             
             public bool Equals(git_odb_foreach_cb other) =>  Value == other.Value;
             
@@ -98,9 +98,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>*(git_odb_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>(git_odb_foreach_cb from) => from.Value;
             
-            public static implicit operator git_odb_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>* from) => new git_odb_foreach_cb(from);
+            public static implicit operator git_odb_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> from) => new git_odb_foreach_cb(from);
             
             public static bool operator ==(git_odb_foreach_cb left, git_odb_foreach_cb right) => left.Equals(right);
             
@@ -117,7 +117,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_open(out libgit2.git_odb @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> objects_dir);
+        public static partial int git_odb_open(out libgit2.git_odb @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> objects_dir);
         
         /// <summary>
         /// Add an on-disk alternate to an existing Object DB.
@@ -147,7 +147,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_add_disk_alternate")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_add_disk_alternate(libgit2.git_odb odb, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_odb_add_disk_alternate(libgit2.git_odb odb, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Close an open object database.
@@ -477,7 +477,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_hashfile")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_hashfile(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_odb_hashfile(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_object_t type);
         
         /// <summary>
         /// Create a copy of an odb_object

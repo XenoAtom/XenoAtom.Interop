@@ -101,9 +101,9 @@ namespace XenoAtom.Interop
         /// <seealso cref="git_attr_foreach."/>
         public readonly partial struct git_attr_foreach_cb : IEquatable<git_attr_foreach_cb>
         {
-            public git_attr_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>* value) => this.Value = value;
+            public git_attr_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> Value { get; }
             
             public bool Equals(git_attr_foreach_cb other) =>  Value == other.Value;
             
@@ -113,9 +113,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>*(git_attr_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>(git_attr_foreach_cb from) => from.Value;
             
-            public static implicit operator git_attr_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>* from) => new git_attr_foreach_cb(from);
+            public static implicit operator git_attr_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new git_attr_foreach_cb(from);
             
             public static bool operator ==(git_attr_foreach_cb left, git_attr_foreach_cb right) => left.Equals(right);
             
@@ -150,7 +150,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_value")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_attr_value_t git_attr_value([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> attr);
+        public static partial libgit2.git_attr_value_t git_attr_value([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> attr);
         
         /// <summary>
         /// Look up the value of one git attribute for path.
@@ -188,7 +188,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_attr_get(ref byte* value_out, libgit2.git_repository repo, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_attr_get(ref byte* value_out, libgit2.git_repository repo, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Look up the value of one git attribute for path with extended options.
@@ -226,7 +226,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_attr_get_ext(ref byte* value_out, libgit2.git_repository repo, ref libgit2.git_attr_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_attr_get_ext(ref byte* value_out, libgit2.git_repository repo, ref libgit2.git_attr_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Look up a list of git attributes for path.
@@ -282,7 +282,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get_many")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_attr_get_many(ref byte* values_out, libgit2.git_repository repo, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.size_t num_attr, ref byte* names);
+        public static partial libgit2.git_result git_attr_get_many(ref byte* values_out, libgit2.git_repository repo, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.size_t num_attr, ref byte* names);
         
         /// <summary>
         /// Look up a list of git attributes for path with extended options.
@@ -322,7 +322,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get_many_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_attr_get_many_ext(ref byte* values_out, libgit2.git_repository repo, ref libgit2.git_attr_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.size_t num_attr, ref byte* names);
+        public static partial libgit2.git_result git_attr_get_many_ext(ref byte* values_out, libgit2.git_repository repo, ref libgit2.git_attr_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.size_t num_attr, ref byte* names);
         
         /// <summary>
         /// Loop over all the git attributes for a path.
@@ -354,7 +354,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_foreach")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_attr_foreach(libgit2.git_repository repo, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_attr_foreach_cb callback, void* payload);
+        public static partial libgit2.git_result git_attr_foreach(libgit2.git_repository repo, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_attr_foreach_cb callback, void* payload);
         
         /// <summary>
         /// Loop over all the git attributes for a path with extended options.
@@ -386,7 +386,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_foreach_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_attr_foreach_ext(libgit2.git_repository repo, ref libgit2.git_attr_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_attr_foreach_cb callback, void* payload);
+        public static partial libgit2.git_result git_attr_foreach_ext(libgit2.git_repository repo, ref libgit2.git_attr_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_attr_foreach_cb callback, void* payload);
         
         /// <summary>
         /// Flush the gitattributes cache.
@@ -435,6 +435,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_add_macro")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_attr_add_macro(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> values);
+        public static partial libgit2.git_result git_attr_add_macro(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> values);
     }
 }

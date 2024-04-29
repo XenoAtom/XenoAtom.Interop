@@ -68,7 +68,7 @@ namespace XenoAtom.Interop
         {
             public git_indexer(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_indexer other) => Handle.Equals(other.Handle);
             
@@ -114,9 +114,9 @@ namespace XenoAtom.Interop
         /// <param name="stats">Structure containing information about the state of the transfer</param>
         public readonly partial struct git_indexer_progress_cb : IEquatable<git_indexer_progress_cb>
         {
-            public git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int>* value) => this.Value = value;
+            public git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> Value { get; }
             
             public bool Equals(git_indexer_progress_cb other) =>  Value == other.Value;
             
@@ -126,9 +126,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int>*(git_indexer_progress_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int>(git_indexer_progress_cb from) => from.Value;
             
-            public static implicit operator git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int>* from) => new git_indexer_progress_cb(from);
+            public static implicit operator git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> from) => new git_indexer_progress_cb(from);
             
             public static bool operator ==(git_indexer_progress_cb left, git_indexer_progress_cb right) => left.Equals(right);
             
@@ -176,7 +176,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_indexer_new(out libgit2.git_indexer @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, uint mode, libgit2.git_odb odb, in libgit2.git_indexer_options opts);
+        public static partial libgit2.git_result git_indexer_new(out libgit2.git_indexer @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, uint mode, libgit2.git_odb odb, in libgit2.git_indexer_options opts);
         
         /// <summary>
         /// Add data to the indexer
@@ -227,7 +227,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_indexer_name_string(libgit2.git_indexer idx);
         
         /// <summary>

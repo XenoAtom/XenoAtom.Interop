@@ -114,7 +114,7 @@ namespace XenoAtom.Interop
             /// The name of the branch to checkout. NULL means use the
             /// remote's default branch.
             /// </summary>
-            public readonly byte* checkout_branch;
+            public byte* checkout_branch;
             
             /// <summary>
             /// A callback used to create the new repository into which to
@@ -160,9 +160,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_repository_create_cb : IEquatable<git_repository_create_cb>
         {
-            public git_repository_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int>* value) => this.Value = value;
+            public git_repository_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> Value { get; }
             
             public bool Equals(git_repository_create_cb other) =>  Value == other.Value;
             
@@ -172,9 +172,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int>*(git_repository_create_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int>(git_repository_create_cb from) => from.Value;
             
-            public static implicit operator git_repository_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int>* from) => new git_repository_create_cb(from);
+            public static implicit operator git_repository_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> from) => new git_repository_create_cb(from);
             
             public static bool operator ==(git_repository_create_cb left, git_repository_create_cb right) => left.Equals(right);
             
@@ -197,9 +197,9 @@ namespace XenoAtom.Interop
         /// </remarks>
         public readonly partial struct git_remote_create_cb : IEquatable<git_remote_create_cb>
         {
-            public git_remote_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int>* value) => this.Value = value;
+            public git_remote_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> Value { get; }
             
             public bool Equals(git_remote_create_cb other) =>  Value == other.Value;
             
@@ -209,9 +209,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int>*(git_remote_create_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int>(git_remote_create_cb from) => from.Value;
             
-            public static implicit operator git_remote_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int>* from) => new git_remote_create_cb(from);
+            public static implicit operator git_remote_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> from) => new git_remote_create_cb(from);
             
             public static bool operator ==(git_remote_create_cb left, git_remote_create_cb right) => left.Equals(right);
             
@@ -270,6 +270,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_clone")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_clone(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> local_path, in libgit2.git_clone_options options);
+        public static partial libgit2.git_result git_clone(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> local_path, in libgit2.git_clone_options options);
     }
 }

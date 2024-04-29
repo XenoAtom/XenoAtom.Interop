@@ -339,7 +339,7 @@ namespace XenoAtom.Interop
         {
             public git_odb(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_odb other) => Handle.Equals(other.Handle);
             
@@ -361,7 +361,7 @@ namespace XenoAtom.Interop
         {
             public git_odb_backend(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_odb_backend other) => Handle.Equals(other.Handle);
             
@@ -383,7 +383,7 @@ namespace XenoAtom.Interop
         {
             public git_odb_object(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_odb_object other) => Handle.Equals(other.Handle);
             
@@ -422,12 +422,12 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Write at most `len` bytes into `buffer` and advance the stream.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, byte*, libgit2.size_t, int>* read;
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, byte*, libgit2.size_t, int> read;
             
             /// <summary>
             /// Write `len` bytes from `buffer` into the stream.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, byte*, libgit2.size_t, int>* write;
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, byte*, libgit2.size_t, int> write;
             
             /// <summary>
             /// Store the contents of the stream as an object with the id
@@ -440,7 +440,7 @@ namespace XenoAtom.Interop
             /// - the final number of received bytes differs from the size declared
             /// with `git_odb_open_wstream()`
             /// </remarks>
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, libgit2.git_oid*, int>* finalize_write;
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, libgit2.git_oid*, int> finalize_write;
             
             /// <summary>
             /// Free the stream's memory.
@@ -449,7 +449,7 @@ namespace XenoAtom.Interop
             /// This method might be called without a call to `finalize_write` if
             /// an error occurs or if the object is already present in the ODB.
             /// </remarks>
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, void>* free;
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, void> free;
         }
         
         /// <summary>
@@ -459,7 +459,7 @@ namespace XenoAtom.Interop
         {
             public git_object_size_t(ulong value) => this.Value = value;
             
-            public readonly ulong Value;
+            public ulong Value { get; }
             
             public bool Equals(git_object_size_t other) =>  Value.Equals(other.Value);
             
@@ -485,11 +485,11 @@ namespace XenoAtom.Interop
         {
             public libgit2.git_odb_backend backend;
             
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, void*, libgit2.size_t, libgit2.git_indexer_progress*, int>* append;
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, void*, libgit2.size_t, libgit2.git_indexer_progress*, int> append;
             
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, libgit2.git_indexer_progress*, int>* commit;
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, libgit2.git_indexer_progress*, int> commit;
             
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, void>* free;
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, void> free;
         }
         
         /// <summary>
@@ -499,7 +499,7 @@ namespace XenoAtom.Interop
         {
             public git_midx_writer(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_midx_writer other) => Handle.Equals(other.Handle);
             
@@ -521,7 +521,7 @@ namespace XenoAtom.Interop
         {
             public git_refdb(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_refdb other) => Handle.Equals(other.Handle);
             
@@ -543,7 +543,7 @@ namespace XenoAtom.Interop
         {
             public git_refdb_backend(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_refdb_backend other) => Handle.Equals(other.Handle);
             
@@ -565,7 +565,7 @@ namespace XenoAtom.Interop
         {
             public git_commit_graph(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_commit_graph other) => Handle.Equals(other.Handle);
             
@@ -587,7 +587,7 @@ namespace XenoAtom.Interop
         {
             public git_commit_graph_writer(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_commit_graph_writer other) => Handle.Equals(other.Handle);
             
@@ -610,7 +610,7 @@ namespace XenoAtom.Interop
         {
             public git_repository(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_repository other) => Handle.Equals(other.Handle);
             
@@ -632,7 +632,7 @@ namespace XenoAtom.Interop
         {
             public git_worktree(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_worktree other) => Handle.Equals(other.Handle);
             
@@ -654,7 +654,7 @@ namespace XenoAtom.Interop
         {
             public git_object(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_object other) => Handle.Equals(other.Handle);
             
@@ -676,7 +676,7 @@ namespace XenoAtom.Interop
         {
             public git_revwalk(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_revwalk other) => Handle.Equals(other.Handle);
             
@@ -698,7 +698,7 @@ namespace XenoAtom.Interop
         {
             public git_tag(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_tag other) => Handle.Equals(other.Handle);
             
@@ -720,7 +720,7 @@ namespace XenoAtom.Interop
         {
             public git_blob(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_blob other) => Handle.Equals(other.Handle);
             
@@ -742,7 +742,7 @@ namespace XenoAtom.Interop
         {
             public git_commit(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_commit other) => Handle.Equals(other.Handle);
             
@@ -764,7 +764,7 @@ namespace XenoAtom.Interop
         {
             public git_tree_entry(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_tree_entry other) => Handle.Equals(other.Handle);
             
@@ -786,7 +786,7 @@ namespace XenoAtom.Interop
         {
             public git_tree(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_tree other) => Handle.Equals(other.Handle);
             
@@ -808,7 +808,7 @@ namespace XenoAtom.Interop
         {
             public git_treebuilder(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_treebuilder other) => Handle.Equals(other.Handle);
             
@@ -830,7 +830,7 @@ namespace XenoAtom.Interop
         {
             public git_index(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_index other) => Handle.Equals(other.Handle);
             
@@ -852,7 +852,7 @@ namespace XenoAtom.Interop
         {
             public git_index_iterator(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_index_iterator other) => Handle.Equals(other.Handle);
             
@@ -874,7 +874,7 @@ namespace XenoAtom.Interop
         {
             public git_index_conflict_iterator(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_index_conflict_iterator other) => Handle.Equals(other.Handle);
             
@@ -896,7 +896,7 @@ namespace XenoAtom.Interop
         {
             public git_config(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_config other) => Handle.Equals(other.Handle);
             
@@ -918,7 +918,7 @@ namespace XenoAtom.Interop
         {
             public git_config_backend(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_config_backend other) => Handle.Equals(other.Handle);
             
@@ -940,7 +940,7 @@ namespace XenoAtom.Interop
         {
             public git_reflog_entry(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_reflog_entry other) => Handle.Equals(other.Handle);
             
@@ -962,7 +962,7 @@ namespace XenoAtom.Interop
         {
             public git_reflog(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_reflog other) => Handle.Equals(other.Handle);
             
@@ -984,7 +984,7 @@ namespace XenoAtom.Interop
         {
             public git_note(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_note other) => Handle.Equals(other.Handle);
             
@@ -1006,7 +1006,7 @@ namespace XenoAtom.Interop
         {
             public git_packbuilder(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_packbuilder other) => Handle.Equals(other.Handle);
             
@@ -1046,7 +1046,7 @@ namespace XenoAtom.Interop
         {
             public git_time_t(long value) => this.Value = value;
             
-            public readonly long Value;
+            public long Value { get; }
             
             public bool Equals(git_time_t other) =>  Value.Equals(other.Value);
             
@@ -1093,7 +1093,7 @@ namespace XenoAtom.Interop
         {
             public git_reference(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_reference other) => Handle.Equals(other.Handle);
             
@@ -1115,7 +1115,7 @@ namespace XenoAtom.Interop
         {
             public git_reference_iterator(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_reference_iterator other) => Handle.Equals(other.Handle);
             
@@ -1137,7 +1137,7 @@ namespace XenoAtom.Interop
         {
             public git_transaction(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_transaction other) => Handle.Equals(other.Handle);
             
@@ -1159,7 +1159,7 @@ namespace XenoAtom.Interop
         {
             public git_annotated_commit(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_annotated_commit other) => Handle.Equals(other.Handle);
             
@@ -1181,7 +1181,7 @@ namespace XenoAtom.Interop
         {
             public git_status_list(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_status_list other) => Handle.Equals(other.Handle);
             
@@ -1203,7 +1203,7 @@ namespace XenoAtom.Interop
         {
             public git_rebase(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_rebase other) => Handle.Equals(other.Handle);
             
@@ -1226,7 +1226,7 @@ namespace XenoAtom.Interop
         {
             public git_refspec(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_refspec other) => Handle.Equals(other.Handle);
             
@@ -1249,7 +1249,7 @@ namespace XenoAtom.Interop
         {
             public git_remote(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_remote other) => Handle.Equals(other.Handle);
             
@@ -1272,7 +1272,7 @@ namespace XenoAtom.Interop
         {
             public git_transport(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_transport other) => Handle.Equals(other.Handle);
             
@@ -1295,7 +1295,7 @@ namespace XenoAtom.Interop
         {
             public git_push(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_push other) => Handle.Equals(other.Handle);
             
@@ -1353,13 +1353,13 @@ namespace XenoAtom.Interop
             /// progress side-band will be passed to this function (this is
             /// the 'counting objects' output).
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int>* sideband_progress;
+            public delegate*unmanaged[Cdecl]<int> sideband_progress;
             
             /// <summary>
             /// Completion is called when different parts of the download
             /// process are done (currently unused).
             /// </summary>
-            public delegate*unmanaged[Cdecl]<libgit2.git_remote_completion_t, void*, int>* completion;
+            public delegate*unmanaged[Cdecl]<libgit2.git_remote_completion_t, void*, int> completion;
             
             /// <summary>
             /// This will be called if the remote host requires
@@ -1369,7 +1369,7 @@ namespace XenoAtom.Interop
             /// Returning GIT_PASSTHROUGH will make libgit2 behave as
             /// though this field isn't set.
             /// </remarks>
-            public delegate*unmanaged[Cdecl]<int>* credentials;
+            public delegate*unmanaged[Cdecl]<int> credentials;
             
             /// <summary>
             /// If cert verification fails, this will be called to let the
@@ -1377,27 +1377,27 @@ namespace XenoAtom.Interop
             /// connection to proceed. Returns 0 to allow the connection
             /// or a negative value to indicate an error.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int>* certificate_check;
+            public delegate*unmanaged[Cdecl]<int> certificate_check;
             
             /// <summary>
             /// During the download of new data, this will be regularly
             /// called with the current count of progress done by the
             /// indexer.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int>* transfer_progress;
+            public delegate*unmanaged[Cdecl]<int> transfer_progress;
             
             /// <summary>
             /// Each time a reference is updated locally, this function
             /// will be called with information about it.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, libgit2.git_oid*, void*, int>* update_tips;
+            public delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, libgit2.git_oid*, void*, int> update_tips;
             
             /// <summary>
             /// Function to call with progress information during pack
             /// building. Be aware that this is called inline with pack
             /// building operations, so performance may be affected.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int>* pack_progress;
+            public delegate*unmanaged[Cdecl]<int> pack_progress;
             
             /// <summary>
             /// Function to call with progress information during the
@@ -1405,29 +1405,29 @@ namespace XenoAtom.Interop
             /// inline with pack building operations, so performance may be
             /// affected.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int>* push_transfer_progress;
+            public delegate*unmanaged[Cdecl]<int> push_transfer_progress;
             
             /// <summary>
             /// See documentation of git_push_update_reference_cb
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int>* push_update_reference;
+            public delegate*unmanaged[Cdecl]<int> push_update_reference;
             
             /// <summary>
             /// Called once between the negotiation step and the upload. It
             /// provides information about what updates will be performed.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int>* push_negotiation;
+            public delegate*unmanaged[Cdecl]<int> push_negotiation;
             
             /// <summary>
             /// Create the transport to use for this operation. Leave NULL
             /// to auto-detect.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int>* transport;
+            public delegate*unmanaged[Cdecl]<int> transport;
             
             /// <summary>
             /// Callback when the remote is ready to connect.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int>* remote_ready;
+            public delegate*unmanaged[Cdecl]<int> remote_ready;
             
             /// <summary>
             /// This will be passed to each of the callbacks in this struct
@@ -1456,7 +1456,7 @@ namespace XenoAtom.Interop
         {
             public git_submodule(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_submodule other) => Handle.Equals(other.Handle);
             
@@ -1476,11 +1476,11 @@ namespace XenoAtom.Interop
         /// </summary>
         public partial struct git_writestream
         {
-            public delegate*unmanaged[Cdecl]<libgit2.git_writestream*, byte*, libgit2.size_t, int>* write;
+            public delegate*unmanaged[Cdecl]<libgit2.git_writestream*, byte*, libgit2.size_t, int> write;
             
-            public delegate*unmanaged[Cdecl]<libgit2.git_writestream*, int>* close;
+            public delegate*unmanaged[Cdecl]<libgit2.git_writestream*, int> close;
             
-            public delegate*unmanaged[Cdecl]<libgit2.git_writestream*, void>* free;
+            public delegate*unmanaged[Cdecl]<libgit2.git_writestream*, void> free;
         }
         
         /// <summary>
@@ -1490,7 +1490,7 @@ namespace XenoAtom.Interop
         {
             public git_mailmap(nint handle) => Handle = handle;
             
-            public readonly nint Handle;
+            public nint Handle { get; }
             
             public bool Equals(git_mailmap other) => Handle.Equals(other.Handle);
             
@@ -1509,7 +1509,7 @@ namespace XenoAtom.Interop
         {
             public git_off_t(long value) => this.Value = value;
             
-            public readonly long Value;
+            public long Value { get; }
             
             public bool Equals(git_off_t other) =>  Value.Equals(other.Value);
             

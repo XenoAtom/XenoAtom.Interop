@@ -10,6 +10,86 @@ namespace XenoAtom.Interop;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 static unsafe partial class libgit2
 {
+    partial struct git_merge_file_input
+    {
+        /// <summary>
+        /// File name of the conflicted file, or `NULL` to not merge the path.
+        /// </summary>
+        /// <remarks>
+        /// When setting this field, this struct instance must be disposed.
+        /// </remarks>
+        public string? path_string
+        {
+            get => LibGit2Helper.UnmanagedUtf8StringToString(path);
+            set => path = LibGit2Helper.StringToUnmanagedUtf8String(value);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            LibGit2Helper.FreeUnmanagedUtf8String(path);
+            path = null;
+        }
+    }
+
+    partial struct git_merge_file_options : IDisposable
+    {
+        /// <summary>
+        /// Label for the ancestor file side of the conflict which will be prepended
+        /// to labels in diff3-format merge files.
+        /// </summary>
+        public string? ancestor_label_string
+        {
+            get => LibGit2Helper.UnmanagedUtf8StringToString(ancestor_label);
+            set => ancestor_label = LibGit2Helper.StringToUnmanagedUtf8String(value);
+        }
+
+        /// <summary>
+        /// Label for our file side of the conflict which will be prepended
+        /// to labels in merge files.
+        /// </summary>
+        public string? our_label_string
+        {
+            get => LibGit2Helper.UnmanagedUtf8StringToString(our_label);
+            set => our_label = LibGit2Helper.StringToUnmanagedUtf8String(value);
+        }
+
+        /// <summary>
+        /// Label for their file side of the conflict which will be prepended
+        /// to labels in merge files.
+        /// </summary>
+        public string? their_label_string
+        {
+            get => LibGit2Helper.UnmanagedUtf8StringToString(their_label);
+            set => their_label = LibGit2Helper.StringToUnmanagedUtf8String(value);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            LibGit2Helper.FreeUnmanagedUtf8String(ancestor_label);
+            ancestor_label = null;
+            LibGit2Helper.FreeUnmanagedUtf8String(our_label);
+            our_label = null;
+            LibGit2Helper.FreeUnmanagedUtf8String(their_label);
+            their_label = null;
+        }
+    }
+
+    partial struct git_merge_file_result
+    {
+        /// <summary>
+        /// The path that the resultant merge file should use, or NULL if a
+        /// filename conflict would occur.
+        /// </summary>
+        public string? path_string => LibGit2Helper.UnmanagedUtf8StringToString(path);
+
+        /// <summary>
+        /// The contents of the merge.
+        /// </summary>
+        public ReadOnlySpan<byte> AsSpan() => ptr == null ? default : new((void*)ptr, (int)len);
+    }
+
     /// <summary>
     /// Analyzes the given branch(es) and determines the opportunities for
     /// merging them into the HEAD of the repository.

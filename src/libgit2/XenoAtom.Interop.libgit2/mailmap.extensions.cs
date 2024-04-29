@@ -40,8 +40,8 @@ static unsafe partial class libgit2
     public static libgit2.git_result git_mailmap_resolve(out string? real_name, out string? real_email, libgit2.git_mailmap mm, string name, string email)
     {
         var result = git_mailmap_resolve(out var real_namePtr, out byte* real_emailPtr, mm, name, email);
-        real_name = result == 0 ? GetStringFromUTF8(real_namePtr) : null;
-        real_email = result == 0 ? GetStringFromUTF8(real_emailPtr) : null;
+        real_name = result == 0 ? LibGit2Helper.UnmanagedUtf8StringToString(real_namePtr) : null;
+        real_email = result == 0 ? LibGit2Helper.UnmanagedUtf8StringToString(real_emailPtr) : null;
         return result;
     }
 }

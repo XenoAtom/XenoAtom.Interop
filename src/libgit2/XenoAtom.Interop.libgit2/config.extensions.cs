@@ -10,6 +10,42 @@ namespace XenoAtom.Interop;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 static unsafe partial class libgit2
 {
+    partial struct git_config_entry : IDisposable
+    {
+        /// <summary>
+        /// Name of the entry (normalised)
+        /// </summary>
+        /// <remarks>
+        /// When setting this field, this struct instance must be disposed.
+        /// </remarks>
+        public string? name_string
+        {
+            get => LibGit2Helper.UnmanagedUtf8StringToString(name);
+            set => name = LibGit2Helper.StringToUnmanagedUtf8String(value);
+        }
+
+        /// <summary>
+        /// String value of the entry
+        /// </summary>
+        /// <remarks>
+        /// When setting this field, this struct instance must be disposed.
+        /// </remarks>
+        public string value_string
+        {
+            get => LibGit2Helper.UnmanagedUtf8StringToString(value)!;
+            set => this.value = LibGit2Helper.StringToUnmanagedUtf8String(value);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            LibGit2Helper.FreeUnmanagedUtf8String(name);
+            name = null;
+            LibGit2Helper.FreeUnmanagedUtf8String(value);
+            value = null;
+        }
+    }
+
     /// <summary>
     /// Get the value of a string config variable.
     /// </summary>
@@ -28,7 +64,7 @@ static unsafe partial class libgit2
     {
         byte* out_ptr;
         var error = libgit2.git_config_get_string(out @out_ptr, cfg, name);
-        @out = error == 0 ? GetStringFromUTF8(@out_ptr) : null;
+        @out = error == 0 ? LibGit2Helper.UnmanagedUtf8StringToString(@out_ptr) : null;
         return error;
     }
 

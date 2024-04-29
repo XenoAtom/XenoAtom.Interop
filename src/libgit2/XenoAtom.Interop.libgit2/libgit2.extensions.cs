@@ -49,24 +49,6 @@ namespace XenoAtom.Interop
         //NativeLibrary.SetDllImportResolver
         private const string LibraryName = "git2";
 
-        private static string GetExecutingAssemblyDirectory()
-        {
-            var path = Assembly.GetExecutingAssembly().CodeBase;
-            if (!File.Exists(path))
-            {
-                path = Assembly.GetExecutingAssembly().Location;
-            }
-            else if (path.StartsWith("file:///"))
-            {
-                path = path.Substring(8).Replace('/', '\\');
-            }
-            else if (path.StartsWith("file://"))
-            {
-                path = "\\\\" + path.Substring(7).Replace('/', '\\');
-            }
-            return Path.GetDirectoryName(path);
-        }
-
         public readonly partial struct git_result
         {
             public bool Success => Value >= 0;
@@ -151,7 +133,7 @@ namespace XenoAtom.Interop
                 }
             }
 
-            public override bool Equals(object obj)
+            public override bool Equals(object? obj)
             {
                 return obj is git_oid other && Equals(other);
             }

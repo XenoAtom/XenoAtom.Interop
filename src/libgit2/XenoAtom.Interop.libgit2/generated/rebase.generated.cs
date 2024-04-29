@@ -131,7 +131,7 @@ namespace XenoAtom.Interop
             /// is set to false.  If `notes.rewriteRef` is also NULL, notes will
             /// not be rewritten.
             /// </summary>
-            public readonly byte* rewrite_notes_ref;
+            public byte* rewrite_notes_ref;
             
             /// <summary>
             /// Options to control how trees are merged during `git_rebase_next`.
@@ -187,13 +187,13 @@ namespace XenoAtom.Interop
             /// The commit ID being cherry-picked.  This will be populated for
             /// all operations except those of type `GIT_REBASE_OPERATION_EXEC`.
             /// </summary>
-            public readonly libgit2.git_oid id;
+            public libgit2.git_oid id;
             
             /// <summary>
             /// The executable the user has requested be run.  This will only
             /// be populated for operations of type `GIT_REBASE_OPERATION_EXEC`.
             /// </summary>
-            public readonly byte* exec;
+            public byte* exec;
         }
         
         /// <summary>
@@ -258,7 +258,7 @@ namespace XenoAtom.Interop
         /// <returns>@return The original `HEAD` ref name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_orig_head_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_rebase_orig_head_name_string(libgit2.git_rebase rebase);
         
         /// <summary>
@@ -286,7 +286,7 @@ namespace XenoAtom.Interop
         /// <returns>@return The `onto` ref name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_onto_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_rebase_onto_name_string(libgit2.git_rebase rebase);
         
         /// <summary>
@@ -341,7 +341,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_rebase_next(ref libgit2.git_rebase_operation* operation, libgit2.git_rebase rebase);
+        public static partial libgit2.git_result git_rebase_next(out libgit2.git_rebase_operation* operation, libgit2.git_rebase rebase);
         
         /// <summary>
         /// Gets the index produced by the last operation, which is the result
@@ -410,7 +410,7 @@ namespace XenoAtom.Interop
         /// -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_commit")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_rebase_commit(out libgit2.git_oid id, libgit2.git_rebase rebase, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message);
+        public static partial libgit2.git_result git_rebase_commit(out libgit2.git_oid id, libgit2.git_rebase rebase, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message);
         
         /// <summary>
         /// Aborts a rebase that is currently in progress, resetting the repository

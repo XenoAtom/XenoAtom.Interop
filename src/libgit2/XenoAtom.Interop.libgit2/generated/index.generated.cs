@@ -226,7 +226,7 @@ namespace XenoAtom.Interop
             
             public ushort flags_extended;
             
-            public readonly byte* path;
+            public byte* path;
         }
         
         /// <summary>
@@ -234,9 +234,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public readonly partial struct git_index_matched_path_cb : IEquatable<git_index_matched_path_cb>
         {
-            public git_index_matched_path_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>* value) => this.Value = value;
+            public git_index_matched_path_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
             
-            public readonly delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>* Value;
+            public delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> Value { get; }
             
             public bool Equals(git_index_matched_path_cb other) =>  Value == other.Value;
             
@@ -246,9 +246,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>*(git_index_matched_path_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>(git_index_matched_path_cb from) => from.Value;
             
-            public static implicit operator git_index_matched_path_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>* from) => new git_index_matched_path_cb(from);
+            public static implicit operator git_index_matched_path_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new git_index_matched_path_cb(from);
             
             public static bool operator ==(git_index_matched_path_cb left, git_index_matched_path_cb right) => left.Equals(right);
             
@@ -261,7 +261,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_index_open(out libgit2.git_index @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> index_path);
+        public static partial int git_index_open(out libgit2.git_index @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> index_path);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -382,7 +382,7 @@ namespace XenoAtom.Interop
         /// <returns>@return path to index file or NULL for in-memory index</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string git_index_path_string(libgit2.git_index index);
         
         /// <summary>
@@ -503,7 +503,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_get_bypath")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_index_entry* git_index_get_bypath(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, int stage);
+        public static partial libgit2.git_index_entry* git_index_get_bypath(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, int stage);
         
         /// <summary>
         /// Remove an entry from the index
@@ -525,7 +525,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_remove(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, int stage);
+        public static partial libgit2.git_result git_index_remove(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, int stage);
         
         /// <summary>
         /// Remove all entries from the index under a given directory
@@ -547,7 +547,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_remove_directory")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_remove_directory(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> dir, int stage);
+        public static partial libgit2.git_result git_index_remove_directory(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> dir, int stage);
         
         /// <summary>
         /// Add or update an index entry from an in-memory struct
@@ -655,7 +655,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_add_bypath")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_add_bypath(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_index_add_bypath(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Add or update an index entry from a buffer in memory
@@ -711,7 +711,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_remove_bypath")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_remove_bypath(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_index_remove_bypath(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Add or update index entries matching files in the working directory.
@@ -825,7 +825,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_find(out libgit2.size_t at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_index_find(out libgit2.size_t at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Find the first position of any entries matching a prefix. To find the first position
@@ -849,7 +849,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_find_prefix(out libgit2.size_t at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> prefix);
+        public static partial libgit2.git_result git_index_find_prefix(out libgit2.size_t at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> prefix);
         
         /// <summary>
         /// Add or update index entries to represent a conflict.  Any staged
@@ -904,7 +904,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_conflict_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_conflict_get(out libgit2.git_index_entry* ancestor_out, ref libgit2.git_index_entry* our_out, ref libgit2.git_index_entry* their_out, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_index_conflict_get(out libgit2.git_index_entry* ancestor_out, ref libgit2.git_index_entry* our_out, ref libgit2.git_index_entry* their_out, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Removes the index entries that represent a conflict of a single file.
@@ -924,7 +924,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_conflict_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_index_conflict_remove(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
+        public static partial libgit2.git_result git_index_conflict_remove(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Remove all conflicts in the index (entries with a stage greater than 0).

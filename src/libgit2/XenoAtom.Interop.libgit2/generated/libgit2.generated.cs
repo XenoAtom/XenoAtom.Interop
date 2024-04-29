@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
         {
             public size_t(nint value) => this.Value = value;
             
-            public readonly nint Value;
+            public nint Value { get; }
             
             public bool Equals(size_t other) =>  Value.Equals(other.Value);
             
