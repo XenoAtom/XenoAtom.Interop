@@ -389,7 +389,7 @@ namespace XenoAtom.Interop
             /// `GIT_STATUS_OPT_DEFAULTS`, which matches git's default
             /// behavior.
             /// </summary>
-            public uint flags;
+            public libgit2.git_status_opt_t flags;
             
             /// <summary>
             /// The `pathspec` is an array of path patterns to match (using
@@ -473,7 +473,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_status_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_status_options_init(ref libgit2.git_status_options opts, uint version);
+        public static partial libgit2.git_result git_status_options_init(out libgit2.git_status_options opts, uint version);
         
         /// <summary>
         /// Gather file statuses and run a callback for each one.
@@ -537,7 +537,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_status_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_status_file(ref uint status_flags, libgit2.git_repository repo, byte* path);
+        public static partial libgit2.git_result git_status_file(out libgit2.git_status_t status_flags, libgit2.git_repository repo, byte* path);
         
         /// <summary>
         /// Get file status for a single file.
@@ -563,7 +563,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_status_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_status_file(ref uint status_flags, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
+        public static partial libgit2.git_result git_status_file(out libgit2.git_status_t status_flags, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
         
         /// <summary>
         /// Gather file status information and populate the `git_status_list`.
@@ -634,7 +634,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_status_should_ignore")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_status_should_ignore(ref int ignored, libgit2.git_repository repo, byte* path);
+        public static partial libgit2.git_result git_status_should_ignore(out int ignored, libgit2.git_repository repo, byte* path);
         
         /// <summary>
         /// Test if the ignore rules apply to a given file.
@@ -654,6 +654,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_status_should_ignore")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_status_should_ignore(ref int ignored, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
+        public static partial libgit2.git_result git_status_should_ignore(out int ignored, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
     }
 }

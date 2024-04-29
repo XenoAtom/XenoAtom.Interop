@@ -239,6 +239,10 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_stash_save::flags").Type("git_stash_flags"),
                 e => e.Map<CppParameter>("git_stash_save_options_init::opts").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_stash_apply_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppField>("git_status_options::flags").Type("git_status_opt_t"),
+                e => e.Map<CppParameter>("git_status_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_status_file::status_flags").ByRef(CSharpRefKind.Out).Type("git_status_t*"),
+                e => e.Map<CppParameter>("git_status_should_ignore::ignored").ByRef(CSharpRefKind.Out),
                 
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
