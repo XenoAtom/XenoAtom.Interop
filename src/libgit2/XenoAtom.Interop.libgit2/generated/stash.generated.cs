@@ -197,7 +197,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Flags to control the stashing process. (see GIT_STASH_* above)
             /// </summary>
-            public uint flags;
+            public libgit2.git_stash_flags flags;
             
             /// <summary>
             /// The identity of the person performing the stashing.
@@ -229,7 +229,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// See `git_stash_apply_flags`, above.
             /// </summary>
-            public uint flags;
+            public libgit2.git_stash_apply_flags flags;
             
             /// <summary>
             /// Options to use when writing files to the working directory.
@@ -318,7 +318,7 @@ namespace XenoAtom.Interop
         /// or error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_stash_save")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_stash_save(out libgit2.git_oid @out, libgit2.git_repository repo, in libgit2.git_signature stasher, byte* message, uint flags);
+        public static partial libgit2.git_result git_stash_save(out libgit2.git_oid @out, libgit2.git_repository repo, in libgit2.git_signature stasher, byte* message, libgit2.git_stash_flags flags);
         
         /// <summary>
         /// Save the local modifications to a new stash.
@@ -333,7 +333,7 @@ namespace XenoAtom.Interop
         /// or error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_stash_save")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_stash_save(out libgit2.git_oid @out, libgit2.git_repository repo, in libgit2.git_signature stasher, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string message, uint flags);
+        public static partial libgit2.git_result git_stash_save(out libgit2.git_oid @out, libgit2.git_repository repo, in libgit2.git_signature stasher, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string message, libgit2.git_stash_flags flags);
         
         /// <summary>
         /// Initialize git_stash_save_options structure
@@ -347,7 +347,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_stash_save_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_stash_save_options_init(ref libgit2.git_stash_save_options opts, uint version);
+        public static partial libgit2.git_result git_stash_save_options_init(out libgit2.git_stash_save_options opts, uint version);
         
         /// <summary>
         /// Save the local modifications to a new stash, with options.
@@ -374,7 +374,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_stash_apply_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_stash_apply_options_init(ref libgit2.git_stash_apply_options opts, uint version);
+        public static partial libgit2.git_result git_stash_apply_options_init(out libgit2.git_stash_apply_options opts, uint version);
         
         /// <summary>
         /// Apply a single stashed state from the stash list.
