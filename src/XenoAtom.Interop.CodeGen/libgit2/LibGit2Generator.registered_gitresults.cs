@@ -472,6 +472,7 @@ partial class LibGit2Generator
         "git_revwalk_reset",
         "git_revwalk_simplify_first_parent",
         "git_revwalk_sorting",
+        "git_revwalk_next",
         // signature.h
         "git_signature_default",
         "git_signature_dup",

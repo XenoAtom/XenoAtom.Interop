@@ -343,7 +343,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_revwalk_next(out libgit2.git_oid @out, libgit2.git_revwalk walk);
+        public static partial libgit2.git_result git_revwalk_next(out libgit2.git_oid @out, libgit2.git_revwalk walk);
         
         /// <summary>
         /// Change the sorting mode when iterating through the
