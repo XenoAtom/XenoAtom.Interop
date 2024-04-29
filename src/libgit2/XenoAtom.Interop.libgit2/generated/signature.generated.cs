@@ -152,6 +152,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_signature_free")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_signature_free(ref libgit2.git_signature sig);
+        public static partial void git_signature_free(libgit2.git_signature* sig);
     }
 }

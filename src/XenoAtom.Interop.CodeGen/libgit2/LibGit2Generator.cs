@@ -233,6 +233,8 @@ typedef int git_result;
                 e => e.Map<CppField>("git_revspec::flags").Type("git_revspec_t"),
                 e => e.Map<CppParameter>("git_revparse_ext::.*_out").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_revparse::revspec").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_signature_free::sig").NoByRef(),
+                
                 
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
