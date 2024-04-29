@@ -75,7 +75,7 @@ typedef int git_result;
             DisableRuntimeMarshalling = true,
             AllowMarshalForString = false,
 
-            //DefaultMarshalForString = new CSharpMarshalUsingAttribute("typeof(UTF8MarshallerRelaxedNoCleanup)"),
+            //DefaultMarshalForString = new CSharpMarshalUsingAttribute("typeof(UTF8CustomMarshaller)"),
             //ManagedToUnmanagedStringTypeForParameter = "ReadOnlySpan<char>",
 
             MappingRules =
@@ -243,6 +243,11 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_status_options_init::opts").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_status_file::status_flags").ByRef(CSharpRefKind.Out).Type("git_status_t*"),
                 e => e.Map<CppParameter>("git_status_should_ignore::ignored").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_submodule_update_options_init::opts").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_submodule_update::options").ByRef(CSharpRefKind.In),
+                e => e.Map<CppParameter>("git_submodule_open::repo").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_submodule_status::status").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_submodule_location::location_status").ByRef(CSharpRefKind.Out),
                 
                 //e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
                 //e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
@@ -570,9 +575,9 @@ typedef int git_result;
                     if (elementType is CppPrimitiveType { Kind: CppPrimitiveKind.Char })
                     {
                         newManagedMethod ??= csMethod.Clone();
-                        newManagedMethod.Parameters[i].ParameterType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String())
+                        newManagedMethod.Parameters[i].ParameterType = new CSharpTypeWithAttributes(new CSharpFreeType("ReadOnlySpan<char>"))
                         {
-                            Attributes = { new CSharpMarshalUsingAttribute("typeof(UTF8MarshallerRelaxedNoCleanup)") }
+                            Attributes = { new CSharpMarshalUsingAttribute("typeof(UTF8CustomMarshaller)") }
                         };
                     }
                 }
@@ -586,7 +591,7 @@ typedef int git_result;
                     newManagedMethod.Name = $"{newManagedMethod.Name}_string";
                     newManagedMethod.ReturnType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String())
                     {
-                        Attributes = { new CSharpMarshalUsingAttribute("typeof(UTF8MarshallerRelaxedNoCleanup)") { Scope = CSharpAttributeScope.Return } }
+                        Attributes = { new CSharpMarshalUsingAttribute("typeof(UTF8CustomMarshaller)") { Scope = CSharpAttributeScope.Return } }
                     };
                 }
             }
@@ -596,7 +601,7 @@ typedef int git_result;
                 ((ICSharpContainer)csMethod.Parent!).Members.Add(newManagedMethod);
             }
 
-            //DefaultMarshalForString = new CSharpMarshalUsingAttribute("typeof(UTF8MarshallerRelaxedNoCleanup)"),
+            //DefaultMarshalForString = new CSharpMarshalUsingAttribute("typeof(UTF8CustomMarshaller)"),
             //ManagedToUnmanagedStringTypeForParameter = "ReadOnlySpan<char>",
 
             /*

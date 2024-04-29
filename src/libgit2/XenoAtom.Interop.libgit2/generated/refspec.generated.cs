@@ -37,7 +37,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 if the refspec string could be parsed, -1 otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_parse")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_refspec_parse(ref libgit2.git_refspec refspec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string input, int is_fetch);
+        public static partial int git_refspec_parse(ref libgit2.git_refspec refspec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> input, int is_fetch);
         
         /// <summary>
         /// Free a refspec object which has been created by git_refspec_parse
@@ -63,7 +63,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the refspec's source specifier</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_src")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_refspec_src_string(libgit2.git_refspec refspec);
         
         /// <summary>
@@ -82,7 +82,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the refspec's destination specifier</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_dst")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_refspec_dst_string(libgit2.git_refspec refspec);
         
         /// <summary>
@@ -101,7 +101,7 @@ namespace XenoAtom.Interop
         /// <returns>@returns the refspec's original string</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_refspec_string_string(libgit2.git_refspec refspec);
         
         /// <summary>
@@ -140,7 +140,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 1 if the refspec matches, 0 otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_src_matches")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_refspec_src_matches(libgit2.git_refspec refspec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string refname);
+        public static partial int git_refspec_src_matches(libgit2.git_refspec refspec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Check if a refspec's destination descriptor matches a reference
@@ -160,7 +160,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 1 if the refspec matches, 0 otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_dst_matches")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_refspec_dst_matches(libgit2.git_refspec refspec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string refname);
+        public static partial int git_refspec_dst_matches(libgit2.git_refspec refspec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Transform a reference to its target following the refspec's rules
@@ -182,7 +182,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0, GIT_EBUFS or another error</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_transform")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_refspec_transform(out libgit2.git_buf @out, libgit2.git_refspec spec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
+        public static partial libgit2.git_result git_refspec_transform(out libgit2.git_buf @out, libgit2.git_refspec spec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Transform a target reference to its source reference following the refspec's rules
@@ -204,6 +204,6 @@ namespace XenoAtom.Interop
         /// <returns>@return 0, GIT_EBUFS or another error</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_rtransform")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_refspec_rtransform(out libgit2.git_buf @out, libgit2.git_refspec spec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
+        public static partial libgit2.git_result git_refspec_rtransform(out libgit2.git_buf @out, libgit2.git_refspec spec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
     }
 }

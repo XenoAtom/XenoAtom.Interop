@@ -141,7 +141,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_insert")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_packbuilder_insert(libgit2.git_packbuilder pb, in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
+        public static partial libgit2.git_result git_packbuilder_insert(libgit2.git_packbuilder pb, in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Insert a root tree object
@@ -209,7 +209,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_insert_recur")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_packbuilder_insert_recur(libgit2.git_packbuilder pb, in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
+        public static partial libgit2.git_result git_packbuilder_insert_recur(libgit2.git_packbuilder pb, in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Write the contents of the packfile to an in-memory buffer
@@ -249,7 +249,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_write")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_packbuilder_write(libgit2.git_packbuilder pb, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, uint mode, libgit2.git_indexer_progress_cb progress_cb, void* progress_cb_payload);
+        public static partial libgit2.git_result git_packbuilder_write(libgit2.git_packbuilder pb, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, uint mode, libgit2.git_indexer_progress_cb progress_cb, void* progress_cb_payload);
         
         /// <summary>
         /// Get the unique name for the resulting packfile.
@@ -275,7 +275,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_packbuilder_name_string(libgit2.git_packbuilder pb);
         
         /// <summary>

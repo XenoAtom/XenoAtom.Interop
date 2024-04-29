@@ -293,7 +293,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the name of the prerelease state or NULL</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_prerelease")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_libgit2_prerelease_string();
         
         /// <summary>

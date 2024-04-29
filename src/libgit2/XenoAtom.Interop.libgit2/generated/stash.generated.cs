@@ -333,7 +333,7 @@ namespace XenoAtom.Interop
         /// or error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_stash_save")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_stash_save(out libgit2.git_oid @out, libgit2.git_repository repo, in libgit2.git_signature stasher, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string message, libgit2.git_stash_flags flags);
+        public static partial libgit2.git_result git_stash_save(out libgit2.git_oid @out, libgit2.git_repository repo, in libgit2.git_signature stasher, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_stash_flags flags);
         
         /// <summary>
         /// Initialize git_stash_save_options structure

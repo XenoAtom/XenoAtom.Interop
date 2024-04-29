@@ -575,7 +575,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_error_set")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_error_set(libgit2.git_error_t error_class, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string fmt);
+        public static partial void git_error_set(libgit2.git_error_t error_class, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> fmt);
         
         /// <summary>
         /// Set the error message string for this thread.  This function is like
@@ -601,7 +601,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or -1 on failure</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_error_set_str")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_error_set_str(libgit2.git_error_t error_class, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string @string);
+        public static partial libgit2.git_result git_error_set_str(libgit2.git_error_t error_class, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> @string);
         
         /// <summary>
         /// Set the error message to a special value for memory allocation failure.

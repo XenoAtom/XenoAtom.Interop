@@ -85,7 +85,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_branch_create(out libgit2.git_reference @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string branch_name, libgit2.git_commit target, int force);
+        public static partial libgit2.git_result git_branch_create(out libgit2.git_reference @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> branch_name, libgit2.git_commit target, int force);
         
         /// <summary>
         /// Create a new branch pointing at a target commit
@@ -111,7 +111,7 @@ namespace XenoAtom.Interop
         /// <seealso cref="git_branch_create"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_create_from_annotated")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_branch_create_from_annotated(ref libgit2.git_reference ref_out, libgit2.git_repository repository, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string branch_name, libgit2.git_annotated_commit commit, int force);
+        public static partial int git_branch_create_from_annotated(ref libgit2.git_reference ref_out, libgit2.git_repository repository, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> branch_name, libgit2.git_annotated_commit commit, int force);
         
         /// <summary>
         /// Delete an existing branch reference.
@@ -195,7 +195,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_move")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_branch_move(out libgit2.git_reference @out, libgit2.git_reference branch, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string new_branch_name, int force);
+        public static partial libgit2.git_result git_branch_move(out libgit2.git_reference @out, libgit2.git_reference branch, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> new_branch_name, int force);
         
         /// <summary>
         /// Lookup a branch by its name in a repository.
@@ -235,7 +235,7 @@ namespace XenoAtom.Interop
         /// <seealso cref="git_tag_create for rules about valid names."/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_branch_lookup(out libgit2.git_reference @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string branch_name, libgit2.git_branch_t branch_type);
+        public static partial libgit2.git_result git_branch_lookup(out libgit2.git_reference @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> branch_name, libgit2.git_branch_t branch_type);
         
         /// <summary>
         /// Get the branch name
@@ -306,7 +306,7 @@ namespace XenoAtom.Interop
         /// </note>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_set_upstream")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_branch_set_upstream(libgit2.git_reference branch, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string branch_name);
+        public static partial libgit2.git_result git_branch_set_upstream(libgit2.git_reference branch, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> branch_name);
         
         /// <summary>
         /// Get the upstream name of a branch
@@ -340,7 +340,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_upstream_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_branch_upstream_name(out libgit2.git_buf @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string refname);
+        public static partial libgit2.git_result git_branch_upstream_name(out libgit2.git_buf @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Determine if HEAD points to the given branch
@@ -401,7 +401,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_remote_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_branch_remote_name(out libgit2.git_buf @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string refname);
+        public static partial libgit2.git_result git_branch_remote_name(out libgit2.git_buf @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Retrieve the upstream remote of a local branch
@@ -431,7 +431,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_upstream_remote")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_branch_upstream_remote(ref libgit2.git_buf buf, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string refname);
+        public static partial libgit2.git_result git_branch_upstream_remote(ref libgit2.git_buf buf, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Retrieve the upstream merge of a local branch
@@ -461,7 +461,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_upstream_merge")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_branch_upstream_merge(ref libgit2.git_buf buf, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string refname);
+        public static partial libgit2.git_result git_branch_upstream_merge(ref libgit2.git_buf buf, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Determine whether a branch name is valid, meaning that (when prefixed
@@ -487,6 +487,6 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_name_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_branch_name_is_valid(out int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
+        public static partial libgit2.git_result git_branch_name_is_valid(out int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
     }
 }

@@ -151,7 +151,7 @@ namespace XenoAtom.Interop
         /// <returns>@return name of the tag</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_tag_name_string(libgit2.git_tag tag);
         
         /// <summary>
@@ -179,7 +179,7 @@ namespace XenoAtom.Interop
         /// <returns>@return message of the tag or NULL when unspecified</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_tag_message_string(libgit2.git_tag tag);
         
         /// <summary>
@@ -248,7 +248,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tag_create(ref libgit2.git_oid oid, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string tag_name, libgit2.git_object target, in libgit2.git_signature tagger, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string message, int force);
+        public static partial libgit2.git_result git_tag_create(ref libgit2.git_oid oid, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> tag_name, libgit2.git_object target, in libgit2.git_signature tagger, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message, int force);
         
         /// <summary>
         /// Create a new tag in the object database pointing to a git_object
@@ -290,7 +290,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_annotation_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tag_annotation_create(ref libgit2.git_oid oid, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string tag_name, libgit2.git_object target, in libgit2.git_signature tagger, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string message);
+        public static partial libgit2.git_result git_tag_annotation_create(ref libgit2.git_oid oid, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> tag_name, libgit2.git_object target, in libgit2.git_signature tagger, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> message);
         
         /// <summary>
         /// Create a new tag in the repository from a buffer
@@ -314,7 +314,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success; error code otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_create_from_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tag_create_from_buffer(ref libgit2.git_oid oid, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string buffer, int force);
+        public static partial libgit2.git_result git_tag_create_from_buffer(ref libgit2.git_oid oid, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> buffer, int force);
         
         /// <summary>
         /// Create a new lightweight tag pointing at a target object
@@ -368,7 +368,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_create_lightweight")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tag_create_lightweight(ref libgit2.git_oid oid, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string tag_name, libgit2.git_object target, int force);
+        public static partial libgit2.git_result git_tag_create_lightweight(ref libgit2.git_oid oid, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> tag_name, libgit2.git_object target, int force);
         
         /// <summary>
         /// Delete an existing tag reference.
@@ -398,7 +398,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_delete")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tag_delete(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string tag_name);
+        public static partial libgit2.git_result git_tag_delete(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> tag_name);
         
         /// <summary>
         /// Fill a list with all the tags in the Repository
@@ -455,7 +455,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_list_match")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tag_list_match(ref libgit2.git_strarray tag_names, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string pattern, libgit2.git_repository repo);
+        public static partial libgit2.git_result git_tag_list_match(ref libgit2.git_strarray tag_names, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> pattern, libgit2.git_repository repo);
         
         /// <summary>
         /// Call callback `cb' for each tag in the repository
@@ -516,6 +516,6 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_name_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_tag_name_is_valid(ref int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string name);
+        public static partial libgit2.git_result git_tag_name_is_valid(ref int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> name);
     }
 }

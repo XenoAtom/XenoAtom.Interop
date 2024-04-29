@@ -108,7 +108,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_pack")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_backend_pack(out libgit2.git_odb_backend @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string objects_dir);
+        public static partial int git_odb_backend_pack(out libgit2.git_odb_backend @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> objects_dir);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_one_pack")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -116,7 +116,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_one_pack")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_backend_one_pack(out libgit2.git_odb_backend @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string index_file);
+        public static partial int git_odb_backend_one_pack(out libgit2.git_odb_backend @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> index_file);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_loose")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -124,6 +124,6 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_loose")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_backend_loose(out libgit2.git_odb_backend @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode);
+        public static partial int git_odb_backend_loose(out libgit2.git_odb_backend @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode);
     }
 }

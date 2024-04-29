@@ -198,7 +198,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_push_glob")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_push_glob(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string glob);
+        public static partial libgit2.git_result git_revwalk_push_glob(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> glob);
         
         /// <summary>
         /// Push the repository's HEAD
@@ -264,7 +264,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_hide_glob")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_hide_glob(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string glob);
+        public static partial libgit2.git_result git_revwalk_hide_glob(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> glob);
         
         /// <summary>
         /// Hide the repository's HEAD
@@ -299,7 +299,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_push_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_push_ref(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string refname);
+        public static partial libgit2.git_result git_revwalk_push_ref(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Hide the OID pointed to by a reference
@@ -325,7 +325,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_hide_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_hide_ref(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string refname);
+        public static partial libgit2.git_result git_revwalk_hide_ref(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> refname);
         
         /// <summary>
         /// Get the next commit from the revision walk.
@@ -399,7 +399,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_push_range")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_push_range(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string range);
+        public static partial libgit2.git_result git_revwalk_push_range(libgit2.git_revwalk walk, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> range);
         
         /// <summary>
         /// Simplify the history by first-parent

@@ -242,7 +242,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_byname")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_tree_entry git_tree_entry_byname(libgit2.git_tree tree, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string filename);
+        public static partial libgit2.git_tree_entry git_tree_entry_byname(libgit2.git_tree tree, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> filename);
         
         /// <summary>
         /// Lookup a tree entry by its position in the tree
@@ -302,7 +302,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_bypath")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_tree_entry_bypath(out libgit2.git_tree_entry @out, libgit2.git_tree root, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path);
+        public static partial int git_tree_entry_bypath(out libgit2.git_tree_entry @out, libgit2.git_tree root, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
         /// Duplicate a tree entry
@@ -347,7 +347,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the name of the file</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_tree_entry_name_string(libgit2.git_tree_entry entry);
         
         /// <summary>
@@ -489,7 +489,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_tree_entry git_treebuilder_get(libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string filename);
+        public static partial libgit2.git_tree_entry git_treebuilder_get(libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> filename);
         
         /// <summary>
         /// Add or update an entry to the builder
@@ -541,7 +541,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_insert")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_treebuilder_insert(out libgit2.git_tree_entry @out, libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string filename, in libgit2.git_oid id, libgit2.git_filemode_t filemode);
+        public static partial libgit2.git_result git_treebuilder_insert(out libgit2.git_tree_entry @out, libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> filename, in libgit2.git_oid id, libgit2.git_filemode_t filemode);
         
         /// <summary>
         /// Remove an entry from the builder by its filename
@@ -561,7 +561,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_treebuilder_remove(libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string filename);
+        public static partial libgit2.git_result git_treebuilder_remove(libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> filename);
         
         /// <summary>
         /// Selectively remove entries in the tree

@@ -2156,7 +2156,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_blobs")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_diff_blobs(libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string old_as_path, libgit2.git_blob new_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string new_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
+        public static partial libgit2.git_result git_diff_blobs(libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> old_as_path, libgit2.git_blob new_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> new_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
         
         /// <summary>
         /// Directly run a diff between a blob and a buffer.
@@ -2210,7 +2210,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_blob_to_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_diff_blob_to_buffer(libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string old_as_path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string buffer, libgit2.size_t buffer_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string buffer_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
+        public static partial libgit2.git_result git_diff_blob_to_buffer(libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> old_as_path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> buffer, libgit2.size_t buffer_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> buffer_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
         
         /// <summary>
         /// Directly run a diff between two buffers.
@@ -2260,7 +2260,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_buffers")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_diff_buffers(void* old_buffer, libgit2.size_t old_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string old_as_path, void* new_buffer, libgit2.size_t new_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string new_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
+        public static partial libgit2.git_result git_diff_buffers(void* old_buffer, libgit2.size_t old_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> old_as_path, void* new_buffer, libgit2.size_t new_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> new_as_path, in libgit2.git_diff_options options, libgit2.git_diff_file_cb file_cb, libgit2.git_diff_binary_cb binary_cb, libgit2.git_diff_hunk_cb hunk_cb, libgit2.git_diff_line_cb line_cb, void* payload);
         
         /// <summary>
         /// Read the contents of a git patch file into a `git_diff` object.

@@ -58,7 +58,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_from_fetchhead")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_annotated_commit_from_fetchhead(out libgit2.git_annotated_commit @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string branch_name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string remote_url, in libgit2.git_oid id);
+        public static partial libgit2.git_result git_annotated_commit_from_fetchhead(out libgit2.git_annotated_commit @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> branch_name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> remote_url, in libgit2.git_oid id);
         
         /// <summary>
         /// Creates a `git_annotated_commit` from the given commit id.
@@ -112,7 +112,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_from_revspec")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_annotated_commit_from_revspec(out libgit2.git_annotated_commit @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string revspec);
+        public static partial libgit2.git_result git_annotated_commit_from_revspec(out libgit2.git_annotated_commit @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> revspec);
         
         /// <summary>
         /// Gets the commit ID that the given `git_annotated_commit` refers to.
@@ -139,7 +139,7 @@ namespace XenoAtom.Interop
         /// <returns>@return ref name.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_annotated_commit_ref_string(libgit2.git_annotated_commit commit);
         
         /// <summary>

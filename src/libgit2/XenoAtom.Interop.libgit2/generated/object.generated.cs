@@ -88,7 +88,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_lookup_bypath")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_object_lookup_bypath(out libgit2.git_object @out, libgit2.git_object treeish, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string path, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_object_lookup_bypath(out libgit2.git_object @out, libgit2.git_object treeish, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_object_t type);
         
         /// <summary>
         /// Get the id (SHA1) of a repository object
@@ -181,7 +181,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_type2string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))]
         public static partial string git_object_type2string_string(libgit2.git_object_t type);
         
         /// <summary>
@@ -200,7 +200,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the corresponding git_object_t.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_string2type")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_object_t git_object_string2type([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string str);
+        public static partial libgit2.git_object_t git_object_string2type([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> str);
         
         /// <summary>
         /// Determine if the given git_object_t is a valid loose object type.

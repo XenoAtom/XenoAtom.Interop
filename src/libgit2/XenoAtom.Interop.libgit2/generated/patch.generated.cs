@@ -116,7 +116,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_from_blobs")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_patch_from_blobs(out libgit2.git_patch @out, libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string old_as_path, libgit2.git_blob new_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string new_as_path, in libgit2.git_diff_options opts);
+        public static partial libgit2.git_result git_patch_from_blobs(out libgit2.git_patch @out, libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> old_as_path, libgit2.git_blob new_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> new_as_path, in libgit2.git_diff_options opts);
         
         /// <summary>
         /// Directly generate a patch from the difference between a blob and a buffer.
@@ -162,7 +162,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_from_blob_and_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_patch_from_blob_and_buffer(out libgit2.git_patch @out, libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string old_as_path, void* buffer, libgit2.size_t buffer_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string buffer_as_path, in libgit2.git_diff_options opts);
+        public static partial libgit2.git_result git_patch_from_blob_and_buffer(out libgit2.git_patch @out, libgit2.git_blob old_blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> old_as_path, void* buffer, libgit2.size_t buffer_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> buffer_as_path, in libgit2.git_diff_options opts);
         
         /// <summary>
         /// Directly generate a patch from the difference between two buffers.
@@ -210,7 +210,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_from_buffers")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_patch_from_buffers(out libgit2.git_patch @out, void* old_buffer, libgit2.size_t old_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string old_as_path, void* new_buffer, libgit2.size_t new_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8MarshallerRelaxedNoCleanup))] string new_as_path, in libgit2.git_diff_options opts);
+        public static partial libgit2.git_result git_patch_from_buffers(out libgit2.git_patch @out, void* old_buffer, libgit2.size_t old_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> old_as_path, void* new_buffer, libgit2.size_t new_len, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(UTF8CustomMarshaller))] ReadOnlySpan<char> new_as_path, in libgit2.git_diff_options opts);
         
         /// <summary>
         /// Free a git_patch object.
