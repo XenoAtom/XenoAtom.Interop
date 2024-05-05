@@ -19,8 +19,11 @@ public class BasicTests
         git_buf_dispose(ref bufOut);
 
         // Open this repository
-        result = git_repository_open(out var repo, repoPath);
+        // Alternatively git_repository_open(out var repo, repoPath);
+        result = git_repository_open_ext(out var repo, AppContext.BaseDirectory, 0, default);
         Assert.IsTrue(result.Success);
+        var repoPath2 = git_repository_path_string(repo);
+        Assert.AreEqual(repoPath, repoPath2);
 
         // Iterate over the commits
         result = git_revwalk_new(out var revwalk, repo);

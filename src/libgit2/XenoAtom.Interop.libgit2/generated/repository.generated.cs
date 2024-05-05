@@ -632,7 +632,7 @@ namespace XenoAtom.Interop
         /// (such as repo corruption or system errors).</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_open_ext(out libgit2.git_repository @out, byte* path, uint flags, byte* ceiling_dirs);
+        public static partial libgit2.git_result git_repository_open_ext(out libgit2.git_repository @out, byte* path, libgit2.git_repository_open_flag_t flags, byte* ceiling_dirs);
         
         /// <summary>
         /// Find and open a repository with extended controls.
@@ -653,7 +653,7 @@ namespace XenoAtom.Interop
         /// (such as repo corruption or system errors).</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_repository_open_ext(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> ceiling_dirs);
+        public static partial libgit2.git_result git_repository_open_ext(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_repository_open_flag_t flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> ceiling_dirs);
         
         /// <summary>
         /// Open a bare repository on the serverside.
