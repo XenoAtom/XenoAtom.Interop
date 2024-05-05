@@ -3,6 +3,7 @@
 // See license.txt file in the project root for full license information.
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
@@ -10,9 +11,12 @@ using System.Text;
 
 namespace XenoAtom.Interop;
 
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 static partial class libgit2
 {
-
+    /// <summary>
+    /// Custom marshaller used for marshalling a string as a UTF-8 string.
+    /// </summary>
     [CustomMarshaller(typeof(string), MarshalMode.Default, typeof(Utf8CustomMarshaller))]
     [CustomMarshaller(typeof(ReadOnlySpan<char>), MarshalMode.ManagedToUnmanagedIn, typeof(Utf8CustomMarshaller.ManagedToUnmanagedIn))]
     private static unsafe class Utf8CustomMarshaller

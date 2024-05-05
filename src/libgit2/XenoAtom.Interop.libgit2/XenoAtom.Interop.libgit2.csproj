@@ -9,8 +9,9 @@
     <!-- Enable AOT analyzers -->
     <IsAotCompatible>true</IsAotCompatible>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-
-    <NoWarn>CS8909</NoWarn>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <!-- Disable warnings for missing/invalid documentation - as it is automatically generated from C/C++ we might have errors -->
+    <NoWarn>CS8909;CS1584;CS1574;CS1572;CS1591;CS1573;CS0419;CS1658</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
