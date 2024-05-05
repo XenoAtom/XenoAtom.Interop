@@ -2,6 +2,8 @@
 # Disable default packs - It will only publish NuGet and the Changelog
 [msbuild]
 project = "XenoAtom.Interop.sln"
+[changelog]
+publish = false # Disable changelog for now
 [github]
 user = "XenoAtom"
 repo = "XenoAtom.Interop"
