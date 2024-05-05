@@ -1,9 +1,7 @@
-using System;
-
 namespace XenoAtom.Interop.libgit2.Tests;
 
 [TestClass]
-public class Class1Test
+public class BasicTests
 {
     [TestMethod]
     public void TestSimple()

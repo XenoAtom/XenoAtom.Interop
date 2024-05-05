@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="MSTest" Version="3.*" />
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting"/>
   </ItemGroup>
 
   <ItemGroup>

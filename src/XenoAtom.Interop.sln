@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.CodeGen", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10-codegen", "10-codegen", "{74E26887-1ECE-47FA-A8DA-23BC52DE601F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libgit2.Tests", "libgit2\XenoAtom.Interop.libgit2.Tests\XenoAtom.Interop.libgit2.Tests.csproj", "{04F43E5A-D0D4-4662-9E53-5C77A62D6BA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F43E5A-D0D4-4662-9E53-5C77A62D6BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F43E5A-D0D4-4662-9E53-5C77A62D6BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F43E5A-D0D4-4662-9E53-5C77A62D6BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F43E5A-D0D4-4662-9E53-5C77A62D6BA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EABB8FB1-97B7-4A72-87A8-48D2F07AB7B2} = {9ECFE155-3AA4-4385-B45A-4274D1FA27AE}
 		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E} = {74E26887-1ECE-47FA-A8DA-23BC52DE601F}
+		{04F43E5A-D0D4-4662-9E53-5C77A62D6BA2} = {9ECFE155-3AA4-4385-B45A-4274D1FA27AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95E8F3B3-49E8-400E-97A1-38D8B946DFCA}
