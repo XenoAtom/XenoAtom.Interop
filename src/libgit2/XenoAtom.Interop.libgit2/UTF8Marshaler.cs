@@ -47,9 +47,15 @@ static partial class libgit2
             return UTF8EncodingRelaxed.Default.GetString(unmanaged, new ReadOnlySpan<byte>(unmanaged, int.MaxValue).IndexOf((byte)0));
         }
 
+        /// <param name="unmanaged">The memory allocated for the unmanaged string.</param>
+        public static void UserFree(byte* unmanaged) => NativeMemory.Free(unmanaged);
+
         /// <summary>Free the memory for a specified unmanaged string.</summary>
         /// <param name="unmanaged">The memory allocated for the unmanaged string.</param>
-        public static void Free(byte* unmanaged) => NativeMemory.Free(unmanaged);
+        public static void Free(byte* unmanaged)
+        {
+            // We don't free memory allocated by the marshaller
+        }
         
         /// <summary>Custom marshaller to marshal a managed string as a UTF-8 unmanaged string.</summary>
         public ref struct ManagedToUnmanagedIn

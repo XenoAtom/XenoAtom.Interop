@@ -357,7 +357,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_sorting")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_revwalk_sorting(libgit2.git_revwalk walk, uint sort_mode);
+        public static partial libgit2.git_result git_revwalk_sorting(libgit2.git_revwalk walk, libgit2.git_sort_t sort_mode);
         
         /// <summary>
         /// Push and hide the respective endpoints of the given range.

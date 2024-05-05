@@ -7,11 +7,13 @@
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <EnableMSTestRunner>true</EnableMSTestRunner>
+    <RootNamespace>XenoAtom.Interop.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LibGit2Sharp.NativeBinaries" Version="2.0.322" />
     <PackageReference Include="MSTest" Version="3.*" />
-    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting"/>
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
   <ItemGroup>

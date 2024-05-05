@@ -60,6 +60,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_buf_dispose")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_buf_dispose(libgit2.git_buf* buffer);
+        public static partial void git_buf_dispose(ref libgit2.git_buf buffer);
     }
 }

@@ -14,6 +14,6 @@ static partial class libgit2
 
         public static unsafe byte* StringToUnmanagedUtf8String(string? managed) => Utf8CustomMarshaller.ConvertToUnmanaged(managed);
 
-        public static unsafe void FreeUnmanagedUtf8String(byte* utf8String) => Utf8CustomMarshaller.Free(utf8String);
+        public static unsafe void FreeUnmanagedUtf8String(byte* utf8String) => Utf8CustomMarshaller.UserFree(utf8String);
     }
 }

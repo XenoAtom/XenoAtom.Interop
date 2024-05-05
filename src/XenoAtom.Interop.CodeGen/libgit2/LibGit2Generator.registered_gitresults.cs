@@ -6,6 +6,8 @@ partial class LibGit2Generator
 {
     private static readonly HashSet<string> GitResultFunctions =
     [
+        "git_libgit2_init",
+        "git_libgit2_shutdown",
         // annotated_commit.h
         "git_annotated_commit_from_fetchhead",
         "git_annotated_commit_from_ref",

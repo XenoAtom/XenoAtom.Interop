@@ -29,7 +29,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_libgit2_init();
+        public static partial libgit2.git_result git_libgit2_init();
         
         /// <summary>
         /// Shutdown the global state
@@ -44,6 +44,6 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_shutdown")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_libgit2_shutdown();
+        public static partial libgit2.git_result git_libgit2_shutdown();
     }
 }
