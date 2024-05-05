@@ -30,6 +30,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Disable runtime marshalling to make sure that we are controlling/using raw marshalling for char/bool -->
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.DisableRuntimeMarshallingAttribute" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)../img/XenoAtom.Interop.libgit2.png" Pack="true" PackagePath="/" />
     <None Include="$(MSBuildThisFileDirectory)../readme.md" Pack="true" PackagePath="/" />
   </ItemGroup>
