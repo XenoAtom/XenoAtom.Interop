@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 using CppAst;
 using CppAst.CodeGen.Common;
 using CppAst.CodeGen.CSharp;
@@ -18,6 +19,7 @@ internal partial class LibGit2Generator
     private readonly Dictionary<string, List<string>> _gitResultFunctionsDetectedButNotRegistered;
     private readonly List<CSharpStruct> _structs;
     private readonly Dictionary<CSharpStruct, HashSet<CSharpRefKind>> _structRefUsages;
+    private readonly ApkIncludeHelper _apkIncludeHelper;
 
     /// <summary>
     /// List of functions that should not use string marshalling for byte* buffers
@@ -33,22 +35,30 @@ internal partial class LibGit2Generator
         "git_odb_stream_write",
     ];
 
-    public LibGit2Generator()
+    public LibGit2Generator(ApkIncludeHelper apkIncludeHelper)
     {
+        _apkIncludeHelper = apkIncludeHelper;
         _structs = new List<CSharpStruct>();
         _structRefUsages = new Dictionary<CSharpStruct, HashSet<CSharpRefKind>>();
         _gitResultFunctionsDetectedButNotRegistered = new Dictionary<string, List<string>>();
     }
 
-    public void Run()
+    public async Task Run()
     {
-        var srcFolder = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\..\..\..\..\libgit2\include"));
+        // Make sure that we download libgit2-dev includes
+        await _apkIncludeHelper.EnsureIncludes("libgit2-dev");
+
+        var sysIncludes = _apkIncludeHelper.GetSysIncludeDirectory("main");
+
+        var communityFolder = _apkIncludeHelper.GetIncludeDirectory("community");
+        List<string> srcFolders =
+        [
+            _apkIncludeHelper.GetIncludeDirectory("main"),
+            communityFolder,
+        ];
+
         var destFolder = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\..\libgit2\XenoAtom.Interop.libgit2\generated"));
             
-        if (!Directory.Exists(srcFolder))
-        {
-            throw new DirectoryNotFoundException($"The source folder `{srcFolder}` doesn't exist");
-        }
         if (!Directory.Exists(destFolder))
         {
             throw new DirectoryNotFoundException($"The destination folder `{destFolder}` doesn't exist");
@@ -60,6 +70,8 @@ internal partial class LibGit2Generator
             DefaultNamespace = "XenoAtom.Interop",
             DefaultOutputFilePath = "/libgit2.generated.cs",
             DefaultDllImportNameAndArguments = "LibraryName",
+            TargetVendor = "linux",
+            TargetSystem = "musl",
             Defines =
             {
                 "GIT_DEPRECATE_HARD"
@@ -265,13 +277,21 @@ typedef int git_result;
                 e => e.MapAll<CppFunction>().CppAction(ProcessCppFunctions).CSharpAction(ProcessCSharpMethods)
             },
         };
-        csOptions.IncludeFolders.Add(srcFolder);
+
+        foreach (var srcFolder in srcFolders)
+        {
+            csOptions.IncludeFolders.Add(srcFolder);
+        }
+
+        csOptions.SystemIncludeFolders.Add(sysIncludes);
+        csOptions.AdditionalArguments.Add("-nostdinc");
+        
         var files = new List<string>()
         {
-            Path.Combine(srcFolder, "git2.h"),
-            Path.Combine(srcFolder, "git2", "trace.h")
+            Path.Combine(communityFolder, "git2.h"),
+            Path.Combine(communityFolder, "git2", "trace.h")
         };
-
+        
         var csCompilation = CSharpConverter.Convert(files, csOptions);
 
         {

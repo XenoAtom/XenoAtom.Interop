@@ -20,7 +20,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// The type of proxy to use.
         /// </summary>
-        public enum git_proxy_t : int
+        public enum git_proxy_t : uint
         {
             /// <summary>
             /// Do not attempt to connect through a proxy

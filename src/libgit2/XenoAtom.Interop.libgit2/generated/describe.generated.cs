@@ -25,7 +25,7 @@ namespace XenoAtom.Interop
         /// namely they say to look for any reference in either refs/tags/ or
         /// refs/ respectively.
         /// </remarks>
-        public enum git_describe_strategy_t : int
+        public enum git_describe_strategy_t : uint
         {
             GIT_DESCRIBE_DEFAULT,
             

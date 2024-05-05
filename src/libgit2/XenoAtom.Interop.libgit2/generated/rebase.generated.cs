@@ -20,13 +20,13 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Type of rebase operation in-progress after calling `git_rebase_next`.
         /// </summary>
-        public enum git_rebase_operation_t : int
+        public enum git_rebase_operation_t : uint
         {
             /// <summary>
             /// The given commit is to be cherry-picked.  The client should commit
             /// the changes and continue if there are no conflicts.
             /// </summary>
-            GIT_REBASE_OPERATION_PICK = unchecked((int)0),
+            GIT_REBASE_OPERATION_PICK = unchecked((uint)0),
             
             /// <summary>
             /// The given commit is to be cherry-picked, but the client should prompt

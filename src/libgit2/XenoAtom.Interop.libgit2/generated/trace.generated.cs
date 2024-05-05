@@ -21,42 +21,42 @@ namespace XenoAtom.Interop
         /// Available tracing levels.  When tracing is set to a particular level,
         /// callers will be provided tracing at the given level and all lower levels.
         /// </summary>
-        public enum git_trace_level_t : int
+        public enum git_trace_level_t : uint
         {
             /// <summary>
             /// No tracing will be performed.
             /// </summary>
-            GIT_TRACE_NONE = unchecked((int)0),
+            GIT_TRACE_NONE = unchecked((uint)0),
             
             /// <summary>
             /// Severe errors that may impact the program's execution
             /// </summary>
-            GIT_TRACE_FATAL = unchecked((int)1),
+            GIT_TRACE_FATAL = unchecked((uint)1),
             
             /// <summary>
             /// Errors that do not impact the program's execution
             /// </summary>
-            GIT_TRACE_ERROR = unchecked((int)2),
+            GIT_TRACE_ERROR = unchecked((uint)2),
             
             /// <summary>
             /// Warnings that suggest abnormal data
             /// </summary>
-            GIT_TRACE_WARN = unchecked((int)3),
+            GIT_TRACE_WARN = unchecked((uint)3),
             
             /// <summary>
             /// Informational messages about program execution
             /// </summary>
-            GIT_TRACE_INFO = unchecked((int)4),
+            GIT_TRACE_INFO = unchecked((uint)4),
             
             /// <summary>
             /// Detailed data that allows for debugging
             /// </summary>
-            GIT_TRACE_DEBUG = unchecked((int)5),
+            GIT_TRACE_DEBUG = unchecked((uint)5),
             
             /// <summary>
             /// Exceptionally detailed debugging data
             /// </summary>
-            GIT_TRACE_TRACE = unchecked((int)6),
+            GIT_TRACE_TRACE = unchecked((uint)6),
         }
         
         /// <summary>

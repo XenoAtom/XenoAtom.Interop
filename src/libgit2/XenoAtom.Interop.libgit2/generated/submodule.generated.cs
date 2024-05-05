@@ -43,35 +43,35 @@ namespace XenoAtom.Interop
         /// * WD_WD_MODIFIED    - submodule workdir has modified filesLastly, the following will only be returned for ignore "NONE".* WD_UNTRACKED      - wd contains untracked files
         /// </remarks>
         [Flags]
-        public enum git_submodule_status_t : int
+        public enum git_submodule_status_t : uint
         {
-            GIT_SUBMODULE_STATUS_IN_HEAD = unchecked((int)(1u << (int)0)),
+            GIT_SUBMODULE_STATUS_IN_HEAD = unchecked((uint)(1u << 0)),
             
-            GIT_SUBMODULE_STATUS_IN_INDEX = unchecked((int)(1u << (int)1)),
+            GIT_SUBMODULE_STATUS_IN_INDEX = unchecked((uint)(1u << 1)),
             
-            GIT_SUBMODULE_STATUS_IN_CONFIG = unchecked((int)(1u << (int)2)),
+            GIT_SUBMODULE_STATUS_IN_CONFIG = unchecked((uint)(1u << 2)),
             
-            GIT_SUBMODULE_STATUS_IN_WD = unchecked((int)(1u << (int)3)),
+            GIT_SUBMODULE_STATUS_IN_WD = unchecked((uint)(1u << 3)),
             
-            GIT_SUBMODULE_STATUS_INDEX_ADDED = unchecked((int)(1u << (int)4)),
+            GIT_SUBMODULE_STATUS_INDEX_ADDED = unchecked((uint)(1u << 4)),
             
-            GIT_SUBMODULE_STATUS_INDEX_DELETED = unchecked((int)(1u << (int)5)),
+            GIT_SUBMODULE_STATUS_INDEX_DELETED = unchecked((uint)(1u << 5)),
             
-            GIT_SUBMODULE_STATUS_INDEX_MODIFIED = unchecked((int)(1u << (int)6)),
+            GIT_SUBMODULE_STATUS_INDEX_MODIFIED = unchecked((uint)(1u << 6)),
             
-            GIT_SUBMODULE_STATUS_WD_UNINITIALIZED = unchecked((int)(1u << (int)7)),
+            GIT_SUBMODULE_STATUS_WD_UNINITIALIZED = unchecked((uint)(1u << 7)),
             
-            GIT_SUBMODULE_STATUS_WD_ADDED = unchecked((int)(1u << (int)8)),
+            GIT_SUBMODULE_STATUS_WD_ADDED = unchecked((uint)(1u << 8)),
             
-            GIT_SUBMODULE_STATUS_WD_DELETED = unchecked((int)(1u << (int)9)),
+            GIT_SUBMODULE_STATUS_WD_DELETED = unchecked((uint)(1u << 9)),
             
-            GIT_SUBMODULE_STATUS_WD_MODIFIED = unchecked((int)(1u << (int)10)),
+            GIT_SUBMODULE_STATUS_WD_MODIFIED = unchecked((uint)(1u << 10)),
             
-            GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED = unchecked((int)(1u << (int)11)),
+            GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED = unchecked((uint)(1u << 11)),
             
-            GIT_SUBMODULE_STATUS_WD_WD_MODIFIED = unchecked((int)(1u << (int)12)),
+            GIT_SUBMODULE_STATUS_WD_WD_MODIFIED = unchecked((uint)(1u << 12)),
             
-            GIT_SUBMODULE_STATUS_WD_UNTRACKED = unchecked((int)(1u << (int)13)),
+            GIT_SUBMODULE_STATUS_WD_UNTRACKED = unchecked((uint)(1u << 13)),
         }
         
         public const libgit2.git_submodule_status_t GIT_SUBMODULE_STATUS_IN_HEAD = git_submodule_status_t.GIT_SUBMODULE_STATUS_IN_HEAD;

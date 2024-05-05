@@ -22,22 +22,22 @@ namespace XenoAtom.Interop
         /// behavior.
         /// </summary>
         [Flags]
-        public enum git_worktree_prune_t : int
+        public enum git_worktree_prune_t : uint
         {
             /// <summary>
             /// Prune working tree even if working tree is valid
             /// </summary>
-            GIT_WORKTREE_PRUNE_VALID = unchecked((int)1u << (int)0),
+            GIT_WORKTREE_PRUNE_VALID = unchecked((uint)1u << 0),
             
             /// <summary>
             /// Prune working tree even if it is locked
             /// </summary>
-            GIT_WORKTREE_PRUNE_LOCKED = unchecked((int)1u << (int)1),
+            GIT_WORKTREE_PRUNE_LOCKED = unchecked((uint)1u << 1),
             
             /// <summary>
             /// Prune checked out working tree
             /// </summary>
-            GIT_WORKTREE_PRUNE_WORKING_TREE = unchecked((int)1u << (int)2),
+            GIT_WORKTREE_PRUNE_WORKING_TREE = unchecked((uint)1u << 2),
         }
         
         /// <summary>

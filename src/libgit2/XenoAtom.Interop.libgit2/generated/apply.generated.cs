@@ -21,13 +21,13 @@ namespace XenoAtom.Interop
         /// Flags controlling the behavior of git_apply
         /// </summary>
         [Flags]
-        public enum git_apply_flags_t : int
+        public enum git_apply_flags_t : uint
         {
             /// <summary>
             /// Don't actually make changes, just test that the patch applies.
             /// This is the equivalent of `git apply --check`.
             /// </summary>
-            GIT_APPLY_CHECK = unchecked((int)(1  << (int) 0)),
+            GIT_APPLY_CHECK = unchecked((uint)(1<<0)),
         }
         
         /// <summary>
@@ -39,25 +39,25 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Possible application locations for git_apply
         /// </summary>
-        public enum git_apply_location_t : int
+        public enum git_apply_location_t : uint
         {
             /// <summary>
             /// Apply the patch to the workdir, leaving the index untouched.
             /// This is the equivalent of `git apply` with no location argument.
             /// </summary>
-            GIT_APPLY_LOCATION_WORKDIR = unchecked((int)0),
+            GIT_APPLY_LOCATION_WORKDIR = unchecked((uint)0),
             
             /// <summary>
             /// Apply the patch to the index, leaving the working directory
             /// untouched.  This is the equivalent of `git apply --cached`.
             /// </summary>
-            GIT_APPLY_LOCATION_INDEX = unchecked((int)1),
+            GIT_APPLY_LOCATION_INDEX = unchecked((uint)1),
             
             /// <summary>
             /// Apply the patch to both the working directory and the index.
             /// This is the equivalent of `git apply --index`.
             /// </summary>
-            GIT_APPLY_LOCATION_BOTH = unchecked((int)2),
+            GIT_APPLY_LOCATION_BOTH = unchecked((uint)2),
         }
         
         /// <summary>

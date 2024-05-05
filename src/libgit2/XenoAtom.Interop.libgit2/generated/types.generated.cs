@@ -104,24 +104,24 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Basic type of any Git reference.
         /// </summary>
-        public enum git_reference_t : int
+        public enum git_reference_t : uint
         {
             /// <summary>
             /// Invalid reference
             /// </summary>
-            GIT_REFERENCE_INVALID = unchecked((int)0),
+            GIT_REFERENCE_INVALID = unchecked((uint)0),
             
             /// <summary>
             /// A reference that points at an object id
             /// </summary>
-            GIT_REFERENCE_DIRECT = unchecked((int)1),
+            GIT_REFERENCE_DIRECT = unchecked((uint)1),
             
             /// <summary>
             /// A reference that points at another reference
             /// </summary>
-            GIT_REFERENCE_SYMBOLIC = unchecked((int)2),
+            GIT_REFERENCE_SYMBOLIC = unchecked((uint)2),
             
-            GIT_REFERENCE_ALL = unchecked((int)GIT_REFERENCE_DIRECT | GIT_REFERENCE_SYMBOLIC),
+            GIT_REFERENCE_ALL = unchecked((uint)GIT_REFERENCE_DIRECT|GIT_REFERENCE_SYMBOLIC),
         }
         
         /// <summary>
@@ -144,13 +144,13 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Basic type of any Git branch.
         /// </summary>
-        public enum git_branch_t : int
+        public enum git_branch_t : uint
         {
-            GIT_BRANCH_LOCAL = unchecked((int)1),
+            GIT_BRANCH_LOCAL = unchecked((uint)1),
             
-            GIT_BRANCH_REMOTE = unchecked((int)2),
+            GIT_BRANCH_REMOTE = unchecked((uint)2),
             
-            GIT_BRANCH_ALL = unchecked((int)GIT_BRANCH_LOCAL | GIT_BRANCH_REMOTE),
+            GIT_BRANCH_ALL = unchecked((uint)GIT_BRANCH_LOCAL|GIT_BRANCH_REMOTE),
         }
         
         public const libgit2.git_branch_t GIT_BRANCH_LOCAL = git_branch_t.GIT_BRANCH_LOCAL;
@@ -162,19 +162,19 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Valid modes for index and tree entries.
         /// </summary>
-        public enum git_filemode_t : int
+        public enum git_filemode_t : uint
         {
-            GIT_FILEMODE_UNREADABLE = unchecked((int)0000000),
+            GIT_FILEMODE_UNREADABLE = unchecked((uint)0000000),
             
-            GIT_FILEMODE_TREE = unchecked((int)0040000),
+            GIT_FILEMODE_TREE = unchecked((uint)0040000),
             
-            GIT_FILEMODE_BLOB = unchecked((int)0100644),
+            GIT_FILEMODE_BLOB = unchecked((uint)0100644),
             
-            GIT_FILEMODE_BLOB_EXECUTABLE = unchecked((int)0100755),
+            GIT_FILEMODE_BLOB_EXECUTABLE = unchecked((uint)0100755),
             
-            GIT_FILEMODE_LINK = unchecked((int)0120000),
+            GIT_FILEMODE_LINK = unchecked((uint)0120000),
             
-            GIT_FILEMODE_COMMIT = unchecked((int)0160000),
+            GIT_FILEMODE_COMMIT = unchecked((uint)0160000),
         }
         
         public const libgit2.git_filemode_t GIT_FILEMODE_UNREADABLE = git_filemode_t.GIT_FILEMODE_UNREADABLE;
@@ -210,17 +210,17 @@ namespace XenoAtom.Interop
         /// - GIT_SUBMODULE_UPDATE_DEFAULT: not used except as static initializer
         /// when we don't want any particular update rule to be specified.
         /// </remarks>
-        public enum git_submodule_update_t : int
+        public enum git_submodule_update_t : uint
         {
-            GIT_SUBMODULE_UPDATE_CHECKOUT = unchecked((int)1),
+            GIT_SUBMODULE_UPDATE_CHECKOUT = unchecked((uint)1),
             
-            GIT_SUBMODULE_UPDATE_REBASE = unchecked((int)2),
+            GIT_SUBMODULE_UPDATE_REBASE = unchecked((uint)2),
             
-            GIT_SUBMODULE_UPDATE_MERGE = unchecked((int)3),
+            GIT_SUBMODULE_UPDATE_MERGE = unchecked((uint)3),
             
-            GIT_SUBMODULE_UPDATE_NONE = unchecked((int)4),
+            GIT_SUBMODULE_UPDATE_NONE = unchecked((uint)4),
             
-            GIT_SUBMODULE_UPDATE_DEFAULT = unchecked((int)0),
+            GIT_SUBMODULE_UPDATE_DEFAULT = unchecked((uint)0),
         }
         
         public const libgit2.git_submodule_update_t GIT_SUBMODULE_UPDATE_CHECKOUT = git_submodule_update_t.GIT_SUBMODULE_UPDATE_CHECKOUT;
@@ -317,13 +317,13 @@ namespace XenoAtom.Interop
         /// * GIT_SUBMODULE_RECURSE_ONDEMAND - recurse into submodules only when
         /// commit not already in local clone
         /// </remarks>
-        public enum git_submodule_recurse_t : int
+        public enum git_submodule_recurse_t : uint
         {
-            GIT_SUBMODULE_RECURSE_NO = unchecked((int)0),
+            GIT_SUBMODULE_RECURSE_NO = unchecked((uint)0),
             
-            GIT_SUBMODULE_RECURSE_YES = unchecked((int)1),
+            GIT_SUBMODULE_RECURSE_YES = unchecked((uint)1),
             
-            GIT_SUBMODULE_RECURSE_ONDEMAND = unchecked((int)2),
+            GIT_SUBMODULE_RECURSE_ONDEMAND = unchecked((uint)2),
         }
         
         public const libgit2.git_submodule_recurse_t GIT_SUBMODULE_RECURSE_NO = git_submodule_recurse_t.GIT_SUBMODULE_RECURSE_NO;
@@ -1044,9 +1044,9 @@ namespace XenoAtom.Interop
         
         public readonly partial struct git_time_t : IEquatable<git_time_t>
         {
-            public git_time_t(long value) => this.Value = value;
+            public git_time_t(int value) => this.Value = value;
             
-            public long Value { get; }
+            public int Value { get; }
             
             public bool Equals(git_time_t other) =>  Value.Equals(other.Value);
             
@@ -1056,9 +1056,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator long(git_time_t from) => from.Value;
+            public static implicit operator int(git_time_t from) => from.Value;
             
-            public static implicit operator git_time_t(long from) => new git_time_t(from);
+            public static implicit operator git_time_t(int from) => new git_time_t(from);
             
             public static bool operator ==(git_time_t left, git_time_t right) => left.Equals(right);
             
@@ -1505,11 +1505,18 @@ namespace XenoAtom.Interop
             public static bool operator !=(git_mailmap left, git_mailmap right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Note: Can't use off_t since if a client program includes 
+        /// &lt;sys
+        /// /types.h&gt;
+        /// before us (directly or indirectly), they'll get 32 bit off_t in their client
+        /// app, even though /we/ define _FILE_OFFSET_BITS=64.
+        /// </summary>
         public readonly partial struct git_off_t : IEquatable<git_off_t>
         {
-            public git_off_t(long value) => this.Value = value;
+            public git_off_t(int value) => this.Value = value;
             
-            public long Value { get; }
+            public int Value { get; }
             
             public bool Equals(git_off_t other) =>  Value.Equals(other.Value);
             
@@ -1519,9 +1526,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator long(git_off_t from) => from.Value;
+            public static implicit operator int(git_off_t from) => from.Value;
             
-            public static implicit operator git_off_t(long from) => new git_off_t(from);
+            public static implicit operator git_off_t(int from) => new git_off_t(from);
             
             public static bool operator ==(git_off_t left, git_off_t right) => left.Equals(right);
             

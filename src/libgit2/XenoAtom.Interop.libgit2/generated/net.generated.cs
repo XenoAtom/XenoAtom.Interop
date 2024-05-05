@@ -21,11 +21,11 @@ namespace XenoAtom.Interop
         /// git-upload-pack or git-receive-pack on the remote end when get_refs
         /// gets called.
         /// </remarks>
-        public enum git_direction : int
+        public enum git_direction : uint
         {
-            GIT_DIRECTION_FETCH = unchecked((int)0),
+            GIT_DIRECTION_FETCH = unchecked((uint)0),
             
-            GIT_DIRECTION_PUSH = unchecked((int)1),
+            GIT_DIRECTION_PUSH = unchecked((uint)1),
         }
         
         public const libgit2.git_direction GIT_DIRECTION_FETCH = git_direction.GIT_DIRECTION_FETCH;

@@ -20,22 +20,22 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Kinds of reset operation
         /// </summary>
-        public enum git_reset_t : int
+        public enum git_reset_t : uint
         {
             /// <summary>
             /// Move the head to the given commit
             /// </summary>
-            GIT_RESET_SOFT = unchecked((int)1),
+            GIT_RESET_SOFT = unchecked((uint)1),
             
             /// <summary>
             /// SOFT plus reset index to the commit
             /// </summary>
-            GIT_RESET_MIXED = unchecked((int)2),
+            GIT_RESET_MIXED = unchecked((uint)2),
             
             /// <summary>
             /// MIXED plus changes in working tree discarded
             /// </summary>
-            GIT_RESET_HARD = unchecked((int)3),
+            GIT_RESET_HARD = unchecked((uint)3),
         }
         
         /// <summary>

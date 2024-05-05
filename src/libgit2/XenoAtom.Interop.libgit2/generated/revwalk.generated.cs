@@ -21,34 +21,34 @@ namespace XenoAtom.Interop
         /// Flags to specify the sorting which a revwalk should perform.
         /// </summary>
         [Flags]
-        public enum git_sort_t : int
+        public enum git_sort_t : uint
         {
             /// <summary>
             /// Sort the output with the same default method from `git`: reverse
             /// chronological order. This is the default sorting for new walkers.
             /// </summary>
-            GIT_SORT_NONE = unchecked((int)0),
+            GIT_SORT_NONE = unchecked((uint)0),
             
             /// <summary>
             /// Sort the repository contents in topological order (no parents before
             /// all of its children are shown); this sorting mode can be combined
             /// with time sorting to produce `git`'s `--date-order``.
             /// </summary>
-            GIT_SORT_TOPOLOGICAL = unchecked((int)1  << (int) 0),
+            GIT_SORT_TOPOLOGICAL = unchecked((uint)1<<0),
             
             /// <summary>
             /// Sort the repository contents by commit time;
             /// this sorting mode can be combined with
             /// topological sorting.
             /// </summary>
-            GIT_SORT_TIME = unchecked((int)1  << (int) 1),
+            GIT_SORT_TIME = unchecked((uint)1<<1),
             
             /// <summary>
             /// Iterate through the repository contents in reverse
             /// order; this sorting mode can be combined with
             /// any of the above.
             /// </summary>
-            GIT_SORT_REVERSE = unchecked((int)1  << (int) 2),
+            GIT_SORT_REVERSE = unchecked((uint)1<<2),
         }
         
         /// <summary>

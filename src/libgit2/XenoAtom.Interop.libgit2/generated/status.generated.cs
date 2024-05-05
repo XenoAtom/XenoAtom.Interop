@@ -29,35 +29,35 @@ namespace XenoAtom.Interop
         /// working directory relative to the index.
         /// </remarks>
         [Flags]
-        public enum git_status_t : int
+        public enum git_status_t : uint
         {
-            GIT_STATUS_CURRENT = unchecked((int)0),
+            GIT_STATUS_CURRENT = unchecked((uint)0),
             
-            GIT_STATUS_INDEX_NEW = unchecked((int)(1u << (int)0)),
+            GIT_STATUS_INDEX_NEW = unchecked((uint)(1u << 0)),
             
-            GIT_STATUS_INDEX_MODIFIED = unchecked((int)(1u << (int)1)),
+            GIT_STATUS_INDEX_MODIFIED = unchecked((uint)(1u << 1)),
             
-            GIT_STATUS_INDEX_DELETED = unchecked((int)(1u << (int)2)),
+            GIT_STATUS_INDEX_DELETED = unchecked((uint)(1u << 2)),
             
-            GIT_STATUS_INDEX_RENAMED = unchecked((int)(1u << (int)3)),
+            GIT_STATUS_INDEX_RENAMED = unchecked((uint)(1u << 3)),
             
-            GIT_STATUS_INDEX_TYPECHANGE = unchecked((int)(1u << (int)4)),
+            GIT_STATUS_INDEX_TYPECHANGE = unchecked((uint)(1u << 4)),
             
-            GIT_STATUS_WT_NEW = unchecked((int)(1u << (int)7)),
+            GIT_STATUS_WT_NEW = unchecked((uint)(1u << 7)),
             
-            GIT_STATUS_WT_MODIFIED = unchecked((int)(1u << (int)8)),
+            GIT_STATUS_WT_MODIFIED = unchecked((uint)(1u << 8)),
             
-            GIT_STATUS_WT_DELETED = unchecked((int)(1u << (int)9)),
+            GIT_STATUS_WT_DELETED = unchecked((uint)(1u << 9)),
             
-            GIT_STATUS_WT_TYPECHANGE = unchecked((int)(1u << (int)10)),
+            GIT_STATUS_WT_TYPECHANGE = unchecked((uint)(1u << 10)),
             
-            GIT_STATUS_WT_RENAMED = unchecked((int)(1u << (int)11)),
+            GIT_STATUS_WT_RENAMED = unchecked((uint)(1u << 11)),
             
-            GIT_STATUS_WT_UNREADABLE = unchecked((int)(1u << (int)12)),
+            GIT_STATUS_WT_UNREADABLE = unchecked((uint)(1u << 12)),
             
-            GIT_STATUS_IGNORED = unchecked((int)(1u << (int)14)),
+            GIT_STATUS_IGNORED = unchecked((uint)(1u << 14)),
             
-            GIT_STATUS_CONFLICTED = unchecked((int)(1u << (int)15)),
+            GIT_STATUS_CONFLICTED = unchecked((uint)(1u << 15)),
         }
         
         public const libgit2.git_status_t GIT_STATUS_CURRENT = git_status_t.GIT_STATUS_CURRENT;
@@ -96,25 +96,25 @@ namespace XenoAtom.Interop
         /// callbacks.  With `git_status_list_new`, these will control which
         /// changes are included in the list.
         /// </remarks>
-        public enum git_status_show_t : int
+        public enum git_status_show_t : uint
         {
             /// <summary>
             /// The default. This roughly matches `git status --porcelain` regarding
             /// which files are included and in what order.
             /// </summary>
-            GIT_STATUS_SHOW_INDEX_AND_WORKDIR = unchecked((int)0),
+            GIT_STATUS_SHOW_INDEX_AND_WORKDIR = unchecked((uint)0),
             
             /// <summary>
             /// Only gives status based on HEAD to index comparison, not looking at
             /// working directory changes.
             /// </summary>
-            GIT_STATUS_SHOW_INDEX_ONLY = unchecked((int)1),
+            GIT_STATUS_SHOW_INDEX_ONLY = unchecked((uint)1),
             
             /// <summary>
             /// Only gives status based on index to working directory comparison,
             /// not comparing the index to the HEAD.
             /// </summary>
-            GIT_STATUS_SHOW_WORKDIR_ONLY = unchecked((int)2),
+            GIT_STATUS_SHOW_WORKDIR_ONLY = unchecked((uint)2),
         }
         
         /// <summary>
@@ -145,33 +145,33 @@ namespace XenoAtom.Interop
         /// together as `GIT_STATUS_OPT_DEFAULTS` if you want them as a baseline.
         /// </remarks>
         [Flags]
-        public enum git_status_opt_t : int
+        public enum git_status_opt_t : uint
         {
             /// <summary>
             /// Says that callbacks should be made on untracked files.
             /// These will only be made if the workdir files are included in the status
             /// "show" option.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_UNTRACKED = unchecked((int)(1u << (int)0)),
+            GIT_STATUS_OPT_INCLUDE_UNTRACKED = unchecked((uint)(1u << 0)),
             
             /// <summary>
             /// Says that ignored files get callbacks.
             /// Again, these callbacks will only be made if the workdir files are
             /// included in the status "show" option.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_IGNORED = unchecked((int)(1u << (int)1)),
+            GIT_STATUS_OPT_INCLUDE_IGNORED = unchecked((uint)(1u << 1)),
             
             /// <summary>
             /// Indicates that callback should be made even on unmodified files.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_UNMODIFIED = unchecked((int)(1u << (int)2)),
+            GIT_STATUS_OPT_INCLUDE_UNMODIFIED = unchecked((uint)(1u << 2)),
             
             /// <summary>
             /// Indicates that submodules should be skipped.
             /// This only applies if there are no pending typechanges to the submodule
             /// (either from or to another type).
             /// </summary>
-            GIT_STATUS_OPT_EXCLUDE_SUBMODULES = unchecked((int)(1u << (int)3)),
+            GIT_STATUS_OPT_EXCLUDE_SUBMODULES = unchecked((uint)(1u << 3)),
             
             /// <summary>
             /// Indicates that all files in untracked directories should be included.
@@ -180,58 +180,58 @@ namespace XenoAtom.Interop
             /// This flag says to include all of the individual files in the directory
             /// instead.
             /// </summary>
-            GIT_STATUS_OPT_RECURSE_UNTRACKED_DIRS = unchecked((int)(1u << (int)4)),
+            GIT_STATUS_OPT_RECURSE_UNTRACKED_DIRS = unchecked((uint)(1u << 4)),
             
             /// <summary>
             /// Indicates that the given path should be treated as a literal path,
             /// and not as a pathspec pattern.
             /// </summary>
-            GIT_STATUS_OPT_DISABLE_PATHSPEC_MATCH = unchecked((int)(1u << (int)5)),
+            GIT_STATUS_OPT_DISABLE_PATHSPEC_MATCH = unchecked((uint)(1u << 5)),
             
             /// <summary>
             /// Indicates that the contents of ignored directories should be included
             /// in the status. This is like doing `git ls-files -o -i --exclude-standard`
             /// with core git.
             /// </summary>
-            GIT_STATUS_OPT_RECURSE_IGNORED_DIRS = unchecked((int)(1u << (int)6)),
+            GIT_STATUS_OPT_RECURSE_IGNORED_DIRS = unchecked((uint)(1u << 6)),
             
             /// <summary>
             /// Indicates that rename detection should be processed between the head and
             /// the index and enables the GIT_STATUS_INDEX_RENAMED as a possible status
             /// flag.
             /// </summary>
-            GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX = unchecked((int)(1u << (int)7)),
+            GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX = unchecked((uint)(1u << 7)),
             
             /// <summary>
             /// Indicates that rename detection should be run between the index and the
             /// working directory and enabled GIT_STATUS_WT_RENAMED as a possible status
             /// flag.
             /// </summary>
-            GIT_STATUS_OPT_RENAMES_INDEX_TO_WORKDIR = unchecked((int)(1u << (int)8)),
+            GIT_STATUS_OPT_RENAMES_INDEX_TO_WORKDIR = unchecked((uint)(1u << 8)),
             
             /// <summary>
             /// Overrides the native case sensitivity for the file system and forces
             /// the output to be in case-sensitive order.
             /// </summary>
-            GIT_STATUS_OPT_SORT_CASE_SENSITIVELY = unchecked((int)(1u << (int)9)),
+            GIT_STATUS_OPT_SORT_CASE_SENSITIVELY = unchecked((uint)(1u << 9)),
             
             /// <summary>
             /// Overrides the native case sensitivity for the file system and forces
             /// the output to be in case-insensitive order.
             /// </summary>
-            GIT_STATUS_OPT_SORT_CASE_INSENSITIVELY = unchecked((int)(1u << (int)10)),
+            GIT_STATUS_OPT_SORT_CASE_INSENSITIVELY = unchecked((uint)(1u << 10)),
             
             /// <summary>
             /// Iindicates that rename detection should include rewritten files.
             /// </summary>
-            GIT_STATUS_OPT_RENAMES_FROM_REWRITES = unchecked((int)(1u << (int)11)),
+            GIT_STATUS_OPT_RENAMES_FROM_REWRITES = unchecked((uint)(1u << 11)),
             
             /// <summary>
             /// Bypasses the default status behavior of doing a "soft" index reload
             /// (i.e. reloading the index data if the file on disk has been modified
             /// outside libgit2).
             /// </summary>
-            GIT_STATUS_OPT_NO_REFRESH = unchecked((int)(1u << (int)12)),
+            GIT_STATUS_OPT_NO_REFRESH = unchecked((uint)(1u << 12)),
             
             /// <summary>
             /// Tells libgit2 to refresh the stat cache in the index for files that are
@@ -239,20 +239,20 @@ namespace XenoAtom.Interop
             /// It will result in less work being done on subsequent calls to get status.
             /// This is mutually exclusive with the NO_REFRESH option.
             /// </summary>
-            GIT_STATUS_OPT_UPDATE_INDEX = unchecked((int)(1u << (int)13)),
+            GIT_STATUS_OPT_UPDATE_INDEX = unchecked((uint)(1u << 13)),
             
             /// <summary>
             /// Normally files that cannot be opened or read are ignored as
             /// these are often transient files; this option will return
             /// unreadable files as `GIT_STATUS_WT_UNREADABLE`.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_UNREADABLE = unchecked((int)(1u << (int)14)),
+            GIT_STATUS_OPT_INCLUDE_UNREADABLE = unchecked((uint)(1u << 14)),
             
             /// <summary>
             /// Unreadable files will be detected and given the status
             /// untracked instead of unreadable.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED = unchecked((int)(1u << (int)15)),
+            GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED = unchecked((uint)(1u << 15)),
         }
         
         /// <summary>

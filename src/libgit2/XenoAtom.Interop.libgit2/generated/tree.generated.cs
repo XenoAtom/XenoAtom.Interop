@@ -20,17 +20,17 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Tree traversal modes
         /// </summary>
-        public enum git_treewalk_mode : int
+        public enum git_treewalk_mode : uint
         {
             /// <summary>
             /// Pre-order
             /// </summary>
-            GIT_TREEWALK_PRE = unchecked((int)0),
+            GIT_TREEWALK_PRE = unchecked((uint)0),
             
             /// <summary>
             /// Post-order
             /// </summary>
-            GIT_TREEWALK_POST = unchecked((int)1),
+            GIT_TREEWALK_POST = unchecked((uint)1),
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// The kind of update to perform
         /// </summary>
-        public enum git_tree_update_t : int
+        public enum git_tree_update_t : uint
         {
             /// <summary>
             /// Update or insert an entry at the specified path

@@ -22,26 +22,26 @@ namespace XenoAtom.Interop
         /// passed in via the `flags` value in the `git_merge_options`.
         /// </summary>
         [Flags]
-        public enum git_merge_flag_t : int
+        public enum git_merge_flag_t : uint
         {
             /// <summary>
             /// Detect renames that occur between the common ancestor and the "ours"
             /// side or the common ancestor and the "theirs" side.  This will enable
             /// the ability to merge between a modified and renamed file.
             /// </summary>
-            GIT_MERGE_FIND_RENAMES = unchecked((int)(1  << (int) 0)),
+            GIT_MERGE_FIND_RENAMES = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// If a conflict occurs, exit immediately instead of attempting to
             /// continue resolving conflicts.  The merge operation will fail with
             /// GIT_EMERGECONFLICT and no index will be returned.
             /// </summary>
-            GIT_MERGE_FAIL_ON_CONFLICT = unchecked((int)(1  << (int) 1)),
+            GIT_MERGE_FAIL_ON_CONFLICT = unchecked((uint)(1<<1)),
             
             /// <summary>
             /// Do not write the REUC extension on the generated index
             /// </summary>
-            GIT_MERGE_SKIP_REUC = unchecked((int)(1  << (int) 2)),
+            GIT_MERGE_SKIP_REUC = unchecked((uint)(1<<2)),
             
             /// <summary>
             /// If the commits being merged have multiple merge bases, do not build
@@ -49,7 +49,7 @@ namespace XenoAtom.Interop
             /// instead simply use the first base.  This flag provides a similar
             /// merge base to `git-merge-resolve`.
             /// </summary>
-            GIT_MERGE_NO_RECURSIVE = unchecked((int)(1  << (int) 3)),
+            GIT_MERGE_NO_RECURSIVE = unchecked((uint)(1<<3)),
             
             /// <summary>
             /// Treat this merge as if it is to produce the virtual base
@@ -57,7 +57,7 @@ namespace XenoAtom.Interop
             /// no conflicts, any conflicting regions will keep conflict
             /// markers in the merge result.
             /// </summary>
-            GIT_MERGE_VIRTUAL_BASE = unchecked((int)(1  << (int) 4)),
+            GIT_MERGE_VIRTUAL_BASE = unchecked((uint)(1<<4)),
         }
         
         /// <summary>
@@ -99,7 +99,7 @@ namespace XenoAtom.Interop
         /// Merge file favor options for `git_merge_options` instruct the file-level
         /// merging functionality how to deal with conflicting regions of the files.
         /// </summary>
-        public enum git_merge_file_favor_t : int
+        public enum git_merge_file_favor_t : uint
         {
             /// <summary>
             /// When a region of a file is changed in both branches, a conflict
@@ -107,21 +107,21 @@ namespace XenoAtom.Interop
             /// a merge file with conflict markers in the working directory.
             /// This is the default.
             /// </summary>
-            GIT_MERGE_FILE_FAVOR_NORMAL = unchecked((int)0),
+            GIT_MERGE_FILE_FAVOR_NORMAL = unchecked((uint)0),
             
             /// <summary>
             /// When a region of a file is changed in both branches, the file
             /// created in the index will contain the "ours" side of any conflicting
             /// region.  The index will not record a conflict.
             /// </summary>
-            GIT_MERGE_FILE_FAVOR_OURS = unchecked((int)1),
+            GIT_MERGE_FILE_FAVOR_OURS = unchecked((uint)1),
             
             /// <summary>
             /// When a region of a file is changed in both branches, the file
             /// created in the index will contain the "theirs" side of any conflicting
             /// region.  The index will not record a conflict.
             /// </summary>
-            GIT_MERGE_FILE_FAVOR_THEIRS = unchecked((int)2),
+            GIT_MERGE_FILE_FAVOR_THEIRS = unchecked((uint)2),
             
             /// <summary>
             /// When a region of a file is changed in both branches, the file
@@ -129,7 +129,7 @@ namespace XenoAtom.Interop
             /// which has the result of combining both files.  The index will not
             /// record a conflict.
             /// </summary>
-            GIT_MERGE_FILE_FAVOR_UNION = unchecked((int)3),
+            GIT_MERGE_FILE_FAVOR_UNION = unchecked((uint)3),
         }
         
         /// <summary>
@@ -166,64 +166,64 @@ namespace XenoAtom.Interop
         /// File merging flags
         /// </summary>
         [Flags]
-        public enum git_merge_file_flag_t : int
+        public enum git_merge_file_flag_t : uint
         {
             /// <summary>
             /// Defaults
             /// </summary>
-            GIT_MERGE_FILE_DEFAULT = unchecked((int)0),
+            GIT_MERGE_FILE_DEFAULT = unchecked((uint)0),
             
             /// <summary>
             /// Create standard conflicted merge files
             /// </summary>
-            GIT_MERGE_FILE_STYLE_MERGE = unchecked((int)(1  << (int) 0)),
+            GIT_MERGE_FILE_STYLE_MERGE = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// Create diff3-style files
             /// </summary>
-            GIT_MERGE_FILE_STYLE_DIFF3 = unchecked((int)(1  << (int) 1)),
+            GIT_MERGE_FILE_STYLE_DIFF3 = unchecked((uint)(1<<1)),
             
             /// <summary>
             /// Condense non-alphanumeric regions for simplified diff file
             /// </summary>
-            GIT_MERGE_FILE_SIMPLIFY_ALNUM = unchecked((int)(1  << (int) 2)),
+            GIT_MERGE_FILE_SIMPLIFY_ALNUM = unchecked((uint)(1<<2)),
             
             /// <summary>
             /// Ignore all whitespace
             /// </summary>
-            GIT_MERGE_FILE_IGNORE_WHITESPACE = unchecked((int)(1  << (int) 3)),
+            GIT_MERGE_FILE_IGNORE_WHITESPACE = unchecked((uint)(1<<3)),
             
             /// <summary>
             /// Ignore changes in amount of whitespace
             /// </summary>
-            GIT_MERGE_FILE_IGNORE_WHITESPACE_CHANGE = unchecked((int)(1  << (int) 4)),
+            GIT_MERGE_FILE_IGNORE_WHITESPACE_CHANGE = unchecked((uint)(1<<4)),
             
             /// <summary>
             /// Ignore whitespace at end of line
             /// </summary>
-            GIT_MERGE_FILE_IGNORE_WHITESPACE_EOL = unchecked((int)(1  << (int) 5)),
+            GIT_MERGE_FILE_IGNORE_WHITESPACE_EOL = unchecked((uint)(1<<5)),
             
             /// <summary>
             /// Use the "patience diff" algorithm
             /// </summary>
-            GIT_MERGE_FILE_DIFF_PATIENCE = unchecked((int)(1  << (int) 6)),
+            GIT_MERGE_FILE_DIFF_PATIENCE = unchecked((uint)(1<<6)),
             
             /// <summary>
             /// Take extra time to find minimal diff
             /// </summary>
-            GIT_MERGE_FILE_DIFF_MINIMAL = unchecked((int)(1  << (int) 7)),
+            GIT_MERGE_FILE_DIFF_MINIMAL = unchecked((uint)(1<<7)),
             
             /// <summary>
             /// Create zdiff3 ("zealous diff3")-style files
             /// </summary>
-            GIT_MERGE_FILE_STYLE_ZDIFF3 = unchecked((int)(1  << (int) 8)),
+            GIT_MERGE_FILE_STYLE_ZDIFF3 = unchecked((uint)(1<<8)),
             
             /// <summary>
             /// Do not produce file conflicts when common regions have
             /// changed; keep the conflict markers in the file and accept
             /// that as the merge result.
             /// </summary>
-            GIT_MERGE_FILE_ACCEPT_CONFLICTS = unchecked((int)(1  << (int) 9)),
+            GIT_MERGE_FILE_ACCEPT_CONFLICTS = unchecked((uint)(1<<9)),
         }
         
         /// <summary>
@@ -287,38 +287,38 @@ namespace XenoAtom.Interop
         /// The results of `git_merge_analysis` indicate the merge opportunities.
         /// </summary>
         [Flags]
-        public enum git_merge_analysis_t : int
+        public enum git_merge_analysis_t : uint
         {
             /// <summary>
             /// No merge is possible.  (Unused.)
             /// </summary>
-            GIT_MERGE_ANALYSIS_NONE = unchecked((int)0),
+            GIT_MERGE_ANALYSIS_NONE = unchecked((uint)0),
             
             /// <summary>
             /// A "normal" merge; both HEAD and the given merge input have diverged
             /// from their common ancestor.  The divergent commits must be merged.
             /// </summary>
-            GIT_MERGE_ANALYSIS_NORMAL = unchecked((int)(1  << (int) 0)),
+            GIT_MERGE_ANALYSIS_NORMAL = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// All given merge inputs are reachable from HEAD, meaning the
             /// repository is up-to-date and no merge needs to be performed.
             /// </summary>
-            GIT_MERGE_ANALYSIS_UP_TO_DATE = unchecked((int)(1  << (int) 1)),
+            GIT_MERGE_ANALYSIS_UP_TO_DATE = unchecked((uint)(1<<1)),
             
             /// <summary>
             /// The given merge input is a fast-forward from HEAD and no merge
             /// needs to be performed.  Instead, the client can check out the
             /// given merge input.
             /// </summary>
-            GIT_MERGE_ANALYSIS_FASTFORWARD = unchecked((int)(1  << (int) 2)),
+            GIT_MERGE_ANALYSIS_FASTFORWARD = unchecked((uint)(1<<2)),
             
             /// <summary>
             /// The HEAD of the current repository is "unborn" and does not point to
             /// a valid commit.  No merge can be performed, but the caller may wish
             /// to simply set HEAD to the target commit(s).
             /// </summary>
-            GIT_MERGE_ANALYSIS_UNBORN = unchecked((int)(1  << (int) 3)),
+            GIT_MERGE_ANALYSIS_UNBORN = unchecked((uint)(1<<3)),
         }
         
         /// <summary>
@@ -356,25 +356,25 @@ namespace XenoAtom.Interop
         /// The user's stated preference for merges.
         /// </summary>
         [Flags]
-        public enum git_merge_preference_t : int
+        public enum git_merge_preference_t : uint
         {
             /// <summary>
             /// No configuration was found that suggests a preferred behavior for
             /// merge.
             /// </summary>
-            GIT_MERGE_PREFERENCE_NONE = unchecked((int)0),
+            GIT_MERGE_PREFERENCE_NONE = unchecked((uint)0),
             
             /// <summary>
             /// There is a `merge.ff=false` configuration setting, suggesting that
             /// the user does not want to allow a fast-forward merge.
             /// </summary>
-            GIT_MERGE_PREFERENCE_NO_FASTFORWARD = unchecked((int)(1  << (int) 0)),
+            GIT_MERGE_PREFERENCE_NO_FASTFORWARD = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// There is a `merge.ff=only` configuration setting, suggesting that
             /// the user only wants fast-forward merges.
             /// </summary>
-            GIT_MERGE_PREFERENCE_FASTFORWARD_ONLY = unchecked((int)(1  << (int) 1)),
+            GIT_MERGE_PREFERENCE_FASTFORWARD_ONLY = unchecked((uint)(1<<1)),
         }
         
         /// <summary>

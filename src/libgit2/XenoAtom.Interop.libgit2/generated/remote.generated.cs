@@ -21,7 +21,7 @@ namespace XenoAtom.Interop
         /// Argument to the completion callback which tells it which operation
         /// finished.
         /// </summary>
-        public enum git_remote_completion_t : int
+        public enum git_remote_completion_t : uint
         {
             GIT_REMOTE_COMPLETION_DOWNLOAD,
             
@@ -42,24 +42,24 @@ namespace XenoAtom.Interop
         /// initial request (`/info/refs`), but not subsequent requests.
         /// </summary>
         [Flags]
-        public enum git_remote_redirect_t : int
+        public enum git_remote_redirect_t : uint
         {
             /// <summary>
             /// Do not follow any off-site redirects at any stage of
             /// the fetch or push.
             /// </summary>
-            GIT_REMOTE_REDIRECT_NONE = unchecked((int)(1  << (int) 0)),
+            GIT_REMOTE_REDIRECT_NONE = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// Allow off-site redirects only upon the initial request.
             /// This is the default.
             /// </summary>
-            GIT_REMOTE_REDIRECT_INITIAL = unchecked((int)(1  << (int) 1)),
+            GIT_REMOTE_REDIRECT_INITIAL = unchecked((uint)(1<<1)),
             
             /// <summary>
             /// Allow redirects at any stage in the fetch or push.
             /// </summary>
-            GIT_REMOTE_REDIRECT_ALL = unchecked((int)(1  << (int) 2)),
+            GIT_REMOTE_REDIRECT_ALL = unchecked((uint)(1<<2)),
         }
         
         /// <summary>
@@ -83,17 +83,17 @@ namespace XenoAtom.Interop
         /// Remote creation options flags
         /// </summary>
         [Flags]
-        public enum git_remote_create_flags : int
+        public enum git_remote_create_flags : uint
         {
             /// <summary>
             /// Ignore the repository apply.insteadOf configuration
             /// </summary>
-            GIT_REMOTE_CREATE_SKIP_INSTEADOF = unchecked((int)(1  << (int) 0)),
+            GIT_REMOTE_CREATE_SKIP_INSTEADOF = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// Don't build a fetchspec from the name if none is set
             /// </summary>
-            GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC = unchecked((int)(1  << (int) 1)),
+            GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC = unchecked((uint)(1<<1)),
         }
         
         /// <summary>
@@ -109,7 +109,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Acceptable prune settings when fetching
         /// </summary>
-        public enum git_fetch_prune_t : int
+        public enum git_fetch_prune_t : uint
         {
             /// <summary>
             /// Use the setting from the configuration
@@ -148,12 +148,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// Lets us select the --tags option to use.
         /// </remarks>
-        public enum git_remote_autotag_option_t : int
+        public enum git_remote_autotag_option_t : uint
         {
             /// <summary>
             /// Use the setting from the configuration.
             /// </summary>
-            GIT_REMOTE_DOWNLOAD_TAGS_UNSPECIFIED = unchecked((int)0),
+            GIT_REMOTE_DOWNLOAD_TAGS_UNSPECIFIED = unchecked((uint)0),
             
             /// <summary>
             /// Ask the server for tags pointing to objects we're already
@@ -196,17 +196,17 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Constants for fetch depth (shallowness of fetch).
         /// </summary>
-        public enum git_fetch_depth_t : int
+        public enum git_fetch_depth_t : uint
         {
             /// <summary>
             /// The fetch is "full" (not shallow). This is the default.
             /// </summary>
-            GIT_FETCH_DEPTH_FULL = unchecked((int)0),
+            GIT_FETCH_DEPTH_FULL = unchecked((uint)0),
             
             /// <summary>
             /// The fetch should "unshallow" and fetch missing data.
             /// </summary>
-            GIT_FETCH_DEPTH_UNSHALLOW = unchecked((int)2147483647),
+            GIT_FETCH_DEPTH_UNSHALLOW = unchecked((uint)2147483647),
         }
         
         /// <summary>

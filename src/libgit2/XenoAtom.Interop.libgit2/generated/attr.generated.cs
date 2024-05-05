@@ -20,12 +20,12 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Possible states for an attribute
         /// </summary>
-        public enum git_attr_value_t : int
+        public enum git_attr_value_t : uint
         {
             /// <summary>
             /// The attribute has been left unspecified
             /// </summary>
-            GIT_ATTR_VALUE_UNSPECIFIED = unchecked((int)0),
+            GIT_ATTR_VALUE_UNSPECIFIED = unchecked((uint)0),
             
             /// <summary>
             /// The attribute has been set

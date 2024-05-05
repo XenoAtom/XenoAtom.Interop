@@ -108,11 +108,11 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Config var type
         /// </summary>
-        public enum git_configmap_t : int
+        public enum git_configmap_t : uint
         {
-            GIT_CONFIGMAP_FALSE = unchecked((int)0),
+            GIT_CONFIGMAP_FALSE = unchecked((uint)0),
             
-            GIT_CONFIGMAP_TRUE = unchecked((int)1),
+            GIT_CONFIGMAP_TRUE = unchecked((uint)1),
             
             GIT_CONFIGMAP_INT32,
             
@@ -537,7 +537,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_int64(out long @out, libgit2.git_config cfg, byte* name);
+        public static partial libgit2.git_result git_config_get_int64(out int @out, libgit2.git_config cfg, byte* name);
         
         /// <summary>
         /// Get the value of a long integer config variable.
@@ -553,7 +553,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_get_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_get_int64(out long @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
+        public static partial libgit2.git_result git_config_get_int64(out int @out, libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
         
         /// <summary>
         /// Get the value of a boolean config variable.
@@ -823,7 +823,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_set_int64(libgit2.git_config cfg, byte* name, long value);
+        public static partial libgit2.git_result git_config_set_int64(libgit2.git_config cfg, byte* name, int value);
         
         /// <summary>
         /// Set the value of a long integer config variable in the config file
@@ -835,7 +835,7 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_set_int64(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, long value);
+        public static partial libgit2.git_result git_config_set_int64(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, int value);
         
         /// <summary>
         /// Set the value of a boolean config variable in the config file
@@ -1228,7 +1228,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_parse_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_parse_int64(out long @out, byte* value);
+        public static partial libgit2.git_result git_config_parse_int64(out int @out, byte* value);
         
         /// <summary>
         /// Parse a string value as an int64.
@@ -1243,7 +1243,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_parse_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_config_parse_int64(out long @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
+        public static partial libgit2.git_result git_config_parse_int64(out int @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
         
         /// <summary>
         /// Parse a string value as a path.

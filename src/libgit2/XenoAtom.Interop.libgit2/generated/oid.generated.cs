@@ -20,12 +20,12 @@ namespace XenoAtom.Interop
         /// <summary>
         /// The type of object id.
         /// </summary>
-        public enum git_oid_t : int
+        public enum git_oid_t : uint
         {
             /// <summary>
             /// SHA1
             /// </summary>
-            GIT_OID_SHA1 = unchecked((int)1),
+            GIT_OID_SHA1 = unchecked((uint)1),
         }
         
         /// <summary>

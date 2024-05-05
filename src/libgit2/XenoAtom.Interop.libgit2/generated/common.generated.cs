@@ -22,33 +22,33 @@ namespace XenoAtom.Interop
         /// was compiled
         /// </summary>
         [Flags]
-        public enum git_feature_t : int
+        public enum git_feature_t : uint
         {
             /// <summary>
             /// If set, libgit2 was built thread-aware and can be safely used from multiple
             /// threads.
             /// </summary>
-            GIT_FEATURE_THREADS = unchecked((int)(1  << (int) 0)),
+            GIT_FEATURE_THREADS = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// If set, libgit2 was built with and linked against a TLS implementation.
             /// Custom TLS streams may still be added by the user to support HTTPS
             /// regardless of this.
             /// </summary>
-            GIT_FEATURE_HTTPS = unchecked((int)(1  << (int) 1)),
+            GIT_FEATURE_HTTPS = unchecked((uint)(1<<1)),
             
             /// <summary>
             /// If set, libgit2 was built with and linked against libssh2. A custom
             /// transport may still be added by the user to support libssh2 regardless of
             /// this.
             /// </summary>
-            GIT_FEATURE_SSH = unchecked((int)(1  << (int) 2)),
+            GIT_FEATURE_SSH = unchecked((uint)(1<<2)),
             
             /// <summary>
             /// If set, libgit2 was built with support for sub-second resolution in file
             /// modification times.
             /// </summary>
-            GIT_FEATURE_NSEC = unchecked((int)(1  << (int) 3)),
+            GIT_FEATURE_NSEC = unchecked((uint)(1<<3)),
         }
         
         /// <summary>
@@ -84,7 +84,7 @@ namespace XenoAtom.Interop
         /// These are used to select which global option to set or get and are
         /// used in `git_libgit2_opts()`.
         /// </remarks>
-        public enum git_libgit2_opt_t : int
+        public enum git_libgit2_opt_t : uint
         {
             GIT_OPT_GET_MWINDOW_SIZE,
             

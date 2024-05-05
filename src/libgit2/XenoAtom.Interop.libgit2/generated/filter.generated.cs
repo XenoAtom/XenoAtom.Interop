@@ -24,15 +24,15 @@ namespace XenoAtom.Interop
         /// the Git object database.  These values control which direction of
         /// change is being applied.
         /// </summary>
-        public enum git_filter_mode_t : int
+        public enum git_filter_mode_t : uint
         {
-            GIT_FILTER_TO_WORKTREE = unchecked((int)0),
+            GIT_FILTER_TO_WORKTREE = unchecked((uint)0),
             
-            GIT_FILTER_SMUDGE = unchecked((int)GIT_FILTER_TO_WORKTREE),
+            GIT_FILTER_SMUDGE = unchecked((uint)GIT_FILTER_TO_WORKTREE),
             
-            GIT_FILTER_TO_ODB = unchecked((int)1),
+            GIT_FILTER_TO_ODB = unchecked((uint)1),
             
-            GIT_FILTER_CLEAN = unchecked((int)GIT_FILTER_TO_ODB),
+            GIT_FILTER_CLEAN = unchecked((uint)GIT_FILTER_TO_ODB),
         }
         
         public const libgit2.git_filter_mode_t GIT_FILTER_TO_WORKTREE = git_filter_mode_t.GIT_FILTER_TO_WORKTREE;
@@ -47,30 +47,30 @@ namespace XenoAtom.Interop
         /// Filter option flags.
         /// </summary>
         [Flags]
-        public enum git_filter_flag_t : int
+        public enum git_filter_flag_t : uint
         {
-            GIT_FILTER_DEFAULT = unchecked((int)0u),
+            GIT_FILTER_DEFAULT = unchecked((uint)0u),
             
             /// <summary>
             /// Don't error for `safecrlf` violations, allow them to continue.
             /// </summary>
-            GIT_FILTER_ALLOW_UNSAFE = unchecked((int)(1u << (int)0)),
+            GIT_FILTER_ALLOW_UNSAFE = unchecked((uint)(1u << 0)),
             
             /// <summary>
             /// Don't load `/etc/gitattributes` (or the system equivalent)
             /// </summary>
-            GIT_FILTER_NO_SYSTEM_ATTRIBUTES = unchecked((int)(1u << (int)1)),
+            GIT_FILTER_NO_SYSTEM_ATTRIBUTES = unchecked((uint)(1u << 1)),
             
             /// <summary>
             /// Load attributes from `.gitattributes` in the root of HEAD
             /// </summary>
-            GIT_FILTER_ATTRIBUTES_FROM_HEAD = unchecked((int)(1u << (int)2)),
+            GIT_FILTER_ATTRIBUTES_FROM_HEAD = unchecked((uint)(1u << 2)),
             
             /// <summary>
             /// Load attributes from `.gitattributes` in a given commit.
             /// This can only be specified in a `git_filter_options`.
             /// </summary>
-            GIT_FILTER_ATTRIBUTES_FROM_COMMIT = unchecked((int)(1u << (int)3)),
+            GIT_FILTER_ATTRIBUTES_FROM_COMMIT = unchecked((uint)(1u << 3)),
         }
         
         public const libgit2.git_filter_flag_t GIT_FILTER_DEFAULT = git_filter_flag_t.GIT_FILTER_DEFAULT;

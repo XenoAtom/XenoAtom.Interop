@@ -20,11 +20,11 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Stages that are reported by the packbuilder progress callback.
         /// </summary>
-        public enum git_packbuilder_stage_t : int
+        public enum git_packbuilder_stage_t : uint
         {
-            GIT_PACKBUILDER_ADDING_OBJECTS = unchecked((int)0),
+            GIT_PACKBUILDER_ADDING_OBJECTS = unchecked((uint)0),
             
-            GIT_PACKBUILDER_DELTAFICATION = unchecked((int)1),
+            GIT_PACKBUILDER_DELTAFICATION = unchecked((uint)1),
         }
         
         public const libgit2.git_packbuilder_stage_t GIT_PACKBUILDER_ADDING_OBJECTS = git_packbuilder_stage_t.GIT_PACKBUILDER_ADDING_OBJECTS;

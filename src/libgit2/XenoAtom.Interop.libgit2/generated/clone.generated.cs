@@ -23,7 +23,7 @@ namespace XenoAtom.Interop
         /// database directory instead of figuring out what it needs, which is
         /// faster. If possible, it will hardlink the files to save space.
         /// </summary>
-        public enum git_clone_local_t : int
+        public enum git_clone_local_t : uint
         {
             /// <summary>
             /// Auto-detect (default), libgit2 will bypass the git-aware

@@ -350,9 +350,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Error classes
         /// </summary>
-        public enum git_error_t : int
+        public enum git_error_t : uint
         {
-            GIT_ERROR_NONE = unchecked((int)0),
+            GIT_ERROR_NONE = unchecked((uint)0),
             
             GIT_ERROR_NOMEMORY,
             

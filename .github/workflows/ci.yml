@@ -11,8 +11,5 @@ on:
 jobs:
   build:
     uses: xoofx/.github/.github/workflows/dotnet.yml@main
-    with:
-      dotnet-version: '8.0'
-      runs-on: windows-latest
     secrets:
       NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

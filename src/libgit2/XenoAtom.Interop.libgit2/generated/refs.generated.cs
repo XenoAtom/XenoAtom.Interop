@@ -21,12 +21,12 @@ namespace XenoAtom.Interop
         /// Normalization options for reference lookup
         /// </summary>
         [Flags]
-        public enum git_reference_format_t : int
+        public enum git_reference_format_t : uint
         {
             /// <summary>
             /// No particular normalization.
             /// </summary>
-            GIT_REFERENCE_FORMAT_NORMAL = unchecked((int)0u),
+            GIT_REFERENCE_FORMAT_NORMAL = unchecked((uint)0u),
             
             /// <summary>
             /// Control whether one-level refnames are accepted
@@ -34,7 +34,7 @@ namespace XenoAtom.Interop
             /// components). Those are expected to be written only using
             /// uppercase letters and underscore (FETCH_HEAD, ...)
             /// </summary>
-            GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL = unchecked((int)(1u << (int)0)),
+            GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL = unchecked((uint)(1u << 0)),
             
             /// <summary>
             /// Interpret the provided name as a reference pattern for a
@@ -49,14 +49,14 @@ namespace XenoAtom.Interop
             /// &lt;star
             /// &gt;).
             /// </summary>
-            GIT_REFERENCE_FORMAT_REFSPEC_PATTERN = unchecked((int)(1u << (int)1)),
+            GIT_REFERENCE_FORMAT_REFSPEC_PATTERN = unchecked((uint)(1u << 1)),
             
             /// <summary>
             /// Interpret the name as part of a refspec in shorthand form
             /// so the `ONELEVEL` naming rules aren't enforced and 'master'
             /// becomes a valid name.
             /// </summary>
-            GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND = unchecked((int)(1u << (int)2)),
+            GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND = unchecked((uint)(1u << 2)),
         }
         
         /// <summary>

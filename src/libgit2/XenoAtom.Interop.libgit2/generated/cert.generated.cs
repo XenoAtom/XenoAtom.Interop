@@ -16,7 +16,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Type of host certificate structure that is passed to the check callback
         /// </summary>
-        public enum git_cert_t : int
+        public enum git_cert_t : uint
         {
             /// <summary>
             /// No information about the certificate is available. This may
@@ -75,27 +75,27 @@ namespace XenoAtom.Interop
         /// Type of SSH host fingerprint
         /// </summary>
         [Flags]
-        public enum git_cert_ssh_t : int
+        public enum git_cert_ssh_t : uint
         {
             /// <summary>
             /// MD5 is available
             /// </summary>
-            GIT_CERT_SSH_MD5 = unchecked((int)(1  << (int) 0)),
+            GIT_CERT_SSH_MD5 = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// SHA-1 is available
             /// </summary>
-            GIT_CERT_SSH_SHA1 = unchecked((int)(1  << (int) 1)),
+            GIT_CERT_SSH_SHA1 = unchecked((uint)(1<<1)),
             
             /// <summary>
             /// SHA-256 is available
             /// </summary>
-            GIT_CERT_SSH_SHA256 = unchecked((int)(1  << (int) 2)),
+            GIT_CERT_SSH_SHA256 = unchecked((uint)(1<<2)),
             
             /// <summary>
             /// Raw hostkey is available
             /// </summary>
-            GIT_CERT_SSH_RAW = unchecked((int)(1  << (int) 3)),
+            GIT_CERT_SSH_RAW = unchecked((uint)(1<<3)),
         }
         
         /// <summary>
@@ -118,42 +118,42 @@ namespace XenoAtom.Interop
         /// </summary>
         public const libgit2.git_cert_ssh_t GIT_CERT_SSH_RAW = git_cert_ssh_t.GIT_CERT_SSH_RAW;
         
-        public enum git_cert_ssh_raw_type_t : int
+        public enum git_cert_ssh_raw_type_t : uint
         {
             /// <summary>
             /// The raw key is of an unknown type.
             /// </summary>
-            GIT_CERT_SSH_RAW_TYPE_UNKNOWN = unchecked((int)0),
+            GIT_CERT_SSH_RAW_TYPE_UNKNOWN = unchecked((uint)0),
             
             /// <summary>
             /// The raw key is an RSA key.
             /// </summary>
-            GIT_CERT_SSH_RAW_TYPE_RSA = unchecked((int)1),
+            GIT_CERT_SSH_RAW_TYPE_RSA = unchecked((uint)1),
             
             /// <summary>
             /// The raw key is a DSS key.
             /// </summary>
-            GIT_CERT_SSH_RAW_TYPE_DSS = unchecked((int)2),
+            GIT_CERT_SSH_RAW_TYPE_DSS = unchecked((uint)2),
             
             /// <summary>
             /// The raw key is a ECDSA 256 key.
             /// </summary>
-            GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_256 = unchecked((int)3),
+            GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_256 = unchecked((uint)3),
             
             /// <summary>
             /// The raw key is a ECDSA 384 key.
             /// </summary>
-            GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_384 = unchecked((int)4),
+            GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_384 = unchecked((uint)4),
             
             /// <summary>
             /// The raw key is a ECDSA 521 key.
             /// </summary>
-            GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_521 = unchecked((int)5),
+            GIT_CERT_SSH_RAW_TYPE_KEY_ECDSA_521 = unchecked((uint)5),
             
             /// <summary>
             /// The raw key is a ED25519 key.
             /// </summary>
-            GIT_CERT_SSH_RAW_TYPE_KEY_ED25519 = unchecked((int)6),
+            GIT_CERT_SSH_RAW_TYPE_KEY_ED25519 = unchecked((uint)6),
         }
         
         /// <summary>

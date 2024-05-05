@@ -25,37 +25,37 @@ namespace XenoAtom.Interop
         /// the library.
         /// </remarks>
         [Flags]
-        public enum git_credential_t : int
+        public enum git_credential_t : uint
         {
             /// <summary>
             /// A vanilla user/password request
             /// </summary>
             /// <seealso cref="git_credential_userpass_plaintext_new"/>
-            GIT_CREDENTIAL_USERPASS_PLAINTEXT = unchecked((int)(1u << (int)0)),
+            GIT_CREDENTIAL_USERPASS_PLAINTEXT = unchecked((uint)(1u << 0)),
             
             /// <summary>
             /// An SSH key-based authentication request
             /// </summary>
             /// <seealso cref="git_credential_ssh_key_new"/>
-            GIT_CREDENTIAL_SSH_KEY = unchecked((int)(1u << (int)1)),
+            GIT_CREDENTIAL_SSH_KEY = unchecked((uint)(1u << 1)),
             
             /// <summary>
             /// An SSH key-based authentication request, with a custom signature
             /// </summary>
             /// <seealso cref="git_credential_ssh_custom_new"/>
-            GIT_CREDENTIAL_SSH_CUSTOM = unchecked((int)(1u << (int)2)),
+            GIT_CREDENTIAL_SSH_CUSTOM = unchecked((uint)(1u << 2)),
             
             /// <summary>
             /// An NTLM/Negotiate-based authentication request.
             /// </summary>
             /// <seealso cref="git_credential_default"/>
-            GIT_CREDENTIAL_DEFAULT = unchecked((int)(1u << (int)3)),
+            GIT_CREDENTIAL_DEFAULT = unchecked((uint)(1u << 3)),
             
             /// <summary>
             /// An SSH interactive authentication request
             /// </summary>
             /// <seealso cref="git_credential_ssh_interactive_new"/>
-            GIT_CREDENTIAL_SSH_INTERACTIVE = unchecked((int)(1u << (int)4)),
+            GIT_CREDENTIAL_SSH_INTERACTIVE = unchecked((uint)(1u << 4)),
             
             /// <summary>
             /// Username-only authentication request
@@ -66,7 +66,7 @@ namespace XenoAtom.Interop
             /// to use.
             /// </remarks>
             /// <seealso cref="git_credential_username_new"/>
-            GIT_CREDENTIAL_USERNAME = unchecked((int)(1u << (int)5)),
+            GIT_CREDENTIAL_USERNAME = unchecked((uint)(1u << 5)),
             
             /// <summary>
             /// An SSH key-based authentication request
@@ -77,7 +77,7 @@ namespace XenoAtom.Interop
             /// not be functional.
             /// </remarks>
             /// <seealso cref="git_credential_ssh_key_memory_new"/>
-            GIT_CREDENTIAL_SSH_MEMORY = unchecked((int)(1u << (int)6)),
+            GIT_CREDENTIAL_SSH_MEMORY = unchecked((uint)(1u << 6)),
         }
         
         /// <summary>

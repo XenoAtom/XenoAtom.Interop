@@ -21,14 +21,14 @@ namespace XenoAtom.Interop
         /// Option flags for `git_repository_open_ext`.
         /// </summary>
         [Flags]
-        public enum git_repository_open_flag_t : int
+        public enum git_repository_open_flag_t : uint
         {
             /// <summary>
             /// Only open the repository if it can be immediately found in the
             /// start_path. Do not walk up from the start_path looking at parent
             /// directories.
             /// </summary>
-            GIT_REPOSITORY_OPEN_NO_SEARCH = unchecked((int)(1  << (int) 0)),
+            GIT_REPOSITORY_OPEN_NO_SEARCH = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// Unless this flag is set, open will not continue searching across
@@ -37,21 +37,21 @@ namespace XenoAtom.Interop
             /// "/home/user/source/" will not return "/.git/" as the found repo if
             /// "/" is a different filesystem than "/home".
             /// </summary>
-            GIT_REPOSITORY_OPEN_CROSS_FS = unchecked((int)(1  << (int) 1)),
+            GIT_REPOSITORY_OPEN_CROSS_FS = unchecked((uint)(1<<1)),
             
             /// <summary>
             /// Open repository as a bare repo regardless of core.bare config, and
             /// defer loading config file for faster setup.
             /// Unlike `git_repository_open_bare`, this can follow gitlinks.
             /// </summary>
-            GIT_REPOSITORY_OPEN_BARE = unchecked((int)(1  << (int) 2)),
+            GIT_REPOSITORY_OPEN_BARE = unchecked((uint)(1<<2)),
             
             /// <summary>
             /// Do not check for a repository by appending /.git to the start_path;
             /// only open the repository if start_path itself points to the git
             /// directory.
             /// </summary>
-            GIT_REPOSITORY_OPEN_NO_DOTGIT = unchecked((int)(1  << (int) 3)),
+            GIT_REPOSITORY_OPEN_NO_DOTGIT = unchecked((uint)(1<<3)),
             
             /// <summary>
             /// Find and open a git repository, respecting the environment variables
@@ -68,7 +68,7 @@ namespace XenoAtom.Interop
             /// `git_repository_open_ext` with this flag will error out if either
             /// $GIT_WORK_TREE or $GIT_COMMON_DIR is set.
             /// </summary>
-            GIT_REPOSITORY_OPEN_FROM_ENV = unchecked((int)(1  << (int) 4)),
+            GIT_REPOSITORY_OPEN_FROM_ENV = unchecked((uint)(1<<4)),
         }
         
         /// <summary>
@@ -128,25 +128,25 @@ namespace XenoAtom.Interop
         /// when initializing a new repo.
         /// </remarks>
         [Flags]
-        public enum git_repository_init_flag_t : int
+        public enum git_repository_init_flag_t : uint
         {
             /// <summary>
             /// Create a bare repository with no working directory.
             /// </summary>
-            GIT_REPOSITORY_INIT_BARE = unchecked((int)(1u << (int)0)),
+            GIT_REPOSITORY_INIT_BARE = unchecked((uint)(1u << 0)),
             
             /// <summary>
             /// Return an GIT_EEXISTS error if the repo_path appears to already be
             /// an git repository.
             /// </summary>
-            GIT_REPOSITORY_INIT_NO_REINIT = unchecked((int)(1u << (int)1)),
+            GIT_REPOSITORY_INIT_NO_REINIT = unchecked((uint)(1u << 1)),
             
             /// <summary>
             /// Normally a "/.git/" will be appended to the repo path for
             /// non-bare repos (if it is not already there), but passing this flag
             /// prevents that behavior.
             /// </summary>
-            GIT_REPOSITORY_INIT_NO_DOTGIT_DIR = unchecked((int)(1u << (int)2)),
+            GIT_REPOSITORY_INIT_NO_DOTGIT_DIR = unchecked((uint)(1u << 2)),
             
             /// <summary>
             /// Make the repo_path (and workdir_path) as needed. Init is always willing
@@ -154,13 +154,13 @@ namespace XenoAtom.Interop
             /// init to create the trailing component of the repo and workdir paths
             /// as needed.
             /// </summary>
-            GIT_REPOSITORY_INIT_MKDIR = unchecked((int)(1u << (int)3)),
+            GIT_REPOSITORY_INIT_MKDIR = unchecked((uint)(1u << 3)),
             
             /// <summary>
             /// Recursively make all components of the repo and workdir paths as
             /// necessary.
             /// </summary>
-            GIT_REPOSITORY_INIT_MKPATH = unchecked((int)(1u << (int)4)),
+            GIT_REPOSITORY_INIT_MKPATH = unchecked((uint)(1u << 4)),
             
             /// <summary>
             /// libgit2 normally uses internal templates to initialize a new repo.
@@ -168,13 +168,13 @@ namespace XenoAtom.Interop
             /// the options if set, or the `init.templatedir` global config if not,
             /// or falling back on "/usr/share/git-core/templates" if it exists.
             /// </summary>
-            GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE = unchecked((int)(1u << (int)5)),
+            GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE = unchecked((uint)(1u << 5)),
             
             /// <summary>
             /// If an alternate workdir is specified, use relative paths for the gitdir
             /// and core.worktree.
             /// </summary>
-            GIT_REPOSITORY_INIT_RELATIVE_GITLINK = unchecked((int)(1u << (int)6)),
+            GIT_REPOSITORY_INIT_RELATIVE_GITLINK = unchecked((uint)(1u << 6)),
         }
         
         /// <summary>
@@ -231,23 +231,23 @@ namespace XenoAtom.Interop
         /// either to the custom mode that you would like, or to one of the
         /// defined modes.
         /// </remarks>
-        public enum git_repository_init_mode_t : int
+        public enum git_repository_init_mode_t : uint
         {
             /// <summary>
             /// Use permissions configured by umask - the default.
             /// </summary>
-            GIT_REPOSITORY_INIT_SHARED_UMASK = unchecked((int)0),
+            GIT_REPOSITORY_INIT_SHARED_UMASK = unchecked((uint)0),
             
             /// <summary>
             /// Use "--shared=group" behavior, chmod'ing the new repo to be group
             /// writable and "g+sx" for sticky group assignment.
             /// </summary>
-            GIT_REPOSITORY_INIT_SHARED_GROUP = unchecked((int)0002775),
+            GIT_REPOSITORY_INIT_SHARED_GROUP = unchecked((uint)0002775),
             
             /// <summary>
             /// Use "--shared=all" behavior, adding world readability.
             /// </summary>
-            GIT_REPOSITORY_INIT_SHARED_ALL = unchecked((int)0002777),
+            GIT_REPOSITORY_INIT_SHARED_ALL = unchecked((uint)0002777),
         }
         
         /// <summary>
@@ -269,7 +269,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// List of items which belong to the git repository layout
         /// </summary>
-        public enum git_repository_item_t : int
+        public enum git_repository_item_t : uint
         {
             GIT_REPOSITORY_ITEM_GITDIR,
             
@@ -339,7 +339,7 @@ namespace XenoAtom.Interop
         /// These values represent possible states for the repository to be in,
         /// based on the current operation which is ongoing.
         /// </remarks>
-        public enum git_repository_state_t : int
+        public enum git_repository_state_t : uint
         {
             GIT_REPOSITORY_STATE_NONE,
             

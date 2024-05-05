@@ -21,35 +21,35 @@ namespace XenoAtom.Interop
         /// Stash flags
         /// </summary>
         [Flags]
-        public enum git_stash_flags : int
+        public enum git_stash_flags : uint
         {
             /// <summary>
             /// No option, default
             /// </summary>
-            GIT_STASH_DEFAULT = unchecked((int)0),
+            GIT_STASH_DEFAULT = unchecked((uint)0),
             
             /// <summary>
             /// All changes already added to the index are left intact in
             /// the working directory
             /// </summary>
-            GIT_STASH_KEEP_INDEX = unchecked((int)(1  << (int) 0)),
+            GIT_STASH_KEEP_INDEX = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// All untracked files are also stashed and then cleaned up
             /// from the working directory
             /// </summary>
-            GIT_STASH_INCLUDE_UNTRACKED = unchecked((int)(1  << (int) 1)),
+            GIT_STASH_INCLUDE_UNTRACKED = unchecked((uint)(1<<1)),
             
             /// <summary>
             /// All ignored files are also stashed and then cleaned up from
             /// the working directory
             /// </summary>
-            GIT_STASH_INCLUDE_IGNORED = unchecked((int)(1  << (int) 2)),
+            GIT_STASH_INCLUDE_IGNORED = unchecked((uint)(1<<2)),
             
             /// <summary>
             /// All changes in the index and working directory are left intact
             /// </summary>
-            GIT_STASH_KEEP_ALL = unchecked((int)(1  << (int) 3)),
+            GIT_STASH_KEEP_ALL = unchecked((uint)(1<<3)),
         }
         
         /// <summary>
@@ -84,15 +84,15 @@ namespace XenoAtom.Interop
         /// Stash application flags.
         /// </summary>
         [Flags]
-        public enum git_stash_apply_flags : int
+        public enum git_stash_apply_flags : uint
         {
-            GIT_STASH_APPLY_DEFAULT = unchecked((int)0),
+            GIT_STASH_APPLY_DEFAULT = unchecked((uint)0),
             
             /// <summary>
             /// Try to reinstate not only the working tree's changes,
             /// but also the index's changes.
             /// </summary>
-            GIT_STASH_APPLY_REINSTATE_INDEX = unchecked((int)(1  << (int) 0)),
+            GIT_STASH_APPLY_REINSTATE_INDEX = unchecked((uint)(1<<0)),
         }
         
         public const libgit2.git_stash_apply_flags GIT_STASH_APPLY_DEFAULT = git_stash_apply_flags.GIT_STASH_APPLY_DEFAULT;
@@ -106,9 +106,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Stash apply progression states
         /// </summary>
-        public enum git_stash_apply_progress_t : int
+        public enum git_stash_apply_progress_t : uint
         {
-            GIT_STASH_APPLY_PROGRESS_NONE = unchecked((int)0),
+            GIT_STASH_APPLY_PROGRESS_NONE = unchecked((uint)0),
             
             /// <summary>
             /// Loading the stashed data from the object database.

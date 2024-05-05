@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libgit2", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.CodeGen", "XenoAtom.Interop.CodeGen\XenoAtom.Interop.CodeGen.csproj", "{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CppAst.CodeGen", "..\..\..\CppAst.CodeGen\src\CppAst.CodeGen\CppAst.CodeGen.csproj", "{D40A6127-25BA-4230-8FF0-6841163707CD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,10 +35,6 @@ Global
 		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA3DDA1A-F191-475F-8EF4-44EEF9785A7E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D40A6127-25BA-4230-8FF0-6841163707CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D40A6127-25BA-4230-8FF0-6841163707CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D40A6127-25BA-4230-8FF0-6841163707CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D40A6127-25BA-4230-8FF0-6841163707CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

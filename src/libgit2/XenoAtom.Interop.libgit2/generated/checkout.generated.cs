@@ -63,12 +63,12 @@ namespace XenoAtom.Interop
         /// and write through existing symbolic links.
         /// </remarks>
         [Flags]
-        public enum git_checkout_strategy_t : int
+        public enum git_checkout_strategy_t : uint
         {
             /// <summary>
             /// default is a dry run, no actual updates
             /// </summary>
-            GIT_CHECKOUT_NONE = unchecked((int)0),
+            GIT_CHECKOUT_NONE = unchecked((uint)0),
             
             /// <summary>
             /// Allow safe updates that cannot overwrite uncommitted data.
@@ -79,7 +79,7 @@ namespace XenoAtom.Interop
             /// Mutually exclusive with GIT_CHECKOUT_FORCE.
             /// GIT_CHECKOUT_FORCE takes precedence over GIT_CHECKOUT_SAFE.
             /// </remarks>
-            GIT_CHECKOUT_SAFE = unchecked((int)(1u << (int)0)),
+            GIT_CHECKOUT_SAFE = unchecked((uint)(1u << 0)),
             
             /// <summary>
             /// Allow all updates to force working directory to look like index.
@@ -88,114 +88,114 @@ namespace XenoAtom.Interop
             /// Mutually exclusive with GIT_CHECKOUT_SAFE.
             /// GIT_CHECKOUT_FORCE takes precedence over GIT_CHECKOUT_SAFE.
             /// </remarks>
-            GIT_CHECKOUT_FORCE = unchecked((int)(1u << (int)1)),
+            GIT_CHECKOUT_FORCE = unchecked((uint)(1u << 1)),
             
             /// <summary>
             /// Allow checkout to recreate missing files
             /// </summary>
-            GIT_CHECKOUT_RECREATE_MISSING = unchecked((int)(1u << (int)2)),
+            GIT_CHECKOUT_RECREATE_MISSING = unchecked((uint)(1u << 2)),
             
             /// <summary>
             /// Allow checkout to make safe updates even if conflicts are found
             /// </summary>
-            GIT_CHECKOUT_ALLOW_CONFLICTS = unchecked((int)(1u << (int)4)),
+            GIT_CHECKOUT_ALLOW_CONFLICTS = unchecked((uint)(1u << 4)),
             
             /// <summary>
             /// Remove untracked files not in index (that are not ignored)
             /// </summary>
-            GIT_CHECKOUT_REMOVE_UNTRACKED = unchecked((int)(1u << (int)5)),
+            GIT_CHECKOUT_REMOVE_UNTRACKED = unchecked((uint)(1u << 5)),
             
             /// <summary>
             /// Remove ignored files not in index
             /// </summary>
-            GIT_CHECKOUT_REMOVE_IGNORED = unchecked((int)(1u << (int)6)),
+            GIT_CHECKOUT_REMOVE_IGNORED = unchecked((uint)(1u << 6)),
             
             /// <summary>
             /// Only update existing files, don't create new ones
             /// </summary>
-            GIT_CHECKOUT_UPDATE_ONLY = unchecked((int)(1u << (int)7)),
+            GIT_CHECKOUT_UPDATE_ONLY = unchecked((uint)(1u << 7)),
             
             /// <summary>
             /// Normally checkout updates index entries as it goes; this stops that.
             /// Implies `GIT_CHECKOUT_DONT_WRITE_INDEX`.
             /// </summary>
-            GIT_CHECKOUT_DONT_UPDATE_INDEX = unchecked((int)(1u << (int)8)),
+            GIT_CHECKOUT_DONT_UPDATE_INDEX = unchecked((uint)(1u << 8)),
             
             /// <summary>
             /// Don't refresh index/config/etc before doing checkout
             /// </summary>
-            GIT_CHECKOUT_NO_REFRESH = unchecked((int)(1u << (int)9)),
+            GIT_CHECKOUT_NO_REFRESH = unchecked((uint)(1u << 9)),
             
             /// <summary>
             /// Allow checkout to skip unmerged files
             /// </summary>
-            GIT_CHECKOUT_SKIP_UNMERGED = unchecked((int)(1u << (int)10)),
+            GIT_CHECKOUT_SKIP_UNMERGED = unchecked((uint)(1u << 10)),
             
             /// <summary>
             /// For unmerged files, checkout stage 2 from index
             /// </summary>
-            GIT_CHECKOUT_USE_OURS = unchecked((int)(1u << (int)11)),
+            GIT_CHECKOUT_USE_OURS = unchecked((uint)(1u << 11)),
             
             /// <summary>
             /// For unmerged files, checkout stage 3 from index
             /// </summary>
-            GIT_CHECKOUT_USE_THEIRS = unchecked((int)(1u << (int)12)),
+            GIT_CHECKOUT_USE_THEIRS = unchecked((uint)(1u << 12)),
             
             /// <summary>
             /// Treat pathspec as simple list of exact match file paths
             /// </summary>
-            GIT_CHECKOUT_DISABLE_PATHSPEC_MATCH = unchecked((int)(1u << (int)13)),
+            GIT_CHECKOUT_DISABLE_PATHSPEC_MATCH = unchecked((uint)(1u << 13)),
             
             /// <summary>
             /// Ignore directories in use, they will be left empty
             /// </summary>
-            GIT_CHECKOUT_SKIP_LOCKED_DIRECTORIES = unchecked((int)(1u << (int)18)),
+            GIT_CHECKOUT_SKIP_LOCKED_DIRECTORIES = unchecked((uint)(1u << 18)),
             
             /// <summary>
             /// Don't overwrite ignored files that exist in the checkout target
             /// </summary>
-            GIT_CHECKOUT_DONT_OVERWRITE_IGNORED = unchecked((int)(1u << (int)19)),
+            GIT_CHECKOUT_DONT_OVERWRITE_IGNORED = unchecked((uint)(1u << 19)),
             
             /// <summary>
             /// Write normal merge files for conflicts
             /// </summary>
-            GIT_CHECKOUT_CONFLICT_STYLE_MERGE = unchecked((int)(1u << (int)20)),
+            GIT_CHECKOUT_CONFLICT_STYLE_MERGE = unchecked((uint)(1u << 20)),
             
             /// <summary>
             /// Include common ancestor data in diff3 format files for conflicts
             /// </summary>
-            GIT_CHECKOUT_CONFLICT_STYLE_DIFF3 = unchecked((int)(1u << (int)21)),
+            GIT_CHECKOUT_CONFLICT_STYLE_DIFF3 = unchecked((uint)(1u << 21)),
             
             /// <summary>
             /// Don't overwrite existing files or folders
             /// </summary>
-            GIT_CHECKOUT_DONT_REMOVE_EXISTING = unchecked((int)(1u << (int)22)),
+            GIT_CHECKOUT_DONT_REMOVE_EXISTING = unchecked((uint)(1u << 22)),
             
             /// <summary>
             /// Normally checkout writes the index upon completion; this prevents that.
             /// </summary>
-            GIT_CHECKOUT_DONT_WRITE_INDEX = unchecked((int)(1u << (int)23)),
+            GIT_CHECKOUT_DONT_WRITE_INDEX = unchecked((uint)(1u << 23)),
             
             /// <summary>
             /// Show what would be done by a checkout.  Stop after sending
             /// notifications; don't update the working directory or index.
             /// </summary>
-            GIT_CHECKOUT_DRY_RUN = unchecked((int)(1u << (int)24)),
+            GIT_CHECKOUT_DRY_RUN = unchecked((uint)(1u << 24)),
             
             /// <summary>
             /// Include common ancestor data in zdiff3 format for conflicts
             /// </summary>
-            GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3 = unchecked((int)(1u << (int)25)),
+            GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3 = unchecked((uint)(1u << 25)),
             
             /// <summary>
             /// Recursively checkout submodules with same options (NOT IMPLEMENTED)
             /// </summary>
-            GIT_CHECKOUT_UPDATE_SUBMODULES = unchecked((int)(1u << (int)16)),
+            GIT_CHECKOUT_UPDATE_SUBMODULES = unchecked((uint)(1u << 16)),
             
             /// <summary>
             /// Recursively checkout submodules if HEAD moved in super repo (NOT IMPLEMENTED)
             /// </summary>
-            GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED = unchecked((int)(1u << (int)17)),
+            GIT_CHECKOUT_UPDATE_SUBMODULES_IF_CHANGED = unchecked((uint)(1u << 17)),
         }
         
         /// <summary>
@@ -342,41 +342,41 @@ namespace XenoAtom.Interop
         /// being modified.
         /// </remarks>
         [Flags]
-        public enum git_checkout_notify_t : int
+        public enum git_checkout_notify_t : uint
         {
-            GIT_CHECKOUT_NOTIFY_NONE = unchecked((int)0),
+            GIT_CHECKOUT_NOTIFY_NONE = unchecked((uint)0),
             
             /// <summary>
             /// Invokes checkout on conflicting paths.
             /// </summary>
-            GIT_CHECKOUT_NOTIFY_CONFLICT = unchecked((int)(1u << (int)0)),
+            GIT_CHECKOUT_NOTIFY_CONFLICT = unchecked((uint)(1u << 0)),
             
             /// <summary>
             /// Notifies about "dirty" files, i.e. those that do not need an update
             /// but no longer match the baseline.  Core git displays these files when
             /// checkout runs, but won't stop the checkout.
             /// </summary>
-            GIT_CHECKOUT_NOTIFY_DIRTY = unchecked((int)(1u << (int)1)),
+            GIT_CHECKOUT_NOTIFY_DIRTY = unchecked((uint)(1u << 1)),
             
             /// <summary>
             /// Sends notification for any file changed.
             /// </summary>
-            GIT_CHECKOUT_NOTIFY_UPDATED = unchecked((int)(1u << (int)2)),
+            GIT_CHECKOUT_NOTIFY_UPDATED = unchecked((uint)(1u << 2)),
             
             /// <summary>
             /// Notifies about untracked files.
             /// </summary>
-            GIT_CHECKOUT_NOTIFY_UNTRACKED = unchecked((int)(1u << (int)3)),
+            GIT_CHECKOUT_NOTIFY_UNTRACKED = unchecked((uint)(1u << 3)),
             
             /// <summary>
             /// Notifies about ignored files.
             /// </summary>
-            GIT_CHECKOUT_NOTIFY_IGNORED = unchecked((int)(1u << (int)4)),
+            GIT_CHECKOUT_NOTIFY_IGNORED = unchecked((uint)(1u << 4)),
             
             /// <summary>
             /// Notifies about ignored files.
             /// </summary>
-            GIT_CHECKOUT_NOTIFY_ALL = unchecked((int)0x0FFFFu),
+            GIT_CHECKOUT_NOTIFY_ALL = unchecked((uint)0x0FFFFu),
         }
         
         public const libgit2.git_checkout_notify_t GIT_CHECKOUT_NOTIFY_NONE = git_checkout_notify_t.GIT_CHECKOUT_NOTIFY_NONE;

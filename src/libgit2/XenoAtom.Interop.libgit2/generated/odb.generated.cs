@@ -21,7 +21,7 @@ namespace XenoAtom.Interop
         /// Flags controlling the behavior of ODB lookup operations
         /// </summary>
         [Flags]
-        public enum git_odb_lookup_flags_t : int
+        public enum git_odb_lookup_flags_t : uint
         {
             /// <summary>
             /// Don't call `git_odb_refresh` if the lookup fails. Useful when doing
@@ -29,7 +29,7 @@ namespace XenoAtom.Interop
             /// exist. When using this flag, you may wish to manually call
             /// `git_odb_refresh` before processing a batch of objects.
             /// </summary>
-            GIT_ODB_LOOKUP_NO_REFRESH = unchecked((int)(1  << (int) 0)),
+            GIT_ODB_LOOKUP_NO_REFRESH = unchecked((uint)(1<<0)),
         }
         
         /// <summary>

@@ -18,9 +18,9 @@ namespace XenoAtom.Interop
     public static unsafe partial class libgit2
     {
         [Flags]
-        public enum git_odb_backend_loose_flag_t : int
+        public enum git_odb_backend_loose_flag_t : uint
         {
-            GIT_ODB_BACKEND_LOOSE_FSYNC = unchecked((int)(1  << (int) 0)),
+            GIT_ODB_BACKEND_LOOSE_FSYNC = unchecked((uint)(1<<0)),
         }
         
         public const libgit2.git_odb_backend_loose_flag_t GIT_ODB_BACKEND_LOOSE_FSYNC = git_odb_backend_loose_flag_t.GIT_ODB_BACKEND_LOOSE_FSYNC;
@@ -29,13 +29,13 @@ namespace XenoAtom.Interop
         /// Streaming mode
         /// </summary>
         [Flags]
-        public enum git_odb_stream_t : int
+        public enum git_odb_stream_t : uint
         {
-            GIT_STREAM_RDONLY = unchecked((int)(1  << (int) 1)),
+            GIT_STREAM_RDONLY = unchecked((uint)(1<<1)),
             
-            GIT_STREAM_WRONLY = unchecked((int)(1  << (int) 2)),
+            GIT_STREAM_WRONLY = unchecked((uint)(1<<2)),
             
-            GIT_STREAM_RW = unchecked((int)(GIT_STREAM_RDONLY | GIT_STREAM_WRONLY)),
+            GIT_STREAM_RW = unchecked((uint)(GIT_STREAM_RDONLY|GIT_STREAM_WRONLY)),
         }
         
         public const libgit2.git_odb_stream_t GIT_STREAM_RDONLY = git_odb_stream_t.GIT_STREAM_RDONLY;

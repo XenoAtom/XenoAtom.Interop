@@ -21,30 +21,30 @@ namespace XenoAtom.Interop
         /// Flags to control the functionality of `git_blob_filter`.
         /// </summary>
         [Flags]
-        public enum git_blob_filter_flag_t : int
+        public enum git_blob_filter_flag_t : uint
         {
             /// <summary>
             /// When set, filters will not be applied to binary files.
             /// </summary>
-            GIT_BLOB_FILTER_CHECK_FOR_BINARY = unchecked((int)(1  << (int) 0)),
+            GIT_BLOB_FILTER_CHECK_FOR_BINARY = unchecked((uint)(1<<0)),
             
             /// <summary>
             /// When set, filters will not load configuration from the
             /// system-wide `gitattributes` in `/etc` (or system equivalent).
             /// </summary>
-            GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES = unchecked((int)(1  << (int) 1)),
+            GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES = unchecked((uint)(1<<1)),
             
             /// <summary>
             /// When set, filters will be loaded from a `.gitattributes` file
             /// in the HEAD commit.
             /// </summary>
-            GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD = unchecked((int)(1  << (int) 2)),
+            GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD = unchecked((uint)(1<<2)),
             
             /// <summary>
             /// When set, filters will be loaded from a `.gitattributes` file
             /// in the specified commit.
             /// </summary>
-            GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT = unchecked((int)(1  << (int) 3)),
+            GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT = unchecked((uint)(1<<3)),
         }
         
         /// <summary>

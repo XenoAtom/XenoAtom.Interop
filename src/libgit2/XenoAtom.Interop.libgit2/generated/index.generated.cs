@@ -20,11 +20,11 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Flags for index entries
         /// </summary>
-        public enum git_index_entry_flag_t : int
+        public enum git_index_entry_flag_t : uint
         {
-            GIT_INDEX_ENTRY_EXTENDED = unchecked((int)(0x4000)),
+            GIT_INDEX_ENTRY_EXTENDED = unchecked((uint)(0x4000)),
             
-            GIT_INDEX_ENTRY_VALID = unchecked((int)(0x8000)),
+            GIT_INDEX_ENTRY_VALID = unchecked((uint)(0x8000)),
         }
         
         public const libgit2.git_index_entry_flag_t GIT_INDEX_ENTRY_EXTENDED = git_index_entry_flag_t.GIT_INDEX_ENTRY_EXTENDED;
@@ -45,15 +45,15 @@ namespace XenoAtom.Interop
         /// You can use them to interpret the data in the `flags_extended`.
         /// </remarks>
         [Flags]
-        public enum git_index_entry_extended_flag_t : int
+        public enum git_index_entry_extended_flag_t : uint
         {
-            GIT_INDEX_ENTRY_INTENT_TO_ADD = unchecked((int)(1  << (int) 13)),
+            GIT_INDEX_ENTRY_INTENT_TO_ADD = unchecked((uint)(1<<13)),
             
-            GIT_INDEX_ENTRY_SKIP_WORKTREE = unchecked((int)(1  << (int) 14)),
+            GIT_INDEX_ENTRY_SKIP_WORKTREE = unchecked((uint)(1<<14)),
             
-            GIT_INDEX_ENTRY_EXTENDED_FLAGS = unchecked((int)(GIT_INDEX_ENTRY_INTENT_TO_ADD | GIT_INDEX_ENTRY_SKIP_WORKTREE)),
+            GIT_INDEX_ENTRY_EXTENDED_FLAGS = unchecked((uint)(GIT_INDEX_ENTRY_INTENT_TO_ADD|GIT_INDEX_ENTRY_SKIP_WORKTREE)),
             
-            GIT_INDEX_ENTRY_UPTODATE = unchecked((int)(1  << (int) 2)),
+            GIT_INDEX_ENTRY_UPTODATE = unchecked((uint)(1<<2)),
         }
         
         public const libgit2.git_index_entry_extended_flag_t GIT_INDEX_ENTRY_INTENT_TO_ADD = git_index_entry_extended_flag_t.GIT_INDEX_ENTRY_INTENT_TO_ADD;
@@ -90,15 +90,15 @@ namespace XenoAtom.Interop
         /// Flags for APIs that add files matching pathspec
         /// </summary>
         [Flags]
-        public enum git_index_add_option_t : int
+        public enum git_index_add_option_t : uint
         {
-            GIT_INDEX_ADD_DEFAULT = unchecked((int)0),
+            GIT_INDEX_ADD_DEFAULT = unchecked((uint)0),
             
-            GIT_INDEX_ADD_FORCE = unchecked((int)(1u << (int)0)),
+            GIT_INDEX_ADD_FORCE = unchecked((uint)(1u << 0)),
             
-            GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH = unchecked((int)(1u << (int)1)),
+            GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH = unchecked((uint)(1u << 1)),
             
-            GIT_INDEX_ADD_CHECK_PATHSPEC = unchecked((int)(1u << (int)2)),
+            GIT_INDEX_ADD_CHECK_PATHSPEC = unchecked((uint)(1u << 2)),
         }
         
         public const libgit2.git_index_add_option_t GIT_INDEX_ADD_DEFAULT = git_index_add_option_t.GIT_INDEX_ADD_DEFAULT;
