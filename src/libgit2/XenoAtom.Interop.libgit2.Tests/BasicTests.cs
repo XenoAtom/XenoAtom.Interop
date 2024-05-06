@@ -1,18 +1,17 @@
+using System.Text.RegularExpressions;
+
 namespace XenoAtom.Interop.Tests;
 
 using static XenoAtom.Interop.libgit2;
 
 [TestClass]
-public class BasicTests
+public class BasicTests : TestBase
 {
     [TestMethod]
     public void TestSimple()
     {
-        var result = git_libgit2_init();
-        Assert.IsTrue(result.Success);
-
         // Discover the repository path
-        result = git_repository_discover(out var bufOut, AppContext.BaseDirectory, 0, ReadOnlySpan<char>.Empty);
+        var result = git_repository_discover(out var bufOut, AppContext.BaseDirectory, 0, ReadOnlySpan<char>.Empty);
         Assert.IsTrue(result.Success);
         Assert.IsTrue(bufOut.size > 0);
         var repoPath = bufOut.AsString();
@@ -43,13 +42,79 @@ public class BasicTests
             hashCode += message.GetHashCode();
             git_commit_free(commit);
         }
+
         Assert.AreNotEqual(0, hashCode, "Invalid hashcode for all messages");
         git_revwalk_free(revwalk);
 
         // Close the repository
         git_repository_free(repo);
-        
-        result = git_libgit2_shutdown();
-        Assert.IsTrue(result.Success);
+    }
+
+    [TestMethod]
+    public void TestGitError()
+    {
+        var ex = Assert.ThrowsException<LibGit2Exception>(() => git_repository_head(out var head, default).Check());
+        Assert.AreEqual(git_error_code.GIT_ERROR, ex.ErrorCode);
+    }
+
+    [TestMethod]
+    public unsafe void TestRepoCommitsAndTags()
+    {
+        var result = git_repository_init(out var repo, Environment.CurrentDirectory, 0);
+        Assert.IsTrue(result.Success, $"Cannot initialize git repository at {Environment.CurrentDirectory}");
+
+        File.WriteAllText("readme.md", "This is a HelloWorld file.");
+
+        result = git_repository_index(out var index, repo);
+        Assert.IsTrue(result.Success, "Cannot get the index");
+
+        result = git_index_add_bypath(index, "readme.md");
+        Assert.IsTrue(result.Success, "Cannot add the file to the index");
+
+        result = git_index_write(index);
+        Assert.IsTrue(result.Success, "Cannot write the index");
+
+        result = git_index_write_tree(out var treeOid, index);
+        Assert.IsTrue(result.Success, "Cannot write the tree");
+
+        result = git_index_write(index);
+        Assert.IsTrue(result.Success, "Cannot write the index");
+
+        result = git_tree_lookup(out var tree, repo, treeOid);
+        Assert.IsTrue(result.Success, "Cannot lookup the tree");
+
+        result = git_signature_now(out var signature, "John", "john@corp.com");
+        Assert.IsTrue(result.Success, "Cannot create a signature");
+
+        result = git_commit_create(out var commitOid, repo, "HEAD", *signature, *signature, "UTF-8", "Initial commit", tree, 0, null);
+        Assert.IsTrue(result.Success, "Cannot create a commit");
+
+        var idAsString = commitOid.ToString();
+        Assert.IsFalse(Regex.Match(idAsString, "^0{40}$").Success, "Invalid commit id");
+
+        result = git_object_lookup(out var commitObj, repo, commitOid, GIT_OBJECT_COMMIT);
+        Assert.IsTrue(result.Success, "Cannot lookup the object");
+
+        // create a tag
+        result = git_tag_create(out var tagOid, repo, "v1.0", commitObj, *signature, "This is a tag", 0);
+        Assert.IsTrue(result.Success, "Cannot create a tag");
+
+        result = git_tag_list(out var tag_names, repo);
+        Assert.IsTrue(result.Success, "Cannot list tags");
+
+        Assert.IsTrue(tag_names.count == 1, $"No tags found. {tag_names.count}");
+        Assert.IsTrue(tag_names.strings != null, "No tags found");
+
+        var tagNames = tag_names.ToArray();
+        Assert.IsTrue(tagNames.Length == 1, $"No tags found. {tagNames.Length}");
+        Assert.AreEqual("v1.0", tagNames[0]);
+
+        git_strarray_dispose(ref tag_names);
+
+        git_signature_free(signature);
+        git_tree_free(tree);
+        git_index_free(index);
+
+        git_repository_free(repo);
     }
 }

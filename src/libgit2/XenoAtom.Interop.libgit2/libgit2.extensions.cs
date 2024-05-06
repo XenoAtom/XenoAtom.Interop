@@ -80,8 +80,19 @@ public static unsafe partial class libgit2
         {
             if (Failure)
             {
-                var errorMessage = git_error_last()->ToString();
-                throw new LibGit2Exception(ErrorCode, errorMessage);
+                var errorLast = git_error_last();
+                if (errorLast != null)
+                {
+                    var errorMessage = git_error_last()->ToString();
+                    throw new LibGit2Exception(ErrorCode, errorMessage)
+                    {
+                        ErrorClass = errorLast->klass
+                    };
+                }
+                else
+                {
+                    throw new LibGit2Exception(ErrorCode, "Unknown libgit2 error");
+                }
             }
             return this;
         }
