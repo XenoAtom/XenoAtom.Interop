@@ -12,7 +12,7 @@ namespace XenoAtom.Interop;
 /// This class is a C# representation of the zlib library.
 /// </summary>
 [SuppressMessage("ReSharper", "InconsistentNaming")]
-public static unsafe partial class zlib
+static unsafe partial class zlib
 {
     private const DllImportSearchPath DefaultDllImportSearchPath = DllImportSearchPath.ApplicationDirectory | DllImportSearchPath.UserDirectories | DllImportSearchPath.UseDllDirectoryForDependencies;
 
@@ -38,7 +38,8 @@ public static unsafe partial class zlib
                 }
 
                 if (NativeLibrary.TryLoad(LibraryName, typeof(zlib).Assembly, DefaultDllImportSearchPath, out ptr)
-                    || NativeLibrary.TryLoad(AlternativeLibraryName, typeof(zlib).Assembly, DefaultDllImportSearchPath, out ptr))
+                    || NativeLibrary.TryLoad(AlternativeLibraryName1, typeof(zlib).Assembly, DefaultDllImportSearchPath, out ptr)
+                    || NativeLibrary.TryLoad(AlternativeLibraryName2, typeof(zlib).Assembly, DefaultDllImportSearchPath, out ptr))
                 {
                     return ptr;
                 }
@@ -50,45 +51,92 @@ public static unsafe partial class zlib
     public static System.Runtime.InteropServices.DllImportResolver? ZlibDllImportResolver { get; set; }
 
     private const string LibraryName = "z";
-    private const string AlternativeLibraryName = "zlibwapi";
+    private const string AlternativeLibraryName1 = "zlib";
+    private const string AlternativeLibraryName2 = "zlibwapi";
+    
+    public static z_result_t deflateInit(ref z_stream strm, int level)
+        => deflateInit_(ref strm, level, ZLIB_VERSION, sizeof(global::XenoAtom.Interop.zlib.z_stream));
 
-    public static int deflateInit(ref global::XenoAtom.Interop.zlib.z_stream strm, int level)
+    public static z_result_t inflateInit(ref z_stream strm)
+        => inflateInit_(ref strm, ZLIB_VERSION, sizeof(global::XenoAtom.Interop.zlib.z_stream));
+
+    public static z_result_t deflateInit2(ref z_stream strm, int level, int method, int windowBits, int memLevel, int strategy)
+        => deflateInit2_(ref strm, level, method, windowBits, memLevel, strategy, ZLIB_VERSION, sizeof(global::XenoAtom.Interop.zlib.z_stream));
+
+    public static z_result_t inflateInit2(ref z_stream strm, int windowBits)
+        => inflateInit2_(ref strm, windowBits, ZLIB_VERSION, sizeof(global::XenoAtom.Interop.zlib.z_stream));
+
+    public static z_result_t inflateBackInit(ref z_stream strm, int windowBits, byte* window)
+        => inflateBackInit_(ref strm, windowBits, window, ZLIB_VERSION, sizeof(global::XenoAtom.Interop.zlib.z_stream));
+    
+    public static zlib.z_result_t compress(Span<byte> dest, out uint destCompressedLength, ReadOnlySpan<byte> source)
     {
-        fixed (global::XenoAtom.Interop.zlib.z_stream* pstrm = &strm)
+        var localDestCompressedLength = new CULong((uint)dest.Length);
+        fixed (byte* destPtr = dest)
+        fixed (byte* sourcePtr = source)
         {
-            return deflateInit_(pstrm, level, zlibVersion(), sizeof(global::XenoAtom.Interop.zlib.z_stream));
+            var result = compress(destPtr, &localDestCompressedLength, sourcePtr, new CULong((uint)source.Length));
+            destCompressedLength =  (uint)localDestCompressedLength.Value;
+            return result;
         }
     }
 
-    public static int inflateInit(ref global::XenoAtom.Interop.zlib.z_stream strm)
+    public static zlib.z_result_t compress2(Span<byte> dest, out uint destCompressedLength, ReadOnlySpan<byte> source, int level)
     {
-        fixed (global::XenoAtom.Interop.zlib.z_stream* pstrm = &strm)
+        var localDestCompressedLength = new CULong((uint)dest.Length);
+        fixed (byte* destPtr = dest)
+        fixed (byte* sourcePtr = source)
         {
-            return inflateInit_(pstrm, zlibVersion(), sizeof(global::XenoAtom.Interop.zlib.z_stream));
+            var result = compress2(destPtr, &localDestCompressedLength, sourcePtr, new CULong((uint)source.Length), level);
+            destCompressedLength =  (uint)localDestCompressedLength.Value;
+            return result;
         }
     }
 
-    public static int deflateInit2(ref global::XenoAtom.Interop.zlib.z_stream strm, int level, int method, int windowBits, int memLevel, int strategy)
+    public static zlib.z_result_t uncompress(Span<byte> dest, out uint destDecompressedLength, ReadOnlySpan<byte> source)
     {
-        fixed (global::XenoAtom.Interop.zlib.z_stream* pstrm = &strm)
+        var localDestDecompressedLength = new CULong((uint)dest.Length);
+        fixed (byte* destPtr = dest)
+        fixed (byte* sourcePtr = source)
         {
-            return deflateInit2_(pstrm, level, method, windowBits, memLevel, strategy, zlibVersion(), sizeof(global::XenoAtom.Interop.zlib.z_stream));
+            var result = uncompress(destPtr, &localDestDecompressedLength, sourcePtr, new CULong((uint)source.Length));
+            destDecompressedLength =  (uint)localDestDecompressedLength.Value;
+            return result;
         }
     }
 
-    public static int inflateInit2(ref global::XenoAtom.Interop.zlib.z_stream strm, int windowBits)
+    public static zlib.z_result_t uncompress2(Span<byte> dest, out uint destDecompressedLength, ReadOnlySpan<byte> source, out uint sourceBytesConsumed)
     {
-        fixed (global::XenoAtom.Interop.zlib.z_stream* pstrm = &strm)
+        var localDestDecompressedLength = new CULong((uint)dest.Length);
+        var localSourceBytesConsumed = new CULong((uint)source.Length);
+        fixed (byte* destPtr = dest)
+        fixed (byte* sourcePtr = source)
         {
-            return inflateInit2_(pstrm, windowBits, zlibVersion(), sizeof(global::XenoAtom.Interop.zlib.z_stream));
+            var result = uncompress2(destPtr, &localDestDecompressedLength, sourcePtr, &localSourceBytesConsumed);
+            destDecompressedLength =  (uint)localDestDecompressedLength.Value;
+            sourceBytesConsumed =  (uint)localSourceBytesConsumed.Value;
+            return result;
         }
     }
-
-    public static int inflateBackInit(ref global::XenoAtom.Interop.zlib.z_stream strm, int windowBits, byte* window)
+    
+    partial struct z_stream
     {
-        fixed (global::XenoAtom.Interop.zlib.z_stream* pstrm = &strm)
-        {
-            return inflateBackInit_(pstrm, windowBits, window, zlibVersion(), sizeof(global::XenoAtom.Interop.zlib.z_stream));
-        }
+        /// <summary>
+        /// Gets the message as a string.
+        /// </summary>
+        public string? msg_string => Utf8CustomMarshaller.ConvertToManaged(msg);
+    }
+
+    partial struct gz_header
+    {
+        /// <summary>
+        /// Gets the name as a string.
+        /// </summary>
+        public string? name_string => Utf8CustomMarshaller.ConvertToManaged(name);
+
+        /// <summary>
+        /// Gets the comment as a string.
+        /// </summary>
+        public string? comment_string => Utf8CustomMarshaller.ConvertToManaged(comment);
     }
 }

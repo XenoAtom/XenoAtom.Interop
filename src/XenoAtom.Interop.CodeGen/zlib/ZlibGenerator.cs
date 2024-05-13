@@ -62,43 +62,41 @@ internal partial class ZlibGenerator
             MappingRules =
             {
                 e => e.MapMacroToConst("MAX_WBITS", "int"),
-                e => e.MapMacroToConst("Z_NO_FLUSH", "int"),
-                e => e.MapMacroToConst("Z_PARTIAL_FLUSH", "int"),
-                e => e.MapMacroToConst("Z_SYNC_FLUSH", "int"),
-                e => e.MapMacroToConst("Z_FULL_FLUSH", "int"),
-                e => e.MapMacroToConst("Z_FINISH", "int"),
-                e => e.MapMacroToConst("Z_BLOCK", "int"),
-                e => e.MapMacroToConst("Z_TREES", "int"),
-                e => e.MapMacroToConst("Z_OK", "int"),
-                e => e.MapMacroToConst("Z_STREAM_END", "int"),
-                e => e.MapMacroToConst("Z_NEED_DICT", "int"),
-                e => e.MapMacroToConst("Z_ERRNO", "int"),
-                e => e.MapMacroToConst("Z_STREAM_ERROR", "int"),
-                e => e.MapMacroToConst("Z_DATA_ERROR", "int"),
-                e => e.MapMacroToConst("Z_MEM_ERROR", "int"),
-                e => e.MapMacroToConst("Z_BUF_ERROR", "int"),
-                e => e.MapMacroToConst("Z_VERSION_ERROR", "int"),
+
+                e => e.MapMacroToEnum("(Z_NO_FLUSH|Z_PARTIAL_FLUSH|Z_SYNC_FLUSH|Z_FULL_FLUSH|Z_FINISH|Z_BLOCK|Z_TREES)", "z_flush_t"),
+                e => e.MapMacroToEnum("(Z_OK|Z_STREAM_END|Z_NEED_DICT|Z_ERRNO|Z_STREAM_ERROR|Z_DATA_ERROR|Z_MEM_ERROR|Z_BUF_ERROR|Z_VERSION_ERROR)", "z_result_t"),
+                e => e.MapMacroToEnum("(Z_FILTERED|Z_HUFFMAN_ONLY|Z_RLE|Z_FIXED|Z_DEFAULT_STRATEGY)", "z_strategy_t"),
+                e => e.MapMacroToEnum("(Z_BINARY|Z_TEXT|Z_ASCII|Z_UNKNOWN|Z_DEFLATED)", "z_datatype_t"),
+
                 e => e.MapMacroToConst("Z_NO_COMPRESSION", "int"),
                 e => e.MapMacroToConst("Z_BEST_SPEED", "int"),
                 e => e.MapMacroToConst("Z_BEST_COMPRESSION", "int"),
                 e => e.MapMacroToConst("Z_DEFAULT_COMPRESSION", "int"),
-                e => e.MapMacroToConst("Z_FILTERED", "int"),
-                e => e.MapMacroToConst("Z_HUFFMAN_ONLY", "int"),
-                e => e.MapMacroToConst("Z_RLE", "int"),
-                e => e.MapMacroToConst("Z_FIXED", "int"),
-                e => e.MapMacroToConst("Z_DEFAULT_STRATEGY", "int"),
-                e => e.MapMacroToConst("Z_BINARY", "int"),
-                e => e.MapMacroToConst("Z_TEXT", "int"),
-                e => e.MapMacroToConst("Z_ASCII", "int"),
-                e => e.MapMacroToConst("Z_UNKNOWN", "int"),
-                e => e.MapMacroToConst("Z_DEFLATED", "int"),
-                e => e.MapMacroToConst("Z_NULL", "int"),
+                
+                e => e.MapMacroToConst("Z_NULL", "ssize_t"),
                 e => e.MapMacroToConst("ZLIB_VERSION", "char*"),
                 e => e.MapMacroToConst("ZLIB_VER[N_].*", "int"),
+
+                e => e.Map<CppParameter>("(inflate|deflate)::flush").Type("z_flush_t"),
+
+                e => e.Map<CppFunction>("(deflate|deflateEnd|inflate|inflateEnd|deflateSetDictionary|deflateGetDictionary|deflateCopy|deflateReset|deflateParams|deflateTune|deflatePending|deflatePrime|deflateSetHeader|inflateSetDictionary|inflateGetDictionary|inflateSync|inflateCopy|inflateReset|inflateReset2|inflatePrime|inflateGetHeader|inflateBack|inflateBackEnd|compress|compress2|uncompress|uncompress2|deflateInit_|inflateInit_|deflateInit2_|inflateInit2_|inflateBackInit_)").Type("z_result_t"),
+
+                e => e.Map<CppParameter>("(adler32|adler32_z)::adler").Type("unsigned int"),
+                e => e.Map<CppParameter>("(crc32|crc32_z)::crc").Type("unsigned int"),
+                e => e.Map<CppFunction>("(adler32|adler32_z|crc32|crc32_z|crc32_combine_op|zlibCompileFlags|compressBound|adler32_combine|crc32_combine|crc32_combine_gen)").Type("unsigned int"),
+                e => e.Map<CppParameter>("(compressBound|crc32_combine_op)::.*").Type("unsigned int"),
+                e => e.Map<CppParameter>("(adler32_combine|crc32_combine)::arg[01]").Type("unsigned int"),
+                e => e.Map<CppParameter>("(adler32_combine|crc32_combine)::arg2").Type("int"),
+                e => e.Map<CppParameter>("crc32_combine_gen::arg0").Type("int"),
+
                 e => e.Map<CppClass>("z_stream_s").Name("z_stream"),
                 e => e.Map<CppClass>("gz_header_s").Name("gz_header"),
+
+                e => e.Map<CppField>("z_stream::data_type").Type("z_datatype_t"),
+
                 e => e.Map<CppFunction>("^gz.*").Discard(),
                 e => e.Map<CppClass>("gzFile_s").Discard(),
+                e => e.Map<CppFunction>("(zError|inflateSyncPoint|get_crc_table|inflateUndermine|inflateValidate|inflateCodesUsed|inflateResetKeep|deflateResetKeep)").Discard(),
             },
         };
 
@@ -133,11 +131,14 @@ internal partial class ZlibGenerator
         // Transform all pointers to z_stream_s and gzFile_s to ref
         foreach (var function in csCompilation.AllFunctions)
         {
+            // Remove comments as they are not properly setup in zlib (they are declared after the function and sometimes commented)
+            function.Comment = null;
+
             foreach (var param in function.Parameters)
             {
                 if (param.ParameterType is CSharpPointerType pointerType &&
                     pointerType.ElementType is CSharpStruct csStruct &&
-                    (csStruct.Name == "z_stream_s" || csStruct.Name == "gzFile_s" || csStruct.Name == "gz_header_s"))
+                    (csStruct.Name == "z_stream" || csStruct.Name == "gz_header"))
                 {
                     param.ParameterType = new CSharpRefType(CSharpRefKind.Ref, csStruct);
                 }

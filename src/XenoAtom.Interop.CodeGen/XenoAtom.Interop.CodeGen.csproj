@@ -9,7 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\CppAst.CodeGen\src\CppAst.CodeGen\CppAst.CodeGen.csproj" />
+    <PackageReference Include="CppAst.CodeGen" Version="0.14.1" />
   </ItemGroup>
+
+  <!--<ItemGroup>
+    <ProjectReference Include="..\..\..\..\CppAst.CodeGen\src\CppAst.CodeGen\CppAst.CodeGen.csproj" />
+  </ItemGroup>-->
 
 </Project>
