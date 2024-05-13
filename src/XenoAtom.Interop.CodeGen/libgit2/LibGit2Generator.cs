@@ -68,8 +68,9 @@ internal partial class LibGit2Generator
         {
             DefaultClassLib = "libgit2",
             DefaultNamespace = "XenoAtom.Interop",
-            DefaultOutputFilePath = "/libgit2.generated.cs",
+            DefaultOutputFilePath = "/libgit2_library.generated.cs",
             DefaultDllImportNameAndArguments = "LibraryName",
+            TargetCpu = CppTargetCpu.X86_64,
             TargetVendor = "linux",
             TargetSystem = "musl",
             Defines =

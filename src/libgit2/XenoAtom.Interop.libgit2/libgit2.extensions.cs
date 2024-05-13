@@ -25,24 +25,30 @@ public static unsafe partial class libgit2
         {
             if (libraryName == LibraryName)
             {
-                var basePath = AppContext.BaseDirectory;
+                var ptr = IntPtr.Zero;
+                var resolver = Libgit2DllImportResolver;
+                if (resolver != null)
+                {
+                    ptr = resolver(libraryName, methodName, searchPath);
+                }
 
-                if (NativeLibrary.TryLoad(AlternativeLibraryName, typeof(libgit2).Assembly, DefaultDllImportSearchPath, out var ptr)
+                if (ptr != IntPtr.Zero)
+                {
+                    return ptr;
+                }
+
+                if (NativeLibrary.TryLoad(AlternativeLibraryName, typeof(libgit2).Assembly, DefaultDllImportSearchPath, out ptr)
                     || NativeLibrary.TryLoad(LibraryName, typeof(libgit2).Assembly, DefaultDllImportSearchPath, out ptr))
                 {
                     return ptr;
                 }
-                //else if (NativeLibrary.TryLoad(Path.Combine(basePath, "runtimes", RuntimeInformation.RuntimeIdentifier, "native", "git2-a418d9d.dll"), out ptr))
-                //{
-                //    return ptr;
-                //}
             }
 
-            return FallbackResolver?.Invoke(libraryName, methodName, searchPath) ?? IntPtr.Zero;
+            return IntPtr.Zero;
         });
     }
 
-    public static System.Runtime.InteropServices.DllImportResolver? FallbackResolver { get; set; }
+    public static System.Runtime.InteropServices.DllImportResolver? Libgit2DllImportResolver { get; set; }
 
     private const string LibraryName = "git2";
 
@@ -96,19 +102,5 @@ public static unsafe partial class libgit2
             }
             return this;
         }
-    }
-
-    /// <summary>
-    /// A size_t type.
-    /// </summary>
-    public partial struct size_t
-    {
-        public static implicit operator long(size_t from) => from.Value.ToInt64();
-
-        public static implicit operator size_t(long from) => new size_t(new IntPtr(from));
-
-        public static implicit operator int(size_t from) => from.Value.ToInt32();
-
-        public static implicit operator size_t(int from) => new size_t(new IntPtr(from));
     }
 }

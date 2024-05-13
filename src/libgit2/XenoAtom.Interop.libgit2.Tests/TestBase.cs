@@ -6,6 +6,7 @@ namespace XenoAtom.Interop.Tests;
 
 public abstract class TestBase
 {
+    private string _previousCurrentDirectory;
     private const string TestFolderName = "tests";
 
     public TestContext? TestContext { get; set; }
@@ -15,10 +16,17 @@ public abstract class TestBase
     [TestInitialize()]
     public void Initialize()
     {
+        _previousCurrentDirectory = Environment.CurrentDirectory;
         // Ensure that the library is loaded
         var status = libgit2.git_libgit2_init();
         Assert.IsTrue(status.Success, "Failed to initialize libgit2");
+    }
 
+    /// <summary>
+    /// Setup a test folder for the current test.
+    /// </summary>
+    public void SetupTestFolder()
+    {
         if (TestContext is null)
         {
             Assert.Fail("TestContext is null");
@@ -30,7 +38,7 @@ public abstract class TestBase
             Assert.Fail("TestName is null");
             return;
         }
-        
+
         var folder = Path.Combine(AppContext.BaseDirectory, TestFolderName, TestContext.TestName);
         RecursiveDelete(folder);
         Directory.CreateDirectory(folder);
@@ -46,6 +54,8 @@ public abstract class TestBase
         var status = libgit2.git_libgit2_shutdown();
         Assert.IsTrue(status.Success, "Failed to shutdown libgit2");
         CurrentTestFolder = null;
+        // Restore the current directory
+        Directory.SetCurrentDirectory(_previousCurrentDirectory);
     }
 
     private static void RecursiveDelete(string folder)

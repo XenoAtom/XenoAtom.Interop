@@ -36,6 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="..\..\Shared\UTF8Marshaler.cs" Link="UTF8Marshaler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)../img/XenoAtom.Interop.libgit2.png" Pack="true" PackagePath="/" />
     <None Include="$(MSBuildThisFileDirectory)../readme.md" Pack="true" PackagePath="/" />
   </ItemGroup>
@@ -45,5 +49,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="generated\" />
   </ItemGroup>
 </Project>

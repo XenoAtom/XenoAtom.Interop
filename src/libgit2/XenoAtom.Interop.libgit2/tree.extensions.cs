@@ -30,7 +30,7 @@ static unsafe partial class libgit2
     {
         fixed (git_tree_update* p_updates = updates)
         {
-            return git_tree_create_updated(out @out, repo, baseline, updates.Length, p_updates);
+            return git_tree_create_updated(out @out, repo, baseline, (nuint)updates.Length, p_updates);
         }
     }
 }

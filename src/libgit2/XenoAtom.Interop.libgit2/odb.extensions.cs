@@ -31,7 +31,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_odb_expand_id* pids = ids)
         {
-            return git_odb_expand_ids(db, pids, ids.Length);
+            return git_odb_expand_ids(db, pids, (nuint)ids.Length);
         }
     }
 
@@ -54,7 +54,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* pdata = data)
         {
-            return git_odb_write(out @out, odb, pdata, data.Length, type);
+            return git_odb_write(out @out, odb, pdata, (nuint)data.Length, type);
         }
     }
 
@@ -72,7 +72,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* pbuffer = buffer)
         {
-            return git_odb_stream_write(ref stream, pbuffer, buffer.Length);
+            return git_odb_stream_write(ref stream, pbuffer, (nuint)buffer.Length);
         }
     }
 
@@ -89,7 +89,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* pbuffer = buffer)
         {
-            return git_odb_stream_read(stream, pbuffer, buffer.Length);
+            return git_odb_stream_read(stream, pbuffer, (nuint)buffer.Length);
         }
     }
 
@@ -97,7 +97,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* pdata = data)
         {
-            return git_odb_hash(out @out, pdata, data.Length, type);
+            return git_odb_hash(out @out, pdata, (nuint)data.Length, type);
         }
     }
 }

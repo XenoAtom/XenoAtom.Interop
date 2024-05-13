@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "XenoAtom.Interop.CodeGen": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

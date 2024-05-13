@@ -19,6 +19,6 @@ static unsafe partial class libgit2
 
     partial struct git_message_trailer_array
     {
-        public ReadOnlySpan<libgit2.git_message_trailer> AsSpan() => trailers == null ? new() : new(trailers, count);
+        public ReadOnlySpan<libgit2.git_message_trailer> AsSpan() => trailers == null ? new() : new(trailers, (int)count);
     }
 }

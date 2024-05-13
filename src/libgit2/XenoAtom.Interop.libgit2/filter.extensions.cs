@@ -21,7 +21,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* pIn = @in)
         {
-            return git_filter_list_apply_to_buffer(out @out, filters, pIn, @in.Length);
+            return git_filter_list_apply_to_buffer(out @out, filters, pIn, (nuint)@in.Length);
         }
     }
 
@@ -36,7 +36,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* pBuffer = buffer)
         {
-            return git_filter_list_stream_buffer(filters, pBuffer, buffer.Length, ref target);
+            return git_filter_list_stream_buffer(filters, pBuffer, (nuint)buffer.Length, ref target);
         }
     }
 }

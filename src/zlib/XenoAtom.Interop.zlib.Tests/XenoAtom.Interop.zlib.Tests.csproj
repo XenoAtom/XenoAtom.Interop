@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>XenoAtom.Interop.Tests</RootNamespace>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <EnableMSTestRunner>true</EnableMSTestRunner>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSTest" Version="3.*" />
+    <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+    <PackageReference Include="elskom.zlib.redist.win" Version="1.2.13" />
+    <PackageReference Include="elskom.zlib.redist.linux" Version="1.2.13" />
+    <PackageReference Include="elskom.zlib.redist.osx" Version="1.2.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XenoAtom.Interop.zlib\XenoAtom.Interop.zlib.csproj" />
+  </ItemGroup>
+
+</Project>

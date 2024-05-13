@@ -103,7 +103,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_annotated_commit* their_headsPtr = their_heads)
         {
-            return git_merge_analysis(out analysis_out, out preference_out, repo, their_headsPtr, their_heads.Length);
+            return git_merge_analysis(out analysis_out, out preference_out, repo, their_headsPtr, (nuint)their_heads.Length);
         }
     }
 
@@ -122,7 +122,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_annotated_commit* their_headsPtr = their_heads)
         {
-            return git_merge_analysis_for_ref(out analysis_out, out preference_out, repo, our_ref, their_headsPtr, their_heads.Length);
+            return git_merge_analysis_for_ref(out analysis_out, out preference_out, repo, our_ref, their_headsPtr, (nuint)their_heads.Length);
         }
     }
 
@@ -138,7 +138,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_oid* input_arrayPtr = input_array)
         {
-            return git_merge_base_many(out @out, repo, (size_t)input_array.Length, input_arrayPtr);
+            return git_merge_base_many(out @out, repo, (nuint)input_array.Length, input_arrayPtr);
         }
     }
 
@@ -153,7 +153,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_oid* input_arrayPtr = input_array)
         {
-            return git_merge_bases_many(out @out, repo, (size_t)input_array.Length, input_arrayPtr);
+            return git_merge_bases_many(out @out, repo, (nuint)input_array.Length, input_arrayPtr);
         }
     }
 
@@ -168,7 +168,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_oid* input_arrayPtr = input_array)
         {
-            return git_merge_base_octopus(out @out, repo, (size_t)input_array.Length, input_arrayPtr);
+            return git_merge_base_octopus(out @out, repo, (nuint)input_array.Length, input_arrayPtr);
         }
     }
 
@@ -193,7 +193,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_annotated_commit* their_headsPtr = their_heads)
         {
-            return git_merge(repo, their_headsPtr, their_heads.Length, in merge_opts, in checkout_opts);
+            return git_merge(repo, their_headsPtr, (nuint)their_heads.Length, in merge_opts, in checkout_opts);
         }
     }
 }

@@ -21,7 +21,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* bufPtr = buf)
         {
-            return git_mailmap_from_buffer(out @out, bufPtr, buf.Length);
+            return git_mailmap_from_buffer(out @out, bufPtr, (nuint)buf.Length);
         }
     }
 

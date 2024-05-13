@@ -48,7 +48,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_commit* parentsPtr = parents)
         {
-            return git_commit_create(out id, repo, update_ref, author, committer, message_encoding, message, tree, parents.Length, parentsPtr);
+            return git_commit_create(out id, repo, update_ref, author, committer, message_encoding, message, tree, (nuint)parents.Length, parentsPtr);
         }
     }
 
@@ -91,7 +91,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_commit* parentsPtr = parents)
         {
-            return git_commit_create(out id, repo, update_ref, author, committer, message_encoding, message, tree, parents.Length, parentsPtr);
+            return git_commit_create(out id, repo, update_ref, author, committer, message_encoding, message, tree, (nuint)parents.Length, parentsPtr);
         }
     }
 
@@ -125,7 +125,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_commit* parentsPtr = parents)
         {
-            return git_commit_create_buffer(out @out, repo, author, committer, message_encoding, message, tree, parents.Length, parentsPtr);
+            return git_commit_create_buffer(out @out, repo, author, committer, message_encoding, message, tree, (nuint)parents.Length, parentsPtr);
         }
     }
 
@@ -160,7 +160,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_commit* parentsPtr = parents)
         {
-            return git_commit_create_buffer(out @out, repo, author, committer, message_encoding, message, tree, parents.Length, parentsPtr);
+            return git_commit_create_buffer(out @out, repo, author, committer, message_encoding, message, tree, (nuint)parents.Length, parentsPtr);
         }
     }
 

@@ -21,7 +21,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* p_data = data)
         {
-            return git_indexer_append(idx, p_data, data.Length, out stats);
+            return git_indexer_append(idx, p_data, (nuint)data.Length, out stats);
         }
     }
 }

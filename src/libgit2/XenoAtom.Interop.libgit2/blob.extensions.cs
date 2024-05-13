@@ -21,7 +21,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* pBuffer = buffer)
         {
-            return git_blob_create_from_buffer(out id, repo, pBuffer, buffer.Length);
+            return git_blob_create_from_buffer(out id, repo, pBuffer, (nuint)buffer.Length);
         }
     }
 
@@ -37,7 +37,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* pData = data)
         {
-            return git_blob_data_is_binary(pData, data.Length);
+            return git_blob_data_is_binary(pData, (nuint)data.Length);
         }
     }
 }

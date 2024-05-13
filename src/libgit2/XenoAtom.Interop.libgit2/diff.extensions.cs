@@ -55,7 +55,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* pContent = content)
         {
-            return git_diff_from_buffer(out @out, pContent, content.Length);
+            return git_diff_from_buffer(out @out, pContent, (nuint)content.Length);
         }
     }
 }

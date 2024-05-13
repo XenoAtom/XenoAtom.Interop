@@ -22,6 +22,6 @@ static unsafe partial class libgit2
         /// Gets the string associated to this buffer using UTF8 encoding.
         /// </summary>
         /// <returns>The span associated to this buffer</returns>
-        public string? AsString() => LibGit2Helper.UnmanagedUtf8StringToString(ptr, size);
+        public string? AsString() => LibGit2Helper.UnmanagedUtf8StringToString(ptr, (int)size);
     }
 }

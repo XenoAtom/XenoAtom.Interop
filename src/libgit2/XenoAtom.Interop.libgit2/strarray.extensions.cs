@@ -21,7 +21,7 @@ public static unsafe partial class libgit2
         /// <summary>
         /// gets the number of strings in this array.
         /// </summary>
-        public int Length => count;
+        public int Length => (int)count;
 
         /// <summary>
         /// Creates a managed array of string from this git native array of string.
@@ -29,8 +29,8 @@ public static unsafe partial class libgit2
         /// <returns>A managed array of string from this git native array of string.</returns>
         public string?[] ToArray()
         {
-            var array = new string?[count];
-            for(int i = 0; i < count; i++)
+            var array = new string?[Length];
+            for(int i = 0; i < Length; i++)
             {
                 array[i] = LibGit2Helper.UnmanagedUtf8StringToString(strings[i]);
             }
@@ -51,7 +51,7 @@ public static unsafe partial class libgit2
             var nativeArray = new git_strarray
             {
                 strings = (byte**)NativeMemory.Alloc((nuint)(array.Length * nint.Size)), 
-                count = array.Length
+                count = (nuint)array.Length
             };
             for (int i = 0; i < array.Length; i++)
             {
@@ -67,7 +67,7 @@ public static unsafe partial class libgit2
         /// </summary>
         public void Dispose()
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Length; i++)
             {
                 LibGit2Helper.FreeUnmanagedUtf8String(strings[i]);
             }

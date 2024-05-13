@@ -237,6 +237,12 @@ public class ApkIncludeHelper
             var fileInfo = new FileInfo(includeFinalPath);
             if (!fileInfo.Exists || fileInfo.Length != tarEntry.Length)
             {
+                //if (Path.GetFileName(fileInfo.Name) == "alltypes.h")
+                //{
+                //    Console.WriteLine($"Skipping {includeFinalPath}");
+                //    continue;
+                //}
+
                 Directory.CreateDirectory(Path.GetDirectoryName(includeFinalPath)!);
                 await using var outputFile = new FileStream(includeFinalPath, FileMode.Create, FileAccess.Write, FileShare.None);
                 // DataStream might be null when the file is empty

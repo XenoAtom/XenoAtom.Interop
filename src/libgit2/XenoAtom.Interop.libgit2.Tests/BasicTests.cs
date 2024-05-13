@@ -60,6 +60,8 @@ public class BasicTests : TestBase
     [TestMethod]
     public unsafe void TestRepoCommitsAndTags()
     {
+        SetupTestFolder();
+
         var result = git_repository_init(out var repo, Environment.CurrentDirectory, 0);
         Assert.IsTrue(result.Success, $"Cannot initialize git repository at {Environment.CurrentDirectory}");
 

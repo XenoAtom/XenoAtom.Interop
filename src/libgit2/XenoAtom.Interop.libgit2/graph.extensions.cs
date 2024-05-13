@@ -23,7 +23,7 @@ static unsafe partial class libgit2
     {
         fixed (libgit2.git_oid* descendant_arrayPtr = descendant_array)
         {
-            return git_graph_reachable_from_any(repo, commit, descendant_arrayPtr, (size_t)descendant_array.Length);
+            return git_graph_reachable_from_any(repo, commit, descendant_arrayPtr, (nuint)descendant_array.Length);
         }
     }
 }

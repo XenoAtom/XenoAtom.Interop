@@ -29,7 +29,7 @@ static unsafe partial class libgit2
     {
         fixed (byte* bufPtr = buf)
         {
-            return git_object_rawcontent_is_valid(out valid, bufPtr, buf.Length, object_type);
+            return git_object_rawcontent_is_valid(out valid, bufPtr, (nuint)buf.Length, object_type);
         }
     }
 }
