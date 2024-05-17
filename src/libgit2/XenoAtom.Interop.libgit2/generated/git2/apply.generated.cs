@@ -27,7 +27,7 @@ namespace XenoAtom.Interop
             /// Don't actually make changes, just test that the patch applies.
             /// This is the equivalent of `git apply --check`.
             /// </summary>
-            GIT_APPLY_CHECK = unchecked((uint)(1<<0)),
+            GIT_APPLY_CHECK = unchecked((uint)1),
         }
         
         /// <summary>
@@ -140,17 +140,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int> Value { get; }
             
-            public bool Equals(git_apply_delta_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_apply_delta_cb other && Equals(other);
+            
+            public bool Equals(git_apply_delta_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int>(git_apply_delta_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int> (libgit2.git_apply_delta_cb from) => from.Value;
             
-            public static implicit operator git_apply_delta_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int> from) => new git_apply_delta_cb(from);
+            public static implicit operator libgit2.git_apply_delta_cb (delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int> from) => new libgit2.git_apply_delta_cb(from);
             
             public static bool operator ==(git_apply_delta_cb left, git_apply_delta_cb right) => left.Equals(right);
             
@@ -181,22 +181,24 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int> Value { get; }
             
-            public bool Equals(git_apply_hunk_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_apply_hunk_cb other && Equals(other);
+            
+            public bool Equals(git_apply_hunk_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int>(git_apply_hunk_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int> (libgit2.git_apply_hunk_cb from) => from.Value;
             
-            public static implicit operator git_apply_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int> from) => new git_apply_hunk_cb(from);
+            public static implicit operator libgit2.git_apply_hunk_cb (delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int> from) => new libgit2.git_apply_hunk_cb(from);
             
             public static bool operator ==(git_apply_hunk_cb left, git_apply_hunk_cb right) => left.Equals(right);
             
             public static bool operator !=(git_apply_hunk_cb left, git_apply_hunk_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_APPLY_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initialize git_apply_options structure

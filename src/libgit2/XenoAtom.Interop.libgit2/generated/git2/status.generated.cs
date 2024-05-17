@@ -33,31 +33,31 @@ namespace XenoAtom.Interop
         {
             GIT_STATUS_CURRENT = unchecked((uint)0),
             
-            GIT_STATUS_INDEX_NEW = unchecked((uint)(1u << 0)),
+            GIT_STATUS_INDEX_NEW = unchecked((uint)1),
             
-            GIT_STATUS_INDEX_MODIFIED = unchecked((uint)(1u << 1)),
+            GIT_STATUS_INDEX_MODIFIED = unchecked((uint)2),
             
-            GIT_STATUS_INDEX_DELETED = unchecked((uint)(1u << 2)),
+            GIT_STATUS_INDEX_DELETED = unchecked((uint)4),
             
-            GIT_STATUS_INDEX_RENAMED = unchecked((uint)(1u << 3)),
+            GIT_STATUS_INDEX_RENAMED = unchecked((uint)8),
             
-            GIT_STATUS_INDEX_TYPECHANGE = unchecked((uint)(1u << 4)),
+            GIT_STATUS_INDEX_TYPECHANGE = unchecked((uint)16),
             
-            GIT_STATUS_WT_NEW = unchecked((uint)(1u << 7)),
+            GIT_STATUS_WT_NEW = unchecked((uint)128),
             
-            GIT_STATUS_WT_MODIFIED = unchecked((uint)(1u << 8)),
+            GIT_STATUS_WT_MODIFIED = unchecked((uint)256),
             
-            GIT_STATUS_WT_DELETED = unchecked((uint)(1u << 9)),
+            GIT_STATUS_WT_DELETED = unchecked((uint)512),
             
-            GIT_STATUS_WT_TYPECHANGE = unchecked((uint)(1u << 10)),
+            GIT_STATUS_WT_TYPECHANGE = unchecked((uint)1024),
             
-            GIT_STATUS_WT_RENAMED = unchecked((uint)(1u << 11)),
+            GIT_STATUS_WT_RENAMED = unchecked((uint)2048),
             
-            GIT_STATUS_WT_UNREADABLE = unchecked((uint)(1u << 12)),
+            GIT_STATUS_WT_UNREADABLE = unchecked((uint)4096),
             
-            GIT_STATUS_IGNORED = unchecked((uint)(1u << 14)),
+            GIT_STATUS_IGNORED = unchecked((uint)16384),
             
-            GIT_STATUS_CONFLICTED = unchecked((uint)(1u << 15)),
+            GIT_STATUS_CONFLICTED = unchecked((uint)32768),
         }
         
         public const libgit2.git_status_t GIT_STATUS_CURRENT = git_status_t.GIT_STATUS_CURRENT;
@@ -152,26 +152,26 @@ namespace XenoAtom.Interop
             /// These will only be made if the workdir files are included in the status
             /// "show" option.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_UNTRACKED = unchecked((uint)(1u << 0)),
+            GIT_STATUS_OPT_INCLUDE_UNTRACKED = unchecked((uint)1),
             
             /// <summary>
             /// Says that ignored files get callbacks.
             /// Again, these callbacks will only be made if the workdir files are
             /// included in the status "show" option.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_IGNORED = unchecked((uint)(1u << 1)),
+            GIT_STATUS_OPT_INCLUDE_IGNORED = unchecked((uint)2),
             
             /// <summary>
             /// Indicates that callback should be made even on unmodified files.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_UNMODIFIED = unchecked((uint)(1u << 2)),
+            GIT_STATUS_OPT_INCLUDE_UNMODIFIED = unchecked((uint)4),
             
             /// <summary>
             /// Indicates that submodules should be skipped.
             /// This only applies if there are no pending typechanges to the submodule
             /// (either from or to another type).
             /// </summary>
-            GIT_STATUS_OPT_EXCLUDE_SUBMODULES = unchecked((uint)(1u << 3)),
+            GIT_STATUS_OPT_EXCLUDE_SUBMODULES = unchecked((uint)8),
             
             /// <summary>
             /// Indicates that all files in untracked directories should be included.
@@ -180,58 +180,58 @@ namespace XenoAtom.Interop
             /// This flag says to include all of the individual files in the directory
             /// instead.
             /// </summary>
-            GIT_STATUS_OPT_RECURSE_UNTRACKED_DIRS = unchecked((uint)(1u << 4)),
+            GIT_STATUS_OPT_RECURSE_UNTRACKED_DIRS = unchecked((uint)16),
             
             /// <summary>
             /// Indicates that the given path should be treated as a literal path,
             /// and not as a pathspec pattern.
             /// </summary>
-            GIT_STATUS_OPT_DISABLE_PATHSPEC_MATCH = unchecked((uint)(1u << 5)),
+            GIT_STATUS_OPT_DISABLE_PATHSPEC_MATCH = unchecked((uint)32),
             
             /// <summary>
             /// Indicates that the contents of ignored directories should be included
             /// in the status. This is like doing `git ls-files -o -i --exclude-standard`
             /// with core git.
             /// </summary>
-            GIT_STATUS_OPT_RECURSE_IGNORED_DIRS = unchecked((uint)(1u << 6)),
+            GIT_STATUS_OPT_RECURSE_IGNORED_DIRS = unchecked((uint)64),
             
             /// <summary>
             /// Indicates that rename detection should be processed between the head and
             /// the index and enables the GIT_STATUS_INDEX_RENAMED as a possible status
             /// flag.
             /// </summary>
-            GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX = unchecked((uint)(1u << 7)),
+            GIT_STATUS_OPT_RENAMES_HEAD_TO_INDEX = unchecked((uint)128),
             
             /// <summary>
             /// Indicates that rename detection should be run between the index and the
             /// working directory and enabled GIT_STATUS_WT_RENAMED as a possible status
             /// flag.
             /// </summary>
-            GIT_STATUS_OPT_RENAMES_INDEX_TO_WORKDIR = unchecked((uint)(1u << 8)),
+            GIT_STATUS_OPT_RENAMES_INDEX_TO_WORKDIR = unchecked((uint)256),
             
             /// <summary>
             /// Overrides the native case sensitivity for the file system and forces
             /// the output to be in case-sensitive order.
             /// </summary>
-            GIT_STATUS_OPT_SORT_CASE_SENSITIVELY = unchecked((uint)(1u << 9)),
+            GIT_STATUS_OPT_SORT_CASE_SENSITIVELY = unchecked((uint)512),
             
             /// <summary>
             /// Overrides the native case sensitivity for the file system and forces
             /// the output to be in case-insensitive order.
             /// </summary>
-            GIT_STATUS_OPT_SORT_CASE_INSENSITIVELY = unchecked((uint)(1u << 10)),
+            GIT_STATUS_OPT_SORT_CASE_INSENSITIVELY = unchecked((uint)1024),
             
             /// <summary>
             /// Iindicates that rename detection should include rewritten files.
             /// </summary>
-            GIT_STATUS_OPT_RENAMES_FROM_REWRITES = unchecked((uint)(1u << 11)),
+            GIT_STATUS_OPT_RENAMES_FROM_REWRITES = unchecked((uint)2048),
             
             /// <summary>
             /// Bypasses the default status behavior of doing a "soft" index reload
             /// (i.e. reloading the index data if the file on disk has been modified
             /// outside libgit2).
             /// </summary>
-            GIT_STATUS_OPT_NO_REFRESH = unchecked((uint)(1u << 12)),
+            GIT_STATUS_OPT_NO_REFRESH = unchecked((uint)4096),
             
             /// <summary>
             /// Tells libgit2 to refresh the stat cache in the index for files that are
@@ -239,20 +239,20 @@ namespace XenoAtom.Interop
             /// It will result in less work being done on subsequent calls to get status.
             /// This is mutually exclusive with the NO_REFRESH option.
             /// </summary>
-            GIT_STATUS_OPT_UPDATE_INDEX = unchecked((uint)(1u << 13)),
+            GIT_STATUS_OPT_UPDATE_INDEX = unchecked((uint)8192),
             
             /// <summary>
             /// Normally files that cannot be opened or read are ignored as
             /// these are often transient files; this option will return
             /// unreadable files as `GIT_STATUS_WT_UNREADABLE`.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_UNREADABLE = unchecked((uint)(1u << 14)),
+            GIT_STATUS_OPT_INCLUDE_UNREADABLE = unchecked((uint)16384),
             
             /// <summary>
             /// Unreadable files will be detected and given the status
             /// untracked instead of unreadable.
             /// </summary>
-            GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED = unchecked((uint)(1u << 15)),
+            GIT_STATUS_OPT_INCLUDE_UNREADABLE_AS_UNTRACKED = unchecked((uint)32768),
         }
         
         /// <summary>
@@ -444,22 +444,24 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<byte*, uint, void*, int> Value { get; }
             
-            public bool Equals(git_status_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_status_cb other && Equals(other);
+            
+            public bool Equals(git_status_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, uint, void*, int>(git_status_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, uint, void*, int> (libgit2.git_status_cb from) => from.Value;
             
-            public static implicit operator git_status_cb(delegate*unmanaged[Cdecl]<byte*, uint, void*, int> from) => new git_status_cb(from);
+            public static implicit operator libgit2.git_status_cb (delegate*unmanaged[Cdecl]<byte*, uint, void*, int> from) => new libgit2.git_status_cb(from);
             
             public static bool operator ==(git_status_cb left, git_status_cb right) => left.Equals(right);
             
             public static bool operator !=(git_status_cb left, git_status_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_STATUS_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initialize git_status_options structure

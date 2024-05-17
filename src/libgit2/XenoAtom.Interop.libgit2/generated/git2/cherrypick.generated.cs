@@ -40,6 +40,8 @@ namespace XenoAtom.Interop
             public libgit2.git_checkout_options checkout_opts;
         }
         
+        public const uint GIT_CHERRYPICK_OPTIONS_VERSION = 1;
+        
         /// <summary>
         /// Initialize git_cherrypick_options structure
         /// </summary>

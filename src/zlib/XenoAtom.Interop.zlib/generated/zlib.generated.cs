@@ -164,6 +164,31 @@ namespace XenoAtom.Interop
             public int done;
         }
         
+        public const string ZLIB_VERSION = "1.3.1";
+        
+        public const int ZLIB_VERNUM = 4880;
+        
+        public const int ZLIB_VER_MAJOR = 1;
+        
+        public const int ZLIB_VER_MINOR = 3;
+        
+        public const int ZLIB_VER_REVISION = 1;
+        
+        public const int ZLIB_VER_SUBREVISION = 0;
+        
+        public const int Z_NO_COMPRESSION = 0;
+        
+        public const int Z_BEST_SPEED = 1;
+        
+        public const int Z_BEST_COMPRESSION = 9;
+        
+        public const int Z_DEFAULT_COMPRESSION = -1;
+        
+        /// <summary>
+        /// for initializing zalloc, zfree, opaque
+        /// </summary>
+        public const nint Z_NULL = 0;
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "zlibVersion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* zlibVersion();

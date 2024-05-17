@@ -32,24 +32,24 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Reverse the sides of the diff
             /// </summary>
-            GIT_DIFF_REVERSE = unchecked((uint)(1u << 0)),
+            GIT_DIFF_REVERSE = unchecked((uint)1),
             
             /// <summary>
             /// Include ignored files in the diff
             /// </summary>
-            GIT_DIFF_INCLUDE_IGNORED = unchecked((uint)(1u << 1)),
+            GIT_DIFF_INCLUDE_IGNORED = unchecked((uint)2),
             
             /// <summary>
             /// Even with GIT_DIFF_INCLUDE_IGNORED, an entire ignored directory
             /// will be marked with only a single entry in the diff; this flag
             /// adds all files under the directory as IGNORED entries, too.
             /// </summary>
-            GIT_DIFF_RECURSE_IGNORED_DIRS = unchecked((uint)(1u << 2)),
+            GIT_DIFF_RECURSE_IGNORED_DIRS = unchecked((uint)4),
             
             /// <summary>
             /// Include untracked files in the diff
             /// </summary>
-            GIT_DIFF_INCLUDE_UNTRACKED = unchecked((uint)(1u << 3)),
+            GIT_DIFF_INCLUDE_UNTRACKED = unchecked((uint)8),
             
             /// <summary>
             /// Even with GIT_DIFF_INCLUDE_UNTRACKED, an entire untracked
@@ -57,19 +57,19 @@ namespace XenoAtom.Interop
             /// (a la what core Git does in `git status`); this flag adds *all*
             /// files under untracked directories as UNTRACKED entries, too.
             /// </summary>
-            GIT_DIFF_RECURSE_UNTRACKED_DIRS = unchecked((uint)(1u << 4)),
+            GIT_DIFF_RECURSE_UNTRACKED_DIRS = unchecked((uint)16),
             
             /// <summary>
             /// Include unmodified files in the diff
             /// </summary>
-            GIT_DIFF_INCLUDE_UNMODIFIED = unchecked((uint)(1u << 5)),
+            GIT_DIFF_INCLUDE_UNMODIFIED = unchecked((uint)32),
             
             /// <summary>
             /// Normally, a type change between files will be converted into a
             /// DELETED record for the old and an ADDED record for the new; this
             /// options enabled the generation of TYPECHANGE delta records.
             /// </summary>
-            GIT_DIFF_INCLUDE_TYPECHANGE = unchecked((uint)(1u << 6)),
+            GIT_DIFF_INCLUDE_TYPECHANGE = unchecked((uint)64),
             
             /// <summary>
             /// Even with GIT_DIFF_INCLUDE_TYPECHANGE, blob-&gt;tree changes still
@@ -77,28 +77,28 @@ namespace XenoAtom.Interop
             /// label blob-&gt;tree transitions as TYPECHANGE records with new_file's
             /// mode set to tree.  Note: the tree SHA will not be available.
             /// </summary>
-            GIT_DIFF_INCLUDE_TYPECHANGE_TREES = unchecked((uint)(1u << 7)),
+            GIT_DIFF_INCLUDE_TYPECHANGE_TREES = unchecked((uint)128),
             
             /// <summary>
             /// Ignore file mode changes
             /// </summary>
-            GIT_DIFF_IGNORE_FILEMODE = unchecked((uint)(1u << 8)),
+            GIT_DIFF_IGNORE_FILEMODE = unchecked((uint)256),
             
             /// <summary>
             /// Treat all submodules as unmodified
             /// </summary>
-            GIT_DIFF_IGNORE_SUBMODULES = unchecked((uint)(1u << 9)),
+            GIT_DIFF_IGNORE_SUBMODULES = unchecked((uint)512),
             
             /// <summary>
             /// Use case insensitive filename comparisons
             /// </summary>
-            GIT_DIFF_IGNORE_CASE = unchecked((uint)(1u << 10)),
+            GIT_DIFF_IGNORE_CASE = unchecked((uint)1024),
             
             /// <summary>
             /// May be combined with `GIT_DIFF_IGNORE_CASE` to specify that a file
             /// that has changed case will be returned as an add/delete pair.
             /// </summary>
-            GIT_DIFF_INCLUDE_CASECHANGE = unchecked((uint)(1u << 11)),
+            GIT_DIFF_INCLUDE_CASECHANGE = unchecked((uint)2048),
             
             /// <summary>
             /// If the pathspec is set in the diff options, this flags indicates
@@ -108,14 +108,14 @@ namespace XenoAtom.Interop
             /// the path will _only_ match a directory).  If a directory is
             /// specified, all children will be included.
             /// </summary>
-            GIT_DIFF_DISABLE_PATHSPEC_MATCH = unchecked((uint)(1u << 12)),
+            GIT_DIFF_DISABLE_PATHSPEC_MATCH = unchecked((uint)4096),
             
             /// <summary>
             /// Disable updating of the `binary` flag in delta records.  This is
             /// useful when iterating over a diff if you don't need hunk and data
             /// callbacks and want to avoid having to load file completely.
             /// </summary>
-            GIT_DIFF_SKIP_BINARY_CHECK = unchecked((uint)(1u << 13)),
+            GIT_DIFF_SKIP_BINARY_CHECK = unchecked((uint)8192),
             
             /// <summary>
             /// When diff finds an untracked directory, to match the behavior of
@@ -126,7 +126,7 @@ namespace XenoAtom.Interop
             /// turns off that scan and immediately labels an untracked directory
             /// as UNTRACKED (changing the behavior to not match core Git).
             /// </summary>
-            GIT_DIFF_ENABLE_FAST_UNTRACKED_DIRS = unchecked((uint)(1u << 14)),
+            GIT_DIFF_ENABLE_FAST_UNTRACKED_DIRS = unchecked((uint)16384),
             
             /// <summary>
             /// When diff finds a file in the working directory with stat
@@ -134,56 +134,56 @@ namespace XenoAtom.Interop
             /// same, write the correct stat information into the index.  Note:
             /// without this flag, diff will always leave the index untouched.
             /// </summary>
-            GIT_DIFF_UPDATE_INDEX = unchecked((uint)(1u << 15)),
+            GIT_DIFF_UPDATE_INDEX = unchecked((uint)32768),
             
             /// <summary>
             /// Include unreadable files in the diff
             /// </summary>
-            GIT_DIFF_INCLUDE_UNREADABLE = unchecked((uint)(1u << 16)),
+            GIT_DIFF_INCLUDE_UNREADABLE = unchecked((uint)65536),
             
             /// <summary>
             /// Include unreadable files in the diff
             /// </summary>
-            GIT_DIFF_INCLUDE_UNREADABLE_AS_UNTRACKED = unchecked((uint)(1u << 17)),
+            GIT_DIFF_INCLUDE_UNREADABLE_AS_UNTRACKED = unchecked((uint)131072),
             
             /// <summary>
             /// Use a heuristic that takes indentation and whitespace into account
             /// which generally can produce better diffs when dealing with ambiguous
             /// diff hunks.
             /// </summary>
-            GIT_DIFF_INDENT_HEURISTIC = unchecked((uint)(1u << 18)),
+            GIT_DIFF_INDENT_HEURISTIC = unchecked((uint)262144),
             
             /// <summary>
             /// Ignore blank lines
             /// </summary>
-            GIT_DIFF_IGNORE_BLANK_LINES = unchecked((uint)(1u << 19)),
+            GIT_DIFF_IGNORE_BLANK_LINES = unchecked((uint)524288),
             
             /// <summary>
             /// Treat all files as text, disabling binary attributes 
             /// &amp;
             /// detection
             /// </summary>
-            GIT_DIFF_FORCE_TEXT = unchecked((uint)(1u << 20)),
+            GIT_DIFF_FORCE_TEXT = unchecked((uint)1048576),
             
             /// <summary>
             /// Treat all files as binary, disabling text diffs
             /// </summary>
-            GIT_DIFF_FORCE_BINARY = unchecked((uint)(1u << 21)),
+            GIT_DIFF_FORCE_BINARY = unchecked((uint)2097152),
             
             /// <summary>
             /// Ignore all whitespace
             /// </summary>
-            GIT_DIFF_IGNORE_WHITESPACE = unchecked((uint)(1u << 22)),
+            GIT_DIFF_IGNORE_WHITESPACE = unchecked((uint)4194304),
             
             /// <summary>
             /// Ignore changes in amount of whitespace
             /// </summary>
-            GIT_DIFF_IGNORE_WHITESPACE_CHANGE = unchecked((uint)(1u << 23)),
+            GIT_DIFF_IGNORE_WHITESPACE_CHANGE = unchecked((uint)8388608),
             
             /// <summary>
             /// Ignore whitespace at end of line
             /// </summary>
-            GIT_DIFF_IGNORE_WHITESPACE_EOL = unchecked((uint)(1u << 24)),
+            GIT_DIFF_IGNORE_WHITESPACE_EOL = unchecked((uint)16777216),
             
             /// <summary>
             /// When generating patch text, include the content of untracked
@@ -191,7 +191,7 @@ namespace XenoAtom.Interop
             /// it does not turn on GIT_DIFF_RECURSE_UNTRACKED_DIRS.  Add that
             /// flag if you want the content of every single UNTRACKED file.
             /// </summary>
-            GIT_DIFF_SHOW_UNTRACKED_CONTENT = unchecked((uint)(1u << 25)),
+            GIT_DIFF_SHOW_UNTRACKED_CONTENT = unchecked((uint)33554432),
             
             /// <summary>
             /// When generating output, include the names of unmodified files if
@@ -199,23 +199,23 @@ namespace XenoAtom.Interop
             /// the formats that list files (e.g. name-only, name-status, raw).
             /// Even with this, these will not be included in patch format.
             /// </summary>
-            GIT_DIFF_SHOW_UNMODIFIED = unchecked((uint)(1u << 26)),
+            GIT_DIFF_SHOW_UNMODIFIED = unchecked((uint)67108864),
             
             /// <summary>
             /// Use the "patience diff" algorithm
             /// </summary>
-            GIT_DIFF_PATIENCE = unchecked((uint)(1u << 28)),
+            GIT_DIFF_PATIENCE = unchecked((uint)268435456),
             
             /// <summary>
             /// Take extra time to find minimal diff
             /// </summary>
-            GIT_DIFF_MINIMAL = unchecked((uint)(1u << 29)),
+            GIT_DIFF_MINIMAL = unchecked((uint)536870912),
             
             /// <summary>
             /// Include the necessary deflate / delta information so that `git-apply`
             /// can apply given diff information to binary files.
             /// </summary>
-            GIT_DIFF_SHOW_BINARY = unchecked((uint)(1u << 30)),
+            GIT_DIFF_SHOW_BINARY = unchecked((uint)1073741824),
         }
         
         /// <summary>
@@ -426,27 +426,27 @@ namespace XenoAtom.Interop
             /// <summary>
             /// file(s) treated as binary data
             /// </summary>
-            GIT_DIFF_FLAG_BINARY = unchecked((uint)(1u << 0)),
+            GIT_DIFF_FLAG_BINARY = unchecked((uint)1),
             
             /// <summary>
             /// file(s) treated as text data
             /// </summary>
-            GIT_DIFF_FLAG_NOT_BINARY = unchecked((uint)(1u << 1)),
+            GIT_DIFF_FLAG_NOT_BINARY = unchecked((uint)2),
             
             /// <summary>
             /// `id` value is known correct
             /// </summary>
-            GIT_DIFF_FLAG_VALID_ID = unchecked((uint)(1u << 2)),
+            GIT_DIFF_FLAG_VALID_ID = unchecked((uint)4),
             
             /// <summary>
             /// file exists at this side of the delta
             /// </summary>
-            GIT_DIFF_FLAG_EXISTS = unchecked((uint)(1u << 3)),
+            GIT_DIFF_FLAG_EXISTS = unchecked((uint)8),
             
             /// <summary>
             /// file size value is known correct
             /// </summary>
-            GIT_DIFF_FLAG_VALID_SIZE = unchecked((uint)(1u << 4)),
+            GIT_DIFF_FLAG_VALID_SIZE = unchecked((uint)16),
         }
         
         /// <summary>
@@ -607,17 +607,17 @@ namespace XenoAtom.Interop
             /// <summary>
             /// There is no binary delta.
             /// </summary>
-            GIT_DIFF_BINARY_NONE,
+            GIT_DIFF_BINARY_NONE = unchecked((uint)0),
             
             /// <summary>
             /// The binary data is the literal contents of the file.
             /// </summary>
-            GIT_DIFF_BINARY_LITERAL,
+            GIT_DIFF_BINARY_LITERAL = unchecked((uint)1),
             
             /// <summary>
             /// The binary data is the delta from one side to the other.
             /// </summary>
-            GIT_DIFF_BINARY_DELTA,
+            GIT_DIFF_BINARY_DELTA = unchecked((uint)2),
         }
         
         /// <summary>
@@ -650,49 +650,49 @@ namespace XenoAtom.Interop
             /// <summary>
             /// These values will be sent to `git_diff_line_cb` along with the line
             /// </summary>
-            GIT_DIFF_LINE_CONTEXT = unchecked((uint)' '),
+            GIT_DIFF_LINE_CONTEXT = unchecked((uint)32),
             
             /// <summary>
             /// These values will be sent to `git_diff_line_cb` along with the line
             /// </summary>
-            GIT_DIFF_LINE_ADDITION = unchecked((uint)'+'),
+            GIT_DIFF_LINE_ADDITION = unchecked((uint)43),
             
             /// <summary>
             /// These values will be sent to `git_diff_line_cb` along with the line
             /// </summary>
-            GIT_DIFF_LINE_DELETION = unchecked((uint)'-'),
+            GIT_DIFF_LINE_DELETION = unchecked((uint)45),
             
             /// <summary>
             /// Both files have no LF at end
             /// </summary>
-            GIT_DIFF_LINE_CONTEXT_EOFNL = unchecked((uint)'='),
+            GIT_DIFF_LINE_CONTEXT_EOFNL = unchecked((uint)61),
             
             /// <summary>
             /// Old has no LF at end, new does
             /// </summary>
-            GIT_DIFF_LINE_ADD_EOFNL = unchecked((uint)'>'),
+            GIT_DIFF_LINE_ADD_EOFNL = unchecked((uint)62),
             
             /// <summary>
             /// Old has LF at end, new does not
             /// </summary>
-            GIT_DIFF_LINE_DEL_EOFNL = unchecked((uint)'<'),
+            GIT_DIFF_LINE_DEL_EOFNL = unchecked((uint)60),
             
             /// <summary>
             /// The following values will only be sent to a `git_diff_line_cb` when
             /// the content of a diff is being formatted through `git_diff_print`.
             /// </summary>
-            GIT_DIFF_LINE_FILE_HDR = unchecked((uint)'F'),
+            GIT_DIFF_LINE_FILE_HDR = unchecked((uint)70),
             
             /// <summary>
             /// The following values will only be sent to a `git_diff_line_cb` when
             /// the content of a diff is being formatted through `git_diff_print`.
             /// </summary>
-            GIT_DIFF_LINE_HUNK_HDR = unchecked((uint)'H'),
+            GIT_DIFF_LINE_HUNK_HDR = unchecked((uint)72),
             
             /// <summary>
             /// For "Binary files x and y differ"
             /// </summary>
-            GIT_DIFF_LINE_BINARY = unchecked((uint)'B'),
+            GIT_DIFF_LINE_BINARY = unchecked((uint)66),
         }
         
         /// <summary>
@@ -756,17 +756,17 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Look for renames? (`--find-renames`)
             /// </summary>
-            GIT_DIFF_FIND_RENAMES = unchecked((uint)(1u << 0)),
+            GIT_DIFF_FIND_RENAMES = unchecked((uint)1),
             
             /// <summary>
             /// Consider old side of MODIFIED for renames? (`--break-rewrites=N`)
             /// </summary>
-            GIT_DIFF_FIND_RENAMES_FROM_REWRITES = unchecked((uint)(1u << 1)),
+            GIT_DIFF_FIND_RENAMES_FROM_REWRITES = unchecked((uint)2),
             
             /// <summary>
             /// Look for copies? (a la `--find-copies`).
             /// </summary>
-            GIT_DIFF_FIND_COPIES = unchecked((uint)(1u << 2)),
+            GIT_DIFF_FIND_COPIES = unchecked((uint)4),
             
             /// <summary>
             /// Consider UNMODIFIED as copy sources? (`--find-copies-harder`).
@@ -775,22 +775,22 @@ namespace XenoAtom.Interop
             /// For this to work correctly, use GIT_DIFF_INCLUDE_UNMODIFIED when
             /// the initial `git_diff` is being generated.
             /// </remarks>
-            GIT_DIFF_FIND_COPIES_FROM_UNMODIFIED = unchecked((uint)(1u << 3)),
+            GIT_DIFF_FIND_COPIES_FROM_UNMODIFIED = unchecked((uint)8),
             
             /// <summary>
             /// Mark significant rewrites for split (`--break-rewrites=/M`)
             /// </summary>
-            GIT_DIFF_FIND_REWRITES = unchecked((uint)(1u << 4)),
+            GIT_DIFF_FIND_REWRITES = unchecked((uint)16),
             
             /// <summary>
             /// Actually split large rewrites into delete/add pairs
             /// </summary>
-            GIT_DIFF_BREAK_REWRITES = unchecked((uint)(1u << 5)),
+            GIT_DIFF_BREAK_REWRITES = unchecked((uint)32),
             
             /// <summary>
             /// Mark rewrites for split and break into delete/add pairs
             /// </summary>
-            GIT_DIFF_FIND_AND_BREAK_REWRITES = unchecked((uint)(GIT_DIFF_FIND_REWRITES | GIT_DIFF_BREAK_REWRITES)),
+            GIT_DIFF_FIND_AND_BREAK_REWRITES = unchecked((uint)48),
             
             /// <summary>
             /// Find renames/copies for UNTRACKED items in working directory.
@@ -800,12 +800,12 @@ namespace XenoAtom.Interop
             /// initial `git_diff` is being generated (and obviously the diff must
             /// be against the working directory for this to make sense).
             /// </remarks>
-            GIT_DIFF_FIND_FOR_UNTRACKED = unchecked((uint)(1u << 6)),
+            GIT_DIFF_FIND_FOR_UNTRACKED = unchecked((uint)64),
             
             /// <summary>
             /// Turn on all finding features.
             /// </summary>
-            GIT_DIFF_FIND_ALL = unchecked((uint)(0x0ff)),
+            GIT_DIFF_FIND_ALL = unchecked((uint)255),
             
             /// <summary>
             /// Measure similarity ignoring leading whitespace (default)
@@ -815,17 +815,17 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Measure similarity ignoring all whitespace
             /// </summary>
-            GIT_DIFF_FIND_IGNORE_WHITESPACE = unchecked((uint)(1u << 12)),
+            GIT_DIFF_FIND_IGNORE_WHITESPACE = unchecked((uint)4096),
             
             /// <summary>
             /// Measure similarity including all data
             /// </summary>
-            GIT_DIFF_FIND_DONT_IGNORE_WHITESPACE = unchecked((uint)(1u << 13)),
+            GIT_DIFF_FIND_DONT_IGNORE_WHITESPACE = unchecked((uint)8192),
             
             /// <summary>
             /// Measure similarity only by comparing SHAs (fast and cheap)
             /// </summary>
-            GIT_DIFF_FIND_EXACT_MATCH_ONLY = unchecked((uint)(1u << 14)),
+            GIT_DIFF_FIND_EXACT_MATCH_ONLY = unchecked((uint)16384),
             
             /// <summary>
             /// Do not break rewrites unless they contribute to a rename.
@@ -838,7 +838,7 @@ namespace XenoAtom.Interop
             /// actual rename or copy, then the modified record will be restored to
             /// a regular MODIFIED record instead of being split.
             /// </remarks>
-            GIT_DIFF_BREAK_REWRITES_FOR_RENAMES_ONLY = unchecked((uint)(1u << 15)),
+            GIT_DIFF_BREAK_REWRITES_FOR_RENAMES_ONLY = unchecked((uint)32768),
             
             /// <summary>
             /// Remove any UNMODIFIED deltas after find_similar is done.
@@ -849,7 +849,7 @@ namespace XenoAtom.Interop
             /// GIT_DIFF_INCLUDE_UNMODIFIED flag.  If you do not want UNMODIFIED
             /// records in the final result, pass this flag to have them removed.
             /// </remarks>
-            GIT_DIFF_FIND_REMOVE_UNMODIFIED = unchecked((uint)(1u << 16)),
+            GIT_DIFF_FIND_REMOVE_UNMODIFIED = unchecked((uint)65536),
         }
         
         /// <summary>
@@ -963,32 +963,32 @@ namespace XenoAtom.Interop
             /// <summary>
             /// full git diff
             /// </summary>
-            GIT_DIFF_FORMAT_PATCH = unchecked((uint)1u),
+            GIT_DIFF_FORMAT_PATCH = unchecked((uint)1),
             
             /// <summary>
             /// just the file headers of patch
             /// </summary>
-            GIT_DIFF_FORMAT_PATCH_HEADER = unchecked((uint)2u),
+            GIT_DIFF_FORMAT_PATCH_HEADER = unchecked((uint)2),
             
             /// <summary>
             /// like git diff --raw
             /// </summary>
-            GIT_DIFF_FORMAT_RAW = unchecked((uint)3u),
+            GIT_DIFF_FORMAT_RAW = unchecked((uint)3),
             
             /// <summary>
             /// like git diff --name-only
             /// </summary>
-            GIT_DIFF_FORMAT_NAME_ONLY = unchecked((uint)4u),
+            GIT_DIFF_FORMAT_NAME_ONLY = unchecked((uint)4),
             
             /// <summary>
             /// like git diff --name-status
             /// </summary>
-            GIT_DIFF_FORMAT_NAME_STATUS = unchecked((uint)5u),
+            GIT_DIFF_FORMAT_NAME_STATUS = unchecked((uint)5),
             
             /// <summary>
             /// git diff as used by git patch-id
             /// </summary>
-            GIT_DIFF_FORMAT_PATCH_ID = unchecked((uint)6u),
+            GIT_DIFF_FORMAT_PATCH_ID = unchecked((uint)6),
         }
         
         /// <summary>
@@ -1035,22 +1035,22 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Full statistics, equivalent of `--stat`
             /// </summary>
-            GIT_DIFF_STATS_FULL = unchecked((uint)(1u << 0)),
+            GIT_DIFF_STATS_FULL = unchecked((uint)1),
             
             /// <summary>
             /// Short statistics, equivalent of `--shortstat`
             /// </summary>
-            GIT_DIFF_STATS_SHORT = unchecked((uint)(1u << 1)),
+            GIT_DIFF_STATS_SHORT = unchecked((uint)2),
             
             /// <summary>
             /// Number statistics, equivalent of `--numstat`
             /// </summary>
-            GIT_DIFF_STATS_NUMBER = unchecked((uint)(1u << 2)),
+            GIT_DIFF_STATS_NUMBER = unchecked((uint)4),
             
             /// <summary>
             /// Extended header information such as creations, renames and mode changes, equivalent of `--summary`
             /// </summary>
-            GIT_DIFF_STATS_INCLUDE_SUMMARY = unchecked((uint)(1u << 3)),
+            GIT_DIFF_STATS_INCLUDE_SUMMARY = unchecked((uint)8),
         }
         
         /// <summary>
@@ -1336,17 +1336,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int> Value { get; }
             
-            public bool Equals(git_diff_notify_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_diff_notify_cb other && Equals(other);
+            
+            public bool Equals(git_diff_notify_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int>(git_diff_notify_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int> (libgit2.git_diff_notify_cb from) => from.Value;
             
-            public static implicit operator git_diff_notify_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int> from) => new git_diff_notify_cb(from);
+            public static implicit operator libgit2.git_diff_notify_cb (delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int> from) => new libgit2.git_diff_notify_cb(from);
             
             public static bool operator ==(git_diff_notify_cb left, git_diff_notify_cb right) => left.Equals(right);
             
@@ -1369,17 +1369,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int> Value { get; }
             
-            public bool Equals(git_diff_progress_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_diff_progress_cb other && Equals(other);
+            
+            public bool Equals(git_diff_progress_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int>(git_diff_progress_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int> (libgit2.git_diff_progress_cb from) => from.Value;
             
-            public static implicit operator git_diff_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int> from) => new git_diff_progress_cb(from);
+            public static implicit operator libgit2.git_diff_progress_cb (delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int> from) => new libgit2.git_diff_progress_cb(from);
             
             public static bool operator ==(git_diff_progress_cb left, git_diff_progress_cb right) => left.Equals(right);
             
@@ -1676,17 +1676,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int> Value { get; }
             
-            public bool Equals(git_diff_file_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_diff_file_cb other && Equals(other);
+            
+            public bool Equals(git_diff_file_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int>(git_diff_file_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int> (libgit2.git_diff_file_cb from) => from.Value;
             
-            public static implicit operator git_diff_file_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int> from) => new git_diff_file_cb(from);
+            public static implicit operator libgit2.git_diff_file_cb (delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int> from) => new libgit2.git_diff_file_cb(from);
             
             public static bool operator ==(git_diff_file_cb left, git_diff_file_cb right) => left.Equals(right);
             
@@ -1703,17 +1703,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int> Value { get; }
             
-            public bool Equals(git_diff_binary_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_diff_binary_cb other && Equals(other);
+            
+            public bool Equals(git_diff_binary_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int>(git_diff_binary_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int> (libgit2.git_diff_binary_cb from) => from.Value;
             
-            public static implicit operator git_diff_binary_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int> from) => new git_diff_binary_cb(from);
+            public static implicit operator libgit2.git_diff_binary_cb (delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int> from) => new libgit2.git_diff_binary_cb(from);
             
             public static bool operator ==(git_diff_binary_cb left, git_diff_binary_cb right) => left.Equals(right);
             
@@ -1729,17 +1729,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int> Value { get; }
             
-            public bool Equals(git_diff_hunk_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_diff_hunk_cb other && Equals(other);
+            
+            public bool Equals(git_diff_hunk_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int>(git_diff_hunk_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int> (libgit2.git_diff_hunk_cb from) => from.Value;
             
-            public static implicit operator git_diff_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int> from) => new git_diff_hunk_cb(from);
+            public static implicit operator libgit2.git_diff_hunk_cb (delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int> from) => new libgit2.git_diff_hunk_cb(from);
             
             public static bool operator ==(git_diff_hunk_cb left, git_diff_hunk_cb right) => left.Equals(right);
             
@@ -1761,22 +1761,30 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int> Value { get; }
             
-            public bool Equals(git_diff_line_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_diff_line_cb other && Equals(other);
+            
+            public bool Equals(git_diff_line_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int>(git_diff_line_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int> (libgit2.git_diff_line_cb from) => from.Value;
             
-            public static implicit operator git_diff_line_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int> from) => new git_diff_line_cb(from);
+            public static implicit operator libgit2.git_diff_line_cb (delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int> from) => new libgit2.git_diff_line_cb(from);
             
             public static bool operator ==(git_diff_line_cb left, git_diff_line_cb right) => left.Equals(right);
             
             public static bool operator !=(git_diff_line_cb left, git_diff_line_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_DIFF_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_DIFF_FIND_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_DIFF_PARSE_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_DIFF_PATCHID_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initialize git_diff_options structure

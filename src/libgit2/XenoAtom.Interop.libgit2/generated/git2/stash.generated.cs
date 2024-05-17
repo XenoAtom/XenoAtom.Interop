@@ -32,24 +32,24 @@ namespace XenoAtom.Interop
             /// All changes already added to the index are left intact in
             /// the working directory
             /// </summary>
-            GIT_STASH_KEEP_INDEX = unchecked((uint)(1<<0)),
+            GIT_STASH_KEEP_INDEX = unchecked((uint)1),
             
             /// <summary>
             /// All untracked files are also stashed and then cleaned up
             /// from the working directory
             /// </summary>
-            GIT_STASH_INCLUDE_UNTRACKED = unchecked((uint)(1<<1)),
+            GIT_STASH_INCLUDE_UNTRACKED = unchecked((uint)2),
             
             /// <summary>
             /// All ignored files are also stashed and then cleaned up from
             /// the working directory
             /// </summary>
-            GIT_STASH_INCLUDE_IGNORED = unchecked((uint)(1<<2)),
+            GIT_STASH_INCLUDE_IGNORED = unchecked((uint)4),
             
             /// <summary>
             /// All changes in the index and working directory are left intact
             /// </summary>
-            GIT_STASH_KEEP_ALL = unchecked((uint)(1<<3)),
+            GIT_STASH_KEEP_ALL = unchecked((uint)8),
         }
         
         /// <summary>
@@ -92,7 +92,7 @@ namespace XenoAtom.Interop
             /// Try to reinstate not only the working tree's changes,
             /// but also the index's changes.
             /// </summary>
-            GIT_STASH_APPLY_REINSTATE_INDEX = unchecked((uint)(1<<0)),
+            GIT_STASH_APPLY_REINSTATE_INDEX = unchecked((uint)1),
         }
         
         public const libgit2.git_stash_apply_flags GIT_STASH_APPLY_DEFAULT = git_stash_apply_flags.GIT_STASH_APPLY_DEFAULT;
@@ -113,37 +113,37 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Loading the stashed data from the object database.
             /// </summary>
-            GIT_STASH_APPLY_PROGRESS_LOADING_STASH,
+            GIT_STASH_APPLY_PROGRESS_LOADING_STASH = unchecked((uint)1),
             
             /// <summary>
             /// The stored index is being analyzed.
             /// </summary>
-            GIT_STASH_APPLY_PROGRESS_ANALYZE_INDEX,
+            GIT_STASH_APPLY_PROGRESS_ANALYZE_INDEX = unchecked((uint)2),
             
             /// <summary>
             /// The modified files are being analyzed.
             /// </summary>
-            GIT_STASH_APPLY_PROGRESS_ANALYZE_MODIFIED,
+            GIT_STASH_APPLY_PROGRESS_ANALYZE_MODIFIED = unchecked((uint)3),
             
             /// <summary>
             /// The untracked and ignored files are being analyzed.
             /// </summary>
-            GIT_STASH_APPLY_PROGRESS_ANALYZE_UNTRACKED,
+            GIT_STASH_APPLY_PROGRESS_ANALYZE_UNTRACKED = unchecked((uint)4),
             
             /// <summary>
             /// The untracked files are being written to disk.
             /// </summary>
-            GIT_STASH_APPLY_PROGRESS_CHECKOUT_UNTRACKED,
+            GIT_STASH_APPLY_PROGRESS_CHECKOUT_UNTRACKED = unchecked((uint)5),
             
             /// <summary>
             /// The modified files are being written to disk.
             /// </summary>
-            GIT_STASH_APPLY_PROGRESS_CHECKOUT_MODIFIED,
+            GIT_STASH_APPLY_PROGRESS_CHECKOUT_MODIFIED = unchecked((uint)6),
             
             /// <summary>
             /// The stash was applied successfully.
             /// </summary>
-            GIT_STASH_APPLY_PROGRESS_DONE,
+            GIT_STASH_APPLY_PROGRESS_DONE = unchecked((uint)7),
         }
         
         public const libgit2.git_stash_apply_progress_t GIT_STASH_APPLY_PROGRESS_NONE = git_stash_apply_progress_t.GIT_STASH_APPLY_PROGRESS_NONE;
@@ -255,17 +255,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> Value { get; }
             
-            public bool Equals(git_stash_apply_progress_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_stash_apply_progress_cb other && Equals(other);
+            
+            public bool Equals(git_stash_apply_progress_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int>(git_stash_apply_progress_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> (libgit2.git_stash_apply_progress_cb from) => from.Value;
             
-            public static implicit operator git_stash_apply_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> from) => new git_stash_apply_progress_cb(from);
+            public static implicit operator libgit2.git_stash_apply_progress_cb (delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> from) => new libgit2.git_stash_apply_progress_cb(from);
             
             public static bool operator ==(git_stash_apply_progress_cb left, git_stash_apply_progress_cb right) => left.Equals(right);
             
@@ -288,22 +288,26 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> Value { get; }
             
-            public bool Equals(git_stash_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_stash_cb other && Equals(other);
+            
+            public bool Equals(git_stash_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int>(git_stash_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> (libgit2.git_stash_cb from) => from.Value;
             
-            public static implicit operator git_stash_cb(delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> from) => new git_stash_cb(from);
+            public static implicit operator libgit2.git_stash_cb (delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> from) => new libgit2.git_stash_cb(from);
             
             public static bool operator ==(git_stash_cb left, git_stash_cb right) => left.Equals(right);
             
             public static bool operator !=(git_stash_cb left, git_stash_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_STASH_SAVE_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_STASH_APPLY_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Save the local modifications to a new stash.

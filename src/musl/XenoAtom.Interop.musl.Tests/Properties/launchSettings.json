@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "XenoAtom.Interop.musl.Tests": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

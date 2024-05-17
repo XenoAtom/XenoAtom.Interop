@@ -20,7 +20,7 @@ namespace XenoAtom.Interop
         [Flags]
         public enum git_odb_backend_loose_flag_t : uint
         {
-            GIT_ODB_BACKEND_LOOSE_FSYNC = unchecked((uint)(1<<0)),
+            GIT_ODB_BACKEND_LOOSE_FSYNC = unchecked((uint)1),
         }
         
         public const libgit2.git_odb_backend_loose_flag_t GIT_ODB_BACKEND_LOOSE_FSYNC = git_odb_backend_loose_flag_t.GIT_ODB_BACKEND_LOOSE_FSYNC;
@@ -31,11 +31,11 @@ namespace XenoAtom.Interop
         [Flags]
         public enum git_odb_stream_t : uint
         {
-            GIT_STREAM_RDONLY = unchecked((uint)(1<<1)),
+            GIT_STREAM_RDONLY = unchecked((uint)2),
             
-            GIT_STREAM_WRONLY = unchecked((uint)(1<<2)),
+            GIT_STREAM_WRONLY = unchecked((uint)4),
             
-            GIT_STREAM_RW = unchecked((uint)(GIT_STREAM_RDONLY|GIT_STREAM_WRONLY)),
+            GIT_STREAM_RW = unchecked((uint)6),
         }
         
         public const libgit2.git_odb_stream_t GIT_STREAM_RDONLY = git_odb_stream_t.GIT_STREAM_RDONLY;
@@ -101,6 +101,10 @@ namespace XenoAtom.Interop
             /// </summary>
             public libgit2.git_oid_t oid_type;
         }
+        
+        public const uint GIT_ODB_BACKEND_PACK_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_ODB_BACKEND_LOOSE_OPTIONS_VERSION = 1;
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_pack")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

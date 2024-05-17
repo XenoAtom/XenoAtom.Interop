@@ -257,17 +257,17 @@ namespace XenoAtom.Interop
             
             public byte* Value { get; }
             
-            public bool Equals(sqlite3_filename other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is sqlite3_filename other && Equals(other);
+            
+            public bool Equals(sqlite3_filename other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator byte*(sqlite3_filename from) => from.Value;
+            public static implicit operator byte* (sqlite.sqlite3_filename from) => from.Value;
             
-            public static implicit operator sqlite3_filename(byte* from) => new sqlite3_filename(from);
+            public static implicit operator sqlite.sqlite3_filename (byte* from) => new sqlite.sqlite3_filename(from);
             
             public static bool operator ==(sqlite3_filename left, sqlite3_filename right) => left.Equals(right);
             
@@ -1752,17 +1752,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> Value { get; }
             
-            public bool Equals(fts5_extension_function other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is fts5_extension_function other && Equals(other);
+            
+            public bool Equals(fts5_extension_function other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void>(fts5_extension_function from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> (sqlite.fts5_extension_function from) => from.Value;
             
-            public static implicit operator fts5_extension_function(delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> from) => new fts5_extension_function(from);
+            public static implicit operator sqlite.fts5_extension_function (delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> from) => new sqlite.fts5_extension_function(from);
             
             public static bool operator ==(fts5_extension_function left, fts5_extension_function right) => left.Equals(right);
             
@@ -1780,17 +1780,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> Value { get; }
             
-            public bool Equals(sqlite3_callback other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is sqlite3_callback other && Equals(other);
+            
+            public bool Equals(sqlite3_callback other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int>(sqlite3_callback from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> (sqlite.sqlite3_callback from) => from.Value;
             
-            public static implicit operator sqlite3_callback(delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> from) => new sqlite3_callback(from);
+            public static implicit operator sqlite.sqlite3_callback (delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> from) => new sqlite.sqlite3_callback(from);
             
             public static bool operator ==(sqlite3_callback left, sqlite3_callback right) => left.Equals(right);
             
@@ -1803,17 +1803,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<void> Value { get; }
             
-            public bool Equals(sqlite3_syscall_ptr other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is sqlite3_syscall_ptr other && Equals(other);
+            
+            public bool Equals(sqlite3_syscall_ptr other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<void>(sqlite3_syscall_ptr from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<void> (sqlite.sqlite3_syscall_ptr from) => from.Value;
             
-            public static implicit operator sqlite3_syscall_ptr(delegate*unmanaged[Cdecl]<void> from) => new sqlite3_syscall_ptr(from);
+            public static implicit operator sqlite.sqlite3_syscall_ptr (delegate*unmanaged[Cdecl]<void> from) => new sqlite.sqlite3_syscall_ptr(from);
             
             public static bool operator ==(sqlite3_syscall_ptr left, sqlite3_syscall_ptr right) => left.Equals(right);
             
@@ -1840,17 +1840,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<void*, void> Value { get; }
             
-            public bool Equals(sqlite3_destructor_type other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is sqlite3_destructor_type other && Equals(other);
+            
+            public bool Equals(sqlite3_destructor_type other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<void*, void>(sqlite3_destructor_type from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<void*, void> (sqlite.sqlite3_destructor_type from) => from.Value;
             
-            public static implicit operator sqlite3_destructor_type(delegate*unmanaged[Cdecl]<void*, void> from) => new sqlite3_destructor_type(from);
+            public static implicit operator sqlite.sqlite3_destructor_type (delegate*unmanaged[Cdecl]<void*, void> from) => new sqlite.sqlite3_destructor_type(from);
             
             public static bool operator ==(sqlite3_destructor_type left, sqlite3_destructor_type right) => left.Equals(right);
             
@@ -1863,22 +1863,1502 @@ namespace XenoAtom.Interop
             
             public double Value { get; }
             
-            public bool Equals(sqlite3_rtree_dbl other) =>  Value.Equals(other.Value);
-            
             public override bool Equals(object obj) => obj is sqlite3_rtree_dbl other && Equals(other);
+            
+            public bool Equals(sqlite3_rtree_dbl other) => Value.Equals(other.Value);
             
             public override int GetHashCode() => Value.GetHashCode();
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator double(sqlite3_rtree_dbl from) => from.Value;
+            public static implicit operator double (sqlite.sqlite3_rtree_dbl from) => from.Value;
             
-            public static implicit operator sqlite3_rtree_dbl(double from) => new sqlite3_rtree_dbl(from);
+            public static implicit operator sqlite.sqlite3_rtree_dbl (double from) => new sqlite.sqlite3_rtree_dbl(from);
             
             public static bool operator ==(sqlite3_rtree_dbl left, sqlite3_rtree_dbl right) => left.Equals(right);
             
             public static bool operator !=(sqlite3_rtree_dbl left, sqlite3_rtree_dbl right) => !left.Equals(right);
         }
+        
+        public const string SQLITE_VERSION = "3.44.2";
+        
+        public const int SQLITE_VERSION_NUMBER = 3044002;
+        
+        public const string SQLITE_SOURCE_ID = "2023-11-24 11:41:44 ebead0e7230cd33bcec9f95d2183069565b9e709bf745c9b5db65cc0cbf92c0f";
+        
+        /// <summary>
+        /// Successful result
+        /// </summary>
+        public const int SQLITE_OK = 0;
+        
+        /// <summary>
+        /// Generic error
+        /// </summary>
+        public const int SQLITE_ERROR = 1;
+        
+        /// <summary>
+        /// Internal logic error in SQLite
+        /// </summary>
+        public const int SQLITE_INTERNAL = 2;
+        
+        /// <summary>
+        /// Access permission denied
+        /// </summary>
+        public const int SQLITE_PERM = 3;
+        
+        /// <summary>
+        /// Callback routine requested an abort
+        /// </summary>
+        public const int SQLITE_ABORT = 4;
+        
+        /// <summary>
+        /// The database file is locked
+        /// </summary>
+        public const int SQLITE_BUSY = 5;
+        
+        /// <summary>
+        /// A table in the database is locked
+        /// </summary>
+        public const int SQLITE_LOCKED = 6;
+        
+        /// <summary>
+        /// A malloc() failed
+        /// </summary>
+        public const int SQLITE_NOMEM = 7;
+        
+        /// <summary>
+        /// Attempt to write a readonly database
+        /// </summary>
+        public const int SQLITE_READONLY = 8;
+        
+        /// <summary>
+        /// Operation terminated by sqlite3_interrupt()
+        /// </summary>
+        public const int SQLITE_INTERRUPT = 9;
+        
+        /// <summary>
+        /// Some kind of disk I/O error occurred
+        /// </summary>
+        public const int SQLITE_IOERR = 10;
+        
+        /// <summary>
+        /// The database disk image is malformed
+        /// </summary>
+        public const int SQLITE_CORRUPT = 11;
+        
+        /// <summary>
+        /// Unknown opcode in sqlite3_file_control()
+        /// </summary>
+        public const int SQLITE_NOTFOUND = 12;
+        
+        /// <summary>
+        /// Insertion failed because database is full
+        /// </summary>
+        public const int SQLITE_FULL = 13;
+        
+        /// <summary>
+        /// Unable to open the database file
+        /// </summary>
+        public const int SQLITE_CANTOPEN = 14;
+        
+        /// <summary>
+        /// Database lock protocol error
+        /// </summary>
+        public const int SQLITE_PROTOCOL = 15;
+        
+        /// <summary>
+        /// Internal use only
+        /// </summary>
+        public const int SQLITE_EMPTY = 16;
+        
+        /// <summary>
+        /// The database schema changed
+        /// </summary>
+        public const int SQLITE_SCHEMA = 17;
+        
+        /// <summary>
+        /// String or BLOB exceeds size limit
+        /// </summary>
+        public const int SQLITE_TOOBIG = 18;
+        
+        /// <summary>
+        /// Abort due to constraint violation
+        /// </summary>
+        public const int SQLITE_CONSTRAINT = 19;
+        
+        /// <summary>
+        /// Data type mismatch
+        /// </summary>
+        public const int SQLITE_MISMATCH = 20;
+        
+        /// <summary>
+        /// Library used incorrectly
+        /// </summary>
+        public const int SQLITE_MISUSE = 21;
+        
+        /// <summary>
+        /// Uses OS features not supported on host
+        /// </summary>
+        public const int SQLITE_NOLFS = 22;
+        
+        /// <summary>
+        /// Authorization denied
+        /// </summary>
+        public const int SQLITE_AUTH = 23;
+        
+        /// <summary>
+        /// Not used
+        /// </summary>
+        public const int SQLITE_FORMAT = 24;
+        
+        /// <summary>
+        /// 2nd parameter to sqlite3_bind out of range
+        /// </summary>
+        public const int SQLITE_RANGE = 25;
+        
+        /// <summary>
+        /// File opened that is not a database file
+        /// </summary>
+        public const int SQLITE_NOTADB = 26;
+        
+        /// <summary>
+        /// Notifications from sqlite3_log()
+        /// </summary>
+        public const int SQLITE_NOTICE = 27;
+        
+        /// <summary>
+        /// Warnings from sqlite3_log()
+        /// </summary>
+        public const int SQLITE_WARNING = 28;
+        
+        /// <summary>
+        /// sqlite3_step() has another row ready
+        /// </summary>
+        public const int SQLITE_ROW = 100;
+        
+        /// <summary>
+        /// sqlite3_step() has finished executing
+        /// </summary>
+        public const int SQLITE_DONE = 101;
+        
+        public const int SQLITE_ERROR_MISSING_COLLSEQ = 257;
+        
+        public const int SQLITE_ERROR_RETRY = 513;
+        
+        public const int SQLITE_ERROR_SNAPSHOT = 769;
+        
+        public const int SQLITE_IOERR_READ = 266;
+        
+        public const int SQLITE_IOERR_SHORT_READ = 522;
+        
+        public const int SQLITE_IOERR_WRITE = 778;
+        
+        public const int SQLITE_IOERR_FSYNC = 1034;
+        
+        public const int SQLITE_IOERR_DIR_FSYNC = 1290;
+        
+        public const int SQLITE_IOERR_TRUNCATE = 1546;
+        
+        public const int SQLITE_IOERR_FSTAT = 1802;
+        
+        public const int SQLITE_IOERR_UNLOCK = 2058;
+        
+        public const int SQLITE_IOERR_RDLOCK = 2314;
+        
+        public const int SQLITE_IOERR_DELETE = 2570;
+        
+        public const int SQLITE_IOERR_BLOCKED = 2826;
+        
+        public const int SQLITE_IOERR_NOMEM = 3082;
+        
+        public const int SQLITE_IOERR_ACCESS = 3338;
+        
+        public const int SQLITE_IOERR_CHECKRESERVEDLOCK = 3594;
+        
+        public const int SQLITE_IOERR_LOCK = 3850;
+        
+        public const int SQLITE_IOERR_CLOSE = 4106;
+        
+        public const int SQLITE_IOERR_DIR_CLOSE = 4362;
+        
+        public const int SQLITE_IOERR_SHMOPEN = 4618;
+        
+        public const int SQLITE_IOERR_SHMSIZE = 4874;
+        
+        public const int SQLITE_IOERR_SHMLOCK = 5130;
+        
+        public const int SQLITE_IOERR_SHMMAP = 5386;
+        
+        public const int SQLITE_IOERR_SEEK = 5642;
+        
+        public const int SQLITE_IOERR_DELETE_NOENT = 5898;
+        
+        public const int SQLITE_IOERR_MMAP = 6154;
+        
+        public const int SQLITE_IOERR_GETTEMPPATH = 6410;
+        
+        public const int SQLITE_IOERR_CONVPATH = 6666;
+        
+        public const int SQLITE_IOERR_VNODE = 6922;
+        
+        public const int SQLITE_IOERR_AUTH = 7178;
+        
+        public const int SQLITE_IOERR_BEGIN_ATOMIC = 7434;
+        
+        public const int SQLITE_IOERR_COMMIT_ATOMIC = 7690;
+        
+        public const int SQLITE_IOERR_ROLLBACK_ATOMIC = 7946;
+        
+        public const int SQLITE_IOERR_DATA = 8202;
+        
+        public const int SQLITE_IOERR_CORRUPTFS = 8458;
+        
+        public const int SQLITE_IOERR_IN_PAGE = 8714;
+        
+        public const int SQLITE_LOCKED_SHAREDCACHE = 262;
+        
+        public const int SQLITE_LOCKED_VTAB = 518;
+        
+        public const int SQLITE_BUSY_RECOVERY = 261;
+        
+        public const int SQLITE_BUSY_SNAPSHOT = 517;
+        
+        public const int SQLITE_BUSY_TIMEOUT = 773;
+        
+        public const int SQLITE_CANTOPEN_NOTEMPDIR = 270;
+        
+        public const int SQLITE_CANTOPEN_ISDIR = 526;
+        
+        public const int SQLITE_CANTOPEN_FULLPATH = 782;
+        
+        public const int SQLITE_CANTOPEN_CONVPATH = 1038;
+        
+        /// <summary>
+        /// Not Used
+        /// </summary>
+        public const int SQLITE_CANTOPEN_DIRTYWAL = 1294;
+        
+        public const int SQLITE_CANTOPEN_SYMLINK = 1550;
+        
+        public const int SQLITE_CORRUPT_VTAB = 267;
+        
+        public const int SQLITE_CORRUPT_SEQUENCE = 523;
+        
+        public const int SQLITE_CORRUPT_INDEX = 779;
+        
+        public const int SQLITE_READONLY_RECOVERY = 264;
+        
+        public const int SQLITE_READONLY_CANTLOCK = 520;
+        
+        public const int SQLITE_READONLY_ROLLBACK = 776;
+        
+        public const int SQLITE_READONLY_DBMOVED = 1032;
+        
+        public const int SQLITE_READONLY_CANTINIT = 1288;
+        
+        public const int SQLITE_READONLY_DIRECTORY = 1544;
+        
+        public const int SQLITE_ABORT_ROLLBACK = 516;
+        
+        public const int SQLITE_CONSTRAINT_CHECK = 275;
+        
+        public const int SQLITE_CONSTRAINT_COMMITHOOK = 531;
+        
+        public const int SQLITE_CONSTRAINT_FOREIGNKEY = 787;
+        
+        public const int SQLITE_CONSTRAINT_FUNCTION = 1043;
+        
+        public const int SQLITE_CONSTRAINT_NOTNULL = 1299;
+        
+        public const int SQLITE_CONSTRAINT_PRIMARYKEY = 1555;
+        
+        public const int SQLITE_CONSTRAINT_TRIGGER = 1811;
+        
+        public const int SQLITE_CONSTRAINT_UNIQUE = 2067;
+        
+        public const int SQLITE_CONSTRAINT_VTAB = 2323;
+        
+        public const int SQLITE_CONSTRAINT_ROWID = 2579;
+        
+        public const int SQLITE_CONSTRAINT_PINNED = 2835;
+        
+        public const int SQLITE_CONSTRAINT_DATATYPE = 3091;
+        
+        public const int SQLITE_NOTICE_RECOVER_WAL = 283;
+        
+        public const int SQLITE_NOTICE_RECOVER_ROLLBACK = 539;
+        
+        public const int SQLITE_NOTICE_RBU = 795;
+        
+        public const int SQLITE_WARNING_AUTOINDEX = 284;
+        
+        public const int SQLITE_AUTH_USER = 279;
+        
+        public const int SQLITE_OK_LOAD_PERMANENTLY = 256;
+        
+        /// <summary>
+        /// internal use only
+        /// </summary>
+        public const int SQLITE_OK_SYMLINK = 512;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_READONLY = 1;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_READWRITE = 2;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_CREATE = 4;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_DELETEONCLOSE = 8;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_EXCLUSIVE = 16;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_AUTOPROXY = 32;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_URI = 64;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_MEMORY = 128;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_MAIN_DB = 256;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_TEMP_DB = 512;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_TRANSIENT_DB = 1024;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_MAIN_JOURNAL = 2048;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_TEMP_JOURNAL = 4096;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_SUBJOURNAL = 8192;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_SUPER_JOURNAL = 16384;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_NOMUTEX = 32768;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_FULLMUTEX = 65536;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_SHAREDCACHE = 131072;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_PRIVATECACHE = 262144;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_WAL = 524288;
+        
+        /// <summary>
+        /// Ok for sqlite3_open_v2()
+        /// </summary>
+        public const int SQLITE_OPEN_NOFOLLOW = 16777216;
+        
+        /// <summary>
+        /// Extended result codes
+        /// </summary>
+        public const int SQLITE_OPEN_EXRESCODE = 33554432;
+        
+        /// <summary>
+        /// VFS only
+        /// </summary>
+        public const int SQLITE_OPEN_MASTER_JOURNAL = 16384;
+        
+        public const int SQLITE_IOCAP_ATOMIC = 1;
+        
+        public const int SQLITE_IOCAP_ATOMIC512 = 2;
+        
+        public const int SQLITE_IOCAP_ATOMIC1K = 4;
+        
+        public const int SQLITE_IOCAP_ATOMIC2K = 8;
+        
+        public const int SQLITE_IOCAP_ATOMIC4K = 16;
+        
+        public const int SQLITE_IOCAP_ATOMIC8K = 32;
+        
+        public const int SQLITE_IOCAP_ATOMIC16K = 64;
+        
+        public const int SQLITE_IOCAP_ATOMIC32K = 128;
+        
+        public const int SQLITE_IOCAP_ATOMIC64K = 256;
+        
+        public const int SQLITE_IOCAP_SAFE_APPEND = 512;
+        
+        public const int SQLITE_IOCAP_SEQUENTIAL = 1024;
+        
+        public const int SQLITE_IOCAP_UNDELETABLE_WHEN_OPEN = 2048;
+        
+        public const int SQLITE_IOCAP_POWERSAFE_OVERWRITE = 4096;
+        
+        public const int SQLITE_IOCAP_IMMUTABLE = 8192;
+        
+        public const int SQLITE_IOCAP_BATCH_ATOMIC = 16384;
+        
+        /// <summary>
+        /// xUnlock() only
+        /// </summary>
+        public const int SQLITE_LOCK_NONE = 0;
+        
+        /// <summary>
+        /// xLock() or xUnlock()
+        /// </summary>
+        public const int SQLITE_LOCK_SHARED = 1;
+        
+        /// <summary>
+        /// xLock() only
+        /// </summary>
+        public const int SQLITE_LOCK_RESERVED = 2;
+        
+        /// <summary>
+        /// xLock() only
+        /// </summary>
+        public const int SQLITE_LOCK_PENDING = 3;
+        
+        /// <summary>
+        /// xLock() only
+        /// </summary>
+        public const int SQLITE_LOCK_EXCLUSIVE = 4;
+        
+        public const int SQLITE_SYNC_NORMAL = 2;
+        
+        public const int SQLITE_SYNC_FULL = 3;
+        
+        public const int SQLITE_SYNC_DATAONLY = 16;
+        
+        public const int SQLITE_FCNTL_LOCKSTATE = 1;
+        
+        public const int SQLITE_FCNTL_GET_LOCKPROXYFILE = 2;
+        
+        public const int SQLITE_FCNTL_SET_LOCKPROXYFILE = 3;
+        
+        public const int SQLITE_FCNTL_LAST_ERRNO = 4;
+        
+        public const int SQLITE_FCNTL_SIZE_HINT = 5;
+        
+        public const int SQLITE_FCNTL_CHUNK_SIZE = 6;
+        
+        public const int SQLITE_FCNTL_FILE_POINTER = 7;
+        
+        public const int SQLITE_FCNTL_SYNC_OMITTED = 8;
+        
+        public const int SQLITE_FCNTL_WIN32_AV_RETRY = 9;
+        
+        public const int SQLITE_FCNTL_PERSIST_WAL = 10;
+        
+        public const int SQLITE_FCNTL_OVERWRITE = 11;
+        
+        public const int SQLITE_FCNTL_VFSNAME = 12;
+        
+        public const int SQLITE_FCNTL_POWERSAFE_OVERWRITE = 13;
+        
+        public const int SQLITE_FCNTL_PRAGMA = 14;
+        
+        public const int SQLITE_FCNTL_BUSYHANDLER = 15;
+        
+        public const int SQLITE_FCNTL_TEMPFILENAME = 16;
+        
+        public const int SQLITE_FCNTL_MMAP_SIZE = 18;
+        
+        public const int SQLITE_FCNTL_TRACE = 19;
+        
+        public const int SQLITE_FCNTL_HAS_MOVED = 20;
+        
+        public const int SQLITE_FCNTL_SYNC = 21;
+        
+        public const int SQLITE_FCNTL_COMMIT_PHASETWO = 22;
+        
+        public const int SQLITE_FCNTL_WIN32_SET_HANDLE = 23;
+        
+        public const int SQLITE_FCNTL_WAL_BLOCK = 24;
+        
+        public const int SQLITE_FCNTL_ZIPVFS = 25;
+        
+        public const int SQLITE_FCNTL_RBU = 26;
+        
+        public const int SQLITE_FCNTL_VFS_POINTER = 27;
+        
+        public const int SQLITE_FCNTL_JOURNAL_POINTER = 28;
+        
+        public const int SQLITE_FCNTL_WIN32_GET_HANDLE = 29;
+        
+        public const int SQLITE_FCNTL_PDB = 30;
+        
+        public const int SQLITE_FCNTL_BEGIN_ATOMIC_WRITE = 31;
+        
+        public const int SQLITE_FCNTL_COMMIT_ATOMIC_WRITE = 32;
+        
+        public const int SQLITE_FCNTL_ROLLBACK_ATOMIC_WRITE = 33;
+        
+        public const int SQLITE_FCNTL_LOCK_TIMEOUT = 34;
+        
+        public const int SQLITE_FCNTL_DATA_VERSION = 35;
+        
+        public const int SQLITE_FCNTL_SIZE_LIMIT = 36;
+        
+        public const int SQLITE_FCNTL_CKPT_DONE = 37;
+        
+        public const int SQLITE_FCNTL_RESERVE_BYTES = 38;
+        
+        public const int SQLITE_FCNTL_CKPT_START = 39;
+        
+        public const int SQLITE_FCNTL_EXTERNAL_READER = 40;
+        
+        public const int SQLITE_FCNTL_CKSM_FILE = 41;
+        
+        public const int SQLITE_FCNTL_RESET_CACHE = 42;
+        
+        public const int SQLITE_GET_LOCKPROXYFILE = 2;
+        
+        public const int SQLITE_SET_LOCKPROXYFILE = 3;
+        
+        public const int SQLITE_LAST_ERRNO = 4;
+        
+        public const int SQLITE_ACCESS_EXISTS = 0;
+        
+        /// <summary>
+        /// Used by PRAGMA temp_store_directory
+        /// </summary>
+        public const int SQLITE_ACCESS_READWRITE = 1;
+        
+        /// <summary>
+        /// Unused
+        /// </summary>
+        public const int SQLITE_ACCESS_READ = 2;
+        
+        public const int SQLITE_SHM_UNLOCK = 1;
+        
+        public const int SQLITE_SHM_LOCK = 2;
+        
+        public const int SQLITE_SHM_SHARED = 4;
+        
+        public const int SQLITE_SHM_EXCLUSIVE = 8;
+        
+        public const int SQLITE_SHM_NLOCK = 8;
+        
+        /// <summary>
+        /// nil
+        /// </summary>
+        public const int SQLITE_CONFIG_SINGLETHREAD = 1;
+        
+        /// <summary>
+        /// nil
+        /// </summary>
+        public const int SQLITE_CONFIG_MULTITHREAD = 2;
+        
+        /// <summary>
+        /// nil
+        /// </summary>
+        public const int SQLITE_CONFIG_SERIALIZED = 3;
+        
+        /// <summary>
+        /// sqlite3_mem_methods*
+        /// </summary>
+        public const int SQLITE_CONFIG_MALLOC = 4;
+        
+        /// <summary>
+        /// sqlite3_mem_methods*
+        /// </summary>
+        public const int SQLITE_CONFIG_GETMALLOC = 5;
+        
+        /// <summary>
+        /// No longer used
+        /// </summary>
+        public const int SQLITE_CONFIG_SCRATCH = 6;
+        
+        /// <summary>
+        /// void*, int sz, int N
+        /// </summary>
+        public const int SQLITE_CONFIG_PAGECACHE = 7;
+        
+        /// <summary>
+        /// void*, int nByte, int min
+        /// </summary>
+        public const int SQLITE_CONFIG_HEAP = 8;
+        
+        /// <summary>
+        /// boolean
+        /// </summary>
+        public const int SQLITE_CONFIG_MEMSTATUS = 9;
+        
+        /// <summary>
+        /// sqlite3_mutex_methods*
+        /// </summary>
+        public const int SQLITE_CONFIG_MUTEX = 10;
+        
+        /// <summary>
+        /// sqlite3_mutex_methods*
+        /// </summary>
+        public const int SQLITE_CONFIG_GETMUTEX = 11;
+        
+        /// <summary>
+        /// int int
+        /// </summary>
+        public const int SQLITE_CONFIG_LOOKASIDE = 13;
+        
+        /// <summary>
+        /// no-op
+        /// </summary>
+        public const int SQLITE_CONFIG_PCACHE = 14;
+        
+        /// <summary>
+        /// no-op
+        /// </summary>
+        public const int SQLITE_CONFIG_GETPCACHE = 15;
+        
+        /// <summary>
+        /// xFunc, void*
+        /// </summary>
+        public const int SQLITE_CONFIG_LOG = 16;
+        
+        /// <summary>
+        /// int
+        /// </summary>
+        public const int SQLITE_CONFIG_URI = 17;
+        
+        /// <summary>
+        /// sqlite3_pcache_methods2*
+        /// </summary>
+        public const int SQLITE_CONFIG_PCACHE2 = 18;
+        
+        /// <summary>
+        /// sqlite3_pcache_methods2*
+        /// </summary>
+        public const int SQLITE_CONFIG_GETPCACHE2 = 19;
+        
+        /// <summary>
+        /// int
+        /// </summary>
+        public const int SQLITE_CONFIG_COVERING_INDEX_SCAN = 20;
+        
+        /// <summary>
+        /// xSqllog, void*
+        /// </summary>
+        public const int SQLITE_CONFIG_SQLLOG = 21;
+        
+        /// <summary>
+        /// sqlite3_int64, sqlite3_int64
+        /// </summary>
+        public const int SQLITE_CONFIG_MMAP_SIZE = 22;
+        
+        /// <summary>
+        /// int nByte
+        /// </summary>
+        public const int SQLITE_CONFIG_WIN32_HEAPSIZE = 23;
+        
+        /// <summary>
+        /// int *psz
+        /// </summary>
+        public const int SQLITE_CONFIG_PCACHE_HDRSZ = 24;
+        
+        /// <summary>
+        /// unsigned int szPma
+        /// </summary>
+        public const int SQLITE_CONFIG_PMASZ = 25;
+        
+        /// <summary>
+        /// int nByte
+        /// </summary>
+        public const int SQLITE_CONFIG_STMTJRNL_SPILL = 26;
+        
+        /// <summary>
+        /// boolean
+        /// </summary>
+        public const int SQLITE_CONFIG_SMALL_MALLOC = 27;
+        
+        /// <summary>
+        /// int nByte
+        /// </summary>
+        public const int SQLITE_CONFIG_SORTERREF_SIZE = 28;
+        
+        /// <summary>
+        /// sqlite3_int64
+        /// </summary>
+        public const int SQLITE_CONFIG_MEMDB_MAXSIZE = 29;
+        
+        /// <summary>
+        /// const char*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_MAINDBNAME = 1000;
+        
+        /// <summary>
+        /// void* int int
+        /// </summary>
+        public const int SQLITE_DBCONFIG_LOOKASIDE = 1001;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_ENABLE_FKEY = 1002;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_ENABLE_TRIGGER = 1003;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER = 1004;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_ENABLE_LOAD_EXTENSION = 1005;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_NO_CKPT_ON_CLOSE = 1006;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_ENABLE_QPSG = 1007;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_TRIGGER_EQP = 1008;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_RESET_DATABASE = 1009;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_DEFENSIVE = 1010;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_WRITABLE_SCHEMA = 1011;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_LEGACY_ALTER_TABLE = 1012;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_DQS_DML = 1013;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_DQS_DDL = 1014;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_ENABLE_VIEW = 1015;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_LEGACY_FILE_FORMAT = 1016;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_TRUSTED_SCHEMA = 1017;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_STMT_SCANSTATUS = 1018;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_REVERSE_SCANORDER = 1019;
+        
+        /// <summary>
+        /// Largest DBCONFIG
+        /// </summary>
+        public const int SQLITE_DBCONFIG_MAX = 1019;
+        
+        /// <summary>
+        /// Abort the SQL statement with an error
+        /// </summary>
+        public const int SQLITE_DENY = 1;
+        
+        /// <summary>
+        /// Don't allow access, but don't generate an error
+        /// </summary>
+        public const int SQLITE_IGNORE = 2;
+        
+        /// <summary>
+        /// Index Name      Table Name
+        /// </summary>
+        public const int SQLITE_CREATE_INDEX = 1;
+        
+        /// <summary>
+        /// Table Name      NULL
+        /// </summary>
+        public const int SQLITE_CREATE_TABLE = 2;
+        
+        /// <summary>
+        /// Index Name      Table Name
+        /// </summary>
+        public const int SQLITE_CREATE_TEMP_INDEX = 3;
+        
+        /// <summary>
+        /// Table Name      NULL
+        /// </summary>
+        public const int SQLITE_CREATE_TEMP_TABLE = 4;
+        
+        /// <summary>
+        /// Trigger Name    Table Name
+        /// </summary>
+        public const int SQLITE_CREATE_TEMP_TRIGGER = 5;
+        
+        /// <summary>
+        /// View Name       NULL
+        /// </summary>
+        public const int SQLITE_CREATE_TEMP_VIEW = 6;
+        
+        /// <summary>
+        /// Trigger Name    Table Name
+        /// </summary>
+        public const int SQLITE_CREATE_TRIGGER = 7;
+        
+        /// <summary>
+        /// View Name       NULL
+        /// </summary>
+        public const int SQLITE_CREATE_VIEW = 8;
+        
+        /// <summary>
+        /// Table Name      NULL
+        /// </summary>
+        public const int SQLITE_DELETE = 9;
+        
+        /// <summary>
+        /// Index Name      Table Name
+        /// </summary>
+        public const int SQLITE_DROP_INDEX = 10;
+        
+        /// <summary>
+        /// Table Name      NULL
+        /// </summary>
+        public const int SQLITE_DROP_TABLE = 11;
+        
+        /// <summary>
+        /// Index Name      Table Name
+        /// </summary>
+        public const int SQLITE_DROP_TEMP_INDEX = 12;
+        
+        /// <summary>
+        /// Table Name      NULL
+        /// </summary>
+        public const int SQLITE_DROP_TEMP_TABLE = 13;
+        
+        /// <summary>
+        /// Trigger Name    Table Name
+        /// </summary>
+        public const int SQLITE_DROP_TEMP_TRIGGER = 14;
+        
+        /// <summary>
+        /// View Name       NULL
+        /// </summary>
+        public const int SQLITE_DROP_TEMP_VIEW = 15;
+        
+        /// <summary>
+        /// Trigger Name    Table Name
+        /// </summary>
+        public const int SQLITE_DROP_TRIGGER = 16;
+        
+        /// <summary>
+        /// View Name       NULL
+        /// </summary>
+        public const int SQLITE_DROP_VIEW = 17;
+        
+        /// <summary>
+        /// Table Name      NULL
+        /// </summary>
+        public const int SQLITE_INSERT = 18;
+        
+        /// <summary>
+        /// Pragma Name     1st arg or NULL
+        /// </summary>
+        public const int SQLITE_PRAGMA = 19;
+        
+        /// <summary>
+        /// Table Name      Column Name
+        /// </summary>
+        public const int SQLITE_READ = 20;
+        
+        /// <summary>
+        /// NULL            NULL
+        /// </summary>
+        public const int SQLITE_SELECT = 21;
+        
+        /// <summary>
+        /// Operation       NULL
+        /// </summary>
+        public const int SQLITE_TRANSACTION = 22;
+        
+        /// <summary>
+        /// Table Name      Column Name
+        /// </summary>
+        public const int SQLITE_UPDATE = 23;
+        
+        /// <summary>
+        /// Filename        NULL
+        /// </summary>
+        public const int SQLITE_ATTACH = 24;
+        
+        /// <summary>
+        /// Database Name   NULL
+        /// </summary>
+        public const int SQLITE_DETACH = 25;
+        
+        /// <summary>
+        /// Database Name   Table Name
+        /// </summary>
+        public const int SQLITE_ALTER_TABLE = 26;
+        
+        /// <summary>
+        /// Index Name      NULL
+        /// </summary>
+        public const int SQLITE_REINDEX = 27;
+        
+        /// <summary>
+        /// Table Name      NULL
+        /// </summary>
+        public const int SQLITE_ANALYZE = 28;
+        
+        /// <summary>
+        /// Table Name      Module Name
+        /// </summary>
+        public const int SQLITE_CREATE_VTABLE = 29;
+        
+        /// <summary>
+        /// Table Name      Module Name
+        /// </summary>
+        public const int SQLITE_DROP_VTABLE = 30;
+        
+        /// <summary>
+        /// NULL            Function Name
+        /// </summary>
+        public const int SQLITE_FUNCTION = 31;
+        
+        /// <summary>
+        /// Operation       Savepoint Name
+        /// </summary>
+        public const int SQLITE_SAVEPOINT = 32;
+        
+        /// <summary>
+        /// No longer used
+        /// </summary>
+        public const int SQLITE_COPY = 0;
+        
+        /// <summary>
+        /// NULL            NULL
+        /// </summary>
+        public const int SQLITE_RECURSIVE = 33;
+        
+        public const int SQLITE_TRACE_STMT = 1;
+        
+        public const int SQLITE_TRACE_PROFILE = 2;
+        
+        public const int SQLITE_TRACE_ROW = 4;
+        
+        public const int SQLITE_TRACE_CLOSE = 8;
+        
+        public const int SQLITE_LIMIT_LENGTH = 0;
+        
+        public const int SQLITE_LIMIT_SQL_LENGTH = 1;
+        
+        public const int SQLITE_LIMIT_COLUMN = 2;
+        
+        public const int SQLITE_LIMIT_EXPR_DEPTH = 3;
+        
+        public const int SQLITE_LIMIT_COMPOUND_SELECT = 4;
+        
+        public const int SQLITE_LIMIT_VDBE_OP = 5;
+        
+        public const int SQLITE_LIMIT_FUNCTION_ARG = 6;
+        
+        public const int SQLITE_LIMIT_ATTACHED = 7;
+        
+        public const int SQLITE_LIMIT_LIKE_PATTERN_LENGTH = 8;
+        
+        public const int SQLITE_LIMIT_VARIABLE_NUMBER = 9;
+        
+        public const int SQLITE_LIMIT_TRIGGER_DEPTH = 10;
+        
+        public const int SQLITE_LIMIT_WORKER_THREADS = 11;
+        
+        public const int SQLITE_PREPARE_PERSISTENT = 1;
+        
+        public const int SQLITE_PREPARE_NORMALIZE = 2;
+        
+        public const int SQLITE_PREPARE_NO_VTAB = 4;
+        
+        public const int SQLITE_INTEGER = 1;
+        
+        public const int SQLITE_FLOAT = 2;
+        
+        public const int SQLITE_BLOB = 4;
+        
+        public const int SQLITE_NULL = 5;
+        
+        public const int SQLITE_TEXT = 3;
+        
+        /// <summary>
+        /// IMP: R-37514-35566
+        /// </summary>
+        public const int SQLITE_UTF8 = 1;
+        
+        /// <summary>
+        /// IMP: R-03371-37637
+        /// </summary>
+        public const int SQLITE_UTF16LE = 2;
+        
+        /// <summary>
+        /// IMP: R-51971-34154
+        /// </summary>
+        public const int SQLITE_UTF16BE = 3;
+        
+        /// <summary>
+        /// Use native byte order
+        /// </summary>
+        public const int SQLITE_UTF16 = 4;
+        
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        public const int SQLITE_ANY = 5;
+        
+        /// <summary>
+        /// sqlite3_create_collation only
+        /// </summary>
+        public const int SQLITE_UTF16_ALIGNED = 8;
+        
+        public const int SQLITE_DETERMINISTIC = 2048;
+        
+        public const int SQLITE_DIRECTONLY = 524288;
+        
+        public const int SQLITE_SUBTYPE = 1048576;
+        
+        public const int SQLITE_INNOCUOUS = 2097152;
+        
+        public const int SQLITE_RESULT_SUBTYPE = 16777216;
+        
+        public const int SQLITE_WIN32_DATA_DIRECTORY_TYPE = 1;
+        
+        public const int SQLITE_WIN32_TEMP_DIRECTORY_TYPE = 2;
+        
+        public const int SQLITE_TXN_NONE = 0;
+        
+        public const int SQLITE_TXN_READ = 1;
+        
+        public const int SQLITE_TXN_WRITE = 2;
+        
+        /// <summary>
+        /// Scan visits at most 1 row
+        /// </summary>
+        public const int SQLITE_INDEX_SCAN_UNIQUE = 1;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_EQ = 2;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_GT = 4;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_LE = 8;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_LT = 16;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_GE = 32;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_MATCH = 64;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_LIKE = 65;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_GLOB = 66;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_REGEXP = 67;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_NE = 68;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_ISNOT = 69;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_ISNOTNULL = 70;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_ISNULL = 71;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_IS = 72;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_LIMIT = 73;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_OFFSET = 74;
+        
+        public const int SQLITE_INDEX_CONSTRAINT_FUNCTION = 150;
+        
+        public const int SQLITE_MUTEX_FAST = 0;
+        
+        public const int SQLITE_MUTEX_RECURSIVE = 1;
+        
+        public const int SQLITE_MUTEX_STATIC_MAIN = 2;
+        
+        /// <summary>
+        /// sqlite3_malloc()
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_MEM = 3;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_MEM2 = 4;
+        
+        /// <summary>
+        /// sqlite3BtreeOpen()
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_OPEN = 4;
+        
+        /// <summary>
+        /// sqlite3_randomness()
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_PRNG = 5;
+        
+        /// <summary>
+        /// lru page list
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_LRU = 6;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_LRU2 = 7;
+        
+        /// <summary>
+        /// sqlite3PageMalloc()
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_PMEM = 7;
+        
+        /// <summary>
+        /// For use by application
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_APP1 = 8;
+        
+        /// <summary>
+        /// For use by application
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_APP2 = 9;
+        
+        /// <summary>
+        /// For use by application
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_APP3 = 10;
+        
+        /// <summary>
+        /// For use by built-in VFS
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_VFS1 = 11;
+        
+        /// <summary>
+        /// For use by extension VFS
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_VFS2 = 12;
+        
+        /// <summary>
+        /// For use by application VFS
+        /// </summary>
+        public const int SQLITE_MUTEX_STATIC_VFS3 = 13;
+        
+        public const int SQLITE_MUTEX_STATIC_MASTER = 2;
+        
+        public const int SQLITE_TESTCTRL_FIRST = 5;
+        
+        public const int SQLITE_TESTCTRL_PRNG_SAVE = 5;
+        
+        public const int SQLITE_TESTCTRL_PRNG_RESTORE = 6;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_TESTCTRL_PRNG_RESET = 7;
+        
+        public const int SQLITE_TESTCTRL_FK_NO_ACTION = 7;
+        
+        public const int SQLITE_TESTCTRL_BITVEC_TEST = 8;
+        
+        public const int SQLITE_TESTCTRL_FAULT_INSTALL = 9;
+        
+        public const int SQLITE_TESTCTRL_BENIGN_MALLOC_HOOKS = 10;
+        
+        public const int SQLITE_TESTCTRL_PENDING_BYTE = 11;
+        
+        public const int SQLITE_TESTCTRL_ASSERT = 12;
+        
+        public const int SQLITE_TESTCTRL_ALWAYS = 13;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_TESTCTRL_RESERVE = 14;
+        
+        public const int SQLITE_TESTCTRL_OPTIMIZATIONS = 15;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_TESTCTRL_ISKEYWORD = 16;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_TESTCTRL_SCRATCHMALLOC = 17;
+        
+        public const int SQLITE_TESTCTRL_INTERNAL_FUNCTIONS = 17;
+        
+        public const int SQLITE_TESTCTRL_LOCALTIME_FAULT = 18;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_TESTCTRL_EXPLAIN_STMT = 19;
+        
+        public const int SQLITE_TESTCTRL_ONCE_RESET_THRESHOLD = 19;
+        
+        public const int SQLITE_TESTCTRL_NEVER_CORRUPT = 20;
+        
+        public const int SQLITE_TESTCTRL_VDBE_COVERAGE = 21;
+        
+        public const int SQLITE_TESTCTRL_BYTEORDER = 22;
+        
+        public const int SQLITE_TESTCTRL_ISINIT = 23;
+        
+        public const int SQLITE_TESTCTRL_SORTER_MMAP = 24;
+        
+        public const int SQLITE_TESTCTRL_IMPOSTER = 25;
+        
+        public const int SQLITE_TESTCTRL_PARSER_COVERAGE = 26;
+        
+        public const int SQLITE_TESTCTRL_RESULT_INTREAL = 27;
+        
+        public const int SQLITE_TESTCTRL_PRNG_SEED = 28;
+        
+        public const int SQLITE_TESTCTRL_EXTRA_SCHEMA_CHECKS = 29;
+        
+        public const int SQLITE_TESTCTRL_SEEK_COUNT = 30;
+        
+        public const int SQLITE_TESTCTRL_TRACEFLAGS = 31;
+        
+        public const int SQLITE_TESTCTRL_TUNE = 32;
+        
+        public const int SQLITE_TESTCTRL_LOGEST = 33;
+        
+        public const int SQLITE_TESTCTRL_USELONGDOUBLE = 34;
+        
+        /// <summary>
+        /// Largest TESTCTRL
+        /// </summary>
+        public const int SQLITE_TESTCTRL_LAST = 34;
+        
+        public const int SQLITE_STATUS_MEMORY_USED = 0;
+        
+        public const int SQLITE_STATUS_PAGECACHE_USED = 1;
+        
+        public const int SQLITE_STATUS_PAGECACHE_OVERFLOW = 2;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_STATUS_SCRATCH_USED = 3;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_STATUS_SCRATCH_OVERFLOW = 4;
+        
+        public const int SQLITE_STATUS_MALLOC_SIZE = 5;
+        
+        public const int SQLITE_STATUS_PARSER_STACK = 6;
+        
+        public const int SQLITE_STATUS_PAGECACHE_SIZE = 7;
+        
+        /// <summary>
+        /// NOT USED
+        /// </summary>
+        public const int SQLITE_STATUS_SCRATCH_SIZE = 8;
+        
+        public const int SQLITE_STATUS_MALLOC_COUNT = 9;
+        
+        public const int SQLITE_DBSTATUS_LOOKASIDE_USED = 0;
+        
+        public const int SQLITE_DBSTATUS_CACHE_USED = 1;
+        
+        public const int SQLITE_DBSTATUS_SCHEMA_USED = 2;
+        
+        public const int SQLITE_DBSTATUS_STMT_USED = 3;
+        
+        public const int SQLITE_DBSTATUS_LOOKASIDE_HIT = 4;
+        
+        public const int SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE = 5;
+        
+        public const int SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL = 6;
+        
+        public const int SQLITE_DBSTATUS_CACHE_HIT = 7;
+        
+        public const int SQLITE_DBSTATUS_CACHE_MISS = 8;
+        
+        public const int SQLITE_DBSTATUS_CACHE_WRITE = 9;
+        
+        public const int SQLITE_DBSTATUS_DEFERRED_FKS = 10;
+        
+        public const int SQLITE_DBSTATUS_CACHE_USED_SHARED = 11;
+        
+        public const int SQLITE_DBSTATUS_CACHE_SPILL = 12;
+        
+        /// <summary>
+        /// Largest defined DBSTATUS
+        /// </summary>
+        public const int SQLITE_DBSTATUS_MAX = 12;
+        
+        public const int SQLITE_STMTSTATUS_FULLSCAN_STEP = 1;
+        
+        public const int SQLITE_STMTSTATUS_SORT = 2;
+        
+        public const int SQLITE_STMTSTATUS_AUTOINDEX = 3;
+        
+        public const int SQLITE_STMTSTATUS_VM_STEP = 4;
+        
+        public const int SQLITE_STMTSTATUS_REPREPARE = 5;
+        
+        public const int SQLITE_STMTSTATUS_RUN = 6;
+        
+        public const int SQLITE_STMTSTATUS_FILTER_MISS = 7;
+        
+        public const int SQLITE_STMTSTATUS_FILTER_HIT = 8;
+        
+        public const int SQLITE_STMTSTATUS_MEMUSED = 99;
+        
+        /// <summary>
+        /// Do as much as possible w/o blocking
+        /// </summary>
+        public const int SQLITE_CHECKPOINT_PASSIVE = 0;
+        
+        /// <summary>
+        /// Wait for writers, then checkpoint
+        /// </summary>
+        public const int SQLITE_CHECKPOINT_FULL = 1;
+        
+        /// <summary>
+        /// Like FULL but wait for readers
+        /// </summary>
+        public const int SQLITE_CHECKPOINT_RESTART = 2;
+        
+        /// <summary>
+        /// Like RESTART but also truncate WAL
+        /// </summary>
+        public const int SQLITE_CHECKPOINT_TRUNCATE = 3;
+        
+        public const int SQLITE_VTAB_CONSTRAINT_SUPPORT = 1;
+        
+        public const int SQLITE_VTAB_INNOCUOUS = 2;
+        
+        public const int SQLITE_VTAB_DIRECTONLY = 3;
+        
+        public const int SQLITE_VTAB_USES_ALL_SCHEMAS = 4;
+        
+        public const int SQLITE_ROLLBACK = 1;
+        
+        public const int SQLITE_FAIL = 3;
+        
+        public const int SQLITE_REPLACE = 5;
+        
+        public const int SQLITE_SCANSTAT_NLOOP = 0;
+        
+        public const int SQLITE_SCANSTAT_NVISIT = 1;
+        
+        public const int SQLITE_SCANSTAT_EST = 2;
+        
+        public const int SQLITE_SCANSTAT_NAME = 3;
+        
+        public const int SQLITE_SCANSTAT_EXPLAIN = 4;
+        
+        public const int SQLITE_SCANSTAT_SELECTID = 5;
+        
+        public const int SQLITE_SCANSTAT_PARENTID = 6;
+        
+        public const int SQLITE_SCANSTAT_NCYCLE = 7;
+        
+        public const int SQLITE_SCANSTAT_COMPLEX = 1;
+        
+        /// <summary>
+        /// Do no memory allocations
+        /// </summary>
+        public const int SQLITE_SERIALIZE_NOCOPY = 1;
+        
+        /// <summary>
+        /// Call sqlite3_free() on close
+        /// </summary>
+        public const int SQLITE_DESERIALIZE_FREEONCLOSE = 1;
+        
+        /// <summary>
+        /// Resize using sqlite3_realloc64()
+        /// </summary>
+        public const int SQLITE_DESERIALIZE_RESIZEABLE = 2;
+        
+        /// <summary>
+        /// Database is read-only
+        /// </summary>
+        public const int SQLITE_DESERIALIZE_READONLY = 4;
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_libversion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

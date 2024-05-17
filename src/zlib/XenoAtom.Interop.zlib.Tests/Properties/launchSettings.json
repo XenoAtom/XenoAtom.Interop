@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "XenoAtom.Interop.zlib.Tests": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

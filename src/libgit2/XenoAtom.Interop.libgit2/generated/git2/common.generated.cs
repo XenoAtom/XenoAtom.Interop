@@ -28,27 +28,27 @@ namespace XenoAtom.Interop
             /// If set, libgit2 was built thread-aware and can be safely used from multiple
             /// threads.
             /// </summary>
-            GIT_FEATURE_THREADS = unchecked((uint)(1<<0)),
+            GIT_FEATURE_THREADS = unchecked((uint)1),
             
             /// <summary>
             /// If set, libgit2 was built with and linked against a TLS implementation.
             /// Custom TLS streams may still be added by the user to support HTTPS
             /// regardless of this.
             /// </summary>
-            GIT_FEATURE_HTTPS = unchecked((uint)(1<<1)),
+            GIT_FEATURE_HTTPS = unchecked((uint)2),
             
             /// <summary>
             /// If set, libgit2 was built with and linked against libssh2. A custom
             /// transport may still be added by the user to support libssh2 regardless of
             /// this.
             /// </summary>
-            GIT_FEATURE_SSH = unchecked((uint)(1<<2)),
+            GIT_FEATURE_SSH = unchecked((uint)4),
             
             /// <summary>
             /// If set, libgit2 was built with support for sub-second resolution in file
             /// modification times.
             /// </summary>
-            GIT_FEATURE_NSEC = unchecked((uint)(1<<3)),
+            GIT_FEATURE_NSEC = unchecked((uint)8),
         }
         
         /// <summary>
@@ -86,91 +86,91 @@ namespace XenoAtom.Interop
         /// </remarks>
         public enum git_libgit2_opt_t : uint
         {
-            GIT_OPT_GET_MWINDOW_SIZE,
+            GIT_OPT_GET_MWINDOW_SIZE = unchecked((uint)0),
             
-            GIT_OPT_SET_MWINDOW_SIZE,
+            GIT_OPT_SET_MWINDOW_SIZE = unchecked((uint)1),
             
-            GIT_OPT_GET_MWINDOW_MAPPED_LIMIT,
+            GIT_OPT_GET_MWINDOW_MAPPED_LIMIT = unchecked((uint)2),
             
-            GIT_OPT_SET_MWINDOW_MAPPED_LIMIT,
+            GIT_OPT_SET_MWINDOW_MAPPED_LIMIT = unchecked((uint)3),
             
-            GIT_OPT_GET_SEARCH_PATH,
+            GIT_OPT_GET_SEARCH_PATH = unchecked((uint)4),
             
-            GIT_OPT_SET_SEARCH_PATH,
+            GIT_OPT_SET_SEARCH_PATH = unchecked((uint)5),
             
-            GIT_OPT_SET_CACHE_OBJECT_LIMIT,
+            GIT_OPT_SET_CACHE_OBJECT_LIMIT = unchecked((uint)6),
             
-            GIT_OPT_SET_CACHE_MAX_SIZE,
+            GIT_OPT_SET_CACHE_MAX_SIZE = unchecked((uint)7),
             
-            GIT_OPT_ENABLE_CACHING,
+            GIT_OPT_ENABLE_CACHING = unchecked((uint)8),
             
-            GIT_OPT_GET_CACHED_MEMORY,
+            GIT_OPT_GET_CACHED_MEMORY = unchecked((uint)9),
             
-            GIT_OPT_GET_TEMPLATE_PATH,
+            GIT_OPT_GET_TEMPLATE_PATH = unchecked((uint)10),
             
-            GIT_OPT_SET_TEMPLATE_PATH,
+            GIT_OPT_SET_TEMPLATE_PATH = unchecked((uint)11),
             
-            GIT_OPT_SET_SSL_CERT_LOCATIONS,
+            GIT_OPT_SET_SSL_CERT_LOCATIONS = unchecked((uint)12),
             
-            GIT_OPT_SET_USER_AGENT,
+            GIT_OPT_SET_USER_AGENT = unchecked((uint)13),
             
-            GIT_OPT_ENABLE_STRICT_OBJECT_CREATION,
+            GIT_OPT_ENABLE_STRICT_OBJECT_CREATION = unchecked((uint)14),
             
-            GIT_OPT_ENABLE_STRICT_SYMBOLIC_REF_CREATION,
+            GIT_OPT_ENABLE_STRICT_SYMBOLIC_REF_CREATION = unchecked((uint)15),
             
-            GIT_OPT_SET_SSL_CIPHERS,
+            GIT_OPT_SET_SSL_CIPHERS = unchecked((uint)16),
             
-            GIT_OPT_GET_USER_AGENT,
+            GIT_OPT_GET_USER_AGENT = unchecked((uint)17),
             
-            GIT_OPT_ENABLE_OFS_DELTA,
+            GIT_OPT_ENABLE_OFS_DELTA = unchecked((uint)18),
             
-            GIT_OPT_ENABLE_FSYNC_GITDIR,
+            GIT_OPT_ENABLE_FSYNC_GITDIR = unchecked((uint)19),
             
-            GIT_OPT_GET_WINDOWS_SHAREMODE,
+            GIT_OPT_GET_WINDOWS_SHAREMODE = unchecked((uint)20),
             
-            GIT_OPT_SET_WINDOWS_SHAREMODE,
+            GIT_OPT_SET_WINDOWS_SHAREMODE = unchecked((uint)21),
             
-            GIT_OPT_ENABLE_STRICT_HASH_VERIFICATION,
+            GIT_OPT_ENABLE_STRICT_HASH_VERIFICATION = unchecked((uint)22),
             
-            GIT_OPT_SET_ALLOCATOR,
+            GIT_OPT_SET_ALLOCATOR = unchecked((uint)23),
             
-            GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY,
+            GIT_OPT_ENABLE_UNSAVED_INDEX_SAFETY = unchecked((uint)24),
             
-            GIT_OPT_GET_PACK_MAX_OBJECTS,
+            GIT_OPT_GET_PACK_MAX_OBJECTS = unchecked((uint)25),
             
-            GIT_OPT_SET_PACK_MAX_OBJECTS,
+            GIT_OPT_SET_PACK_MAX_OBJECTS = unchecked((uint)26),
             
-            GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS,
+            GIT_OPT_DISABLE_PACK_KEEP_FILE_CHECKS = unchecked((uint)27),
             
-            GIT_OPT_ENABLE_HTTP_EXPECT_CONTINUE,
+            GIT_OPT_ENABLE_HTTP_EXPECT_CONTINUE = unchecked((uint)28),
             
-            GIT_OPT_GET_MWINDOW_FILE_LIMIT,
+            GIT_OPT_GET_MWINDOW_FILE_LIMIT = unchecked((uint)29),
             
-            GIT_OPT_SET_MWINDOW_FILE_LIMIT,
+            GIT_OPT_SET_MWINDOW_FILE_LIMIT = unchecked((uint)30),
             
-            GIT_OPT_SET_ODB_PACKED_PRIORITY,
+            GIT_OPT_SET_ODB_PACKED_PRIORITY = unchecked((uint)31),
             
-            GIT_OPT_SET_ODB_LOOSE_PRIORITY,
+            GIT_OPT_SET_ODB_LOOSE_PRIORITY = unchecked((uint)32),
             
-            GIT_OPT_GET_EXTENSIONS,
+            GIT_OPT_GET_EXTENSIONS = unchecked((uint)33),
             
-            GIT_OPT_SET_EXTENSIONS,
+            GIT_OPT_SET_EXTENSIONS = unchecked((uint)34),
             
-            GIT_OPT_GET_OWNER_VALIDATION,
+            GIT_OPT_GET_OWNER_VALIDATION = unchecked((uint)35),
             
-            GIT_OPT_SET_OWNER_VALIDATION,
+            GIT_OPT_SET_OWNER_VALIDATION = unchecked((uint)36),
             
-            GIT_OPT_GET_HOMEDIR,
+            GIT_OPT_GET_HOMEDIR = unchecked((uint)37),
             
-            GIT_OPT_SET_HOMEDIR,
+            GIT_OPT_SET_HOMEDIR = unchecked((uint)38),
             
-            GIT_OPT_SET_SERVER_CONNECT_TIMEOUT,
+            GIT_OPT_SET_SERVER_CONNECT_TIMEOUT = unchecked((uint)39),
             
-            GIT_OPT_GET_SERVER_CONNECT_TIMEOUT,
+            GIT_OPT_GET_SERVER_CONNECT_TIMEOUT = unchecked((uint)40),
             
-            GIT_OPT_SET_SERVER_TIMEOUT,
+            GIT_OPT_SET_SERVER_TIMEOUT = unchecked((uint)41),
             
-            GIT_OPT_GET_SERVER_TIMEOUT,
+            GIT_OPT_GET_SERVER_TIMEOUT = unchecked((uint)42),
         }
         
         public const libgit2.git_libgit2_opt_t GIT_OPT_GET_MWINDOW_SIZE = git_libgit2_opt_t.GIT_OPT_GET_MWINDOW_SIZE;

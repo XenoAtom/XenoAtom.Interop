@@ -32,31 +32,31 @@ namespace XenoAtom.Interop
             /// The given commit is to be cherry-picked, but the client should prompt
             /// the user to provide an updated commit message.
             /// </summary>
-            GIT_REBASE_OPERATION_REWORD,
+            GIT_REBASE_OPERATION_REWORD = unchecked((uint)1),
             
             /// <summary>
             /// The given commit is to be cherry-picked, but the client should stop
             /// to allow the user to edit the changes before committing them.
             /// </summary>
-            GIT_REBASE_OPERATION_EDIT,
+            GIT_REBASE_OPERATION_EDIT = unchecked((uint)2),
             
             /// <summary>
             /// The given commit is to be squashed into the previous commit.  The
             /// commit message will be merged with the previous message.
             /// </summary>
-            GIT_REBASE_OPERATION_SQUASH,
+            GIT_REBASE_OPERATION_SQUASH = unchecked((uint)3),
             
             /// <summary>
             /// The given commit is to be squashed into the previous commit.  The
             /// commit message from this commit will be discarded.
             /// </summary>
-            GIT_REBASE_OPERATION_FIXUP,
+            GIT_REBASE_OPERATION_FIXUP = unchecked((uint)4),
             
             /// <summary>
             /// No commit will be cherry-picked.  The client should run the given
             /// command and (if successful) continue.
             /// </summary>
-            GIT_REBASE_OPERATION_EXEC,
+            GIT_REBASE_OPERATION_EXEC = unchecked((uint)5),
         }
         
         /// <summary>
@@ -195,6 +195,8 @@ namespace XenoAtom.Interop
             /// </summary>
             public byte* exec;
         }
+        
+        public const uint GIT_REBASE_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initialize git_rebase_options structure

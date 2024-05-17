@@ -27,17 +27,17 @@ namespace XenoAtom.Interop
             /// <summary>
             /// The spec targeted a single object.
             /// </summary>
-            GIT_REVSPEC_SINGLE = unchecked((uint)1<<0),
+            GIT_REVSPEC_SINGLE = unchecked((uint)1),
             
             /// <summary>
             /// The spec targeted a range of commits.
             /// </summary>
-            GIT_REVSPEC_RANGE = unchecked((uint)1<<1),
+            GIT_REVSPEC_RANGE = unchecked((uint)2),
             
             /// <summary>
             /// The spec used the '...' operator, which invokes special semantics.
             /// </summary>
-            GIT_REVSPEC_MERGE_BASE = unchecked((uint)1<<2),
+            GIT_REVSPEC_MERGE_BASE = unchecked((uint)4),
         }
         
         /// <summary>

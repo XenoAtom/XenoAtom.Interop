@@ -51,12 +51,12 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Update or insert an entry at the specified path
             /// </summary>
-            GIT_TREE_UPDATE_UPSERT,
+            GIT_TREE_UPDATE_UPSERT = unchecked((uint)0),
             
             /// <summary>
             /// Remove an entry from the specified path
             /// </summary>
-            GIT_TREE_UPDATE_REMOVE,
+            GIT_TREE_UPDATE_REMOVE = unchecked((uint)1),
         }
         
         /// <summary>
@@ -109,17 +109,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> Value { get; }
             
-            public bool Equals(git_treebuilder_filter_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_treebuilder_filter_cb other && Equals(other);
+            
+            public bool Equals(git_treebuilder_filter_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int>(git_treebuilder_filter_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> (libgit2.git_treebuilder_filter_cb from) => from.Value;
             
-            public static implicit operator git_treebuilder_filter_cb(delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> from) => new git_treebuilder_filter_cb(from);
+            public static implicit operator libgit2.git_treebuilder_filter_cb (delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> from) => new libgit2.git_treebuilder_filter_cb(from);
             
             public static bool operator ==(git_treebuilder_filter_cb left, git_treebuilder_filter_cb right) => left.Equals(right);
             
@@ -135,17 +135,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> Value { get; }
             
-            public bool Equals(git_treewalk_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_treewalk_cb other && Equals(other);
+            
+            public bool Equals(git_treewalk_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int>(git_treewalk_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> (libgit2.git_treewalk_cb from) => from.Value;
             
-            public static implicit operator git_treewalk_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> from) => new git_treewalk_cb(from);
+            public static implicit operator libgit2.git_treewalk_cb (delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> from) => new libgit2.git_treewalk_cb(from);
             
             public static bool operator ==(git_treewalk_cb left, git_treewalk_cb right) => left.Equals(right);
             

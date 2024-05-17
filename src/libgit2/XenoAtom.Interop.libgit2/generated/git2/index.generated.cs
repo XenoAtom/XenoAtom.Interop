@@ -22,9 +22,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public enum git_index_entry_flag_t : uint
         {
-            GIT_INDEX_ENTRY_EXTENDED = unchecked((uint)(0x4000)),
+            GIT_INDEX_ENTRY_EXTENDED = unchecked((uint)16384),
             
-            GIT_INDEX_ENTRY_VALID = unchecked((uint)(0x8000)),
+            GIT_INDEX_ENTRY_VALID = unchecked((uint)32768),
         }
         
         public const libgit2.git_index_entry_flag_t GIT_INDEX_ENTRY_EXTENDED = git_index_entry_flag_t.GIT_INDEX_ENTRY_EXTENDED;
@@ -47,13 +47,13 @@ namespace XenoAtom.Interop
         [Flags]
         public enum git_index_entry_extended_flag_t : uint
         {
-            GIT_INDEX_ENTRY_INTENT_TO_ADD = unchecked((uint)(1<<13)),
+            GIT_INDEX_ENTRY_INTENT_TO_ADD = unchecked((uint)8192),
             
-            GIT_INDEX_ENTRY_SKIP_WORKTREE = unchecked((uint)(1<<14)),
+            GIT_INDEX_ENTRY_SKIP_WORKTREE = unchecked((uint)16384),
             
-            GIT_INDEX_ENTRY_EXTENDED_FLAGS = unchecked((uint)(GIT_INDEX_ENTRY_INTENT_TO_ADD|GIT_INDEX_ENTRY_SKIP_WORKTREE)),
+            GIT_INDEX_ENTRY_EXTENDED_FLAGS = unchecked((uint)24576),
             
-            GIT_INDEX_ENTRY_UPTODATE = unchecked((uint)(1<<2)),
+            GIT_INDEX_ENTRY_UPTODATE = unchecked((uint)4),
         }
         
         public const libgit2.git_index_entry_extended_flag_t GIT_INDEX_ENTRY_INTENT_TO_ADD = git_index_entry_extended_flag_t.GIT_INDEX_ENTRY_INTENT_TO_ADD;
@@ -94,11 +94,11 @@ namespace XenoAtom.Interop
         {
             GIT_INDEX_ADD_DEFAULT = unchecked((uint)0),
             
-            GIT_INDEX_ADD_FORCE = unchecked((uint)(1u << 0)),
+            GIT_INDEX_ADD_FORCE = unchecked((uint)1),
             
-            GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH = unchecked((uint)(1u << 1)),
+            GIT_INDEX_ADD_DISABLE_PATHSPEC_MATCH = unchecked((uint)2),
             
-            GIT_INDEX_ADD_CHECK_PATHSPEC = unchecked((uint)(1u << 2)),
+            GIT_INDEX_ADD_CHECK_PATHSPEC = unchecked((uint)4),
         }
         
         public const libgit2.git_index_add_option_t GIT_INDEX_ADD_DEFAULT = git_index_add_option_t.GIT_INDEX_ADD_DEFAULT;
@@ -238,17 +238,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> Value { get; }
             
-            public bool Equals(git_index_matched_path_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_index_matched_path_cb other && Equals(other);
+            
+            public bool Equals(git_index_matched_path_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>(git_index_matched_path_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (libgit2.git_index_matched_path_cb from) => from.Value;
             
-            public static implicit operator git_index_matched_path_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new git_index_matched_path_cb(from);
+            public static implicit operator libgit2.git_index_matched_path_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new libgit2.git_index_matched_path_cb(from);
             
             public static bool operator ==(git_index_matched_path_cb left, git_index_matched_path_cb right) => left.Equals(right);
             

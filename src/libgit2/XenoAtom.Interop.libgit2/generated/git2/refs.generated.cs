@@ -26,7 +26,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// No particular normalization.
             /// </summary>
-            GIT_REFERENCE_FORMAT_NORMAL = unchecked((uint)0u),
+            GIT_REFERENCE_FORMAT_NORMAL = unchecked((uint)0),
             
             /// <summary>
             /// Control whether one-level refnames are accepted
@@ -34,7 +34,7 @@ namespace XenoAtom.Interop
             /// components). Those are expected to be written only using
             /// uppercase letters and underscore (FETCH_HEAD, ...)
             /// </summary>
-            GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL = unchecked((uint)(1u << 0)),
+            GIT_REFERENCE_FORMAT_ALLOW_ONELEVEL = unchecked((uint)1),
             
             /// <summary>
             /// Interpret the provided name as a reference pattern for a
@@ -49,14 +49,14 @@ namespace XenoAtom.Interop
             /// &lt;star
             /// &gt;).
             /// </summary>
-            GIT_REFERENCE_FORMAT_REFSPEC_PATTERN = unchecked((uint)(1u << 1)),
+            GIT_REFERENCE_FORMAT_REFSPEC_PATTERN = unchecked((uint)2),
             
             /// <summary>
             /// Interpret the name as part of a refspec in shorthand form
             /// so the `ONELEVEL` naming rules aren't enforced and 'master'
             /// becomes a valid name.
             /// </summary>
-            GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND = unchecked((uint)(1u << 2)),
+            GIT_REFERENCE_FORMAT_REFSPEC_SHORTHAND = unchecked((uint)4),
         }
         
         /// <summary>
@@ -107,17 +107,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_reference, void*, int> Value { get; }
             
-            public bool Equals(git_reference_foreach_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_reference_foreach_cb other && Equals(other);
+            
+            public bool Equals(git_reference_foreach_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_reference, void*, int>(git_reference_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_reference, void*, int> (libgit2.git_reference_foreach_cb from) => from.Value;
             
-            public static implicit operator git_reference_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_reference, void*, int> from) => new git_reference_foreach_cb(from);
+            public static implicit operator libgit2.git_reference_foreach_cb (delegate*unmanaged[Cdecl]<libgit2.git_reference, void*, int> from) => new libgit2.git_reference_foreach_cb(from);
             
             public static bool operator ==(git_reference_foreach_cb left, git_reference_foreach_cb right) => left.Equals(right);
             
@@ -137,17 +137,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<byte*, void*, int> Value { get; }
             
-            public bool Equals(git_reference_foreach_name_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_reference_foreach_name_cb other && Equals(other);
+            
+            public bool Equals(git_reference_foreach_name_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, void*, int>(git_reference_foreach_name_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, void*, int> (libgit2.git_reference_foreach_name_cb from) => from.Value;
             
-            public static implicit operator git_reference_foreach_name_cb(delegate*unmanaged[Cdecl]<byte*, void*, int> from) => new git_reference_foreach_name_cb(from);
+            public static implicit operator libgit2.git_reference_foreach_name_cb (delegate*unmanaged[Cdecl]<byte*, void*, int> from) => new libgit2.git_reference_foreach_name_cb(from);
             
             public static bool operator ==(git_reference_foreach_name_cb left, git_reference_foreach_name_cb right) => left.Equals(right);
             

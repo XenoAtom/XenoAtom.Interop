@@ -118,22 +118,24 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> Value { get; }
             
-            public bool Equals(git_indexer_progress_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_indexer_progress_cb other && Equals(other);
+            
+            public bool Equals(git_indexer_progress_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int>(git_indexer_progress_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> (libgit2.git_indexer_progress_cb from) => from.Value;
             
-            public static implicit operator git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> from) => new git_indexer_progress_cb(from);
+            public static implicit operator libgit2.git_indexer_progress_cb (delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> from) => new libgit2.git_indexer_progress_cb(from);
             
             public static bool operator ==(git_indexer_progress_cb left, git_indexer_progress_cb right) => left.Equals(right);
             
             public static bool operator !=(git_indexer_progress_cb left, git_indexer_progress_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_INDEXER_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initializes a `git_indexer_options` with default values. Equivalent to

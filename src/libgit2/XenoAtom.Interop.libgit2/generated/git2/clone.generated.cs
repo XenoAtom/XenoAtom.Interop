@@ -30,23 +30,23 @@ namespace XenoAtom.Interop
             /// transport for local paths, but use a normal fetch for
             /// `file://` urls.
             /// </summary>
-            GIT_CLONE_LOCAL_AUTO,
+            GIT_CLONE_LOCAL_AUTO = unchecked((uint)0),
             
             /// <summary>
             /// Bypass the git-aware transport even for a `file://` url.
             /// </summary>
-            GIT_CLONE_LOCAL,
+            GIT_CLONE_LOCAL = unchecked((uint)1),
             
             /// <summary>
             /// Do no bypass the git-aware transport
             /// </summary>
-            GIT_CLONE_NO_LOCAL,
+            GIT_CLONE_NO_LOCAL = unchecked((uint)2),
             
             /// <summary>
             /// Bypass the git-aware transport, but do not try to use
             /// hardlinks.
             /// </summary>
-            GIT_CLONE_LOCAL_NO_LINKS,
+            GIT_CLONE_LOCAL_NO_LINKS = unchecked((uint)3),
         }
         
         /// <summary>
@@ -164,17 +164,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> Value { get; }
             
-            public bool Equals(git_repository_create_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_repository_create_cb other && Equals(other);
+            
+            public bool Equals(git_repository_create_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int>(git_repository_create_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> (libgit2.git_repository_create_cb from) => from.Value;
             
-            public static implicit operator git_repository_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> from) => new git_repository_create_cb(from);
+            public static implicit operator libgit2.git_repository_create_cb (delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> from) => new libgit2.git_repository_create_cb(from);
             
             public static bool operator ==(git_repository_create_cb left, git_repository_create_cb right) => left.Equals(right);
             
@@ -201,22 +201,24 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> Value { get; }
             
-            public bool Equals(git_remote_create_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_remote_create_cb other && Equals(other);
+            
+            public bool Equals(git_remote_create_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int>(git_remote_create_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> (libgit2.git_remote_create_cb from) => from.Value;
             
-            public static implicit operator git_remote_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> from) => new git_remote_create_cb(from);
+            public static implicit operator libgit2.git_remote_create_cb (delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> from) => new libgit2.git_remote_create_cb(from);
             
             public static bool operator ==(git_remote_create_cb left, git_remote_create_cb right) => left.Equals(right);
             
             public static bool operator !=(git_remote_create_cb left, git_remote_create_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_CLONE_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initialize git_clone_options structure

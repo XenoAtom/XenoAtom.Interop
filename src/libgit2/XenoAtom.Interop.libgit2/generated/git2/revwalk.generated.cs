@@ -34,21 +34,21 @@ namespace XenoAtom.Interop
             /// all of its children are shown); this sorting mode can be combined
             /// with time sorting to produce `git`'s `--date-order``.
             /// </summary>
-            GIT_SORT_TOPOLOGICAL = unchecked((uint)1<<0),
+            GIT_SORT_TOPOLOGICAL = unchecked((uint)1),
             
             /// <summary>
             /// Sort the repository contents by commit time;
             /// this sorting mode can be combined with
             /// topological sorting.
             /// </summary>
-            GIT_SORT_TIME = unchecked((uint)1<<1),
+            GIT_SORT_TIME = unchecked((uint)2),
             
             /// <summary>
             /// Iterate through the repository contents in reverse
             /// order; this sorting mode can be combined with
             /// any of the above.
             /// </summary>
-            GIT_SORT_REVERSE = unchecked((uint)1<<2),
+            GIT_SORT_REVERSE = unchecked((uint)4),
         }
         
         /// <summary>
@@ -92,17 +92,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> Value { get; }
             
-            public bool Equals(git_revwalk_hide_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_revwalk_hide_cb other && Equals(other);
+            
+            public bool Equals(git_revwalk_hide_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>(git_revwalk_hide_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> (libgit2.git_revwalk_hide_cb from) => from.Value;
             
-            public static implicit operator git_revwalk_hide_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> from) => new git_revwalk_hide_cb(from);
+            public static implicit operator libgit2.git_revwalk_hide_cb (delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> from) => new libgit2.git_revwalk_hide_cb(from);
             
             public static bool operator ==(git_revwalk_hide_cb left, git_revwalk_hide_cb right) => left.Equals(right);
             

@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\Shared\UTF8Marshaler.cs" Link="UTF8Marshaler.cs" />
+    <Compile Include="..\..\common\UTF8Marshaler.cs" Link="UTF8Marshaler.cs" />
   </ItemGroup>
 
   <ItemGroup>

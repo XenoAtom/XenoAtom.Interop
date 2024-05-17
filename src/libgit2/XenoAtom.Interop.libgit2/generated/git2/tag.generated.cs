@@ -31,17 +31,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> Value { get; }
             
-            public bool Equals(git_tag_foreach_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_tag_foreach_cb other && Equals(other);
+            
+            public bool Equals(git_tag_foreach_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int>(git_tag_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> (libgit2.git_tag_foreach_cb from) => from.Value;
             
-            public static implicit operator git_tag_foreach_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> from) => new git_tag_foreach_cb(from);
+            public static implicit operator libgit2.git_tag_foreach_cb (delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> from) => new libgit2.git_tag_foreach_cb(from);
             
             public static bool operator ==(git_tag_foreach_cb left, git_tag_foreach_cb right) => left.Equals(right);
             

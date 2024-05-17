@@ -1,0 +1,24 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+// Copyright (c) Alexandre Mutel. All rights reserved.
+// Licensed under the BSD-Clause 2 license.
+// See license.txt file in the project root for full license information.
+
+using System.Runtime.CompilerServices;
+
+namespace XenoAtom.Interop;
+
+<# for (int i = 2; i <= 256; i++) { #>
+
+/// <summary>Fixed size array of <typeparamref name="T"/> with <#= i #> elements.</summary>
+/// <typeparam name="T">Type of the elements.</typeparam>
+[InlineArray(<#= i #>)]
+public struct FixedArray<#= i #><T>
+{
+    private T _element;
+}
+<# } #>

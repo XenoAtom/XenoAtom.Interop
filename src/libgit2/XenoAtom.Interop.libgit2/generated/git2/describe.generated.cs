@@ -27,11 +27,11 @@ namespace XenoAtom.Interop
         /// </remarks>
         public enum git_describe_strategy_t : uint
         {
-            GIT_DESCRIBE_DEFAULT,
+            GIT_DESCRIBE_DEFAULT = unchecked((uint)0),
             
-            GIT_DESCRIBE_TAGS,
+            GIT_DESCRIBE_TAGS = unchecked((uint)1),
             
-            GIT_DESCRIBE_ALL,
+            GIT_DESCRIBE_ALL = unchecked((uint)2),
         }
         
         public const libgit2.git_describe_strategy_t GIT_DESCRIBE_DEFAULT = git_describe_strategy_t.GIT_DESCRIBE_DEFAULT;
@@ -129,6 +129,10 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(git_describe_result left, git_describe_result right) => !left.Equals(right);
         }
+        
+        public const uint GIT_DESCRIBE_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_DESCRIBE_FORMAT_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initialize git_describe_options structure

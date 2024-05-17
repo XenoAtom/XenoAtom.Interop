@@ -354,77 +354,77 @@ namespace XenoAtom.Interop
         {
             GIT_ERROR_NONE = unchecked((uint)0),
             
-            GIT_ERROR_NOMEMORY,
+            GIT_ERROR_NOMEMORY = unchecked((uint)1),
             
-            GIT_ERROR_OS,
+            GIT_ERROR_OS = unchecked((uint)2),
             
-            GIT_ERROR_INVALID,
+            GIT_ERROR_INVALID = unchecked((uint)3),
             
-            GIT_ERROR_REFERENCE,
+            GIT_ERROR_REFERENCE = unchecked((uint)4),
             
-            GIT_ERROR_ZLIB,
+            GIT_ERROR_ZLIB = unchecked((uint)5),
             
-            GIT_ERROR_REPOSITORY,
+            GIT_ERROR_REPOSITORY = unchecked((uint)6),
             
-            GIT_ERROR_CONFIG,
+            GIT_ERROR_CONFIG = unchecked((uint)7),
             
-            GIT_ERROR_REGEX,
+            GIT_ERROR_REGEX = unchecked((uint)8),
             
-            GIT_ERROR_ODB,
+            GIT_ERROR_ODB = unchecked((uint)9),
             
-            GIT_ERROR_INDEX,
+            GIT_ERROR_INDEX = unchecked((uint)10),
             
-            GIT_ERROR_OBJECT,
+            GIT_ERROR_OBJECT = unchecked((uint)11),
             
-            GIT_ERROR_NET,
+            GIT_ERROR_NET = unchecked((uint)12),
             
-            GIT_ERROR_TAG,
+            GIT_ERROR_TAG = unchecked((uint)13),
             
-            GIT_ERROR_TREE,
+            GIT_ERROR_TREE = unchecked((uint)14),
             
-            GIT_ERROR_INDEXER,
+            GIT_ERROR_INDEXER = unchecked((uint)15),
             
-            GIT_ERROR_SSL,
+            GIT_ERROR_SSL = unchecked((uint)16),
             
-            GIT_ERROR_SUBMODULE,
+            GIT_ERROR_SUBMODULE = unchecked((uint)17),
             
-            GIT_ERROR_THREAD,
+            GIT_ERROR_THREAD = unchecked((uint)18),
             
-            GIT_ERROR_STASH,
+            GIT_ERROR_STASH = unchecked((uint)19),
             
-            GIT_ERROR_CHECKOUT,
+            GIT_ERROR_CHECKOUT = unchecked((uint)20),
             
-            GIT_ERROR_FETCHHEAD,
+            GIT_ERROR_FETCHHEAD = unchecked((uint)21),
             
-            GIT_ERROR_MERGE,
+            GIT_ERROR_MERGE = unchecked((uint)22),
             
-            GIT_ERROR_SSH,
+            GIT_ERROR_SSH = unchecked((uint)23),
             
-            GIT_ERROR_FILTER,
+            GIT_ERROR_FILTER = unchecked((uint)24),
             
-            GIT_ERROR_REVERT,
+            GIT_ERROR_REVERT = unchecked((uint)25),
             
-            GIT_ERROR_CALLBACK,
+            GIT_ERROR_CALLBACK = unchecked((uint)26),
             
-            GIT_ERROR_CHERRYPICK,
+            GIT_ERROR_CHERRYPICK = unchecked((uint)27),
             
-            GIT_ERROR_DESCRIBE,
+            GIT_ERROR_DESCRIBE = unchecked((uint)28),
             
-            GIT_ERROR_REBASE,
+            GIT_ERROR_REBASE = unchecked((uint)29),
             
-            GIT_ERROR_FILESYSTEM,
+            GIT_ERROR_FILESYSTEM = unchecked((uint)30),
             
-            GIT_ERROR_PATCH,
+            GIT_ERROR_PATCH = unchecked((uint)31),
             
-            GIT_ERROR_WORKTREE,
+            GIT_ERROR_WORKTREE = unchecked((uint)32),
             
-            GIT_ERROR_SHA,
+            GIT_ERROR_SHA = unchecked((uint)33),
             
-            GIT_ERROR_HTTP,
+            GIT_ERROR_HTTP = unchecked((uint)34),
             
-            GIT_ERROR_INTERNAL,
+            GIT_ERROR_INTERNAL = unchecked((uint)35),
             
-            GIT_ERROR_GRAFTS,
+            GIT_ERROR_GRAFTS = unchecked((uint)36),
         }
         
         public const libgit2.git_error_t GIT_ERROR_NONE = git_error_t.GIT_ERROR_NONE;

@@ -40,6 +40,8 @@ namespace XenoAtom.Interop
             public libgit2.git_checkout_options checkout_opts;
         }
         
+        public const uint GIT_REVERT_OPTIONS_VERSION = 1;
+        
         /// <summary>
         /// Initialize git_revert_options structure
         /// </summary>

@@ -114,9 +114,9 @@ namespace XenoAtom.Interop
             
             GIT_CONFIGMAP_TRUE = unchecked((uint)1),
             
-            GIT_CONFIGMAP_INT32,
+            GIT_CONFIGMAP_INT32 = unchecked((uint)2),
             
-            GIT_CONFIGMAP_STRING,
+            GIT_CONFIGMAP_STRING = unchecked((uint)3),
         }
         
         public const libgit2.git_configmap_t GIT_CONFIGMAP_FALSE = git_configmap_t.GIT_CONFIGMAP_FALSE;
@@ -209,17 +209,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> Value { get; }
             
-            public bool Equals(git_config_foreach_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_config_foreach_cb other && Equals(other);
+            
+            public bool Equals(git_config_foreach_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int>(git_config_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> (libgit2.git_config_foreach_cb from) => from.Value;
             
-            public static implicit operator git_config_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> from) => new git_config_foreach_cb(from);
+            public static implicit operator libgit2.git_config_foreach_cb (delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> from) => new libgit2.git_config_foreach_cb(from);
             
             public static bool operator ==(git_config_foreach_cb left, git_config_foreach_cb right) => left.Equals(right);
             

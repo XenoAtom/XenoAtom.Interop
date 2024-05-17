@@ -23,11 +23,11 @@ namespace XenoAtom.Interop
         /// </summary>
         public enum git_remote_completion_t : uint
         {
-            GIT_REMOTE_COMPLETION_DOWNLOAD,
+            GIT_REMOTE_COMPLETION_DOWNLOAD = unchecked((uint)0),
             
-            GIT_REMOTE_COMPLETION_INDEXING,
+            GIT_REMOTE_COMPLETION_INDEXING = unchecked((uint)1),
             
-            GIT_REMOTE_COMPLETION_ERROR,
+            GIT_REMOTE_COMPLETION_ERROR = unchecked((uint)2),
         }
         
         public const libgit2.git_remote_completion_t GIT_REMOTE_COMPLETION_DOWNLOAD = git_remote_completion_t.GIT_REMOTE_COMPLETION_DOWNLOAD;
@@ -48,18 +48,18 @@ namespace XenoAtom.Interop
             /// Do not follow any off-site redirects at any stage of
             /// the fetch or push.
             /// </summary>
-            GIT_REMOTE_REDIRECT_NONE = unchecked((uint)(1<<0)),
+            GIT_REMOTE_REDIRECT_NONE = unchecked((uint)1),
             
             /// <summary>
             /// Allow off-site redirects only upon the initial request.
             /// This is the default.
             /// </summary>
-            GIT_REMOTE_REDIRECT_INITIAL = unchecked((uint)(1<<1)),
+            GIT_REMOTE_REDIRECT_INITIAL = unchecked((uint)2),
             
             /// <summary>
             /// Allow redirects at any stage in the fetch or push.
             /// </summary>
-            GIT_REMOTE_REDIRECT_ALL = unchecked((uint)(1<<2)),
+            GIT_REMOTE_REDIRECT_ALL = unchecked((uint)4),
         }
         
         /// <summary>
@@ -88,12 +88,12 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Ignore the repository apply.insteadOf configuration
             /// </summary>
-            GIT_REMOTE_CREATE_SKIP_INSTEADOF = unchecked((uint)(1<<0)),
+            GIT_REMOTE_CREATE_SKIP_INSTEADOF = unchecked((uint)1),
             
             /// <summary>
             /// Don't build a fetchspec from the name if none is set
             /// </summary>
-            GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC = unchecked((uint)(1<<1)),
+            GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC = unchecked((uint)2),
         }
         
         /// <summary>
@@ -114,17 +114,17 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Use the setting from the configuration
             /// </summary>
-            GIT_FETCH_PRUNE_UNSPECIFIED,
+            GIT_FETCH_PRUNE_UNSPECIFIED = unchecked((uint)0),
             
             /// <summary>
             /// Force pruning on
             /// </summary>
-            GIT_FETCH_PRUNE,
+            GIT_FETCH_PRUNE = unchecked((uint)1),
             
             /// <summary>
             /// Force pruning off
             /// </summary>
-            GIT_FETCH_NO_PRUNE,
+            GIT_FETCH_NO_PRUNE = unchecked((uint)2),
         }
         
         /// <summary>
@@ -159,17 +159,17 @@ namespace XenoAtom.Interop
             /// Ask the server for tags pointing to objects we're already
             /// downloading.
             /// </summary>
-            GIT_REMOTE_DOWNLOAD_TAGS_AUTO,
+            GIT_REMOTE_DOWNLOAD_TAGS_AUTO = unchecked((uint)1),
             
             /// <summary>
             /// Don't ask for any tags beyond the refspecs.
             /// </summary>
-            GIT_REMOTE_DOWNLOAD_TAGS_NONE,
+            GIT_REMOTE_DOWNLOAD_TAGS_NONE = unchecked((uint)2),
             
             /// <summary>
             /// Ask for the all the tags.
             /// </summary>
-            GIT_REMOTE_DOWNLOAD_TAGS_ALL,
+            GIT_REMOTE_DOWNLOAD_TAGS_ALL = unchecked((uint)3),
         }
         
         /// <summary>
@@ -428,17 +428,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> Value { get; }
             
-            public bool Equals(git_push_transfer_progress_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_push_transfer_progress_cb other && Equals(other);
+            
+            public bool Equals(git_push_transfer_progress_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int>(git_push_transfer_progress_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> (libgit2.git_push_transfer_progress_cb from) => from.Value;
             
-            public static implicit operator git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> from) => new git_push_transfer_progress_cb(from);
+            public static implicit operator libgit2.git_push_transfer_progress_cb (delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> from) => new libgit2.git_push_transfer_progress_cb(from);
             
             public static bool operator ==(git_push_transfer_progress_cb left, git_push_transfer_progress_cb right) => left.Equals(right);
             
@@ -458,17 +458,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> Value { get; }
             
-            public bool Equals(git_push_negotiation other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_push_negotiation other && Equals(other);
+            
+            public bool Equals(git_push_negotiation other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int>(git_push_negotiation from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> (libgit2.git_push_negotiation from) => from.Value;
             
-            public static implicit operator git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> from) => new git_push_negotiation(from);
+            public static implicit operator libgit2.git_push_negotiation (delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> from) => new libgit2.git_push_negotiation(from);
             
             public static bool operator ==(git_push_negotiation left, git_push_negotiation right) => left.Equals(right);
             
@@ -493,17 +493,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> Value { get; }
             
-            public bool Equals(git_push_update_reference_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_push_update_reference_cb other && Equals(other);
+            
+            public bool Equals(git_push_update_reference_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>(git_push_update_reference_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (libgit2.git_push_update_reference_cb from) => from.Value;
             
-            public static implicit operator git_push_update_reference_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new git_push_update_reference_cb(from);
+            public static implicit operator libgit2.git_push_update_reference_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new libgit2.git_push_update_reference_cb(from);
             
             public static bool operator ==(git_push_update_reference_cb left, git_push_update_reference_cb right) => left.Equals(right);
             
@@ -525,22 +525,32 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> Value { get; }
             
-            public bool Equals(git_remote_ready_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_remote_ready_cb other && Equals(other);
+            
+            public bool Equals(git_remote_ready_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int>(git_remote_ready_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> (libgit2.git_remote_ready_cb from) => from.Value;
             
-            public static implicit operator git_remote_ready_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> from) => new git_remote_ready_cb(from);
+            public static implicit operator libgit2.git_remote_ready_cb (delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> from) => new libgit2.git_remote_ready_cb(from);
             
             public static bool operator ==(git_remote_ready_cb left, git_remote_ready_cb right) => left.Equals(right);
             
             public static bool operator !=(git_remote_ready_cb left, git_remote_ready_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_REMOTE_CREATE_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_REMOTE_CALLBACKS_VERSION = 1;
+        
+        public const uint GIT_FETCH_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_PUSH_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_REMOTE_CONNECT_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Add a remote with the default fetch refspec to the repository's configuration.

@@ -22,19 +22,19 @@ namespace XenoAtom.Interop
             /// No information about the certificate is available. This may
             /// happen when using curl.
             /// </summary>
-            GIT_CERT_NONE,
+            GIT_CERT_NONE = unchecked((uint)0),
             
             /// <summary>
             /// The `data` argument to the callback will be a pointer to
             /// the DER-encoded data.
             /// </summary>
-            GIT_CERT_X509,
+            GIT_CERT_X509 = unchecked((uint)1),
             
             /// <summary>
             /// The `data` argument to the callback will be a pointer to a
             /// `git_cert_hostkey` structure.
             /// </summary>
-            GIT_CERT_HOSTKEY_LIBSSH2,
+            GIT_CERT_HOSTKEY_LIBSSH2 = unchecked((uint)2),
             
             /// <summary>
             /// The `data` argument to the callback will be a pointer to a
@@ -42,7 +42,7 @@ namespace XenoAtom.Interop
             /// information about the certificate. This is used when using
             /// curl.
             /// </summary>
-            GIT_CERT_STRARRAY,
+            GIT_CERT_STRARRAY = unchecked((uint)3),
         }
         
         /// <summary>
@@ -80,22 +80,22 @@ namespace XenoAtom.Interop
             /// <summary>
             /// MD5 is available
             /// </summary>
-            GIT_CERT_SSH_MD5 = unchecked((uint)(1<<0)),
+            GIT_CERT_SSH_MD5 = unchecked((uint)1),
             
             /// <summary>
             /// SHA-1 is available
             /// </summary>
-            GIT_CERT_SSH_SHA1 = unchecked((uint)(1<<1)),
+            GIT_CERT_SSH_SHA1 = unchecked((uint)2),
             
             /// <summary>
             /// SHA-256 is available
             /// </summary>
-            GIT_CERT_SSH_SHA256 = unchecked((uint)(1<<2)),
+            GIT_CERT_SSH_SHA256 = unchecked((uint)4),
             
             /// <summary>
             /// Raw hostkey is available
             /// </summary>
-            GIT_CERT_SSH_RAW = unchecked((uint)(1<<3)),
+            GIT_CERT_SSH_RAW = unchecked((uint)8),
         }
         
         /// <summary>
@@ -283,17 +283,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> Value { get; }
             
-            public bool Equals(git_transport_certificate_check_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_transport_certificate_check_cb other && Equals(other);
+            
+            public bool Equals(git_transport_certificate_check_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int>(git_transport_certificate_check_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> (libgit2.git_transport_certificate_check_cb from) => from.Value;
             
-            public static implicit operator git_transport_certificate_check_cb(delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> from) => new git_transport_certificate_check_cb(from);
+            public static implicit operator libgit2.git_transport_certificate_check_cb (delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> from) => new libgit2.git_transport_certificate_check_cb(from);
             
             public static bool operator ==(git_transport_certificate_check_cb left, git_transport_certificate_check_cb right) => left.Equals(right);
             

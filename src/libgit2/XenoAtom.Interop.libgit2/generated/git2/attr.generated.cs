@@ -30,17 +30,17 @@ namespace XenoAtom.Interop
             /// <summary>
             /// The attribute has been set
             /// </summary>
-            GIT_ATTR_VALUE_TRUE,
+            GIT_ATTR_VALUE_TRUE = unchecked((uint)1),
             
             /// <summary>
             /// The attribute has been unset
             /// </summary>
-            GIT_ATTR_VALUE_FALSE,
+            GIT_ATTR_VALUE_FALSE = unchecked((uint)2),
             
             /// <summary>
             /// This attribute has a value
             /// </summary>
-            GIT_ATTR_VALUE_STRING,
+            GIT_ATTR_VALUE_STRING = unchecked((uint)3),
         }
         
         /// <summary>
@@ -105,22 +105,24 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> Value { get; }
             
-            public bool Equals(git_attr_foreach_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_attr_foreach_cb other && Equals(other);
+            
+            public bool Equals(git_attr_foreach_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int>(git_attr_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (libgit2.git_attr_foreach_cb from) => from.Value;
             
-            public static implicit operator git_attr_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new git_attr_foreach_cb(from);
+            public static implicit operator libgit2.git_attr_foreach_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new libgit2.git_attr_foreach_cb(from);
             
             public static bool operator ==(git_attr_foreach_cb left, git_attr_foreach_cb right) => left.Equals(right);
             
             public static bool operator !=(git_attr_foreach_cb left, git_attr_foreach_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_ATTR_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Return the value type for a given attribute.

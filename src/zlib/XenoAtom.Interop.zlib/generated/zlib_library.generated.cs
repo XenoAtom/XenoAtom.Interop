@@ -54,17 +54,17 @@ namespace XenoAtom.Interop
             
             Z_NEED_DICT = unchecked((int)2),
             
-            Z_ERRNO = unchecked((int)(-1)),
+            Z_ERRNO = unchecked((int)-1),
             
-            Z_STREAM_ERROR = unchecked((int)(-2)),
+            Z_STREAM_ERROR = unchecked((int)-2),
             
-            Z_DATA_ERROR = unchecked((int)(-3)),
+            Z_DATA_ERROR = unchecked((int)-3),
             
-            Z_MEM_ERROR = unchecked((int)(-4)),
+            Z_MEM_ERROR = unchecked((int)-4),
             
-            Z_BUF_ERROR = unchecked((int)(-5)),
+            Z_BUF_ERROR = unchecked((int)-5),
             
-            Z_VERSION_ERROR = unchecked((int)(-6)),
+            Z_VERSION_ERROR = unchecked((int)-6),
         }
         
         public const zlib.z_result_t Z_OK = z_result_t.Z_OK;
@@ -117,7 +117,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// for compatibility with 1.2.2 and earlier
             /// </summary>
-            Z_ASCII = unchecked((uint)Z_TEXT),
+            Z_ASCII = unchecked((uint)1),
             
             Z_UNKNOWN = unchecked((uint)2),
             
@@ -155,35 +155,5 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(internal_state left, internal_state right) => !left.Equals(right);
         }
-        
-        /// <summary>
-        /// 32K LZ77 window
-        /// </summary>
-        public const int MAX_WBITS = 15;
-        
-        public const string ZLIB_VERSION = "1.3.1";
-        
-        public const int ZLIB_VERNUM = 0x1310;
-        
-        public const int ZLIB_VER_MAJOR = 1;
-        
-        public const int ZLIB_VER_MINOR = 3;
-        
-        public const int ZLIB_VER_REVISION = 1;
-        
-        public const int ZLIB_VER_SUBREVISION = 0;
-        
-        public const int Z_NO_COMPRESSION = 0;
-        
-        public const int Z_BEST_SPEED = 1;
-        
-        public const int Z_BEST_COMPRESSION = 9;
-        
-        public const int Z_DEFAULT_COMPRESSION = (-1);
-        
-        /// <summary>
-        /// for initializing zalloc, zfree, opaque
-        /// </summary>
-        public const nint Z_NULL = 0;
     }
 }

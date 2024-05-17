@@ -27,17 +27,17 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Prune working tree even if working tree is valid
             /// </summary>
-            GIT_WORKTREE_PRUNE_VALID = unchecked((uint)1u << 0),
+            GIT_WORKTREE_PRUNE_VALID = unchecked((uint)1),
             
             /// <summary>
             /// Prune working tree even if it is locked
             /// </summary>
-            GIT_WORKTREE_PRUNE_LOCKED = unchecked((uint)1u << 1),
+            GIT_WORKTREE_PRUNE_LOCKED = unchecked((uint)2),
             
             /// <summary>
             /// Prune checked out working tree
             /// </summary>
-            GIT_WORKTREE_PRUNE_WORKING_TREE = unchecked((uint)1u << 2),
+            GIT_WORKTREE_PRUNE_WORKING_TREE = unchecked((uint)4),
         }
         
         /// <summary>
@@ -98,6 +98,10 @@ namespace XenoAtom.Interop
             /// </summary>
             public libgit2.git_worktree_prune_t flags;
         }
+        
+        public const uint GIT_WORKTREE_ADD_OPTIONS_VERSION = 1;
+        
+        public const uint GIT_WORKTREE_PRUNE_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// List names of linked working trees

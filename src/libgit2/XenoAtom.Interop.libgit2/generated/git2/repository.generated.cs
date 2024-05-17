@@ -28,7 +28,7 @@ namespace XenoAtom.Interop
             /// start_path. Do not walk up from the start_path looking at parent
             /// directories.
             /// </summary>
-            GIT_REPOSITORY_OPEN_NO_SEARCH = unchecked((uint)(1<<0)),
+            GIT_REPOSITORY_OPEN_NO_SEARCH = unchecked((uint)1),
             
             /// <summary>
             /// Unless this flag is set, open will not continue searching across
@@ -37,21 +37,21 @@ namespace XenoAtom.Interop
             /// "/home/user/source/" will not return "/.git/" as the found repo if
             /// "/" is a different filesystem than "/home".
             /// </summary>
-            GIT_REPOSITORY_OPEN_CROSS_FS = unchecked((uint)(1<<1)),
+            GIT_REPOSITORY_OPEN_CROSS_FS = unchecked((uint)2),
             
             /// <summary>
             /// Open repository as a bare repo regardless of core.bare config, and
             /// defer loading config file for faster setup.
             /// Unlike `git_repository_open_bare`, this can follow gitlinks.
             /// </summary>
-            GIT_REPOSITORY_OPEN_BARE = unchecked((uint)(1<<2)),
+            GIT_REPOSITORY_OPEN_BARE = unchecked((uint)4),
             
             /// <summary>
             /// Do not check for a repository by appending /.git to the start_path;
             /// only open the repository if start_path itself points to the git
             /// directory.
             /// </summary>
-            GIT_REPOSITORY_OPEN_NO_DOTGIT = unchecked((uint)(1<<3)),
+            GIT_REPOSITORY_OPEN_NO_DOTGIT = unchecked((uint)8),
             
             /// <summary>
             /// Find and open a git repository, respecting the environment variables
@@ -68,7 +68,7 @@ namespace XenoAtom.Interop
             /// `git_repository_open_ext` with this flag will error out if either
             /// $GIT_WORK_TREE or $GIT_COMMON_DIR is set.
             /// </summary>
-            GIT_REPOSITORY_OPEN_FROM_ENV = unchecked((uint)(1<<4)),
+            GIT_REPOSITORY_OPEN_FROM_ENV = unchecked((uint)16),
         }
         
         /// <summary>
@@ -133,20 +133,20 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Create a bare repository with no working directory.
             /// </summary>
-            GIT_REPOSITORY_INIT_BARE = unchecked((uint)(1u << 0)),
+            GIT_REPOSITORY_INIT_BARE = unchecked((uint)1),
             
             /// <summary>
             /// Return an GIT_EEXISTS error if the repo_path appears to already be
             /// an git repository.
             /// </summary>
-            GIT_REPOSITORY_INIT_NO_REINIT = unchecked((uint)(1u << 1)),
+            GIT_REPOSITORY_INIT_NO_REINIT = unchecked((uint)2),
             
             /// <summary>
             /// Normally a "/.git/" will be appended to the repo path for
             /// non-bare repos (if it is not already there), but passing this flag
             /// prevents that behavior.
             /// </summary>
-            GIT_REPOSITORY_INIT_NO_DOTGIT_DIR = unchecked((uint)(1u << 2)),
+            GIT_REPOSITORY_INIT_NO_DOTGIT_DIR = unchecked((uint)4),
             
             /// <summary>
             /// Make the repo_path (and workdir_path) as needed. Init is always willing
@@ -154,13 +154,13 @@ namespace XenoAtom.Interop
             /// init to create the trailing component of the repo and workdir paths
             /// as needed.
             /// </summary>
-            GIT_REPOSITORY_INIT_MKDIR = unchecked((uint)(1u << 3)),
+            GIT_REPOSITORY_INIT_MKDIR = unchecked((uint)8),
             
             /// <summary>
             /// Recursively make all components of the repo and workdir paths as
             /// necessary.
             /// </summary>
-            GIT_REPOSITORY_INIT_MKPATH = unchecked((uint)(1u << 4)),
+            GIT_REPOSITORY_INIT_MKPATH = unchecked((uint)16),
             
             /// <summary>
             /// libgit2 normally uses internal templates to initialize a new repo.
@@ -168,13 +168,13 @@ namespace XenoAtom.Interop
             /// the options if set, or the `init.templatedir` global config if not,
             /// or falling back on "/usr/share/git-core/templates" if it exists.
             /// </summary>
-            GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE = unchecked((uint)(1u << 5)),
+            GIT_REPOSITORY_INIT_EXTERNAL_TEMPLATE = unchecked((uint)32),
             
             /// <summary>
             /// If an alternate workdir is specified, use relative paths for the gitdir
             /// and core.worktree.
             /// </summary>
-            GIT_REPOSITORY_INIT_RELATIVE_GITLINK = unchecked((uint)(1u << 6)),
+            GIT_REPOSITORY_INIT_RELATIVE_GITLINK = unchecked((uint)64),
         }
         
         /// <summary>
@@ -242,12 +242,12 @@ namespace XenoAtom.Interop
             /// Use "--shared=group" behavior, chmod'ing the new repo to be group
             /// writable and "g+sx" for sticky group assignment.
             /// </summary>
-            GIT_REPOSITORY_INIT_SHARED_GROUP = unchecked((uint)0002775),
+            GIT_REPOSITORY_INIT_SHARED_GROUP = unchecked((uint)1533),
             
             /// <summary>
             /// Use "--shared=all" behavior, adding world readability.
             /// </summary>
-            GIT_REPOSITORY_INIT_SHARED_ALL = unchecked((uint)0002777),
+            GIT_REPOSITORY_INIT_SHARED_ALL = unchecked((uint)1535),
         }
         
         /// <summary>
@@ -271,35 +271,35 @@ namespace XenoAtom.Interop
         /// </summary>
         public enum git_repository_item_t : uint
         {
-            GIT_REPOSITORY_ITEM_GITDIR,
+            GIT_REPOSITORY_ITEM_GITDIR = unchecked((uint)0),
             
-            GIT_REPOSITORY_ITEM_WORKDIR,
+            GIT_REPOSITORY_ITEM_WORKDIR = unchecked((uint)1),
             
-            GIT_REPOSITORY_ITEM_COMMONDIR,
+            GIT_REPOSITORY_ITEM_COMMONDIR = unchecked((uint)2),
             
-            GIT_REPOSITORY_ITEM_INDEX,
+            GIT_REPOSITORY_ITEM_INDEX = unchecked((uint)3),
             
-            GIT_REPOSITORY_ITEM_OBJECTS,
+            GIT_REPOSITORY_ITEM_OBJECTS = unchecked((uint)4),
             
-            GIT_REPOSITORY_ITEM_REFS,
+            GIT_REPOSITORY_ITEM_REFS = unchecked((uint)5),
             
-            GIT_REPOSITORY_ITEM_PACKED_REFS,
+            GIT_REPOSITORY_ITEM_PACKED_REFS = unchecked((uint)6),
             
-            GIT_REPOSITORY_ITEM_REMOTES,
+            GIT_REPOSITORY_ITEM_REMOTES = unchecked((uint)7),
             
-            GIT_REPOSITORY_ITEM_CONFIG,
+            GIT_REPOSITORY_ITEM_CONFIG = unchecked((uint)8),
             
-            GIT_REPOSITORY_ITEM_INFO,
+            GIT_REPOSITORY_ITEM_INFO = unchecked((uint)9),
             
-            GIT_REPOSITORY_ITEM_HOOKS,
+            GIT_REPOSITORY_ITEM_HOOKS = unchecked((uint)10),
             
-            GIT_REPOSITORY_ITEM_LOGS,
+            GIT_REPOSITORY_ITEM_LOGS = unchecked((uint)11),
             
-            GIT_REPOSITORY_ITEM_MODULES,
+            GIT_REPOSITORY_ITEM_MODULES = unchecked((uint)12),
             
-            GIT_REPOSITORY_ITEM_WORKTREES,
+            GIT_REPOSITORY_ITEM_WORKTREES = unchecked((uint)13),
             
-            GIT_REPOSITORY_ITEM__LAST,
+            GIT_REPOSITORY_ITEM__LAST = unchecked((uint)14),
         }
         
         public const libgit2.git_repository_item_t GIT_REPOSITORY_ITEM_GITDIR = git_repository_item_t.GIT_REPOSITORY_ITEM_GITDIR;
@@ -341,29 +341,29 @@ namespace XenoAtom.Interop
         /// </remarks>
         public enum git_repository_state_t : uint
         {
-            GIT_REPOSITORY_STATE_NONE,
+            GIT_REPOSITORY_STATE_NONE = unchecked((uint)0),
             
-            GIT_REPOSITORY_STATE_MERGE,
+            GIT_REPOSITORY_STATE_MERGE = unchecked((uint)1),
             
-            GIT_REPOSITORY_STATE_REVERT,
+            GIT_REPOSITORY_STATE_REVERT = unchecked((uint)2),
             
-            GIT_REPOSITORY_STATE_REVERT_SEQUENCE,
+            GIT_REPOSITORY_STATE_REVERT_SEQUENCE = unchecked((uint)3),
             
-            GIT_REPOSITORY_STATE_CHERRYPICK,
+            GIT_REPOSITORY_STATE_CHERRYPICK = unchecked((uint)4),
             
-            GIT_REPOSITORY_STATE_CHERRYPICK_SEQUENCE,
+            GIT_REPOSITORY_STATE_CHERRYPICK_SEQUENCE = unchecked((uint)5),
             
-            GIT_REPOSITORY_STATE_BISECT,
+            GIT_REPOSITORY_STATE_BISECT = unchecked((uint)6),
             
-            GIT_REPOSITORY_STATE_REBASE,
+            GIT_REPOSITORY_STATE_REBASE = unchecked((uint)7),
             
-            GIT_REPOSITORY_STATE_REBASE_INTERACTIVE,
+            GIT_REPOSITORY_STATE_REBASE_INTERACTIVE = unchecked((uint)8),
             
-            GIT_REPOSITORY_STATE_REBASE_MERGE,
+            GIT_REPOSITORY_STATE_REBASE_MERGE = unchecked((uint)9),
             
-            GIT_REPOSITORY_STATE_APPLY_MAILBOX,
+            GIT_REPOSITORY_STATE_APPLY_MAILBOX = unchecked((uint)10),
             
-            GIT_REPOSITORY_STATE_APPLY_MAILBOX_OR_REBASE,
+            GIT_REPOSITORY_STATE_APPLY_MAILBOX_OR_REBASE = unchecked((uint)11),
         }
         
         public const libgit2.git_repository_state_t GIT_REPOSITORY_STATE_NONE = git_repository_state_t.GIT_REPOSITORY_STATE_NONE;
@@ -466,17 +466,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int> Value { get; }
             
-            public bool Equals(git_repository_fetchhead_foreach_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_repository_fetchhead_foreach_cb other && Equals(other);
+            
+            public bool Equals(git_repository_fetchhead_foreach_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int>(git_repository_fetchhead_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int> (libgit2.git_repository_fetchhead_foreach_cb from) => from.Value;
             
-            public static implicit operator git_repository_fetchhead_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int> from) => new git_repository_fetchhead_foreach_cb(from);
+            public static implicit operator libgit2.git_repository_fetchhead_foreach_cb (delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int> from) => new libgit2.git_repository_fetchhead_foreach_cb(from);
             
             public static bool operator ==(git_repository_fetchhead_foreach_cb left, git_repository_fetchhead_foreach_cb right) => left.Equals(right);
             
@@ -496,22 +496,24 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> Value { get; }
             
-            public bool Equals(git_repository_mergehead_foreach_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_repository_mergehead_foreach_cb other && Equals(other);
+            
+            public bool Equals(git_repository_mergehead_foreach_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int>(git_repository_mergehead_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> (libgit2.git_repository_mergehead_foreach_cb from) => from.Value;
             
-            public static implicit operator git_repository_mergehead_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> from) => new git_repository_mergehead_foreach_cb(from);
+            public static implicit operator libgit2.git_repository_mergehead_foreach_cb (delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> from) => new libgit2.git_repository_mergehead_foreach_cb(from);
             
             public static bool operator ==(git_repository_mergehead_foreach_cb left, git_repository_mergehead_foreach_cb right) => left.Equals(right);
             
             public static bool operator !=(git_repository_mergehead_foreach_cb left, git_repository_mergehead_foreach_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_REPOSITORY_INIT_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Open a git repository.

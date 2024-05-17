@@ -28,11 +28,11 @@ namespace XenoAtom.Interop
         {
             GIT_FILTER_TO_WORKTREE = unchecked((uint)0),
             
-            GIT_FILTER_SMUDGE = unchecked((uint)GIT_FILTER_TO_WORKTREE),
+            GIT_FILTER_SMUDGE = unchecked((uint)0),
             
             GIT_FILTER_TO_ODB = unchecked((uint)1),
             
-            GIT_FILTER_CLEAN = unchecked((uint)GIT_FILTER_TO_ODB),
+            GIT_FILTER_CLEAN = unchecked((uint)1),
         }
         
         public const libgit2.git_filter_mode_t GIT_FILTER_TO_WORKTREE = git_filter_mode_t.GIT_FILTER_TO_WORKTREE;
@@ -49,28 +49,28 @@ namespace XenoAtom.Interop
         [Flags]
         public enum git_filter_flag_t : uint
         {
-            GIT_FILTER_DEFAULT = unchecked((uint)0u),
+            GIT_FILTER_DEFAULT = unchecked((uint)0),
             
             /// <summary>
             /// Don't error for `safecrlf` violations, allow them to continue.
             /// </summary>
-            GIT_FILTER_ALLOW_UNSAFE = unchecked((uint)(1u << 0)),
+            GIT_FILTER_ALLOW_UNSAFE = unchecked((uint)1),
             
             /// <summary>
             /// Don't load `/etc/gitattributes` (or the system equivalent)
             /// </summary>
-            GIT_FILTER_NO_SYSTEM_ATTRIBUTES = unchecked((uint)(1u << 1)),
+            GIT_FILTER_NO_SYSTEM_ATTRIBUTES = unchecked((uint)2),
             
             /// <summary>
             /// Load attributes from `.gitattributes` in the root of HEAD
             /// </summary>
-            GIT_FILTER_ATTRIBUTES_FROM_HEAD = unchecked((uint)(1u << 2)),
+            GIT_FILTER_ATTRIBUTES_FROM_HEAD = unchecked((uint)4),
             
             /// <summary>
             /// Load attributes from `.gitattributes` in a given commit.
             /// This can only be specified in a `git_filter_options`.
             /// </summary>
-            GIT_FILTER_ATTRIBUTES_FROM_COMMIT = unchecked((uint)(1u << 3)),
+            GIT_FILTER_ATTRIBUTES_FROM_COMMIT = unchecked((uint)8),
         }
         
         public const libgit2.git_filter_flag_t GIT_FILTER_DEFAULT = git_filter_flag_t.GIT_FILTER_DEFAULT;
@@ -177,6 +177,8 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(git_filter_list left, git_filter_list right) => !left.Equals(right);
         }
+        
+        public const uint GIT_FILTER_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Load the filter list for a given path.

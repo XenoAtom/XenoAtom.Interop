@@ -34,7 +34,7 @@ namespace XenoAtom.Interop
             /// <remarks>
             /// This is not yet implemented and reserved for future use.
             /// </remarks>
-            GIT_BLAME_TRACK_COPIES_SAME_FILE = unchecked((uint)(1<<0)),
+            GIT_BLAME_TRACK_COPIES_SAME_FILE = unchecked((uint)1),
             
             /// <summary>
             /// Track lines that have moved across files in the same commit
@@ -43,7 +43,7 @@ namespace XenoAtom.Interop
             /// <remarks>
             /// This is not yet implemented and reserved for future use.
             /// </remarks>
-            GIT_BLAME_TRACK_COPIES_SAME_COMMIT_MOVES = unchecked((uint)(1<<1)),
+            GIT_BLAME_TRACK_COPIES_SAME_COMMIT_MOVES = unchecked((uint)2),
             
             /// <summary>
             /// Track lines that have been copied from another file that exists
@@ -52,7 +52,7 @@ namespace XenoAtom.Interop
             /// <remarks>
             /// This is not yet implemented and reserved for future use.
             /// </remarks>
-            GIT_BLAME_TRACK_COPIES_SAME_COMMIT_COPIES = unchecked((uint)(1<<2)),
+            GIT_BLAME_TRACK_COPIES_SAME_COMMIT_COPIES = unchecked((uint)4),
             
             /// <summary>
             /// Track lines that have been copied from another file that exists in
@@ -61,13 +61,13 @@ namespace XenoAtom.Interop
             /// <remarks>
             /// This is not yet implemented and reserved for future use.
             /// </remarks>
-            GIT_BLAME_TRACK_COPIES_ANY_COMMIT_COPIES = unchecked((uint)(1<<3)),
+            GIT_BLAME_TRACK_COPIES_ANY_COMMIT_COPIES = unchecked((uint)8),
             
             /// <summary>
             /// Restrict the search of commits to those reachable following only
             /// the first parents.
             /// </summary>
-            GIT_BLAME_FIRST_PARENT = unchecked((uint)(1<<4)),
+            GIT_BLAME_FIRST_PARENT = unchecked((uint)16),
             
             /// <summary>
             /// Use mailmap file to map author and committer names and email
@@ -75,12 +75,12 @@ namespace XenoAtom.Interop
             /// mailmap will be read from the working directory, or HEAD in a
             /// bare repository.
             /// </summary>
-            GIT_BLAME_USE_MAILMAP = unchecked((uint)(1<<5)),
+            GIT_BLAME_USE_MAILMAP = unchecked((uint)32),
             
             /// <summary>
             /// Ignore whitespace differences
             /// </summary>
-            GIT_BLAME_IGNORE_WHITESPACE = unchecked((uint)(1<<6)),
+            GIT_BLAME_IGNORE_WHITESPACE = unchecked((uint)64),
         }
         
         /// <summary>
@@ -274,6 +274,8 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(git_blame left, git_blame right) => !left.Equals(right);
         }
+        
+        public const uint GIT_BLAME_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initialize git_blame_options structure

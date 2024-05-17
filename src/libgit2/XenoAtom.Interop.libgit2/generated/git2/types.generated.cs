@@ -121,7 +121,7 @@ namespace XenoAtom.Interop
             /// </summary>
             GIT_REFERENCE_SYMBOLIC = unchecked((uint)2),
             
-            GIT_REFERENCE_ALL = unchecked((uint)GIT_REFERENCE_DIRECT|GIT_REFERENCE_SYMBOLIC),
+            GIT_REFERENCE_ALL = unchecked((uint)3),
         }
         
         /// <summary>
@@ -150,7 +150,7 @@ namespace XenoAtom.Interop
             
             GIT_BRANCH_REMOTE = unchecked((uint)2),
             
-            GIT_BRANCH_ALL = unchecked((uint)GIT_BRANCH_LOCAL|GIT_BRANCH_REMOTE),
+            GIT_BRANCH_ALL = unchecked((uint)3),
         }
         
         public const libgit2.git_branch_t GIT_BRANCH_LOCAL = git_branch_t.GIT_BRANCH_LOCAL;
@@ -164,17 +164,17 @@ namespace XenoAtom.Interop
         /// </summary>
         public enum git_filemode_t : uint
         {
-            GIT_FILEMODE_UNREADABLE = unchecked((uint)0000000),
+            GIT_FILEMODE_UNREADABLE = unchecked((uint)0),
             
-            GIT_FILEMODE_TREE = unchecked((uint)0040000),
+            GIT_FILEMODE_TREE = unchecked((uint)16384),
             
-            GIT_FILEMODE_BLOB = unchecked((uint)0100644),
+            GIT_FILEMODE_BLOB = unchecked((uint)33188),
             
-            GIT_FILEMODE_BLOB_EXECUTABLE = unchecked((uint)0100755),
+            GIT_FILEMODE_BLOB_EXECUTABLE = unchecked((uint)33261),
             
-            GIT_FILEMODE_LINK = unchecked((uint)0120000),
+            GIT_FILEMODE_LINK = unchecked((uint)40960),
             
-            GIT_FILEMODE_COMMIT = unchecked((uint)0160000),
+            GIT_FILEMODE_COMMIT = unchecked((uint)57344),
         }
         
         public const libgit2.git_filemode_t GIT_FILEMODE_UNREADABLE = git_filemode_t.GIT_FILEMODE_UNREADABLE;
@@ -461,17 +461,17 @@ namespace XenoAtom.Interop
             
             public ulong Value { get; }
             
-            public bool Equals(git_object_size_t other) =>  Value.Equals(other.Value);
-            
             public override bool Equals(object obj) => obj is git_object_size_t other && Equals(other);
+            
+            public bool Equals(git_object_size_t other) => Value.Equals(other.Value);
             
             public override int GetHashCode() => Value.GetHashCode();
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator ulong(git_object_size_t from) => from.Value;
+            public static implicit operator ulong (libgit2.git_object_size_t from) => from.Value;
             
-            public static implicit operator git_object_size_t(ulong from) => new git_object_size_t(from);
+            public static implicit operator libgit2.git_object_size_t (ulong from) => new libgit2.git_object_size_t(from);
             
             public static bool operator ==(git_object_size_t left, git_object_size_t right) => left.Equals(right);
             
@@ -1048,17 +1048,17 @@ namespace XenoAtom.Interop
             
             public long Value { get; }
             
-            public bool Equals(git_time_t other) =>  Value.Equals(other.Value);
-            
             public override bool Equals(object obj) => obj is git_time_t other && Equals(other);
+            
+            public bool Equals(git_time_t other) => Value.Equals(other.Value);
             
             public override int GetHashCode() => Value.GetHashCode();
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator long(git_time_t from) => from.Value;
+            public static implicit operator long (libgit2.git_time_t from) => from.Value;
             
-            public static implicit operator git_time_t(long from) => new git_time_t(from);
+            public static implicit operator libgit2.git_time_t (long from) => new libgit2.git_time_t(from);
             
             public static bool operator ==(git_time_t left, git_time_t right) => left.Equals(right);
             
@@ -1518,17 +1518,17 @@ namespace XenoAtom.Interop
             
             public long Value { get; }
             
-            public bool Equals(git_off_t other) =>  Value.Equals(other.Value);
-            
             public override bool Equals(object obj) => obj is git_off_t other && Equals(other);
+            
+            public bool Equals(git_off_t other) => Value.Equals(other.Value);
             
             public override int GetHashCode() => Value.GetHashCode();
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator long(git_off_t from) => from.Value;
+            public static implicit operator long (libgit2.git_off_t from) => from.Value;
             
-            public static implicit operator git_off_t(long from) => new git_off_t(from);
+            public static implicit operator libgit2.git_off_t (long from) => new libgit2.git_off_t(from);
             
             public static bool operator ==(git_off_t left, git_off_t right) => left.Equals(right);
             

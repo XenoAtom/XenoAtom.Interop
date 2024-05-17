@@ -29,19 +29,19 @@ namespace XenoAtom.Interop
             /// GIT_PATHSPEC_IGNORE_CASE forces match to ignore case; otherwise
             /// match will use native case sensitivity of platform filesystem
             /// </summary>
-            GIT_PATHSPEC_IGNORE_CASE = unchecked((uint)(1u << 0)),
+            GIT_PATHSPEC_IGNORE_CASE = unchecked((uint)1),
             
             /// <summary>
             /// GIT_PATHSPEC_USE_CASE forces case sensitive match; otherwise
             /// match will use native case sensitivity of platform filesystem
             /// </summary>
-            GIT_PATHSPEC_USE_CASE = unchecked((uint)(1u << 1)),
+            GIT_PATHSPEC_USE_CASE = unchecked((uint)2),
             
             /// <summary>
             /// GIT_PATHSPEC_NO_GLOB disables glob patterns and just uses simple
             /// string comparison for matching
             /// </summary>
-            GIT_PATHSPEC_NO_GLOB = unchecked((uint)(1u << 2)),
+            GIT_PATHSPEC_NO_GLOB = unchecked((uint)4),
             
             /// <summary>
             /// GIT_PATHSPEC_NO_MATCH_ERROR means the match functions return error
@@ -49,14 +49,14 @@ namespace XenoAtom.Interop
             /// still success (return 0) but `git_pathspec_match_list_entrycount`
             /// will indicate 0 matches.
             /// </summary>
-            GIT_PATHSPEC_NO_MATCH_ERROR = unchecked((uint)(1u << 3)),
+            GIT_PATHSPEC_NO_MATCH_ERROR = unchecked((uint)8),
             
             /// <summary>
             /// GIT_PATHSPEC_FIND_FAILURES means that the `git_pathspec_match_list`
             /// should track which patterns matched which files so that at the end of
             /// the match we can identify patterns that did not match any files.
             /// </summary>
-            GIT_PATHSPEC_FIND_FAILURES = unchecked((uint)(1u << 4)),
+            GIT_PATHSPEC_FIND_FAILURES = unchecked((uint)16),
             
             /// <summary>
             /// GIT_PATHSPEC_FAILURES_ONLY means that the `git_pathspec_match_list`
@@ -64,7 +64,7 @@ namespace XenoAtom.Interop
             /// just test if there were any matches at all or in combination with
             /// GIT_PATHSPEC_FIND_FAILURES to validate a pathspec.
             /// </summary>
-            GIT_PATHSPEC_FAILURES_ONLY = unchecked((uint)(1u << 5)),
+            GIT_PATHSPEC_FAILURES_ONLY = unchecked((uint)32),
         }
         
         public const libgit2.git_pathspec_flag_t GIT_PATHSPEC_DEFAULT = git_pathspec_flag_t.GIT_PATHSPEC_DEFAULT;

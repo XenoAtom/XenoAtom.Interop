@@ -26,25 +26,25 @@ namespace XenoAtom.Interop
             /// <summary>
             /// When set, filters will not be applied to binary files.
             /// </summary>
-            GIT_BLOB_FILTER_CHECK_FOR_BINARY = unchecked((uint)(1<<0)),
+            GIT_BLOB_FILTER_CHECK_FOR_BINARY = unchecked((uint)1),
             
             /// <summary>
             /// When set, filters will not load configuration from the
             /// system-wide `gitattributes` in `/etc` (or system equivalent).
             /// </summary>
-            GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES = unchecked((uint)(1<<1)),
+            GIT_BLOB_FILTER_NO_SYSTEM_ATTRIBUTES = unchecked((uint)2),
             
             /// <summary>
             /// When set, filters will be loaded from a `.gitattributes` file
             /// in the HEAD commit.
             /// </summary>
-            GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD = unchecked((uint)(1<<2)),
+            GIT_BLOB_FILTER_ATTRIBUTES_FROM_HEAD = unchecked((uint)4),
             
             /// <summary>
             /// When set, filters will be loaded from a `.gitattributes` file
             /// in the specified commit.
             /// </summary>
-            GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT = unchecked((uint)(1<<3)),
+            GIT_BLOB_FILTER_ATTRIBUTES_FROM_COMMIT = unchecked((uint)8),
         }
         
         /// <summary>
@@ -94,6 +94,8 @@ namespace XenoAtom.Interop
             /// </summary>
             public libgit2.git_oid attr_commit_id;
         }
+        
+        public const uint GIT_BLOB_FILTER_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Lookup a blob object from a repository.

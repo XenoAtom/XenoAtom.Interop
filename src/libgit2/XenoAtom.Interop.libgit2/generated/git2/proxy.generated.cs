@@ -29,17 +29,17 @@ namespace XenoAtom.Interop
             /// If built against libcurl, it itself may attempt to connect
             /// to a proxy if the environment variables specify it.
             /// </remarks>
-            GIT_PROXY_NONE,
+            GIT_PROXY_NONE = unchecked((uint)0),
             
             /// <summary>
             /// Try to auto-detect the proxy from the git configuration.
             /// </summary>
-            GIT_PROXY_AUTO,
+            GIT_PROXY_AUTO = unchecked((uint)1),
             
             /// <summary>
             /// Connect via the URL given in the options
             /// </summary>
-            GIT_PROXY_SPECIFIED,
+            GIT_PROXY_SPECIFIED = unchecked((uint)2),
         }
         
         /// <summary>
@@ -106,6 +106,8 @@ namespace XenoAtom.Interop
             /// </summary>
             public void* payload;
         }
+        
+        public const uint GIT_PROXY_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initialize git_proxy_options structure

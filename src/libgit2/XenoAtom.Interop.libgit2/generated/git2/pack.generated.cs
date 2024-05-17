@@ -45,17 +45,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<void*, nuint, void*, int> Value { get; }
             
-            public bool Equals(git_packbuilder_foreach_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_packbuilder_foreach_cb other && Equals(other);
+            
+            public bool Equals(git_packbuilder_foreach_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<void*, nuint, void*, int>(git_packbuilder_foreach_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<void*, nuint, void*, int> (libgit2.git_packbuilder_foreach_cb from) => from.Value;
             
-            public static implicit operator git_packbuilder_foreach_cb(delegate*unmanaged[Cdecl]<void*, nuint, void*, int> from) => new git_packbuilder_foreach_cb(from);
+            public static implicit operator libgit2.git_packbuilder_foreach_cb (delegate*unmanaged[Cdecl]<void*, nuint, void*, int> from) => new libgit2.git_packbuilder_foreach_cb(from);
             
             public static bool operator ==(git_packbuilder_foreach_cb left, git_packbuilder_foreach_cb right) => left.Equals(right);
             
@@ -71,17 +71,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> Value { get; }
             
-            public bool Equals(git_packbuilder_progress other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_packbuilder_progress other && Equals(other);
+            
+            public bool Equals(git_packbuilder_progress other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<int, uint, uint, void*, int>(git_packbuilder_progress from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> (libgit2.git_packbuilder_progress from) => from.Value;
             
-            public static implicit operator git_packbuilder_progress(delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> from) => new git_packbuilder_progress(from);
+            public static implicit operator libgit2.git_packbuilder_progress (delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> from) => new libgit2.git_packbuilder_progress(from);
             
             public static bool operator ==(git_packbuilder_progress left, git_packbuilder_progress right) => left.Equals(right);
             

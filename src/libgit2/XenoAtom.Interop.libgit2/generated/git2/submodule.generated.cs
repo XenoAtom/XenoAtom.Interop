@@ -45,33 +45,33 @@ namespace XenoAtom.Interop
         [Flags]
         public enum git_submodule_status_t : uint
         {
-            GIT_SUBMODULE_STATUS_IN_HEAD = unchecked((uint)(1u << 0)),
+            GIT_SUBMODULE_STATUS_IN_HEAD = unchecked((uint)1),
             
-            GIT_SUBMODULE_STATUS_IN_INDEX = unchecked((uint)(1u << 1)),
+            GIT_SUBMODULE_STATUS_IN_INDEX = unchecked((uint)2),
             
-            GIT_SUBMODULE_STATUS_IN_CONFIG = unchecked((uint)(1u << 2)),
+            GIT_SUBMODULE_STATUS_IN_CONFIG = unchecked((uint)4),
             
-            GIT_SUBMODULE_STATUS_IN_WD = unchecked((uint)(1u << 3)),
+            GIT_SUBMODULE_STATUS_IN_WD = unchecked((uint)8),
             
-            GIT_SUBMODULE_STATUS_INDEX_ADDED = unchecked((uint)(1u << 4)),
+            GIT_SUBMODULE_STATUS_INDEX_ADDED = unchecked((uint)16),
             
-            GIT_SUBMODULE_STATUS_INDEX_DELETED = unchecked((uint)(1u << 5)),
+            GIT_SUBMODULE_STATUS_INDEX_DELETED = unchecked((uint)32),
             
-            GIT_SUBMODULE_STATUS_INDEX_MODIFIED = unchecked((uint)(1u << 6)),
+            GIT_SUBMODULE_STATUS_INDEX_MODIFIED = unchecked((uint)64),
             
-            GIT_SUBMODULE_STATUS_WD_UNINITIALIZED = unchecked((uint)(1u << 7)),
+            GIT_SUBMODULE_STATUS_WD_UNINITIALIZED = unchecked((uint)128),
             
-            GIT_SUBMODULE_STATUS_WD_ADDED = unchecked((uint)(1u << 8)),
+            GIT_SUBMODULE_STATUS_WD_ADDED = unchecked((uint)256),
             
-            GIT_SUBMODULE_STATUS_WD_DELETED = unchecked((uint)(1u << 9)),
+            GIT_SUBMODULE_STATUS_WD_DELETED = unchecked((uint)512),
             
-            GIT_SUBMODULE_STATUS_WD_MODIFIED = unchecked((uint)(1u << 10)),
+            GIT_SUBMODULE_STATUS_WD_MODIFIED = unchecked((uint)1024),
             
-            GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED = unchecked((uint)(1u << 11)),
+            GIT_SUBMODULE_STATUS_WD_INDEX_MODIFIED = unchecked((uint)2048),
             
-            GIT_SUBMODULE_STATUS_WD_WD_MODIFIED = unchecked((uint)(1u << 12)),
+            GIT_SUBMODULE_STATUS_WD_WD_MODIFIED = unchecked((uint)4096),
             
-            GIT_SUBMODULE_STATUS_WD_UNTRACKED = unchecked((uint)(1u << 13)),
+            GIT_SUBMODULE_STATUS_WD_UNTRACKED = unchecked((uint)8192),
         }
         
         public const libgit2.git_submodule_status_t GIT_SUBMODULE_STATUS_IN_HEAD = git_submodule_status_t.GIT_SUBMODULE_STATUS_IN_HEAD;
@@ -151,22 +151,24 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> Value { get; }
             
-            public bool Equals(git_submodule_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_submodule_cb other && Equals(other);
+            
+            public bool Equals(git_submodule_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int>(git_submodule_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> (libgit2.git_submodule_cb from) => from.Value;
             
-            public static implicit operator git_submodule_cb(delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> from) => new git_submodule_cb(from);
+            public static implicit operator libgit2.git_submodule_cb (delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> from) => new libgit2.git_submodule_cb(from);
             
             public static bool operator ==(git_submodule_cb left, git_submodule_cb right) => left.Equals(right);
             
             public static bool operator !=(git_submodule_cb left, git_submodule_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_SUBMODULE_UPDATE_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Initialize git_submodule_update_options structure

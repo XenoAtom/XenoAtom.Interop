@@ -31,18 +31,18 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Do not include patch numbers in the subject prefix.
             /// </summary>
-            GIT_EMAIL_CREATE_OMIT_NUMBERS = unchecked((uint)(1u << 0)),
+            GIT_EMAIL_CREATE_OMIT_NUMBERS = unchecked((uint)1),
             
             /// <summary>
             /// Include numbers in the subject prefix even when the
             /// patch is for a single commit (1/1).
             /// </summary>
-            GIT_EMAIL_CREATE_ALWAYS_NUMBER = unchecked((uint)(1u << 1)),
+            GIT_EMAIL_CREATE_ALWAYS_NUMBER = unchecked((uint)2),
             
             /// <summary>
             /// Do not perform rename or similarity detection.
             /// </summary>
-            GIT_EMAIL_CREATE_NO_RENAMES = unchecked((uint)(1u << 2)),
+            GIT_EMAIL_CREATE_NO_RENAMES = unchecked((uint)4),
         }
         
         /// <summary>
@@ -107,6 +107,8 @@ namespace XenoAtom.Interop
             /// </summary>
             public nuint reroll_number;
         }
+        
+        public const uint GIT_EMAIL_CREATE_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Create a diff for a commit in mbox format for sending via email.

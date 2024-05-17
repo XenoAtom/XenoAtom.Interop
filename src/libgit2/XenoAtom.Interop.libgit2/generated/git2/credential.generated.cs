@@ -31,31 +31,31 @@ namespace XenoAtom.Interop
             /// A vanilla user/password request
             /// </summary>
             /// <seealso cref="git_credential_userpass_plaintext_new"/>
-            GIT_CREDENTIAL_USERPASS_PLAINTEXT = unchecked((uint)(1u << 0)),
+            GIT_CREDENTIAL_USERPASS_PLAINTEXT = unchecked((uint)1),
             
             /// <summary>
             /// An SSH key-based authentication request
             /// </summary>
             /// <seealso cref="git_credential_ssh_key_new"/>
-            GIT_CREDENTIAL_SSH_KEY = unchecked((uint)(1u << 1)),
+            GIT_CREDENTIAL_SSH_KEY = unchecked((uint)2),
             
             /// <summary>
             /// An SSH key-based authentication request, with a custom signature
             /// </summary>
             /// <seealso cref="git_credential_ssh_custom_new"/>
-            GIT_CREDENTIAL_SSH_CUSTOM = unchecked((uint)(1u << 2)),
+            GIT_CREDENTIAL_SSH_CUSTOM = unchecked((uint)4),
             
             /// <summary>
             /// An NTLM/Negotiate-based authentication request.
             /// </summary>
             /// <seealso cref="git_credential_default"/>
-            GIT_CREDENTIAL_DEFAULT = unchecked((uint)(1u << 3)),
+            GIT_CREDENTIAL_DEFAULT = unchecked((uint)8),
             
             /// <summary>
             /// An SSH interactive authentication request
             /// </summary>
             /// <seealso cref="git_credential_ssh_interactive_new"/>
-            GIT_CREDENTIAL_SSH_INTERACTIVE = unchecked((uint)(1u << 4)),
+            GIT_CREDENTIAL_SSH_INTERACTIVE = unchecked((uint)16),
             
             /// <summary>
             /// Username-only authentication request
@@ -66,7 +66,7 @@ namespace XenoAtom.Interop
             /// to use.
             /// </remarks>
             /// <seealso cref="git_credential_username_new"/>
-            GIT_CREDENTIAL_USERNAME = unchecked((uint)(1u << 5)),
+            GIT_CREDENTIAL_USERNAME = unchecked((uint)32),
             
             /// <summary>
             /// An SSH key-based authentication request
@@ -77,7 +77,7 @@ namespace XenoAtom.Interop
             /// not be functional.
             /// </remarks>
             /// <seealso cref="git_credential_ssh_key_memory_new"/>
-            GIT_CREDENTIAL_SSH_MEMORY = unchecked((uint)(1u << 6)),
+            GIT_CREDENTIAL_SSH_MEMORY = unchecked((uint)64),
         }
         
         /// <summary>
@@ -289,17 +289,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int> Value { get; }
             
-            public bool Equals(git_credential_acquire_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_credential_acquire_cb other && Equals(other);
+            
+            public bool Equals(git_credential_acquire_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int>(git_credential_acquire_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int> (libgit2.git_credential_acquire_cb from) => from.Value;
             
-            public static implicit operator git_credential_acquire_cb(delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int> from) => new git_credential_acquire_cb(from);
+            public static implicit operator libgit2.git_credential_acquire_cb (delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int> from) => new libgit2.git_credential_acquire_cb(from);
             
             public static bool operator ==(git_credential_acquire_cb left, git_credential_acquire_cb right) => left.Equals(right);
             
@@ -312,17 +312,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> Value { get; }
             
-            public bool Equals(git_credential_ssh_interactive_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_credential_ssh_interactive_cb other && Equals(other);
+            
+            public bool Equals(git_credential_ssh_interactive_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void>(git_credential_ssh_interactive_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> (libgit2.git_credential_ssh_interactive_cb from) => from.Value;
             
-            public static implicit operator git_credential_ssh_interactive_cb(delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> from) => new git_credential_ssh_interactive_cb(from);
+            public static implicit operator libgit2.git_credential_ssh_interactive_cb (delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> from) => new libgit2.git_credential_ssh_interactive_cb(from);
             
             public static bool operator ==(git_credential_ssh_interactive_cb left, git_credential_ssh_interactive_cb right) => left.Equals(right);
             
@@ -335,17 +335,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, nuint*, byte*, nuint, void**, int> Value { get; }
             
-            public bool Equals(git_credential_sign_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_credential_sign_cb other && Equals(other);
+            
+            public bool Equals(git_credential_sign_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, nuint*, byte*, nuint, void**, int>(git_credential_sign_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, nuint*, byte*, nuint, void**, int> (libgit2.git_credential_sign_cb from) => from.Value;
             
-            public static implicit operator git_credential_sign_cb(delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, nuint*, byte*, nuint, void**, int> from) => new git_credential_sign_cb(from);
+            public static implicit operator libgit2.git_credential_sign_cb (delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, nuint*, byte*, nuint, void**, int> from) => new libgit2.git_credential_sign_cb(from);
             
             public static bool operator ==(git_credential_sign_cb left, git_credential_sign_cb right) => left.Equals(right);
             

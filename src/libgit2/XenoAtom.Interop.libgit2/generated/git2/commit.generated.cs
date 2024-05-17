@@ -48,17 +48,17 @@ namespace XenoAtom.Interop
             
             public delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> Value { get; }
             
-            public bool Equals(git_commit_create_cb other) =>  Value == other.Value;
-            
             public override bool Equals(object obj) => obj is git_commit_create_cb other && Equals(other);
+            
+            public bool Equals(git_commit_create_cb other) => Value == other.Value;
             
             public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int>(git_commit_create_cb from) => from.Value;
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> (libgit2.git_commit_create_cb from) => from.Value;
             
-            public static implicit operator git_commit_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> from) => new git_commit_create_cb(from);
+            public static implicit operator libgit2.git_commit_create_cb (delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> from) => new libgit2.git_commit_create_cb(from);
             
             public static bool operator ==(git_commit_create_cb left, git_commit_create_cb right) => left.Equals(right);
             
