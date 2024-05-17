@@ -42,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)../img/XenoAtom.Interop.png" Pack="true" PackagePath="/" />
+    <None Include="$(MSBuildThisFileDirectory)../../../img/XenoAtom.Interop.png" Pack="true" PackagePath="/" />
     <None Include="$(MSBuildThisFileDirectory)../readme.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 

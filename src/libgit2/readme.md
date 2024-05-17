@@ -1,6 +1,6 @@
-# XenoAtom.Interop [![Build Status](https://github.com/xoofx/XenoAtom.Interop/workflows/ci/badge.svg?branch=main)](https://github.com/xoofx/XenoAtom.Interop/actions) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.svg)](https://www.nuget.org/packages/XenoAtom.Interop/)
+# XenoAtom.Interop [![Build Status](https://github.com/XenoAtom/XenoAtom.Interop/workflows/ci/badge.svg?branch=main)](https://github.com/XenoAtom/XenoAtom.Interop/actions) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.svg)](https://www.nuget.org/packages/XenoAtom.Interop/)
 
-<img align="right" width="160px" height="160px" src="https://raw.githubusercontent.com/xoofx/XenoAtom.Interop/main/img/XenoAtom.Interop.png">
+<img align="right" width="160px" height="160px" src="https://raw.githubusercontent.com/XenoAtom/XenoAtom.Interop/main/img/XenoAtom.Interop.png">
 
 This is a default project description.
 
@@ -10,7 +10,7 @@ This is a default project description.
 
 ## User Guide
 
-For more details on how to use XenoAtom.Interop, please visit the [user guide](https://github.com/xoofx/XenoAtom.Interop/blob/main/doc/readme.md).
+For more details on how to use XenoAtom.Interop, please visit the [user guide](https://github.com/XenoAtom/XenoAtom.Interop/blob/main/doc/readme.md).
 
 ## License
 

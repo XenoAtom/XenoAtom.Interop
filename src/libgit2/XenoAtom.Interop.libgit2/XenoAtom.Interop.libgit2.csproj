@@ -21,7 +21,7 @@
     <Authors>Alexandre Mutel</Authors>
     <PackageTags>tag1;tag2;tag3</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <PackageIcon>XenoAtom.Interop.libgit2.png</PackageIcon>
+    <PackageIcon>XenoAtom.Interop.png</PackageIcon>
     <PackageProjectUrl>https://github.com/xoofx/XenoAtom.Interop.libgit2</PackageProjectUrl>
     <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
     <!--Add support for sourcelink-->
@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)../img/XenoAtom.Interop.libgit2.png" Pack="true" PackagePath="/" />
+    <None Include="$(MSBuildThisFileDirectory)../../../img/XenoAtom.Interop.png" Pack="true" PackagePath="/" />
     <None Include="$(MSBuildThisFileDirectory)../readme.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 
