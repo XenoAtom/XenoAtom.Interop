@@ -383,11 +383,25 @@ internal partial class MuslGenerator
             typeDefConverter.StandardCTypes.Add("u_int32_t", () => CSharpPrimitiveType.UInt());
             typeDefConverter.StandardCTypes.Add("u_char", () => CSharpPrimitiveType.Byte());
 
+            typeDefConverter.StandardCTypes.Add("int_fast8_t", () => CSharpPrimitiveType.SByte());
+            typeDefConverter.StandardCTypes.Add("int_least8_t", () => CSharpPrimitiveType.SByte());
+            typeDefConverter.StandardCTypes.Add("uint_fast8_t", () => CSharpPrimitiveType.Byte());
+            typeDefConverter.StandardCTypes.Add("uint_least8_t", () => CSharpPrimitiveType.Byte());
 
+            typeDefConverter.StandardCTypes.Add("int_least16_t", () => CSharpPrimitiveType.Short());
+            typeDefConverter.StandardCTypes.Add("uint_least16_t", () => CSharpPrimitiveType.UShort());
             typeDefConverter.StandardCTypes.Add("int_fast16_t", () => CSharpPrimitiveType.Int());
-            typeDefConverter.StandardCTypes.Add("int_fast32_t", () => CSharpPrimitiveType.Int());
             typeDefConverter.StandardCTypes.Add("uint_fast16_t", () => CSharpPrimitiveType.UInt());
+            
+            typeDefConverter.StandardCTypes.Add("int_fast32_t", () => CSharpPrimitiveType.Int());
             typeDefConverter.StandardCTypes.Add("uint_fast32_t", () => CSharpPrimitiveType.UInt());
+            typeDefConverter.StandardCTypes.Add("int_least32_t", () => CSharpPrimitiveType.Int());
+            typeDefConverter.StandardCTypes.Add("uint_least32_t", () => CSharpPrimitiveType.UInt());
+
+            typeDefConverter.StandardCTypes.Add("int_least64_t", () => CSharpPrimitiveType.Long());
+            typeDefConverter.StandardCTypes.Add("uint_least64_t", () => CSharpPrimitiveType.ULong());
+            typeDefConverter.StandardCTypes.Add("int_fast64_t", () => CSharpPrimitiveType.Long());
+            typeDefConverter.StandardCTypes.Add("uint_fast64_t", () => CSharpPrimitiveType.ULong());
             
             typeDefConverter.StandardCTypes.Add("u_short", () => CSharpPrimitiveType.UShort());
             typeDefConverter.StandardCTypes.Add("ushort", () => CSharpPrimitiveType.UShort());
