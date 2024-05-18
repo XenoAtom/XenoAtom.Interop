@@ -151,6 +151,8 @@ internal partial class MuslGenerator
                     e => e.MapMacroToConst("N_.*", "int"),
                     // errno.h
                     e => e.MapMacroToConst("E[A-Z]+", "int"),
+                    // sysexits.h
+                    e => e.MapMacroToConst("EX_.*", "int"),
                     // sys/eventfd.h
                     e => e.MapMacroToConst("EFD_.*", "int"),
                     // sys/fanotify.h
@@ -350,6 +352,7 @@ internal partial class MuslGenerator
             {
                 Path.Combine(sysIncludes, "unistd.h"),
                 Path.Combine(sysIncludes, "errno.h"),
+                Path.Combine(sysIncludes, "sysexits.h"),
                 Path.Combine(sysIncludes, "sys", "acct.h"),
                 //Path.Combine(sysIncludes, "sys", "auxv.h"),
                 Path.Combine(sysIncludes, "sys", "cachectl.h"),
