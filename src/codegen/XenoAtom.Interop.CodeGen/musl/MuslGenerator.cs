@@ -196,6 +196,8 @@ internal partial class MuslGenerator
                     e => e.MapMacroToConst("MSG_.*", "int"),
                     // sys/mtio.h
                     e => e.MapMacroToConst("MT(?!_TAPE_INFO|IOCTOP|IOCGET|IOCPOS|IOCGETCONFIG|IOCSETCONFIG).*", "int"),
+                    // sys/personality.h
+                    e => e.MapMacroToConst("PER_.*", "unsigned int"),
                     // poll.h
                     e => e.MapMacroToConst("POLL.*", "int"),
                     // sys/prctl.h
@@ -422,8 +424,8 @@ internal partial class MuslGenerator
                 Path.Combine(sysIncludes, "sys", "mount.h"),
                 Path.Combine(sysIncludes, "mqueue.h"),
                 Path.Combine(sysIncludes, "sys", "mtio.h"),
+                Path.Combine(sysIncludes, "sys", "personality.h"),
                 Path.Combine(sysIncludes, "poll.h"),
-                // TODO: mtio.h, param.h, personality.h, poll.h
                 Path.Combine(sysIncludes, "sys", "prctl.h"),
                 Path.Combine(sysIncludes, "sys", "procfs.h"),
                 Path.Combine(sysIncludes, "sys", "ptrace.h"),
