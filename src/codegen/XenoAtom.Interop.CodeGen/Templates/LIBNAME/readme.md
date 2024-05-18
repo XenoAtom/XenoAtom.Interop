@@ -1,4 +1,4 @@
-# XenoAtom.Interop.musl [![Build Status](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_musl.yml/badge.svg)](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_musl.yml) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.musl.svg)](https://www.nuget.org/packages/XenoAtom.Interop.musl/)
+# XenoAtom.Interop.LIBNAME [![Build Status](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_LIBNAME.yml/badge.svg)](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_LIBNAME.yml) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.LIBNAME.svg)](https://www.nuget.org/packages/XenoAtom.Interop.LIBNAME/)
 
 LIBSUMMARY
 

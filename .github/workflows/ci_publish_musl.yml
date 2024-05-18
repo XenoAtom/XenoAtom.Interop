@@ -5,7 +5,7 @@ on:
     tags:
       - "musl/*"
     paths:
-    - 'src/*'
+    - 'src/*.props'
     - 'src/musl/**'
   pull_request:
 

@@ -1,16 +1,16 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", "{1903614D-B2C4-408A-A7F2-1E49ED7F78C1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", "{D64D383B-81DD-4022-9149-CDD6DB41427F}"
 	ProjectSection(SolutionItems) = preProject
 		dotnet-releaser.toml = dotnet-releaser.toml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.zlib", "XenoAtom.Interop.zlib\XenoAtom.Interop.zlib.csproj", "{E2464448-D8EA-41C4-B62A-0B44C1074BFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.zlib", "XenoAtom.Interop.zlib\XenoAtom.Interop.zlib.csproj", "{B1543BCA-55F2-470A-8D36-BE03EE7C7BAA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.zlib.Tests", "XenoAtom.Interop.zlib.Tests\XenoAtom.Interop.zlib.Tests.csproj", "{AFC579FD-7BB5-4F85-8A83-71F932B5A5A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.zlib.Tests", "XenoAtom.Interop.zlib.Tests\XenoAtom.Interop.zlib.Tests.csproj", "{1CCAE4DF-2D24-476D-8ED9-6D5D34B661EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,19 +18,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E2464448-D8EA-41C4-B62A-0B44C1074BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2464448-D8EA-41C4-B62A-0B44C1074BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2464448-D8EA-41C4-B62A-0B44C1074BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2464448-D8EA-41C4-B62A-0B44C1074BFB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AFC579FD-7BB5-4F85-8A83-71F932B5A5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFC579FD-7BB5-4F85-8A83-71F932B5A5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFC579FD-7BB5-4F85-8A83-71F932B5A5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFC579FD-7BB5-4F85-8A83-71F932B5A5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1543BCA-55F2-470A-8D36-BE03EE7C7BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1543BCA-55F2-470A-8D36-BE03EE7C7BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1543BCA-55F2-470A-8D36-BE03EE7C7BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1543BCA-55F2-470A-8D36-BE03EE7C7BAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CCAE4DF-2D24-476D-8ED9-6D5D34B661EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CCAE4DF-2D24-476D-8ED9-6D5D34B661EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CCAE4DF-2D24-476D-8ED9-6D5D34B661EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CCAE4DF-2D24-476D-8ED9-6D5D34B661EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {21F850E5-E5FE-4AF0-AF85-00C1A9FCA55F}
+		SolutionGuid = {D4820350-8105-43EA-AC8C-3FC927B8A42A}
 	EndGlobalSection
 EndGlobal

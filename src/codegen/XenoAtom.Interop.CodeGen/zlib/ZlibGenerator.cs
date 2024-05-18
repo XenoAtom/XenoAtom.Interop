@@ -1,3 +1,6 @@
+// Copyright (c) Alexandre Mutel. All rights reserved.
+// Licensed under the BSD-Clause 2 license.
+// See license.txt file in the project root for full license information.
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,36 +12,20 @@ using Zio.FileSystems;
 
 namespace XenoAtom.Interop.CodeGen.zlib;
 
-internal partial class ZlibGenerator
+internal partial class ZlibGenerator(LibDescriptor descriptor) : GeneratorBase(descriptor)
 {
-    private readonly ApkIncludeHelper _apkIncludeHelper;
-
-
-    public ZlibGenerator(ApkIncludeHelper apkIncludeHelper)
-    {
-        _apkIncludeHelper = apkIncludeHelper;
-    }
-
-    public async Task Run()
+    protected override async Task<CSharpCompilation?> Generate()
     {
         // Make sure that we download libgit2-dev includes
-        await _apkIncludeHelper.EnsureIncludes("zlib-dev");
+        await Apk.EnsureIncludes("zlib-dev");
 
-        var sysIncludes = _apkIncludeHelper.GetSysIncludeDirectory("main");
+        var sysIncludes = Apk.GetSysIncludeDirectory("main");
 
-        var mainInclude = _apkIncludeHelper.GetIncludeDirectory("main");
+        var mainInclude = Apk.GetIncludeDirectory("main");
         List<string> srcFolders =
         [
             mainInclude,
         ];
-
-        var destFolder = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory,
-            @"..\..\..\..\..\..\zlib\XenoAtom.Interop.zlib\generated"));
-
-        if (!Directory.Exists(destFolder))
-        {
-            throw new DirectoryNotFoundException($"The destination folder `{destFolder}` doesn't exist");
-        }
 
         var csOptions = new CSharpConverterOptions()
         {
@@ -147,13 +134,7 @@ internal partial class ZlibGenerator
             ProcessStringArgs(function);
         }
 
-        var fs = new PhysicalFileSystem();
-
-        {
-            var subfs = new SubFileSystem(fs, fs.ConvertPathFromInternal(destFolder));
-            var codeWriter = new CodeWriter(new CodeWriterOptions(subfs));
-            csCompilation.DumpTo(codeWriter);
-        }
+        return csCompilation;
     }
 
     private void ProcessStringArgs(CSharpMethod csMethod)

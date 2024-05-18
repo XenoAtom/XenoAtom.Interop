@@ -3,7 +3,7 @@ name: ci_build_common
 on:
   push:
     paths:
-    - 'src/*'
+    - 'src/*.props'
     - 'src/common/**'
   pull_request:
 

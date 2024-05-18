@@ -9,6 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Templates\**\*.cs" />
+    <None Remove="Templates\**\*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Templates\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CppAst.CodeGen" Version="0.15.1" />
   </ItemGroup>
 

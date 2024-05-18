@@ -1,3 +1,6 @@
+// Copyright (c) Alexandre Mutel. All rights reserved.
+// Licensed under the BSD-Clause 2 license.
+// See license.txt file in the project root for full license information.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,13 +16,12 @@ using Zio.FileSystems;
 
 namespace XenoAtom.Interop.CodeGen.libgit2;
 
-internal partial class LibGit2Generator
+internal partial class LibGit2Generator : GeneratorBase
 {
     private CppTypedef _gitResultType;
     private readonly Dictionary<string, List<string>> _gitResultFunctionsDetectedButNotRegistered;
     private readonly List<CSharpStruct> _structs;
     private readonly Dictionary<CSharpStruct, HashSet<CSharpRefKind>> _structRefUsages;
-    private readonly ApkIncludeHelper _apkIncludeHelper;
 
     /// <summary>
     /// List of functions that should not use string marshalling for byte* buffers
@@ -35,34 +37,26 @@ internal partial class LibGit2Generator
         "git_odb_stream_write",
     ];
 
-    public LibGit2Generator(ApkIncludeHelper apkIncludeHelper)
+    public LibGit2Generator(LibDescriptor descriptor) : base(descriptor)
     {
-        _apkIncludeHelper = apkIncludeHelper;
         _structs = new List<CSharpStruct>();
         _structRefUsages = new Dictionary<CSharpStruct, HashSet<CSharpRefKind>>();
         _gitResultFunctionsDetectedButNotRegistered = new Dictionary<string, List<string>>();
     }
 
-    public async Task Run()
+    protected override async Task<CSharpCompilation?> Generate()
     {
         // Make sure that we download libgit2-dev includes
-        await _apkIncludeHelper.EnsureIncludes("libgit2-dev");
+        await Apk.EnsureIncludes("libgit2-dev");
 
-        var sysIncludes = _apkIncludeHelper.GetSysIncludeDirectory("main");
+        var sysIncludes = Apk.GetSysIncludeDirectory("main");
 
-        var communityFolder = _apkIncludeHelper.GetIncludeDirectory("community");
+        var communityFolder = Apk.GetIncludeDirectory("community");
         List<string> srcFolders =
         [
-            _apkIncludeHelper.GetIncludeDirectory("main"),
+            Apk.GetIncludeDirectory("main"),
             communityFolder,
         ];
-
-        var destFolder = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\..\..\libgit2\XenoAtom.Interop.libgit2\generated"));
-            
-        if (!Directory.Exists(destFolder))
-        {
-            throw new DirectoryNotFoundException($"The destination folder `{destFolder}` doesn't exist");
-        }
 
         var csOptions = new CSharpConverterOptions()
         {
@@ -340,15 +334,10 @@ typedef int git_result;
             Console.WriteLine($"{csStruct.Name} -> {csStruct.MarshallingUsage}");
         }
         
-        var fs = new PhysicalFileSystem();
-            
-        {
-            var subfs = new SubFileSystem(fs, fs.ConvertPathFromInternal(destFolder));
-            var codeWriter = new CodeWriter(new CodeWriterOptions(subfs));
-            csCompilation.DumpTo(codeWriter);
-        }
 
         ReportFunctionWithPossibleGitResultNotRegistered();
+
+        return csCompilation;
     }
 
     private static string ToPascalCase(string name)

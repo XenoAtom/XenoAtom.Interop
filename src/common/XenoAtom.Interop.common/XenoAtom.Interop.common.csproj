@@ -1,11 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props"/>
 
   <PropertyGroup>
-    <Description>This is a default project description</Description>
+    <Description>LIBSUMMARY</Description>
     <PackageTags>tag1;tag2;tag3</PackageTags>
     <MinVerTagPrefix>common/</MinVerTagPrefix>
     <XenoAtomNoInterop>true</XenoAtomNoInterop>
+    <PackageId>XenoAtom.Interop</PackageId>
+    <AssemblyName>XenoAtom.Interop</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,4 +25,5 @@
       <DependentUpon>FixedArrays.tt</DependentUpon>
     </Compile>
   </ItemGroup>
+
 </Project>

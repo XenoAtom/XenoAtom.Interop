@@ -10,36 +10,20 @@ using Zio.FileSystems;
 
 namespace XenoAtom.Interop.CodeGen.sqlite;
 
-internal partial class SqliteGenerator
+internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase(descriptor)
 {
-    private readonly ApkIncludeHelper _apkIncludeHelper;
-
-
-    public SqliteGenerator(ApkIncludeHelper apkIncludeHelper)
-    {
-        _apkIncludeHelper = apkIncludeHelper;
-    }
-
-    public async Task Run()
+    protected override async Task<CSharpCompilation?> Generate()
     {
         // Make sure that we download libgit2-dev includes
-        await _apkIncludeHelper.EnsureIncludes("sqlite-dev");
+        await Apk.EnsureIncludes("sqlite-dev");
 
-        var sysIncludes = _apkIncludeHelper.GetSysIncludeDirectory("main");
+        var sysIncludes = Apk.GetSysIncludeDirectory("main");
 
-        var mainInclude = _apkIncludeHelper.GetIncludeDirectory("main");
+        var mainInclude = Apk.GetIncludeDirectory("main");
         List<string> srcFolders =
         [
             mainInclude,
         ];
-
-        var destFolder = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory,
-            @"..\..\..\..\..\..\sqlite\XenoAtom.Interop.sqlite\generated"));
-
-        if (!Directory.Exists(destFolder))
-        {
-            throw new DirectoryNotFoundException($"The destination folder `{destFolder}` doesn't exist");
-        }
 
         var csOptions = new CSharpConverterOptions()
         {
@@ -153,13 +137,7 @@ internal partial class SqliteGenerator
             ProcessStringArgs(function);
         }
 
-        var fs = new PhysicalFileSystem();
-
-        {
-            var subfs = new SubFileSystem(fs, fs.ConvertPathFromInternal(destFolder));
-            var codeWriter = new CodeWriter(new CodeWriterOptions(subfs));
-            csCompilation.DumpTo(codeWriter);
-        }
+        return csCompilation;
     }
 
     private void ProcessStringArgs(CSharpMethod csMethod)

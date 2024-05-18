@@ -3,7 +3,7 @@ name: ci_build_musl
 on:
   push:
     paths:
-    - 'src/*'
+    - 'src/*.props'
     - 'src/musl/**'
   pull_request:
 

@@ -5,7 +5,7 @@ on:
     tags:
       - "libgit2/*"
     paths:
-    - 'src/*'
+    - 'src/*.props'
     - 'src/libgit2/**'
   pull_request:
 

@@ -1,21 +1,17 @@
-# XenoAtom.Interop [![Build Status](https://github.com/XenoAtom/XenoAtom.Interop/workflows/ci/badge.svg?branch=main)](https://github.com/XenoAtom/XenoAtom.Interop/actions) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.svg)](https://www.nuget.org/packages/XenoAtom.Interop/)
+# XenoAtom.Interop.libgit2 [![Build Status](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_libgit2.yml/badge.svg)](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_libgit2.yml) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.libgit2.svg)](https://www.nuget.org/packages/XenoAtom.Interop.libgit2/)
 
-<img align="right" width="160px" height="160px" src="https://raw.githubusercontent.com/XenoAtom/XenoAtom.Interop/main/img/XenoAtom.Interop.png">
+LIBSUMMARY
 
-This is a default project description.
+LIBDESCRIPTION
 
-## Features
+## ♻️ XenoAtom.Interop
 
-- TODO
+This project is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
 
-## User Guide
-
-For more details on how to use XenoAtom.Interop, please visit the [user guide](https://github.com/XenoAtom/XenoAtom.Interop/blob/main/doc/readme.md).
-
-## License
+## 🪪 License
 
 This software is released under the [BSD-2-Clause license](https://opensource.org/licenses/BSD-2-Clause). 
 
-## Author
+## 🤗 Author
 
 Alexandre Mutel aka [xoofx](https://xoofx.github.io).

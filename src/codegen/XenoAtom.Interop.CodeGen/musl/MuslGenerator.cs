@@ -16,10 +16,8 @@ using Zio.FileSystems;
 
 namespace XenoAtom.Interop.CodeGen.musl;
 
-internal partial class MuslGenerator
+internal partial class MuslGenerator : GeneratorBase
 {
-    private readonly ApkIncludeHelper _apkIncludeHelper;
-
     public const string DefaultNamespace = "XenoAtom.Interop";
 
     public const string DefaultClassLib = "musl";
@@ -50,16 +48,15 @@ internal partial class MuslGenerator
         "ioctl",
     };
 
-    public MuslGenerator(ApkIncludeHelper apkIncludeHelper)
+    public MuslGenerator(LibDescriptor descriptor) : base(descriptor)
     {
-        _apkIncludeHelper = apkIncludeHelper;
     }
 
-    public async Task Run()
+    protected override async Task<CSharpCompilation?> Generate()
     {
-        await _apkIncludeHelper.EnsureIncludes("musl-dev");
-        await _apkIncludeHelper.EnsureIncludes("linux-headers");
-        await _apkIncludeHelper.EnsureManPages();
+        await Apk.EnsureIncludes("musl-dev");
+        await Apk.EnsureIncludes("linux-headers");
+        await Apk.EnsureManPages();
 
         Console.WriteLine("----------------------------------------");
         Console.WriteLine("Loading Man Pages...");
@@ -90,19 +87,12 @@ internal partial class MuslGenerator
         
         var mapArchToCompilation = new Dictionary<string, CSharpCompilation>();
 
-        var destFolder = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\..\..\musl\XenoAtom.Interop.musl\generated"));
-
-        if (!Directory.Exists(destFolder))
-        {
-            throw new DirectoryNotFoundException($"The destination folder `{destFolder}` doesn't exist");
-        }
-
         var allExpectedSysFunctions = new HashSet<string>(ListSysFunctions);
 
-        foreach (var arch in _apkIncludeHelper.Architectures)
+        foreach (var arch in Apk.Architectures)
         {
-            var mainFolder = _apkIncludeHelper.GetIncludeDirectory(arch, "main");
-            var sysIncludes = _apkIncludeHelper.GetSysIncludeDirectory(arch, "main");
+            var mainFolder = Apk.GetIncludeDirectory(arch, "main");
+            var sysIncludes = Apk.GetSysIncludeDirectory(arch, "main");
 
             var csOptions = new CSharpConverterOptions()
             {
@@ -682,7 +672,7 @@ internal partial class MuslGenerator
 
         Console.WriteLine("-------------------------------------------------------------------");
         Console.WriteLine($"{allExpectedSysFunctions.Count} functions not found");
-        var sysInclude = _apkIncludeHelper.GetSysIncludeDirectory("main");
+        var sysInclude = Apk.GetSysIncludeDirectory("main");
         foreach (var expectedFunction in allExpectedSysFunctions.Order())
         {
             Console.WriteLine($"Linux Function `{expectedFunction}` was not found");
@@ -699,12 +689,7 @@ internal partial class MuslGenerator
             }
         }
 
-        var fs = new PhysicalFileSystem();
-        {
-            var subfs = new SubFileSystem(fs, fs.ConvertPathFromInternal(destFolder));
-            var codeWriter = new CodeWriter(new CodeWriterOptions(subfs));
-            baseCompilation.DumpTo(codeWriter);
-        }
+        return baseCompilation;
     }
 
     private static string GetNativeMemberName(ICSharpMember member)
@@ -795,7 +780,7 @@ internal partial class MuslGenerator
 
     private void LoadManPages()
     {
-        var apk = _apkIncludeHelper;
+        var apk = Apk;
         var manIncludeFolder = apk.GetManDirectory(apk.Architectures[0], "main");
 
         string? currentSymbol = null;

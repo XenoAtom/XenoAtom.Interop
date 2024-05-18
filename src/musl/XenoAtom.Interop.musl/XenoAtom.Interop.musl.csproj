@@ -8,6 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\common\XenoAtom.Interop\XenoAtom.Interop.csproj" />
+    <ProjectReference Include="..\..\common\XenoAtom.Interop.common\XenoAtom.Interop.common.csproj" />
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ name: ci_build_libgit2
 on:
   push:
     paths:
-    - 'src/*'
+    - 'src/*.props'
     - 'src/libgit2/**'
   pull_request:
 

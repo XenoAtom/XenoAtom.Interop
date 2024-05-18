@@ -3,7 +3,7 @@ name: ci_build_zlib
 on:
   push:
     paths:
-    - 'src/*'
+    - 'src/*.props'
     - 'src/zlib/**'
   pull_request:
 

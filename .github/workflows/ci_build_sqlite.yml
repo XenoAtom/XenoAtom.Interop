@@ -3,7 +3,7 @@ name: ci_build_sqlite
 on:
   push:
     paths:
-    - 'src/*'
+    - 'src/*.props'
     - 'src/sqlite/**'
   pull_request:
 

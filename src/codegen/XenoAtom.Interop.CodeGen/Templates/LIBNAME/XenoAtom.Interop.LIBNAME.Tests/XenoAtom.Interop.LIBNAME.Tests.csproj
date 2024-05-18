@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildThisFileDirectory)../../TestsShared.props"/>
 
   <ItemGroup>
-    <ProjectReference Include="..\XenoAtom.Interop.musl\XenoAtom.Interop.musl.csproj" />
+    <ProjectReference Include="..\XenoAtom.Interop.LIBNAME\XenoAtom.Interop.LIBNAME.csproj" />
   </ItemGroup>
 
 </Project>

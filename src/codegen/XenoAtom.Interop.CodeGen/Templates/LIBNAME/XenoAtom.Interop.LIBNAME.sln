@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", 
 		dotnet-releaser.toml = dotnet-releaser.toml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.common", "XenoAtom.Interop.common\XenoAtom.Interop.common.csproj", "{B1543BCA-55F2-470A-8D36-BE03EE7C7BAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.LIBNAME", "XenoAtom.Interop.LIBNAME\XenoAtom.Interop.LIBNAME.csproj", "{B1543BCA-55F2-470A-8D36-BE03EE7C7BAA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.common.Tests", "XenoAtom.Interop.common.Tests\XenoAtom.Interop.common.Tests.csproj", "{1CCAE4DF-2D24-476D-8ED9-6D5D34B661EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.LIBNAME.Tests", "XenoAtom.Interop.LIBNAME.Tests\XenoAtom.Interop.LIBNAME.Tests.csproj", "{1CCAE4DF-2D24-476D-8ED9-6D5D34B661EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

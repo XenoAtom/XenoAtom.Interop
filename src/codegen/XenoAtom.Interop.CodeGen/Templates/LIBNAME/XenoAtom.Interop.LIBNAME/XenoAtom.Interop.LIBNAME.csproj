@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props"/>
+
+  <PropertyGroup>
+    <Description>LIBSUMMARY</Description>
+    <PackageTags>tag1;tag2;tag3</PackageTags>
+    <MinVerTagPrefix>LIBNAME/</MinVerTagPrefix>
+  </PropertyGroup>
+
+</Project>

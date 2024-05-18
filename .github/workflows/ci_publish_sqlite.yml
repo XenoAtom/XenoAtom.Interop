@@ -5,7 +5,7 @@ on:
     tags:
       - "sqlite/*"
     paths:
-    - 'src/*'
+    - 'src/*.props'
     - 'src/sqlite/**'
   pull_request:
 

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace XenoAtom.Interop.CodeGen;
 
-public partial class ApkIncludeHelper
+public partial class ApkManager
 {
     private const string ApkIndex = "APKINDEX.tar.gz";
     private const string PackageFolder = "packages";
@@ -24,7 +24,7 @@ public partial class ApkIncludeHelper
 
     public const string DefaultArch = "x86_64";
 
-    public ApkIncludeHelper()
+    public ApkManager()
     {
         Version = "v3.19";
         Repositories= ["main", "community"];

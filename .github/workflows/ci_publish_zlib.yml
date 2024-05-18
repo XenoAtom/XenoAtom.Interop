@@ -5,7 +5,7 @@ on:
     tags:
       - "zlib/*"
     paths:
-    - 'src/*'
+    - 'src/*.props'
     - 'src/zlib/**'
   pull_request:
 

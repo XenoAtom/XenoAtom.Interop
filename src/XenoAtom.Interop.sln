@@ -8,7 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", 
 		..\.editorconfig = ..\.editorconfig
 		..\.gitattributes = ..\.gitattributes
 		..\.gitignore = ..\.gitignore
-		..\.github\workflows\ci.yml = ..\.github\workflows\ci.yml
 		dotnet-releaser.toml = dotnet-releaser.toml
 		global.json = global.json
 		..\license.txt = ..\license.txt
@@ -49,6 +48,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20-libraries", "20-libraries", "{DA3698BE-1790-4569-A569-ECA2F29E25A9}"
 	ProjectSection(SolutionItems) = preProject
 		LibraryShared.props = LibraryShared.props
+		TestsShared.props = TestsShared.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "musl", "musl", "{8F07A42A-67D3-4E3C-8C1F-ADA11D4A9FCA}"
@@ -61,8 +61,28 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.musl.Tests", "musl\XenoAtom.Interop.musl.Tests\XenoAtom.Interop.musl.Tests.csproj", "{652E3FC2-981F-441F-9646-A7B5E1D51F47}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{1D91958C-42BB-4097-9E78-870762C2F757}"
+	ProjectSection(SolutionItems) = preProject
+		common\dotnet-releaser.toml = common\dotnet-releaser.toml
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop", "common\XenoAtom.Interop\XenoAtom.Interop.csproj", "{95B6B817-F66D-4C1F-8B05-8180265CABBE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-ci", "01-ci", "{F7B3343D-5632-4BBA-BF11-4D6206E55ABC}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\ci_build_codegen.yml = ..\.github\workflows\ci_build_codegen.yml
+		..\.github\workflows\ci_build_common.yml = ..\.github\workflows\ci_build_common.yml
+		..\.github\workflows\ci_build_libgit2.yml = ..\.github\workflows\ci_build_libgit2.yml
+		..\.github\workflows\ci_build_musl.yml = ..\.github\workflows\ci_build_musl.yml
+		..\.github\workflows\ci_build_sqlite.yml = ..\.github\workflows\ci_build_sqlite.yml
+		..\.github\workflows\ci_build_zlib.yml = ..\.github\workflows\ci_build_zlib.yml
+		..\.github\workflows\ci_publish_common.yml = ..\.github\workflows\ci_publish_common.yml
+		..\.github\workflows\ci_publish_libgit2.yml = ..\.github\workflows\ci_publish_libgit2.yml
+		..\.github\workflows\ci_publish_musl.yml = ..\.github\workflows\ci_publish_musl.yml
+		..\.github\workflows\ci_publish_sqlite.yml = ..\.github\workflows\ci_publish_sqlite.yml
+		..\.github\workflows\ci_publish_zlib.yml = ..\.github\workflows\ci_publish_zlib.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.common", "common\XenoAtom.Interop.common\XenoAtom.Interop.common.csproj", "{50C95DF8-45FE-45E3-8FDD-EEC7F38295FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.common.Tests", "common\XenoAtom.Interop.common.Tests\XenoAtom.Interop.common.Tests.csproj", "{D546620A-658B-4243-AFAE-1406FA0FFEA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,10 +126,14 @@ Global
 		{652E3FC2-981F-441F-9646-A7B5E1D51F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{652E3FC2-981F-441F-9646-A7B5E1D51F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{652E3FC2-981F-441F-9646-A7B5E1D51F47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95B6B817-F66D-4C1F-8B05-8180265CABBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95B6B817-F66D-4C1F-8B05-8180265CABBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95B6B817-F66D-4C1F-8B05-8180265CABBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95B6B817-F66D-4C1F-8B05-8180265CABBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C95DF8-45FE-45E3-8FDD-EEC7F38295FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C95DF8-45FE-45E3-8FDD-EEC7F38295FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C95DF8-45FE-45E3-8FDD-EEC7F38295FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C95DF8-45FE-45E3-8FDD-EEC7F38295FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D546620A-658B-4243-AFAE-1406FA0FFEA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D546620A-658B-4243-AFAE-1406FA0FFEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D546620A-658B-4243-AFAE-1406FA0FFEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D546620A-658B-4243-AFAE-1406FA0FFEA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,7 +153,8 @@ Global
 		{D8A4BADC-8B82-4C6E-A8F4-3A18E8404CF0} = {8F07A42A-67D3-4E3C-8C1F-ADA11D4A9FCA}
 		{652E3FC2-981F-441F-9646-A7B5E1D51F47} = {8F07A42A-67D3-4E3C-8C1F-ADA11D4A9FCA}
 		{1D91958C-42BB-4097-9E78-870762C2F757} = {DA3698BE-1790-4569-A569-ECA2F29E25A9}
-		{95B6B817-F66D-4C1F-8B05-8180265CABBE} = {1D91958C-42BB-4097-9E78-870762C2F757}
+		{50C95DF8-45FE-45E3-8FDD-EEC7F38295FF} = {1D91958C-42BB-4097-9E78-870762C2F757}
+		{D546620A-658B-4243-AFAE-1406FA0FFEA2} = {1D91958C-42BB-4097-9E78-870762C2F757}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95E8F3B3-49E8-400E-97A1-38D8B946DFCA}
