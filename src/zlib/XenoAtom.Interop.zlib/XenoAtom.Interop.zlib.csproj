@@ -4,6 +4,7 @@
   <PropertyGroup>
     <Description>This is a default project description</Description>
     <PackageTags>tag1;tag2;tag3</PackageTags>
+    <MinVerTagPrefix>zlib/</MinVerTagPrefix>
   </PropertyGroup>
 
 </Project>

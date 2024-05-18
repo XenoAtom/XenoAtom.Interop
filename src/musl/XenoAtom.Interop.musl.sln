@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", "{7C80FA0C-697B-4876-BDDC-24ACD2BB9F4D}"
+	ProjectSection(SolutionItems) = preProject
+		dotnet-releaser.toml = dotnet-releaser.toml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.musl", "XenoAtom.Interop.musl\XenoAtom.Interop.musl.csproj", "{646AAB7F-D7F2-4E6A-8281-0E5363035895}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.musl.Tests", "XenoAtom.Interop.musl.Tests\XenoAtom.Interop.musl.Tests.csproj", "{FB7A6BA1-6FDC-449C-8726-A0204BFAC808}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{646AAB7F-D7F2-4E6A-8281-0E5363035895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{646AAB7F-D7F2-4E6A-8281-0E5363035895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{646AAB7F-D7F2-4E6A-8281-0E5363035895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{646AAB7F-D7F2-4E6A-8281-0E5363035895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB7A6BA1-6FDC-449C-8726-A0204BFAC808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB7A6BA1-6FDC-449C-8726-A0204BFAC808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB7A6BA1-6FDC-449C-8726-A0204BFAC808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB7A6BA1-6FDC-449C-8726-A0204BFAC808}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6362DF5F-74C8-4167-A580-3AAD0562722E}
+	EndGlobalSection
+EndGlobal

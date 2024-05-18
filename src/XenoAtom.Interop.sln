@@ -16,6 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libgit2", "libgit2", "{9ECFE155-3AA4-4385-B45A-4274D1FA27AE}"
+	ProjectSection(SolutionItems) = preProject
+		libgit2\dotnet-releaser.toml = libgit2\dotnet-releaser.toml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libgit2", "libgit2\XenoAtom.Interop.libgit2\XenoAtom.Interop.libgit2.csproj", "{EABB8FB1-97B7-4A72-87A8-48D2F07AB7B2}"
 EndProject
@@ -26,12 +29,18 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libgit2.Tests", "libgit2\XenoAtom.Interop.libgit2.Tests\XenoAtom.Interop.libgit2.Tests.csproj", "{04F43E5A-D0D4-4662-9E53-5C77A62D6BA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "zlib", "zlib", "{0FF4A742-8EF4-49EE-A36B-1A1B23EB9D81}"
+	ProjectSection(SolutionItems) = preProject
+		zlib\dotnet-releaser.toml = zlib\dotnet-releaser.toml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.zlib", "zlib\XenoAtom.Interop.zlib\XenoAtom.Interop.zlib.csproj", "{70C53ACE-E612-4A04-A25E-99A8CFEE872F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.zlib.Tests", "zlib\XenoAtom.Interop.zlib.Tests\XenoAtom.Interop.zlib.Tests.csproj", "{8246C61F-6C93-47ED-8735-391488AAA92C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqlite", "sqlite", "{B16B5815-9571-4279-BDB2-37F0465EDD73}"
+	ProjectSection(SolutionItems) = preProject
+		sqlite\dotnet-releaser.toml = sqlite\dotnet-releaser.toml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.sqlite", "sqlite\XenoAtom.Interop.sqlite\XenoAtom.Interop.sqlite.csproj", "{D1E343D7-68B3-449F-96AC-398D4C217532}"
 EndProject
@@ -43,6 +52,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20-libraries", "20-librarie
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "musl", "musl", "{8F07A42A-67D3-4E3C-8C1F-ADA11D4A9FCA}"
+	ProjectSection(SolutionItems) = preProject
+		musl\dotnet-releaser.toml = musl\dotnet-releaser.toml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.musl", "musl\XenoAtom.Interop.musl\XenoAtom.Interop.musl.csproj", "{D8A4BADC-8B82-4C6E-A8F4-3A18E8404CF0}"
 EndProject

@@ -37,8 +37,9 @@
     <None Include="$(MSBuildThisFileDirectory)../img/XenoAtom.Interop.png" Pack="true" PackagePath="/" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(XenoAtomNoInterop)' == ''">
     <Compile Include="$(MSBuildThisFileDirectory)common/UTF8Marshaler.cs" Link="UTF8Marshaler.cs" />
+    <Folder Include="generated\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,9 +51,5 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="generated\" />
   </ItemGroup>
 </Project>

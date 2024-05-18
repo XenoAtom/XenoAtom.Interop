@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop", "XenoAtom.Interop\XenoAtom.Interop.csproj", "{81864593-C3B5-4E54-969A-E2926C4FC76D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", "{8B6135E6-EBF1-41C6-AEE4-C4F0CAA06DEC}"
+	ProjectSection(SolutionItems) = preProject
+		dotnet-releaser.toml = dotnet-releaser.toml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81864593-C3B5-4E54-969A-E2926C4FC76D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81864593-C3B5-4E54-969A-E2926C4FC76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81864593-C3B5-4E54-969A-E2926C4FC76D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81864593-C3B5-4E54-969A-E2926C4FC76D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D267F20-95E3-44A5-A650-FF2080ABF624}
+	EndGlobalSection
+EndGlobal
