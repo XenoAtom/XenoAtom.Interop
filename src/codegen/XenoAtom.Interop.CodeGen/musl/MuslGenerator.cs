@@ -194,6 +194,8 @@ internal partial class MuslGenerator
                     e => e.MapMacroToConst("BLK.*", "int"),
                     // sys/msg.h
                     e => e.MapMacroToConst("MSG_.*", "int"),
+                    // sys/mtio.h
+                    e => e.MapMacroToConst("MT(?!_TAPE_INFO|IOCTOP|IOCGET|IOCPOS|IOCGETCONFIG|IOCSETCONFIG).*", "int"),
                     // poll.h
                     e => e.MapMacroToConst("POLL.*", "int"),
                     // sys/prctl.h
@@ -337,27 +339,6 @@ internal partial class MuslGenerator
                 csOptions.MappingRules.Add(e => e.Map<CppField>("user_fpsimd_struct::vregs").Type("__u128", arraySize: 32));
             }
 
-            //if (_apkIncludeHelper.Arch == "x86_64")
-            //{
-            //    csOptions.TargetCpu = CppTargetCpu.X86_64;
-            //}
-            //else if (_apkIncludeHelper.Arch == "i386")
-            //{
-            //    csOptions.TargetCpu = CppTargetCpu.X86;
-            //}
-            //else if (_apkIncludeHelper.Arch == "aarch64")
-            //{
-            //    csOptions.TargetCpu = CppTargetCpu.ARM64;
-            //}
-            //else if (_apkIncludeHelper.Arch == "armv7")
-            //{
-            //    csOptions.TargetCpu = CppTargetCpu.ARM;
-            //}
-            //else
-            //{
-            //    throw new NotSupportedException($"The architecture `{_apkIncludeHelper.Arch}` is not supported");
-            //}
-
             var typeDefConverter = csOptions.Plugins.OfType<DefaultTypedefConverter>().First();
 
             typeDefConverter.StandardCTypes.Add("__s128", () => new CSharpFreeType("global::System.Int128"));
@@ -440,6 +421,7 @@ internal partial class MuslGenerator
                 Path.Combine(sysIncludes, "sys", "mount.h"),
                 Path.Combine(sysIncludes, "sys", "mount.h"),
                 Path.Combine(sysIncludes, "mqueue.h"),
+                Path.Combine(sysIncludes, "sys", "mtio.h"),
                 Path.Combine(sysIncludes, "poll.h"),
                 // TODO: mtio.h, param.h, personality.h, poll.h
                 Path.Combine(sysIncludes, "sys", "prctl.h"),
