@@ -8,6 +8,19 @@ This is a default project description.
 
 - TODO
 
+## Libraries
+
+<!-- XENOATOM_INTEROP BEGIN - DO NOT EDIT: this section below is automatically generated --->
+
+AlpineLinux reference version `v3.19`
+
+| Library | C Version | Description | Supported Architectures | NuGet |
+| ------- | --------- | ----------- | ----------------------- | ----- |
+| [XenoAtom.Interop](https://www.nuget.org/packages/XenoAtom.Interop/) | 1.0.0 | TODO | `linux-x64` `linux-arm64`
+
+
+<!-- XENOATOM_INTEROP END - DO NOT EDIT --->
+
 ## User Guide
 
 For more details on how to use XenoAtom.Interop, please visit the [user guide](https://github.com/XenoAtom/XenoAtom.Interop/blob/main/doc/readme.md).
