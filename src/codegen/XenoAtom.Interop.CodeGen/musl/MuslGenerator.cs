@@ -120,6 +120,11 @@ internal partial class MuslGenerator
                 },
                 PreHeaderText = @"",
 
+                AdditionalArguments =
+                {
+                    "-nostdinc",
+                },
+                
                 IncludeFolders =
                 {
                     sysIncludes,
@@ -341,64 +346,6 @@ internal partial class MuslGenerator
                 csOptions.MappingRules.Add(e => e.Map<CppField>("user_fpsimd_struct::vregs").Type("__u128", arraySize: 32));
             }
 
-            var typeDefConverter = csOptions.Plugins.OfType<DefaultTypedefConverter>().First();
-
-            typeDefConverter.StandardCTypes.Add("__s128", () => new CSharpFreeType("global::System.Int128"));
-            typeDefConverter.StandardCTypes.Add("__u128", () => new CSharpFreeType("global::System.UInt128"));
-            typeDefConverter.StandardCTypes.Add("__s8", () => CSharpPrimitiveType.SByte());
-            typeDefConverter.StandardCTypes.Add("__u8", () => CSharpPrimitiveType.Byte());
-            typeDefConverter.StandardCTypes.Add("__s16", () => CSharpPrimitiveType.Short());
-            typeDefConverter.StandardCTypes.Add("__u16", () => CSharpPrimitiveType.UShort());
-            typeDefConverter.StandardCTypes.Add("__s32", () => CSharpPrimitiveType.Int());
-            typeDefConverter.StandardCTypes.Add("__u32", () => CSharpPrimitiveType.UInt());
-            typeDefConverter.StandardCTypes.Add("__s64", () => CSharpPrimitiveType.Long());
-            typeDefConverter.StandardCTypes.Add("__u64", () => CSharpPrimitiveType.ULong());
-            typeDefConverter.StandardCTypes.Add("__le16", () => CSharpPrimitiveType.UShort());
-            typeDefConverter.StandardCTypes.Add("__be16", () => CSharpPrimitiveType.UShort()); // we only support little-endian
-            typeDefConverter.StandardCTypes.Add("__le32", () => CSharpPrimitiveType.UInt());
-            typeDefConverter.StandardCTypes.Add("__be32", () => CSharpPrimitiveType.UInt()); // we only support little-endian
-            typeDefConverter.StandardCTypes.Add("__le64", () => CSharpPrimitiveType.ULong());
-            typeDefConverter.StandardCTypes.Add("__be64", () => CSharpPrimitiveType.ULong()); // we only support little-endian
-            typeDefConverter.StandardCTypes.Add("__sum16", () => CSharpPrimitiveType.UShort());
-            typeDefConverter.StandardCTypes.Add("__wsum", () => CSharpPrimitiveType.UInt());
-            typeDefConverter.StandardCTypes.Add("u_int8_t", () => CSharpPrimitiveType.Byte());
-            typeDefConverter.StandardCTypes.Add("u_int16_t", () => CSharpPrimitiveType.UShort());
-            typeDefConverter.StandardCTypes.Add("u_int32_t", () => CSharpPrimitiveType.UInt());
-            typeDefConverter.StandardCTypes.Add("u_char", () => CSharpPrimitiveType.Byte());
-
-            typeDefConverter.StandardCTypes.Add("int_fast8_t", () => CSharpPrimitiveType.SByte());
-            typeDefConverter.StandardCTypes.Add("int_least8_t", () => CSharpPrimitiveType.SByte());
-            typeDefConverter.StandardCTypes.Add("uint_fast8_t", () => CSharpPrimitiveType.Byte());
-            typeDefConverter.StandardCTypes.Add("uint_least8_t", () => CSharpPrimitiveType.Byte());
-
-            typeDefConverter.StandardCTypes.Add("int_least16_t", () => CSharpPrimitiveType.Short());
-            typeDefConverter.StandardCTypes.Add("uint_least16_t", () => CSharpPrimitiveType.UShort());
-            typeDefConverter.StandardCTypes.Add("int_fast16_t", () => CSharpPrimitiveType.Int());
-            typeDefConverter.StandardCTypes.Add("uint_fast16_t", () => CSharpPrimitiveType.UInt());
-            
-            typeDefConverter.StandardCTypes.Add("int_fast32_t", () => CSharpPrimitiveType.Int());
-            typeDefConverter.StandardCTypes.Add("uint_fast32_t", () => CSharpPrimitiveType.UInt());
-            typeDefConverter.StandardCTypes.Add("int_least32_t", () => CSharpPrimitiveType.Int());
-            typeDefConverter.StandardCTypes.Add("uint_least32_t", () => CSharpPrimitiveType.UInt());
-
-            typeDefConverter.StandardCTypes.Add("int_least64_t", () => CSharpPrimitiveType.Long());
-            typeDefConverter.StandardCTypes.Add("uint_least64_t", () => CSharpPrimitiveType.ULong());
-            typeDefConverter.StandardCTypes.Add("int_fast64_t", () => CSharpPrimitiveType.Long());
-            typeDefConverter.StandardCTypes.Add("uint_fast64_t", () => CSharpPrimitiveType.ULong());
-            
-            typeDefConverter.StandardCTypes.Add("u_short", () => CSharpPrimitiveType.UShort());
-            typeDefConverter.StandardCTypes.Add("ushort", () => CSharpPrimitiveType.UShort());
-
-            typeDefConverter.StandardCTypes.Add("u_int", () => CSharpPrimitiveType.UInt());
-            typeDefConverter.StandardCTypes.Add("uint", () => CSharpPrimitiveType.UInt());
-
-            typeDefConverter.StandardCTypes.Add("u_long", () => CSharpPrimitiveType.UIntPtr());
-            typeDefConverter.StandardCTypes.Add("ulong", () => CSharpPrimitiveType.UIntPtr());
-
-            typeDefConverter.StandardCTypes.Add("unsigned __int128", () => new CSharpFreeType("global::System.UInt128"));
-
-            csOptions.AdditionalArguments.Add("-nostdinc");
-
             var files = new List<string>()
             {
                 Path.Combine(sysIncludes, "unistd.h"),
@@ -470,6 +417,64 @@ internal partial class MuslGenerator
                 // Missing files
                 Path.Combine(sysIncludes, "sched.h"),
             };
+
+            var typeDefConverter = csOptions.Plugins.OfType<DefaultTypedefConverter>().First();
+
+            typeDefConverter.StandardCTypes.Add("__s128", () => new CSharpFreeType("global::System.Int128"));
+            typeDefConverter.StandardCTypes.Add("__u128", () => new CSharpFreeType("global::System.UInt128"));
+            typeDefConverter.StandardCTypes.Add("__s8", () => CSharpPrimitiveType.SByte());
+            typeDefConverter.StandardCTypes.Add("__u8", () => CSharpPrimitiveType.Byte());
+            typeDefConverter.StandardCTypes.Add("__s16", () => CSharpPrimitiveType.Short());
+            typeDefConverter.StandardCTypes.Add("__u16", () => CSharpPrimitiveType.UShort());
+            typeDefConverter.StandardCTypes.Add("__s32", () => CSharpPrimitiveType.Int());
+            typeDefConverter.StandardCTypes.Add("__u32", () => CSharpPrimitiveType.UInt());
+            typeDefConverter.StandardCTypes.Add("__s64", () => CSharpPrimitiveType.Long());
+            typeDefConverter.StandardCTypes.Add("__u64", () => CSharpPrimitiveType.ULong());
+            typeDefConverter.StandardCTypes.Add("__le16", () => CSharpPrimitiveType.UShort());
+            typeDefConverter.StandardCTypes.Add("__be16", () => CSharpPrimitiveType.UShort()); // we only support little-endian
+            typeDefConverter.StandardCTypes.Add("__le32", () => CSharpPrimitiveType.UInt());
+            typeDefConverter.StandardCTypes.Add("__be32", () => CSharpPrimitiveType.UInt()); // we only support little-endian
+            typeDefConverter.StandardCTypes.Add("__le64", () => CSharpPrimitiveType.ULong());
+            typeDefConverter.StandardCTypes.Add("__be64", () => CSharpPrimitiveType.ULong()); // we only support little-endian
+            typeDefConverter.StandardCTypes.Add("__sum16", () => CSharpPrimitiveType.UShort());
+            typeDefConverter.StandardCTypes.Add("__wsum", () => CSharpPrimitiveType.UInt());
+            typeDefConverter.StandardCTypes.Add("u_int8_t", () => CSharpPrimitiveType.Byte());
+            typeDefConverter.StandardCTypes.Add("u_int16_t", () => CSharpPrimitiveType.UShort());
+            typeDefConverter.StandardCTypes.Add("u_int32_t", () => CSharpPrimitiveType.UInt());
+            typeDefConverter.StandardCTypes.Add("u_char", () => CSharpPrimitiveType.Byte());
+
+            typeDefConverter.StandardCTypes.Add("int_fast8_t", () => CSharpPrimitiveType.SByte());
+            typeDefConverter.StandardCTypes.Add("int_least8_t", () => CSharpPrimitiveType.SByte());
+            typeDefConverter.StandardCTypes.Add("uint_fast8_t", () => CSharpPrimitiveType.Byte());
+            typeDefConverter.StandardCTypes.Add("uint_least8_t", () => CSharpPrimitiveType.Byte());
+
+            typeDefConverter.StandardCTypes.Add("int_least16_t", () => CSharpPrimitiveType.Short());
+            typeDefConverter.StandardCTypes.Add("uint_least16_t", () => CSharpPrimitiveType.UShort());
+            typeDefConverter.StandardCTypes.Add("int_fast16_t", () => CSharpPrimitiveType.Int());
+            typeDefConverter.StandardCTypes.Add("uint_fast16_t", () => CSharpPrimitiveType.UInt());
+
+            typeDefConverter.StandardCTypes.Add("int_fast32_t", () => CSharpPrimitiveType.Int());
+            typeDefConverter.StandardCTypes.Add("uint_fast32_t", () => CSharpPrimitiveType.UInt());
+            typeDefConverter.StandardCTypes.Add("int_least32_t", () => CSharpPrimitiveType.Int());
+            typeDefConverter.StandardCTypes.Add("uint_least32_t", () => CSharpPrimitiveType.UInt());
+
+            typeDefConverter.StandardCTypes.Add("int_least64_t", () => CSharpPrimitiveType.Long());
+            typeDefConverter.StandardCTypes.Add("uint_least64_t", () => CSharpPrimitiveType.ULong());
+            typeDefConverter.StandardCTypes.Add("int_fast64_t", () => CSharpPrimitiveType.Long());
+            typeDefConverter.StandardCTypes.Add("uint_fast64_t", () => CSharpPrimitiveType.ULong());
+
+            typeDefConverter.StandardCTypes.Add("u_short", () => CSharpPrimitiveType.UShort());
+            typeDefConverter.StandardCTypes.Add("ushort", () => CSharpPrimitiveType.UShort());
+
+            typeDefConverter.StandardCTypes.Add("u_int", () => CSharpPrimitiveType.UInt());
+            typeDefConverter.StandardCTypes.Add("uint", () => CSharpPrimitiveType.UInt());
+
+            typeDefConverter.StandardCTypes.Add("u_long", () => CSharpPrimitiveType.UIntPtr());
+            typeDefConverter.StandardCTypes.Add("ulong", () => CSharpPrimitiveType.UIntPtr());
+
+            typeDefConverter.StandardCTypes.Add("unsigned __int128", () => new CSharpFreeType("global::System.UInt128"));
+
+
 
             var csCompilation = CSharpConverter.Convert(files, csOptions);
             {
