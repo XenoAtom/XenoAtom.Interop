@@ -25,7 +25,7 @@ namespace XenoAtom.Interop
                 
                 public musl.ino_t st_ino;
                 
-                public musl.x86_64.nlink_t st_nlink;
+                public musl.nlink_t st_nlink;
                 
                 public musl.mode_t st_mode;
                 
@@ -39,7 +39,7 @@ namespace XenoAtom.Interop
                 
                 public musl.off_t st_size;
                 
-                public musl.x86_64.blksize_t st_blksize;
+                public musl.blksize_t st_blksize;
                 
                 public musl.blkcnt_t st_blocks;
                 

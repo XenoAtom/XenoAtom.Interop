@@ -622,7 +622,7 @@ internal partial class MuslGenerator
         var archElements = new Dictionary<string, HashSet<CSharpElement>>();
 
         var baseArchName = "x86_64";
-        Compare(baseArchName, mapArchToCompilation, sharedElements, archElements);
+        ProcessAndDispatchArchDependentElements(baseArchName, mapArchToCompilation, sharedElements, archElements);
         var baseCompilation = mapArchToCompilation[baseArchName];
 
         Console.WriteLine("-------------------------------------------------------------------");
@@ -1058,7 +1058,7 @@ internal partial class MuslGenerator
         return summary;
     }
 
-    private static void Compare(string baseArch, Dictionary<string, CSharpCompilation> mapArchToElements, HashSet<CSharpElement> sharedElements, Dictionary<string, HashSet<CSharpElement>> archElements)
+    private static void ProcessAndDispatchArchDependentElements(string baseArch, Dictionary<string, CSharpCompilation> mapArchToElements, HashSet<CSharpElement> sharedElements, Dictionary<string, HashSet<CSharpElement>> archElements)
     {
         var pairCompilation = new List<(string Name, Dictionary<string, CSharpElement> MapElements)>();
         foreach (var pair in mapArchToElements)
@@ -1133,12 +1133,21 @@ internal partial class MuslGenerator
                 foreach (var toElement in elementEqualsLocal)
                 {
                     allElementEquals.Add(toElement);
-
                 }
             }
             else
             {
-                AddArchElement(archElements, pairCompilation[baseCompilationIndex].Name, fromElement);
+                // Special case for blksize_t and nlink_t for x86_64
+                // We want to have them in the standard interface even if they are not equal to the aarch64
+                // So that we can create custom general stat function that will disptach to the correct arch stat function
+                if (fromName == "blksize_t" || fromName == "nlink_t")
+                {
+                    sharedElements.Add(fromElement);
+                }
+                else
+                {
+                    AddArchElement(archElements, pairCompilation[baseCompilationIndex].Name, fromElement);
+                }
             }
         }
 

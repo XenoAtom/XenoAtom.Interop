@@ -530,6 +530,52 @@ namespace XenoAtom.Interop
             public static bool operator !=(ino_t left, ino_t right) => !left.Equals(right);
         }
         
+        public readonly partial struct nlink_t : IEquatable<nlink_t>
+        {
+            public nlink_t(nuint value) => this.Value = value;
+            
+            public nuint Value { get; }
+            
+            public override bool Equals(object obj) => obj is nlink_t other && Equals(other);
+            
+            public bool Equals(nlink_t other) => Value.Equals(other.Value);
+            
+            public override int GetHashCode() => Value.GetHashCode();
+            
+            public override string ToString() => Value.ToString();
+            
+            public static implicit operator nuint (musl.nlink_t from) => from.Value;
+            
+            public static implicit operator musl.nlink_t (nuint from) => new musl.nlink_t(from);
+            
+            public static bool operator ==(nlink_t left, nlink_t right) => left.Equals(right);
+            
+            public static bool operator !=(nlink_t left, nlink_t right) => !left.Equals(right);
+        }
+        
+        public readonly partial struct blksize_t : IEquatable<blksize_t>
+        {
+            public blksize_t(nint value) => this.Value = value;
+            
+            public nint Value { get; }
+            
+            public override bool Equals(object obj) => obj is blksize_t other && Equals(other);
+            
+            public bool Equals(blksize_t other) => Value.Equals(other.Value);
+            
+            public override int GetHashCode() => Value.GetHashCode();
+            
+            public override string ToString() => Value.ToString();
+            
+            public static implicit operator nint (musl.blksize_t from) => from.Value;
+            
+            public static implicit operator musl.blksize_t (nint from) => new musl.blksize_t(from);
+            
+            public static bool operator ==(blksize_t left, blksize_t right) => left.Equals(right);
+            
+            public static bool operator !=(blksize_t left, blksize_t right) => !left.Equals(right);
+        }
+        
         public readonly partial struct blkcnt_t : IEquatable<blkcnt_t>
         {
             public blkcnt_t(long value) => this.Value = value;
