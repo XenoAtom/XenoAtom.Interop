@@ -1,57 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <IsPackable>true</IsPackable>
-    <RootNamespace>XenoAtom.Interop</RootNamespace>
-    <PublishAot>true</PublishAot>
-    <!-- Enable AOT analyzers -->
-    <IsAotCompatible>true</IsAotCompatible>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <!-- Disable warnings for missing/invalid documentation - as it is automatically generated from C/C++ we might have errors -->
-    <NoWarn>CS8981;CS8909;CS1584;CS1574;CS1572;CS1591;CS1573;CS0419;CS1658</NoWarn>
-  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props"/>
 
   <PropertyGroup>
     <Description>This is a default project description</Description>
-    <Copyright>Alexandre Mutel</Copyright>
-    <NeutralLanguage>en-US</NeutralLanguage>
-    <Authors>Alexandre Mutel</Authors>
     <PackageTags>tag1;tag2;tag3</PackageTags>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <PackageIcon>XenoAtom.Interop.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/xoofx/XenoAtom.Interop.sqlite</PackageProjectUrl>
-    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
-    <!--Add support for sourcelink-->
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- Disable runtime marshalling to make sure that we are controlling/using raw marshalling for char/bool -->
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.DisableRuntimeMarshallingAttribute" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\..\common\UTF8Marshaler.cs" Link="UTF8Marshaler.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)../../../img/XenoAtom.Interop.png" Pack="true" PackagePath="/" />
-    <None Include="$(MSBuildThisFileDirectory)../readme.md" Pack="true" PackagePath="/" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MinVer" Version="5.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="generated\" />
-  </ItemGroup>
 </Project>

@@ -38,6 +38,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.sqlite.Tests", "sqlite\XenoAtom.Interop.sqlite.Tests\XenoAtom.Interop.sqlite.Tests.csproj", "{D2146638-059A-4C90-99F1-3582F8E96CED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20-libraries", "20-libraries", "{DA3698BE-1790-4569-A569-ECA2F29E25A9}"
+	ProjectSection(SolutionItems) = preProject
+		LibraryShared.props = LibraryShared.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "musl", "musl", "{8F07A42A-67D3-4E3C-8C1F-ADA11D4A9FCA}"
 EndProject
