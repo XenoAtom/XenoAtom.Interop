@@ -597,7 +597,16 @@ internal partial class MuslGenerator
                 {
                     var memberName = GetNativeMemberName((ICSharpMember)member);
 
-                    if (_symbols.TryGetValue(memberName, out var symbolDescriptions))
+                    string? symbolDescription = null;
+                    if (!ListOfErrno.TryGetValue(memberName, out symbolDescription))
+                    {
+                        if (_symbols.TryGetValue(memberName, out var symbolDescriptions))
+                        {
+                            symbolDescription = symbolDescriptions[0];
+                        }
+                    }
+
+                    if (symbolDescription != null)
                     {
                         if (member is ICSharpWithComment memberWithComment)
                         {
@@ -612,7 +621,7 @@ internal partial class MuslGenerator
                             {
                                 Children =
                                 {
-                                    new CSharpTextComment(symbolDescriptions[0]) // Only take the first description
+                                    new CSharpTextComment(symbolDescription) // Only take the first description
                                 }
                             });
                         }
