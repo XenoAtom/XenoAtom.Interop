@@ -1,16 +1,16 @@
-name: ci_build_common
+name: ci_build_codegen
 
 on:
   push:
     paths:
     - 'src/*'
-    - 'src/common/**'
+    - 'src/codegen/**'
   pull_request:
 
 jobs:
   build:
     uses: xoofx/.github/.github/workflows/dotnet.yml@main
     with:
-      dotnet-releaser-path: 'src/common/dotnet-releaser.toml'
+      dotnet-releaser-path: 'src/dotnet-releaser.toml'
     secrets:
       NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

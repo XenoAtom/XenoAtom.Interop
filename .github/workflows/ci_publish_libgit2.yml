@@ -1,16 +1,18 @@
-name: ci_build_common
+name: ci_publish_libgit2
 
 on:
   push:
+    tags:
+      - "libgit2/*"
     paths:
     - 'src/*'
-    - 'src/common/**'
+    - 'src/libgit2/**'
   pull_request:
 
 jobs:
   build:
     uses: xoofx/.github/.github/workflows/dotnet.yml@main
     with:
-      dotnet-releaser-path: 'src/common/dotnet-releaser.toml'
+      dotnet-releaser-path: 'src/libgit2/dotnet-releaser.toml'
     secrets:
       NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

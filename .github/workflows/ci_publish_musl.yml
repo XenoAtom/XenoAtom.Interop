@@ -1,16 +1,18 @@
-name: ci_build_common
+name: ci_publish_musl
 
 on:
   push:
+    tags:
+      - "musl/*"
     paths:
     - 'src/*'
-    - 'src/common/**'
+    - 'src/musl/**'
   pull_request:
 
 jobs:
   build:
     uses: xoofx/.github/.github/workflows/dotnet.yml@main
     with:
-      dotnet-releaser-path: 'src/common/dotnet-releaser.toml'
+      dotnet-releaser-path: 'src/musl/dotnet-releaser.toml'
     secrets:
       NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
