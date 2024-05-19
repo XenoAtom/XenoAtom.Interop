@@ -115,7 +115,7 @@ public class GeneratorManager
         }
 
         var newReadmeText = newReadme.ToString();
-        if (newReadmeText != string.Join(Environment.NewLine, readmeLines))
+        if (newReadmeText != string.Join(Environment.NewLine, readmeLines) + Environment.NewLine)
         {
             Console.WriteLine($"=================================================");
             File.WriteAllText(readmeFile, newReadmeText);

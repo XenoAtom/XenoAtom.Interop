@@ -9,13 +9,14 @@ This **XenoAtom.Interop** project provides a set of C# libraries to interop with
 - **API generated automatically** from C/C++ headers providing a near **100% API coverage**.
 - **Low-level interop** with C/C++ libraries
   - The C/C++ API exposed is raw and will use pointers...etc.
-  - Some functions taking or returning strings try to offer a more user-friendly API by using `string` (but the raw function is still accessible!)
+  - Pure [Function Pointers](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/function-pointers) generated for callbacks, no managed delegates.
   - Similarly for `ReadOnlySpan<byte>` whenever possible.
 - **Modern interop** using [`[LibraryImport]`](https://learn.microsoft.com/en-us/dotnet/standard/native-interop/pinvoke-source-generation) with P/Invoke source generation.
+  - Some functions taking or returning strings try to offer a more user-friendly API by using `string` (but the raw function is still accessible!)
   - Fast UTF16 to UTF8 string marshalling with zero allocations (for small strings).
   - [`DllImportResolver`](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.nativelibrary.setdllimportresolver) support for each library to customize loading the native library.
 - No native binaries are provided, **only the P/Invoke bindings**.
-  - But some NuGet packages providing native libraries are compatible. See the list of available libraries in each package.
+  - But some 3rd party NuGet packages might provide compatible native libraries. See the list of available compatible packages in each library below.
 - **Simple API XML documentation** is provided for each library (extracted from the C/C++ headers).
 - Support only from `net8.0`+
 
@@ -38,6 +39,8 @@ The following libraries are available:
 <!-- XENOATOM_INTEROP END - DO NOT EDIT --->
 
 - `all`: The library is available for all supported architectures.
+- For `musl` library, it will work if `musl` is installed on the system. Typically on Alpine Linux you don't need to install anything.
+  So the targets `linux-musl-x64` and `linux-musl-arm64` are supported by default.
 
 ## 📜 User Guide
 
