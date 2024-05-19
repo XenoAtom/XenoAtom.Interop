@@ -57,6 +57,24 @@ partial class Program
             NativeNuGets = [new("LibGit2Sharp.NativeBinaries", "2.0.322")],
             Generator = desc => new LibGit2Generator(desc),
             ApkDeps = ["libgit2-dev"],
+            UsageInCSharp =
+                """
+                Example of using this library in C#:
+
+                ```csharp
+                using static XenoAtom.Interop.libgit2;
+
+                // Initialize libgit2
+                var ret = git_libgit2_init();
+                ret.Check(); // Automatically throws LibGit2Exception exception if the return value is not 0
+                
+                // Open a repository
+                git_repository_open(out var repo, "path/to/repo").Check();
+                
+                // Do something with the repository
+                // ...
+                ```
+                """
         },
         new()
         {
@@ -67,6 +85,25 @@ partial class Program
             NativeNuGets = [new("SQLitePCLRaw.lib.e_sqlite3", "2.1.8")],
             Generator = desc => new SqliteGenerator(desc),
             ApkDeps = ["sqlite-dev"],
+            UsageInCSharp =
+                """
+                Example of using this library in C#:
+
+                ```csharp
+                using static XenoAtom.Interop.sqlite;
+
+                // Open a connection to a database
+                var ret = sqlite3_open("path/to/database", out var db);
+                if (ret != SQLITE_OK)
+                {
+                    var errmsg = sqlite3_errmsg(db);
+                    // ...
+                }
+
+                // Do something with the database
+                // ...
+                ```
+                """
         },
         new()
         {
@@ -82,6 +119,31 @@ partial class Program
             ],
             Generator = desc => new ZlibGenerator(desc),
             ApkDeps = ["zlib-dev"],
+            UsageInCSharp =
+                """
+                Example of using this library in C#:
+
+                ```csharp
+                using static XenoAtom.Interop.zlib;
+
+                // Compress a buffer
+                var data = Encoding.UTF8.GetBytes("Hello, World!");
+                var compressedData = new byte[32];
+                var ret = compress(compressedData, out var compressedSize, data);
+                if (ret != Z_OK)
+                {
+                    // ...
+                }
+                
+                // Decompress a buffer
+                var decompressedData = new byte[32];
+                ret = uncompress(decompressedData, out var decompressedSize, compressedData);
+                if (ret != Z_OK)
+                {
+                    // ...
+                }
+                ```
+                """
         },
     ];
 }

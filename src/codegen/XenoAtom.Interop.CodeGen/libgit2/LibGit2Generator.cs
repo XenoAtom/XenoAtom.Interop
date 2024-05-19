@@ -336,6 +336,13 @@ typedef int git_result;
         return csCompilation;
     }
 
+    protected override string? GetUrlDocumentationForCppFunction(CppFunction cppFunction)
+    {
+        // https://libgit2.org/libgit2/#v1.8.1/group/blob/git_blob_lookup
+        var includeName = Path.GetFileNameWithoutExtension(cppFunction.SourceFile);
+        return $"https://libgit2.org/libgit2/#v{NativeVersion}/group/{includeName}/{cppFunction.Name}";
+    }
+
     private static string ToPascalCase(string name)
     {
         var builder = new StringBuilder();

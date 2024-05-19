@@ -1,3 +1,6 @@
+// Copyright (c) Alexandre Mutel. All rights reserved.
+// Licensed under the BSD-Clause 2 license.
+// See license.txt file in the project root for full license information.
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -132,6 +135,17 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
         }
 
         return csCompilation;
+    }
+
+    protected override string? GetUrlDocumentationForCppFunction(CppFunction cppFunction)
+    {
+        // sqlite3_column_bytes16  => https://www.sqlite.org/c3ref/column_blob.html
+        if (MapFunctionToUrlPart.TryGetValue(cppFunction.Name, out var urlPart))
+        {
+            return $"{Descriptor.Url}{urlPart}";
+        }
+
+        return null;
     }
 
     private void ProcessStringArgs(CSharpMethod csMethod)

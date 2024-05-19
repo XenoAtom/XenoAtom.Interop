@@ -11,6 +11,28 @@ zlib compression library. For more information, see [zlib](https://zlib.net/).
 
 After installing the package, you can access the library through the static class `XenoAtom.Interop.zlib`.
 
+Example of using this library in C#:
+
+```csharp
+using static XenoAtom.Interop.zlib;
+
+// Compress a buffer
+var data = Encoding.UTF8.GetBytes("Hello, World!");
+var compressedData = new byte[32];
+var ret = compress(compressedData, out var compressedSize, data);
+if (ret != Z_OK)
+{
+    // ...
+}
+
+// Decompress a buffer
+var decompressedData = new byte[32];
+ret = uncompress(decompressedData, out var decompressedSize, compressedData);
+if (ret != Z_OK)
+{
+    // ...
+}
+```
 ## 📦 Compatible Native Binaries
 
 This library does not provide C native binaries but only P/Invoke .NET bindings to `zlib` `1.3.1-r0`.
@@ -18,7 +40,8 @@ This library does not provide C native binaries but only P/Invoke .NET bindings 
 If the native library is already installed on your system, check the version installed. If you are using this library on Alpine Linux, see the compatible version in the [Supported API](#supported-api) section below.
 Other OS might require a different setup.
 
-For convenience, you can install an existing NuGet package (outside of XenoAtom.Interop project) that is providing native binaries. The following packages were tested with this package:
+For convenience, you can install an existing NuGet package (outside of XenoAtom.Interop project) that is providing native binaries.
+The following packages were tested and are compatible with **XenoAtom.Interop.zlib**:
 
 | NuGet Package with Native Binaries | Version |
 |------------------------------------|---------|

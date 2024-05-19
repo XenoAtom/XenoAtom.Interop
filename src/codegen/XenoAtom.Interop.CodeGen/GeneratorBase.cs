@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CppAst;
 using CppAst.CodeGen.Common;
@@ -47,6 +48,8 @@ public abstract class GeneratorBase
 
     public LibDescriptor Descriptor { get; }
 
+    public string? NativeVersion { get; private set; }
+
     public string LibName => Descriptor.Name;
 
     public bool IsCommonLib => LibName == "common";
@@ -69,6 +72,14 @@ public abstract class GeneratorBase
         _apkManager = apkHelper;
 
         await DownloadApkDependencies();
+
+        if (!IsCommonLib && Descriptor.ApkDeps.Length > 0)
+        {
+            var packageInfo = Apk.GetPackages(ApkManager.DefaultArch)[Descriptor.ApkDeps[0]];
+            var version = packageInfo.Version;
+            version = Regex.Replace(version, "-r.*$", string.Empty);
+            NativeVersion = version;
+        }
 
         GenerateGitHubWorkflows();
 
@@ -232,7 +243,8 @@ public abstract class GeneratorBase
 
             if (Descriptor.NativeNuGets != null)
             {
-                builder.AppendLine("For convenience, you can install an existing NuGet package (outside of XenoAtom.Interop project) that is providing native binaries. The following packages were tested with this package:");
+                builder.AppendLine($"For convenience, you can install an existing NuGet package (outside of XenoAtom.Interop project) that is providing native binaries.");
+                builder.AppendLine($"The following packages were tested and are compatible with **XenoAtom.Interop.{LibName}**:");
                 builder.AppendLine();
                 builder.AppendLine("| NuGet Package with Native Binaries | Version |");
                 builder.AppendLine("|------------------------------------|---------|");
