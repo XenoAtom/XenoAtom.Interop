@@ -214,10 +214,12 @@ public abstract class GeneratorBase
         if (Descriptor.CppDescription != null)
         {
             builder.Append(Descriptor.CppDescription);
-            builder.Append(" ");
         }
 
-        builder.Append($"For more information, see [{Descriptor.Name}]({Descriptor.Url}) website.");
+        if (!IsCommonLib)
+        {
+            builder.Append($" For more information, see [{Descriptor.Name}]({Descriptor.Url}) website.");
+        }
 
         builder.AppendLine();
         builder.AppendLine("## 💻 Usage");

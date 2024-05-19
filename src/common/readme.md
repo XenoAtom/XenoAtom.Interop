@@ -6,7 +6,7 @@ This package provides the shared types `FixedArray#<T>` to interop between .NET 
 
 This package is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
 
-For more information, see [common](https://github.com/XenoAtom/Interop) website.
+
 ## 💻 Usage
 
 Example of using this library in C#:
