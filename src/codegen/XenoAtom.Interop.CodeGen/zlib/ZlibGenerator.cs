@@ -159,7 +159,7 @@ internal partial class ZlibGenerator(LibDescriptor descriptor) : GeneratorBase(d
             if (returnElementType is CppPrimitiveType { Kind: CppPrimitiveKind.Char })
             {
                 newManagedMethod ??= csMethod.Clone();
-                newManagedMethod.Name = $"{newManagedMethod.Name}_string";
+                csMethod.Name = $"{csMethod.Name}_";
                 newManagedMethod.ReturnType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String())
                 {
                     Attributes = { new CSharpMarshalUsingAttribute("typeof(Utf8CustomMarshaller)") { Scope = CSharpAttributeScope.Return } }

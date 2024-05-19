@@ -288,7 +288,7 @@ namespace XenoAtom.Interop
         /// lifetime of the git_worktree</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_worktree_name(libgit2.git_worktree wt);
+        public static partial byte* git_worktree_name_(libgit2.git_worktree wt);
         
         /// <summary>
         /// Retrieve the name of the worktree
@@ -299,7 +299,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_worktree_name_string(libgit2.git_worktree wt);
+        public static partial string git_worktree_name(libgit2.git_worktree wt);
         
         /// <summary>
         /// Retrieve the filesystem path for the worktree
@@ -309,7 +309,7 @@ namespace XenoAtom.Interop
         /// is valid for the lifetime of the git_worktree.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_worktree_path(libgit2.git_worktree wt);
+        public static partial byte* git_worktree_path_(libgit2.git_worktree wt);
         
         /// <summary>
         /// Retrieve the filesystem path for the worktree
@@ -320,7 +320,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_worktree_path_string(libgit2.git_worktree wt);
+        public static partial string git_worktree_path(libgit2.git_worktree wt);
         
         /// <summary>
         /// Initialize git_worktree_prune_options structure

@@ -217,7 +217,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the log msg</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_entry_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_reflog_entry_message(libgit2.git_reflog_entry entry);
+        public static partial byte* git_reflog_entry_message_(libgit2.git_reflog_entry entry);
         
         /// <summary>
         /// Get the log message
@@ -227,7 +227,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_entry_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_reflog_entry_message_string(libgit2.git_reflog_entry entry);
+        public static partial string git_reflog_entry_message(libgit2.git_reflog_entry entry);
         
         /// <summary>
         /// Free the reflog

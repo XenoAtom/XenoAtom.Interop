@@ -130,7 +130,7 @@ namespace XenoAtom.Interop
         /// <returns>@return ref name.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_annotated_commit_ref(libgit2.git_annotated_commit commit);
+        public static partial byte* git_annotated_commit_ref_(libgit2.git_annotated_commit commit);
         
         /// <summary>
         /// Get the refname that the given `git_annotated_commit` refers to.
@@ -140,7 +140,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_annotated_commit_ref_string(libgit2.git_annotated_commit commit);
+        public static partial string git_annotated_commit_ref(libgit2.git_annotated_commit commit);
         
         /// <summary>
         /// Frees a `git_annotated_commit`.

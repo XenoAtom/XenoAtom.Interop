@@ -168,7 +168,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_type2string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_object_type2string(libgit2.git_object_t type);
+        public static partial byte* git_object_type2string_(libgit2.git_object_t type);
         
         /// <summary>
         /// Convert an object type to its string representation.
@@ -182,7 +182,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_type2string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_object_type2string_string(libgit2.git_object_t type);
+        public static partial string git_object_type2string(libgit2.git_object_t type);
         
         /// <summary>
         /// Convert a string object type representation to it's git_object_t.

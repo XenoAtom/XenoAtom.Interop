@@ -546,7 +546,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_symbolic_target")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_reference_symbolic_target(libgit2.git_reference @ref);
+        public static partial byte* git_reference_symbolic_target_(libgit2.git_reference @ref);
         
         /// <summary>
         /// Get full name to the reference pointed to by a symbolic reference.
@@ -559,7 +559,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_symbolic_target")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_reference_symbolic_target_string(libgit2.git_reference @ref);
+        public static partial string git_reference_symbolic_target(libgit2.git_reference @ref);
         
         /// <summary>
         /// Get the type of a reference.
@@ -583,7 +583,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_reference_name(libgit2.git_reference @ref);
+        public static partial byte* git_reference_name_(libgit2.git_reference @ref);
         
         /// <summary>
         /// Get the full name of a reference.
@@ -596,7 +596,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_reference_name_string(libgit2.git_reference @ref);
+        public static partial string git_reference_name(libgit2.git_reference @ref);
         
         /// <summary>
         /// Resolve a symbolic reference to a direct reference.
@@ -1166,7 +1166,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_shorthand")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_reference_shorthand(libgit2.git_reference @ref);
+        public static partial byte* git_reference_shorthand_(libgit2.git_reference @ref);
         
         /// <summary>
         /// Get the reference's short name
@@ -1181,6 +1181,6 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_shorthand")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_reference_shorthand_string(libgit2.git_reference @ref);
+        public static partial string git_reference_shorthand(libgit2.git_reference @ref);
     }
 }

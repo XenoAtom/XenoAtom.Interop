@@ -262,7 +262,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_packbuilder_name(libgit2.git_packbuilder pb);
+        public static partial byte* git_packbuilder_name_(libgit2.git_packbuilder pb);
         
         /// <summary>
         /// Get the unique name for the resulting packfile.
@@ -276,7 +276,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_packbuilder_name_string(libgit2.git_packbuilder pb);
+        public static partial string git_packbuilder_name(libgit2.git_packbuilder pb);
         
         /// <summary>
         /// Create the new pack and pass each object to the callback

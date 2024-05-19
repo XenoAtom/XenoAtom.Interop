@@ -3362,21 +3362,21 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_libversion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_libversion();
+        public static partial byte* sqlite3_libversion_();
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_libversion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_libversion_string();
+        public static partial string sqlite3_libversion();
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_sourceid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_sourceid();
+        public static partial byte* sqlite3_sourceid_();
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_sourceid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_sourceid_string();
+        public static partial string sqlite3_sourceid();
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_libversion_number")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -3392,12 +3392,12 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_compileoption_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_compileoption_get(int N);
+        public static partial byte* sqlite3_compileoption_get_(int N);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_compileoption_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_compileoption_get_string(int N);
+        public static partial string sqlite3_compileoption_get(int N);
         
         /// <summary>
         /// * CAPI3REF: Test To See If The Library Is Threadsafe
@@ -5319,7 +5319,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_uri_parameter")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_uri_parameter(sqlite.sqlite3_filename z, byte* zParam);
+        public static partial byte* sqlite3_uri_parameter_(sqlite.sqlite3_filename z, byte* zParam);
         
         /// <summary>
         /// * CAPI3REF: Obtain Values For URI Parameters
@@ -5388,7 +5388,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_uri_parameter")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_uri_parameter_string(sqlite.sqlite3_filename z, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> zParam);
+        public static partial string sqlite3_uri_parameter(sqlite.sqlite3_filename z, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> zParam);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_uri_boolean")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -5408,12 +5408,12 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_uri_key")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_uri_key(sqlite.sqlite3_filename z, int N);
+        public static partial byte* sqlite3_uri_key_(sqlite.sqlite3_filename z, int N);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_uri_key")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_uri_key_string(sqlite.sqlite3_filename z, int N);
+        public static partial string sqlite3_uri_key(sqlite.sqlite3_filename z, int N);
         
         /// <summary>
         /// * CAPI3REF:  Translate filenames
@@ -5444,7 +5444,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_filename_database")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_filename_database(sqlite.sqlite3_filename arg0);
+        public static partial byte* sqlite3_filename_database_(sqlite.sqlite3_filename arg0);
         
         /// <summary>
         /// * CAPI3REF:  Translate filenames
@@ -5476,25 +5476,25 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_filename_database")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_filename_database_string(sqlite.sqlite3_filename arg0);
+        public static partial string sqlite3_filename_database(sqlite.sqlite3_filename arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_filename_journal")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_filename_journal(sqlite.sqlite3_filename arg0);
+        public static partial byte* sqlite3_filename_journal_(sqlite.sqlite3_filename arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_filename_journal")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_filename_journal_string(sqlite.sqlite3_filename arg0);
+        public static partial string sqlite3_filename_journal(sqlite.sqlite3_filename arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_filename_wal")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_filename_wal(sqlite.sqlite3_filename arg0);
+        public static partial byte* sqlite3_filename_wal_(sqlite.sqlite3_filename arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_filename_wal")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_filename_wal_string(sqlite.sqlite3_filename arg0);
+        public static partial string sqlite3_filename_wal(sqlite.sqlite3_filename arg0);
         
         /// <summary>
         /// * CAPI3REF:  Database File Corresponding To A Journal
@@ -5705,30 +5705,30 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_errmsg")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_errmsg(sqlite.sqlite3 arg0);
+        public static partial byte* sqlite3_errmsg_(sqlite.sqlite3 arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_errmsg")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_errmsg_string(sqlite.sqlite3 arg0);
+        public static partial string sqlite3_errmsg(sqlite.sqlite3 arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_errmsg16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_errmsg16(sqlite.sqlite3 arg0);
+        public static partial void* sqlite3_errmsg16_(sqlite.sqlite3 arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_errmsg16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_errmsg16_string(sqlite.sqlite3 arg0);
+        public static partial string sqlite3_errmsg16(sqlite.sqlite3 arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_errstr")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_errstr(int arg0);
+        public static partial byte* sqlite3_errstr_(int arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_errstr")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_errstr_string(int arg0);
+        public static partial string sqlite3_errstr(int arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_error_offset")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -6051,7 +6051,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_sql")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_sql(sqlite.sqlite3_stmt pStmt);
+        public static partial byte* sqlite3_sql_(sqlite.sqlite3_stmt pStmt);
         
         /// <summary>
         /// * CAPI3REF: Retrieving Statement SQL
@@ -6097,7 +6097,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_sql")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_sql_string(sqlite.sqlite3_stmt pStmt);
+        public static partial string sqlite3_sql(sqlite.sqlite3_stmt pStmt);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_expanded_sql")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -6482,7 +6482,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_bind_parameter_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_bind_parameter_name(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial byte* sqlite3_bind_parameter_name_(sqlite.sqlite3_stmt arg0, int arg1);
         
         /// <summary>
         /// * CAPI3REF: Name Of A Host Parameter
@@ -6513,7 +6513,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_bind_parameter_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_bind_parameter_name_string(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial string sqlite3_bind_parameter_name(sqlite.sqlite3_stmt arg0, int arg1);
         
         /// <summary>
         /// * CAPI3REF: Index Of A Parameter With A Given Name
@@ -6614,7 +6614,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_column_name(sqlite.sqlite3_stmt arg0, int N);
+        public static partial byte* sqlite3_column_name_(sqlite.sqlite3_stmt arg0, int N);
         
         /// <summary>
         /// * CAPI3REF: Column Names In A Result Set
@@ -6646,16 +6646,16 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_column_name_string(sqlite.sqlite3_stmt arg0, int N);
+        public static partial string sqlite3_column_name(sqlite.sqlite3_stmt arg0, int N);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_name16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_column_name16(sqlite.sqlite3_stmt arg0, int N);
+        public static partial void* sqlite3_column_name16_(sqlite.sqlite3_stmt arg0, int N);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_name16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_column_name16_string(sqlite.sqlite3_stmt arg0, int N);
+        public static partial string sqlite3_column_name16(sqlite.sqlite3_stmt arg0, int N);
         
         /// <summary>
         /// * CAPI3REF: Source Of Data In A Query Result
@@ -6701,7 +6701,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_database_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_column_database_name(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial byte* sqlite3_column_database_name_(sqlite.sqlite3_stmt arg0, int arg1);
         
         /// <summary>
         /// * CAPI3REF: Source Of Data In A Query Result
@@ -6748,52 +6748,52 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_database_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_column_database_name_string(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial string sqlite3_column_database_name(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_database_name16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_column_database_name16(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial void* sqlite3_column_database_name16_(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_database_name16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_column_database_name16_string(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial string sqlite3_column_database_name16(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_table_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_column_table_name(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial byte* sqlite3_column_table_name_(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_table_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_column_table_name_string(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial string sqlite3_column_table_name(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_table_name16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_column_table_name16(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial void* sqlite3_column_table_name16_(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_table_name16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_column_table_name16_string(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial string sqlite3_column_table_name16(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_origin_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_column_origin_name(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial byte* sqlite3_column_origin_name_(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_origin_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_column_origin_name_string(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial string sqlite3_column_origin_name(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_origin_name16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_column_origin_name16(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial void* sqlite3_column_origin_name16_(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_origin_name16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_column_origin_name16_string(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial string sqlite3_column_origin_name16(sqlite.sqlite3_stmt arg0, int arg1);
         
         /// <summary>
         /// * CAPI3REF: Declared Datatype Of A Query Result
@@ -6827,7 +6827,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_decltype")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_column_decltype(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial byte* sqlite3_column_decltype_(sqlite.sqlite3_stmt arg0, int arg1);
         
         /// <summary>
         /// * CAPI3REF: Declared Datatype Of A Query Result
@@ -6862,16 +6862,16 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_decltype")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_column_decltype_string(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial string sqlite3_column_decltype(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_decltype16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_column_decltype16(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial void* sqlite3_column_decltype16_(sqlite.sqlite3_stmt arg0, int arg1);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_decltype16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_column_decltype16_string(sqlite.sqlite3_stmt arg0, int arg1);
+        public static partial string sqlite3_column_decltype16(sqlite.sqlite3_stmt arg0, int arg1);
         
         /// <summary>
         /// * CAPI3REF: Evaluate An SQL Statement
@@ -7199,12 +7199,12 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_text16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_column_text16(sqlite.sqlite3_stmt arg0, int iCol);
+        public static partial void* sqlite3_column_text16_(sqlite.sqlite3_stmt arg0, int iCol);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_text16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_column_text16_string(sqlite.sqlite3_stmt arg0, int iCol);
+        public static partial string sqlite3_column_text16(sqlite.sqlite3_stmt arg0, int iCol);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_column_value")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -7751,30 +7751,30 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_value_text16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_value_text16(sqlite.sqlite3_value arg0);
+        public static partial void* sqlite3_value_text16_(sqlite.sqlite3_value arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_value_text16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_value_text16_string(sqlite.sqlite3_value arg0);
+        public static partial string sqlite3_value_text16(sqlite.sqlite3_value arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_value_text16le")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_value_text16le(sqlite.sqlite3_value arg0);
+        public static partial void* sqlite3_value_text16le_(sqlite.sqlite3_value arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_value_text16le")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_value_text16le_string(sqlite.sqlite3_value arg0);
+        public static partial string sqlite3_value_text16le(sqlite.sqlite3_value arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_value_text16be")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* sqlite3_value_text16be(sqlite.sqlite3_value arg0);
+        public static partial void* sqlite3_value_text16be_(sqlite.sqlite3_value arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_value_text16be")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.LPWStr)]
-        public static partial string sqlite3_value_text16be_string(sqlite.sqlite3_value arg0);
+        public static partial string sqlite3_value_text16be(sqlite.sqlite3_value arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_value_bytes")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -8790,7 +8790,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_db_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_db_name(sqlite.sqlite3 db, int N);
+        public static partial byte* sqlite3_db_name_(sqlite.sqlite3 db, int N);
         
         /// <summary>
         /// * CAPI3REF: Return The Schema Name For A Database Connection
@@ -8815,7 +8815,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_db_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_db_name_string(sqlite.sqlite3 db, int N);
+        public static partial string sqlite3_db_name(sqlite.sqlite3 db, int N);
         
         /// <summary>
         /// * CAPI3REF: Return The Filename For A Database Connection
@@ -11783,7 +11783,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_vtab_collation")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* sqlite3_vtab_collation(ref sqlite.sqlite3_index_info arg0, int arg1);
+        public static partial byte* sqlite3_vtab_collation_(ref sqlite.sqlite3_index_info arg0, int arg1);
         
         /// <summary>
         /// * CAPI3REF: Determine The Collation For a Virtual Table Constraint
@@ -11820,7 +11820,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_vtab_collation")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string sqlite3_vtab_collation_string(ref sqlite.sqlite3_index_info arg0, int arg1);
+        public static partial string sqlite3_vtab_collation(ref sqlite.sqlite3_index_info arg0, int arg1);
         
         /// <summary>
         /// * CAPI3REF: Determine if a virtual table query is DISTINCT

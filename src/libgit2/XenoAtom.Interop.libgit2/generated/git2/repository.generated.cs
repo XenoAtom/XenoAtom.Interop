@@ -927,7 +927,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_repository_path(libgit2.git_repository repo);
+        public static partial byte* git_repository_path_(libgit2.git_repository repo);
         
         /// <summary>
         /// Get the path of this repository
@@ -941,7 +941,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_repository_path_string(libgit2.git_repository repo);
+        public static partial string git_repository_path(libgit2.git_repository repo);
         
         /// <summary>
         /// Get the path of the working directory for this repository
@@ -954,7 +954,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_workdir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_repository_workdir(libgit2.git_repository repo);
+        public static partial byte* git_repository_workdir_(libgit2.git_repository repo);
         
         /// <summary>
         /// Get the path of the working directory for this repository
@@ -968,7 +968,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_workdir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_repository_workdir_string(libgit2.git_repository repo);
+        public static partial string git_repository_workdir(libgit2.git_repository repo);
         
         /// <summary>
         /// Get the path of the shared common directory for this repository.
@@ -982,7 +982,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_commondir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_repository_commondir(libgit2.git_repository repo);
+        public static partial byte* git_repository_commondir_(libgit2.git_repository repo);
         
         /// <summary>
         /// Get the path of the shared common directory for this repository.
@@ -997,7 +997,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_commondir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_repository_commondir_string(libgit2.git_repository repo);
+        public static partial string git_repository_commondir(libgit2.git_repository repo);
         
         /// <summary>
         /// Set the path to the working directory for this repository
@@ -1390,7 +1390,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the active namespace, or NULL if there isn't one</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_get_namespace")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_repository_get_namespace(libgit2.git_repository repo);
+        public static partial byte* git_repository_get_namespace_(libgit2.git_repository repo);
         
         /// <summary>
         /// Get the currently active namespace for this repository
@@ -1400,7 +1400,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_get_namespace")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_repository_get_namespace_string(libgit2.git_repository repo);
+        public static partial string git_repository_get_namespace(libgit2.git_repository repo);
         
         /// <summary>
         /// Determine if the repository was a shallow clone

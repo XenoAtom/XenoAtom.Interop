@@ -380,7 +380,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the credential username, or NULL if not applicable</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_get_username")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_credential_get_username(libgit2.git_credential cred);
+        public static partial byte* git_credential_get_username_(libgit2.git_credential cred);
         
         /// <summary>
         /// Return the username associated with a credential object.
@@ -390,7 +390,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_get_username")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_credential_get_username_string(libgit2.git_credential cred);
+        public static partial string git_credential_get_username(libgit2.git_credential cred);
         
         /// <summary>
         /// Create a new plain-text username and password credential object.

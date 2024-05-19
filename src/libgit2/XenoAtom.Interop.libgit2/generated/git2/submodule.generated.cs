@@ -412,7 +412,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Pointer to the submodule name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_submodule_name(libgit2.git_submodule submodule);
+        public static partial byte* git_submodule_name_(libgit2.git_submodule submodule);
         
         /// <summary>
         /// Get the name of submodule.
@@ -422,7 +422,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_submodule_name_string(libgit2.git_submodule submodule);
+        public static partial string git_submodule_name(libgit2.git_submodule submodule);
         
         /// <summary>
         /// Get the path to the submodule.
@@ -435,7 +435,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_submodule_path(libgit2.git_submodule submodule);
+        public static partial byte* git_submodule_path_(libgit2.git_submodule submodule);
         
         /// <summary>
         /// Get the path to the submodule.
@@ -449,7 +449,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_submodule_path_string(libgit2.git_submodule submodule);
+        public static partial string git_submodule_path(libgit2.git_submodule submodule);
         
         /// <summary>
         /// Get the URL for the submodule.
@@ -458,7 +458,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Pointer to the submodule url</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_submodule_url(libgit2.git_submodule submodule);
+        public static partial byte* git_submodule_url_(libgit2.git_submodule submodule);
         
         /// <summary>
         /// Get the URL for the submodule.
@@ -468,7 +468,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_submodule_url_string(libgit2.git_submodule submodule);
+        public static partial string git_submodule_url(libgit2.git_submodule submodule);
         
         /// <summary>
         /// Resolve a submodule url relative to the given repository.
@@ -499,7 +499,7 @@ namespace XenoAtom.Interop
         /// <returns>@return Pointer to the submodule branch</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_branch")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_submodule_branch(libgit2.git_submodule submodule);
+        public static partial byte* git_submodule_branch_(libgit2.git_submodule submodule);
         
         /// <summary>
         /// Get the branch for the submodule.
@@ -509,7 +509,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_branch")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_submodule_branch_string(libgit2.git_submodule submodule);
+        public static partial string git_submodule_branch(libgit2.git_submodule submodule);
         
         /// <summary>
         /// Set the branch for the submodule in the configuration

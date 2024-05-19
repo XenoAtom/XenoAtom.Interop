@@ -185,7 +185,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the note message</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_note_message(libgit2.git_note note);
+        public static partial byte* git_note_message_(libgit2.git_note note);
         
         /// <summary>
         /// Get the note message
@@ -195,7 +195,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_note_message_string(libgit2.git_note note);
+        public static partial string git_note_message(libgit2.git_note note);
         
         /// <summary>
         /// Get the note object's id

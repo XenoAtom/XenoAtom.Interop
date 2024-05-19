@@ -251,7 +251,7 @@ namespace XenoAtom.Interop
         /// <returns>@return The original `HEAD` ref name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_orig_head_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_rebase_orig_head_name(libgit2.git_rebase rebase);
+        public static partial byte* git_rebase_orig_head_name_(libgit2.git_rebase rebase);
         
         /// <summary>
         /// Gets the original `HEAD` ref name for merge rebases.
@@ -261,7 +261,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_orig_head_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_rebase_orig_head_name_string(libgit2.git_rebase rebase);
+        public static partial string git_rebase_orig_head_name(libgit2.git_rebase rebase);
         
         /// <summary>
         /// Gets the original `HEAD` id for merge rebases.
@@ -279,7 +279,7 @@ namespace XenoAtom.Interop
         /// <returns>@return The `onto` ref name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_onto_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_rebase_onto_name(libgit2.git_rebase rebase);
+        public static partial byte* git_rebase_onto_name_(libgit2.git_rebase rebase);
         
         /// <summary>
         /// Gets the `onto` ref name for merge rebases.
@@ -289,7 +289,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_onto_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_rebase_onto_name_string(libgit2.git_rebase rebase);
+        public static partial string git_rebase_onto_name(libgit2.git_rebase rebase);
         
         /// <summary>
         /// Gets the `onto` id for merge rebases.

@@ -142,7 +142,7 @@ namespace XenoAtom.Interop
         /// <returns>@return name of the tag</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_tag_name(libgit2.git_tag tag);
+        public static partial byte* git_tag_name_(libgit2.git_tag tag);
         
         /// <summary>
         /// Get the name of a tag
@@ -152,7 +152,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_tag_name_string(libgit2.git_tag tag);
+        public static partial string git_tag_name(libgit2.git_tag tag);
         
         /// <summary>
         /// Get the tagger (author) of a tag
@@ -170,7 +170,7 @@ namespace XenoAtom.Interop
         /// <returns>@return message of the tag or NULL when unspecified</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_tag_message(libgit2.git_tag tag);
+        public static partial byte* git_tag_message_(libgit2.git_tag tag);
         
         /// <summary>
         /// Get the message of a tag
@@ -180,7 +180,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_tag_message_string(libgit2.git_tag tag);
+        public static partial string git_tag_message(libgit2.git_tag tag);
         
         /// <summary>
         /// Create a new tag in the repository from an object

@@ -338,7 +338,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the name of the file</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_tree_entry_name(libgit2.git_tree_entry entry);
+        public static partial byte* git_tree_entry_name_(libgit2.git_tree_entry entry);
         
         /// <summary>
         /// Get the filename of a tree entry
@@ -348,7 +348,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_tree_entry_name_string(libgit2.git_tree_entry entry);
+        public static partial string git_tree_entry_name(libgit2.git_tree_entry entry);
         
         /// <summary>
         /// Get the id of the object pointed by the entry

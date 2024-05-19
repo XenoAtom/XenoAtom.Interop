@@ -54,7 +54,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the refspec's source specifier</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_src")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_refspec_src(libgit2.git_refspec refspec);
+        public static partial byte* git_refspec_src_(libgit2.git_refspec refspec);
         
         /// <summary>
         /// Get the source specifier
@@ -64,7 +64,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_src")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_refspec_src_string(libgit2.git_refspec refspec);
+        public static partial string git_refspec_src(libgit2.git_refspec refspec);
         
         /// <summary>
         /// Get the destination specifier
@@ -73,7 +73,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the refspec's destination specifier</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_dst")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_refspec_dst(libgit2.git_refspec refspec);
+        public static partial byte* git_refspec_dst_(libgit2.git_refspec refspec);
         
         /// <summary>
         /// Get the destination specifier
@@ -83,7 +83,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_dst")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_refspec_dst_string(libgit2.git_refspec refspec);
+        public static partial string git_refspec_dst(libgit2.git_refspec refspec);
         
         /// <summary>
         /// Get the refspec's string
@@ -92,7 +92,7 @@ namespace XenoAtom.Interop
         /// <returns>@returns the refspec's original string</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_refspec_string(libgit2.git_refspec refspec);
+        public static partial byte* git_refspec_string_(libgit2.git_refspec refspec);
         
         /// <summary>
         /// Get the refspec's string
@@ -102,7 +102,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_refspec_string_string(libgit2.git_refspec refspec);
+        public static partial string git_refspec_string(libgit2.git_refspec refspec);
         
         /// <summary>
         /// Get the force update setting

@@ -143,7 +143,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message_encoding")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_commit_message_encoding(libgit2.git_commit commit);
+        public static partial byte* git_commit_message_encoding_(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the encoding for the message of a commit,
@@ -158,7 +158,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message_encoding")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_commit_message_encoding_string(libgit2.git_commit commit);
+        public static partial string git_commit_message_encoding(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the full message of a commit.
@@ -171,7 +171,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_commit_message(libgit2.git_commit commit);
+        public static partial byte* git_commit_message_(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the full message of a commit.
@@ -185,7 +185,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_commit_message_string(libgit2.git_commit commit);
+        public static partial string git_commit_message(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the full raw message of a commit.
@@ -194,7 +194,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the raw message of a commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message_raw")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_commit_message_raw(libgit2.git_commit commit);
+        public static partial byte* git_commit_message_raw_(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the full raw message of a commit.
@@ -204,7 +204,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message_raw")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_commit_message_raw_string(libgit2.git_commit commit);
+        public static partial string git_commit_message_raw(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the short "summary" of the git commit message.
@@ -217,7 +217,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_summary")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_commit_summary(libgit2.git_commit commit);
+        public static partial byte* git_commit_summary_(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the short "summary" of the git commit message.
@@ -231,7 +231,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_summary")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_commit_summary_string(libgit2.git_commit commit);
+        public static partial string git_commit_summary(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the long "body" of the git commit message.
@@ -246,7 +246,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_body")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_commit_body(libgit2.git_commit commit);
+        public static partial byte* git_commit_body_(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the long "body" of the git commit message.
@@ -262,7 +262,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_body")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_commit_body_string(libgit2.git_commit commit);
+        public static partial string git_commit_body(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the commit time (i.e. committer time) of a commit.
@@ -337,7 +337,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the header text of the commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_raw_header")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_commit_raw_header(libgit2.git_commit commit);
+        public static partial byte* git_commit_raw_header_(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the full raw text of the commit header.
@@ -347,7 +347,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_raw_header")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_commit_raw_header_string(libgit2.git_commit commit);
+        public static partial string git_commit_raw_header(libgit2.git_commit commit);
         
         /// <summary>
         /// Get the tree pointed to by a commit.

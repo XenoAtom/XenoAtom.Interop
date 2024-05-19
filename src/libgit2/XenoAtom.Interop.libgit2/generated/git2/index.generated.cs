@@ -373,7 +373,7 @@ namespace XenoAtom.Interop
         /// <returns>@return path to index file or NULL for in-memory index</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_index_path(libgit2.git_index index);
+        public static partial byte* git_index_path_(libgit2.git_index index);
         
         /// <summary>
         /// Get the full path to the index file on disk.
@@ -383,7 +383,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_index_path_string(libgit2.git_index index);
+        public static partial string git_index_path(libgit2.git_index index);
         
         /// <summary>
         /// Read a tree into the index file with stats

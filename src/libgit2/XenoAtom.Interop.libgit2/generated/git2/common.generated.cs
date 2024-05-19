@@ -281,7 +281,7 @@ namespace XenoAtom.Interop
         /// <returns>@return the name of the prerelease state or NULL</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_prerelease")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_libgit2_prerelease();
+        public static partial byte* git_libgit2_prerelease_();
         
         /// <summary>
         /// Return the prerelease state of the libgit2 library currently being
@@ -294,7 +294,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_prerelease")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_libgit2_prerelease_string();
+        public static partial string git_libgit2_prerelease();
         
         /// <summary>
         /// Query compile time options for libgit2.

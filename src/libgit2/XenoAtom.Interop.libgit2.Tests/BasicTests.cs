@@ -21,7 +21,7 @@ public class BasicTests : TestBase
         // Alternatively git_repository_open(out var repo, repoPath);
         result = git_repository_open_ext(out var repo, AppContext.BaseDirectory, 0, default);
         Assert.IsTrue(result.Success);
-        var repoPath2 = git_repository_path_string(repo);
+        var repoPath2 = git_repository_path(repo);
         Assert.AreEqual(repoPath, repoPath2);
 
         // Iterate over the commits
@@ -38,7 +38,7 @@ public class BasicTests : TestBase
             result = git_commit_lookup(out var commit, repo, oid);
             Assert.IsTrue(result.Success);
 
-            var message = git_commit_message_string(commit);
+            var message = git_commit_message(commit);
             hashCode += message.GetHashCode();
             git_commit_free(commit);
         }

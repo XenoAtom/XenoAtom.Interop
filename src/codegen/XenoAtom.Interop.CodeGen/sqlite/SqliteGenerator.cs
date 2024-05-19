@@ -182,7 +182,7 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
             if (returnElementType is CppPrimitiveType { Kind: CppPrimitiveKind.Char })
             {
                 newManagedMethod ??= csMethod.Clone();
-                newManagedMethod.Name = $"{newManagedMethod.Name}_string";
+                csMethod.Name = $"{csMethod.Name}_";
                 newManagedMethod.ReturnType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String())
                 {
                     Attributes = { new CSharpMarshalUsingAttribute("typeof(Utf8CustomMarshaller)") { Scope = CSharpAttributeScope.Return } }
@@ -191,7 +191,7 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
             else if (csMethod.Name.Contains("16") && returnElementType is CppPrimitiveType { Kind: CppPrimitiveKind.Void })
             {
                 newManagedMethod ??= csMethod.Clone();
-                newManagedMethod.Name = $"{newManagedMethod.Name}_string";
+                csMethod.Name = $"{csMethod.Name}_";
                 newManagedMethod.ReturnType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String())
                 {
                     Attributes = { new CSharpMarshalAsAttribute(UnmanagedType.LPWStr)

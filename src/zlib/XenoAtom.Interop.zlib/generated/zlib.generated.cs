@@ -191,12 +191,12 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "zlibVersion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* zlibVersion();
+        public static partial byte* zlibVersion_();
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "zlibVersion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string zlibVersion_string();
+        public static partial string zlibVersion();
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "deflate")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

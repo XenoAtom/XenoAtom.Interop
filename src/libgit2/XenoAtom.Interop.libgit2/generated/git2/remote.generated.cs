@@ -768,7 +768,7 @@ namespace XenoAtom.Interop
         /// <returns>@return a pointer to the name or NULL for in-memory remotes</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_remote_name(libgit2.git_remote remote);
+        public static partial byte* git_remote_name_(libgit2.git_remote remote);
         
         /// <summary>
         /// Get the remote's name
@@ -778,7 +778,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_remote_name_string(libgit2.git_remote remote);
+        public static partial string git_remote_name(libgit2.git_remote remote);
         
         /// <summary>
         /// Get the remote's url
@@ -792,7 +792,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_remote_url(libgit2.git_remote remote);
+        public static partial byte* git_remote_url_(libgit2.git_remote remote);
         
         /// <summary>
         /// Get the remote's url
@@ -807,7 +807,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_remote_url_string(libgit2.git_remote remote);
+        public static partial string git_remote_url(libgit2.git_remote remote);
         
         /// <summary>
         /// Get the remote's url for pushing.
@@ -821,7 +821,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_pushurl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_remote_pushurl(libgit2.git_remote remote);
+        public static partial byte* git_remote_pushurl_(libgit2.git_remote remote);
         
         /// <summary>
         /// Get the remote's url for pushing.
@@ -836,7 +836,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_pushurl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_remote_pushurl_string(libgit2.git_remote remote);
+        public static partial string git_remote_pushurl(libgit2.git_remote remote);
         
         /// <summary>
         /// Set the remote's url in the configuration

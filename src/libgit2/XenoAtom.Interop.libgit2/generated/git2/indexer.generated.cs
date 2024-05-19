@@ -216,7 +216,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_indexer_name(libgit2.git_indexer idx);
+        public static partial byte* git_indexer_name_(libgit2.git_indexer idx);
         
         /// <summary>
         /// Get the unique name for the resulting packfile.
@@ -230,7 +230,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_indexer_name_string(libgit2.git_indexer idx);
+        public static partial string git_indexer_name(libgit2.git_indexer idx);
         
         /// <summary>
         /// Free the indexer and its resources

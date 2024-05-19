@@ -324,7 +324,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_match_list_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_pathspec_match_list_entry(libgit2.git_pathspec_match_list m, nuint pos);
+        public static partial byte* git_pathspec_match_list_entry_(libgit2.git_pathspec_match_list m, nuint pos);
         
         /// <summary>
         /// Get a matching filename by position.
@@ -339,7 +339,7 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_match_list_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_pathspec_match_list_entry_string(libgit2.git_pathspec_match_list m, nuint pos);
+        public static partial string git_pathspec_match_list_entry(libgit2.git_pathspec_match_list m, nuint pos);
         
         /// <summary>
         /// Get a matching diff delta by position.
@@ -379,7 +379,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_match_list_failed_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* git_pathspec_match_list_failed_entry(libgit2.git_pathspec_match_list m, nuint pos);
+        public static partial byte* git_pathspec_match_list_failed_entry_(libgit2.git_pathspec_match_list m, nuint pos);
         
         /// <summary>
         /// Get an original pathspec string that had no matches.
@@ -393,6 +393,6 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_pathspec_match_list_failed_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string git_pathspec_match_list_failed_entry_string(libgit2.git_pathspec_match_list m, nuint pos);
+        public static partial string git_pathspec_match_list_failed_entry(libgit2.git_pathspec_match_list m, nuint pos);
     }
 }
