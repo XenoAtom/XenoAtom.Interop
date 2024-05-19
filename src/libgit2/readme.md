@@ -6,10 +6,12 @@ This package provides a low-level and modern .NET P/Invoke wrapper around the li
 
 This package is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
 
-libgit2 is a pure C implementation of the git core methods. For more information, see [libgit2](https://libgit2.org/).
+libgit2 is a pure C implementation of the git core methods. For more information, see [libgit2](https://libgit2.org/) website.
 ## 💻 Usage
 
 After installing the package, you can access the library through the static class `XenoAtom.Interop.libgit2`.
+
+For more information, see the official documentation at https://libgit2.org/libgit2/.
 
 Example of using this library in C#:
 

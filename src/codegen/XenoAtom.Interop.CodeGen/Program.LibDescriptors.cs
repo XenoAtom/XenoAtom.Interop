@@ -23,6 +23,20 @@ partial class Program
             Url = "https://github.com/XenoAtom/Interop",
             Generator = desc => new EmptyGenerator(desc),
             HasGeneratedFolder = false,
+            UsageInCSharp =
+                """
+                Example of using this library in C#:
+
+                ```csharp
+                using XenoAtom.Interop;
+
+                // Create a fixed array of 10 integers
+                var array = new FixedArray10<int>();
+                array[0] = 42;
+                array[1] = 43;
+                // ...
+                ```
+                """
         },
         new()
         {
@@ -30,6 +44,7 @@ partial class Program
             Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the musl libc library for accessing low-level sys kernel functions.",
             CppDescription = "musl libc is an implementation of the C standard library providing access to the Linux kernel syscalls.",
             Url = "https://musl.libc.org/",
+            UrlDocumentation = "https://musl.libc.org/manual.html",
             Generator = desc => new MuslGenerator(desc),
             ApkDeps = ["musl-dev", "linux-headers"],
             UsageInCSharp =
@@ -54,6 +69,7 @@ partial class Program
             Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the libgit2 library.",
             CppDescription = "libgit2 is a pure C implementation of the git core methods.",
             Url = "https://libgit2.org/",
+            UrlDocumentation = "https://libgit2.org/libgit2/",
             NativeNuGets = [new("LibGit2Sharp.NativeBinaries", "2.0.322")],
             Generator = desc => new LibGit2Generator(desc),
             ApkDeps = ["libgit2-dev"],
@@ -82,6 +98,7 @@ partial class Program
             Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the SQLite database engine.",
             CppDescription = "SQLite is a small and fast SQL database engine.",
             Url = "https://www.sqlite.org/",
+            UrlDocumentation = "https://www.sqlite.org/docs.html",
             NativeNuGets = [new("SQLitePCLRaw.lib.e_sqlite3", "2.1.8")],
             Generator = desc => new SqliteGenerator(desc),
             ApkDeps = ["sqlite-dev"],
@@ -111,6 +128,7 @@ partial class Program
             Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the zlib compression library.",
             CppDescription = "zlib compression library.",
             Url = "https://zlib.net/",
+            UrlDocumentation = "https://zlib.net/manual.html",
             NativeNuGets =
             [
                 new("elskom.zlib.redist.win", "1.2.13"),

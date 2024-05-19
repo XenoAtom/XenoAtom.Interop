@@ -17,6 +17,8 @@ public record LibDescriptor
 
     public required string Url { get; init; }
 
+    public string? UrlDocumentation { get; init; }
+
     public CompatibleNativeNuGet[]? NativeNuGets { get; init; } = null;
 
     public string[] ApkDeps { get; init; } = [];

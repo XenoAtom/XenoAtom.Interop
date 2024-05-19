@@ -6,10 +6,12 @@ This package provides a low-level and modern .NET P/Invoke wrapper around the mu
 
 This package is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
 
-musl libc is an implementation of the C standard library providing access to the Linux kernel syscalls. For more information, see [musl](https://musl.libc.org/).
+musl libc is an implementation of the C standard library providing access to the Linux kernel syscalls. For more information, see [musl](https://musl.libc.org/) website.
 ## 💻 Usage
 
 After installing the package, you can access the library through the static class `XenoAtom.Interop.musl`.
+
+For more information, see the official documentation at https://musl.libc.org/manual.html.
 
 Example of using this library in C#:
 

@@ -6,10 +6,12 @@ This package provides a low-level and modern .NET P/Invoke wrapper around the SQ
 
 This package is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
 
-SQLite is a small and fast SQL database engine. For more information, see [sqlite](https://www.sqlite.org/).
+SQLite is a small and fast SQL database engine. For more information, see [sqlite](https://www.sqlite.org/) website.
 ## 💻 Usage
 
 After installing the package, you can access the library through the static class `XenoAtom.Interop.sqlite`.
+
+For more information, see the official documentation at https://www.sqlite.org/docs.html.
 
 Example of using this library in C#:
 

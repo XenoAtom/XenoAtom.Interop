@@ -1,4 +1,4 @@
-# XenoAtom.Interop.common [![Build Status](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_common.yml/badge.svg)](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_common.yml) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.common.svg)](https://www.nuget.org/packages/XenoAtom.Interop.common/)
+# XenoAtom.Interop [![Build Status](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_common.yml/badge.svg)](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_common.yml) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.svg)](https://www.nuget.org/packages/XenoAtom.Interop/)
 
 This package provides the shared types `FixedArray#<T>` to interop between .NET and C/C++.
 
@@ -6,9 +6,20 @@ This package provides the shared types `FixedArray#<T>` to interop between .NET 
 
 This package is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
 
-For more information, see [common](https://github.com/XenoAtom/Interop).
+For more information, see [common](https://github.com/XenoAtom/Interop) website.
 ## 💻 Usage
 
+Example of using this library in C#:
+
+```csharp
+using XenoAtom.Interop;
+
+// Create a fixed array of 10 integers
+var array = new FixedArray10<int>();
+array[0] = 42;
+array[1] = 43;
+// ...
+```
 
 
 ## 🪪 License

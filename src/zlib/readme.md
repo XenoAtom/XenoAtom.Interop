@@ -6,10 +6,12 @@ This package provides a low-level and modern .NET P/Invoke wrapper around the zl
 
 This package is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
 
-zlib compression library. For more information, see [zlib](https://zlib.net/).
+zlib compression library. For more information, see [zlib](https://zlib.net/) website.
 ## 💻 Usage
 
 After installing the package, you can access the library through the static class `XenoAtom.Interop.zlib`.
+
+For more information, see the official documentation at https://zlib.net/manual.html.
 
 Example of using this library in C#:
 

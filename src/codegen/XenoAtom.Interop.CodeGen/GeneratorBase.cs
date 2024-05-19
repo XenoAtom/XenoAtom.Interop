@@ -16,6 +16,9 @@ using Zio.FileSystems;
 
 namespace XenoAtom.Interop.CodeGen;
 
+/// <summary>
+/// Base class for a code generator using the CppAst and CppAst.CodeGen library.
+/// </summary>
 public abstract class GeneratorBase
 {
     private ApkManager? _apkManager;
@@ -53,6 +56,8 @@ public abstract class GeneratorBase
     public string LibName => Descriptor.Name;
 
     public bool IsCommonLib => LibName == "common";
+
+    public string ManagedPackageName => IsCommonLib ? "XenoAtom.Interop" : $"XenoAtom.Interop.{LibName}";
 
     public string RepositoryRootFolder { get; }
 
@@ -212,15 +217,20 @@ public abstract class GeneratorBase
             builder.Append(" ");
         }
 
-        builder.Append($"For more information, see [{Descriptor.Name}]({Descriptor.Url}).");
+        builder.Append($"For more information, see [{Descriptor.Name}]({Descriptor.Url}) website.");
 
         builder.AppendLine();
         builder.AppendLine("## 💻 Usage");
         builder.AppendLine();
         if (!IsCommonLib)
         {
-            builder.AppendLine($"After installing the package, you can access the library through the static class `XenoAtom.Interop.{LibName}`.");
+            builder.AppendLine($"After installing the package, you can access the library through the static class `{ManagedPackageName}`.");
             builder.AppendLine();
+            if (Descriptor.UrlDocumentation != null)
+            {
+                builder.AppendLine($"For more information, see the official documentation at {Descriptor.UrlDocumentation}.");
+                builder.AppendLine();
+            }
         }
 
         if (Descriptor.UsageInCSharp != null)
@@ -244,7 +254,7 @@ public abstract class GeneratorBase
             if (Descriptor.NativeNuGets != null)
             {
                 builder.AppendLine($"For convenience, you can install an existing NuGet package (outside of XenoAtom.Interop project) that is providing native binaries.");
-                builder.AppendLine($"The following packages were tested and are compatible with **XenoAtom.Interop.{LibName}**:");
+                builder.AppendLine($"The following packages were tested and are compatible with **{ManagedPackageName}**:");
                 builder.AppendLine();
                 builder.AppendLine("| NuGet Package with Native Binaries | Version |");
                 builder.AppendLine("|------------------------------------|---------|");
@@ -313,7 +323,13 @@ public abstract class GeneratorBase
 
     private string ReadTemplateFileAndPatchTemplate(string templateFile)
     {
-        return PatchTemplate(File.ReadAllText(templateFile));
+        var text = PatchTemplate(File.ReadAllText(templateFile));
+
+        if (IsCommonLib && Path.GetFileName(templateFile) == "readme.md")
+        {
+            text = text.Replace("XenoAtom.Interop.common", "XenoAtom.Interop");
+        }
+        return text;
     }
 
     private Dictionary<string, List<CppFunction>> CollectAllCppFunctionAndInclude(CSharpCompilation csCompilation)
