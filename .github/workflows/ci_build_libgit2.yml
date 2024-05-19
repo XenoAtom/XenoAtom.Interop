@@ -2,6 +2,10 @@ name: ci_build_libgit2
 
 on:
   push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '**' 
     paths:
     - 'src/*.props'
     - 'src/libgit2/**'

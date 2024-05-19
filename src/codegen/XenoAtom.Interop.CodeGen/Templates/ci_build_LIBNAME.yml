@@ -2,6 +2,10 @@ name: ci_build_LIBNAME
 
 on:
   push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '**' 
     paths:
     - 'src/*.props'
     - 'src/LIBNAME/**'

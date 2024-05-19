@@ -2,6 +2,10 @@ name: ci_build_codegen
 
 on:
   push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '**' 
     paths:
     - 'src/*'
     - 'src/codegen/**'
