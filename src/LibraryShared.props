@@ -26,6 +26,9 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!-- Special configurable variable -->
+    <XenoAtomNoInterop>false</XenoAtomNoInterop>
+    <XenoAtomNoMinVer>false</XenoAtomNoMinVer>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,7 +40,7 @@
     <None Include="$(MSBuildThisFileDirectory)../img/XenoAtom.Interop.png" Pack="true" PackagePath="/" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(XenoAtomNoInterop)' == ''">
+  <ItemGroup Condition="'$(XenoAtomNoInterop)' == 'false'">
     <Compile Include="$(MSBuildThisFileDirectory)common/UTF8Marshaler.cs" Link="UTF8Marshaler.cs" />
     <Folder Include="generated\" />
   </ItemGroup>
@@ -46,7 +49,7 @@
     <None Include="../readme.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(XenoAtomNoMinVer)' == 'false'">
     <PackageReference Include="MinVer" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

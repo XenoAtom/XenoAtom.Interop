@@ -3,13 +3,14 @@
   <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props"/>
 
   <PropertyGroup>
-    <Description>LIBSUMMARY</Description>
-    <PackageTags>tag1;tag2;tag3</PackageTags>
+    <Description>This package provides the shared types `FixedArray#&gt;T&lt;` to interop between .NET and C/C++.</Description>
+    <PackageTags>pinvoke;interop</PackageTags>
     <MinVerTagPrefix>common/</MinVerTagPrefix>
     <XenoAtomNoInterop>true</XenoAtomNoInterop>
     <PackageId>XenoAtom.Interop</PackageId>
     <AssemblyName>XenoAtom.Interop</AssemblyName>
     <Version>1.0.0</Version>
+    <XenoAtomNoMinVer>true</XenoAtomNoMinVer>
   </PropertyGroup>
 
   <ItemGroup>

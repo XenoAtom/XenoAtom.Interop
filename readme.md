@@ -18,6 +18,7 @@ This **XenoAtom.Interop** project provides a set of C# libraries to interop with
 - No native binaries are provided, **only the P/Invoke bindings**.
   - But some 3rd party NuGet packages might provide compatible native libraries. See the list of available compatible packages in each library below.
 - **Simple API XML documentation** is provided for each library (extracted from the C/C++ headers).
+- **NativeAOT** Compatible.
 - Support only from `net8.0`+
 
 ## 📦 Libraries
@@ -44,7 +45,10 @@ The following libraries are available:
 
 ## 📜 User Guide
 
-For more details on how to use XenoAtom.Interop, please visit the [user guide](https://github.com/XenoAtom/XenoAtom.Interop/blob/main/doc/readme.md).
+Coming soon! 🤞
+
+<!--For more details on how to use XenoAtom.Interop, please visit the [user guide](https://github.com/XenoAtom/XenoAtom.Interop/blob/main/doc/readme.md).
+-->
 
 ## 🪪 License
 
