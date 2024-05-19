@@ -4,6 +4,9 @@ namespace XenoAtom.Interop.CodeGen.libgit2;
 
 partial class LibGit2Generator
 {
+    /// <summary>
+    /// List of functions that are expected to return a result that should be wrapped in a `git_result` object.
+    /// </summary>
     private static readonly HashSet<string> GitResultFunctions =
     [
         "git_libgit2_init",

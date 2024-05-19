@@ -2,8 +2,8 @@
   <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props"/>
 
   <PropertyGroup>
-    <Description>This is a default project description</Description>
-    <PackageTags>tag1;tag2;tag3</PackageTags>
+    <Description>This package provides a low-level and modern .NET P/Invoke wrapper around the libgit2 library.</Description>
+    <PackageTags>libgit2;git;pinvoke;interop</PackageTags>
     <MinVerTagPrefix>libgit2/</MinVerTagPrefix>
   </PropertyGroup>
 

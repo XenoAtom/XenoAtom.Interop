@@ -19,7 +19,7 @@ partial class Program
         new()
         {
             Name = "common",
-            Description = "Shared library providing `FixedArray#<T>` types for use in interop scenarios.",
+            Summary = "This package provides the shared types `FixedArray#<T>` to interop between .NET and C/C++.",
             Url = "https://github.com/XenoAtom/Interop",
             Generator = desc => new EmptyGenerator(desc),
             HasGeneratedFolder = false,
@@ -27,30 +27,52 @@ partial class Program
         new()
         {
             Name = "musl",
-            Description = "musl is an implementation of the C standard library built on top of the Linux system call API.",
+            Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the musl libc library for accessing low-level sys kernel functions.",
+            CppDescription = "musl libc is an implementation of the C standard library providing access to the Linux kernel syscalls.",
             Url = "https://musl.libc.org/",
-            Generator = desc => new MuslGenerator(desc)
+            Generator = desc => new MuslGenerator(desc),
+            ApkDeps = ["musl-dev", "linux-headers"],
+            UsageInCSharp =
+                """
+                Example of using this library in C#:
+                
+                ```csharp
+                using static XenoAtom.Interop.musl;
+                
+                var ret = mkdir("test_directory", S_IRWXU | S_IRWXG | S_IRWXO);
+                if (ret == -1)
+                {
+                    var lerrno = errno;
+                    // ...
+                }
+                ```
+                """
         },
         new()
         {
             Name = "libgit2",
-            Description = "libgit2 is a pure C implementation of the Git core methods.",
+            Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the libgit2 library.",
+            CppDescription = "libgit2 is a pure C implementation of the git core methods.",
             Url = "https://libgit2.org/",
             NativeNuGets = [new("LibGit2Sharp.NativeBinaries", "2.0.322")],
-            Generator = desc => new LibGit2Generator(desc)
+            Generator = desc => new LibGit2Generator(desc),
+            ApkDeps = ["libgit2-dev"],
         },
         new()
         {
             Name = "sqlite",
-            Description = "SQLite is a small and fast SQL database engine.",
+            Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the SQLite database engine.",
+            CppDescription = "SQLite is a small and fast SQL database engine.",
             Url = "https://www.sqlite.org/",
             NativeNuGets = [new("SQLitePCLRaw.lib.e_sqlite3", "2.1.8")],
-            Generator = desc => new SqliteGenerator(desc)
+            Generator = desc => new SqliteGenerator(desc),
+            ApkDeps = ["sqlite-dev"],
         },
         new()
         {
             Name = "zlib",
-            Description = "Zlib library",
+            Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the zlib compression library.",
+            CppDescription = "zlib compression library.",
             Url = "https://zlib.net/",
             NativeNuGets =
             [
@@ -58,7 +80,8 @@ partial class Program
                 new("elskom.zlib.redist.linux", "1.2.13"),
                 new("elskom.zlib.redist.osx", "1.2.13")
             ],
-            Generator = desc => new ZlibGenerator(desc)
+            Generator = desc => new ZlibGenerator(desc),
+            ApkDeps = ["zlib-dev"],
         },
     ];
 }

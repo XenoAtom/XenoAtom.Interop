@@ -24,7 +24,7 @@ internal partial class MuslGenerator : GeneratorBase
 
     private readonly Dictionary<UPath, CSharpClass> _mapArchFileToClass = new Dictionary<UPath, CSharpClass>();
 
-    private readonly Dictionary<string, string> _mapFunctionToSummary = new();
+    private readonly Dictionary<string, ManFunction> _mapFunctionToSummary = new();
     private readonly Dictionary<string, List<string>> _symbols = new();
     private readonly Dictionary<string, List<string>> _functionArguments = new();
 
@@ -54,8 +54,6 @@ internal partial class MuslGenerator : GeneratorBase
 
     protected override async Task<CSharpCompilation?> Generate()
     {
-        await Apk.EnsureIncludes("musl-dev");
-        await Apk.EnsureIncludes("linux-headers");
         await Apk.EnsureManPages();
 
         Console.WriteLine("----------------------------------------");
@@ -484,7 +482,7 @@ internal partial class MuslGenerator : GeneratorBase
             }
 
             // Remove duplicates from unitstd.generated.cs
-            var cs_unistd = GetLibClassFromGeneratedFile(csCompilation, "/unistd.generated.cs");
+            var cs_unistd = csCompilation.GetLibClassFromGeneratedFile("/unistd.generated.cs");
             foreach (var element in cs_unistd.Members.OfType<ICSharpMember>().ToList())
             {
                 switch (GetNativeMemberName(element))
@@ -510,7 +508,7 @@ internal partial class MuslGenerator : GeneratorBase
             }
 
             // Remove duplicates from stropts.generated.cs
-            var cs_stropts = GetLibClassFromGeneratedFile(csCompilation, "/stropts.generated.cs");
+            var cs_stropts = csCompilation.GetLibClassFromGeneratedFile("/stropts.generated.cs");
             foreach (var element in cs_stropts.Members.OfType<ICSharpMember>().ToList())
             {
                 switch (GetNativeMemberName(element))
@@ -692,6 +690,16 @@ internal partial class MuslGenerator : GeneratorBase
         return baseCompilation;
     }
 
+    protected override string? GetUrlDocumentationForCppFunction(CppFunction cppFunction)
+    {
+        if (_mapFunctionToSummary.TryGetValue(cppFunction.Name, out var manFunction))
+        {
+            return $"https://man7.org/linux/man-pages/man{manFunction.ManSection}/{manFunction.BaseFunctionName}.{manFunction.ManSection}.html";
+        }
+
+        return null;
+    }
+    
     private static string GetNativeMemberName(ICSharpMember member)
     {
         if (member is CSharpMethod method)
@@ -787,10 +795,10 @@ internal partial class MuslGenerator : GeneratorBase
         var currentSymbolBuilder = new StringBuilder();
         int indent = 0;
 
-        for (int i = 2; i <= 3; i++)
+        for (int manSection = 2; manSection <= 3; manSection++)
         {
             var prototypeLines = new List<string>();
-            foreach (var manPage in Directory.EnumerateFiles(Path.Combine(manIncludeFolder, $"man{i}"), "*.gz", SearchOption.AllDirectories))
+            foreach (var manPage in Directory.EnumerateFiles(Path.Combine(manIncludeFolder, $"man{manSection}"), "*.gz", SearchOption.AllDirectories))
             {
                 var defaultFunctionName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(manPage));
 
@@ -825,12 +833,12 @@ internal partial class MuslGenerator : GeneratorBase
                                 newSummary = char.ToUpper(newSummary[0]) + newSummary.Substring(1);
                                 foreach (var name in names)
                                 {
-                                    _mapFunctionToSummary[name] = newSummary;
+                                    _mapFunctionToSummary[name] = new ManFunction(manSection, defaultFunctionName, name, newSummary);
                                 }
                             }
                             else
                             {
-                                _mapFunctionToSummary[defaultFunctionName] = summary;
+                                _mapFunctionToSummary[defaultFunctionName] = new ManFunction(manSection, defaultFunctionName, defaultFunctionName, summary);
                             }
                         }
                         else if (line.Value == "SYNOPSIS")
@@ -1054,8 +1062,12 @@ internal partial class MuslGenerator : GeneratorBase
 
     private string? GetFunctionSummaryFromManPage(string functionName)
     {
-        _mapFunctionToSummary.TryGetValue(functionName, out var summary);
-        return summary;
+        if (_mapFunctionToSummary.TryGetValue(functionName, out var manFunction))
+        {
+            return manFunction.Summary;
+        }
+
+        return null;
     }
 
     private static void ProcessAndDispatchArchDependentElements(string baseArch, Dictionary<string, CSharpCompilation> mapArchToElements, HashSet<CSharpElement> sharedElements, Dictionary<string, HashSet<CSharpElement>> archElements)
@@ -1256,16 +1268,6 @@ internal partial class MuslGenerator : GeneratorBase
         }
     }
 
-    private static CSharpClass GetLibClassFromGeneratedFile(CSharpCompilation  csCompilation, string fromGeneratedHeaderFile)
-    {
-        var csGeneratedFile = csCompilation.Members.OfType<CSharpGeneratedFile>().FirstOrDefault(x => x.FilePath.FullName == fromGeneratedHeaderFile);
-        if (csGeneratedFile == null)
-        {
-            throw new Exception($"Cannot find {fromGeneratedHeaderFile}");
-        }
-        return csGeneratedFile.Members.OfType<CSharpNamespace>().First().Members.OfType<CSharpClass>().First();
-    }
-
     private static bool TryGetElementTypeFromPointerToConst(CppType cppType, out bool isConst, [NotNullWhen(true)] out CppType? elementType)
     {
         isConst = false;
@@ -1284,4 +1286,6 @@ internal partial class MuslGenerator : GeneratorBase
         elementType = null;
         return false;
     }
+
+    private record ManFunction(int ManSection, string BaseFunctionName, string FunctionName, string Summary);
 }

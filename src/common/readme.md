@@ -1,12 +1,15 @@
 # XenoAtom.Interop.common [![Build Status](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_common.yml/badge.svg)](https://github.com/XenoAtom/XenoAtom.Interop/actions/workflows/ci_build_common.yml) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.common.svg)](https://www.nuget.org/packages/XenoAtom.Interop.common/)
 
-LIBSUMMARY
-
-LIBDESCRIPTION
+This package provides the shared types `FixedArray#<T>` to interop between .NET and C/C++.
 
 ## ♻️ XenoAtom.Interop
 
-This project is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
+This package is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
+
+For more information, see [common](https://github.com/XenoAtom/Interop).
+## 💻 Usage
+
+
 
 ## 🪪 License
 

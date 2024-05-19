@@ -16,11 +16,7 @@ internal partial class ZlibGenerator(LibDescriptor descriptor) : GeneratorBase(d
 {
     protected override async Task<CSharpCompilation?> Generate()
     {
-        // Make sure that we download libgit2-dev includes
-        await Apk.EnsureIncludes("zlib-dev");
-
         var sysIncludes = Apk.GetSysIncludeDirectory("main");
-
         var mainInclude = Apk.GetIncludeDirectory("main");
         List<string> srcFolders =
         [

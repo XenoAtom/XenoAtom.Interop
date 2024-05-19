@@ -46,11 +46,7 @@ internal partial class LibGit2Generator : GeneratorBase
 
     protected override async Task<CSharpCompilation?> Generate()
     {
-        // Make sure that we download libgit2-dev includes
-        await Apk.EnsureIncludes("libgit2-dev");
-
         var sysIncludes = Apk.GetSysIncludeDirectory("main");
-
         var communityFolder = Apk.GetIncludeDirectory("community");
         List<string> srcFolders =
         [

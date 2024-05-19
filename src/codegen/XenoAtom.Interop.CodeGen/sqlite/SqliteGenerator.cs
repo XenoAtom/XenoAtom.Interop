@@ -4,9 +4,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using CppAst;
-using CppAst.CodeGen.Common;
 using CppAst.CodeGen.CSharp;
-using Zio.FileSystems;
 
 namespace XenoAtom.Interop.CodeGen.sqlite;
 
@@ -14,11 +12,7 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
 {
     protected override async Task<CSharpCompilation?> Generate()
     {
-        // Make sure that we download libgit2-dev includes
-        await Apk.EnsureIncludes("sqlite-dev");
-
         var sysIncludes = Apk.GetSysIncludeDirectory("main");
-
         var mainInclude = Apk.GetIncludeDirectory("main");
         List<string> srcFolders =
         [

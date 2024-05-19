@@ -3,8 +3,12 @@
 // See license.txt file in the project root for full license information.
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using CppAst;
 using CppAst.CodeGen.Common;
 using CppAst.CodeGen.CSharp;
 using Zio.FileSystems;
@@ -14,6 +18,7 @@ namespace XenoAtom.Interop.CodeGen;
 public abstract class GeneratorBase
 {
     private ApkManager? _apkManager;
+    private string? _packageDescriptionMarkdown;
 
     protected GeneratorBase(LibDescriptor descriptor)
     {
@@ -44,6 +49,8 @@ public abstract class GeneratorBase
 
     public string LibName => Descriptor.Name;
 
+    public bool IsCommonLib => LibName == "common";
+
     public string RepositoryRootFolder { get; }
 
     public string GitHubWorkflowsFolder { get; }
@@ -61,14 +68,32 @@ public abstract class GeneratorBase
     {
         _apkManager = apkHelper;
 
+        await DownloadApkDependencies();
+
         GenerateGitHubWorkflows();
 
-        GenerateLibraryProjectStructure();
+        if (!Directory.Exists(LibraryFolder))
+        {
+            Directory.CreateDirectory(LibraryFolder);
+        }
+
+        if (Descriptor.HasGeneratedFolder)
+        {
+            if (!Directory.Exists(GeneratedFolder))
+            {
+                Directory.CreateDirectory(GeneratedFolder);
+            }
+        }
     }
 
     public async Task Run()
     {
         var csCompilation = await Generate();
+
+        GenerateMarkdownDescription(csCompilation);
+
+        GenerateLibraryProjectStructure();
+        
         if (csCompilation == null)
         {
             return;
@@ -80,6 +105,11 @@ public abstract class GeneratorBase
             var codeWriter = new CodeWriter(new CodeWriterOptions(subfs));
             csCompilation.DumpTo(codeWriter);
         }
+    }
+
+    protected virtual string? GetUrlDocumentationForCppFunction(CppFunction cppFunction)
+    {
+        return null;
     }
 
     protected abstract Task<CSharpCompilation?> Generate();
@@ -110,11 +140,6 @@ public abstract class GeneratorBase
 
     private void GenerateLibraryProjectStructure()
     {
-        if (!Directory.Exists(LibraryFolder))
-        {
-            Directory.CreateDirectory(LibraryFolder);
-        }
-
         var libNameTemplateFolder = Path.Combine(TemplateFolder, "LIBNAME");
 
         foreach (var path in Directory.EnumerateFileSystemEntries(libNameTemplateFolder, "*.*", SearchOption.AllDirectories))
@@ -157,13 +182,108 @@ public abstract class GeneratorBase
             File.WriteAllText(outputFile, content);
         }
         
-        if (Descriptor.HasGeneratedFolder)
+    }
+
+    private async Task DownloadApkDependencies()
+    {
+        foreach (var apkDep in Descriptor.ApkDeps)
         {
-            if (!Directory.Exists(GeneratedFolder))
+            await Apk.EnsureIncludes(apkDep);
+        }
+    }
+
+    private void GenerateMarkdownDescription(CSharpCompilation? csCompilation)
+    {
+        var builder = new StringBuilder();
+        if (Descriptor.CppDescription != null)
+        {
+            builder.Append(Descriptor.CppDescription);
+            builder.Append(" ");
+        }
+
+        builder.Append($"For more information, see [{Descriptor.Name}]({Descriptor.Url}).");
+
+        builder.AppendLine();
+        builder.AppendLine("## 💻 Usage");
+        builder.AppendLine();
+        if (!IsCommonLib)
+        {
+            builder.AppendLine($"After installing the package, you can access the library through the static class `XenoAtom.Interop.{LibName}`.");
+            builder.AppendLine();
+        }
+
+        if (Descriptor.UsageInCSharp != null)
+        {
+            builder.AppendLine(Descriptor.UsageInCSharp);
+        }
+
+        if (csCompilation != null)
+        {
+            // Append the version
+            var packageInfo = Apk.GetPackages(ApkManager.DefaultArch)[Descriptor.ApkDeps[0]];
+
+            builder.AppendLine("## 📦 Compatible Native Binaries");
+            builder.AppendLine();
+            builder.AppendLine($"This library does not provide C native binaries but only P/Invoke .NET bindings to `{LibName}` `{packageInfo.Version}`.");
+            builder.AppendLine();
+            builder.AppendLine("If the native library is already installed on your system, check the version installed. If you are using this library on Alpine Linux, see the compatible version in the [Supported API](#supported-api) section below.");
+            builder.AppendLine("Other OS might require a different setup.");
+            builder.AppendLine();
+
+            if (Descriptor.NativeNuGets != null)
             {
-                Directory.CreateDirectory(GeneratedFolder);
+                builder.AppendLine("For convenience, you can install an existing NuGet package (outside of XenoAtom.Interop project) that is providing native binaries. The following packages were tested with this package:");
+                builder.AppendLine();
+                builder.AppendLine("| NuGet Package with Native Binaries | Version |");
+                builder.AppendLine("|------------------------------------|---------|");
+                foreach (var nativeNuGet in Descriptor.NativeNuGets)
+                {
+                    builder.AppendLine($"| [{nativeNuGet.Name}](https://www.nuget.org/packages/{nativeNuGet.Name}) | `{nativeNuGet.Version}`");
+                }
+                builder.AppendLine();
+            }
+
+            builder.AppendLine();
+            builder.AppendLine("## 📚 Supported API");
+            builder.AppendLine();
+            builder.AppendLine("> This package is based on the following header version:");
+            builder.AppendLine("> ");
+            builder.AppendLine($"> - {LibName} C include headers: [`{Descriptor.ApkDeps[0]}`]({Apk.GetPackageDescriptionUrl(packageInfo)})");
+            builder.AppendLine($"> - Version: `{packageInfo.Version}`");
+            builder.AppendLine($"> - Distribution: AlpineLinux `{Apk.Version}`");
+            builder.AppendLine();
+            builder.AppendLine("The following API were automatically generated from the C/C++ code:");
+            builder.AppendLine();
+
+            var map = CollectAllCppFunctionAndInclude(csCompilation);
+
+            foreach (var pair in map.OrderBy(x => x.Key, StringComparer.Ordinal))
+            {
+                builder.Append($"- {pair.Key}: ");
+                pair.Value.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
+                for (var i = 0; i < pair.Value.Count; i++)
+                {
+                    if (i > 0)
+                    {
+                        builder.Append(", ");
+                    }
+                    var cppFunction = pair.Value[i];
+                    var url = GetUrlDocumentationForCppFunction(cppFunction);
+                    if (url != null)
+                    {
+                        builder.Append($"[`{cppFunction.Name}`]({url})");
+                    }
+                    else
+                    {
+                        builder.Append($"`{cppFunction.Name}`");
+                    }
+                }
+
+                builder.AppendLine();
             }
         }
+
+        _packageDescriptionMarkdown = builder.ToString();
     }
 
     private string PatchFileName(string text)
@@ -173,11 +293,60 @@ public abstract class GeneratorBase
 
     private string PatchTemplate(string text)
     {
-        return text.Replace("LIBNAME", LibName, StringComparison.Ordinal);
+        var newText = text.Replace("LIBNAME", LibName, StringComparison.Ordinal);
+        newText = newText.Replace("LIBSUMMARY", Descriptor.Summary, StringComparison.Ordinal);
+        newText = newText.Replace("LIBDESCRIPTION", _packageDescriptionMarkdown ?? string.Empty, StringComparison.Ordinal);
+        return newText;
     }
 
     private string ReadTemplateFileAndPatchTemplate(string templateFile)
     {
         return PatchTemplate(File.ReadAllText(templateFile));
+    }
+
+    private Dictionary<string, List<CppFunction>> CollectAllCppFunctionAndInclude(CSharpCompilation csCompilation)
+    {
+        var mapIncludeNameToCppFunction = new Dictionary<string, List<CppFunction>>();
+        foreach (var csLibClass in csCompilation.Members.OfType<CSharpGeneratedFile>().Select(x => x.GetLibClassFromGeneratedFile()))
+        {
+            foreach (var csMethod in CollectAllFunctions(csLibClass))
+            {
+                var cppFunction = (CppFunction)csMethod.CppElement!;
+
+                var includeHeaderFileName = Path.GetFileName(cppFunction.SourceFile);
+                
+                if (!mapIncludeNameToCppFunction.TryGetValue(includeHeaderFileName, out var list))
+                {
+                    list = new List<CppFunction>();
+                    mapIncludeNameToCppFunction[includeHeaderFileName] = list;
+                }
+
+                list.Add(cppFunction);
+            }
+        }
+
+        return mapIncludeNameToCppFunction;
+    }
+
+    private static IEnumerable<CSharpMethod> CollectAllFunctions(CSharpClass csClass)
+    {
+        foreach (var csElement in csClass.Members)
+        {
+            // .OfType<CSharpMethod>().Where(x => !x.IsManaged && x.CppElement is CppFunction)
+            if (csElement is CSharpMethod csMethod && !csMethod.IsManaged && csMethod.CppElement is CppFunction)
+            {
+                yield return csMethod;
+            }
+            else
+            {
+                if (csElement is CSharpClass csInnerClass)
+                {
+                    foreach (var method in CollectAllFunctions(csInnerClass))
+                    {
+                        yield return method;
+                    }
+                }
+            }
+        }
     }
 }

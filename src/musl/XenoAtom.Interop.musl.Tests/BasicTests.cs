@@ -13,5 +13,11 @@ public class BasicTests
     [TestMethod]
     public unsafe void TestInvalidInit()
     {
+        //var ret = mkdir("test_directory", S_IRWXU | S_IRWXG | S_IRWXO);
+        //if (ret == -1)
+        //{
+        //    var lerrno = errno;
+        //    // ...
+        //}
     }
 }

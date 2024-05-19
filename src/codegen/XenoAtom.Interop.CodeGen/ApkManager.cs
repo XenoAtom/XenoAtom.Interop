@@ -432,6 +432,12 @@ public partial class ApkManager
         return Path.Combine(GetCacheDirectory(arch, repository), SysIncludeFolder);
     }
 
+    public string GetPackageDescriptionUrl(PackageInfo packageInfo)
+    {
+        // https://pkgs.alpinelinux.org/package/v3.19/main/x86_64/musl-dev
+        return $"https://pkgs.alpinelinux.org/package/{Version}/{packageInfo.Repository}/{DefaultArch}/{packageInfo.Name}";
+    }
+
     private string GetLocalPackagePath(string arch, string repository, string filename)
     {
         return Path.Combine(GetPackageDirectory(arch, repository), filename);
@@ -452,7 +458,10 @@ public class PackageMap : Dictionary<string, PackageInfo>
     {
         if (!TryGetValue(packageName, out var info))
         {
-            info = new PackageInfo();
+            info = new PackageInfo()
+            {
+                Name = packageName
+            };
             Add(packageName, info);
         }
 
@@ -463,7 +472,10 @@ public class PackageMap : Dictionary<string, PackageInfo>
     {
         if (!TryGetValue(packageName, out var info))
         {
-            info = new PackageInfo();
+            info = new PackageInfo()
+            {
+                Name = packageName
+            };
             Add(packageName, info);
         }
 
@@ -474,7 +486,10 @@ public class PackageMap : Dictionary<string, PackageInfo>
     {
         if (!TryGetValue(packageName, out var info))
         {
-            info = new PackageInfo();
+            info = new PackageInfo()
+            {
+                Name = packageName
+            };
             Add(packageName, info);
         }
 
@@ -490,6 +505,8 @@ public class PackageInfo : List<PackageDep>
         Version = string.Empty;
         Repository = string.Empty;
     }
+
+    public required string Name { get; init; }
 
     public string Version { get; set; }
 

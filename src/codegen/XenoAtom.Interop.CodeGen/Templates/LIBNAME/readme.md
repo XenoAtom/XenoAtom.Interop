@@ -2,11 +2,11 @@
 
 LIBSUMMARY
 
-LIBDESCRIPTION
-
 ## ♻️ XenoAtom.Interop
 
-This project is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
+This package is part of the [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop) project.
+
+LIBDESCRIPTION
 
 ## 🪪 License
 

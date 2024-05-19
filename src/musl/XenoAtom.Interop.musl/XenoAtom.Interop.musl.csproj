@@ -2,8 +2,8 @@
   <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props"/>
 
   <PropertyGroup>
-    <Description>This is a default project description</Description>
-    <PackageTags>tag1;tag2;tag3</PackageTags>
+    <Description>This package provides a low-level and modern .NET P/Invoke wrapper around the musl libc library for accessing low-level sys kernel functions.</Description>
+    <PackageTags>musl;libc;linux;kernel;syscall;pinvoke;interop</PackageTags>
     <MinVerTagPrefix>musl/</MinVerTagPrefix>
   </PropertyGroup>
 
