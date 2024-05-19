@@ -56,4 +56,4 @@ This software is released under the [BSD-2-Clause license](https://opensource.or
 
 ## 🤗 Author
 
-Alexandre Mutel aka [XenoAtom](https://XenoAtom.github.io).
+Alexandre Mutel aka [xoofx](https://xoofx.github.io).
