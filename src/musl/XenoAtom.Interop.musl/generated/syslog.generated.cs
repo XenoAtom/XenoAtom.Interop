@@ -222,13 +222,13 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "syslog")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void syslog(int arg0, byte* arg1);
+        public static partial void syslog(int priority, byte* format);
         
         /// <summary>
         /// Send messages to the system logger
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "syslog")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void syslog(int arg0, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg1);
+        public static partial void syslog(int priority, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> format);
     }
 }

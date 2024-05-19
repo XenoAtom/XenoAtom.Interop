@@ -593,7 +593,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "mremap")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* mremap(void* arg0, nuint arg1, nuint arg2, int arg3);
+        public static partial void* mremap(void* old_address, nuint old_size, nuint new_size, int flags);
         
         /// <summary>
         /// Create a nonlinear file mapping

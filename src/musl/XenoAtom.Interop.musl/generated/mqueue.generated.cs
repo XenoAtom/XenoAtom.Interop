@@ -79,14 +79,14 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "mq_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial musl.mqd_t mq_open(byte* arg0, int arg1);
+        public static partial musl.mqd_t mq_open(byte* name, int oflag);
         
         /// <summary>
         /// Open a message queue
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "mq_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial musl.mqd_t mq_open([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg0, int arg1);
+        public static partial musl.mqd_t mq_open([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, int oflag);
         
         /// <summary>
         /// Receive a message from a message queue

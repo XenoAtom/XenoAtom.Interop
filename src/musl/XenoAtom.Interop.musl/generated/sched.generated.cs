@@ -317,13 +317,6 @@ namespace XenoAtom.Interop
         public static partial int sched_yield();
         
         /// <summary>
-        /// Create a child process
-        /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "clone")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int clone(delegate*unmanaged[Cdecl]<void*, int> fn, void* stack, int flags, void* arg);
-        
-        /// <summary>
         /// Disassociate parts of the process execution context
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "unshare")]

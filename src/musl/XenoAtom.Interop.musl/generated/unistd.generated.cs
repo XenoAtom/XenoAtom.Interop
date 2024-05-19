@@ -536,34 +536,6 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Execute a file
         /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "execle")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int execle(byte* arg0, byte* arg1);
-        
-        /// <summary>
-        /// Execute a file
-        /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "execle")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int execle([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg0, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg1);
-        
-        /// <summary>
-        /// Execute a file
-        /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "execl")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int execl(byte* arg0, byte* arg1);
-        
-        /// <summary>
-        /// Execute a file
-        /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "execl")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int execl([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg0, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg1);
-        
-        /// <summary>
-        /// Execute a file
-        /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "execvp")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int execvp(byte* file, byte** argv);
@@ -574,20 +546,6 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "execvp")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int execvp([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> file, byte** argv);
-        
-        /// <summary>
-        /// Execute a file
-        /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "execlp")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int execlp(byte* arg0, byte* arg1);
-        
-        /// <summary>
-        /// Execute a file
-        /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "execlp")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int execlp([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg0, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg1);
         
         /// <summary>
         /// Execute program specified via file descriptor

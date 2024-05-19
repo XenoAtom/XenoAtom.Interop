@@ -33,10 +33,14 @@ internal partial class MuslGenerator : GeneratorBase
 
     private readonly HashSet<string> KnownVariadicFunctions = new HashSet<string>()
     {
+        // discarded
         "clone",
         "execl",
         "execle",
         "execlp",
+        // overloads added
+        "fcntl",
+        "ioctl",
         "makecontext",
         "mq_open",
         "mremap",
@@ -47,8 +51,6 @@ internal partial class MuslGenerator : GeneratorBase
         "semctl",
         "syscall",
         "syslog",
-        "fcntl",
-        "ioctl",
     };
 
     public MuslGenerator(LibDescriptor descriptor) : base(descriptor)
@@ -132,6 +134,9 @@ internal partial class MuslGenerator : GeneratorBase
                 MappingRules =
                 {
                     e => e.Map<CppEnum>("EPOLL_EVENTS").Discard(),
+
+                    // Discard these functions that are not supported (clone) or have more suitable equivalent (exec)
+                    e => e.Map<CppFunction>("(clone|execl|execle|execlp)").Discard(),
 
                     // cachectl.h
                     e => e.MapMacroToConst("ICACHE", "int"),

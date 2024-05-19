@@ -33,7 +33,7 @@ namespace XenoAtom.Interop
             /// </summary>
             [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "makecontext")]
             [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-            public static partial void makecontext(ref musl.x86_64.ucontext arg0, delegate*unmanaged[Cdecl]<void> arg1, int arg2);
+            public static partial void makecontext(ref musl.x86_64.ucontext ucp, delegate*unmanaged[Cdecl]<void> func, int argc);
             
             /// <summary>
             /// Get or set the user context

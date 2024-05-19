@@ -185,7 +185,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "semctl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int semctl(int arg0, int arg1, int arg2);
+        public static partial int semctl(int semid, int semnum, int cmd);
         
         /// <summary>
         /// Get a System V semaphore set identifier
