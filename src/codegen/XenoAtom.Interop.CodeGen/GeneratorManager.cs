@@ -93,13 +93,13 @@ public class GeneratorManager
                 newReadme.AppendLine();
                 newReadme.AppendLine("The following libraries are available:");
                 newReadme.AppendLine();
-                newReadme.AppendLine("| Library | Native | C Version | Description | Supported Architectures | NuGet |");
-                newReadme.AppendLine("| ------- | ------ | --------- | ----------- | ----------------------- | ----- |");
+                newReadme.AppendLine("| Library | Native Version | Arch | NuGet |");
+                newReadme.AppendLine("| ------- | -------------- | ---- | ----- |");
                 foreach (var libDescriptor in LibDescriptors)
                 {
                     var generator = _generators[libDescriptor];
 
-                    newReadme.AppendLine($"| [{generator.ManagedPackageName}](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/{libDescriptor.Name}) | {generator.GetNativeLibraryMarkdownLink() ?? ""} | `{generator.NativeVersion ?? "-"}` | {libDescriptor.CppDescription ?? libDescriptor.Summary} | {string.Join(", ", libDescriptor.SupportedArchitectures.Select(x => $"`{x}`"))} | [![NuGet](https://img.shields.io/nuget/v/{generator.ManagedPackageName}.svg)](https://www.nuget.org/packages/{generator.ManagedPackageName}) |");
+                    newReadme.AppendLine($"| [{generator.ManagedPackageName}](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/{libDescriptor.Name})<br>{libDescriptor.CppDescription ?? libDescriptor.Summary} | {generator.GetNativeLibraryMarkdownLink() ?? ""}<br>`{generator.NativeVersion ?? "-"}` | {string.Join(", ", libDescriptor.SupportedArchitectures.Select(x => $"`{x}`"))} | [![NuGet](https://img.shields.io/nuget/v/{generator.ManagedPackageName}.svg)](https://www.nuget.org/packages/{generator.ManagedPackageName}) |");
                 }
                 newReadme.AppendLine();
             }

@@ -28,13 +28,13 @@ The C/C++ header files from the [Alpine Linux](https://www.alpinelinux.org/) `v3
 
 The following libraries are available:
 
-| Library | Native | C Version | Description | Supported Architectures | NuGet |
-| ------- | ------ | --------- | ----------- | ----------------------- | ----- |
-| [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/common) |  | `-` | This package provides the shared types `FixedArray#<T>` to interop between .NET and C/C++. | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.svg)](https://www.nuget.org/packages/XenoAtom.Interop) |
-| [XenoAtom.Interop.musl](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/musl) | [musl](https://musl.libc.org/) | `1.2.4_git20230717` | musl libc is an implementation of the C standard library providing access to the Linux kernel syscalls. | `linux-x64`, `linux-arm64` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.musl.svg)](https://www.nuget.org/packages/XenoAtom.Interop.musl) |
-| [XenoAtom.Interop.libgit2](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/libgit2) | [libgit2](https://libgit2.org/) | `1.7.2` | libgit2 is a pure C implementation of the git core methods. | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.libgit2.svg)](https://www.nuget.org/packages/XenoAtom.Interop.libgit2) |
-| [XenoAtom.Interop.sqlite](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/sqlite) | [sqlite](https://www.sqlite.org/) | `3.44.2` | SQLite is a small and fast SQL database engine. | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.sqlite.svg)](https://www.nuget.org/packages/XenoAtom.Interop.sqlite) |
-| [XenoAtom.Interop.zlib](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/zlib) | [zlib](https://zlib.net/) | `1.3.1` | zlib compression library. | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.zlib.svg)](https://www.nuget.org/packages/XenoAtom.Interop.zlib) |
+| Library | Native Version | Arch | NuGet |
+| ------- | -------------- | ---- | ----- |
+| [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/common)<br>This package provides the shared types `FixedArray#<T>` to interop between .NET and C/C++. | <br>`-` | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.svg)](https://www.nuget.org/packages/XenoAtom.Interop) |
+| [XenoAtom.Interop.musl](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/musl)<br>musl libc is an implementation of the C standard library providing access to the Linux kernel syscalls. | [musl](https://musl.libc.org/)<br>`1.2.4_git20230717` | `linux-x64`, `linux-arm64` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.musl.svg)](https://www.nuget.org/packages/XenoAtom.Interop.musl) |
+| [XenoAtom.Interop.libgit2](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/libgit2)<br>libgit2 is a pure C implementation of the git core methods. | [libgit2](https://libgit2.org/)<br>`1.7.2` | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.libgit2.svg)](https://www.nuget.org/packages/XenoAtom.Interop.libgit2) |
+| [XenoAtom.Interop.sqlite](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/sqlite)<br>SQLite is a small and fast SQL database engine. | [sqlite](https://www.sqlite.org/)<br>`3.44.2` | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.sqlite.svg)](https://www.nuget.org/packages/XenoAtom.Interop.sqlite) |
+| [XenoAtom.Interop.zlib](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/zlib)<br>zlib compression library. | [zlib](https://zlib.net/)<br>`1.3.1` | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.zlib.svg)](https://www.nuget.org/packages/XenoAtom.Interop.zlib) |
 
 <!-- XENOATOM_INTEROP END - DO NOT EDIT --->
 
