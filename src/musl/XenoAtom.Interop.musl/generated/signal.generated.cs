@@ -20,9 +20,9 @@ namespace XenoAtom.Interop
         public partial struct sigevent
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct sigevent_union___sev_fields
+            public unsafe partial struct sigevent__struct_0
             {
-                public partial struct sigevent_union___sev_fields___sev_thread
+                public partial struct sigevent___sev_thread
                 {
                     public delegate*unmanaged[Cdecl]<musl.sigval, void> sigev_notify_function;
                     
@@ -36,7 +36,7 @@ namespace XenoAtom.Interop
                 public musl.pid_t sigev_notify_thread_id;
                 
                 [FieldOffset(0)]
-                public musl.sigevent.sigevent_union___sev_fields.sigevent_union___sev_fields___sev_thread __sev_thread;
+                public musl.sigevent.sigevent__struct_0.sigevent___sev_thread __sev_thread;
             }
             
             public musl.sigval sigev_value;
@@ -45,7 +45,7 @@ namespace XenoAtom.Interop
             
             public int sigev_notify;
             
-            public musl.sigevent.sigevent_union___sev_fields __sev_fields;
+            public musl.sigevent.sigevent__struct_0 __sev_fields;
         }
         
         [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
@@ -84,21 +84,21 @@ namespace XenoAtom.Interop
         public partial struct siginfo_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct siginfo_t_union___si_fields
+            public unsafe partial struct siginfo_t__struct_0
             {
-                public partial struct siginfo_t_union___si_fields___si_common
+                public partial struct siginfo_t___si_common
                 {
                     [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-                    public partial struct siginfo_t_union___si_fields___si_common_union___first
+                    public partial struct siginfo_t__struct_0___first
                     {
-                        public partial struct siginfo_t_union___si_fields___si_common_union___first___piduid
+                        public partial struct siginfo_t___si_common___piduid
                         {
                             public musl.pid_t si_pid;
                             
                             public musl.uid_t si_uid;
                         }
                         
-                        public partial struct siginfo_t_union___si_fields___si_common_union___first___timer
+                        public partial struct siginfo_t___si_common___timer
                         {
                             public int si_timerid;
                             
@@ -106,16 +106,16 @@ namespace XenoAtom.Interop
                         }
                         
                         [FieldOffset(0)]
-                        public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___si_common.siginfo_t_union___si_fields___si_common_union___first.siginfo_t_union___si_fields___si_common_union___first___piduid __piduid;
+                        public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___si_common.siginfo_t__struct_0___first.siginfo_t___si_common___piduid __piduid;
                         
                         [FieldOffset(0)]
-                        public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___si_common.siginfo_t_union___si_fields___si_common_union___first.siginfo_t_union___si_fields___si_common_union___first___timer __timer;
+                        public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___si_common.siginfo_t__struct_0___first.siginfo_t___si_common___timer __timer;
                     }
                     
                     [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-                    public partial struct siginfo_t_union___si_fields___si_common_union___second
+                    public partial struct siginfo_t__struct_0___second
                     {
-                        public partial struct siginfo_t_union___si_fields___si_common_union___second___sigchld
+                        public partial struct siginfo_t___si_common___sigchld
                         {
                             public int si_status;
                             
@@ -128,20 +128,20 @@ namespace XenoAtom.Interop
                         public musl.sigval si_value;
                         
                         [FieldOffset(0)]
-                        public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___si_common.siginfo_t_union___si_fields___si_common_union___second.siginfo_t_union___si_fields___si_common_union___second___sigchld __sigchld;
+                        public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___si_common.siginfo_t__struct_0___second.siginfo_t___si_common___sigchld __sigchld;
                     }
                     
-                    public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___si_common.siginfo_t_union___si_fields___si_common_union___first __first;
+                    public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___si_common.siginfo_t__struct_0___first __first;
                     
-                    public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___si_common.siginfo_t_union___si_fields___si_common_union___second __second;
+                    public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___si_common.siginfo_t__struct_0___second __second;
                 }
                 
-                public partial struct siginfo_t_union___si_fields___sigfault
+                public partial struct siginfo_t___sigfault
                 {
                     [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-                    public partial struct siginfo_t_union___si_fields___sigfault_union___first
+                    public partial struct siginfo_t__struct_0___first
                     {
-                        public partial struct siginfo_t_union___si_fields___sigfault_union___first___addr_bnd
+                        public partial struct siginfo_t___sigfault___addr_bnd
                         {
                             public void* si_lower;
                             
@@ -149,7 +149,7 @@ namespace XenoAtom.Interop
                         }
                         
                         [FieldOffset(0)]
-                        public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___sigfault.siginfo_t_union___si_fields___sigfault_union___first.siginfo_t_union___si_fields___sigfault_union___first___addr_bnd __addr_bnd;
+                        public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___sigfault.siginfo_t__struct_0___first.siginfo_t___sigfault___addr_bnd __addr_bnd;
                         
                         [FieldOffset(0)]
                         public uint si_pkey;
@@ -159,17 +159,17 @@ namespace XenoAtom.Interop
                     
                     public short si_addr_lsb;
                     
-                    public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___sigfault.siginfo_t_union___si_fields___sigfault_union___first __first;
+                    public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___sigfault.siginfo_t__struct_0___first __first;
                 }
                 
-                public partial struct siginfo_t_union___si_fields___sigpoll
+                public partial struct siginfo_t___sigpoll
                 {
                     public nint si_band;
                     
                     public int si_fd;
                 }
                 
-                public partial struct siginfo_t_union___si_fields___sigsys
+                public partial struct siginfo_t___sigsys
                 {
                     public void* si_call_addr;
                     
@@ -182,16 +182,16 @@ namespace XenoAtom.Interop
                 public fixed byte __pad[112];
                 
                 [FieldOffset(0)]
-                public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___si_common __si_common;
+                public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___si_common __si_common;
                 
                 [FieldOffset(0)]
-                public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___sigfault __sigfault;
+                public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___sigfault __sigfault;
                 
                 [FieldOffset(0)]
-                public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___sigpoll __sigpoll;
+                public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___sigpoll __sigpoll;
                 
                 [FieldOffset(0)]
-                public musl.siginfo_t.siginfo_t_union___si_fields.siginfo_t_union___si_fields___sigsys __sigsys;
+                public musl.siginfo_t.siginfo_t__struct_0.siginfo_t___sigsys __sigsys;
             }
             
             public int si_signo;
@@ -200,13 +200,13 @@ namespace XenoAtom.Interop
             
             public int si_code;
             
-            public musl.siginfo_t.siginfo_t_union___si_fields __si_fields;
+            public musl.siginfo_t.siginfo_t__struct_0 __si_fields;
         }
         
         public partial struct sigaction_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public partial struct sigaction_t_union___sa_handler
+            public partial struct sigaction_t__struct_0
             {
                 [FieldOffset(0)]
                 public delegate*unmanaged[Cdecl]<int, void> sa_handler;
@@ -215,7 +215,7 @@ namespace XenoAtom.Interop
                 public delegate*unmanaged[Cdecl]<int, musl.siginfo_t*, void*, void> sa_sigaction;
             }
             
-            public musl.sigaction_t.sigaction_t_union___sa_handler __sa_handler;
+            public musl.sigaction_t.sigaction_t__struct_0 __sa_handler;
             
             public musl.sigset_t sa_mask;
             

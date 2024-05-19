@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
         {
             public unsafe partial struct _fpstate
             {
-                public unsafe partial struct _fpstate_
+                public unsafe partial struct _fpstate__struct_0
                 {
                     public fixed ushort significand[4];
                     
@@ -26,7 +26,7 @@ namespace XenoAtom.Interop
                     public fixed ushort padding[3];
                 }
                 
-                public unsafe partial struct _fpstate_
+                public unsafe partial struct _fpstate__struct_1
                 {
                     public fixed uint element[4];
                 }
@@ -47,13 +47,9 @@ namespace XenoAtom.Interop
                 
                 public uint mxcr_mask;
                 
-                public musl.x86_64._fpstate._fpstate_ _fpstate__8;
+                public FixedArray8<musl.x86_64._fpstate._fpstate__struct_0> _st;
                 
-                public FixedArray8<musl.x86_64._fpstate._fpstate_> _st;
-                
-                public musl.x86_64._fpstate._fpstate_ _fpstate__10;
-                
-                public FixedArray16<musl.x86_64._fpstate._fpstate_> _xmm;
+                public FixedArray16<musl.x86_64._fpstate._fpstate__struct_1> _xmm;
                 
                 public fixed uint padding[24];
             }

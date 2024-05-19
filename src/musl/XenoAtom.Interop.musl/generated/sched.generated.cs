@@ -19,7 +19,7 @@ namespace XenoAtom.Interop
     {
         public partial struct sched_param
         {
-            public partial struct sched_param_
+            public partial struct sched_param__struct_0
             {
                 public musl.time_t __reserved1;
                 
@@ -30,9 +30,7 @@ namespace XenoAtom.Interop
             
             public int __reserved1;
             
-            public musl.sched_param.sched_param_ sched_param__2;
-            
-            public FixedArray2<musl.sched_param.sched_param_> __reserved2;
+            public FixedArray2<musl.sched_param.sched_param__struct_0> __reserved2;
             
             public int __reserved3;
         }

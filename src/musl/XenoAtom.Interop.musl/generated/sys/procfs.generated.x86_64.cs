@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
         {
             public partial struct elf_prstatus
             {
-                public partial struct elf_prstatus_pr_cstime
+                public partial struct elf_prstatus__struct_0
                 {
                     public nint tv_sec;
                     
@@ -40,7 +40,7 @@ namespace XenoAtom.Interop
                 
                 public musl.pid_t pr_sid;
                 
-                public musl.x86_64.elf_prstatus.elf_prstatus_pr_cstime pr_cstime;
+                public musl.x86_64.elf_prstatus.elf_prstatus__struct_0 pr_cstime;
                 
                 public musl.x86_64.elf_gregset_t pr_reg;
                 

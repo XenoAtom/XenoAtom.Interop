@@ -48,7 +48,7 @@ namespace XenoAtom.Interop
         public partial struct pthread_attr_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_attr_t_union___u
+            public unsafe partial struct pthread_attr_t__struct_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[14];
@@ -60,7 +60,7 @@ namespace XenoAtom.Interop
                 public FixedArray7<nuint> __s;
             }
             
-            public musl.pthread_attr_t.pthread_attr_t_union___u __u;
+            public musl.pthread_attr_t.pthread_attr_t__struct_0 __u;
         }
         
         public readonly partial struct pid_t : IEquatable<pid_t>
@@ -109,7 +109,7 @@ namespace XenoAtom.Interop
         public partial struct pthread_mutex_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_mutex_t_union___u
+            public unsafe partial struct pthread_mutex_t__struct_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[10];
@@ -121,13 +121,13 @@ namespace XenoAtom.Interop
                 public FixedArray5<nint> __p;
             }
             
-            public musl.pthread_mutex_t.pthread_mutex_t_union___u __u;
+            public musl.pthread_mutex_t.pthread_mutex_t__struct_0 __u;
         }
         
         public partial struct pthread_cond_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_cond_t_union___u
+            public unsafe partial struct pthread_cond_t__struct_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[12];
@@ -139,13 +139,13 @@ namespace XenoAtom.Interop
                 public FixedArray6<nint> __p;
             }
             
-            public musl.pthread_cond_t.pthread_cond_t_union___u __u;
+            public musl.pthread_cond_t.pthread_cond_t__struct_0 __u;
         }
         
         public partial struct pthread_rwlock_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_rwlock_t_union___u
+            public unsafe partial struct pthread_rwlock_t__struct_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[14];
@@ -157,13 +157,13 @@ namespace XenoAtom.Interop
                 public FixedArray7<nint> __p;
             }
             
-            public musl.pthread_rwlock_t.pthread_rwlock_t_union___u __u;
+            public musl.pthread_rwlock_t.pthread_rwlock_t__struct_0 __u;
         }
         
         public partial struct pthread_barrier_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_barrier_t_union___u
+            public unsafe partial struct pthread_barrier_t__struct_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[8];
@@ -175,7 +175,7 @@ namespace XenoAtom.Interop
                 public FixedArray4<nint> __p;
             }
             
-            public musl.pthread_barrier_t.pthread_barrier_t_union___u __u;
+            public musl.pthread_barrier_t.pthread_barrier_t__struct_0 __u;
         }
         
         public partial struct timeval
