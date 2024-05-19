@@ -1,34 +1,52 @@
-# XenoAtom.Interop [![Build Status](https://github.com/XenoAtom/XenoAtom.Interop/workflows/ci/badge.svg?branch=main)](https://github.com/XenoAtom/XenoAtom.Interop/actions) [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.svg)](https://www.nuget.org/packages/XenoAtom.Interop/)
+# XenoAtom.Interop 🚀
 
 <img align="right" width="160px" height="160px" src="https://raw.githubusercontent.com/XenoAtom/XenoAtom.Interop/main/img/XenoAtom.Interop.png">
 
-This is a default project description.
+This **XenoAtom.Interop** project provides a set of C# libraries to interop with C/C++ libraries.
 
-## Features
+## ✨ Features
 
-- TODO
+- **API generated automatically** from C/C++ headers providing a near **100% API coverage**.
+- **Low-level interop** with C/C++ libraries
+  - The C/C++ API exposed is raw and will use pointers...etc.
+  - Some functions taking or returning strings try to offer a more user-friendly API by using `string` (but the raw function is still accessible!)
+  - Similarly for `ReadOnlySpan<byte>` whenever possible.
+- **Modern interop** using [`[LibraryImport]`](https://learn.microsoft.com/en-us/dotnet/standard/native-interop/pinvoke-source-generation) with P/Invoke source generation.
+  - Fast UTF16 to UTF8 string marshalling with zero allocations (for small strings).
+  - [`DllImportResolver`](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.nativelibrary.setdllimportresolver) support for each library to customize loading the native library.
+- No native binaries are provided, **only the P/Invoke bindings**.
+  - But some NuGet packages providing native libraries are compatible. See the list of available libraries in each package.
+- **Simple API XML documentation** is provided for each library (extracted from the C/C++ headers).
+- Support only from `net8.0`+
 
-## Libraries
+## 📦 Libraries
 
 <!-- XENOATOM_INTEROP BEGIN - DO NOT EDIT: this section below is automatically generated --->
 
-AlpineLinux reference version `v3.19`
+The C/C++ header files from the [Alpine Linux](https://www.alpinelinux.org/) `v3.19` were used to generated automatically the .NET P/Invoke bindings.
 
-| Library | C Version | Description | Supported Architectures | NuGet |
-| ------- | --------- | ----------- | ----------------------- | ----- |
-| [XenoAtom.Interop](https://www.nuget.org/packages/XenoAtom.Interop/) | 1.0.0 | TODO | `linux-x64` `linux-arm64`
+The following libraries are available:
 
+| Library | Native | C Version | Description | Supported Architectures | NuGet |
+| ------- | ------ | --------- | ----------- | ----------------------- | ----- |
+| [XenoAtom.Interop](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/common) |  | `-` | This package provides the shared types `FixedArray#<T>` to interop between .NET and C/C++. | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.svg)](https://www.nuget.org/packages/XenoAtom.Interop) |
+| [XenoAtom.Interop.musl](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/musl) | [musl](https://musl.libc.org/) | `1.2.4_git20230717` | musl libc is an implementation of the C standard library providing access to the Linux kernel syscalls. | `linux-x64`, `linux-arm64` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.musl.svg)](https://www.nuget.org/packages/XenoAtom.Interop.musl) |
+| [XenoAtom.Interop.libgit2](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/libgit2) | [libgit2](https://libgit2.org/) | `1.7.2` | libgit2 is a pure C implementation of the git core methods. | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.libgit2.svg)](https://www.nuget.org/packages/XenoAtom.Interop.libgit2) |
+| [XenoAtom.Interop.sqlite](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/sqlite) | [sqlite](https://www.sqlite.org/) | `3.44.2` | SQLite is a small and fast SQL database engine. | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.sqlite.svg)](https://www.nuget.org/packages/XenoAtom.Interop.sqlite) |
+| [XenoAtom.Interop.zlib](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/zlib) | [zlib](https://zlib.net/) | `1.3.1` | zlib compression library. | `all` | [![NuGet](https://img.shields.io/nuget/v/XenoAtom.Interop.zlib.svg)](https://www.nuget.org/packages/XenoAtom.Interop.zlib) |
 
 <!-- XENOATOM_INTEROP END - DO NOT EDIT --->
 
-## User Guide
+- `all`: The library is available for all supported architectures.
+
+## 📜 User Guide
 
 For more details on how to use XenoAtom.Interop, please visit the [user guide](https://github.com/XenoAtom/XenoAtom.Interop/blob/main/doc/readme.md).
 
-## License
+## 🪪 License
 
 This software is released under the [BSD-2-Clause license](https://opensource.org/licenses/BSD-2-Clause). 
 
-## Author
+## 🤗 Author
 
 Alexandre Mutel aka [XenoAtom](https://XenoAtom.github.io).

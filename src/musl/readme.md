@@ -25,6 +25,9 @@ if (ret == -1)
     // ...
 }
 ```
+> Notice that is library requires the library [`musl`](https://musl.libc.org/) to be installed on the target system. This library is only supported on Linux.
+>
+> This library is available by default on [Alpine Linux](https://www.alpinelinux.org/). For other distributions, you will need to install the `musl` package.
 ## 📦 Compatible Native Binaries
 
 This library does not provide C native binaries but only P/Invoke .NET bindings to `musl` `1.2.4_git20230717-r4`.

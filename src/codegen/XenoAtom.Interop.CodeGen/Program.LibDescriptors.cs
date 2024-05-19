@@ -61,7 +61,11 @@ partial class Program
                     // ...
                 }
                 ```
-                """
+                > Notice that is library requires the library [`musl`](https://musl.libc.org/) to be installed on the target system. This library is only supported on Linux.
+                >
+                > This library is available by default on [Alpine Linux](https://www.alpinelinux.org/). For other distributions, you will need to install the `musl` package.
+                """,
+            SupportedArchitectures = ["linux-x64", "linux-arm64"]
         },
         new()
         {

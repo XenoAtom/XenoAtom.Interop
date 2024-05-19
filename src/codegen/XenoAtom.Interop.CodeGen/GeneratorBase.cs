@@ -57,6 +57,16 @@ public abstract class GeneratorBase
 
     public bool IsCommonLib => LibName == "common";
 
+    public string? GetNativeLibraryMarkdownLink()
+    {
+        if (IsCommonLib)
+        {
+            return null;
+        }
+
+        return $"[{LibName}]({Descriptor.Url})";
+    }
+
     public string ManagedPackageName => IsCommonLib ? "XenoAtom.Interop" : $"XenoAtom.Interop.{LibName}";
 
     public string RepositoryRootFolder { get; }

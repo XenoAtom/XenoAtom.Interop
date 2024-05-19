@@ -3,7 +3,6 @@
 // See license.txt file in the project root for full license information.
 
 using System;
-using System.Collections.Immutable;
 
 namespace XenoAtom.Interop.CodeGen;
 
@@ -28,6 +27,8 @@ public record LibDescriptor
     public bool HasGeneratedFolder { get; init; } = true;
 
     public string? UsageInCSharp { get; init; }
+
+    public string[] SupportedArchitectures { get; init; } = ["all"];
 }
 
 public record CompatibleNativeNuGet(string Name, string Version);
