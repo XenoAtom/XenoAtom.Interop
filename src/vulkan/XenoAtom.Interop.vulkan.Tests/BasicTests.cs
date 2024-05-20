@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace XenoAtom.Interop.Tests;
 
@@ -29,5 +30,24 @@ public class BasicTests
 
         // Destroy the instance
         vkDestroyInstance(instance, Unsafe.NullRef<VkAllocationCallbacks>());
+    }
+
+    [TestMethod]
+    public unsafe void TestListExtensions()
+    {
+        
+        uint count = 0;
+        vkEnumerateInstanceExtensionProperties(null, ref count, ref Unsafe.NullRef<VkExtensionProperties>());
+        if (count > 0)
+        {
+            Span<VkExtensionProperties> propArrays = stackalloc VkExtensionProperties[(int)count];
+            vkEnumerateInstanceExtensionProperties(null, ref count, ref propArrays[0]);
+
+            foreach (var prop in propArrays)
+            {
+                //TestContext.Wr
+                Console.WriteLine($"Extension: {Marshal.PtrToStringUTF8((nint)prop.extensionName)}");
+            }
+        }
     }
 }

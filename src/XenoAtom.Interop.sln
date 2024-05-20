@@ -72,11 +72,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-ci", "01-ci", "{F7B3343D
 		..\.github\workflows\ci_build_libgit2.yml = ..\.github\workflows\ci_build_libgit2.yml
 		..\.github\workflows\ci_build_musl.yml = ..\.github\workflows\ci_build_musl.yml
 		..\.github\workflows\ci_build_sqlite.yml = ..\.github\workflows\ci_build_sqlite.yml
+		..\.github\workflows\ci_build_vulkan.yml = ..\.github\workflows\ci_build_vulkan.yml
 		..\.github\workflows\ci_build_zlib.yml = ..\.github\workflows\ci_build_zlib.yml
 		..\.github\workflows\ci_publish_common.yml = ..\.github\workflows\ci_publish_common.yml
 		..\.github\workflows\ci_publish_libgit2.yml = ..\.github\workflows\ci_publish_libgit2.yml
 		..\.github\workflows\ci_publish_musl.yml = ..\.github\workflows\ci_publish_musl.yml
 		..\.github\workflows\ci_publish_sqlite.yml = ..\.github\workflows\ci_publish_sqlite.yml
+		..\.github\workflows\ci_publish_vulkan.yml = ..\.github\workflows\ci_publish_vulkan.yml
 		..\.github\workflows\ci_publish_zlib.yml = ..\.github\workflows\ci_publish_zlib.yml
 	EndProjectSection
 EndProject
