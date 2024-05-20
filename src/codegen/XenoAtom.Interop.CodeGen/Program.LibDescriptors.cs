@@ -177,6 +177,16 @@ partial class Program
             UrlDocumentation = "https://registry.khronos.org/vulkan/specs/1.3/styleguide.html",
             Generator = desc => new VulkanGenerator(desc),
             ApkDeps = ["vulkan-headers"],
+            GitHubActionPreStep =
+                """
+                      - name: Set up vulkan dependencies
+                        run: |
+                          sudo apt-get update
+                          sudo apt-get install -y \
+                            mesa-vulkan-drivers \
+                            libvulkan1 \
+                            vulkan-tools
+                """
         },
     ];
 }

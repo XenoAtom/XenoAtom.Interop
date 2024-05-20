@@ -11,8 +11,12 @@ on:
 
 jobs:
   build:
-    uses: xoofx/.github/.github/workflows/dotnet.yml@main
-    with:
-      dotnet-releaser-path: 'src/LIBNAME/dotnet-releaser.toml'
-    secrets:
-      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+    runs-on: 'ubuntu-latest'
+    steps:
+#GITHUB_ACTION_PRE_STEP
+      - name: "Build, Test and Publish LIBNAME"
+        uses: xoofx/.github/.github/actions/dotnet-releaser-action@main   
+        with:
+          dotnet-releaser-path: 'src/LIBNAME/dotnet-releaser.toml'
+          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+#GITHUB_ACTION_POST_STEP

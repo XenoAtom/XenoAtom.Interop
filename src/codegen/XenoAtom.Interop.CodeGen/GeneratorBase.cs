@@ -330,6 +330,17 @@ public abstract class GeneratorBase
         var newText = text.Replace("LIBNAME", LibName, StringComparison.Ordinal);
         newText = newText.Replace("LIBSUMMARY", Descriptor.Summary, StringComparison.Ordinal);
         newText = newText.Replace("LIBDESCRIPTION", _packageDescriptionMarkdown ?? string.Empty, StringComparison.Ordinal);
+
+        if (Descriptor.GitHubActionPreStep != null)
+        {
+            newText = newText.Replace("#GITHUB_ACTION_PRE_STEP", Descriptor.GitHubActionPreStep, StringComparison.Ordinal);
+        }
+
+        if (Descriptor.GitHubActionPostStep != null)
+        {
+            newText = newText.Replace("#GITHUB_ACTION_POST_STEP", Descriptor.GitHubActionPostStep, StringComparison.Ordinal);
+        }
+
         return newText;
     }
 

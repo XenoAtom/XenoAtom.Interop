@@ -29,6 +29,10 @@ public record LibDescriptor
     public string? UsageInCSharp { get; init; }
 
     public string[] SupportedArchitectures { get; init; } = ["all"];
+    
+    public string? GitHubActionPreStep { get; init; }
+
+    public string? GitHubActionPostStep { get; init; }
 }
 
 public record CompatibleNativeNuGet(string Name, string Version);
