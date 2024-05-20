@@ -23,7 +23,7 @@ jobs:
             libvulkan1 \
             vulkan-tools
       - name: "Build, Test and Pack Vulkan"
-        uses: xoofx/.github/.github/action/dotnet-releaser-action@main   
+        uses: xoofx/.github/.github/actions/dotnet-releaser-action@main   
         with:
           dotnet-releaser-path: 'src/vulkan/dotnet-releaser.toml'
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
