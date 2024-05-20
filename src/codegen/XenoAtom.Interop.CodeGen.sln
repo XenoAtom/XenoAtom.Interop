@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", "{AAC56E4D-9B04-40EA-B942-3EC472CF683E}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\.github\workflows\ci_build_codegen.yml = ..\..\.github\workflows\ci_build_codegen.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.CodeGen", "XenoAtom.Interop.CodeGen\XenoAtom.Interop.CodeGen.csproj", "{7651DE71-D182-4244-924D-32CB3095AA7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7651DE71-D182-4244-924D-32CB3095AA7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7651DE71-D182-4244-924D-32CB3095AA7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7651DE71-D182-4244-924D-32CB3095AA7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7651DE71-D182-4244-924D-32CB3095AA7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C674E34-9C76-41F2-929F-8A16EAB8F52D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)../../TestsShared.props"/>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XenoAtom.Interop.vulkan\XenoAtom.Interop.vulkan.csproj" />
+  </ItemGroup>
+
+</Project>

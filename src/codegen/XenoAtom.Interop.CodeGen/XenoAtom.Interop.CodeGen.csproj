@@ -20,11 +20,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CppAst.CodeGen" Version="0.16.0" />
+    <PackageReference Include="CppAst.CodeGen" Version="0.17.0" />
   </ItemGroup>
 
   <!--<ItemGroup>
     <ProjectReference Include="..\..\..\..\..\CppAst.CodeGen\src\CppAst.CodeGen\CppAst.CodeGen.csproj" />
   </ItemGroup>-->
+
+  <ItemGroup>
+    <None Remove="vulkan_sys_includes\**\.*.*" />
+    <Content Include="vulkan_sys_includes\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="vulkan_sys_includes\directfb.h" />
+    <None Remove="vulkan_sys_includes\ggp_c\vulkan_types.h" />
+    <None Remove="vulkan_sys_includes\screen\screen.h" />
+    <None Remove="vulkan_sys_includes\X11\extensions\Xrandr.h" />
+    <None Remove="vulkan_sys_includes\X11\Xlib.h" />
+    <None Remove="vulkan_sys_includes\xcb\xcb.h" />
+  </ItemGroup>
 
 </Project>

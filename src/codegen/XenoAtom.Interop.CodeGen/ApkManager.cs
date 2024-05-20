@@ -229,6 +229,40 @@ public partial class ApkManager
         }
     }
 
+    public async Task ExtractFolders(string packageName, string cacheFolder, string packageFolderPath)
+    {
+        if (!packageFolderPath.EndsWith('/')) throw new ArgumentException("Expecting a folder path ending with /", nameof(packageFolderPath));
+
+        foreach (var arch in Architectures)
+        {
+            try
+            {
+                var packages = GetPackages(arch);
+
+                if (!packages.TryGetValue(packageName, out var info))
+                {
+                    throw new InvalidOperationException($"Package {packageName} not found");
+                }
+
+                var packageFile = $"{packageName}-{info.Version}.apk";
+                var localPath = GetLocalPackagePath(arch, info.Repository, packageFile);
+                if (!File.Exists(localPath))
+                {
+                    var apkUrl = GetApkUrl(arch, info.Repository, packageFile);
+                    DownloadFile(apkUrl, localPath).Wait();
+                }
+
+                var subCacheDirectory = GetSubCacheDirectory(cacheFolder, arch, info.Repository);
+                await ExtractFiles(packageFolderPath, localPath, subCacheDirectory);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to ensure includes for {packageName}: {ex.Message}");
+                throw;
+            }
+        }
+    }
+
     public async Task EnsureIncludes(string packageName)
     {
         foreach (var arch in Architectures)
@@ -404,7 +438,17 @@ public partial class ApkManager
 
     private string GetPackageDirectory(string arch, string repository)
     {
-        return Path.Combine(GetCacheDirectory(arch, repository), PackageFolder);
+        return GetSubCacheDirectory(PackageFolder, arch, repository);
+    }
+
+    public string GetSubCacheDirectory(string name, string repository)
+    {
+        return GetSubCacheDirectory(name, DefaultArch, repository);
+    }
+
+    public string GetSubCacheDirectory(string name, string arch, string repository)
+    {
+        return Path.Combine(GetCacheDirectory(arch, repository), name);
     }
 
     public string GetIncludeDirectory(string repository)
@@ -414,12 +458,12 @@ public partial class ApkManager
 
     public string GetIncludeDirectory(string arch, string repository)
     {
-        return Path.Combine(GetCacheDirectory(arch, repository), IncludeFolder);
+        return GetSubCacheDirectory(IncludeFolder, arch, repository);
     }
 
     public string GetManDirectory(string arch, string repository)
     {
-        return Path.Combine(GetCacheDirectory(arch, repository), ManFolder);
+        return GetSubCacheDirectory(ManFolder, arch, repository);
     }
 
     public string GetSysIncludeDirectory(string repository)
@@ -429,7 +473,7 @@ public partial class ApkManager
 
     public string GetSysIncludeDirectory(string arch, string repository)
     {
-        return Path.Combine(GetCacheDirectory(arch, repository), SysIncludeFolder);
+        return GetSubCacheDirectory(SysIncludeFolder, arch, repository);
     }
 
     public string GetPackageDescriptionUrl(PackageInfo packageInfo)

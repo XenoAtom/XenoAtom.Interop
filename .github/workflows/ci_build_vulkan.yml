@@ -1,0 +1,30 @@
+name: ci_build_vulkan
+
+on:
+  push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '**' 
+    paths:
+    - 'src/*.props'
+    - 'src/vulkan/**'
+  pull_request:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Set up vulkan dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            mesa-vulkan-drivers \
+            libvulkan1 \
+            vulkan-tools
+      - name: "Build, Test and Pack vulkan"
+        uses: xoofx/.github/.github/actions/dotnet-releaser-action@main   
+        with:
+          dotnet-releaser-path: 'src/vulkan/dotnet-releaser.toml'
+          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+#GITHUB_ACTION_POST_STEP
