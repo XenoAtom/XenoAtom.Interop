@@ -99,7 +99,7 @@ public class GeneratorManager
                 {
                     var generator = _generators[libDescriptor];
 
-                    newReadme.AppendLine($"| [{generator.ManagedPackageName}](https://github.com/XenoAtom/XenoAtom.Interop/tree/main/src/{libDescriptor.Name})<br>{libDescriptor.CppDescription ?? libDescriptor.Summary} | {generator.GetNativeLibraryMarkdownLink() ?? ""}<br>`{generator.NativeVersion ?? "-"}` | {string.Join(", ", libDescriptor.SupportedArchitectures.Select(x => $"`{x}`"))} | {GetMarkdownBadgeForCI(generator)}<br>[![NuGet](https://img.shields.io/nuget/v/{generator.ManagedPackageName}.svg)](https://www.nuget.org/packages/{generator.ManagedPackageName}) |");
+                    newReadme.AppendLine($"| [{generator.ManagedPackageName}](src/{libDescriptor.Name})<br>{libDescriptor.CppDescription ?? libDescriptor.Summary} | {generator.GetNativeLibraryMarkdownLink() ?? ""}<br>`{generator.NativeVersion ?? "-"}` | {string.Join(", ", libDescriptor.SupportedArchitectures.Select(x => $"`{x}`"))} | {GetMarkdownBadgeForCI(generator)}<br>[![NuGet](https://img.shields.io/nuget/v/{generator.ManagedPackageName}.svg)](https://www.nuget.org/packages/{generator.ManagedPackageName}) |");
                 }
                 newReadme.AppendLine();
             }

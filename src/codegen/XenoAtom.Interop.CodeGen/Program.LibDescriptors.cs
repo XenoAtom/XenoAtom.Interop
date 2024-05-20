@@ -5,6 +5,7 @@ using XenoAtom.Interop.CodeGen.common;
 using XenoAtom.Interop.CodeGen.libgit2;
 using XenoAtom.Interop.CodeGen.musl;
 using XenoAtom.Interop.CodeGen.sqlite;
+using XenoAtom.Interop.CodeGen.vulkan;
 using XenoAtom.Interop.CodeGen.zlib;
 
 namespace XenoAtom.Interop.CodeGen;
@@ -166,6 +167,16 @@ partial class Program
                 }
                 ```
                 """
+        },
+        new()
+        {
+            Name = "vulkan",
+            Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the vulkan API.",
+            CppDescription = "Vulkan is a low-overhead, cross-platform 3D graphics and compute API.",
+            Url = "https://registry.khronos.org/vulkan/",
+            UrlDocumentation = "https://registry.khronos.org/vulkan/specs/1.3/styleguide.html",
+            Generator = desc => new VulkanGenerator(desc),
+            ApkDeps = ["vulkan-headers"],
         },
     ];
 }

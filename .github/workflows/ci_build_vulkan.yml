@@ -1,0 +1,20 @@
+name: ci_build_vulkan
+
+on:
+  push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '**' 
+    paths:
+    - 'src/*.props'
+    - 'src/vulkan/**'
+  pull_request:
+
+jobs:
+  build:
+    uses: xoofx/.github/.github/workflows/dotnet.yml@main
+    with:
+      dotnet-releaser-path: 'src/vulkan/dotnet-releaser.toml'
+    secrets:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}

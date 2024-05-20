@@ -82,7 +82,7 @@ public abstract class GeneratorBase
     [System.Diagnostics.DebuggerHidden]
     public ApkManager Apk => _apkManager ?? throw new InvalidOperationException("ApkManager is not set. Run through generate");
 
-    public async Task Initialize(ApkManager apkHelper)
+    public virtual async Task Initialize(ApkManager apkHelper)
     {
         _apkManager = apkHelper;
 
