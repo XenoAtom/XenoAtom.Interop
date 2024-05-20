@@ -35,7 +35,6 @@ public class BasicTests
     [TestMethod]
     public unsafe void TestListExtensions()
     {
-        
         uint count = 0;
         vkEnumerateInstanceExtensionProperties(null, ref count, ref Unsafe.NullRef<VkExtensionProperties>());
         if (count > 0)
