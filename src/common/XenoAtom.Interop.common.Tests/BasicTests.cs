@@ -1,7 +1,4 @@
-using System.IO.Compression;
-using System.Reflection.Emit;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace XenoAtom.Interop.Tests;
 
@@ -9,7 +6,20 @@ namespace XenoAtom.Interop.Tests;
 public class BasicTests
 {
     [TestMethod]
-    public unsafe void TestSimple()
+    public unsafe void VerifyFixedArray()
     {
+        Assert.AreEqual(100 * sizeof(int), sizeof(FixedArray100<int>));
+    }
+
+    [TestMethod]
+    public void VerifyReadOnlySpanUtf8()
+    {
+        var span = new ReadOnlySpanUtf8(Encoding.UTF8.GetBytes("Hello World"));
+        Assert.AreEqual("Hello World", span.ToString());
+
+        var span2 = new ReadOnlySpanUtf8(Encoding.UTF8.GetBytes("Hello World"));
+        Assert.IsTrue(span == span2);
+
+        Assert.AreEqual(span.GetHashCode(), span2.GetHashCode());
     }
 }
