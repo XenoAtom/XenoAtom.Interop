@@ -144,7 +144,7 @@ namespace XenoAtom.Interop
             public vulkan.VkChromaLocation suggestedYChromaOffset;
         }
         
-        public readonly partial struct PFN_vkCreateAndroidSurfaceKHR : IEquatable<PFN_vkCreateAndroidSurfaceKHR>
+        public readonly partial struct PFN_vkCreateAndroidSurfaceKHR : IEquatable<PFN_vkCreateAndroidSurfaceKHR>, IvkFunctionPointer
         {
             public PFN_vkCreateAndroidSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkAndroidSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -165,9 +165,21 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateAndroidSurfaceKHR left, PFN_vkCreateAndroidSurfaceKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateAndroidSurfaceKHR left, PFN_vkCreateAndroidSurfaceKHR right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkAndroidSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkAndroidSurfaceCreateInfoKHR* __pCreateInfo = &pCreateInfo)
+                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
+                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
+                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetAndroidHardwareBufferPropertiesANDROID : IEquatable<PFN_vkGetAndroidHardwareBufferPropertiesANDROID>
+        public readonly partial struct PFN_vkGetAndroidHardwareBufferPropertiesANDROID : IEquatable<PFN_vkGetAndroidHardwareBufferPropertiesANDROID>, IvkFunctionPointer
         {
             public PFN_vkGetAndroidHardwareBufferPropertiesANDROID(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.AHardwareBuffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID*, vulkan.VkResult> value) => this.Value = value;
             
@@ -188,9 +200,19 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetAndroidHardwareBufferPropertiesANDROID left, PFN_vkGetAndroidHardwareBufferPropertiesANDROID right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetAndroidHardwareBufferPropertiesANDROID left, PFN_vkGetAndroidHardwareBufferPropertiesANDROID right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, ref vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties)
+            {
+                fixed (vulkan.VkAndroidHardwareBufferPropertiesANDROID* __pProperties = &pProperties)
+                return Value(device, buffer, __pProperties);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryAndroidHardwareBufferANDROID : IEquatable<PFN_vkGetMemoryAndroidHardwareBufferANDROID>
+        public readonly partial struct PFN_vkGetMemoryAndroidHardwareBufferANDROID : IEquatable<PFN_vkGetMemoryAndroidHardwareBufferANDROID>, IvkFunctionPointer
         {
             public PFN_vkGetMemoryAndroidHardwareBufferANDROID(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID*, vulkan.AHardwareBuffer*, vulkan.VkResult> value) => this.Value = value;
             
@@ -211,24 +233,37 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetMemoryAndroidHardwareBufferANDROID left, PFN_vkGetMemoryAndroidHardwareBufferANDROID right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetMemoryAndroidHardwareBufferANDROID left, PFN_vkGetMemoryAndroidHardwareBufferANDROID right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, ref vulkan.AHardwareBuffer pBuffer)
+            {
+                fixed (vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID* __pInfo = &pInfo)
+                fixed (vulkan.AHardwareBuffer* __pBuffer = &pBuffer)
+                return Value(device, __pInfo, __pBuffer);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
         public const int VK_KHR_android_surface = 1;
         
         public const int VK_KHR_ANDROID_SURFACE_SPEC_VERSION = 6;
         
-        public const string VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface";
+        public static ReadOnlySpanUtf8 VK_KHR_ANDROID_SURFACE_EXTENSION_NAME => "VK_KHR_android_surface"u8;
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateAndroidSurfaceKHR")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateAndroidSurfaceKHR(vulkan.VkInstance instance, in vulkan.VkAndroidSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateAndroidSurfaceKHR> vkCreateAndroidSurfaceKHR_ => new("vkCreateAndroidSurfaceKHR"u8);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetAndroidHardwareBufferPropertiesANDROID")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vkGetAndroidHardwareBufferPropertiesANDROID(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, ref vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties);
         
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID> vkGetAndroidHardwareBufferPropertiesANDROID_ => new("vkGetAndroidHardwareBufferPropertiesANDROID"u8);
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryAndroidHardwareBufferANDROID")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vkGetMemoryAndroidHardwareBufferANDROID(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, ref vulkan.AHardwareBuffer pBuffer);
+        
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID> vkGetMemoryAndroidHardwareBufferANDROID_ => new("vkGetMemoryAndroidHardwareBufferANDROID"u8);
     }
 }

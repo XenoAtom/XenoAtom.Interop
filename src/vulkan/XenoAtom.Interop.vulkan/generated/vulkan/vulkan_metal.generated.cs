@@ -17,6 +17,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        [Flags]
         public enum VkExportMetalObjectTypeFlagBitsEXT : uint
         {
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = unchecked((uint)1),
@@ -346,7 +347,7 @@ namespace XenoAtom.Interop
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
         
-        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<PFN_vkCreateMetalSurfaceEXT>
+        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<PFN_vkCreateMetalSurfaceEXT>, IvkFunctionPointer
         {
             public PFN_vkCreateMetalSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -367,6 +368,18 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateMetalSurfaceEXT left, PFN_vkCreateMetalSurfaceEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateMetalSurfaceEXT left, PFN_vkCreateMetalSurfaceEXT right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkMetalSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkMetalSurfaceCreateInfoEXT* __pCreateInfo = &pCreateInfo)
+                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
+                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
+                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
         public readonly partial struct VkExportMetalObjectTypeFlagsEXT : IEquatable<VkExportMetalObjectTypeFlagsEXT>
@@ -390,9 +403,13 @@ namespace XenoAtom.Interop
             public static bool operator ==(VkExportMetalObjectTypeFlagsEXT left, VkExportMetalObjectTypeFlagsEXT right) => left.Equals(right);
             
             public static bool operator !=(VkExportMetalObjectTypeFlagsEXT left, VkExportMetalObjectTypeFlagsEXT right) => !left.Equals(right);
+            
+            public static implicit operator vulkan.VkExportMetalObjectTypeFlagBitsEXT (vulkan.VkExportMetalObjectTypeFlagsEXT from) => (vulkan.VkExportMetalObjectTypeFlagBitsEXT)(uint)from.Value;
+            
+            public static implicit operator vulkan.VkExportMetalObjectTypeFlagsEXT (vulkan.VkExportMetalObjectTypeFlagBitsEXT from) => new vulkan.VkExportMetalObjectTypeFlagsEXT((uint)from);
         }
         
-        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<PFN_vkExportMetalObjectsEXT>
+        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<PFN_vkExportMetalObjectsEXT>, IvkFunctionPointer
         {
             public PFN_vkExportMetalObjectsEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExportMetalObjectsInfoEXT*, void> value) => this.Value = value;
             
@@ -413,26 +430,32 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkExportMetalObjectsEXT left, PFN_vkExportMetalObjectsEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkExportMetalObjectsEXT left, PFN_vkExportMetalObjectsEXT right) => !left.Equals(right);
+            
+            public void Invoke(vulkan.VkDevice device, ref vulkan.VkExportMetalObjectsInfoEXT pMetalObjectsInfo)
+            {
+                fixed (vulkan.VkExportMetalObjectsInfoEXT* __pMetalObjectsInfo = &pMetalObjectsInfo)
+                Value(device, __pMetalObjectsInfo);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
         public const int VK_EXT_metal_surface = 1;
         
         public const int VK_EXT_METAL_SURFACE_SPEC_VERSION = 1;
         
-        public const string VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface";
+        public static ReadOnlySpanUtf8 VK_EXT_METAL_SURFACE_EXTENSION_NAME => "VK_EXT_metal_surface"u8;
         
         public const int VK_EXT_metal_objects = 1;
         
         public const int VK_EXT_METAL_OBJECTS_SPEC_VERSION = 1;
         
-        public const string VK_EXT_METAL_OBJECTS_EXTENSION_NAME = "VK_EXT_metal_objects";
+        public static ReadOnlySpanUtf8 VK_EXT_METAL_OBJECTS_EXTENSION_NAME => "VK_EXT_metal_objects"u8;
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateMetalSurfaceEXT")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateMetalSurfaceEXT(vulkan.VkInstance instance, in vulkan.VkMetalSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateMetalSurfaceEXT> vkCreateMetalSurfaceEXT_ => new("vkCreateMetalSurfaceEXT"u8);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkExportMetalObjectsEXT")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial void vkExportMetalObjectsEXT(vulkan.VkDevice device, ref vulkan.VkExportMetalObjectsInfoEXT pMetalObjectsInfo);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkExportMetalObjectsEXT> vkExportMetalObjectsEXT_ => new("vkExportMetalObjectsEXT"u8);
     }
 }

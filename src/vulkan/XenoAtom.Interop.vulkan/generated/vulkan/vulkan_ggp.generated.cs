@@ -60,7 +60,7 @@ namespace XenoAtom.Interop
             public uint frameToken;
         }
         
-        public readonly partial struct PFN_vkCreateStreamDescriptorSurfaceGGP : IEquatable<PFN_vkCreateStreamDescriptorSurfaceGGP>
+        public readonly partial struct PFN_vkCreateStreamDescriptorSurfaceGGP : IEquatable<PFN_vkCreateStreamDescriptorSurfaceGGP>, IvkFunctionPointer
         {
             public PFN_vkCreateStreamDescriptorSurfaceGGP(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkStreamDescriptorSurfaceCreateInfoGGP*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -81,10 +81,24 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateStreamDescriptorSurfaceGGP left, PFN_vkCreateStreamDescriptorSurfaceGGP right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateStreamDescriptorSurfaceGGP left, PFN_vkCreateStreamDescriptorSurfaceGGP right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkStreamDescriptorSurfaceCreateInfoGGP pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkStreamDescriptorSurfaceCreateInfoGGP* __pCreateInfo = &pCreateInfo)
+                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
+                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
+                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateStreamDescriptorSurfaceGGP")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vkCreateStreamDescriptorSurfaceGGP(vulkan.VkInstance instance, in vulkan.VkStreamDescriptorSurfaceCreateInfoGGP pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP> vkCreateStreamDescriptorSurfaceGGP_ => new("vkCreateStreamDescriptorSurfaceGGP"u8);
     }
 }

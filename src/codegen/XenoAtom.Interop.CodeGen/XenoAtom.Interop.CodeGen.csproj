@@ -41,6 +41,7 @@
     <None Remove="vulkan_sys_includes\X11\extensions\Xrandr.h" />
     <None Remove="vulkan_sys_includes\X11\Xlib.h" />
     <None Remove="vulkan_sys_includes\xcb\xcb.h" />
+    <None Remove="vulkan_sys_includes\zircon\types.h" />
   </ItemGroup>
 
 </Project>

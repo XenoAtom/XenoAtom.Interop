@@ -53,7 +53,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkXlibSurfaceCreateFlagsKHR left, VkXlibSurfaceCreateFlagsKHR right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateXlibSurfaceKHR : IEquatable<PFN_vkCreateXlibSurfaceKHR>
+        public readonly partial struct PFN_vkCreateXlibSurfaceKHR : IEquatable<PFN_vkCreateXlibSurfaceKHR>, IvkFunctionPointer
         {
             public PFN_vkCreateXlibSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkXlibSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -74,9 +74,21 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateXlibSurfaceKHR left, PFN_vkCreateXlibSurfaceKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateXlibSurfaceKHR left, PFN_vkCreateXlibSurfaceKHR right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkXlibSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkXlibSurfaceCreateInfoKHR* __pCreateInfo = &pCreateInfo)
+                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
+                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
+                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR : IEquatable<PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR>
+        public readonly partial struct PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR : IEquatable<PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR>, IvkFunctionPointer
         {
             public PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, nuint, vulkan.VkBool32> value) => this.Value = value;
             
@@ -97,20 +109,25 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR left, PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR left, PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR right) => !left.Equals(right);
+            
+            public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dpy, nuint visualID)
+            {
+                return Value(physicalDevice, queueFamilyIndex, dpy, visualID);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
         public const int VK_KHR_xlib_surface = 1;
         
         public const int VK_KHR_XLIB_SURFACE_SPEC_VERSION = 6;
         
-        public const string VK_KHR_XLIB_SURFACE_EXTENSION_NAME = "VK_KHR_xlib_surface";
+        public static ReadOnlySpanUtf8 VK_KHR_XLIB_SURFACE_EXTENSION_NAME => "VK_KHR_xlib_surface"u8;
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateXlibSurfaceKHR")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateXlibSurfaceKHR(vulkan.VkInstance instance, in vulkan.VkXlibSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateXlibSurfaceKHR> vkCreateXlibSurfaceKHR_ => new("vkCreateXlibSurfaceKHR"u8);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetPhysicalDeviceXlibPresentationSupportKHR")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHR(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dpy, nuint visualID);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR> vkGetPhysicalDeviceXlibPresentationSupportKHR_ => new("vkGetPhysicalDeviceXlibPresentationSupportKHR"u8);
     }
 }

@@ -53,7 +53,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkWaylandSurfaceCreateFlagsKHR left, VkWaylandSurfaceCreateFlagsKHR right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateWaylandSurfaceKHR : IEquatable<PFN_vkCreateWaylandSurfaceKHR>
+        public readonly partial struct PFN_vkCreateWaylandSurfaceKHR : IEquatable<PFN_vkCreateWaylandSurfaceKHR>, IvkFunctionPointer
         {
             public PFN_vkCreateWaylandSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkWaylandSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -74,9 +74,21 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateWaylandSurfaceKHR left, PFN_vkCreateWaylandSurfaceKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateWaylandSurfaceKHR left, PFN_vkCreateWaylandSurfaceKHR right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWaylandSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkWaylandSurfaceCreateInfoKHR* __pCreateInfo = &pCreateInfo)
+                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
+                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
+                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR : IEquatable<PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR>
+        public readonly partial struct PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR : IEquatable<PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR>, IvkFunctionPointer
         {
             public PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.wl_display, vulkan.VkBool32> value) => this.Value = value;
             
@@ -97,20 +109,25 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR left, PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR left, PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR right) => !left.Equals(right);
+            
+            public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan.wl_display display)
+            {
+                return Value(physicalDevice, queueFamilyIndex, display);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
         public const int VK_KHR_wayland_surface = 1;
         
         public const int VK_KHR_WAYLAND_SURFACE_SPEC_VERSION = 6;
         
-        public const string VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME = "VK_KHR_wayland_surface";
+        public static ReadOnlySpanUtf8 VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME => "VK_KHR_wayland_surface"u8;
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateWaylandSurfaceKHR")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateWaylandSurfaceKHR(vulkan.VkInstance instance, in vulkan.VkWaylandSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateWaylandSurfaceKHR> vkCreateWaylandSurfaceKHR_ => new("vkCreateWaylandSurfaceKHR"u8);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetPhysicalDeviceWaylandPresentationSupportKHR")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkBool32 vkGetPhysicalDeviceWaylandPresentationSupportKHR(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan.wl_display display);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR> vkGetPhysicalDeviceWaylandPresentationSupportKHR_ => new("vkGetPhysicalDeviceWaylandPresentationSupportKHR"u8);
     }
 }

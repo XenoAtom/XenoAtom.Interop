@@ -51,7 +51,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkViSurfaceCreateFlagsNN left, VkViSurfaceCreateFlagsNN right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateViSurfaceNN : IEquatable<PFN_vkCreateViSurfaceNN>
+        public readonly partial struct PFN_vkCreateViSurfaceNN : IEquatable<PFN_vkCreateViSurfaceNN>, IvkFunctionPointer
         {
             public PFN_vkCreateViSurfaceNN(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkViSurfaceCreateInfoNN*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -72,10 +72,24 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateViSurfaceNN left, PFN_vkCreateViSurfaceNN right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateViSurfaceNN left, PFN_vkCreateViSurfaceNN right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkViSurfaceCreateInfoNN pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkViSurfaceCreateInfoNN* __pCreateInfo = &pCreateInfo)
+                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
+                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
+                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateViSurfaceNN")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vkCreateViSurfaceNN(vulkan.VkInstance instance, in vulkan.VkViSurfaceCreateInfoNN pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateViSurfaceNN> vkCreateViSurfaceNN_ => new("vkCreateViSurfaceNN"u8);
     }
 }

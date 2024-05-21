@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
-        public readonly partial struct PFN_vkAcquireXlibDisplayEXT : IEquatable<PFN_vkAcquireXlibDisplayEXT>
+        public readonly partial struct PFN_vkAcquireXlibDisplayEXT : IEquatable<PFN_vkAcquireXlibDisplayEXT>, IvkFunctionPointer
         {
             public PFN_vkAcquireXlibDisplayEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, vulkan.VkDisplayKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -38,9 +38,18 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkAcquireXlibDisplayEXT left, PFN_vkAcquireXlibDisplayEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkAcquireXlibDisplayEXT left, PFN_vkAcquireXlibDisplayEXT right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, vulkan.VkDisplayKHR display)
+            {
+                return Value(physicalDevice, dpy, display);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetRandROutputDisplayEXT : IEquatable<PFN_vkGetRandROutputDisplayEXT>
+        public readonly partial struct PFN_vkGetRandROutputDisplayEXT : IEquatable<PFN_vkGetRandROutputDisplayEXT>, IvkFunctionPointer
         {
             public PFN_vkGetRandROutputDisplayEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, nuint, vulkan.VkDisplayKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -61,20 +70,26 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetRandROutputDisplayEXT left, PFN_vkGetRandROutputDisplayEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetRandROutputDisplayEXT left, PFN_vkGetRandROutputDisplayEXT right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, nuint rrOutput, ref vulkan.VkDisplayKHR pDisplay)
+            {
+                fixed (vulkan.VkDisplayKHR* __pDisplay = &pDisplay)
+                return Value(physicalDevice, dpy, rrOutput, __pDisplay);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
         public const int VK_EXT_acquire_xlib_display = 1;
         
         public const int VK_EXT_ACQUIRE_XLIB_DISPLAY_SPEC_VERSION = 1;
         
-        public const string VK_EXT_ACQUIRE_XLIB_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_xlib_display";
+        public static ReadOnlySpanUtf8 VK_EXT_ACQUIRE_XLIB_DISPLAY_EXTENSION_NAME => "VK_EXT_acquire_xlib_display"u8;
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkAcquireXlibDisplayEXT")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkAcquireXlibDisplayEXT(vulkan.VkPhysicalDevice physicalDevice, void* dpy, vulkan.VkDisplayKHR display);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkAcquireXlibDisplayEXT> vkAcquireXlibDisplayEXT_ => new("vkAcquireXlibDisplayEXT"u8);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetRandROutputDisplayEXT")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetRandROutputDisplayEXT(vulkan.VkPhysicalDevice physicalDevice, void* dpy, nuint rrOutput, ref vulkan.VkDisplayKHR pDisplay);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetRandROutputDisplayEXT> vkGetRandROutputDisplayEXT_ => new("vkGetRandROutputDisplayEXT"u8);
     }
 }

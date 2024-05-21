@@ -946,6 +946,25 @@ namespace XenoAtom.Interop
             public static bool operator !=(AHardwareBuffer left, AHardwareBuffer right) => !left.Equals(right);
         }
         
+        public readonly partial struct VkBufferCollectionFUCHSIA_T : IEquatable<VkBufferCollectionFUCHSIA_T>
+        {
+            public VkBufferCollectionFUCHSIA_T(nint handle) => Handle = handle;
+            
+            public nint Handle { get; }
+            
+            public bool Equals(VkBufferCollectionFUCHSIA_T other) => Handle.Equals(other.Handle);
+            
+            public override bool Equals(object obj) => obj is VkBufferCollectionFUCHSIA_T other && Equals(other);
+            
+            public override int GetHashCode() => Handle.GetHashCode();
+            
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+            
+            public static bool operator ==(VkBufferCollectionFUCHSIA_T left, VkBufferCollectionFUCHSIA_T right) => left.Equals(right);
+            
+            public static bool operator !=(VkBufferCollectionFUCHSIA_T left, VkBufferCollectionFUCHSIA_T right) => !left.Equals(right);
+        }
+        
         public readonly partial struct __IOSurface : IEquatable<__IOSurface>
         {
             public __IOSurface(nint handle) => Handle = handle;

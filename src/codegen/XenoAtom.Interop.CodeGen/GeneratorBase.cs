@@ -364,19 +364,34 @@ public abstract class GeneratorBase
             {
                 var cppFunction = (CppFunction)csMethod.CppElement!;
 
-                var includeHeaderFileName = Path.GetFileName(cppFunction.SourceFile);
-                
-                if (!mapIncludeNameToCppFunction.TryGetValue(includeHeaderFileName, out var list))
-                {
-                    list = new List<CppFunction>();
-                    mapIncludeNameToCppFunction[includeHeaderFileName] = list;
-                }
-
-                list.Add(cppFunction);
+                AddCppFunction(cppFunction);
             }
         }
 
+        foreach (var cppFunction in GetAdditionalExportedCppFunctions())
+        {
+            AddCppFunction(cppFunction);
+        }
+
         return mapIncludeNameToCppFunction;
+
+        void AddCppFunction(CppFunction cppFunction)
+        {
+            var includeHeaderFileName = Path.GetFileName(cppFunction.SourceFile);
+                
+            if (!mapIncludeNameToCppFunction.TryGetValue(includeHeaderFileName, out var list))
+            {
+                list = new List<CppFunction>();
+                mapIncludeNameToCppFunction[includeHeaderFileName] = list;
+            }
+
+            list.Add(cppFunction);
+        }
+    }
+
+    protected virtual IEnumerable<CppFunction> GetAdditionalExportedCppFunctions()
+    {
+        return Enumerable.Empty<CppFunction>();
     }
 
     private static IEnumerable<CSharpMethod> CollectAllFunctions(CSharpClass csClass)

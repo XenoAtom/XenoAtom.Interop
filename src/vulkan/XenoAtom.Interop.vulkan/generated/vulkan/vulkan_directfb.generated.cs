@@ -53,7 +53,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDirectFBSurfaceCreateFlagsEXT left, VkDirectFBSurfaceCreateFlagsEXT right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateDirectFBSurfaceEXT : IEquatable<PFN_vkCreateDirectFBSurfaceEXT>
+        public readonly partial struct PFN_vkCreateDirectFBSurfaceEXT : IEquatable<PFN_vkCreateDirectFBSurfaceEXT>, IvkFunctionPointer
         {
             public PFN_vkCreateDirectFBSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkDirectFBSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -74,9 +74,21 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateDirectFBSurfaceEXT left, PFN_vkCreateDirectFBSurfaceEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateDirectFBSurfaceEXT left, PFN_vkCreateDirectFBSurfaceEXT right) => !left.Equals(right);
+            
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkDirectFBSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkDirectFBSurfaceCreateInfoEXT* __pCreateInfo = &pCreateInfo)
+                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
+                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
+                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT : IEquatable<PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>
+        public readonly partial struct PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT : IEquatable<PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>, IvkFunctionPointer
         {
             public PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, vulkan.VkBool32> value) => this.Value = value;
             
@@ -97,20 +109,25 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT left, PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT left, PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT right) => !left.Equals(right);
+            
+            public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dfb)
+            {
+                return Value(physicalDevice, queueFamilyIndex, dfb);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
         }
         
         public const int VK_EXT_directfb_surface = 1;
         
         public const int VK_EXT_DIRECTFB_SURFACE_SPEC_VERSION = 1;
         
-        public const string VK_EXT_DIRECTFB_SURFACE_EXTENSION_NAME = "VK_EXT_directfb_surface";
+        public static ReadOnlySpanUtf8 VK_EXT_DIRECTFB_SURFACE_EXTENSION_NAME => "VK_EXT_directfb_surface"u8;
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateDirectFBSurfaceEXT")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateDirectFBSurfaceEXT(vulkan.VkInstance instance, in vulkan.VkDirectFBSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateDirectFBSurfaceEXT> vkCreateDirectFBSurfaceEXT_ => new("vkCreateDirectFBSurfaceEXT"u8);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetPhysicalDeviceDirectFBPresentationSupportEXT")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkBool32 vkGetPhysicalDeviceDirectFBPresentationSupportEXT(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dfb);
+        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT> vkGetPhysicalDeviceDirectFBPresentationSupportEXT_ => new("vkGetPhysicalDeviceDirectFBPresentationSupportEXT"u8);
     }
 }
