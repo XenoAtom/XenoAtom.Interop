@@ -273,7 +273,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         parent.Members.Insert(parent.Members.IndexOf(csFunction) + 1, csProperty);
 
         // Extension functions are not part of the core API, so we should remove LibraryImport for them
-        var isExtensionFunction = RegexCommandExt().IsMatch(csFunction.Name);
+        var isExtensionFunction = IsFunctionPointerStruct(cppFunction);
         if (isExtensionFunction)
         {
             parent.Members.Remove(csFunction);
@@ -343,8 +343,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         {
             csMethod.Parameters.Add(csParameter);
         }
-
-
+        
         if (TryGetVulkanCommand(cppFunction.Name, out var command))
         {
             if (command.Parameters.Count != cppFunction.Parameters.Count)
@@ -353,124 +352,225 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             }
             else
             {
-                var lengthParameterCount = command.Parameters.Count(x => x.Kind == VulkanCommandParameterKind.Length);
-                var arrayParameterCount = command.Parameters.Count(x => x.Kind == VulkanCommandParameterKind.Array);
-                var lengthParameterIndex = command.Parameters.FindIndex(x => x.Kind == VulkanCommandParameterKind.Length);
-                var arrayParameterIndex = command.Parameters.FindIndex(x => x.Kind == VulkanCommandParameterKind.Array);
-                if (lengthParameterCount == 1 && arrayParameterCount == 1 && IsValidPointerTypeForSpan(cppFunction.Parameters[arrayParameterIndex].Type))
+                CreateNewFunctionOverloads(csFunction, command);
+            }
+        }
+    }
+
+    private static bool IsFunctionPointerStruct(CppFunction cppFunction)
+    {
+        return RegexCommandExt().IsMatch(cppFunction.Name);
+    }
+
+
+    private void CreateNewFunctionOverloads(CSharpMethod csFunction, VulkanCommand command)
+    {
+        var cppFunction = (CppFunction)csFunction.CppElement!;
+        var parameterListToProcess = GetParameterListToProcess(command, csFunction, cppFunction);
+        if (parameterListToProcess == null)
+        {
+            return;
+        }
+
+        CreateNewFunctionOverload(csFunction, parameterListToProcess);
+    }
+
+    private void CreateNewFunctionOverload(CSharpMethod csFunction, List<VulkanCommandParameterToProcess> parameterListToProcess)
+    {
+        var cppFunction = (CppFunction)csFunction.CppElement!;
+        var pfn = _structFunctionPointers[cppFunction.Name];
+        bool isExtensionFunction = IsFunctionPointerStruct(cppFunction);
+        var parent = (ICSharpContainer)csFunction.Parent!;
+
+
+        // Create the new method
+        var newMethod = csFunction.Clone();
+        if (isExtensionFunction)
+        {
+            newMethod.Name = "Invoke";
+            newMethod.Modifiers &= ~CSharpModifiers.Static;
+        }
+
+        newMethod.Parent = null;
+        // Remove the partial attribute as we are giving it a body
+        newMethod.Modifiers &= ~CSharpModifiers.Partial;
+        // We remove all attributes as we are calling to call the interop method from the body
+        newMethod.Attributes.Clear();
+
+        // We go down from the last parameter to the first one to replace the array parameters with Span
+        for (var index = parameterListToProcess.Count - 1; index >= 0; index--)
+        {
+            var parameterGroup = parameterListToProcess[index];
+
+            foreach (var arrayParameter in parameterGroup.SupportedArrayParameters)
+            {
+                var arrayParameterPointerType = (CSharpPointerType)arrayParameter.AttachedCSharpParameter!.ParameterType!;
+                var arrayElementType = arrayParameterPointerType.ElementType;
+                var isConst = arrayParameterPointerType.CppElement is CppPointerType cppPointerType && cppPointerType.ElementType is CppQualifiedType cppQualifiedType && cppQualifiedType.Qualifier == CppTypeQualifier.Const;
+
+                // Replace the array parameter with the appropriate span
+                var spanParameterType = isConst ? new CSharpGenericTypeReference("ReadOnlySpan", [arrayElementType]) : new CSharpGenericTypeReference("Span", [arrayElementType]);
+
+                newMethod.Parameters[arrayParameter.Index].ParameterType = spanParameterType;
+            }
+
+            // We remove the length parameter
+            newMethod.Parameters.RemoveAt(parameterGroup.LengthParameter.Index);
+        }
+
+        newMethod.Body = (writer, _) =>
+        {
+            // We go down from the last parameter to the first one to replace the array parameters with Span
+            foreach (var parameterGroup in parameterListToProcess)
+            {
+                var csLengthParameter = parameterGroup.LengthParameter.AttachedCSharpParameter!;
+                var firstArrayParameter = parameterGroup.SupportedArrayParameters[0];
+
+                parameterGroup.LengthParameter.IndexParameterName = $"{firstArrayParameter.Name}.Length";
+                if (parameterGroup.IsLengthByRef)
                 {
-                    // For now, handle only 1 array parameter
+                    var lengthParameterType = ((CSharpRefType)csLengthParameter.ParameterType!).ElementType;
+                    lengthParameterType.DumpReferenceTo(writer);
+                    parameterGroup.LengthParameter.IndexParameterName = $"__{parameterGroup.LengthParameter.Name}";
+                    writer.Write($" {parameterGroup.LengthParameter.IndexParameterName} = checked((");
+                    lengthParameterType.DumpReferenceTo(writer);
+                    writer.WriteLine($"){firstArrayParameter.Name}.Length);");
+                }
 
-                    var cppLengthParameter = cppFunction.Parameters[lengthParameterIndex];
-                    var csLengthParameter = csFunction.Parameters[lengthParameterIndex];
-                    bool isLengthByRef = cppLengthParameter.Type is CppPointerType;
+                foreach (var arrayParameter in parameterGroup.SupportedArrayParameters)
+                {
+                    writer.Write("fixed (");
+                    arrayParameter.AttachedCSharpParameter!.ParameterType!.DumpReferenceTo(writer);
+                    writer.WriteLine($" __{arrayParameter.Name} = {arrayParameter.Name})");
+                }
+            }
 
-                    var newMethod = csFunction.Clone();
-                    if (isExtensionFunction)
+            if (newMethod.ReturnType is not CSharpPrimitiveType primitiveType || primitiveType.Kind != CSharpPrimitiveKind.Void)
+            {
+                writer.Write("return ");
+            }
+
+            writer.Write(isExtensionFunction ? "this.Invoke" : csFunction.Name);
+            writer.Write("(");
+            for (var i = 0; i < csFunction.Parameters.Count; i++)
+            {
+                if (i > 0)
+                {
+                    writer.Write(", ");
+                }
+
+                int localI = i;
+                var lengthParameterIndex = parameterListToProcess.FindIndex(x => x.LengthParameter.Index == localI);
+                var lengthParameterWithArray = parameterListToProcess.SelectMany(x => x.SupportedArrayParameters).FirstOrDefault(x => x.Index == localI);
+
+                CSharpParameter? arrayParameter = null;
+                if (lengthParameterWithArray != null)
+                {
+                    arrayParameter = lengthParameterWithArray.AttachedCSharpParameter!;
+                }
+
+                if (lengthParameterIndex >= 0)
+                {
+                    var lengthParameter = parameterListToProcess[lengthParameterIndex];
+
+                    if (lengthParameter.IsLengthByRef)
                     {
-                        newMethod.Name = "Invoke";
-                        newMethod.Modifiers &= ~CSharpModifiers.Static;
-                    }
-
-                    newMethod.Parent = null;
-                    // Remove the partial attribute as we are giving it a body
-                    newMethod.Modifiers &= ~CSharpModifiers.Partial;
-                    // We remove all attributes as we are calling to call the interop method from the body
-                    newMethod.Attributes.Clear();
-
-                    newMethod.Parameters.RemoveAt(lengthParameterIndex);
-                    var newArrayParameterIndex = lengthParameterIndex < arrayParameterIndex ? arrayParameterIndex - 1 : arrayParameterIndex;
-
-                    var arrayParameter = newMethod.Parameters[newArrayParameterIndex];
-                    var arrayParameterPointerType = (CSharpPointerType)arrayParameter.ParameterType!;
-                    var arrayElementType = arrayParameterPointerType.ElementType;
-
-                    var isConst = arrayParameterPointerType.CppElement is CppPointerType cppPointerType && cppPointerType.ElementType is CppQualifiedType cppQualifiedType && cppQualifiedType.Qualifier == CppTypeQualifier.Const;
-
-                    // Replace the array parameter with the appropriate span
-                    var spanParameterType = isConst ? new CSharpGenericTypeReference("ReadOnlySpan", [arrayElementType]) : new CSharpGenericTypeReference("Span", [arrayElementType]);
-
-                    newMethod.Parameters[newArrayParameterIndex].ParameterType = spanParameterType;
-
-                    newMethod.Body = (writer, _) =>
-                    {
-                        string lengthParameterName = $"{arrayParameter.Name}.Length";
-                        if (isLengthByRef)
-                        {
-                            var lengthParameterType = ((CSharpRefType)csLengthParameter.ParameterType!).ElementType;
-                            lengthParameterType.DumpReferenceTo(writer);
-                            lengthParameterName = $"__{cppLengthParameter.Name}";
-                            writer.Write($" {lengthParameterName} = checked((");
-                            lengthParameterType.DumpReferenceTo(writer);
-                            writer.WriteLine($"){arrayParameter.Name}.Length);");
-                        }
-
-                        writer.Write("fixed (");
-                        arrayElementType.DumpReferenceTo(writer);
-                        writer.WriteLine($"* __{arrayParameter.Name} = {arrayParameter.Name})");
-                        if (newMethod.ReturnType is not CSharpPrimitiveType primitiveType || primitiveType.Kind != CSharpPrimitiveKind.Void)
-                        {
-                            writer.Write("return ");
-                        }
-
-                        writer.Write(isExtensionFunction ? "this.Invoke" : csFunction.Name);
-                        writer.Write("(");
-                        for (var i = 0; i < csFunction.Parameters.Count; i++)
-                        {
-                            if (i > 0)
-                            {
-                                writer.Write(", ");
-                            }
-
-                            if (i == lengthParameterIndex)
-                            {
-                                if (isLengthByRef)
-                                {
-                                    writer.Write($"ref {lengthParameterName}");
-                                }
-                                else
-                                {
-                                    // Force casting
-                                    writer.Write("checked((");
-                                    csLengthParameter.ParameterType!.DumpReferenceTo(writer);
-                                    writer.Write($"){lengthParameterName})");
-                                }
-                            }
-                            else if (i == arrayParameterIndex)
-                            {
-                                writer.Write($"__{arrayParameter.Name}");
-                            }
-                            else
-                            {
-                                var csParameter = csFunction.Parameters[i];
-                                if (csParameter.ParameterType is CSharpRefType refType && (refType.Kind != CSharpRefKind.None && refType.Kind != CSharpRefKind.In))
-                                {
-                                    refType.DumpTo(writer);
-                                    writer.Write(" ");
-                                }
-
-                                writer.Write(csParameter.Name);
-                            }
-                        }
-
-                        writer.WriteLine(");");
-                    };
-
-                    if (isExtensionFunction)
-                    {
-                        // If it is an extension function, add it to the extension function pointer
-                        pfn.Members.Add(newMethod);
+                        writer.Write($"ref {lengthParameter.LengthParameter.IndexParameterName}");
                     }
                     else
                     {
-                        // Insert the overload after the original function
-                        parent.Members.Insert(parent.Members.IndexOf(csFunction) + 1, newMethod);
+                        // Force casting
+                        writer.Write("checked((");
+                        lengthParameter.LengthParameter.AttachedCSharpParameter!.ParameterType!.DumpReferenceTo(writer);
+                        writer.Write($"){lengthParameter.LengthParameter.IndexParameterName})");
                     }
                 }
+                else if (arrayParameter != null)
+                {
+                    writer.Write($"__{arrayParameter.Name}");
+                }
+                else
+                {
+                    var csParameter = csFunction.Parameters[i];
+                    if (csParameter.ParameterType is CSharpRefType refType && (refType.Kind != CSharpRefKind.None && refType.Kind != CSharpRefKind.In))
+                    {
+                        refType.Kind.DumpTo(writer);
+                        writer.Write(" ");
+                    }
+
+                    writer.Write(csParameter.Name);
+                }
+            }
+
+            writer.WriteLine(");");
+        };
+
+        if (isExtensionFunction)
+        {
+            // If it is an extension function, add it to the extension function pointer
+            pfn.Members.Add(newMethod);
+        }
+        else
+        {
+            // Insert the overload after the original function
+            parent.Members.Insert(parent.Members.IndexOf(csFunction) + 1, newMethod);
+        }
+    }
+
+
+    private class VulkanCommandParameterToProcess
+    {
+        public bool IsLengthByRef { get; init; }
+
+        public required VulkanCommandParameter LengthParameter { get; init; }
+
+        public List<VulkanCommandParameter> SupportedArrayParameters { get; } = new();
+    }
+
+    private List<VulkanCommandParameterToProcess>? GetParameterListToProcess(VulkanCommand command, CSharpMethod csFunction, CppFunction cppFunction)
+    {
+        List<VulkanCommandParameterToProcess>? groups = null;
+        for (var i = 0; i < command.Parameters.Count; i++)
+        {
+            var parameter = command.Parameters[i];
+            if (parameter.Kind == VulkanCommandParameterKind.Length)
+            {
+                var cppLengthParameter = cppFunction.Parameters[i];
+                bool isLengthByRef = cppLengthParameter.Type is CppPointerType;
+
+                parameter.AttachedCSharpParameter = csFunction.Parameters[i];
+
+                var currentGroup = new VulkanCommandParameterToProcess
+                {
+                    IsLengthByRef = isLengthByRef,
+                    LengthParameter = parameter,
+                };
+
+                groups ??= new();
+                groups.Add(currentGroup);
             }
         }
 
+        if (groups == null)
+        {
+            return null;
+        }
 
+        for (var i = 0; i < command.Parameters.Count; i++)
+        {
+            var parameter = command.Parameters[i];
+            if (parameter.Kind == VulkanCommandParameterKind.Array && IsValidPointerTypeForSpan(cppFunction.Parameters[i].Type))
+            {
+                var group = groups!.Find(x => x.LengthParameter.Index == parameter.LengthParameterIndex)!;
+                group.SupportedArrayParameters.Add(parameter);
+                parameter.AttachedCSharpParameter = csFunction.Parameters[i];
+            }
+        }
+
+        // Remove groups that don't have any array parameters
+        groups.RemoveAll(x => x.SupportedArrayParameters.Count == 0);
+
+        return groups.Count == 0 ? null : groups;
     }
 
     private void ApplyDocumentation(CSharpElement element)
@@ -704,7 +804,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                     }
                 }
 
-                vulcanCommand.Parameters.Add(new VulkanCommandParameter(paramName, paramOptional, lengthParameterIndex)
+                vulcanCommand.Parameters.Add(new VulkanCommandParameter(parameterIndex, paramName, paramOptional, lengthParameterIndex)
                 {
                     Kind = parameterKind
                 });
@@ -1095,8 +1195,15 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             {
                 return false;
             }
-            else if (pointerType.ElementType is CppQualifiedType qualifiedType && qualifiedType.ElementType is CppPrimitiveType anotherPrimitiveType && anotherPrimitiveType.Kind == CppPrimitiveKind.Void)
+            else if (pointerType.ElementType is CppQualifiedType qualifiedType &&
+                     ((qualifiedType.ElementType is CppPrimitiveType anotherPrimitiveType && anotherPrimitiveType.Kind == CppPrimitiveKind.Void) ||
+                      (qualifiedType.ElementType is CppPointerType)))
             {
+                return false;
+            }
+            else if (pointerType.ElementType is CppPointerType)
+            {
+                // Span of pointers is not possible
                 return false;
             }
 
@@ -1152,7 +1259,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         public List<VulkanCommandParameter> Parameters { get; } = [];
     }
 
-    private record VulkanCommandParameter(string Name, VulkanCommandOptional Optional, int LengthParameterIndex)
+    private record VulkanCommandParameter(int Index, string Name, VulkanCommandOptional Optional, int LengthParameterIndex)
     {
         /// <summary>
         /// Gets or sets the kind of this parameter
@@ -1163,6 +1270,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         /// If <see cref="M:Kind"/> is <see cref="VulkanCommandParameterKind.Length"/>, this is the list of linked array parameters
         /// </summary>
         public List<int>? LinkedArrayParameters { get; set; }
+
+        public string? IndexParameterName { get; set; }
+        
+        public CSharpParameter? AttachedCSharpParameter { get; set; }
     }
 
     private enum VulkanCommandParameterKind

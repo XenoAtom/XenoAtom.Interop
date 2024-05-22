@@ -3059,6 +3059,22 @@ namespace XenoAtom.Interop
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Creates a new execution graph pipeline object
+            /// </summary>
+            /// <param name="device">The logical device that creates the execution graph pipelines.</param>
+            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command.</param>
+            /// <param name="createInfoCount">The length of the <paramref name="pCreateInfos"/> and <paramref name="pPipelines"/> arrays.</param>
+            /// <param name="pCreateInfos">A pointer to an array of <see cref="T:VkExecutionGraphPipelineCreateInfoAMDX"/> structures.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter.</param>
+            /// <param name="pPipelines">A pointer to an array of <see cref="T:VkPipeline"/> handles in which the resulting execution graph pipeline objects are returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, ReadOnlySpan<vulkan.VkExecutionGraphPipelineCreateInfoAMDX> pCreateInfos, in vulkan.VkAllocationCallbacks pAllocator, Span<vulkan.VkPipeline> pPipelines)
+            {
+                fixed (vulkan.VkExecutionGraphPipelineCreateInfoAMDX* __pCreateInfos = pCreateInfos)
+                fixed (vulkan.VkPipeline* __pPipelines = pPipelines)
+                return this.Invoke(device, pipelineCache, checked((uint)pCreateInfos.Length), __pCreateInfos, pAllocator, __pPipelines);
+            }
         }
         
         public readonly partial struct PFN_vkGetExecutionGraphPipelineScratchSizeAMDX : IEquatable<PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>, IvkFunctionPointer
