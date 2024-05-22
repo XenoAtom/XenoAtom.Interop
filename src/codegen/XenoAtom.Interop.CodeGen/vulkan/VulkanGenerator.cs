@@ -3,6 +3,7 @@
 // See license.txt file in the project root for full license information.
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -344,7 +345,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
 
 
-        if (_functionRegistry.TryGetValue(cppFunction.Name, out var command))
+        if (TryGetVulkanCommand(cppFunction.Name, out var command))
         {
             if (command.Parameters.Count != cppFunction.Parameters.Count)
             {
@@ -565,6 +566,21 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
     }
 
+    private bool TryGetVulkanCommand(string name, [NotNullWhen(true)] out VulkanCommand? command)
+    {
+        if (_functionRegistry.TryGetValue(name, out command))
+        {
+            if (command.Alias != null)
+            {
+                command = _functionRegistry[command.Alias];
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+    
 
     private void ProcessParameters(CSharpConverter converter, CppElement element)
     {
@@ -576,15 +592,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             return;
         }
         var parameterIndex = function.Parameters.IndexOf(cppParameter);
-        if (!_functionRegistry.TryGetValue(function.Name, out var command))
+        if (!TryGetVulkanCommand(function.Name, out var command))
         {
             Console.WriteLine($"Warning: Function {function.Name} not found in the registry");
             return;
-        }
-
-        if (command.Alias != null)
-        {
-            command = _functionRegistry[command.Alias];
         }
         
         if (command.Parameters.Count != function.Parameters.Count)
