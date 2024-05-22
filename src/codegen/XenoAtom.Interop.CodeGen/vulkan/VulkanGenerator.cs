@@ -786,7 +786,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         return dict;
     }
 
-    [GeneratedRegex(@"\b(?<link>ename|sname|fname|elink|pname|slink|flink):(?<target>\w+)")]
+    [GeneratedRegex(@"<<(?<id>[^,]+),(?<content>.*?)>>")]
+    private static partial Regex ParseSpecialTextMarkers();
+    
+    [GeneratedRegex(@"\b(?<link>ename|sname|fname|elink|pname|slink|flink|code):(?<target>\w+)")]
     private static partial Regex ParseDocTextLinks();
 
     private static CSharpComment TransformTextContentToCSharpComment(string text, bool isInFunction)
@@ -797,6 +800,13 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         // Struct field => slink:VkImageSubresourceRange::pname:aspectMask
         // And simiar with elink, slink, flink
 
+        // We substitute the special markers <<id,content>> with just the content
+        text = ParseSpecialTextMarkers().Replace(text, m =>
+        {
+            var content = m.Groups["content"].Value;
+            return content.Trim();
+        });
+        
         var regex = ParseDocTextLinks();
 
         int index = 0;
@@ -835,6 +845,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             string? docTarget = null;
             switch (link)
             {
+                case "code":
+                    docTarget = target;
+                    break;
                 case "ename":
                 case "sname":
                 case "elink":
@@ -852,7 +865,18 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
             if (docTarget != null)
             {
-                if (link == "pname" && isInFunction)
+                if (link == "code")
+                {
+                    group.Children.Add(new CSharpXmlComment("c")
+                    {
+                        IsInline = true,
+                        Children =
+                        {
+                            new CSharpTextComment(docTarget)
+                        }
+                    });
+                }
+                else if (link == "pname" && isInFunction)
                 {
                     group.Children.Add(new CSharpXmlComment("paramref")
                     {

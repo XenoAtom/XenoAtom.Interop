@@ -38,12 +38,12 @@ namespace XenoAtom.Interop
             public vulkan.VkXcbSurfaceCreateFlagsKHR flags;
             
             /// <summary>
-            /// A pointer to an code:xcb_connection_t to the X server.
+            /// A pointer to an <c>xcb_connection_t</c> to the X server.
             /// </summary>
             public void* connection;
             
             /// <summary>
-            /// The code:xcb_window_t for the X11 window to associate the surface with.
+            /// The <c>xcb_window_t</c> for the X11 window to associate the surface with.
             /// </summary>
             public uint window;
         }
@@ -98,7 +98,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkXcbSurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkXcbSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -140,8 +140,8 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="physicalDevice">The physical device.</param>
             /// <param name="queueFamilyIndex">The queue family index.</param>
-            /// <param name="connection">A pointer to an code:xcb_connection_t to the X server.</param>
-            /// <param name="visual_id">An X11 visual (code:xcb_visualid_t).</param>
+            /// <param name="connection">A pointer to an <c>xcb_connection_t</c> to the X server.</param>
+            /// <param name="visual_id">An X11 visual (<c>xcb_visualid_t</c>).</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* connection, uint visual_id)
             {
                 return Value(physicalDevice, queueFamilyIndex, connection, visual_id);

@@ -38,7 +38,7 @@ namespace XenoAtom.Interop
             public vulkan.VkMacOSSurfaceCreateFlagsMVK flags;
             
             /// <summary>
-            /// A reference to either a basetype:CAMetalLayer object or an code:NSView object.
+            /// A reference to either a basetype:CAMetalLayer object or an <c>NSView</c> object.
             /// </summary>
             public void* pView;
         }
@@ -93,7 +93,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance with which to associate the surface.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkMacOSSurfaceCreateInfoMVK"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkMacOSSurfaceCreateInfoMVK pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -113,7 +113,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="instance">The instance with which to associate the surface.</param>
         /// <param name="pCreateInfo">A pointer to a <see cref="T:VkMacOSSurfaceCreateInfoMVK"/> structure containing parameters affecting the creation of the surface object.</param>
-        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
         /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateMacOSSurfaceMVK")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]

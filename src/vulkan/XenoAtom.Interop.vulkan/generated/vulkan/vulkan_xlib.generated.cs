@@ -38,12 +38,12 @@ namespace XenoAtom.Interop
             public vulkan.VkXlibSurfaceCreateFlagsKHR flags;
             
             /// <summary>
-            /// A pointer to an Xlib code:Display connection to the X server.
+            /// A pointer to an Xlib <c>Display</c> connection to the X server.
             /// </summary>
             public void* dpy;
             
             /// <summary>
-            /// An Xlib code:Window to associate the surface with.
+            /// An Xlib <c>Window</c> to associate the surface with.
             /// </summary>
             public nuint window;
         }
@@ -98,7 +98,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkXlibSurfaceCreateInfoKHR"/> structure containing the parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkXlibSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -140,8 +140,8 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="physicalDevice">The physical device.</param>
             /// <param name="queueFamilyIndex">The queue family index.</param>
-            /// <param name="dpy">A pointer to an Xlib code:Display connection to the server.</param>
-            /// <param name="visualId">An X11 visual (code:VisualID).</param>
+            /// <param name="dpy">A pointer to an Xlib <c>Display</c> connection to the server.</param>
+            /// <param name="visualId">An X11 visual (<c>VisualID</c>).</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dpy, nuint visualID)
             {
                 return Value(physicalDevice, queueFamilyIndex, dpy, visualID);

@@ -38,7 +38,7 @@ namespace XenoAtom.Interop
             public vulkan.VkScreenSurfaceCreateFlagsQNX flags;
             
             /// <summary>
-            /// And <see cref="M:window"/> are QNX Screen code:context and code:window to associate the surface with.
+            /// And <see cref="M:window"/> are QNX Screen <c>context</c> and <c>window</c> to associate the surface with.
             /// </summary>
             public vulkan._screen_context context;
             
@@ -171,7 +171,7 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// A pointer to a code:struct code:_screen_buffer, the QNX Screen buffer to import
+            /// A pointer to a <c>struct</c> <c>_screen_buffer</c>, the QNX Screen buffer to import
             /// </summary>
             public vulkan._screen_buffer buffer;
         }
@@ -236,7 +236,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkScreenSurfaceCreateInfoQNX"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkScreenSurfaceCreateInfoQNX pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -278,7 +278,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="physicalDevice">The physical device.</param>
             /// <param name="queueFamilyIndex">The queue family index.</param>
-            /// <param name="window">The QNX Screen code:window object.</param>
+            /// <param name="window">The QNX Screen <c>window</c> object.</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan._screen_window window)
             {
                 return Value(physicalDevice, queueFamilyIndex, window);
@@ -333,7 +333,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="instance">The instance to associate the surface with.</param>
         /// <param name="pCreateInfo">A pointer to a <see cref="T:VkScreenSurfaceCreateInfoQNX"/> structure containing parameters affecting the creation of the surface object.</param>
-        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
         /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateScreenSurfaceQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -346,7 +346,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="physicalDevice">The physical device.</param>
         /// <param name="queueFamilyIndex">The queue family index.</param>
-        /// <param name="window">The QNX Screen code:window object.</param>
+        /// <param name="window">The QNX Screen <c>window</c> object.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetPhysicalDeviceScreenPresentationSupportQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan._screen_window window);

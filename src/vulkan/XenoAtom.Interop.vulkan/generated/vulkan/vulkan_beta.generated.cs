@@ -583,7 +583,7 @@ namespace XenoAtom.Interop
             public vulkan.VkStructureType sType;
             
             /// <summary>
-            /// `NULL` or a pointer to a structure extending this structure. * [[features-constantAlphaColorBlendFactors]] <see cref="M:constantAlphaColorBlendFactors"/> indicates whether this implementation supports constant _alpha_ &lt;&lt;framebuffer-blendfactors&gt;&gt; used as source or destination _color_ &lt;&lt;framebuffer-blending&gt;&gt;. * [[features-events]] <see cref="M:events"/> indicates whether this implementation supports synchronization using &lt;&lt;synchronization-events&gt;&gt;. * [[features-imageViewFormatReinterpretation]] <see cref="M:imageViewFormatReinterpretation"/> indicates whether this implementation supports a <see cref="T:VkImageView"/> being created with a texel format containing a different number of components, or a different number of bits in each component, than the texel format of the underlying <see cref="T:VkImage"/>. * [[features-imageViewFormatSwizzle]] <see cref="M:imageViewFormatSwizzle"/> indicates whether this implementation supports remapping format components using <see cref="T:VkImageViewCreateInfo.components"/>. * [[features-imageView2DOn3DImage]] <see cref="M:imageView2DOn3DImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created with the <see cref="T:VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT"/> flag set, permitting a 2D or 2D array image view to be created on a 3D <see cref="T:VkImage"/>. * [[features-multisampleArrayImage]] <see cref="M:multisampleArrayImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created as a 2D array with multiple samples per texel. * [[features-mutableComparisonSamplers]] <see cref="M:mutableComparisonSamplers"/> indicates whether this implementation allows descriptors with comparison samplers to be &lt;&lt;descriptorsets-updates, updated&gt;&gt;. * [[features-pointPolygons]] <see cref="M:pointPolygons"/> indicates whether this implementation supports &lt;&lt;primsrast&gt;&gt; using a _point_ &lt;&lt;primsrast-polygonmode&gt;&gt;. * [[features-samplerMipLodBias]] <see cref="M:samplerMipLodBias"/> indicates whether this implementation supports setting a &lt;&lt;samplers-mipLodBias, mipmap LOD bias value&gt;&gt; when &lt;&lt;samplers, creating a sampler&gt;&gt;. * [[features-separateStencilMaskRef]] <see cref="M:separateStencilMaskRef"/> indicates whether this implementation supports separate front and back &lt;&lt;fragops-stencil&gt;&gt; reference values. * [[features-shaderSampleRateInterpolationFunctions]] <see cref="M:shaderSampleRateInterpolationFunctions"/> indicates whether this implementation supports fragment shaders which use the &lt;&lt;spirvenv-capabilities-table-InterpolationFunction, code:InterpolationFunction&gt;&gt; capability and the extended instructions `InterpolateAtCentroid`, `InterpolateAtOffset`, and `InterpolateAtSample` from the `GLSL.std.450` extended instruction set. This member is only meaningful if the &lt;&lt;features-sampleRateShading, <see cref="M:sampleRateShading"/>&gt;&gt; feature is supported. * [[features-tessellationIsolines]] <see cref="M:tessellationIsolines"/> indicates whether this implementation supports &lt;&lt;tessellation-isoline-tessellation, isoline output&gt;&gt; from the &lt;&lt;tessellation&gt;&gt; stage of a graphics pipeline. This member is only meaningful if &lt;&lt;features-tessellationShader, <see cref="M:tessellationShader"/>&gt;&gt; are supported. * [[features-tessellationPointMode]] <see cref="M:tessellationPointMode"/> indicates whether this implementation supports &lt;&lt;tessellation-point-mode, point output&gt;&gt; from the &lt;&lt;tessellation&gt;&gt; stage of a graphics pipeline. This member is only meaningful if &lt;&lt;features-tessellationShader, <see cref="M:tessellationShader"/>&gt;&gt; are supported. * [[features-triangleFans]] <see cref="M:triangleFans"/> indicates whether this implementation supports &lt;&lt;drawing-triangle-fans&gt;&gt; primitive topology. * [[features-vertexAttributeAccessBeyondStride]] <see cref="M:vertexAttributeAccessBeyondStride"/> indicates whether this implementation supports accessing a vertex input attribute beyond the stride of the corresponding vertex input binding.
+            /// `NULL` or a pointer to a structure extending this structure. * [[features-constantAlphaColorBlendFactors]] <see cref="M:constantAlphaColorBlendFactors"/> indicates whether this implementation supports constant _alpha_ or a different number of bits in each component, than the texel format of the underlying <see cref="T:VkImage"/>. * [[features-imageViewFormatSwizzle]] <see cref="M:imageViewFormatSwizzle"/> indicates whether this implementation supports remapping format components using <see cref="T:VkImageViewCreateInfo.components"/>. * [[features-imageView2DOn3DImage]] <see cref="M:imageView2DOn3DImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created with the <see cref="T:VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT"/> flag set, permitting a 2D or 2D array image view to be created on a 3D <see cref="T:VkImage"/>. * [[features-multisampleArrayImage]] <see cref="M:multisampleArrayImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created as a 2D array with multiple samples per texel. * [[features-mutableComparisonSamplers]] <see cref="M:mutableComparisonSamplers"/> indicates whether this implementation allows descriptors with comparison samplers to be &lt;&lt;descriptorsets-updates, updated. * [[features-pointPolygons]] <see cref="M:pointPolygons"/> indicates whether this implementation supports mipmap LOD bias value when creating a sampler. * [[features-separateStencilMaskRef]] <see cref="M:separateStencilMaskRef"/> indicates whether this implementation supports separate front and back <c>InterpolationFunction</c> capability and the extended instructions `InterpolateAtCentroid`, `InterpolateAtOffset`, and `InterpolateAtSample` from the `GLSL.std.450` extended instruction set. This member is only meaningful if the <see cref="M:sampleRateShading"/> feature is supported. * [[features-tessellationIsolines]] <see cref="M:tessellationIsolines"/> indicates whether this implementation supports isoline output from the <see cref="M:tessellationShader"/> are supported. * [[features-tessellationPointMode]] <see cref="M:tessellationPointMode"/> indicates whether this implementation supports point output from the <see cref="M:tessellationShader"/> are supported. * [[features-triangleFans]] <see cref="M:triangleFans"/> indicates whether this implementation supports &lt;&lt;drawing-triangle-fans&gt;&gt; primitive topology. * [[features-vertexAttributeAccessBeyondStride]] <see cref="M:vertexAttributeAccessBeyondStride"/> indicates whether this implementation supports accessing a vertex input attribute beyond the stride of the corresponding vertex input binding.
             /// </summary>
             public void* pNext;
             
@@ -672,7 +672,7 @@ namespace XenoAtom.Interop
             public vulkan.VkDeviceSize dstBufferRange;
             
             /// <summary>
-            /// The Picture Resource of the &lt;&lt;encode-input-picture,Input Picture&gt;&gt; to be encoded by the operation.
+            /// The Picture Resource of the Input Picture to be encoded by the operation.
             /// </summary>
             public vulkan.VkVideoPictureResourceInfoKHR srcPictureResource;
             
@@ -761,12 +761,12 @@ namespace XenoAtom.Interop
             public uint maxQualityLevels;
             
             /// <summary>
-            /// Indicates the granularity at which &lt;&lt;encode-input-picture,encode input picture&gt;&gt; data is encoded.
+            /// Indicates the granularity at which encode input picture data is encoded.
             /// </summary>
             public vulkan.VkExtent2D encodeInputPictureGranularity;
             
             /// <summary>
-            /// A bitmask of <see cref="T:VkVideoEncodeFeedbackFlagBitsKHR"/> values specifying the supported flags for &lt;&lt;queries-video-encode-feedback,video encode feedback queries&gt;&gt;.
+            /// A bitmask of <see cref="T:VkVideoEncodeFeedbackFlagBitsKHR"/> values specifying the supported flags for video encode feedback queries.
             /// </summary>
             public vulkan.VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags;
         }
@@ -1199,7 +1199,7 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH264CapabilityFlagsEXT flags;
             
             /// <summary>
-            /// A code:StdVideoH264LevelIdc value indicating the maximum H.264 level supported.
+            /// A <c>StdVideoH264LevelIdc</c> value indicating the maximum H.264 level supported.
             /// </summary>
             public vulkan.StdVideoH264LevelIdc maxLevelIdc;
             
@@ -1390,7 +1390,7 @@ namespace XenoAtom.Interop
             public uint preferredMaxL1ReferenceCount;
             
             /// <summary>
-            /// Indicates the preferred value to use for code:entropy_coding_mode_flag in code:StdVideoH264PpsFlags.
+            /// Indicates the preferred value to use for <c>entropy_coding_mode_flag</c> in <c>StdVideoH264PpsFlags</c>.
             /// </summary>
             public vulkan.VkBool32 preferredStdEntropyCodingModeFlag;
         }
@@ -1469,7 +1469,7 @@ namespace XenoAtom.Interop
             public uint stdSPSCount;
             
             /// <summary>
-            /// A pointer to an array of code:StdVideoH264SequenceParameterSet structures representing H.264 sequence parameter sets. Each element of the array must: have a unique H.264 SPS ID.
+            /// A pointer to an array of <c>StdVideoH264SequenceParameterSet</c> structures representing H.264 sequence parameter sets. Each element of the array must: have a unique H.264 SPS ID.
             /// </summary>
             public vulkan.StdVideoH264SequenceParameterSet* pStdSPSs;
             
@@ -1479,7 +1479,7 @@ namespace XenoAtom.Interop
             public uint stdPPSCount;
             
             /// <summary>
-            /// A pointer to an array of code:StdVideoH264PictureParameterSet structures representing H.264 picture parameter sets. Each element of the array must: have a unique H.264 SPS-PPS ID pair.
+            /// A pointer to an array of <c>StdVideoH264PictureParameterSet</c> structures representing H.264 picture parameter sets. Each element of the array must: have a unique H.264 SPS-PPS ID pair.
             /// </summary>
             public vulkan.StdVideoH264PictureParameterSet* pStdPPSs;
         }
@@ -1598,7 +1598,7 @@ namespace XenoAtom.Interop
             public int constantQp;
             
             /// <summary>
-            /// A pointer to a code:StdVideoEncodeH264SliceHeader structure specifying the slice header for the current slice.
+            /// A pointer to a <c>StdVideoEncodeH264SliceHeader</c> structure specifying the slice header for the current slice.
             /// </summary>
             public vulkan.StdVideoEncodeH264SliceHeader* pStdSliceHeader;
         }
@@ -1629,7 +1629,7 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH264NaluSliceInfoEXT* pNaluSliceEntries;
             
             /// <summary>
-            /// A pointer to a code:StdVideoEncodeH264PictureInfo structure specifying the syntax and other codec-specific information from the H.264 specification associated with this picture. The information provided must: reflect the decoded picture marking operations that are applicable to this frame.
+            /// A pointer to a <c>StdVideoEncodeH264PictureInfo</c> structure specifying the syntax and other codec-specific information from the H.264 specification associated with this picture. The information provided must: reflect the decoded picture marking operations that are applicable to this frame.
             /// </summary>
             public vulkan.StdVideoEncodeH264PictureInfo* pStdPictureInfo;
             
@@ -1655,7 +1655,7 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// A pointer to a code:StdVideoEncodeH264ReferenceInfo structure specifying the syntax and other codec-specific information from the H.264 specification associated with this reference picture.
+            /// A pointer to a <c>StdVideoEncodeH264ReferenceInfo</c> structure specifying the syntax and other codec-specific information from the H.264 specification associated with this reference picture.
             /// </summary>
             public vulkan.StdVideoEncodeH264ReferenceInfo* pStdReferenceInfo;
         }
@@ -1676,7 +1676,7 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// A code:StdVideoH264ProfileIdc value specifying the H.264 codec profile IDC.
+            /// A <c>StdVideoH264ProfileIdc</c> value specifying the H.264 codec profile IDC.
             /// </summary>
             public vulkan.StdVideoH264ProfileIdc stdProfileIdc;
         }
@@ -1702,12 +1702,12 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH264RateControlFlagsEXT flags;
             
             /// <summary>
-            /// The number of frames contained within the group of pictures (GOP), starting from an intra frame and until the next intra frame. If it is set to 0, the implementation chooses a suitable value. If it is set to code:UINT32_MAX, the GOP length is treated as infinite.
+            /// The number of frames contained within the group of pictures (GOP), starting from an intra frame and until the next intra frame. If it is set to 0, the implementation chooses a suitable value. If it is set to <c>UINT32_MAX</c>, the GOP length is treated as infinite.
             /// </summary>
             public uint gopFrameCount;
             
             /// <summary>
-            /// The interval, in terms of number of frames, between two IDR frames. If it is set to 0, the implementation chooses a suitable value. If it is set to code:UINT32_MAX, the IDR period is treated as infinite.
+            /// The interval, in terms of number of frames, between two IDR frames. If it is set to 0, the implementation chooses a suitable value. If it is set to <c>UINT32_MAX</c>, the IDR period is treated as infinite.
             /// </summary>
             public uint idrPeriod;
             
@@ -1846,7 +1846,7 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH265CapabilityFlagsEXT flags;
             
             /// <summary>
-            /// A code:StdVideoH265LevelIdc value indicating the maximum H.265 level supported.
+            /// A <c>StdVideoH265LevelIdc</c> value indicating the maximum H.265 level supported.
             /// </summary>
             public vulkan.StdVideoH265LevelIdc maxLevelIdc;
             
@@ -2180,7 +2180,7 @@ namespace XenoAtom.Interop
             public uint stdVPSCount;
             
             /// <summary>
-            /// A pointer to an array of <see cref="M:stdVPSCount"/> code:StdVideoH265VideoParameterSet structures representing H.265 video parameter sets.
+            /// A pointer to an array of <see cref="M:stdVPSCount"/> <c>StdVideoH265VideoParameterSet</c> structures representing H.265 video parameter sets.
             /// </summary>
             public vulkan.StdVideoH265VideoParameterSet* pStdVPSs;
             
@@ -2190,7 +2190,7 @@ namespace XenoAtom.Interop
             public uint stdSPSCount;
             
             /// <summary>
-            /// A pointer to an array of <see cref="M:stdSPSCount"/> code:StdVideoH265SequenceParameterSet structures representing H.265 sequence parameter sets.
+            /// A pointer to an array of <see cref="M:stdSPSCount"/> <c>StdVideoH265SequenceParameterSet</c> structures representing H.265 sequence parameter sets.
             /// </summary>
             public vulkan.StdVideoH265SequenceParameterSet* pStdSPSs;
             
@@ -2200,7 +2200,7 @@ namespace XenoAtom.Interop
             public uint stdPPSCount;
             
             /// <summary>
-            /// A pointer to an array of <see cref="M:stdPPSCount"/> code:StdVideoH265PictureParameterSet structures representing H.265 picture parameter sets.
+            /// A pointer to an array of <see cref="M:stdPPSCount"/> <c>StdVideoH265PictureParameterSet</c> structures representing H.265 picture parameter sets.
             /// </summary>
             public vulkan.StdVideoH265PictureParameterSet* pStdPPSs;
         }
@@ -2221,17 +2221,17 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// The maximum number of entries of type code:StdVideoH265VideoParameterSet within <see cref="T:VkVideoSessionParametersKHR"/>.
+            /// The maximum number of entries of type <c>StdVideoH265VideoParameterSet</c> within <see cref="T:VkVideoSessionParametersKHR"/>.
             /// </summary>
             public uint maxStdVPSCount;
             
             /// <summary>
-            /// The maximum number of entries of type code:StdVideoH265SequenceParameterSet within <see cref="T:VkVideoSessionParametersKHR"/>.
+            /// The maximum number of entries of type <c>StdVideoH265SequenceParameterSet</c> within <see cref="T:VkVideoSessionParametersKHR"/>.
             /// </summary>
             public uint maxStdSPSCount;
             
             /// <summary>
-            /// The maximum number of entries of type code:StdVideoH265PictureParameterSet within <see cref="T:VkVideoSessionParametersKHR"/>.
+            /// The maximum number of entries of type <c>StdVideoH265PictureParameterSet</c> within <see cref="T:VkVideoSessionParametersKHR"/>.
             /// </summary>
             public uint maxStdPPSCount;
             
@@ -2339,7 +2339,7 @@ namespace XenoAtom.Interop
             public int constantQp;
             
             /// <summary>
-            /// A pointer to a code:StdVideoEncodeH265SliceSegmentHeader structure specifying the slice segment header for the current slice segment.
+            /// A pointer to a <c>StdVideoEncodeH265SliceSegmentHeader</c> structure specifying the slice segment header for the current slice segment.
             /// </summary>
             public vulkan.StdVideoEncodeH265SliceSegmentHeader* pStdSliceSegmentHeader;
         }
@@ -2370,7 +2370,7 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH265NaluSliceSegmentInfoEXT* pNaluSliceSegmentEntries;
             
             /// <summary>
-            /// A pointer to a code:StdVideoEncodeH265PictureInfo structure specifying the syntax and other codec-specific information from the H.265 specification, associated with this picture.
+            /// A pointer to a <c>StdVideoEncodeH265PictureInfo</c> structure specifying the syntax and other codec-specific information from the H.265 specification, associated with this picture.
             /// </summary>
             public vulkan.StdVideoEncodeH265PictureInfo* pStdPictureInfo;
         }
@@ -2391,7 +2391,7 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// A pointer to a code:StdVideoEncodeH265ReferenceInfo structure specifying the syntax and other codec-specific information from the H.265 specification, associated with this reference picture.
+            /// A pointer to a <c>StdVideoEncodeH265ReferenceInfo</c> structure specifying the syntax and other codec-specific information from the H.265 specification, associated with this reference picture.
             /// </summary>
             public vulkan.StdVideoEncodeH265ReferenceInfo* pStdReferenceInfo;
         }
@@ -2412,7 +2412,7 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// A code:StdVideoH265ProfileIdc value specifying the H.265 codec profile IDC.
+            /// A <c>StdVideoH265ProfileIdc</c> value specifying the H.265 codec profile IDC.
             /// </summary>
             public vulkan.StdVideoH265ProfileIdc stdProfileIdc;
         }
@@ -2438,12 +2438,12 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH265RateControlFlagsEXT flags;
             
             /// <summary>
-            /// The number of frames contained within the group of pictures (GOP), starting from an intra frame and until the next intra frame. If it is set to 0, the implementation chooses a suitable value. If it is set to code:UINT32_MAX, the GOP length is treated as infinite.
+            /// The number of frames contained within the group of pictures (GOP), starting from an intra frame and until the next intra frame. If it is set to 0, the implementation chooses a suitable value. If it is set to <c>UINT32_MAX</c>, the GOP length is treated as infinite.
             /// </summary>
             public uint gopFrameCount;
             
             /// <summary>
-            /// The interval, in terms of number of frames, between two IDR frames. If it is set to 0, the implementation chooses a suitable value. If it is set to code:UINT32_MAX, the IDR period is treated as infinite.
+            /// The interval, in terms of number of frames, between two IDR frames. If it is set to 0, the implementation chooses a suitable value. If it is set to <c>UINT32_MAX</c>, the IDR period is treated as infinite.
             /// </summary>
             public uint idrPeriod;
             
@@ -2584,7 +2584,7 @@ namespace XenoAtom.Interop
             public vulkan.VkStructureType sType;
             
             /// <summary>
-            /// `NULL` or a pointer to a structure extending this structure. * [[limits-maxExecutionGraphDepth]] <see cref="M:maxExecutionGraphDepth"/> defines the maximum node chain depth in the graph. The dispatched node is at depth 1 and the node enqueued by it is at depth 2, and so on. If a node enqueues itself, each recursive enqueue increases the depth by 1 as well. * [[limits-maxExecutionGraphShaderOutputNodes]] <see cref="M:maxExecutionGraphShaderOutputNodes"/> specifies the maximum number of unique nodes that can be dispatched from a single shader, and must be at least 256. * [[limits-maxExecutionGraphShaderPayloadSize]] <see cref="M:maxExecutionGraphShaderPayloadSize"/> specifies the maximum total size of payload declarations in a shader. For any payload declarations that share resources, indicated by code:NodeSharesPayloadLimitsWithAMDX decorations, the maximum size of each set of shared payload declarations is taken. The sum of each shared set's maximum size and the size of each unshared payload is counted against this limit. * [[limits-maxExecutionGraphShaderPayloadCount]] <see cref="M:maxExecutionGraphShaderPayloadCount"/> specifies the maximum number of output payloads that can be initialized in a single workgroup. * [[limits-executionGraphDispatchAddressAlignment]] <see cref="M:executionGraphDispatchAddressAlignment"/> specifies the alignment of non-scratch basetype:VkDeviceAddress arguments consumed by graph dispatch commands.
+            /// `NULL` or a pointer to a structure extending this structure. * [[limits-maxExecutionGraphDepth]] <see cref="M:maxExecutionGraphDepth"/> defines the maximum node chain depth in the graph. The dispatched node is at depth 1 and the node enqueued by it is at depth 2, and so on. If a node enqueues itself, each recursive enqueue increases the depth by 1 as well. * [[limits-maxExecutionGraphShaderOutputNodes]] <see cref="M:maxExecutionGraphShaderOutputNodes"/> specifies the maximum number of unique nodes that can be dispatched from a single shader, and must be at least 256. * [[limits-maxExecutionGraphShaderPayloadSize]] <see cref="M:maxExecutionGraphShaderPayloadSize"/> specifies the maximum total size of payload declarations in a shader. For any payload declarations that share resources, indicated by <c>NodeSharesPayloadLimitsWithAMDX</c> decorations, the maximum size of each set of shared payload declarations is taken. The sum of each shared set's maximum size and the size of each unshared payload is counted against this limit. * [[limits-maxExecutionGraphShaderPayloadCount]] <see cref="M:maxExecutionGraphShaderPayloadCount"/> specifies the maximum number of output payloads that can be initialized in a single workgroup. * [[limits-executionGraphDispatchAddressAlignment]] <see cref="M:executionGraphDispatchAddressAlignment"/> specifies the alignment of non-scratch basetype:VkDeviceAddress arguments consumed by graph dispatch commands.
             /// </summary>
             public void* pNext;
             
@@ -2758,7 +2758,7 @@ namespace XenoAtom.Interop
             public byte* pName;
             
             /// <summary>
-            /// The shader index to use when creating a node in an execution graph. If <see cref="M:index"/> is <see cref="T:VK_SHADER_INDEX_UNUSED_AMDX"/> then the original index is used, either as specified by the code:ShaderIndexAMDX execution mode, or `0` if that too is not specified.
+            /// The shader index to use when creating a node in an execution graph. If <see cref="M:index"/> is <see cref="T:VK_SHADER_INDEX_UNUSED_AMDX"/> then the original index is used, either as specified by the <c>ShaderIndexAMDX</c> execution mode, or `0` if that too is not specified.
             /// </summary>
             public uint index;
         }
@@ -2966,7 +2966,7 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that owns the video session parameters object.</param>
             /// <param name="pVideoSessionParametersInfo">A pointer to a <see cref="T:VkVideoEncodeSessionParametersGetInfoKHR"/> structure specifying the parameters of the encoded parameter data to retrieve.</param>
             /// <param name="pFeedbackInfo">Either `NULL` or a pointer to a <see cref="T:VkVideoEncodeSessionParametersFeedbackInfoKHR"/> structure in which feedback about the requested parameter data is returned.</param>
-            /// <param name="pDataSize">A pointer to a code:size_t value related to the amount of encode parameter data returned, as described below.</param>
+            /// <param name="pDataSize">A pointer to a <c>size_t</c> value related to the amount of encode parameter data returned, as described below.</param>
             /// <param name="pData">Either `NULL` or a pointer to a buffer to write the encoded parameter data to.</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkVideoEncodeSessionParametersGetInfoKHR pVideoSessionParametersInfo, out vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR pFeedbackInfo, ref nuint pDataSize, void* pData)
             {
@@ -3045,10 +3045,10 @@ namespace XenoAtom.Interop
             /// Creates a new execution graph pipeline object
             /// </summary>
             /// <param name="device">The logical device that creates the execution graph pipelines.</param>
-            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid &lt;&lt;pipelines-cache,pipeline cache&gt;&gt; object, in which case use of that cache is enabled for the duration of the command.</param>
+            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command.</param>
             /// <param name="createInfoCount">The length of the <paramref name="pCreateInfos"/> and <paramref name="pPipelines"/> arrays.</param>
             /// <param name="pCreateInfos">A pointer to an array of <see cref="T:VkExecutionGraphPipelineCreateInfoAMDX"/> structures.</param>
-            /// <param name="pAllocator">Controls host memory allocation as described in the &lt;&lt;memory-allocation, Memory Allocation&gt;&gt; chapter.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter.</param>
             /// <param name="pPipelines">A pointer to an array of <see cref="T:VkPipeline"/> handles in which the resulting execution graph pipeline objects are returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, uint createInfoCount, vulkan.VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, in vulkan.VkAllocationCallbacks pAllocator, vulkan.VkPipeline* pPipelines)
             {

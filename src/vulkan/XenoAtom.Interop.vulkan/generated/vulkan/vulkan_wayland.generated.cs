@@ -38,7 +38,7 @@ namespace XenoAtom.Interop
             public vulkan.VkWaylandSurfaceCreateFlagsKHR flags;
             
             /// <summary>
-            /// And <see cref="M:surface"/> are pointers to the Wayland code:wl_display and code:wl_surface to associate the surface with.
+            /// And <see cref="M:surface"/> are pointers to the Wayland <c>wl_display</c> and <c>wl_surface</c> to associate the surface with.
             /// </summary>
             public vulkan.wl_display display;
             
@@ -95,7 +95,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkWaylandSurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWaylandSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -137,7 +137,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="physicalDevice">The physical device.</param>
             /// <param name="queueFamilyIndex">The queue family index.</param>
-            /// <param name="display">A pointer to the code:wl_display associated with a Wayland compositor.</param>
+            /// <param name="display">A pointer to the <c>wl_display</c> associated with a Wayland compositor.</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan.wl_display display)
             {
                 return Value(physicalDevice, queueFamilyIndex, display);

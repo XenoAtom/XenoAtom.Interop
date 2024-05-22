@@ -64,12 +64,12 @@ namespace XenoAtom.Interop
             public vulkan.VkWin32SurfaceCreateFlagsKHR flags;
             
             /// <summary>
-            /// The Win32 code:HINSTANCE for the window to associate the surface with.
+            /// The Win32 <c>HINSTANCE</c> for the window to associate the surface with.
             /// </summary>
             public nint hinstance;
             
             /// <summary>
-            /// The Win32 code:HWND for the window to associate the surface with.
+            /// The Win32 <c>HWND</c> for the window to associate the surface with.
             /// </summary>
             public nint hwnd;
         }
@@ -144,12 +144,12 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// A pointer to a Windows code:SECURITY_ATTRIBUTES structure specifying security attributes of the handle.
+            /// A pointer to a Windows <c>SECURITY_ATTRIBUTES</c> structure specifying security attributes of the handle.
             /// </summary>
             public void* pAttributes;
             
             /// <summary>
-            /// A code:DWORD specifying access rights of the handle.
+            /// A <c>DWORD</c> specifying access rights of the handle.
             /// </summary>
             public uint dwAccess;
             
@@ -314,12 +314,12 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// A pointer to a Windows code:SECURITY_ATTRIBUTES structure specifying security attributes of the handle.
+            /// A pointer to a Windows <c>SECURITY_ATTRIBUTES</c> structure specifying security attributes of the handle.
             /// </summary>
             public void* pAttributes;
             
             /// <summary>
-            /// A code:DWORD specifying access rights of the handle.
+            /// A <c>DWORD</c> specifying access rights of the handle.
             /// </summary>
             public uint dwAccess;
             
@@ -448,12 +448,12 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// A pointer to a Windows code:SECURITY_ATTRIBUTES structure specifying security attributes of the handle.
+            /// A pointer to a Windows <c>SECURITY_ATTRIBUTES</c> structure specifying security attributes of the handle.
             /// </summary>
             public void* pAttributes;
             
             /// <summary>
-            /// A code:DWORD specifying access rights of the handle.
+            /// A <c>DWORD</c> specifying access rights of the handle.
             /// </summary>
             public uint dwAccess;
             
@@ -510,7 +510,7 @@ namespace XenoAtom.Interop
             public vulkan.VkExternalMemoryHandleTypeFlagsNV handleType;
             
             /// <summary>
-            /// A Windows code:HANDLE referring to the memory.
+            /// A Windows <c>HANDLE</c> referring to the memory.
             /// </summary>
             public nint handle;
         }
@@ -531,12 +531,12 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// A pointer to a Windows code:SECURITY_ATTRIBUTES structure specifying security attributes of the handle.
+            /// A pointer to a Windows <c>SECURITY_ATTRIBUTES</c> structure specifying security attributes of the handle.
             /// </summary>
             public void* pAttributes;
             
             /// <summary>
-            /// A code:DWORD specifying access rights of the handle.
+            /// A <c>DWORD</c> specifying access rights of the handle.
             /// </summary>
             public uint dwAccess;
         }
@@ -641,7 +641,7 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// The Win32 code:HMONITOR handle identifying the display to create the surface with.
+            /// The Win32 <c>HMONITOR</c> handle identifying the display to create the surface with.
             /// </summary>
             public nint hmonitor;
         }
@@ -673,7 +673,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkWin32SurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWin32SurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -989,7 +989,7 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that owns the memory.</param>
             /// <param name="memory">The <see cref="T:VkDeviceMemory"/> object.</param>
             /// <param name="handleType">A bitmask of <see cref="T:VkExternalMemoryHandleTypeFlagBitsNV"/> containing a single bit specifying the type of handle requested.</param>
-            /// <param name="handle">A pointer to a Windows code:HANDLE in which the handle is returned.</param>
+            /// <param name="handle">A pointer to a Windows <c>HANDLE</c> in which the handle is returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkDeviceMemory memory, vulkan.VkExternalMemoryHandleTypeFlagsNV handleType, out nint pHandle)
             {
                 fixed (nint* __pHandle = &pHandle)

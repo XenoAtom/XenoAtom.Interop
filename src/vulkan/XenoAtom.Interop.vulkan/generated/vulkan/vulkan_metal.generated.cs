@@ -154,7 +154,7 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// The Metal `id&lt;MTLDevice&gt;` object underlying the <see cref="T:VkPhysicalDevice"/> associated with the <see cref="T:VkDevice"/> object identified in the call. The implementation will return the code:MTLDevice in this member, or it will return `NULL` if no code:MTLDevice could be found underlying the <see cref="T:VkPhysicalDevice"/> object.
+            /// The Metal `id&lt;MTLDevice&gt;` object underlying the <see cref="T:VkPhysicalDevice"/> associated with the <see cref="T:VkDevice"/> object identified in the call. The implementation will return the <c>MTLDevice</c> in this member, or it will return `NULL` if no <c>MTLDevice</c> could be found underlying the <see cref="T:VkPhysicalDevice"/> object.
             /// </summary>
             public vulkan.MTLDevice_id mtlDevice;
         }
@@ -203,7 +203,7 @@ namespace XenoAtom.Interop
             public vulkan.VkQueue queue;
             
             /// <summary>
-            /// The Metal `id&lt;MTLCommandQueue&gt;` object underlying the <see cref="T:VkQueue"/> object in <see cref="M:queue"/>. The implementation will return the code:MTLCommandQueue in this member, or it will return `NULL` if no code:MTLCommandQueue could be found underlying the <see cref="T:VkQueue"/> object.
+            /// The Metal `id&lt;MTLCommandQueue&gt;` object underlying the <see cref="T:VkQueue"/> object in <see cref="M:queue"/>. The implementation will return the <c>MTLCommandQueue</c> in this member, or it will return `NULL` if no <c>MTLCommandQueue</c> could be found underlying the <see cref="T:VkQueue"/> object.
             /// </summary>
             public vulkan.MTLCommandQueue_id mtlCommandQueue;
         }
@@ -252,7 +252,7 @@ namespace XenoAtom.Interop
             public vulkan.VkDeviceMemory memory;
             
             /// <summary>
-            /// The Metal `id&lt;MTLBuffer&gt;` object underlying the <see cref="T:VkDeviceMemory"/> object in <see cref="M:memory"/>. The implementation will return the code:MTLBuffer in this member, or it will return `NULL` if no code:MTLBuffer could be found underlying the <see cref="T:VkDeviceMemory"/> object.
+            /// The Metal `id&lt;MTLBuffer&gt;` object underlying the <see cref="T:VkDeviceMemory"/> object in <see cref="M:memory"/>. The implementation will return the <c>MTLBuffer</c> in this member, or it will return `NULL` if no <c>MTLBuffer</c> could be found underlying the <see cref="T:VkDeviceMemory"/> object.
             /// </summary>
             public vulkan.MTLBuffer_id mtlBuffer;
         }
@@ -337,7 +337,7 @@ namespace XenoAtom.Interop
             public vulkan.VkImageAspectFlagBits plane;
             
             /// <summary>
-            /// The Metal `id&lt;MTLTexture&gt;` object underlying the <see cref="T:VkImage"/>, <see cref="T:VkImageView"/>, or <see cref="T:VkBufferView"/> object in <see cref="M:image"/>, <see cref="M:imageView"/>, or <see cref="M:bufferView"/>, respectively, at the plane indicated in <see cref="M:aspectMask"/>. The implementation will return the code:MTLTexture in this member, or it will return `NULL` if no code:MTLTexture could be found underlying the <see cref="T:VkImage"/>, <see cref="T:VkImageView"/>, or <see cref="T:VkBufferView"/> object, at the plane indicated in <see cref="M:aspectMask"/>.
+            /// The Metal `id&lt;MTLTexture&gt;` object underlying the <see cref="T:VkImage"/>, <see cref="T:VkImageView"/>, or <see cref="T:VkBufferView"/> object in <see cref="M:image"/>, <see cref="M:imageView"/>, or <see cref="M:bufferView"/>, respectively, at the plane indicated in <see cref="M:aspectMask"/>. The implementation will return the <c>MTLTexture</c> in this member, or it will return `NULL` if no <c>MTLTexture</c> could be found underlying the <see cref="T:VkImage"/>, <see cref="T:VkImageView"/>, or <see cref="T:VkBufferView"/> object, at the plane indicated in <see cref="M:aspectMask"/>.
             /// </summary>
             public vulkan.MTLTexture_id mtlTexture;
         }
@@ -484,7 +484,7 @@ namespace XenoAtom.Interop
             public vulkan.VkEvent @event;
             
             /// <summary>
-            /// The Metal `id&lt;MTLSharedEvent&gt;` object underlying the <see cref="T:VkSemaphore"/> or <see cref="T:VkEvent"/> object in <see cref="M:semaphore"/> or <see cref="M:event"/>, respectively. The implementation will return the code:MTLSharedEvent in this member, or it will return `NULL` if no code:MTLSharedEvent could be found underlying the <see cref="T:VkSemaphore"/> or <see cref="T:VkEvent"/> object.
+            /// The Metal `id&lt;MTLSharedEvent&gt;` object underlying the <see cref="T:VkSemaphore"/> or <see cref="T:VkEvent"/> object in <see cref="M:semaphore"/> or <see cref="M:event"/>, respectively. The implementation will return the <c>MTLSharedEvent</c> in this member, or it will return `NULL` if no <c>MTLSharedEvent</c> could be found underlying the <see cref="T:VkSemaphore"/> or <see cref="T:VkEvent"/> object.
             /// </summary>
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
@@ -560,7 +560,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance with which to associate the surface.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkMetalSurfaceCreateInfoEXT"/> structure specifying parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkMetalSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {

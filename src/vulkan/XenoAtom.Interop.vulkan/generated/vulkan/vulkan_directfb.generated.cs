@@ -38,12 +38,12 @@ namespace XenoAtom.Interop
             public vulkan.VkDirectFBSurfaceCreateFlagsEXT flags;
             
             /// <summary>
-            /// A pointer to the code:IDirectFB main interface of DirectFB.
+            /// A pointer to the <c>IDirectFB</c> main interface of DirectFB.
             /// </summary>
             public void* dfb;
             
             /// <summary>
-            /// A pointer to a code:IDirectFBSurface surface interface.
+            /// A pointer to a <c>IDirectFBSurface</c> surface interface.
             /// </summary>
             public void* surface;
         }
@@ -98,7 +98,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkDirectFBSurfaceCreateInfoEXT"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkDirectFBSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -140,7 +140,7 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="physicalDevice">The physical device.</param>
             /// <param name="queueFamilyIndex">The queue family index.</param>
-            /// <param name="dfb">A pointer to the code:IDirectFB main interface of DirectFB.</param>
+            /// <param name="dfb">A pointer to the <c>IDirectFB</c> main interface of DirectFB.</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dfb)
             {
                 return Value(physicalDevice, queueFamilyIndex, dfb);
