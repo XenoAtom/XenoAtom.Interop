@@ -385,7 +385,10 @@ public abstract class GeneratorBase
                 mapIncludeNameToCppFunction[includeHeaderFileName] = list;
             }
 
-            list.Add(cppFunction);
+            if (!list.Contains(cppFunction))
+            {
+                list.Add(cppFunction);
+            }
         }
     }
 

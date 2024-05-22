@@ -62,7 +62,7 @@ The following packages were tested and are compatible with **XenoAtom.Interop.zl
 
 The following API were automatically generated from the C/C++ code:
 
-- zlib.h: `adler32`, `adler32_combine`, `adler32_z`, `compress`, `compress2`, `compressBound`, `crc32`, `crc32_combine`, `crc32_combine_gen`, `crc32_combine_op`, `crc32_z`, `deflate`, `deflateBound`, `deflateCopy`, `deflateEnd`, `deflateGetDictionary`, `deflateInit2_`, `deflateInit2_`, `deflateInit_`, `deflateInit_`, `deflateParams`, `deflatePending`, `deflatePrime`, `deflateReset`, `deflateSetDictionary`, `deflateSetHeader`, `deflateTune`, `inflate`, `inflateBack`, `inflateBackEnd`, `inflateBackInit_`, `inflateBackInit_`, `inflateCopy`, `inflateEnd`, `inflateGetDictionary`, `inflateGetHeader`, `inflateInit2_`, `inflateInit2_`, `inflateInit_`, `inflateInit_`, `inflateMark`, `inflatePrime`, `inflateReset`, `inflateReset2`, `inflateSetDictionary`, `inflateSync`, `uncompress`, `uncompress2`, `zlibCompileFlags`, `zlibVersion`, `zlibVersion`
+- zlib.h: `adler32`, `adler32_combine`, `adler32_z`, `compress`, `compress2`, `compressBound`, `crc32`, `crc32_combine`, `crc32_combine_gen`, `crc32_combine_op`, `crc32_z`, `deflate`, `deflateBound`, `deflateCopy`, `deflateEnd`, `deflateGetDictionary`, `deflateInit2_`, `deflateInit_`, `deflateParams`, `deflatePending`, `deflatePrime`, `deflateReset`, `deflateSetDictionary`, `deflateSetHeader`, `deflateTune`, `inflate`, `inflateBack`, `inflateBackEnd`, `inflateBackInit_`, `inflateCopy`, `inflateEnd`, `inflateGetDictionary`, `inflateGetHeader`, `inflateInit2_`, `inflateInit_`, `inflateMark`, `inflatePrime`, `inflateReset`, `inflateReset2`, `inflateSetDictionary`, `inflateSync`, `uncompress`, `uncompress2`, `zlibCompileFlags`, `zlibVersion`
 
 
 ## 🪪 License
