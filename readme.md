@@ -17,9 +17,9 @@ This **XenoAtom.Interop** project provides a set of C# libraries to interop with
   - [`DllImportResolver`](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.nativelibrary.setdllimportresolver) support for each library to customize loading the native library.
 - No native binaries are provided, **only the P/Invoke bindings**.
   - But some 3rd party NuGet packages might provide compatible native libraries. See the list of available compatible packages in each library below.
-- **Simple API XML documentation** is provided for each library (extracted from the C/C++ headers).
+- **Simple API XML documentation** is provided for each library whenever possible (extracted from the C/C++ headers).
 - **NativeAOT** Compatible.
-- Support only from `net8.0`+
+- Supports `net8.0`+
 
 ## 📦 Libraries
 
