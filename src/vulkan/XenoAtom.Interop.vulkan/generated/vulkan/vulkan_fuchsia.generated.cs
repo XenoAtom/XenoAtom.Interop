@@ -17,6 +17,9 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Bitmask specifying image constraints flags
+        /// </summary>
         [Flags]
         public enum VkImageConstraintsInfoFlagBitsFUCHSIA : uint
         {
@@ -45,14 +48,29 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA;
         
+        /// <summary>
+        /// Structure specifying parameters of a newly created ImagePipe surface object
+        /// </summary>
         public partial struct VkImagePipeSurfaceCreateInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkImagePipeSurfaceCreateFlagsFUCHSIA flags;
             
+            /// <summary>
+            /// A code:zx_handle_t referring to the ImagePipe to associate with the surface.
+            /// </summary>
             public uint imagePipeHandle;
         }
         
@@ -79,80 +97,185 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkImagePipeSurfaceCreateFlagsFUCHSIA left, VkImagePipeSurfaceCreateFlagsFUCHSIA right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure specifying import parameters for Zircon handle to external memory
+        /// </summary>
         public partial struct VkImportMemoryZirconHandleInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <see cref="M:handle"/>.
+            /// </summary>
             public vulkan.VkExternalMemoryHandleTypeFlagBits handleType;
             
+            /// <summary>
+            /// A code:zx_handle_t (Zircon) handle to the external memory.
+            /// </summary>
             public uint handle;
         }
         
+        /// <summary>
+        /// Structure specifying Zircon handle compatible external memory
+        /// </summary>
         public partial struct VkMemoryZirconHandlePropertiesFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask containing one bit set for every memory type which the specified handle can be imported as.
+            /// </summary>
             public uint memoryTypeBits;
         }
         
+        /// <summary>
+        /// Structure specifying export parameters for Zircon handle to device memory
+        /// </summary>
         public partial struct VkMemoryGetZirconHandleInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The <see cref="T:VkDeviceMemory"/> being exported.
+            /// </summary>
             public vulkan.VkDeviceMemory memory;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of the handle pointed to by <see cref="M:vkGetMemoryZirconHandleFUCHSIA"/>.
+            /// </summary>
             public vulkan.VkExternalMemoryHandleTypeFlagBits handleType;
         }
         
+        /// <summary>
+        /// Structure specifying Zircon event handle to import to a semaphore
+        /// </summary>
         public partial struct VkImportSemaphoreZirconHandleInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The semaphore into which the payload will be imported.
+            /// </summary>
             public vulkan.VkSemaphore semaphore;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkSemaphoreImportFlagBits"/> specifying additional parameters for the semaphore payload import operation.
+            /// </summary>
             public vulkan.VkSemaphoreImportFlags flags;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalSemaphoreHandleTypeFlagBits"/> value specifying the type of <see cref="M:zirconHandle"/>.
+            /// </summary>
             public vulkan.VkExternalSemaphoreHandleTypeFlagBits handleType;
             
+            /// <summary>
+            /// The external handle to import.
+            /// </summary>
             public uint zirconHandle;
         }
         
+        /// <summary>
+        /// Structure describing a Zircon event handle semaphore export operation
+        /// </summary>
         public partial struct VkSemaphoreGetZirconHandleInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The semaphore from which state will be exported.
+            /// </summary>
             public vulkan.VkSemaphore semaphore;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalSemaphoreHandleTypeFlagBits"/> value specifying the type of handle requested.
+            /// </summary>
             public vulkan.VkExternalSemaphoreHandleTypeFlagBits handleType;
         }
         
+        /// <summary>
+        /// Structure specifying desired parameters to create the buffer collection
+        /// </summary>
         public partial struct VkBufferCollectionCreateInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A <see cref="M:zx_handle_t"/> containing the Sysmem client's buffer collection token
+            /// </summary>
             public uint collectionToken;
         }
         
+        /// <summary>
+        /// Structure to specify the Sysmem buffer to import
+        /// </summary>
         public partial struct VkImportMemoryBufferCollectionFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The <see cref="T:VkBufferCollectionFUCHSIA"/> handle
+            /// </summary>
             public vulkan.VkBufferCollectionFUCHSIA collection;
             
+            /// <summary>
+            /// The index of the buffer to import from <see cref="M:collection"/>
+            /// </summary>
             public uint index;
         }
         
@@ -179,112 +302,262 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkBufferCollectionFUCHSIA left, VkBufferCollectionFUCHSIA right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Create a VkBufferCollectionFUCHSIA-compatible VkImage
+        /// </summary>
         public partial struct VkBufferCollectionImageCreateInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The <see cref="T:VkBufferCollectionFUCHSIA"/> handle
+            /// </summary>
             public vulkan.VkBufferCollectionFUCHSIA collection;
             
+            /// <summary>
+            /// The index of the buffer in the buffer collection from which the memory will be imported
+            /// </summary>
             public uint index;
         }
         
+        /// <summary>
+        /// Structure of general buffer collection constraints
+        /// </summary>
         public partial struct VkBufferCollectionConstraintsInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The minimum number of buffers available in the collection
+            /// </summary>
             public uint minBufferCount;
             
+            /// <summary>
+            /// The maximum number of buffers allowed in the collection
+            /// </summary>
             public uint maxBufferCount;
             
+            /// <summary>
+            /// The per-participant minimum buffers for camping
+            /// </summary>
             public uint minBufferCountForCamping;
             
+            /// <summary>
+            /// The per-participant minimum buffers for dedicated slack
+            /// </summary>
             public uint minBufferCountForDedicatedSlack;
             
+            /// <summary>
+            /// The per-participant minimum buffers for shared slack
+            /// </summary>
             public uint minBufferCountForSharedSlack;
         }
         
+        /// <summary>
+        /// Structure buffer-based buffer collection constraints
+        /// </summary>
         public partial struct VkBufferConstraintsInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure
+            /// </summary>
             public void* pNext;
             
             public vulkan.VkBufferCreateInfo createInfo;
             
+            /// <summary>
+            /// Bitmask of <see cref="T:VkFormatFeatureFlagBits"/> required features of the buffers in the buffer collection
+            /// </summary>
             public vulkan.VkFormatFeatureFlags requiredFormatFeatures;
             
+            /// <summary>
+            /// Used to supply parameters for the negotiation and allocation of the buffer collection
+            /// </summary>
             public vulkan.VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
         }
         
+        /// <summary>
+        /// Create a VkBufferCollectionFUCHSIA-compatible VkBuffer
+        /// </summary>
         public partial struct VkBufferCollectionBufferCreateInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The <see cref="T:VkBufferCollectionFUCHSIA"/> handle
+            /// </summary>
             public vulkan.VkBufferCollectionFUCHSIA collection;
             
+            /// <summary>
+            /// The index of the buffer in the buffer collection from which the memory will be imported
+            /// </summary>
             public uint index;
         }
         
+        /// <summary>
+        /// Structure describing the buffer collections color space
+        /// </summary>
         public partial struct VkSysmemColorSpaceFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Value of the Sysmem code:ColorSpaceType
+            /// </summary>
             public uint colorSpace;
         }
         
+        /// <summary>
+        /// Structure specifying the negotiated format chosen by Sysmem
+        /// </summary>
         public partial struct VkBufferCollectionPropertiesFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask containing one bit set for every memory type which the buffer collection can be imported as buffer collection
+            /// </summary>
             public uint memoryTypeBits;
             
+            /// <summary>
+            /// The number of buffers in the collection
+            /// </summary>
             public uint bufferCount;
             
+            /// <summary>
+            /// As described in &lt;&lt;sysmem-chosen-create-infos, Sysmem chosen create infos&gt;&gt;
+            /// </summary>
             public uint createInfoIndex;
             
+            /// <summary>
+            /// The Sysmem code:PixelFormatType as defined in `fuchsia.sysmem/image_formats.fidl`
+            /// </summary>
             public ulong sysmemPixelFormat;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkFormatFeatureFlagBits"/> shared by the buffer collection
+            /// </summary>
             public vulkan.VkFormatFeatureFlags formatFeatures;
             
+            /// <summary>
+            /// A <see cref="T:VkSysmemColorSpaceFUCHSIA"/> struct specifying the color space
+            /// </summary>
             public vulkan.VkSysmemColorSpaceFUCHSIA sysmemColorSpaceIndex;
             
+            /// <summary>
+            /// A <see cref="T:VkComponentMapping"/> struct specifying the component mapping
+            /// </summary>
             public vulkan.VkComponentMapping samplerYcbcrConversionComponents;
             
+            /// <summary>
+            /// A <see cref="T:VkSamplerYcbcrModelConversion"/> value specifying the suggested {YCbCr} model
+            /// </summary>
             public vulkan.VkSamplerYcbcrModelConversion suggestedYcbcrModel;
             
+            /// <summary>
+            /// A <see cref="T:VkSamplerYcbcrRange"/> value specifying the suggested {YCbCr} range
+            /// </summary>
             public vulkan.VkSamplerYcbcrRange suggestedYcbcrRange;
             
+            /// <summary>
+            /// A <see cref="T:VkChromaLocation"/> value specifying the suggested X chroma offset
+            /// </summary>
             public vulkan.VkChromaLocation suggestedXChromaOffset;
             
+            /// <summary>
+            /// A <see cref="T:VkChromaLocation"/> value specifying the suggested Y chroma offset
+            /// </summary>
             public vulkan.VkChromaLocation suggestedYChromaOffset;
         }
         
+        /// <summary>
+        /// Structure image-based buffer collection constraints
+        /// </summary>
         public partial struct VkImageFormatConstraintsInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The <see cref="T:VkImageCreateInfo"/> used to create a <see cref="T:VkImage"/> that is to use memory from the <see cref="T:VkBufferCollectionFUCHSIA"/>
+            /// </summary>
             public vulkan.VkImageCreateInfo imageCreateInfo;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkFormatFeatureFlagBits"/> specifying required features of the buffers in the buffer collection
+            /// </summary>
             public vulkan.VkFormatFeatureFlags requiredFormatFeatures;
             
+            /// <summary>
+            /// Reserved for future use
+            /// </summary>
             public vulkan.VkImageFormatConstraintsFlagsFUCHSIA flags;
             
+            /// <summary>
+            /// A code:PixelFormatType value from the `fuchsia.sysmem/image_formats.fidl` FIDL interface
+            /// </summary>
             public ulong sysmemPixelFormat;
             
+            /// <summary>
+            /// The element count of <see cref="M:pColorSpaces"/>
+            /// </summary>
             public uint colorSpaceCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="T:VkSysmemColorSpaceFUCHSIA"/> structs of size <see cref="M:colorSpaceCount"/>
+            /// </summary>
             public vulkan.VkSysmemColorSpaceFUCHSIA* pColorSpaces;
         }
         
@@ -311,18 +584,39 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkImageFormatConstraintsFlagsFUCHSIA left, VkImageFormatConstraintsFlagsFUCHSIA right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure of image-based buffer collection constraints
+        /// </summary>
         public partial struct VkImageConstraintsInfoFUCHSIA
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The number of elements in <see cref="M:pFormatConstraints"/>.
+            /// </summary>
             public uint formatConstraintsCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="T:VkImageFormatConstraintsInfoFUCHSIA"/> structures of size <see cref="M:formatConstraintsCount"/> that is used to further constrain buffer collection format selection for image-based buffer collections.
+            /// </summary>
             public vulkan.VkImageFormatConstraintsInfoFUCHSIA* pFormatConstraints;
             
+            /// <summary>
+            /// A <see cref="T:VkBufferCollectionConstraintsInfoFUCHSIA"/> structure used to supply parameters for the negotiation and allocation for buffer-based buffer collections.
+            /// </summary>
             public vulkan.VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
             
+            /// <summary>
+            /// A <see cref="T:VkImageConstraintsInfoFlagBitsFUCHSIA"/> value specifying hints about the type of memory Sysmem should allocate for the buffer collection.
+            /// </summary>
             public vulkan.VkImageConstraintsInfoFlagsFUCHSIA flags;
         }
         
@@ -375,7 +669,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateImagePipeSurfaceFUCHSIA left, PFN_vkCreateImagePipeSurfaceFUCHSIA right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a <see cref="T:VkSurfaceKHR"/> object for a Fuchsia ImagePipe
+            /// </summary>
+            /// <param name="instance">The instance to associate with the surface.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkImagePipeSurfaceCreateInfoFUCHSIA"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -410,7 +711,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetMemoryZirconHandleFUCHSIA left, PFN_vkGetMemoryZirconHandleFUCHSIA right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, ref uint pZirconHandle)
+            /// <summary>
+            /// Get a Zircon handle for an external memory object
+            /// </summary>
+            /// <param name="device">The <see cref="T:VkDevice"/>.</param>
+            /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkMemoryGetZirconHandleInfoFUCHSIA"/> structure.</param>
+            /// <param name="pZirconHandle">A pointer to a code:zx_handle_t which holds the resulting Zircon handle.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle)
             {
                 fixed (vulkan.VkMemoryGetZirconHandleInfoFUCHSIA* __pGetZirconHandleInfo = &pGetZirconHandleInfo)
                 fixed (uint* __pZirconHandle = &pZirconHandle)
@@ -444,7 +751,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA left, PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, ref vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties)
+            /// <summary>
+            /// Get a Zircon handle properties for an external memory object
+            /// </summary>
+            /// <param name="device">The <see cref="T:VkDevice"/>.</param>
+            /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <paramref name="zirconHandle"/></param>
+            /// <param name="zirconHandle">A code:zx_handle_t (Zircon) handle to the external resource.</param>
+            /// <param name="pMemoryZirconHandleProperties">A pointer to a <see cref="T:VkMemoryZirconHandlePropertiesFUCHSIA"/> structure in which the result will be stored.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, out vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties)
             {
                 fixed (vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* __pMemoryZirconHandleProperties = &pMemoryZirconHandleProperties)
                 return Value(device, handleType, zirconHandle, __pMemoryZirconHandleProperties);
@@ -477,6 +791,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkImportSemaphoreZirconHandleFUCHSIA left, PFN_vkImportSemaphoreZirconHandleFUCHSIA right) => !left.Equals(right);
             
+            /// <summary>
+            /// Import a semaphore from a Zircon event handle
+            /// </summary>
+            /// <param name="device">The logical device that created the semaphore.</param>
+            /// <param name="pImportSemaphoreZirconHandleInfo">A pointer to a <see cref="T:VkImportSemaphoreZirconHandleInfoFUCHSIA"/> structure specifying the semaphore and import parameters.</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA pImportSemaphoreZirconHandleInfo)
             {
                 fixed (vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA* __pImportSemaphoreZirconHandleInfo = &pImportSemaphoreZirconHandleInfo)
@@ -510,7 +829,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetSemaphoreZirconHandleFUCHSIA left, PFN_vkGetSemaphoreZirconHandleFUCHSIA right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, ref uint pZirconHandle)
+            /// <summary>
+            /// Get a Zircon event handle for a semaphore
+            /// </summary>
+            /// <param name="device">The logical device that created the semaphore being exported.</param>
+            /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkSemaphoreGetZirconHandleInfoFUCHSIA"/> structure containing parameters of the export operation.</param>
+            /// <param name="pZirconHandle">Will return the Zircon event handle representing the semaphore payload.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle)
             {
                 fixed (vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA* __pGetZirconHandleInfo = &pGetZirconHandleInfo)
                 fixed (uint* __pZirconHandle = &pZirconHandle)
@@ -544,7 +869,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateBufferCollectionFUCHSIA left, PFN_vkCreateBufferCollectionFUCHSIA right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkBufferCollectionCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkBufferCollectionFUCHSIA pCollection)
+            /// <summary>
+            /// Create a new buffer collection
+            /// </summary>
+            /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkBufferCollectionCreateInfoFUCHSIA"/> structure containing parameters affecting creation of the buffer collection</param>
+            /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the &lt;&lt;memory-allocation, Memory Allocation&gt;&gt; chapter</param>
+            /// <param name="pBufferCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkBufferCollectionCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkBufferCollectionFUCHSIA pCollection)
             {
                 fixed (vulkan.VkBufferCollectionCreateInfoFUCHSIA* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -579,6 +911,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkSetBufferCollectionImageConstraintsFUCHSIA left, PFN_vkSetBufferCollectionImageConstraintsFUCHSIA right) => !left.Equals(right);
             
+            /// <summary>
+            /// Set image-based constraints for a buffer collection
+            /// </summary>
+            /// <param name="device">The logical device</param>
+            /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+            /// <param name="pImageConstraintsInfo">A pointer to a <see cref="T:VkImageConstraintsInfoFUCHSIA"/> structure</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkImageConstraintsInfoFUCHSIA pImageConstraintsInfo)
             {
                 fixed (vulkan.VkImageConstraintsInfoFUCHSIA* __pImageConstraintsInfo = &pImageConstraintsInfo)
@@ -612,6 +950,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA left, PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA right) => !left.Equals(right);
             
+            /// <summary>
+            /// Set buffer-based constraints for a buffer collection
+            /// </summary>
+            /// <param name="device">The logical device</param>
+            /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+            /// <param name="pBufferConstraintsInfo">A pointer to a <see cref="T:VkBufferConstraintsInfoFUCHSIA"/> structure</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkBufferConstraintsInfoFUCHSIA pBufferConstraintsInfo)
             {
                 fixed (vulkan.VkBufferConstraintsInfoFUCHSIA* __pBufferConstraintsInfo = &pBufferConstraintsInfo)
@@ -645,6 +989,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkDestroyBufferCollectionFUCHSIA left, PFN_vkDestroyBufferCollectionFUCHSIA right) => !left.Equals(right);
             
+            /// <summary>
+            /// Destroy a buffer collection
+            /// </summary>
+            /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
+            /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+            /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the &lt;&lt;memory-allocation, Memory Allocation&gt;&gt; chapter</param>
             public void Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkAllocationCallbacks pAllocator)
             {
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -678,7 +1028,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetBufferCollectionPropertiesFUCHSIA left, PFN_vkGetBufferCollectionPropertiesFUCHSIA right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, ref vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties)
+            /// <summary>
+            /// Retrieve properties from a buffer collection
+            /// </summary>
+            /// <param name="device">The logical device handle</param>
+            /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+            /// <param name="pProperties">A pointer to the retrieved <see cref="T:VkBufferCollectionPropertiesFUCHSIA"/> struct</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, out vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties)
             {
                 fixed (vulkan.VkBufferCollectionPropertiesFUCHSIA* __pProperties = &pProperties)
                 return Value(device, collection, __pProperties);
@@ -689,63 +1045,125 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
+        /// <summary>
+        /// Create a <see cref="T:VkSurfaceKHR"/> object for a Fuchsia ImagePipe
+        /// </summary>
+        /// <param name="instance">The instance to associate with the surface.</param>
+        /// <param name="pCreateInfo">A pointer to a <see cref="T:VkImagePipeSurfaceCreateInfoFUCHSIA"/> structure containing parameters affecting the creation of the surface object.</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+        /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateImagePipeSurfaceFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateImagePipeSurfaceFUCHSIA(vulkan.VkInstance instance, in vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        public static partial vulkan.VkResult vkCreateImagePipeSurfaceFUCHSIA(vulkan.VkInstance instance, in vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA> vkCreateImagePipeSurfaceFUCHSIA_ => new("vkCreateImagePipeSurfaceFUCHSIA"u8);
         
+        /// <summary>
+        /// Get a Zircon handle for an external memory object
+        /// </summary>
+        /// <param name="device">The <see cref="T:VkDevice"/>.</param>
+        /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkMemoryGetZirconHandleInfoFUCHSIA"/> structure.</param>
+        /// <param name="pZirconHandle">A pointer to a code:zx_handle_t which holds the resulting Zircon handle.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryZirconHandleFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetMemoryZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, ref uint pZirconHandle);
+        public static partial vulkan.VkResult vkGetMemoryZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandleFUCHSIA> vkGetMemoryZirconHandleFUCHSIA_ => new("vkGetMemoryZirconHandleFUCHSIA"u8);
         
+        /// <summary>
+        /// Get a Zircon handle properties for an external memory object
+        /// </summary>
+        /// <param name="device">The <see cref="T:VkDevice"/>.</param>
+        /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <paramref name="zirconHandle"/></param>
+        /// <param name="zirconHandle">A code:zx_handle_t (Zircon) handle to the external resource.</param>
+        /// <param name="pMemoryZirconHandleProperties">A pointer to a <see cref="T:VkMemoryZirconHandlePropertiesFUCHSIA"/> structure in which the result will be stored.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryZirconHandlePropertiesFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, ref vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties);
+        public static partial vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, out vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA> vkGetMemoryZirconHandlePropertiesFUCHSIA_ => new("vkGetMemoryZirconHandlePropertiesFUCHSIA"u8);
         
+        /// <summary>
+        /// Import a semaphore from a Zircon event handle
+        /// </summary>
+        /// <param name="device">The logical device that created the semaphore.</param>
+        /// <param name="pImportSemaphoreZirconHandleInfo">A pointer to a <see cref="T:VkImportSemaphoreZirconHandleInfoFUCHSIA"/> structure specifying the semaphore and import parameters.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkImportSemaphoreZirconHandleFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vkImportSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA pImportSemaphoreZirconHandleInfo);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkImportSemaphoreZirconHandleFUCHSIA> vkImportSemaphoreZirconHandleFUCHSIA_ => new("vkImportSemaphoreZirconHandleFUCHSIA"u8);
         
+        /// <summary>
+        /// Get a Zircon event handle for a semaphore
+        /// </summary>
+        /// <param name="device">The logical device that created the semaphore being exported.</param>
+        /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkSemaphoreGetZirconHandleInfoFUCHSIA"/> structure containing parameters of the export operation.</param>
+        /// <param name="pZirconHandle">Will return the Zircon event handle representing the semaphore payload.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetSemaphoreZirconHandleFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, ref uint pZirconHandle);
+        public static partial vulkan.VkResult vkGetSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetSemaphoreZirconHandleFUCHSIA> vkGetSemaphoreZirconHandleFUCHSIA_ => new("vkGetSemaphoreZirconHandleFUCHSIA"u8);
         
+        /// <summary>
+        /// Create a new buffer collection
+        /// </summary>
+        /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
+        /// <param name="pCreateInfo">A pointer to a <see cref="T:VkBufferCollectionCreateInfoFUCHSIA"/> structure containing parameters affecting creation of the buffer collection</param>
+        /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the &lt;&lt;memory-allocation, Memory Allocation&gt;&gt; chapter</param>
+        /// <param name="pBufferCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateBufferCollectionFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateBufferCollectionFUCHSIA(vulkan.VkDevice device, in vulkan.VkBufferCollectionCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkBufferCollectionFUCHSIA pCollection);
+        public static partial vulkan.VkResult vkCreateBufferCollectionFUCHSIA(vulkan.VkDevice device, in vulkan.VkBufferCollectionCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkBufferCollectionFUCHSIA pCollection);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateBufferCollectionFUCHSIA> vkCreateBufferCollectionFUCHSIA_ => new("vkCreateBufferCollectionFUCHSIA"u8);
         
+        /// <summary>
+        /// Set image-based constraints for a buffer collection
+        /// </summary>
+        /// <param name="device">The logical device</param>
+        /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+        /// <param name="pImageConstraintsInfo">A pointer to a <see cref="T:VkImageConstraintsInfoFUCHSIA"/> structure</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkSetBufferCollectionImageConstraintsFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vkSetBufferCollectionImageConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkImageConstraintsInfoFUCHSIA pImageConstraintsInfo);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA> vkSetBufferCollectionImageConstraintsFUCHSIA_ => new("vkSetBufferCollectionImageConstraintsFUCHSIA"u8);
         
+        /// <summary>
+        /// Set buffer-based constraints for a buffer collection
+        /// </summary>
+        /// <param name="device">The logical device</param>
+        /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+        /// <param name="pBufferConstraintsInfo">A pointer to a <see cref="T:VkBufferConstraintsInfoFUCHSIA"/> structure</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkSetBufferCollectionBufferConstraintsFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vkSetBufferCollectionBufferConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkBufferConstraintsInfoFUCHSIA pBufferConstraintsInfo);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA> vkSetBufferCollectionBufferConstraintsFUCHSIA_ => new("vkSetBufferCollectionBufferConstraintsFUCHSIA"u8);
         
+        /// <summary>
+        /// Destroy a buffer collection
+        /// </summary>
+        /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
+        /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+        /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the &lt;&lt;memory-allocation, Memory Allocation&gt;&gt; chapter</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkDestroyBufferCollectionFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial void vkDestroyBufferCollectionFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkAllocationCallbacks pAllocator);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkDestroyBufferCollectionFUCHSIA> vkDestroyBufferCollectionFUCHSIA_ => new("vkDestroyBufferCollectionFUCHSIA"u8);
         
+        /// <summary>
+        /// Retrieve properties from a buffer collection
+        /// </summary>
+        /// <param name="device">The logical device handle</param>
+        /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+        /// <param name="pProperties">A pointer to the retrieved <see cref="T:VkBufferCollectionPropertiesFUCHSIA"/> struct</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetBufferCollectionPropertiesFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetBufferCollectionPropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, ref vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties);
+        public static partial vulkan.VkResult vkGetBufferCollectionPropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, out vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetBufferCollectionPropertiesFUCHSIA> vkGetBufferCollectionPropertiesFUCHSIA_ => new("vkGetBufferCollectionPropertiesFUCHSIA"u8);
     }

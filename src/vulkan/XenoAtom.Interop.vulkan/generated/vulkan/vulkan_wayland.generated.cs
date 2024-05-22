@@ -17,14 +17,29 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Structure specifying parameters of a newly created Wayland surface object
+        /// </summary>
         public partial struct VkWaylandSurfaceCreateInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkWaylandSurfaceCreateFlagsKHR flags;
             
+            /// <summary>
+            /// And <see cref="M:surface"/> are pointers to the Wayland code:wl_display and code:wl_surface to associate the surface with.
+            /// </summary>
             public vulkan.wl_display display;
             
             public vulkan.wl_surface surface;
@@ -75,7 +90,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateWaylandSurfaceKHR left, PFN_vkCreateWaylandSurfaceKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWaylandSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a <see cref="T:VkSurfaceKHR"/> object for a Wayland window
+            /// </summary>
+            /// <param name="instance">The instance to associate the surface with.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkWaylandSurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWaylandSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkWaylandSurfaceCreateInfoKHR* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -110,6 +132,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR left, PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR right) => !left.Equals(right);
             
+            /// <summary>
+            /// Query physical device for presentation to Wayland
+            /// </summary>
+            /// <param name="physicalDevice">The physical device.</param>
+            /// <param name="queueFamilyIndex">The queue family index.</param>
+            /// <param name="display">A pointer to the code:wl_display associated with a Wayland compositor.</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan.wl_display display)
             {
                 return Value(physicalDevice, queueFamilyIndex, display);

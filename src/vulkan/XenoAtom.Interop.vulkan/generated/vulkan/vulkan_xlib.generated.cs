@@ -17,16 +17,34 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Structure specifying parameters of a newly created Xlib surface object
+        /// </summary>
         public partial struct VkXlibSurfaceCreateInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkXlibSurfaceCreateFlagsKHR flags;
             
+            /// <summary>
+            /// A pointer to an Xlib code:Display connection to the X server.
+            /// </summary>
             public void* dpy;
             
+            /// <summary>
+            /// An Xlib code:Window to associate the surface with.
+            /// </summary>
             public nuint window;
         }
         
@@ -75,7 +93,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateXlibSurfaceKHR left, PFN_vkCreateXlibSurfaceKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkXlibSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a <see cref="T:VkSurfaceKHR"/> object for an X11 window, using the Xlib client-side library
+            /// </summary>
+            /// <param name="instance">The instance to associate the surface with.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkXlibSurfaceCreateInfoKHR"/> structure containing the parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkXlibSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkXlibSurfaceCreateInfoKHR* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -110,6 +135,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR left, PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR right) => !left.Equals(right);
             
+            /// <summary>
+            /// Query physical device for presentation to X11 server using Xlib
+            /// </summary>
+            /// <param name="physicalDevice">The physical device.</param>
+            /// <param name="queueFamilyIndex">The queue family index.</param>
+            /// <param name="dpy">A pointer to an Xlib code:Display connection to the server.</param>
+            /// <param name="visualId">An X11 visual (code:VisualID).</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dpy, nuint visualID)
             {
                 return Value(physicalDevice, queueFamilyIndex, dpy, visualID);

@@ -17,16 +17,34 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Structure specifying parameters of a newly created DirectFB surface object
+        /// </summary>
         public partial struct VkDirectFBSurfaceCreateInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkDirectFBSurfaceCreateFlagsEXT flags;
             
+            /// <summary>
+            /// A pointer to the code:IDirectFB main interface of DirectFB.
+            /// </summary>
             public void* dfb;
             
+            /// <summary>
+            /// A pointer to a code:IDirectFBSurface surface interface.
+            /// </summary>
             public void* surface;
         }
         
@@ -75,7 +93,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateDirectFBSurfaceEXT left, PFN_vkCreateDirectFBSurfaceEXT right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkDirectFBSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a <see cref="T:VkSurfaceKHR"/> object for a DirectFB surface
+            /// </summary>
+            /// <param name="instance">The instance to associate the surface with.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkDirectFBSurfaceCreateInfoEXT"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkDirectFBSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkDirectFBSurfaceCreateInfoEXT* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -110,6 +135,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT left, PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT right) => !left.Equals(right);
             
+            /// <summary>
+            /// Query physical device for presentation with DirectFB
+            /// </summary>
+            /// <param name="physicalDevice">The physical device.</param>
+            /// <param name="queueFamilyIndex">The queue family index.</param>
+            /// <param name="dfb">A pointer to the code:IDirectFB main interface of DirectFB.</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dfb)
             {
                 return Value(physicalDevice, queueFamilyIndex, dfb);

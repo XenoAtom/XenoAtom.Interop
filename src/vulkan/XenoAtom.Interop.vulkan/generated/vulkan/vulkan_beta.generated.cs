@@ -17,6 +17,9 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Video encode tuning mode
+        /// </summary>
         public enum VkVideoEncodeTuningModeKHR : uint
         {
             VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR = unchecked((uint)0),
@@ -44,6 +47,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_MAX_ENUM_KHR = VkVideoEncodeTuningModeKHR.VK_VIDEO_ENCODE_TUNING_MODE_MAX_ENUM_KHR;
         
+        /// <summary>
+        /// Video encode capability flags
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeCapabilityFlagBitsKHR : uint
         {
@@ -56,6 +62,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeCapabilityFlagBitsKHR VK_VIDEO_ENCODE_CAPABILITY_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeCapabilityFlagBitsKHR.VK_VIDEO_ENCODE_CAPABILITY_FLAG_BITS_MAX_ENUM_KHR;
         
+        /// <summary>
+        /// Video encode rate control modes
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeRateControlModeFlagBitsKHR : uint
         {
@@ -80,6 +89,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_FLAG_BITS_MAX_ENUM_KHR;
         
+        /// <summary>
+        /// Bits specifying queried video encode feedback values
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeFeedbackFlagBitsKHR : uint
         {
@@ -100,6 +112,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeFeedbackFlagBitsKHR VK_VIDEO_ENCODE_FEEDBACK_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeFeedbackFlagBitsKHR.VK_VIDEO_ENCODE_FEEDBACK_FLAG_BITS_MAX_ENUM_KHR;
         
+        /// <summary>
+        /// Video encode usage flags
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeUsageFlagBitsKHR : uint
         {
@@ -128,6 +143,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR;
         
+        /// <summary>
+        /// Video encode content flags
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeContentFlagBitsKHR : uint
         {
@@ -152,6 +170,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR;
         
+        /// <summary>
+        /// Video encode H.264 capability flags
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeH264CapabilityFlagBitsEXT : uint
         {
@@ -196,6 +217,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// Video encode H.264 syntax capability flags
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeH264StdFlagBitsEXT : uint
         {
@@ -276,6 +300,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_FLAG_BITS_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// H.264 encode rate control bits
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeH264RateControlFlagBitsEXT : uint
         {
@@ -304,6 +331,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// Video encode H.265 capability flags
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeH265CapabilityFlagBitsEXT : uint
         {
@@ -352,6 +382,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// Video encode H.265 syntax capability flags
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeH265StdFlagBitsEXT : uint
         {
@@ -436,6 +469,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_FLAG_BITS_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// Supported CTB sizes for H.265 video encode
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeH265CtbSizeFlagBitsEXT : uint
         {
@@ -456,6 +492,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265CtbSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_FLAG_BITS_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// Supported transform block sizes for H.265 video encode
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeH265TransformBlockSizeFlagBitsEXT : uint
         {
@@ -480,6 +519,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_FLAG_BITS_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// H.265 encode rate control bits
+        /// </summary>
         [Flags]
         public enum VkVideoEncodeH265RateControlFlagBitsEXT : uint
         {
@@ -508,6 +550,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// Format enum for displacement micromaps
+        /// </summary>
         public enum VkDisplacementMicromapFormatNV : uint
         {
             VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = unchecked((uint)1),
@@ -527,10 +572,19 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_MAX_ENUM_NV = VkDisplacementMicromapFormatNV.VK_DISPLACEMENT_MICROMAP_FORMAT_MAX_ENUM_NV;
         
+        /// <summary>
+        /// Structure describing the features that may not be supported by an implementation of the Vulkan 1.0 Portability Subset
+        /// </summary>
         public partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure. * [[features-constantAlphaColorBlendFactors]] <see cref="M:constantAlphaColorBlendFactors"/> indicates whether this implementation supports constant _alpha_ &lt;&lt;framebuffer-blendfactors&gt;&gt; used as source or destination _color_ &lt;&lt;framebuffer-blending&gt;&gt;. * [[features-events]] <see cref="M:events"/> indicates whether this implementation supports synchronization using &lt;&lt;synchronization-events&gt;&gt;. * [[features-imageViewFormatReinterpretation]] <see cref="M:imageViewFormatReinterpretation"/> indicates whether this implementation supports a <see cref="T:VkImageView"/> being created with a texel format containing a different number of components, or a different number of bits in each component, than the texel format of the underlying <see cref="T:VkImage"/>. * [[features-imageViewFormatSwizzle]] <see cref="M:imageViewFormatSwizzle"/> indicates whether this implementation supports remapping format components using <see cref="T:VkImageViewCreateInfo.components"/>. * [[features-imageView2DOn3DImage]] <see cref="M:imageView2DOn3DImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created with the <see cref="T:VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT"/> flag set, permitting a 2D or 2D array image view to be created on a 3D <see cref="T:VkImage"/>. * [[features-multisampleArrayImage]] <see cref="M:multisampleArrayImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created as a 2D array with multiple samples per texel. * [[features-mutableComparisonSamplers]] <see cref="M:mutableComparisonSamplers"/> indicates whether this implementation allows descriptors with comparison samplers to be &lt;&lt;descriptorsets-updates, updated&gt;&gt;. * [[features-pointPolygons]] <see cref="M:pointPolygons"/> indicates whether this implementation supports &lt;&lt;primsrast&gt;&gt; using a _point_ &lt;&lt;primsrast-polygonmode&gt;&gt;. * [[features-samplerMipLodBias]] <see cref="M:samplerMipLodBias"/> indicates whether this implementation supports setting a &lt;&lt;samplers-mipLodBias, mipmap LOD bias value&gt;&gt; when &lt;&lt;samplers, creating a sampler&gt;&gt;. * [[features-separateStencilMaskRef]] <see cref="M:separateStencilMaskRef"/> indicates whether this implementation supports separate front and back &lt;&lt;fragops-stencil&gt;&gt; reference values. * [[features-shaderSampleRateInterpolationFunctions]] <see cref="M:shaderSampleRateInterpolationFunctions"/> indicates whether this implementation supports fragment shaders which use the &lt;&lt;spirvenv-capabilities-table-InterpolationFunction, code:InterpolationFunction&gt;&gt; capability and the extended instructions `InterpolateAtCentroid`, `InterpolateAtOffset`, and `InterpolateAtSample` from the `GLSL.std.450` extended instruction set. This member is only meaningful if the &lt;&lt;features-sampleRateShading, <see cref="M:sampleRateShading"/>&gt;&gt; feature is supported. * [[features-tessellationIsolines]] <see cref="M:tessellationIsolines"/> indicates whether this implementation supports &lt;&lt;tessellation-isoline-tessellation, isoline output&gt;&gt; from the &lt;&lt;tessellation&gt;&gt; stage of a graphics pipeline. This member is only meaningful if &lt;&lt;features-tessellationShader, <see cref="M:tessellationShader"/>&gt;&gt; are supported. * [[features-tessellationPointMode]] <see cref="M:tessellationPointMode"/> indicates whether this implementation supports &lt;&lt;tessellation-point-mode, point output&gt;&gt; from the &lt;&lt;tessellation&gt;&gt; stage of a graphics pipeline. This member is only meaningful if &lt;&lt;features-tessellationShader, <see cref="M:tessellationShader"/>&gt;&gt; are supported. * [[features-triangleFans]] <see cref="M:triangleFans"/> indicates whether this implementation supports &lt;&lt;drawing-triangle-fans&gt;&gt; primitive topology. * [[features-vertexAttributeAccessBeyondStride]] <see cref="M:vertexAttributeAccessBeyondStride"/> indicates whether this implementation supports accessing a vertex input attribute beyond the stride of the corresponding vertex input binding.
+            /// </summary>
             public void* pNext;
             
             public vulkan.VkBool32 constantAlphaColorBlendFactors;
@@ -564,37 +618,82 @@ namespace XenoAtom.Interop
             public vulkan.VkBool32 vertexAttributeAccessBeyondStride;
         }
         
+        /// <summary>
+        /// Structure describing additional properties supported by a portable implementation
+        /// </summary>
         public partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure. * [[limits-minVertexInputBindingStrideAlignment]] <see cref="M:minVertexInputBindingStrideAlignment"/> indicates the minimum alignment for vertex input strides. <see cref="T:VkVertexInputBindingDescription.stride"/> must: be a multiple of, and at least as large as, this value. The value must: be a power of two.
+            /// </summary>
             public void* pNext;
             
             public uint minVertexInputBindingStrideAlignment;
         }
         
+        /// <summary>
+        /// Structure to chain codec-specific structures to
+        /// </summary>
         public partial struct VkVideoEncodeInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// A pointer to a structure extending this structure. A codec-specific extension structure must: be chained to specify what bitstream unit to generate with this encode operation.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkVideoEncodeFlagsKHR flags;
             
+            /// <summary>
+            /// The destination video bitstream buffer to write the encoded bitstream to.
+            /// </summary>
             public vulkan.VkBuffer dstBuffer;
             
+            /// <summary>
+            /// The starting offset in bytes from the start of <see cref="M:dstBuffer"/> to write the encoded bitstream to. <see cref="M:dstBufferOffset"/>'s value must: be aligned to <see cref="T:VkVideoCapabilitiesKHR.minBitstreamBufferOffsetAlignment"/>, as reported by the implementation.
+            /// </summary>
             public vulkan.VkDeviceSize dstBufferOffset;
             
+            /// <summary>
+            /// The maximum size in bytes of the encoded bitstream written to <see cref="M:dstBuffer"/>, starting from <see cref="M:dstBufferOffset"/>. <see cref="M:dstBufferRange"/>'s value must: be aligned to <see cref="T:VkVideoCapabilitiesKHR.minBitstreamBufferSizeAlignment"/>, as reported by the implementation.
+            /// </summary>
             public vulkan.VkDeviceSize dstBufferRange;
             
+            /// <summary>
+            /// The Picture Resource of the &lt;&lt;encode-input-picture,Input Picture&gt;&gt; to be encoded by the operation.
+            /// </summary>
             public vulkan.VkVideoPictureResourceInfoKHR srcPictureResource;
             
+            /// <summary>
+            /// A pointer to a <see cref="T:VkVideoReferenceSlotInfoKHR"/> structure used for generating a reconstructed reference slot and Picture Resource. <see cref="M:pSetupReferenceSlot"/>-&gt;slotIndex specifies the slot index number to use as a target for producing the Reconstructed (DPB) data. <see cref="M:pSetupReferenceSlot"/> must: be one of the entries provided in <see cref="T:VkVideoBeginCodingInfoKHR"/> via the <see cref="M:pReferenceSlots"/> within the <see cref="M:vkCmdBeginVideoCodingKHR"/> command that established the Vulkan Video Encode Context for this command.
+            /// </summary>
             public vulkan.VkVideoReferenceSlotInfoKHR* pSetupReferenceSlot;
             
+            /// <summary>
+            /// The number of Reconstructed Reference Pictures that will be used when this encoding operation is executing.
+            /// </summary>
             public uint referenceSlotCount;
             
+            /// <summary>
+            /// `NULL` or a pointer to an array of <see cref="T:VkVideoReferenceSlotInfoKHR"/> structures that will be used when this encoding operation is executing. Each entry in <see cref="M:pReferenceSlots"/> must: be one of the entries provided in <see cref="T:VkVideoBeginCodingInfoKHR"/> via the <see cref="M:pReferenceSlots"/> within the <see cref="M:vkCmdBeginVideoCodingKHR"/> command that established the Vulkan Video Encode Context for this command.
+            /// </summary>
             public vulkan.VkVideoReferenceSlotInfoKHR* pReferenceSlots;
             
+            /// <summary>
+            /// The number of bytes externally encoded for insertion in the active video encode session overall bitstream prior to the bitstream that will be generated by the implementation for this instance of <see cref="T:VkVideoEncodeInfoKHR"/>. The value provided is used to update the implementation's rate control algorithm for the rate control layer this instance of <see cref="T:VkVideoEncodeInfoKHR"/> belongs to, by accounting for the bitrate budget consumed by these externally encoded bytes. See <see cref="T:VkVideoEncodeRateControlInfoKHR"/> for additional information about encode rate control.
+            /// </summary>
             public uint precedingExternallyEncodedBytes;
         }
         
@@ -621,24 +720,54 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkVideoEncodeFlagsKHR left, VkVideoEncodeFlagsKHR right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure specifying encode capabilities
+        /// </summary>
         public partial struct VkVideoEncodeCapabilitiesKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeCapabilityFlagBitsKHR"/> describing supported encoding features.
+            /// </summary>
             public vulkan.VkVideoEncodeCapabilityFlagsKHR flags;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeRateControlModeFlagBitsKHR"/> indicating supported rate control modes.
+            /// </summary>
             public vulkan.VkVideoEncodeRateControlModeFlagsKHR rateControlModes;
             
+            /// <summary>
+            /// Indicates the maximum number of rate control layers supported.
+            /// </summary>
             public uint maxRateControlLayers;
             
+            /// <summary>
+            /// Indicates the maximum supported bitrate.
+            /// </summary>
             public ulong maxBitrate;
             
+            /// <summary>
+            /// Indicates the number of discrete video encode quality levels supported. Implementations must: report at least 1.
+            /// </summary>
             public uint maxQualityLevels;
             
+            /// <summary>
+            /// Indicates the granularity at which &lt;&lt;encode-input-picture,encode input picture&gt;&gt; data is encoded.
+            /// </summary>
             public vulkan.VkExtent2D encodeInputPictureGranularity;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeFeedbackFlagBitsKHR"/> values specifying the supported flags for &lt;&lt;queries-video-encode-feedback,video encode feedback queries&gt;&gt;.
+            /// </summary>
             public vulkan.VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags;
         }
         
@@ -723,25 +852,55 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeFeedbackFlagsKHR (vulkan.VkVideoEncodeFeedbackFlagBitsKHR from) => new vulkan.VkVideoEncodeFeedbackFlagsKHR((uint)from);
         }
         
+        /// <summary>
+        /// Structure specifying enabled video encode feedback values
+        /// </summary>
         public partial struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeFeedbackFlagBitsKHR"/> values specifying the set of enabled video encode feedback values captured by queries of the new pool.
+            /// </summary>
             public vulkan.VkVideoEncodeFeedbackFlagsKHR encodeFeedbackFlags;
         }
         
+        /// <summary>
+        /// Structure specifying video encode usage information
+        /// </summary>
         public partial struct VkVideoEncodeUsageInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeUsageFlagBitsKHR"/> specifying hints about the intended use of the video encode profile.
+            /// </summary>
             public vulkan.VkVideoEncodeUsageFlagsKHR videoUsageHints;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeContentFlagBitsKHR"/> specifying hints about the content to be encoded using the video encode profile.
+            /// </summary>
             public vulkan.VkVideoEncodeContentFlagsKHR videoContentHints;
             
+            /// <summary>
+            /// A <see cref="T:VkVideoEncodeTuningModeKHR"/> value specifying the tuning mode to use when encoding with the video profile.
+            /// </summary>
             public vulkan.VkVideoEncodeTuningModeKHR tuningMode;
         }
         
@@ -799,37 +958,85 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeContentFlagsKHR (vulkan.VkVideoEncodeContentFlagBitsKHR from) => new vulkan.VkVideoEncodeContentFlagsKHR((uint)from);
         }
         
+        /// <summary>
+        /// Structure to set encode per-layer rate control parameters
+        /// </summary>
         public partial struct VkVideoEncodeRateControlLayerInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// A pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The average bitrate in bits/second. Valid when rate control mode is <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR"/> or <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR"/>.
+            /// </summary>
             public ulong averageBitrate;
             
+            /// <summary>
+            /// The peak bitrate in bits/second. Valid when rate control mode is <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR"/>.
+            /// </summary>
             public ulong maxBitrate;
             
+            /// <summary>
+            /// The numerator of the frame rate. Valid when rate control mode is <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR"/> or <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR"/>.
+            /// </summary>
             public uint frameRateNumerator;
             
+            /// <summary>
+            /// The denominator of the frame rate. Valid when rate control mode is <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR"/> or <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR"/>.
+            /// </summary>
             public uint frameRateDenominator;
         }
         
+        /// <summary>
+        /// Structure to set encode stream rate control parameters
+        /// </summary>
         public partial struct VkVideoEncodeRateControlInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkVideoEncodeRateControlFlagsKHR flags;
             
+            /// <summary>
+            /// A <see cref="T:VkVideoEncodeRateControlModeFlagBitsKHR"/> value specifying the encode stream rate control mode.
+            /// </summary>
             public vulkan.VkVideoEncodeRateControlModeFlagBitsKHR rateControlMode;
             
+            /// <summary>
+            /// Specifies the number of rate control layers in the video encode stream.
+            /// </summary>
             public uint layerCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="T:VkVideoEncodeRateControlLayerInfoKHR"/> structures specifying the rate control configurations of <see cref="M:layerCount"/> rate control layers.
+            /// </summary>
             public vulkan.VkVideoEncodeRateControlLayerInfoKHR* pLayers;
             
+            /// <summary>
+            /// The leaky bucket model virtual buffer size in milliseconds, with respect to peak bitrate. Valid when rate control mode is <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR"/> or <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR"/>. For example, virtual buffer size is (<see cref="M:virtualBufferSizeInMs"/> {times} <see cref="M:maxBitrate"/> / 1000).
+            /// </summary>
             public uint virtualBufferSizeInMs;
             
+            /// <summary>
+            /// The initial occupancy in milliseconds of the virtual buffer in the leaky bucket model. Valid when rate control mode is <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR"/> or <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR"/>.
+            /// </summary>
             public uint initialVirtualBufferSizeInMs;
         }
         
@@ -856,85 +1063,199 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkVideoEncodeRateControlFlagsKHR left, VkVideoEncodeRateControlFlagsKHR right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure describing the video encode profile and quality level to query properties for
+        /// </summary>
         public partial struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A pointer to a <see cref="T:VkVideoProfileInfoKHR"/> structure specifying the video profile to query the video encode quality level properties for.
+            /// </summary>
             public vulkan.VkVideoProfileInfoKHR* pVideoProfile;
             
+            /// <summary>
+            /// The video encode quality level to query properties for.
+            /// </summary>
             public uint qualityLevel;
         }
         
+        /// <summary>
+        /// Structure describing the video encode quality level properties
+        /// </summary>
         public partial struct VkVideoEncodeQualityLevelPropertiesKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A <see cref="T:VkVideoEncodeRateControlModeFlagBitsKHR"/> value indicating the preferred rate control mode to use with the video encode quality level.
+            /// </summary>
             public vulkan.VkVideoEncodeRateControlModeFlagBitsKHR preferredRateControlMode;
             
+            /// <summary>
+            /// Indicates the preferred number of rate control layers to use with the quality level.
+            /// </summary>
             public uint preferredRateControlLayerCount;
         }
         
+        /// <summary>
+        /// Structure specifying used video encode quality level
+        /// </summary>
         public partial struct VkVideoEncodeQualityLevelInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The used video encode quality level.
+            /// </summary>
             public uint qualityLevel;
         }
         
+        /// <summary>
+        /// Structure specifying parameters for retrieving encoded video session parameter data
+        /// </summary>
         public partial struct VkVideoEncodeSessionParametersGetInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The <see cref="T:VkVideoSessionParametersKHR"/> object to retrieve encoded parameter data from.
+            /// </summary>
             public vulkan.VkVideoSessionParametersKHR videoSessionParameters;
         }
         
+        /// <summary>
+        /// Structure providing feedback about the requested video session parameters
+        /// </summary>
         public partial struct VkVideoEncodeSessionParametersFeedbackInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether any of the requested parameter data were overridden by the implementation.
+            /// </summary>
             public vulkan.VkBool32 hasOverrides;
         }
         
+        /// <summary>
+        /// Structure specifying H.264 encode capabilities
+        /// </summary>
         public partial struct VkVideoEncodeH264CapabilitiesEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH264CapabilityFlagBitsEXT"/> indicating supported H.264 encoding capabilities.
+            /// </summary>
             public vulkan.VkVideoEncodeH264CapabilityFlagsEXT flags;
             
+            /// <summary>
+            /// A code:StdVideoH264LevelIdc value indicating the maximum H.264 level supported.
+            /// </summary>
             public vulkan.StdVideoH264LevelIdc maxLevelIdc;
             
+            /// <summary>
+            /// Indicates the maximum number of slices that can: be encoded for a single picture. Further restrictions may: apply to the number of slices that can: be encoded for a single picture depending on other capabilities and codec-specific rules.
+            /// </summary>
             public uint maxSliceCount;
             
+            /// <summary>
+            /// Indicates the maximum number of reference pictures the implementation supports in the reference list L0 for P pictures.
+            /// </summary>
             public uint maxPPictureL0ReferenceCount;
             
+            /// <summary>
+            /// Indicates the maximum number of reference pictures the implementation supports in the reference list L0 for B pictures. The reported value is `0` if encoding of B pictures is not supported.
+            /// </summary>
             public uint maxBPictureL0ReferenceCount;
             
+            /// <summary>
+            /// Reports the maximum number of reference pictures the implementation supports in the reference list L1 if encoding of B pictures is supported. The reported value is `0` if encoding of B pictures is not supported.
+            /// </summary>
             public uint maxL1ReferenceCount;
             
+            /// <summary>
+            /// Indicates the maximum number of H.264 temporal layers supported by the implementation.
+            /// </summary>
             public uint maxTemporalLayerCount;
             
+            /// <summary>
+            /// Indicates that the implementation's rate control algorithms expect the application to use a dyadic temporal layer pattern when encoding multiple temporal layers.
+            /// </summary>
             public vulkan.VkBool32 expectDyadicTemporalLayerPattern;
             
+            /// <summary>
+            /// Indicates the minimum QP value supported.
+            /// </summary>
             public int minQp;
             
+            /// <summary>
+            /// Indicates the maximum QP value supported.
+            /// </summary>
             public int maxQp;
             
+            /// <summary>
+            /// Indicates that the implementation's rate control algorithm prefers the application to specify the number of frames of each type remaining in the current group of pictures.
+            /// </summary>
             public vulkan.VkBool32 prefersGopRemainingFrames;
             
+            /// <summary>
+            /// Indicates that the implementation's rate control algorithm requires the application to specify the number of frames of each type remaining in the current group of pictures.
+            /// </summary>
             public vulkan.VkBool32 requiresGopRemainingFrames;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH264StdFlagBitsEXT"/> indicating capabilities related to H.264 syntax elements.
+            /// </summary>
             public vulkan.VkVideoEncodeH264StdFlagsEXT stdSyntaxFlags;
         }
         
@@ -992,37 +1313,85 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeH264StdFlagsEXT (vulkan.VkVideoEncodeH264StdFlagBitsEXT from) => new vulkan.VkVideoEncodeH264StdFlagsEXT((uint)from);
         }
         
+        /// <summary>
+        /// Structure describing H.264 QP values per picture type
+        /// </summary>
         public partial struct VkVideoEncodeH264QpEXT
         {
+            /// <summary>
+            /// The QP to be used for I-frames.
+            /// </summary>
             public int qpI;
             
+            /// <summary>
+            /// The QP to be used for P-frames.
+            /// </summary>
             public int qpP;
             
+            /// <summary>
+            /// The QP to be used for B-frames.
+            /// </summary>
             public int qpB;
         }
         
+        /// <summary>
+        /// Structure describing the H.264 encode quality level properties
+        /// </summary>
         public partial struct VkVideoEncodeH264QualityLevelPropertiesEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH264RateControlFlagBitsEXT"/> values indicating the preferred flags to use for <see cref="T:VkVideoEncodeH264RateControlInfoEXT.flags"/>.
+            /// </summary>
             public vulkan.VkVideoEncodeH264RateControlFlagsEXT preferredRateControlFlags;
             
+            /// <summary>
+            /// Indicates the preferred value to use for <see cref="T:VkVideoEncodeH264RateControlInfoEXT.gopFrameCount"/>.
+            /// </summary>
             public uint preferredGopFrameCount;
             
+            /// <summary>
+            /// Indicates the preferred value to use for <see cref="T:VkVideoEncodeH264RateControlInfoEXT.idrPeriod"/>.
+            /// </summary>
             public uint preferredIdrPeriod;
             
+            /// <summary>
+            /// Indicates the preferred value to use for <see cref="T:VkVideoEncodeH264RateControlInfoEXT.consecutiveBFrameCount"/>.
+            /// </summary>
             public uint preferredConsecutiveBFrameCount;
             
+            /// <summary>
+            /// Indicates the preferred value to use for <see cref="T:VkVideoEncodeH264RateControlInfoEXT.temporalLayerCount"/>.
+            /// </summary>
             public uint preferredTemporalLayerCount;
             
+            /// <summary>
+            /// Indicates the preferred values to use for <see cref="T:VkVideoEncodeH264NaluSliceInfoEXT.constantQp"/> for each picture type when using rate control mode <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR"/>.
+            /// </summary>
             public vulkan.VkVideoEncodeH264QpEXT preferredConstantQp;
             
+            /// <summary>
+            /// Indicates the preferred maximum number of reference pictures to use in the reference list L0.
+            /// </summary>
             public uint preferredMaxL0ReferenceCount;
             
+            /// <summary>
+            /// Indicates the preferred maximum number of reference pictures to use in the reference list L1.
+            /// </summary>
             public uint preferredMaxL1ReferenceCount;
             
+            /// <summary>
+            /// Indicates the preferred value to use for code:entropy_coding_mode_flag in code:StdVideoH264PpsFlags.
+            /// </summary>
             public vulkan.VkBool32 preferredStdEntropyCodingModeFlag;
         }
         
@@ -1053,211 +1422,502 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeH264RateControlFlagsEXT (vulkan.VkVideoEncodeH264RateControlFlagBitsEXT from) => new vulkan.VkVideoEncodeH264RateControlFlagsEXT((uint)from);
         }
         
+        /// <summary>
+        /// Structure specifies H.264 encode session parameters
+        /// </summary>
         public partial struct VkVideoEncodeH264SessionCreateInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether the value of <see cref="M:maxLevelIdc"/> should be used by the implementation. When it is set to <see cref="T:VK_FALSE"/>, the implementation ignores the value of <see cref="M:maxLevelIdc"/> and uses the value of <see cref="T:VkVideoEncodeH264CapabilitiesEXT.maxLevelIdc"/>, as reported by <see cref="M:vkGetPhysicalDeviceVideoCapabilitiesKHR"/> for the video profile.
+            /// </summary>
             public vulkan.VkBool32 useMaxLevelIdc;
             
+            /// <summary>
+            /// Provides the upper bound on the H.264 level for the video bitstreams produced by the created video session.
+            /// </summary>
             public vulkan.StdVideoH264LevelIdc maxLevelIdc;
         }
         
+        /// <summary>
+        /// Structure specifies H.264 encoder parameter set information
+        /// </summary>
         public partial struct VkVideoEncodeH264SessionParametersAddInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The number of SPS elements in the <see cref="M:pStdSPSs"/>. Its value must: be less than or equal to the value of <see cref="M:maxStdSPSCount"/>.
+            /// </summary>
             public uint stdSPSCount;
             
+            /// <summary>
+            /// A pointer to an array of code:StdVideoH264SequenceParameterSet structures representing H.264 sequence parameter sets. Each element of the array must: have a unique H.264 SPS ID.
+            /// </summary>
             public vulkan.StdVideoH264SequenceParameterSet* pStdSPSs;
             
+            /// <summary>
+            /// The number of PPS provided in <see cref="M:pStdPPSs"/>. Its value must: be less than or equal to the value of <see cref="M:maxStdPPSCount"/>.
+            /// </summary>
             public uint stdPPSCount;
             
+            /// <summary>
+            /// A pointer to an array of code:StdVideoH264PictureParameterSet structures representing H.264 picture parameter sets. Each element of the array must: have a unique H.264 SPS-PPS ID pair.
+            /// </summary>
             public vulkan.StdVideoH264PictureParameterSet* pStdPPSs;
         }
         
+        /// <summary>
+        /// Structure specifies H.264 encoder parameter set information
+        /// </summary>
         public partial struct VkVideoEncodeH264SessionParametersCreateInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The maximum number of SPS parameters that the <see cref="T:VkVideoSessionParametersKHR"/> can contain.
+            /// </summary>
             public uint maxStdSPSCount;
             
+            /// <summary>
+            /// The maximum number of PPS parameters that the <see cref="T:VkVideoSessionParametersKHR"/> can contain.
+            /// </summary>
             public uint maxStdPPSCount;
             
+            /// <summary>
+            /// `NULL` or a pointer to a <see cref="T:VkVideoEncodeH264SessionParametersAddInfoEXT"/> structure specifying H.264 parameters to add upon object creation.
+            /// </summary>
             public vulkan.VkVideoEncodeH264SessionParametersAddInfoEXT* pParametersAddInfo;
         }
         
+        /// <summary>
+        /// Structure specifying parameters for retrieving encoded H.264 parameter set data
+        /// </summary>
         public partial struct VkVideoEncodeH264SessionParametersGetInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether the encoded H.264 sequence parameter set identified by <see cref="M:stdSPSId"/> is requested to be retrieved.
+            /// </summary>
             public vulkan.VkBool32 writeStdSPS;
             
+            /// <summary>
+            /// Indicates whether the encoded H.264 picture parameter set identified by the pair constructed from <see cref="M:stdSPSId"/> and <see cref="M:stdPPSId"/> is requested to be retrieved.
+            /// </summary>
             public vulkan.VkBool32 writeStdPPS;
             
+            /// <summary>
+            /// Specifies the H.264 sequence parameter set ID used to identify the retrieved H.264 sequence and/or picture parameter set(s).
+            /// </summary>
             public uint stdSPSId;
             
+            /// <summary>
+            /// Specifies the H.264 picture parameter set ID used to identify the retrieved H.264 picture parameter set when <see cref="M:writeStdPPS"/> is set to <see cref="T:VK_TRUE"/>.
+            /// </summary>
             public uint stdPPSId;
         }
         
+        /// <summary>
+        /// Structure providing feedback about the requested H.264 video session parameters
+        /// </summary>
         public partial struct VkVideoEncodeH264SessionParametersFeedbackInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether any of the parameters of the requested H.264 sequence parameter set, if one was requested via <see cref="T:VkVideoEncodeH264SessionParametersGetInfoEXT.writeStdSPS"/>, were overridden by the implementation.
+            /// </summary>
             public vulkan.VkBool32 hasStdSPSOverrides;
             
+            /// <summary>
+            /// Indicates whether any of the parameters of the requested H.264 picture parameter set, if one was requested via <see cref="T:VkVideoEncodeH264SessionParametersGetInfoEXT.writeStdPPS"/>, were overridden by the implementation.
+            /// </summary>
             public vulkan.VkBool32 hasStdPPSOverrides;
         }
         
+        /// <summary>
+        /// Structure specifies H.264 encode slice NALU parameters
+        /// </summary>
         public partial struct VkVideoEncodeH264NaluSliceInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The QP to use for the slice if the current rate control mode configured for the video session is <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR"/>.
+            /// </summary>
             public int constantQp;
             
+            /// <summary>
+            /// A pointer to a code:StdVideoEncodeH264SliceHeader structure specifying the slice header for the current slice.
+            /// </summary>
             public vulkan.StdVideoEncodeH264SliceHeader* pStdSliceHeader;
         }
         
+        /// <summary>
+        /// Structure specifies H.264 encode frame parameters
+        /// </summary>
         public partial struct VkVideoEncodeH264PictureInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The number of slice NALUs in the frame.
+            /// </summary>
             public uint naluSliceEntryCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="M:naluSliceEntryCount"/> <see cref="T:VkVideoEncodeH264NaluSliceInfoEXT"/> structures specifying the division of the current picture into slices and the properties of these slices. This is an ordered sequence; the NALUs are generated consecutively in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/> in the same order as in this array.
+            /// </summary>
             public vulkan.VkVideoEncodeH264NaluSliceInfoEXT* pNaluSliceEntries;
             
+            /// <summary>
+            /// A pointer to a code:StdVideoEncodeH264PictureInfo structure specifying the syntax and other codec-specific information from the H.264 specification associated with this picture. The information provided must: reflect the decoded picture marking operations that are applicable to this frame.
+            /// </summary>
             public vulkan.StdVideoEncodeH264PictureInfo* pStdPictureInfo;
             
+            /// <summary>
+            /// Controls whether prefix NALUs are generated before slice NALUs into the target bitstream.
+            /// </summary>
             public vulkan.VkBool32 generatePrefixNalu;
         }
         
+        /// <summary>
+        /// Structure specifies H.264 encode DPB picture information
+        /// </summary>
         public partial struct VkVideoEncodeH264DpbSlotInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A pointer to a code:StdVideoEncodeH264ReferenceInfo structure specifying the syntax and other codec-specific information from the H.264 specification associated with this reference picture.
+            /// </summary>
             public vulkan.StdVideoEncodeH264ReferenceInfo* pStdReferenceInfo;
         }
         
+        /// <summary>
+        /// Structure specifying H.264 encode profile
+        /// </summary>
         public partial struct VkVideoEncodeH264ProfileInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A code:StdVideoH264ProfileIdc value specifying the H.264 codec profile IDC.
+            /// </summary>
             public vulkan.StdVideoH264ProfileIdc stdProfileIdc;
         }
         
+        /// <summary>
+        /// Structure describing H.264 stream rate control parameters
+        /// </summary>
         public partial struct VkVideoEncodeH264RateControlInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH264RateControlFlagBitsEXT"/> specifying H.264 rate control flags.
+            /// </summary>
             public vulkan.VkVideoEncodeH264RateControlFlagsEXT flags;
             
+            /// <summary>
+            /// The number of frames contained within the group of pictures (GOP), starting from an intra frame and until the next intra frame. If it is set to 0, the implementation chooses a suitable value. If it is set to code:UINT32_MAX, the GOP length is treated as infinite.
+            /// </summary>
             public uint gopFrameCount;
             
+            /// <summary>
+            /// The interval, in terms of number of frames, between two IDR frames. If it is set to 0, the implementation chooses a suitable value. If it is set to code:UINT32_MAX, the IDR period is treated as infinite.
+            /// </summary>
             public uint idrPeriod;
             
+            /// <summary>
+            /// The number of consecutive B-frames between I- and/or P-frames within the GOP.
+            /// </summary>
             public uint consecutiveBFrameCount;
             
+            /// <summary>
+            /// Specifies the number of temporal layers enabled in the stream.
+            /// </summary>
             public uint temporalLayerCount;
         }
         
+        /// <summary>
+        /// Structure describing frame size values per H.264 picture type
+        /// </summary>
         public partial struct VkVideoEncodeH264FrameSizeEXT
         {
+            /// <summary>
+            /// The size in bytes to be used for I-frames.
+            /// </summary>
             public uint frameISize;
             
+            /// <summary>
+            /// The size in bytes to be used for P-frames.
+            /// </summary>
             public uint framePSize;
             
+            /// <summary>
+            /// The size in bytes to be used for B-frames.
+            /// </summary>
             public uint frameBSize;
         }
         
+        /// <summary>
+        /// Structure describing H.264 per-layer rate control parameters
+        /// </summary>
         public partial struct VkVideoEncodeH264RateControlLayerInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether the values within <see cref="M:minQp"/> should be used by the implementation. When it is set to <see cref="T:VK_FALSE"/>, the implementation ignores the values in <see cref="M:minQp"/> and chooses suitable values.
+            /// </summary>
             public vulkan.VkBool32 useMinQp;
             
+            /// <summary>
+            /// Provides the lower bound on the QP values for each picture type, to be used in rate control calculations.
+            /// </summary>
             public vulkan.VkVideoEncodeH264QpEXT minQp;
             
+            /// <summary>
+            /// Indicates whether the values within <see cref="M:maxQp"/> should be used by the implementation. When it is set to <see cref="T:VK_FALSE"/>, the implementation ignores the values in <see cref="M:maxQp"/> and chooses suitable values.
+            /// </summary>
             public vulkan.VkBool32 useMaxQp;
             
+            /// <summary>
+            /// Provides the upper bound on the QP values for each picture type, to be used in rate control calculations.
+            /// </summary>
             public vulkan.VkVideoEncodeH264QpEXT maxQp;
             
+            /// <summary>
+            /// Indicates whether the values within <see cref="M:maxFrameSize"/> should be used by the implementation.
+            /// </summary>
             public vulkan.VkBool32 useMaxFrameSize;
             
+            /// <summary>
+            /// Provides the upper bound on the encoded frame size for each picture type. The implementation does not guarantee the encoded frame sizes will be within the specified limits, however these limits may: be used as a guide in rate control calculations. If enabled and not set properly, the <see cref="M:maxQp"/> limit may prevent the implementation from respecting the <see cref="M:maxFrameSize"/> limit.
+            /// </summary>
             public vulkan.VkVideoEncodeH264FrameSizeEXT maxFrameSize;
         }
         
+        /// <summary>
+        /// Structure specifying H.264 encode rate control GOP remaining frame counts
+        /// </summary>
         public partial struct VkVideoEncodeH264GopRemainingFrameInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether the implementation's rate control algorithm should: use the values specified in <see cref="M:gopRemainingI"/>, <see cref="M:gopRemainingP"/>, and <see cref="M:gopRemainingB"/>. If <see cref="M:useGopRemainingFrames"/> is <see cref="T:VK_FALSE"/>, then the values of <see cref="M:gopRemainingI"/>, <see cref="M:gopRemainingP"/>, and <see cref="M:gopRemainingB"/> are ignored.
+            /// </summary>
             public vulkan.VkBool32 useGopRemainingFrames;
             
+            /// <summary>
+            /// Specifies the number of I-frames the implementation's rate control algorithm should: assume to be remaining in the GOP prior to executing the video encode operation.
+            /// </summary>
             public uint gopRemainingI;
             
+            /// <summary>
+            /// Specifies the number of P-frames the implementation's rate control algorithm should: assume to be remaining in the GOP prior to executing the video encode operation.
+            /// </summary>
             public uint gopRemainingP;
             
+            /// <summary>
+            /// Specifies the number of B-frames the implementation's rate control algorithm should: assume to be remaining in the GOP prior to executing the video encode operation.
+            /// </summary>
             public uint gopRemainingB;
         }
         
+        /// <summary>
+        /// Structure specifying H.265 encode capabilities
+        /// </summary>
         public partial struct VkVideoEncodeH265CapabilitiesEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH265CapabilityFlagBitsEXT"/> indicating supported H.265 encoding capabilities.
+            /// </summary>
             public vulkan.VkVideoEncodeH265CapabilityFlagsEXT flags;
             
+            /// <summary>
+            /// A code:StdVideoH265LevelIdc value indicating the maximum H.265 level supported.
+            /// </summary>
             public vulkan.StdVideoH265LevelIdc maxLevelIdc;
             
+            /// <summary>
+            /// Indicates the maximum number of slice segments that can: be encoded for a single picture. Further restrictions may: apply to the number of slice segments that can: be encoded for a single picture depending on other capabilities and codec-specific rules.
+            /// </summary>
             public uint maxSliceSegmentCount;
             
+            /// <summary>
+            /// Indicates the maximum number of H.265 tile columns and rows that can: be encoded for a single picture. Further restrictions may: apply to the number of H.265 tiles that can: be encoded for a single picture depending on other capabilities and codec-specific rules.
+            /// </summary>
             public vulkan.VkExtent2D maxTiles;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH265CtbSizeFlagBitsEXT"/> describing the supported CTB sizes.
+            /// </summary>
             public vulkan.VkVideoEncodeH265CtbSizeFlagsEXT ctbSizes;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH265TransformBlockSizeFlagBitsEXT"/> describing the supported transform block sizes.
+            /// </summary>
             public vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT transformBlockSizes;
             
+            /// <summary>
+            /// Indicates the maximum number of reference pictures the implementation supports in the reference list L0 for P pictures.
+            /// </summary>
             public uint maxPPictureL0ReferenceCount;
             
+            /// <summary>
+            /// Indicates the maximum number of reference pictures the implementation supports in the reference list L0 for B pictures. The reported value is `0` if encoding of B pictures is not supported.
+            /// </summary>
             public uint maxBPictureL0ReferenceCount;
             
+            /// <summary>
+            /// Indicates the maximum number of reference pictures the implementation supports in the reference list L1 if encoding of B pictures is supported. The reported value is `0` if encoding of B pictures is not supported.
+            /// </summary>
             public uint maxL1ReferenceCount;
             
+            /// <summary>
+            /// Indicates the maximum number of H.265 sub-layers supported by the implementation.
+            /// </summary>
             public uint maxSubLayerCount;
             
+            /// <summary>
+            /// Indicates that the implementation's rate control algorithms expect the application to use a dyadic temporal sub-layer pattern when encoding multiple temporal sub-layers.
+            /// </summary>
             public vulkan.VkBool32 expectDyadicTemporalSubLayerPattern;
             
+            /// <summary>
+            /// Indicates the minimum QP value supported.
+            /// </summary>
             public int minQp;
             
+            /// <summary>
+            /// Indicates the maximum QP value supported.
+            /// </summary>
             public int maxQp;
             
+            /// <summary>
+            /// Indicates that the implementation's rate control algorithm prefers the application to specify the number of frames of each type remaining in the current group of pictures.
+            /// </summary>
             public vulkan.VkBool32 prefersGopRemainingFrames;
             
+            /// <summary>
+            /// Indicates that the implementation's rate control algorithm requires the application to specify the number of frames of each type remaining in the current group of pictures.
+            /// </summary>
             public vulkan.VkBool32 requiresGopRemainingFrames;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH265StdFlagBitsEXT"/> indicating capabilities related to H.265 syntax elements.
+            /// </summary>
             public vulkan.VkVideoEncodeH265StdFlagsEXT stdSyntaxFlags;
         }
         
@@ -1369,46 +2029,106 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeH265StdFlagsEXT (vulkan.VkVideoEncodeH265StdFlagBitsEXT from) => new vulkan.VkVideoEncodeH265StdFlagsEXT((uint)from);
         }
         
+        /// <summary>
+        /// Structure specifies H.265 encode session parameters
+        /// </summary>
         public partial struct VkVideoEncodeH265SessionCreateInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether the value of <see cref="M:maxLevelIdc"/> should be used by the implementation. When it is set to <see cref="T:VK_FALSE"/>, the implementation ignores the value of <see cref="M:maxLevelIdc"/> and uses the value of <see cref="T:VkVideoEncodeH265CapabilitiesEXT.maxLevelIdc"/>, as reported by <see cref="M:vkGetPhysicalDeviceVideoCapabilitiesKHR"/> for the video profile.
+            /// </summary>
             public vulkan.VkBool32 useMaxLevelIdc;
             
+            /// <summary>
+            /// Provides the upper bound on the H.265 level for the video bitstreams produced by the created video session.
+            /// </summary>
             public vulkan.StdVideoH265LevelIdc maxLevelIdc;
         }
         
+        /// <summary>
+        /// Structure describing H.265 QP values per picture type
+        /// </summary>
         public partial struct VkVideoEncodeH265QpEXT
         {
+            /// <summary>
+            /// The QP to be used for I-frames.
+            /// </summary>
             public int qpI;
             
+            /// <summary>
+            /// The QP to be used for P-frames.
+            /// </summary>
             public int qpP;
             
+            /// <summary>
+            /// The QP to be used for B-frames.
+            /// </summary>
             public int qpB;
         }
         
+        /// <summary>
+        /// Structure describing the H.265 encode quality level properties
+        /// </summary>
         public partial struct VkVideoEncodeH265QualityLevelPropertiesEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH265RateControlFlagBitsEXT"/> values indicating the preferred flags to use for <see cref="T:VkVideoEncodeH265RateControlInfoEXT.flags"/>.
+            /// </summary>
             public vulkan.VkVideoEncodeH265RateControlFlagsEXT preferredRateControlFlags;
             
+            /// <summary>
+            /// Indicates the preferred value to use for <see cref="T:VkVideoEncodeH265RateControlInfoEXT.gopFrameCount"/>.
+            /// </summary>
             public uint preferredGopFrameCount;
             
+            /// <summary>
+            /// Indicates the preferred value to use for <see cref="T:VkVideoEncodeH265RateControlInfoEXT.idrPeriod"/>.
+            /// </summary>
             public uint preferredIdrPeriod;
             
+            /// <summary>
+            /// Indicates the preferred value to use for <see cref="T:VkVideoEncodeH265RateControlInfoEXT.consecutiveBFrameCount"/>.
+            /// </summary>
             public uint preferredConsecutiveBFrameCount;
             
+            /// <summary>
+            /// Indicates the preferred value to use for <see cref="T:VkVideoEncodeH265RateControlInfoEXT.subLayerCount"/>.
+            /// </summary>
             public uint preferredSubLayerCount;
             
+            /// <summary>
+            /// Indicates the preferred values to use for <see cref="T:VkVideoEncodeH265NaluSliceSegmentInfoEXT.constantQp"/> for each picture type when using rate control mode <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR"/>.
+            /// </summary>
             public vulkan.VkVideoEncodeH265QpEXT preferredConstantQp;
             
+            /// <summary>
+            /// Indicates the preferred maximum number of reference pictures to use in the reference list L0.
+            /// </summary>
             public uint preferredMaxL0ReferenceCount;
             
+            /// <summary>
+            /// Indicates the preferred maximum number of reference pictures to use in the reference list L1.
+            /// </summary>
             public uint preferredMaxL1ReferenceCount;
         }
         
@@ -1439,174 +2159,411 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeH265RateControlFlagsEXT (vulkan.VkVideoEncodeH265RateControlFlagBitsEXT from) => new vulkan.VkVideoEncodeH265RateControlFlagsEXT((uint)from);
         }
         
+        /// <summary>
+        /// Structure specifies H.265 encoder parameter set info
+        /// </summary>
         public partial struct VkVideoEncodeH265SessionParametersAddInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The number of VPS elements in <see cref="M:pStdVPSs"/>.
+            /// </summary>
             public uint stdVPSCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="M:stdVPSCount"/> code:StdVideoH265VideoParameterSet structures representing H.265 video parameter sets.
+            /// </summary>
             public vulkan.StdVideoH265VideoParameterSet* pStdVPSs;
             
+            /// <summary>
+            /// The number of SPS elements in <see cref="M:pStdSPSs"/>.
+            /// </summary>
             public uint stdSPSCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="M:stdSPSCount"/> code:StdVideoH265SequenceParameterSet structures representing H.265 sequence parameter sets.
+            /// </summary>
             public vulkan.StdVideoH265SequenceParameterSet* pStdSPSs;
             
+            /// <summary>
+            /// The number of PPS elements in <see cref="M:pStdPPSs"/>.
+            /// </summary>
             public uint stdPPSCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="M:stdPPSCount"/> code:StdVideoH265PictureParameterSet structures representing H.265 picture parameter sets.
+            /// </summary>
             public vulkan.StdVideoH265PictureParameterSet* pStdPPSs;
         }
         
+        /// <summary>
+        /// Structure specifies H.265 encoder parameter set info
+        /// </summary>
         public partial struct VkVideoEncodeH265SessionParametersCreateInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The maximum number of entries of type code:StdVideoH265VideoParameterSet within <see cref="T:VkVideoSessionParametersKHR"/>.
+            /// </summary>
             public uint maxStdVPSCount;
             
+            /// <summary>
+            /// The maximum number of entries of type code:StdVideoH265SequenceParameterSet within <see cref="T:VkVideoSessionParametersKHR"/>.
+            /// </summary>
             public uint maxStdSPSCount;
             
+            /// <summary>
+            /// The maximum number of entries of type code:StdVideoH265PictureParameterSet within <see cref="T:VkVideoSessionParametersKHR"/>.
+            /// </summary>
             public uint maxStdPPSCount;
             
+            /// <summary>
+            /// `NULL` or a pointer to a <see cref="T:VkVideoEncodeH265SessionParametersAddInfoEXT"/> structure specifying the video session parameters to add upon creation of this object.
+            /// </summary>
             public vulkan.VkVideoEncodeH265SessionParametersAddInfoEXT* pParametersAddInfo;
         }
         
+        /// <summary>
+        /// Structure specifying parameters for retrieving encoded H.265 parameter set data
+        /// </summary>
         public partial struct VkVideoEncodeH265SessionParametersGetInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether the encoded H.265 video parameter set identified by <see cref="M:stdVPSId"/> is requested to be retrieved.
+            /// </summary>
             public vulkan.VkBool32 writeStdVPS;
             
+            /// <summary>
+            /// Indicates whether the encoded H.265 sequence parameter set identified by the pair constructed from <see cref="M:stdVPSId"/> and <see cref="M:stdSPSId"/> is requested to be retrieved.
+            /// </summary>
             public vulkan.VkBool32 writeStdSPS;
             
+            /// <summary>
+            /// Indicates whether the encoded H.265 picture parameter set identified by the triplet constructed from <see cref="M:stdVPSId"/>, <see cref="M:stdSPSId"/>, and <see cref="M:stdPPSId"/> is requested to be retrieved.
+            /// </summary>
             public vulkan.VkBool32 writeStdPPS;
             
+            /// <summary>
+            /// Specifies the H.265 video parameter set ID used to identify the retrieved H.265 video, sequence, and/or picture parameter set(s).
+            /// </summary>
             public uint stdVPSId;
             
+            /// <summary>
+            /// Specifies the H.265 sequence parameter set ID used to identify the retrieved H.265 sequence and/or picture parameter set(s) when <see cref="M:writeStdSPS"/> and/or <see cref="M:writeStdPPS"/> is set to <see cref="T:VK_TRUE"/>.
+            /// </summary>
             public uint stdSPSId;
             
+            /// <summary>
+            /// Specifies the H.265 picture parameter set ID used to identify the retrieved H.265 picture parameter set when <see cref="M:writeStdPPS"/> is set to <see cref="T:VK_TRUE"/>.
+            /// </summary>
             public uint stdPPSId;
         }
         
+        /// <summary>
+        /// Structure providing feedback about the requested H.265 video session parameters
+        /// </summary>
         public partial struct VkVideoEncodeH265SessionParametersFeedbackInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether any of the parameters of the requested H.265 video parameter set, if one was requested via <see cref="T:VkVideoEncodeH265SessionParametersGetInfoEXT.writeStdVPS"/>, were overridden by the implementation.
+            /// </summary>
             public vulkan.VkBool32 hasStdVPSOverrides;
             
+            /// <summary>
+            /// Indicates whether any of the parameters of the requested H.265 sequence parameter set, if one was requested via <see cref="T:VkVideoEncodeH265SessionParametersGetInfoEXT.writeStdSPS"/>, were overridden by the implementation.
+            /// </summary>
             public vulkan.VkBool32 hasStdSPSOverrides;
             
+            /// <summary>
+            /// Indicates whether any of the parameters of the requested H.265 picture parameter set, if one was requested via <see cref="T:VkVideoEncodeH265SessionParametersGetInfoEXT.writeStdPPS"/>, were overridden by the implementation.
+            /// </summary>
             public vulkan.VkBool32 hasStdPPSOverrides;
         }
         
+        /// <summary>
+        /// Structure specifies H.265 encode slice segment NALU parameters
+        /// </summary>
         public partial struct VkVideoEncodeH265NaluSliceSegmentInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The QP to use for the slice segment if the current rate control mode configured for the video session is <see cref="T:VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR"/>.
+            /// </summary>
             public int constantQp;
             
+            /// <summary>
+            /// A pointer to a code:StdVideoEncodeH265SliceSegmentHeader structure specifying the slice segment header for the current slice segment.
+            /// </summary>
             public vulkan.StdVideoEncodeH265SliceSegmentHeader* pStdSliceSegmentHeader;
         }
         
+        /// <summary>
+        /// Structure specifies H.265 encode frame parameters
+        /// </summary>
         public partial struct VkVideoEncodeH265PictureInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The number of slice segment NALUs in the frame.
+            /// </summary>
             public uint naluSliceSegmentEntryCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="T:VkVideoEncodeH265NaluSliceSegmentInfoEXT"/> structures specifying the division of the current picture into slice segments and the properties of these slice segments.
+            /// </summary>
             public vulkan.VkVideoEncodeH265NaluSliceSegmentInfoEXT* pNaluSliceSegmentEntries;
             
+            /// <summary>
+            /// A pointer to a code:StdVideoEncodeH265PictureInfo structure specifying the syntax and other codec-specific information from the H.265 specification, associated with this picture.
+            /// </summary>
             public vulkan.StdVideoEncodeH265PictureInfo* pStdPictureInfo;
         }
         
+        /// <summary>
+        /// Structure specifies H.265 encode decoded pic info
+        /// </summary>
         public partial struct VkVideoEncodeH265DpbSlotInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A pointer to a code:StdVideoEncodeH265ReferenceInfo structure specifying the syntax and other codec-specific information from the H.265 specification, associated with this reference picture.
+            /// </summary>
             public vulkan.StdVideoEncodeH265ReferenceInfo* pStdReferenceInfo;
         }
         
+        /// <summary>
+        /// Structure specifying H.265 encode profile
+        /// </summary>
         public partial struct VkVideoEncodeH265ProfileInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A code:StdVideoH265ProfileIdc value specifying the H.265 codec profile IDC.
+            /// </summary>
             public vulkan.StdVideoH265ProfileIdc stdProfileIdc;
         }
         
+        /// <summary>
+        /// Structure describing H.265 stream rate control parameters
+        /// </summary>
         public partial struct VkVideoEncodeH265RateControlInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkVideoEncodeH265RateControlFlagBitsEXT"/> specifying H.265 rate control flags.
+            /// </summary>
             public vulkan.VkVideoEncodeH265RateControlFlagsEXT flags;
             
+            /// <summary>
+            /// The number of frames contained within the group of pictures (GOP), starting from an intra frame and until the next intra frame. If it is set to 0, the implementation chooses a suitable value. If it is set to code:UINT32_MAX, the GOP length is treated as infinite.
+            /// </summary>
             public uint gopFrameCount;
             
+            /// <summary>
+            /// The interval, in terms of number of frames, between two IDR frames. If it is set to 0, the implementation chooses a suitable value. If it is set to code:UINT32_MAX, the IDR period is treated as infinite.
+            /// </summary>
             public uint idrPeriod;
             
+            /// <summary>
+            /// The number of consecutive B-frames between I- and/or P-frames within the GOP.
+            /// </summary>
             public uint consecutiveBFrameCount;
             
+            /// <summary>
+            /// Specifies the number of sub layers enabled in the stream.
+            /// </summary>
             public uint subLayerCount;
         }
         
+        /// <summary>
+        /// Structure describing frame size values per H.265 picture type
+        /// </summary>
         public partial struct VkVideoEncodeH265FrameSizeEXT
         {
+            /// <summary>
+            /// The size in bytes to be used for I-frames.
+            /// </summary>
             public uint frameISize;
             
+            /// <summary>
+            /// The size in bytes to be used for P-frames.
+            /// </summary>
             public uint framePSize;
             
+            /// <summary>
+            /// The size in bytes to be used for B-frames.
+            /// </summary>
             public uint frameBSize;
         }
         
+        /// <summary>
+        /// Structure describing H.265 per-layer rate control parameters
+        /// </summary>
         public partial struct VkVideoEncodeH265RateControlLayerInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether the values within <see cref="M:minQp"/> should be used by the implementation. When it is set to <see cref="T:VK_FALSE"/>, the implementation ignores the values in <see cref="M:minQp"/> and chooses suitable values.
+            /// </summary>
             public vulkan.VkBool32 useMinQp;
             
+            /// <summary>
+            /// Provides the lower bound on the QP values for each picture type, to be used in rate control calculations.
+            /// </summary>
             public vulkan.VkVideoEncodeH265QpEXT minQp;
             
+            /// <summary>
+            /// Indicates whether the values within <see cref="M:maxQp"/> should be used by the implementation. When it is set to <see cref="T:VK_FALSE"/>, the implementation ignores the values in <see cref="M:maxQp"/> and chooses suitable values.
+            /// </summary>
             public vulkan.VkBool32 useMaxQp;
             
+            /// <summary>
+            /// Provides the upper bound on the QP values for each picture type, to be used in rate control calculations.
+            /// </summary>
             public vulkan.VkVideoEncodeH265QpEXT maxQp;
             
+            /// <summary>
+            /// Indicates whether the values within <see cref="M:maxFrameSize"/> should be used by the implementation.
+            /// </summary>
             public vulkan.VkBool32 useMaxFrameSize;
             
+            /// <summary>
+            /// Provides the upper bound on the encoded frame size for each picture type. The implementation does not guarantee the encoded frame sizes will be within the specified limits, however these limits may: be used as a guide in rate control calculations. If enabled and not set properly, the <see cref="M:maxQp"/> limit may prevent the implementation from respecting the <see cref="M:maxFrameSize"/> limit.
+            /// </summary>
             public vulkan.VkVideoEncodeH265FrameSizeEXT maxFrameSize;
         }
         
+        /// <summary>
+        /// Structure specifying H.265 encode rate control GOP remaining frame counts
+        /// </summary>
         public partial struct VkVideoEncodeH265GopRemainingFrameInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates whether the implementation's rate control algorithm should: use the values specified in <see cref="M:gopRemainingI"/>, <see cref="M:gopRemainingP"/>, and <see cref="M:gopRemainingB"/>. If <see cref="M:useGopRemainingFrames"/> is <see cref="T:VK_FALSE"/>, then the values of <see cref="M:gopRemainingI"/>, <see cref="M:gopRemainingP"/>, and <see cref="M:gopRemainingB"/> are ignored.
+            /// </summary>
             public vulkan.VkBool32 useGopRemainingFrames;
             
+            /// <summary>
+            /// Specifies the number of I-frames the implementation's rate control algorithm should: assume to be remaining in the GOP prior to executing the video encode operation.
+            /// </summary>
             public uint gopRemainingI;
             
+            /// <summary>
+            /// Specifies the number of P-frames the implementation's rate control algorithm should: assume to be remaining in the GOP prior to executing the video encode operation.
+            /// </summary>
             public uint gopRemainingP;
             
+            /// <summary>
+            /// Specifies the number of B-frames the implementation's rate control algorithm should: assume to be remaining in the GOP prior to executing the video encode operation.
+            /// </summary>
             public uint gopRemainingB;
         }
         
+        /// <summary>
+        /// Structure describing whether shader enqueue within execution graphs are supported by the implementation
+        /// </summary>
         public partial struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX
         {
             public vulkan.VkStructureType sType;
@@ -1616,10 +2573,19 @@ namespace XenoAtom.Interop
             public vulkan.VkBool32 shaderEnqueue;
         }
         
+        /// <summary>
+        /// Structure describing shader enqueue limits of an implementation
+        /// </summary>
         public partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure. * [[limits-maxExecutionGraphDepth]] <see cref="M:maxExecutionGraphDepth"/> defines the maximum node chain depth in the graph. The dispatched node is at depth 1 and the node enqueued by it is at depth 2, and so on. If a node enqueues itself, each recursive enqueue increases the depth by 1 as well. * [[limits-maxExecutionGraphShaderOutputNodes]] <see cref="M:maxExecutionGraphShaderOutputNodes"/> specifies the maximum number of unique nodes that can be dispatched from a single shader, and must be at least 256. * [[limits-maxExecutionGraphShaderPayloadSize]] <see cref="M:maxExecutionGraphShaderPayloadSize"/> specifies the maximum total size of payload declarations in a shader. For any payload declarations that share resources, indicated by code:NodeSharesPayloadLimitsWithAMDX decorations, the maximum size of each set of shared payload declarations is taken. The sum of each shared set's maximum size and the size of each unshared payload is counted against this limit. * [[limits-maxExecutionGraphShaderPayloadCount]] <see cref="M:maxExecutionGraphShaderPayloadCount"/> specifies the maximum number of output payloads that can be initialized in a single workgroup. * [[limits-executionGraphDispatchAddressAlignment]] <see cref="M:executionGraphDispatchAddressAlignment"/> specifies the alignment of non-scratch basetype:VkDeviceAddress arguments consumed by graph dispatch commands.
+            /// </summary>
             public void* pNext;
             
             public uint maxExecutionGraphDepth;
@@ -1633,131 +2599,302 @@ namespace XenoAtom.Interop
             public uint executionGraphDispatchAddressAlignment;
         }
         
+        /// <summary>
+        /// Structure describing the scratch space required to dispatch an execution graph
+        /// </summary>
         public partial struct VkExecutionGraphPipelineScratchSizeAMDX
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates the scratch space required for dispatch the queried execution graph.
+            /// </summary>
             public vulkan.VkDeviceSize size;
         }
         
+        /// <summary>
+        /// Structure specifying parameters of a newly created execution graph pipeline
+        /// </summary>
         public partial struct VkExecutionGraphPipelineCreateInfoAMDX
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkPipelineCreateFlagBits"/> specifying how the pipeline will be generated.
+            /// </summary>
             public vulkan.VkPipelineCreateFlags flags;
             
+            /// <summary>
+            /// The number of entries in the <see cref="M:pStages"/> array.
+            /// </summary>
             public uint stageCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="M:stageCount"/> <see cref="T:VkPipelineShaderStageCreateInfo"/> structures describing the set of the shader stages to be included in the execution graph pipeline.
+            /// </summary>
             public vulkan.VkPipelineShaderStageCreateInfo* pStages;
             
+            /// <summary>
+            /// A pointer to a <see cref="T:VkPipelineLibraryCreateInfoKHR"/> structure defining pipeline libraries to include.
+            /// </summary>
             public vulkan.VkPipelineLibraryCreateInfoKHR* pLibraryInfo;
             
+            /// <summary>
+            /// The description of binding locations used by both the pipeline and descriptor sets used with the pipeline.
+            /// </summary>
             public vulkan.VkPipelineLayout layout;
             
+            /// <summary>
+            /// A pipeline to derive from
+            /// </summary>
             public vulkan.VkPipeline basePipelineHandle;
             
+            /// <summary>
+            /// An index into the <see cref="M:pCreateInfos"/> parameter to use as a pipeline to derive from
+            /// </summary>
             public int basePipelineIndex;
         }
         
+        /// <summary>
+        /// Union specifying a const device or host address
+        /// </summary>
         [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
         public partial struct VkDeviceOrHostAddressConstAMDX
         {
+            /// <summary>
+            /// A buffer device address as returned by the <see cref="M:vkGetBufferDeviceAddressKHR"/> command.
+            /// </summary>
             [FieldOffset(0)]
             public vulkan.VkDeviceAddress deviceAddress;
             
+            /// <summary>
+            /// A const host memory address.
+            /// </summary>
             [FieldOffset(0)]
             public void* hostAddress;
         }
         
+        /// <summary>
+        /// Structure specifying node parameters for execution graph dispatch
+        /// </summary>
         public partial struct VkDispatchGraphInfoAMDX
         {
+            /// <summary>
+            /// The index of a node in an execution graph to be dispatched.
+            /// </summary>
             public uint nodeIndex;
             
+            /// <summary>
+            /// The number of payloads to dispatch for the specified node.
+            /// </summary>
             public uint payloadCount;
             
+            /// <summary>
+            /// A device or host address pointer to a flat array of payloads with size equal to the product of <see cref="M:payloadCount"/> and <see cref="M:payloadStride"/>
+            /// </summary>
             public vulkan.VkDeviceOrHostAddressConstAMDX payloads;
             
+            /// <summary>
+            /// The byte stride between successive payloads in <see cref="M:payloads"/>
+            /// </summary>
             public ulong payloadStride;
         }
         
+        /// <summary>
+        /// Structure specifying count parameters for execution graph dispatch
+        /// </summary>
         public partial struct VkDispatchGraphCountInfoAMDX
         {
+            /// <summary>
+            /// The number of dispatches to perform.
+            /// </summary>
             public uint count;
             
+            /// <summary>
+            /// The device or host address of a flat array of <see cref="T:VkDispatchGraphInfoAMDX"/> structures
+            /// </summary>
             public vulkan.VkDeviceOrHostAddressConstAMDX infos;
             
+            /// <summary>
+            /// The byte stride between successive <see cref="T:VkDispatchGraphInfoAMDX"/> structures in <see cref="M:infos"/>
+            /// </summary>
             public ulong stride;
         }
         
+        /// <summary>
+        /// Structure specifying the shader name and index with an execution graph
+        /// </summary>
         public partial struct VkPipelineShaderStageNodeCreateInfoAMDX
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The shader name to use when creating a node in an execution graph. If <see cref="M:pName"/> is `NULL`, the name of the entry point specified in SPIR-V is used as the shader name.
+            /// </summary>
             public byte* pName;
             
+            /// <summary>
+            /// The shader index to use when creating a node in an execution graph. If <see cref="M:index"/> is <see cref="T:VK_SHADER_INDEX_UNUSED_AMDX"/> then the original index is used, either as specified by the code:ShaderIndexAMDX execution mode, or `0` if that too is not specified.
+            /// </summary>
             public uint index;
         }
         
+        /// <summary>
+        /// Structure describing the ray tracing displacement micromap features that can be supported by an implementation
+        /// </summary>
         public partial struct VkPhysicalDeviceDisplacementMicromapFeaturesNV
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure. * [[features-displacementMicromap]] <see cref="M:displacementMicromap"/> indicates whether the implementation supports the displacement micromap feature.
+            /// </summary>
             public void* pNext;
             
             public vulkan.VkBool32 displacementMicromap;
         }
         
+        /// <summary>
+        /// Structure describing the displacement micromap properties of a physical device
+        /// </summary>
         public partial struct VkPhysicalDeviceDisplacementMicromapPropertiesNV
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The maximum allowed <see cref="M:subdivisionLevel"/> for displacement micromaps.
+            /// </summary>
             public uint maxDisplacementMicromapSubdivisionLevel;
         }
         
+        /// <summary>
+        /// Structure specifying a displacement micromap in a bottom-level acceleration structure
+        /// </summary>
         public partial struct VkAccelerationStructureTrianglesDisplacementMicromapNV
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The format of displacement bias and scale used in this displacement micromap reference.
+            /// </summary>
             public vulkan.VkFormat displacementBiasAndScaleFormat;
             
+            /// <summary>
+            /// The format of displacement vector used in this displacement micromap reference.
+            /// </summary>
             public vulkan.VkFormat displacementVectorFormat;
             
+            /// <summary>
+            /// The address containing the bias and scale.
+            /// </summary>
             public vulkan.VkDeviceOrHostAddressConstKHR displacementBiasAndScaleBuffer;
             
+            /// <summary>
+            /// The byte stride between bias and scale values.
+            /// </summary>
             public vulkan.VkDeviceSize displacementBiasAndScaleStride;
             
+            /// <summary>
+            /// The address containing the displacement vector values.
+            /// </summary>
             public vulkan.VkDeviceOrHostAddressConstKHR displacementVectorBuffer;
             
+            /// <summary>
+            /// The byte stride between displacement vector values.
+            /// </summary>
             public vulkan.VkDeviceSize displacementVectorStride;
             
+            /// <summary>
+            /// The address containing the primitive flags.
+            /// </summary>
             public vulkan.VkDeviceOrHostAddressConstKHR displacedMicromapPrimitiveFlags;
             
+            /// <summary>
+            /// The byte stride between primitive flag values.
+            /// </summary>
             public vulkan.VkDeviceSize displacedMicromapPrimitiveFlagsStride;
             
+            /// <summary>
+            /// The type of triangle indices used when indexing this micromap.
+            /// </summary>
             public vulkan.VkIndexType indexType;
             
+            /// <summary>
+            /// The address containing the triangle indices.
+            /// </summary>
             public vulkan.VkDeviceOrHostAddressConstKHR indexBuffer;
             
+            /// <summary>
+            /// The byte stride between triangle indices.
+            /// </summary>
             public vulkan.VkDeviceSize indexStride;
             
+            /// <summary>
+            /// The base value added to the non-negative triangle indices.
+            /// </summary>
             public uint baseTriangle;
             
+            /// <summary>
+            /// Specifies the number of usage counts structures that will be used to determine the size of this micromap.
+            /// </summary>
             public uint usageCountsCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="T:VkMicromapUsageEXT"/> structures.
+            /// </summary>
             public vulkan.VkMicromapUsageEXT* pUsageCounts;
             
+            /// <summary>
+            /// A pointer to an array of pointers to <see cref="T:VkMicromapUsageEXT"/> structures.
+            /// </summary>
             public vulkan.VkMicromapUsageEXT** ppUsageCounts;
             
+            /// <summary>
+            /// The handle to the micromap object to include in this geometry.
+            /// </summary>
             public vulkan.VkMicromapEXT micromap;
         }
         
@@ -1783,7 +2920,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR left, PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pQualityLevelInfo, ref vulkan.VkVideoEncodeQualityLevelPropertiesKHR pQualityLevelProperties)
+            /// <summary>
+            /// Query video encode quality level properties
+            /// </summary>
+            /// <param name="physicalDevice">The physical device to query the video encode quality level properties for.</param>
+            /// <param name="pQualityLevelInfo">A pointer to a <see cref="T:VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR"/> structure specifying the video encode profile and quality level to query properties for.</param>
+            /// <param name="pQualityLevelProperties">A pointer to a <see cref="T:VkVideoEncodeQualityLevelPropertiesKHR"/> structure in which the properties are returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pQualityLevelInfo, out vulkan.VkVideoEncodeQualityLevelPropertiesKHR pQualityLevelProperties)
             {
                 fixed (vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* __pQualityLevelInfo = &pQualityLevelInfo)
                 fixed (vulkan.VkVideoEncodeQualityLevelPropertiesKHR* __pQualityLevelProperties = &pQualityLevelProperties)
@@ -1817,7 +2960,15 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetEncodedVideoSessionParametersKHR left, PFN_vkGetEncodedVideoSessionParametersKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkVideoEncodeSessionParametersGetInfoKHR pVideoSessionParametersInfo, ref vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR pFeedbackInfo, ref nuint pDataSize, void* pData)
+            /// <summary>
+            /// Get encoded parameter sets from a video session parameters object
+            /// </summary>
+            /// <param name="device">The logical device that owns the video session parameters object.</param>
+            /// <param name="pVideoSessionParametersInfo">A pointer to a <see cref="T:VkVideoEncodeSessionParametersGetInfoKHR"/> structure specifying the parameters of the encoded parameter data to retrieve.</param>
+            /// <param name="pFeedbackInfo">Either `NULL` or a pointer to a <see cref="T:VkVideoEncodeSessionParametersFeedbackInfoKHR"/> structure in which feedback about the requested parameter data is returned.</param>
+            /// <param name="pDataSize">A pointer to a code:size_t value related to the amount of encode parameter data returned, as described below.</param>
+            /// <param name="pData">Either `NULL` or a pointer to a buffer to write the encoded parameter data to.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkVideoEncodeSessionParametersGetInfoKHR pVideoSessionParametersInfo, out vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR pFeedbackInfo, ref nuint pDataSize, void* pData)
             {
                 fixed (vulkan.VkVideoEncodeSessionParametersGetInfoKHR* __pVideoSessionParametersInfo = &pVideoSessionParametersInfo)
                 fixed (vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR* __pFeedbackInfo = &pFeedbackInfo)
@@ -1852,6 +3003,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCmdEncodeVideoKHR left, PFN_vkCmdEncodeVideoKHR right) => !left.Equals(right);
             
+            /// <summary>
+            /// Encode operation for bitstream generation
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer to be filled with this function for encoding to generate a bitstream.</param>
+            /// <param name="pEncodeInfo">A pointer to a <see cref="T:VkVideoEncodeInfoKHR"/> structure.</param>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, in vulkan.VkVideoEncodeInfoKHR pEncodeInfo)
             {
                 fixed (vulkan.VkVideoEncodeInfoKHR* __pEncodeInfo = &pEncodeInfo)
@@ -1885,12 +3041,19 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateExecutionGraphPipelinesAMDX left, PFN_vkCreateExecutionGraphPipelinesAMDX right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, uint createInfoCount, in vulkan.VkExecutionGraphPipelineCreateInfoAMDX pCreateInfos, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkPipeline pPipelines)
+            /// <summary>
+            /// Creates a new execution graph pipeline object
+            /// </summary>
+            /// <param name="device">The logical device that creates the execution graph pipelines.</param>
+            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid &lt;&lt;pipelines-cache,pipeline cache&gt;&gt; object, in which case use of that cache is enabled for the duration of the command.</param>
+            /// <param name="createInfoCount">The length of the <paramref name="pCreateInfos"/> and <paramref name="pPipelines"/> arrays.</param>
+            /// <param name="pCreateInfos">A pointer to an array of <see cref="T:VkExecutionGraphPipelineCreateInfoAMDX"/> structures.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the &lt;&lt;memory-allocation, Memory Allocation&gt;&gt; chapter.</param>
+            /// <param name="pPipelines">A pointer to an array of <see cref="T:VkPipeline"/> handles in which the resulting execution graph pipeline objects are returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, uint createInfoCount, vulkan.VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, in vulkan.VkAllocationCallbacks pAllocator, vulkan.VkPipeline* pPipelines)
             {
-                fixed (vulkan.VkExecutionGraphPipelineCreateInfoAMDX* __pCreateInfos = &pCreateInfos)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                fixed (vulkan.VkPipeline* __pPipelines = &pPipelines)
-                return Value(device, pipelineCache, createInfoCount, __pCreateInfos, __pAllocator, __pPipelines);
+                return Value(device, pipelineCache, createInfoCount, pCreateInfos, __pAllocator, pPipelines);
             }
             
             public nint Pointer => (nint)Value;
@@ -1920,7 +3083,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetExecutionGraphPipelineScratchSizeAMDX left, PFN_vkGetExecutionGraphPipelineScratchSizeAMDX right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, ref vulkan.VkExecutionGraphPipelineScratchSizeAMDX pSizeInfo)
+            /// <summary>
+            /// Query scratch space required to dispatch an execution graph
+            /// </summary>
+            /// <param name="device">The that <paramref name="executionGraph"/> was created on.</param>
+            /// <param name="executionGraph">The execution graph pipeline to query the scratch space for.</param>
+            /// <param name="pSizeInfo">A pointer to a <see cref="T:VkExecutionGraphPipelineScratchSizeAMDX"/> structure that will contain the required scratch size.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, out vulkan.VkExecutionGraphPipelineScratchSizeAMDX pSizeInfo)
             {
                 fixed (vulkan.VkExecutionGraphPipelineScratchSizeAMDX* __pSizeInfo = &pSizeInfo)
                 return Value(device, executionGraph, __pSizeInfo);
@@ -1953,7 +3122,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetExecutionGraphPipelineNodeIndexAMDX left, PFN_vkGetExecutionGraphPipelineNodeIndexAMDX right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, in vulkan.VkPipelineShaderStageNodeCreateInfoAMDX pNodeInfo, ref uint pNodeIndex)
+            /// <summary>
+            /// Query internal id of a node in an execution graph
+            /// </summary>
+            /// <param name="device">The that <paramref name="executionGraph"/> was created on.</param>
+            /// <param name="executionGraph">The execution graph pipeline to query the internal node index for.</param>
+            /// <param name="pNodeInfo">A pointer to a <see cref="T:VkPipelineShaderStageNodeCreateInfoAMDX"/> structure identifying the name and index of the node to query.</param>
+            /// <param name="pNodeIndex">The returned internal node index of the identified node.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, in vulkan.VkPipelineShaderStageNodeCreateInfoAMDX pNodeInfo, out uint pNodeIndex)
             {
                 fixed (vulkan.VkPipelineShaderStageNodeCreateInfoAMDX* __pNodeInfo = &pNodeInfo)
                 fixed (uint* __pNodeIndex = &pNodeIndex)
@@ -1987,6 +3163,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCmdInitializeGraphScratchMemoryAMDX left, PFN_vkCmdInitializeGraphScratchMemoryAMDX right) => !left.Equals(right);
             
+            /// <summary>
+            /// Initialize scratch memory for an execution graph
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
+            /// <param name="scratch">A pointer to the scratch memory to be initialized.</param>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch)
             {
                 Value(commandBuffer, scratch);
@@ -2019,6 +3200,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCmdDispatchGraphAMDX left, PFN_vkCmdDispatchGraphAMDX right) => !left.Equals(right);
             
+            /// <summary>
+            /// Dispatch an execution graph
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
+            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
             {
                 fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo = &pCountInfo)
@@ -2052,6 +3239,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCmdDispatchGraphIndirectAMDX left, PFN_vkCmdDispatchGraphIndirectAMDX right) => !left.Equals(right);
             
+            /// <summary>
+            /// Dispatch an execution graph with node and payload parameters read on the device
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
+            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
             {
                 fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo = &pCountInfo)
@@ -2085,6 +3278,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCmdDispatchGraphIndirectCountAMDX left, PFN_vkCmdDispatchGraphIndirectCountAMDX right) => !left.Equals(right);
             
+            /// <summary>
+            /// Dispatch an execution graph with all parameters read on the device
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
+            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="countInfo">A device address of a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDeviceAddress countInfo)
             {
                 Value(commandBuffer, scratch, countInfo);

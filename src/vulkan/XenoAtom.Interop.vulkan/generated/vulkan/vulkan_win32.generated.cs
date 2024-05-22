@@ -17,6 +17,9 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Hint values an application can specify affecting full-screen transition behavior
+        /// </summary>
         public enum VkFullScreenExclusiveEXT : uint
         {
             VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT = unchecked((uint)0),
@@ -40,16 +43,34 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_MAX_ENUM_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// Structure specifying parameters of a newly created Win32 surface object
+        /// </summary>
         public partial struct VkWin32SurfaceCreateInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkWin32SurfaceCreateFlagsKHR flags;
             
+            /// <summary>
+            /// The Win32 code:HINSTANCE for the window to associate the surface with.
+            /// </summary>
             public nint hinstance;
             
+            /// <summary>
+            /// The Win32 code:HWND for the window to associate the surface with.
+            /// </summary>
             public nint hwnd;
         }
         
@@ -76,237 +97,552 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkWin32SurfaceCreateFlagsKHR left, VkWin32SurfaceCreateFlagsKHR right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Import Win32 memory created on the same physical device
+        /// </summary>
         public partial struct VkImportMemoryWin32HandleInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <see cref="M:handle"/> or <see cref="M:name"/>.
+            /// </summary>
             public vulkan.VkExternalMemoryHandleTypeFlagBits handleType;
             
+            /// <summary>
+            /// `NULL` or the external handle to import.
+            /// </summary>
             public nint handle;
             
+            /// <summary>
+            /// `NULL` or a null-terminated UTF-16 string naming the payload to import.
+            /// </summary>
             public char* name;
         }
         
+        /// <summary>
+        /// Structure specifying additional attributes of Windows handles exported from a memory
+        /// </summary>
         public partial struct VkExportMemoryWin32HandleInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A pointer to a Windows code:SECURITY_ATTRIBUTES structure specifying security attributes of the handle.
+            /// </summary>
             public void* pAttributes;
             
+            /// <summary>
+            /// A code:DWORD specifying access rights of the handle.
+            /// </summary>
             public uint dwAccess;
             
+            /// <summary>
+            /// A null-terminated UTF-16 string to associate with the payload referenced by NT handles exported from the created memory.
+            /// </summary>
             public char* name;
         }
         
+        /// <summary>
+        /// Properties of External Memory Windows Handles
+        /// </summary>
         public partial struct VkMemoryWin32HandlePropertiesKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A bitmask containing one bit set for every memory type which the specified windows handle can: be imported as.
+            /// </summary>
             public uint memoryTypeBits;
         }
         
+        /// <summary>
+        /// Structure describing a Win32 handle memory export operation
+        /// </summary>
         public partial struct VkMemoryGetWin32HandleInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The memory object from which the handle will be exported.
+            /// </summary>
             public vulkan.VkDeviceMemory memory;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of handle requested.
+            /// </summary>
             public vulkan.VkExternalMemoryHandleTypeFlagBits handleType;
         }
         
+        /// <summary>
+        /// Use the Windows keyed mutex mechanism to synchronize work
+        /// </summary>
         public partial struct VkWin32KeyedMutexAcquireReleaseInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The number of entries in the <see cref="M:pAcquireSyncs"/>, <see cref="M:pAcquireKeys"/>, and <see cref="M:pAcquireTimeouts"/> arrays.
+            /// </summary>
             public uint acquireCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="T:VkDeviceMemory"/> objects which were imported from Direct3D 11 resources.
+            /// </summary>
             public vulkan.VkDeviceMemory* pAcquireSyncs;
             
+            /// <summary>
+            /// A pointer to an array of mutex key values to wait for prior to beginning the submitted work. Entries refer to the keyed mutex associated with the corresponding entries in <see cref="M:pAcquireSyncs"/>.
+            /// </summary>
             public ulong* pAcquireKeys;
             
+            /// <summary>
+            /// A pointer to an array of timeout values, in millisecond units, for each acquire specified in <see cref="M:pAcquireKeys"/>.
+            /// </summary>
             public uint* pAcquireTimeouts;
             
+            /// <summary>
+            /// The number of entries in the <see cref="M:pReleaseSyncs"/> and <see cref="M:pReleaseKeys"/> arrays.
+            /// </summary>
             public uint releaseCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="T:VkDeviceMemory"/> objects which were imported from Direct3D 11 resources.
+            /// </summary>
             public vulkan.VkDeviceMemory* pReleaseSyncs;
             
+            /// <summary>
+            /// A pointer to an array of mutex key values to set when the submitted work has completed. Entries refer to the keyed mutex associated with the corresponding entries in <see cref="M:pReleaseSyncs"/>.
+            /// </summary>
             public ulong* pReleaseKeys;
         }
         
+        /// <summary>
+        /// Structure specifying Windows handle to import to a semaphore
+        /// </summary>
         public partial struct VkImportSemaphoreWin32HandleInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The semaphore into which the payload will be imported.
+            /// </summary>
             public vulkan.VkSemaphore semaphore;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkSemaphoreImportFlagBits"/> specifying additional parameters for the semaphore payload import operation.
+            /// </summary>
             public vulkan.VkSemaphoreImportFlags flags;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalSemaphoreHandleTypeFlagBits"/> value specifying the type of <see cref="M:handle"/>.
+            /// </summary>
             public vulkan.VkExternalSemaphoreHandleTypeFlagBits handleType;
             
+            /// <summary>
+            /// `NULL` or the external handle to import.
+            /// </summary>
             public nint handle;
             
+            /// <summary>
+            /// `NULL` or a null-terminated UTF-16 string naming the underlying synchronization primitive to import.
+            /// </summary>
             public char* name;
         }
         
+        /// <summary>
+        /// Structure specifying additional attributes of Windows handles exported from a semaphore
+        /// </summary>
         public partial struct VkExportSemaphoreWin32HandleInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A pointer to a Windows code:SECURITY_ATTRIBUTES structure specifying security attributes of the handle.
+            /// </summary>
             public void* pAttributes;
             
+            /// <summary>
+            /// A code:DWORD specifying access rights of the handle.
+            /// </summary>
             public uint dwAccess;
             
+            /// <summary>
+            /// A null-terminated UTF-16 string to associate with the underlying synchronization primitive referenced by NT handles exported from the created semaphore.
+            /// </summary>
             public char* name;
         }
         
+        /// <summary>
+        /// Structure specifying values for Direct3D 12 fence-backed semaphores
+        /// </summary>
         public partial struct VkD3D12FenceSubmitInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The number of semaphore wait values specified in <see cref="M:pWaitSemaphoreValues"/>.
+            /// </summary>
             public uint waitSemaphoreValuesCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="M:waitSemaphoreValuesCount"/> values for the corresponding semaphores in <see cref="T:VkSubmitInfo.pWaitSemaphores"/> to wait for.
+            /// </summary>
             public ulong* pWaitSemaphoreValues;
             
+            /// <summary>
+            /// The number of semaphore signal values specified in <see cref="M:pSignalSemaphoreValues"/>.
+            /// </summary>
             public uint signalSemaphoreValuesCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="M:signalSemaphoreValuesCount"/> values for the corresponding semaphores in <see cref="T:VkSubmitInfo.pSignalSemaphores"/> to set when signaled.
+            /// </summary>
             public ulong* pSignalSemaphoreValues;
         }
         
+        /// <summary>
+        /// Structure describing a Win32 handle semaphore export operation
+        /// </summary>
         public partial struct VkSemaphoreGetWin32HandleInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The semaphore from which state will be exported.
+            /// </summary>
             public vulkan.VkSemaphore semaphore;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalSemaphoreHandleTypeFlagBits"/> value specifying the type of handle requested.
+            /// </summary>
             public vulkan.VkExternalSemaphoreHandleTypeFlagBits handleType;
         }
         
+        /// <summary>
+        /// (None)
+        /// </summary>
         public partial struct VkImportFenceWin32HandleInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The fence into which the state will be imported.
+            /// </summary>
             public vulkan.VkFence fence;
             
+            /// <summary>
+            /// A bitmask of <see cref="T:VkFenceImportFlagBits"/> specifying additional parameters for the fence payload import operation.
+            /// </summary>
             public vulkan.VkFenceImportFlags flags;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalFenceHandleTypeFlagBits"/> value specifying the type of <see cref="M:handle"/>.
+            /// </summary>
             public vulkan.VkExternalFenceHandleTypeFlagBits handleType;
             
+            /// <summary>
+            /// `NULL` or the external handle to import.
+            /// </summary>
             public nint handle;
             
+            /// <summary>
+            /// `NULL` or a null-terminated UTF-16 string naming the underlying synchronization primitive to import.
+            /// </summary>
             public char* name;
         }
         
+        /// <summary>
+        /// Structure specifying additional attributes of Windows handles exported from a fence
+        /// </summary>
         public partial struct VkExportFenceWin32HandleInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A pointer to a Windows code:SECURITY_ATTRIBUTES structure specifying security attributes of the handle.
+            /// </summary>
             public void* pAttributes;
             
+            /// <summary>
+            /// A code:DWORD specifying access rights of the handle.
+            /// </summary>
             public uint dwAccess;
             
+            /// <summary>
+            /// A null-terminated UTF-16 string to associate with the underlying synchronization primitive referenced by NT handles exported from the created fence.
+            /// </summary>
             public char* name;
         }
         
+        /// <summary>
+        /// Structure describing a Win32 handle fence export operation
+        /// </summary>
         public partial struct VkFenceGetWin32HandleInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The fence from which state will be exported.
+            /// </summary>
             public vulkan.VkFence fence;
             
+            /// <summary>
+            /// A <see cref="T:VkExternalFenceHandleTypeFlagBits"/> value specifying the type of handle requested.
+            /// </summary>
             public vulkan.VkExternalFenceHandleTypeFlagBits handleType;
         }
         
+        /// <summary>
+        /// Import Win32 memory created on the same physical device
+        /// </summary>
         public partial struct VkImportMemoryWin32HandleInfoNV
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// `0` or a <see cref="T:VkExternalMemoryHandleTypeFlagBitsNV"/> value specifying the type of memory handle in <see cref="M:handle"/>.
+            /// </summary>
             public vulkan.VkExternalMemoryHandleTypeFlagsNV handleType;
             
+            /// <summary>
+            /// A Windows code:HANDLE referring to the memory.
+            /// </summary>
             public nint handle;
         }
         
+        /// <summary>
+        /// Specify security attributes and access rights for Win32 memory handles
+        /// </summary>
         public partial struct VkExportMemoryWin32HandleInfoNV
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A pointer to a Windows code:SECURITY_ATTRIBUTES structure specifying security attributes of the handle.
+            /// </summary>
             public void* pAttributes;
             
+            /// <summary>
+            /// A code:DWORD specifying access rights of the handle.
+            /// </summary>
             public uint dwAccess;
         }
         
+        /// <summary>
+        /// Use Windows keyex mutex mechanism to synchronize work
+        /// </summary>
         public partial struct VkWin32KeyedMutexAcquireReleaseInfoNV
         {
             public vulkan.VkStructureType sType;
             
             public void* pNext;
             
+            /// <summary>
+            /// The number of entries in the <see cref="M:pAcquireSyncs"/>, <see cref="M:pAcquireKeys"/>, and <see cref="M:pAcquireTimeoutMilliseconds"/> arrays.
+            /// </summary>
             public uint acquireCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="T:VkDeviceMemory"/> objects which were imported from Direct3D 11 resources.
+            /// </summary>
             public vulkan.VkDeviceMemory* pAcquireSyncs;
             
+            /// <summary>
+            /// A pointer to an array of mutex key values to wait for prior to beginning the submitted work. Entries refer to the keyed mutex associated with the corresponding entries in <see cref="M:pAcquireSyncs"/>.
+            /// </summary>
             public ulong* pAcquireKeys;
             
+            /// <summary>
+            /// A pointer to an array of timeout values, in millisecond units, for each acquire specified in <see cref="M:pAcquireKeys"/>.
+            /// </summary>
             public uint* pAcquireTimeoutMilliseconds;
             
+            /// <summary>
+            /// The number of entries in the <see cref="M:pReleaseSyncs"/> and <see cref="M:pReleaseKeys"/> arrays.
+            /// </summary>
             public uint releaseCount;
             
+            /// <summary>
+            /// A pointer to an array of <see cref="T:VkDeviceMemory"/> objects which were imported from Direct3D 11 resources.
+            /// </summary>
             public vulkan.VkDeviceMemory* pReleaseSyncs;
             
+            /// <summary>
+            /// A pointer to an array of mutex key values to set when the submitted work has completed. Entries refer to the keyed mutex associated with the corresponding entries in <see cref="M:pReleaseSyncs"/>.
+            /// </summary>
             public ulong* pReleaseKeys;
         }
         
+        /// <summary>
+        /// Structure specifying the preferred full-screen transition behavior
+        /// </summary>
         public partial struct VkSurfaceFullScreenExclusiveInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A <see cref="T:VkFullScreenExclusiveEXT"/> value specifying the preferred full-screen transition behavior.
+            /// </summary>
             public vulkan.VkFullScreenExclusiveEXT fullScreenExclusive;
         }
         
+        /// <summary>
+        /// Structure describing full screen exclusive capabilities of a surface
+        /// </summary>
         public partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
             public vulkan.VkBool32 fullScreenExclusiveSupported;
         }
         
+        /// <summary>
+        /// Structure specifying additional creation parameters specific to Win32 fullscreen exclusive mode
+        /// </summary>
         public partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The Win32 code:HMONITOR handle identifying the display to create the surface with.
+            /// </summary>
             public nint hmonitor;
         }
         
@@ -332,7 +668,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateWin32SurfaceKHR left, PFN_vkCreateWin32SurfaceKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWin32SurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a VkSurfaceKHR object for an Win32 native window
+            /// </summary>
+            /// <param name="instance">The instance to associate the surface with.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkWin32SurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWin32SurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkWin32SurfaceCreateInfoKHR* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -367,6 +710,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR left, PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR right) => !left.Equals(right);
             
+            /// <summary>
+            /// Query queue family support for presentation on a Win32 display
+            /// </summary>
+            /// <param name="physicalDevice">The physical device.</param>
+            /// <param name="queueFamilyIndex">The queue family index.</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex)
             {
                 return Value(physicalDevice, queueFamilyIndex);
@@ -399,7 +747,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetMemoryWin32HandleKHR left, PFN_vkGetMemoryWin32HandleKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetWin32HandleInfoKHR pGetWin32HandleInfo, ref nint pHandle)
+            /// <summary>
+            /// Get a Windows HANDLE for a memory object
+            /// </summary>
+            /// <param name="device">The logical device that created the device memory being exported.</param>
+            /// <param name="pGetWin32HandleInfo">A pointer to a <see cref="T:VkMemoryGetWin32HandleInfoKHR"/> structure containing parameters of the export operation.</param>
+            /// <param name="pHandle">Will return the Windows handle representing the payload of the device memory object.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
             {
                 fixed (vulkan.VkMemoryGetWin32HandleInfoKHR* __pGetWin32HandleInfo = &pGetWin32HandleInfo)
                 fixed (nint* __pHandle = &pHandle)
@@ -433,7 +787,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetMemoryWin32HandlePropertiesKHR left, PFN_vkGetMemoryWin32HandlePropertiesKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, ref vulkan.VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties)
+            /// <summary>
+            /// Get Properties of External Memory Win32 Handles
+            /// </summary>
+            /// <param name="device">The logical device that will be importing <paramref name="handle"/>.</param>
+            /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of the handle <paramref name="handle"/>.</param>
+            /// <param name="handle">The handle which will be imported.</param>
+            /// <param name="pMemoryWin32HandleProperties">A pointer to a <see cref="T:VkMemoryWin32HandlePropertiesKHR"/> structure in which properties of <paramref name="handle"/> are returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, out vulkan.VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties)
             {
                 fixed (vulkan.VkMemoryWin32HandlePropertiesKHR* __pMemoryWin32HandleProperties = &pMemoryWin32HandleProperties)
                 return Value(device, handleType, handle, __pMemoryWin32HandleProperties);
@@ -466,6 +827,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkImportSemaphoreWin32HandleKHR left, PFN_vkImportSemaphoreWin32HandleKHR right) => !left.Equals(right);
             
+            /// <summary>
+            /// Import a semaphore from a Windows HANDLE
+            /// </summary>
+            /// <param name="device">The logical device that created the semaphore.</param>
+            /// <param name="pImportSemaphoreWin32HandleInfo">A pointer to a <see cref="T:VkImportSemaphoreWin32HandleInfoKHR"/> structure specifying the semaphore and import parameters.</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportSemaphoreWin32HandleInfoKHR pImportSemaphoreWin32HandleInfo)
             {
                 fixed (vulkan.VkImportSemaphoreWin32HandleInfoKHR* __pImportSemaphoreWin32HandleInfo = &pImportSemaphoreWin32HandleInfo)
@@ -499,7 +865,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetSemaphoreWin32HandleKHR left, PFN_vkGetSemaphoreWin32HandleKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkSemaphoreGetWin32HandleInfoKHR pGetWin32HandleInfo, ref nint pHandle)
+            /// <summary>
+            /// Get a Windows HANDLE for a semaphore
+            /// </summary>
+            /// <param name="device">The logical device that created the semaphore being exported.</param>
+            /// <param name="pGetWin32HandleInfo">A pointer to a <see cref="T:VkSemaphoreGetWin32HandleInfoKHR"/> structure containing parameters of the export operation.</param>
+            /// <param name="pHandle">Will return the Windows handle representing the semaphore state.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkSemaphoreGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
             {
                 fixed (vulkan.VkSemaphoreGetWin32HandleInfoKHR* __pGetWin32HandleInfo = &pGetWin32HandleInfo)
                 fixed (nint* __pHandle = &pHandle)
@@ -533,6 +905,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkImportFenceWin32HandleKHR left, PFN_vkImportFenceWin32HandleKHR right) => !left.Equals(right);
             
+            /// <summary>
+            /// Import a fence from a Windows HANDLE
+            /// </summary>
+            /// <param name="device">The logical device that created the fence.</param>
+            /// <param name="pImportFenceWin32HandleInfo">A pointer to a <see cref="T:VkImportFenceWin32HandleInfoKHR"/> structure specifying the fence and import parameters.</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportFenceWin32HandleInfoKHR pImportFenceWin32HandleInfo)
             {
                 fixed (vulkan.VkImportFenceWin32HandleInfoKHR* __pImportFenceWin32HandleInfo = &pImportFenceWin32HandleInfo)
@@ -566,7 +943,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetFenceWin32HandleKHR left, PFN_vkGetFenceWin32HandleKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkFenceGetWin32HandleInfoKHR pGetWin32HandleInfo, ref nint pHandle)
+            /// <summary>
+            /// Get a Windows HANDLE for a fence
+            /// </summary>
+            /// <param name="device">The logical device that created the fence being exported.</param>
+            /// <param name="pGetWin32HandleInfo">A pointer to a <see cref="T:VkFenceGetWin32HandleInfoKHR"/> structure containing parameters of the export operation.</param>
+            /// <param name="pHandle">Will return the Windows handle representing the fence state.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkFenceGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
             {
                 fixed (vulkan.VkFenceGetWin32HandleInfoKHR* __pGetWin32HandleInfo = &pGetWin32HandleInfo)
                 fixed (nint* __pHandle = &pHandle)
@@ -600,7 +983,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetMemoryWin32HandleNV left, PFN_vkGetMemoryWin32HandleNV right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkDeviceMemory memory, vulkan.VkExternalMemoryHandleTypeFlagsNV handleType, ref nint pHandle)
+            /// <summary>
+            /// Retrieve Win32 handle to a device memory object
+            /// </summary>
+            /// <param name="device">The logical device that owns the memory.</param>
+            /// <param name="memory">The <see cref="T:VkDeviceMemory"/> object.</param>
+            /// <param name="handleType">A bitmask of <see cref="T:VkExternalMemoryHandleTypeFlagBitsNV"/> containing a single bit specifying the type of handle requested.</param>
+            /// <param name="handle">A pointer to a Windows code:HANDLE in which the handle is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkDeviceMemory memory, vulkan.VkExternalMemoryHandleTypeFlagsNV handleType, out nint pHandle)
             {
                 fixed (nint* __pHandle = &pHandle)
                 return Value(device, memory, handleType, __pHandle);
@@ -633,12 +1023,18 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT left, PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, ref uint pPresentModeCount, ref vulkan.VkPresentModeKHR pPresentModes)
+            /// <summary>
+            /// Query supported presentation modes
+            /// </summary>
+            /// <param name="physicalDevice">The physical device that will be associated with the swapchain to be created, as described for <see cref="M:vkCreateSwapchainKHR"/>.</param>
+            /// <param name="pSurfaceInfo">A pointer to a <see cref="T:VkPhysicalDeviceSurfaceInfo2KHR"/> structure describing the surface and other fixed parameters that would be consumed by <see cref="M:vkCreateSwapchainKHR"/>.</param>
+            /// <param name="pPresentModeCount">A pointer to an integer related to the number of presentation modes available or queried, as described below.</param>
+            /// <param name="pPresentModes">Either `NULL` or a pointer to an array of <see cref="T:VkPresentModeKHR"/> values, indicating the supported presentation modes.</param>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, ref uint pPresentModeCount, vulkan.VkPresentModeKHR* pPresentModes)
             {
                 fixed (vulkan.VkPhysicalDeviceSurfaceInfo2KHR* __pSurfaceInfo = &pSurfaceInfo)
                 fixed (uint* __pPresentModeCount = &pPresentModeCount)
-                fixed (vulkan.VkPresentModeKHR* __pPresentModes = &pPresentModes)
-                return Value(physicalDevice, __pSurfaceInfo, __pPresentModeCount, __pPresentModes);
+                return Value(physicalDevice, __pSurfaceInfo, __pPresentModeCount, pPresentModes);
             }
             
             public nint Pointer => (nint)Value;
@@ -668,6 +1064,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkAcquireFullScreenExclusiveModeEXT left, PFN_vkAcquireFullScreenExclusiveModeEXT right) => !left.Equals(right);
             
+            /// <summary>
+            /// Acquire full-screen exclusive mode for a swapchain
+            /// </summary>
+            /// <param name="device">The device associated with <paramref name="swapchain"/>.</param>
+            /// <param name="swapchain">The swapchain to acquire exclusive full-screen access for.</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSwapchainKHR swapchain)
             {
                 return Value(device, swapchain);
@@ -700,6 +1101,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkReleaseFullScreenExclusiveModeEXT left, PFN_vkReleaseFullScreenExclusiveModeEXT right) => !left.Equals(right);
             
+            /// <summary>
+            /// Release full-screen exclusive mode from a swapchain
+            /// </summary>
+            /// <param name="device">The device associated with <paramref name="swapchain"/>.</param>
+            /// <param name="swapchain">The swapchain to release exclusive full-screen access from.</param>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSwapchainKHR swapchain)
             {
                 return Value(device, swapchain);
@@ -732,7 +1138,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetDeviceGroupSurfacePresentModes2EXT left, PFN_vkGetDeviceGroupSurfacePresentModes2EXT right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, ref vulkan.VkDeviceGroupPresentModeFlagsKHR pModes)
+            /// <summary>
+            /// Query device group present capabilities for a surface
+            /// </summary>
+            /// <param name="device">The logical device.</param>
+            /// <param name="pSurfaceInfo">A pointer to a <see cref="T:VkPhysicalDeviceSurfaceInfo2KHR"/> structure describing the surface and other fixed parameters that would be consumed by <see cref="M:vkCreateSwapchainKHR"/>.</param>
+            /// <param name="pModes">A pointer to a tlink:VkDeviceGroupPresentModeFlagsKHR in which the supported device group present modes for the surface are returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, out vulkan.VkDeviceGroupPresentModeFlagsKHR pModes)
             {
                 fixed (vulkan.VkPhysicalDeviceSurfaceInfo2KHR* __pSurfaceInfo = &pSurfaceInfo)
                 fixed (vulkan.VkDeviceGroupPresentModeFlagsKHR* __pModes = &pModes)
@@ -766,6 +1178,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkAcquireWinrtDisplayNV left, PFN_vkAcquireWinrtDisplayNV right) => !left.Equals(right);
             
+            /// <summary>
+            /// Acquire access to a VkDisplayKHR
+            /// </summary>
+            /// <param name="physicalDevice">The physical device the display is on.</param>
+            /// <param name="display">The display the caller wishes to control in Vulkan.</param>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, vulkan.VkDisplayKHR display)
             {
                 return Value(physicalDevice, display);
@@ -798,7 +1215,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetWinrtDisplayNV left, PFN_vkGetWinrtDisplayNV right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, uint deviceRelativeId, ref vulkan.VkDisplayKHR pDisplay)
+            /// <summary>
+            /// Query the VkDisplayKHR corresponding to a WinRT DisplayTarget
+            /// </summary>
+            /// <param name="physicalDevice">The physical device on which to query the display handle.</param>
+            /// <param name="deviceRelativeId">The value of the https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displaytarget.adapterrelativeid["`AdapterRelativeId`"] property of a https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displaytarget["`DisplayTarget`"] that is enumerated by a https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displayadapter["`DisplayAdapter`"] with an https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displayadapter.id["`Id`"] property matching the <paramref name="deviceLUID"/> property of a <see cref="T:VkPhysicalDeviceIDProperties"/> for <paramref name="physicalDevice"/>.</param>
+            /// <param name="pDisplay">The corresponding <see cref="T:VkDisplayKHR"/> handle will be returned here.</param>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, uint deviceRelativeId, out vulkan.VkDisplayKHR pDisplay)
             {
                 fixed (vulkan.VkDisplayKHR* __pDisplay = &pDisplay)
                 return Value(physicalDevice, deviceRelativeId, __pDisplay);

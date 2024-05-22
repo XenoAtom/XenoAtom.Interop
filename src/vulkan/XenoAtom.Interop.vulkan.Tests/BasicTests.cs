@@ -11,7 +11,6 @@ public class BasicTests
     [TestMethod]
     public unsafe void TestSimple()
     {
-        VkInstance instance = default;
 
         // Vulkan application information
         VkApplicationInfo appInfo = new () {
@@ -25,7 +24,7 @@ public class BasicTests
             pApplicationInfo = &appInfo,
         };
 
-        var result = vkCreateInstance(createInfo, Unsafe.NullRef<VkAllocationCallbacks>(), ref instance);
+        var result = vkCreateInstance(createInfo, Unsafe.NullRef<VkAllocationCallbacks>(), out var instance);
         Assert.AreEqual(VK_SUCCESS, result);
 
         // Destroy the instance
@@ -36,15 +35,15 @@ public class BasicTests
     public unsafe void TestListExtensions()
     {
         uint count = 0;
-        vkEnumerateInstanceExtensionProperties(null, ref count, ref Unsafe.NullRef<VkExtensionProperties>());
+        vkEnumerateInstanceExtensionProperties(null, ref count, null);
         if (count > 0)
         {
-            Span<VkExtensionProperties> propArrays = stackalloc VkExtensionProperties[(int)count];
-            vkEnumerateInstanceExtensionProperties(null, ref count, ref propArrays[0]);
+            VkExtensionProperties* propArrays = stackalloc VkExtensionProperties[(int)count];
+            vkEnumerateInstanceExtensionProperties(null, ref count, propArrays);
 
-            foreach (var prop in propArrays)
+            for (uint i = 0; i < count; i++)
             {
-                //TestContext.Wr
+                var prop = propArrays[i];
                 Console.WriteLine($"Extension: {Marshal.PtrToStringUTF8((nint)prop.extensionName)}");
             }
         }

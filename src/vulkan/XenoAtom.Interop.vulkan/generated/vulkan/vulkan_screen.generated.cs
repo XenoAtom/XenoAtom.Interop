@@ -17,14 +17,29 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Structure specifying parameters of a newly created QNX Screen surface object
+        /// </summary>
         public partial struct VkScreenSurfaceCreateInfoQNX
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkScreenSurfaceCreateFlagsQNX flags;
             
+            /// <summary>
+            /// And <see cref="M:window"/> are QNX Screen code:context and code:window to associate the surface with.
+            /// </summary>
             public vulkan._screen_context context;
             
             public vulkan._screen_window window;
@@ -53,60 +68,138 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkScreenSurfaceCreateFlagsQNX left, VkScreenSurfaceCreateFlagsQNX right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Properties of External Memory QNX Screen Buffers
+        /// </summary>
         public partial struct VkScreenBufferPropertiesQNX
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The size of the external memory.
+            /// </summary>
             public vulkan.VkDeviceSize allocationSize;
             
+            /// <summary>
+            /// A bitmask containing one bit set for every memory type which the specified Screen buffer can: be imported as.
+            /// </summary>
             public uint memoryTypeBits;
         }
         
+        /// <summary>
+        /// Structure describing the image format properties of a QNX Screen buffer
+        /// </summary>
         public partial struct VkScreenBufferFormatPropertiesQNX
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The Vulkan format corresponding to the Screen buffer's format or <see cref="T:VK_FORMAT_UNDEFINED"/> if there is not an equivalent Vulkan format.
+            /// </summary>
             public vulkan.VkFormat format;
             
+            /// <summary>
+            /// An implementation-defined external format identifier for use with <see cref="T:VkExternalFormatQNX"/>. It must: not be zero.
+            /// </summary>
             public ulong externalFormat;
             
+            /// <summary>
+            /// An implementation-defined external usage identifier for the QNX Screen buffer.
+            /// </summary>
             public ulong screenUsage;
             
+            /// <summary>
+            /// Describes the capabilities of this external format when used with an image bound to memory imported from <see cref="M:buffer"/>.
+            /// </summary>
             public vulkan.VkFormatFeatureFlags formatFeatures;
             
+            /// <summary>
+            /// The component swizzle that should: be used in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkComponentMapping samplerYcbcrConversionComponents;
             
+            /// <summary>
+            /// A suggested color model to use in the <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkSamplerYcbcrModelConversion suggestedYcbcrModel;
             
+            /// <summary>
+            /// A suggested numerical value range to use in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkSamplerYcbcrRange suggestedYcbcrRange;
             
+            /// <summary>
+            /// A suggested X chroma offset to use in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkChromaLocation suggestedXChromaOffset;
             
+            /// <summary>
+            /// A suggested Y chroma offset to use in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkChromaLocation suggestedYChromaOffset;
         }
         
+        /// <summary>
+        /// Import memory from a QNX Screen buffer
+        /// </summary>
         public partial struct VkImportScreenBufferInfoQNX
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A pointer to a code:struct code:_screen_buffer, the QNX Screen buffer to import
+            /// </summary>
             public vulkan._screen_buffer buffer;
         }
         
+        /// <summary>
+        /// Structure containing a QNX Screen buffer external format
+        /// </summary>
         public partial struct VkExternalFormatQNX
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// An implementation-defined identifier for the external format
+            /// </summary>
             public ulong externalFormat;
         }
         
+        /// <summary>
+        /// Structure describing QNX Screen Buffer features that can be supported by an implementation
+        /// </summary>
         public partial struct VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX
         {
             public vulkan.VkStructureType sType;
@@ -138,7 +231,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateScreenSurfaceQNX left, PFN_vkCreateScreenSurfaceQNX right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkScreenSurfaceCreateInfoQNX pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a <see cref="T:VkSurfaceKHR"/> object for a QNX Screen window
+            /// </summary>
+            /// <param name="instance">The instance to associate the surface with.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkScreenSurfaceCreateInfoQNX"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkScreenSurfaceCreateInfoQNX pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkScreenSurfaceCreateInfoQNX* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -173,6 +273,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX left, PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX right) => !left.Equals(right);
             
+            /// <summary>
+            /// Query physical device for presentation to QNX Screen
+            /// </summary>
+            /// <param name="physicalDevice">The physical device.</param>
+            /// <param name="queueFamilyIndex">The queue family index.</param>
+            /// <param name="window">The QNX Screen code:window object.</param>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan._screen_window window)
             {
                 return Value(physicalDevice, queueFamilyIndex, window);
@@ -205,7 +311,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetScreenBufferPropertiesQNX left, PFN_vkGetScreenBufferPropertiesQNX right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan._screen_buffer buffer, ref vulkan.VkScreenBufferPropertiesQNX pProperties)
+            /// <summary>
+            /// Get Properties of External Memory QNX Screen Buffers
+            /// </summary>
+            /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
+            /// <param name="buffer">The QNX Screen buffer which will be imported.</param>
+            /// <param name="pProperties">A pointer to a <see cref="T:VkScreenBufferPropertiesQNX"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan._screen_buffer buffer, out vulkan.VkScreenBufferPropertiesQNX pProperties)
             {
                 fixed (vulkan.VkScreenBufferPropertiesQNX* __pProperties = &pProperties)
                 return Value(device, buffer, __pProperties);
@@ -216,21 +328,40 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
+        /// <summary>
+        /// Create a <see cref="T:VkSurfaceKHR"/> object for a QNX Screen window
+        /// </summary>
+        /// <param name="instance">The instance to associate the surface with.</param>
+        /// <param name="pCreateInfo">A pointer to a <see cref="T:VkScreenSurfaceCreateInfoQNX"/> structure containing parameters affecting the creation of the surface object.</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+        /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateScreenSurfaceQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateScreenSurfaceQNX(vulkan.VkInstance instance, in vulkan.VkScreenSurfaceCreateInfoQNX pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        public static partial vulkan.VkResult vkCreateScreenSurfaceQNX(vulkan.VkInstance instance, in vulkan.VkScreenSurfaceCreateInfoQNX pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateScreenSurfaceQNX> vkCreateScreenSurfaceQNX_ => new("vkCreateScreenSurfaceQNX"u8);
         
+        /// <summary>
+        /// Query physical device for presentation to QNX Screen
+        /// </summary>
+        /// <param name="physicalDevice">The physical device.</param>
+        /// <param name="queueFamilyIndex">The queue family index.</param>
+        /// <param name="window">The QNX Screen code:window object.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetPhysicalDeviceScreenPresentationSupportQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan._screen_window window);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX> vkGetPhysicalDeviceScreenPresentationSupportQNX_ => new("vkGetPhysicalDeviceScreenPresentationSupportQNX"u8);
         
+        /// <summary>
+        /// Get Properties of External Memory QNX Screen Buffers
+        /// </summary>
+        /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
+        /// <param name="buffer">The QNX Screen buffer which will be imported.</param>
+        /// <param name="pProperties">A pointer to a <see cref="T:VkScreenBufferPropertiesQNX"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetScreenBufferPropertiesQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetScreenBufferPropertiesQNX(vulkan.VkDevice device, vulkan._screen_buffer buffer, ref vulkan.VkScreenBufferPropertiesQNX pProperties);
+        public static partial vulkan.VkResult vkGetScreenBufferPropertiesQNX(vulkan.VkDevice device, vulkan._screen_buffer buffer, out vulkan.VkScreenBufferPropertiesQNX pProperties);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetScreenBufferPropertiesQNX> vkGetScreenBufferPropertiesQNX_ => new("vkGetScreenBufferPropertiesQNX"u8);
     }

@@ -17,14 +17,29 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Structure specifying parameters of a newly created iOS surface object
+        /// </summary>
         public partial struct VkIOSSurfaceCreateInfoMVK
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkIOSSurfaceCreateFlagsMVK flags;
             
+            /// <summary>
+            /// A reference to either a basetype:CAMetalLayer object or a code:UIView object.
+            /// </summary>
             public void* pView;
         }
         
@@ -73,7 +88,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateIOSSurfaceMVK left, PFN_vkCreateIOSSurfaceMVK right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkIOSSurfaceCreateInfoMVK pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a VkSurfaceKHR object for an iOS UIView
+            /// </summary>
+            /// <param name="instance">The instance with which to associate the surface.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkIOSSurfaceCreateInfoMVK"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkIOSSurfaceCreateInfoMVK pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkIOSSurfaceCreateInfoMVK* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -86,9 +108,16 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
+        /// <summary>
+        /// Create a VkSurfaceKHR object for an iOS UIView
+        /// </summary>
+        /// <param name="instance">The instance with which to associate the surface.</param>
+        /// <param name="pCreateInfo">A pointer to a <see cref="T:VkIOSSurfaceCreateInfoMVK"/> structure containing parameters affecting the creation of the surface object.</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+        /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateIOSSurfaceMVK")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateIOSSurfaceMVK(vulkan.VkInstance instance, in vulkan.VkIOSSurfaceCreateInfoMVK pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        public static partial vulkan.VkResult vkCreateIOSSurfaceMVK(vulkan.VkInstance instance, in vulkan.VkIOSSurfaceCreateInfoMVK pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateIOSSurfaceMVK> vkCreateIOSSurfaceMVK_ => new("vkCreateIOSSurfaceMVK"u8);
     }

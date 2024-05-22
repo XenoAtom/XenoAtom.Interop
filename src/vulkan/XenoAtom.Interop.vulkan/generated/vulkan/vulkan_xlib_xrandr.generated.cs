@@ -39,6 +39,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkAcquireXlibDisplayEXT left, PFN_vkAcquireXlibDisplayEXT right) => !left.Equals(right);
             
+            /// <summary>
+            /// Acquire access to a VkDisplayKHR using Xlib
+            /// </summary>
+            /// <param name="physicalDevice">The physical device the display is on.</param>
+            /// <param name="dpy">A connection to the X11 server that currently owns <paramref name="display"/>.</param>
+            /// <param name="display">The display the caller wishes to control in Vulkan.</param>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, vulkan.VkDisplayKHR display)
             {
                 return Value(physicalDevice, dpy, display);
@@ -71,7 +77,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetRandROutputDisplayEXT left, PFN_vkGetRandROutputDisplayEXT right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, nuint rrOutput, ref vulkan.VkDisplayKHR pDisplay)
+            /// <summary>
+            /// Query the VkDisplayKHR corresponding to an X11 RandR Output
+            /// </summary>
+            /// <param name="physicalDevice">The physical device to query the display handle on.</param>
+            /// <param name="dpy">A connection to the X11 server from which <paramref name="rrOutput"/> was queried.</param>
+            /// <param name="rrOutput">An X11 RandR output ID.</param>
+            /// <param name="pDisplay">The corresponding <see cref="T:VkDisplayKHR"/> handle will be returned here.</param>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, nuint rrOutput, out vulkan.VkDisplayKHR pDisplay)
             {
                 fixed (vulkan.VkDisplayKHR* __pDisplay = &pDisplay)
                 return Value(physicalDevice, dpy, rrOutput, __pDisplay);

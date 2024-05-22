@@ -17,14 +17,29 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Structure specifying parameters of a newly created Android surface object
+        /// </summary>
         public partial struct VkAndroidSurfaceCreateInfoKHR
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkAndroidSurfaceCreateFlagsKHR flags;
             
+            /// <summary>
+            /// A pointer to the basetype:ANativeWindow to associate the surface with.
+            /// </summary>
             public vulkan.ANativeWindow window;
         }
         
@@ -51,96 +66,225 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkAndroidSurfaceCreateFlagsKHR left, VkAndroidSurfaceCreateFlagsKHR right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Struct containing Android hardware buffer usage flags
+        /// </summary>
         public partial struct VkAndroidHardwareBufferUsageANDROID
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Returns the Android hardware buffer usage flags.
+            /// </summary>
             public ulong androidHardwareBufferUsage;
         }
         
+        /// <summary>
+        /// Properties of External Memory Android Hardware Buffers
+        /// </summary>
         public partial struct VkAndroidHardwareBufferPropertiesANDROID
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The size of the external memory
+            /// </summary>
             public vulkan.VkDeviceSize allocationSize;
             
+            /// <summary>
+            /// A bitmask containing one bit set for every memory type which the specified Android hardware buffer can: be imported as.
+            /// </summary>
             public uint memoryTypeBits;
         }
         
+        /// <summary>
+        /// Structure describing the image format properties of an Android hardware buffer
+        /// </summary>
         public partial struct VkAndroidHardwareBufferFormatPropertiesANDROID
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The Vulkan format corresponding to the Android hardware buffer's format, or <see cref="T:VK_FORMAT_UNDEFINED"/> if there is not an equivalent Vulkan format.
+            /// </summary>
             public vulkan.VkFormat format;
             
+            /// <summary>
+            /// An implementation-defined external format identifier for use with <see cref="T:VkExternalFormatANDROID"/>. It must: not be zero.
+            /// </summary>
             public ulong externalFormat;
             
+            /// <summary>
+            /// Describes the capabilities of this external format when used with an image bound to memory imported from <see cref="M:buffer"/>.
+            /// </summary>
             public vulkan.VkFormatFeatureFlags formatFeatures;
             
+            /// <summary>
+            /// The component swizzle that should: be used in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkComponentMapping samplerYcbcrConversionComponents;
             
+            /// <summary>
+            /// A suggested color model to use in the <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkSamplerYcbcrModelConversion suggestedYcbcrModel;
             
+            /// <summary>
+            /// A suggested numerical value range to use in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkSamplerYcbcrRange suggestedYcbcrRange;
             
+            /// <summary>
+            /// A suggested X chroma offset to use in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkChromaLocation suggestedXChromaOffset;
             
+            /// <summary>
+            /// A suggested Y chroma offset to use in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkChromaLocation suggestedYChromaOffset;
         }
         
+        /// <summary>
+        /// Import memory from an Android hardware buffer
+        /// </summary>
         public partial struct VkImportAndroidHardwareBufferInfoANDROID
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The Android hardware buffer to import.
+            /// </summary>
             public vulkan.AHardwareBuffer buffer;
         }
         
+        /// <summary>
+        /// Structure describing an Android hardware buffer memory export operation
+        /// </summary>
         public partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The memory object from which the Android hardware buffer will be exported.
+            /// </summary>
             public vulkan.VkDeviceMemory memory;
         }
         
+        /// <summary>
+        /// Structure containing an Android hardware buffer external format
+        /// </summary>
         public partial struct VkExternalFormatANDROID
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// An implementation-defined identifier for the external format
+            /// </summary>
             public ulong externalFormat;
         }
         
+        /// <summary>
+        /// Structure describing the image format properties of an Android hardware buffer
+        /// </summary>
         public partial struct VkAndroidHardwareBufferFormatProperties2ANDROID
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The Vulkan format corresponding to the Android hardware buffer's format, or <see cref="T:VK_FORMAT_UNDEFINED"/> if there is not an equivalent Vulkan format.
+            /// </summary>
             public vulkan.VkFormat format;
             
+            /// <summary>
+            /// An implementation-defined external format identifier for use with <see cref="T:VkExternalFormatANDROID"/>. It must: not be zero.
+            /// </summary>
             public ulong externalFormat;
             
+            /// <summary>
+            /// Describes the capabilities of this external format when used with an image bound to memory imported from <see cref="M:buffer"/>.
+            /// </summary>
             public vulkan.VkFormatFeatureFlags2 formatFeatures;
             
+            /// <summary>
+            /// The component swizzle that should: be used in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkComponentMapping samplerYcbcrConversionComponents;
             
+            /// <summary>
+            /// A suggested color model to use in the <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkSamplerYcbcrModelConversion suggestedYcbcrModel;
             
+            /// <summary>
+            /// A suggested numerical value range to use in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkSamplerYcbcrRange suggestedYcbcrRange;
             
+            /// <summary>
+            /// A suggested X chroma offset to use in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkChromaLocation suggestedXChromaOffset;
             
+            /// <summary>
+            /// A suggested Y chroma offset to use in <see cref="T:VkSamplerYcbcrConversionCreateInfo"/>.
+            /// </summary>
             public vulkan.VkChromaLocation suggestedYChromaOffset;
         }
         
@@ -166,7 +310,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateAndroidSurfaceKHR left, PFN_vkCreateAndroidSurfaceKHR right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkAndroidSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a <see cref="T:VkSurfaceKHR"/> object for an Android native window
+            /// </summary>
+            /// <param name="instance">The instance to associate the surface with.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkAndroidSurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkAndroidSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkAndroidSurfaceCreateInfoKHR* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -201,7 +352,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetAndroidHardwareBufferPropertiesANDROID left, PFN_vkGetAndroidHardwareBufferPropertiesANDROID right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, ref vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties)
+            /// <summary>
+            /// Get Properties of External Memory Android Hardware Buffers
+            /// </summary>
+            /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
+            /// <param name="buffer">The Android hardware buffer which will be imported.</param>
+            /// <param name="pProperties">A pointer to a <see cref="T:VkAndroidHardwareBufferPropertiesANDROID"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, out vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties)
             {
                 fixed (vulkan.VkAndroidHardwareBufferPropertiesANDROID* __pProperties = &pProperties)
                 return Value(device, buffer, __pProperties);
@@ -234,7 +391,13 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkGetMemoryAndroidHardwareBufferANDROID left, PFN_vkGetMemoryAndroidHardwareBufferANDROID right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, ref vulkan.AHardwareBuffer pBuffer)
+            /// <summary>
+            /// Get an Android hardware buffer for a memory object
+            /// </summary>
+            /// <param name="device">The logical device that created the device memory being exported.</param>
+            /// <param name="pInfo">A pointer to a <see cref="T:VkMemoryGetAndroidHardwareBufferInfoANDROID"/> structure containing parameters of the export operation.</param>
+            /// <param name="pBuffer">Will return an Android hardware buffer referencing the payload of the device memory object.</param>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, out vulkan.AHardwareBuffer pBuffer)
             {
                 fixed (vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID* __pInfo = &pInfo)
                 fixed (vulkan.AHardwareBuffer* __pBuffer = &pBuffer)
@@ -254,15 +417,27 @@ namespace XenoAtom.Interop
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateAndroidSurfaceKHR> vkCreateAndroidSurfaceKHR_ => new("vkCreateAndroidSurfaceKHR"u8);
         
+        /// <summary>
+        /// Get Properties of External Memory Android Hardware Buffers
+        /// </summary>
+        /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
+        /// <param name="buffer">The Android hardware buffer which will be imported.</param>
+        /// <param name="pProperties">A pointer to a <see cref="T:VkAndroidHardwareBufferPropertiesANDROID"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetAndroidHardwareBufferPropertiesANDROID")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetAndroidHardwareBufferPropertiesANDROID(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, ref vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties);
+        public static partial vulkan.VkResult vkGetAndroidHardwareBufferPropertiesANDROID(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, out vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID> vkGetAndroidHardwareBufferPropertiesANDROID_ => new("vkGetAndroidHardwareBufferPropertiesANDROID"u8);
         
+        /// <summary>
+        /// Get an Android hardware buffer for a memory object
+        /// </summary>
+        /// <param name="device">The logical device that created the device memory being exported.</param>
+        /// <param name="pInfo">A pointer to a <see cref="T:VkMemoryGetAndroidHardwareBufferInfoANDROID"/> structure containing parameters of the export operation.</param>
+        /// <param name="pBuffer">Will return an Android hardware buffer referencing the payload of the device memory object.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryAndroidHardwareBufferANDROID")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetMemoryAndroidHardwareBufferANDROID(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, ref vulkan.AHardwareBuffer pBuffer);
+        public static partial vulkan.VkResult vkGetMemoryAndroidHardwareBufferANDROID(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, out vulkan.AHardwareBuffer pBuffer);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID> vkGetMemoryAndroidHardwareBufferANDROID_ => new("vkGetMemoryAndroidHardwareBufferANDROID"u8);
     }

@@ -17,14 +17,29 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Structure specifying parameters of a newly created VI surface object
+        /// </summary>
         public partial struct VkViSurfaceCreateInfoNN
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkViSurfaceCreateFlagsNN flags;
             
+            /// <summary>
+            /// The code:nn::code:vi::code:NativeWindowHandle for the code:nn::code:vi::code:Layer with which to associate the surface.
+            /// </summary>
             public void* window;
         }
         
@@ -73,7 +88,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateViSurfaceNN left, PFN_vkCreateViSurfaceNN right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkViSurfaceCreateInfoNN pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a <see cref="T:VkSurfaceKHR"/> object for a VI layer
+            /// </summary>
+            /// <param name="instance">The instance with which to associate the surface.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkViSurfaceCreateInfoNN"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkViSurfaceCreateInfoNN pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkViSurfaceCreateInfoNN* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -86,9 +108,16 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
+        /// <summary>
+        /// Create a <see cref="T:VkSurfaceKHR"/> object for a VI layer
+        /// </summary>
+        /// <param name="instance">The instance with which to associate the surface.</param>
+        /// <param name="pCreateInfo">A pointer to a <see cref="T:VkViSurfaceCreateInfoNN"/> structure containing parameters affecting the creation of the surface object.</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+        /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateViSurfaceNN")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateViSurfaceNN(vulkan.VkInstance instance, in vulkan.VkViSurfaceCreateInfoNN pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface);
+        public static partial vulkan.VkResult vkCreateViSurfaceNN(vulkan.VkInstance instance, in vulkan.VkViSurfaceCreateInfoNN pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateViSurfaceNN> vkCreateViSurfaceNN_ => new("vkCreateViSurfaceNN"u8);
     }

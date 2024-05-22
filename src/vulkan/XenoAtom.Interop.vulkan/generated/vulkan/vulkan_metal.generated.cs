@@ -17,6 +17,9 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <summary>
+        /// Bitmask specifying Metal object types that can be exported from a Vulkan object
+        /// </summary>
         [Flags]
         public enum VkExportMetalObjectTypeFlagBitsEXT : uint
         {
@@ -49,14 +52,29 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_FLAG_BITS_MAX_ENUM_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_FLAG_BITS_MAX_ENUM_EXT;
         
+        /// <summary>
+        /// Structure specifying parameters of a newly created Metal surface object
+        /// </summary>
         public partial struct VkMetalSurfaceCreateInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
             public vulkan.VkMetalSurfaceCreateFlagsEXT flags;
             
+            /// <summary>
+            /// A reference to a basetype:CAMetalLayer object representing a renderable surface.
+            /// </summary>
             public void* pLayer;
         }
         
@@ -83,28 +101,61 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkMetalSurfaceCreateFlagsEXT left, VkMetalSurfaceCreateFlagsEXT right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure that identifies the Metal objects that can be exported from Vulkan objects
+        /// </summary>
         public partial struct VkExportMetalObjectCreateInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A <see cref="T:VkExportMetalObjectTypeFlagBitsEXT"/> indicating the type of Metal object that the application may request to be exported from the Vulkan object.
+            /// </summary>
             public vulkan.VkExportMetalObjectTypeFlagBitsEXT exportObjectType;
         }
         
+        /// <summary>
+        /// Structure whose pNext chain identifies Vulkan objects and corresponding Metal objects
+        /// </summary>
         public partial struct VkExportMetalObjectsInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
         }
         
+        /// <summary>
+        /// Structure that identifies a VkDevice object and corresponding Metal MTLDevice object
+        /// </summary>
         public partial struct VkExportMetalDeviceInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The Metal `id&lt;MTLDevice&gt;` object underlying the <see cref="T:VkPhysicalDevice"/> associated with the <see cref="T:VkDevice"/> object identified in the call. The implementation will return the code:MTLDevice in this member, or it will return `NULL` if no code:MTLDevice could be found underlying the <see cref="T:VkPhysicalDevice"/> object.
+            /// </summary>
             public vulkan.MTLDevice_id mtlDevice;
         }
         
@@ -131,14 +182,29 @@ namespace XenoAtom.Interop
             public static bool operator !=(MTLDevice_id left, MTLDevice_id right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure that identifies a VkQueue object and corresponding Metal MTLCommandQueue object
+        /// </summary>
         public partial struct VkExportMetalCommandQueueInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A <see cref="T:VkQueue"/>.
+            /// </summary>
             public vulkan.VkQueue queue;
             
+            /// <summary>
+            /// The Metal `id&lt;MTLCommandQueue&gt;` object underlying the <see cref="T:VkQueue"/> object in <see cref="M:queue"/>. The implementation will return the code:MTLCommandQueue in this member, or it will return `NULL` if no code:MTLCommandQueue could be found underlying the <see cref="T:VkQueue"/> object.
+            /// </summary>
             public vulkan.MTLCommandQueue_id mtlCommandQueue;
         }
         
@@ -165,14 +231,29 @@ namespace XenoAtom.Interop
             public static bool operator !=(MTLCommandQueue_id left, MTLCommandQueue_id right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure that identifies a VkDeviceMemory object and corresponding Metal MTLBuffer object
+        /// </summary>
         public partial struct VkExportMetalBufferInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A <see cref="T:VkDeviceMemory"/>.
+            /// </summary>
             public vulkan.VkDeviceMemory memory;
             
+            /// <summary>
+            /// The Metal `id&lt;MTLBuffer&gt;` object underlying the <see cref="T:VkDeviceMemory"/> object in <see cref="M:memory"/>. The implementation will return the code:MTLBuffer in this member, or it will return `NULL` if no code:MTLBuffer could be found underlying the <see cref="T:VkDeviceMemory"/> object.
+            /// </summary>
             public vulkan.MTLBuffer_id mtlBuffer;
         }
         
@@ -199,29 +280,65 @@ namespace XenoAtom.Interop
             public static bool operator !=(MTLBuffer_id left, MTLBuffer_id right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure that identifies a Metal MTLBuffer object to use when creating a VkDeviceMemory object.
+        /// </summary>
         public partial struct VkImportMetalBufferInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The Metal `id&lt;MTLBuffer&gt;` object that is to underlie the <see cref="T:VkDeviceMemory"/>.
+            /// </summary>
             public vulkan.MTLBuffer_id mtlBuffer;
         }
         
+        /// <summary>
+        /// Structure that identifies a VkImage, VkImageView, or VkBufferView object and corresponding Metal MTLTexture object
+        /// </summary>
         public partial struct VkExportMetalTextureInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Dlink:VK_NULL_HANDLE or a <see cref="T:VkImage"/>.
+            /// </summary>
             public vulkan.VkImage image;
             
+            /// <summary>
+            /// Dlink:VK_NULL_HANDLE or a <see cref="T:VkImageView"/>.
+            /// </summary>
             public vulkan.VkImageView imageView;
             
+            /// <summary>
+            /// Dlink:VK_NULL_HANDLE or a <see cref="T:VkBufferView"/>.
+            /// </summary>
             public vulkan.VkBufferView bufferView;
             
+            /// <summary>
+            /// Indicates the plane of a multi-planar <see cref="T:VkImage"/> or <see cref="T:VkImageView"/>.
+            /// </summary>
             public vulkan.VkImageAspectFlagBits plane;
             
+            /// <summary>
+            /// The Metal `id&lt;MTLTexture&gt;` object underlying the <see cref="T:VkImage"/>, <see cref="T:VkImageView"/>, or <see cref="T:VkBufferView"/> object in <see cref="M:image"/>, <see cref="M:imageView"/>, or <see cref="M:bufferView"/>, respectively, at the plane indicated in <see cref="M:aspectMask"/>. The implementation will return the code:MTLTexture in this member, or it will return `NULL` if no code:MTLTexture could be found underlying the <see cref="T:VkImage"/>, <see cref="T:VkImageView"/>, or <see cref="T:VkBufferView"/> object, at the plane indicated in <see cref="M:aspectMask"/>.
+            /// </summary>
             public vulkan.MTLTexture_id mtlTexture;
         }
         
@@ -248,25 +365,55 @@ namespace XenoAtom.Interop
             public static bool operator !=(MTLTexture_id left, MTLTexture_id right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure that identifies Metal MTLTexture objects to use when creating a VkImage.
+        /// </summary>
         public partial struct VkImportMetalTextureInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Indicates the plane of the <see cref="T:VkImage"/> that the `id&lt;MTLTexture&gt;` object should be attached to.
+            /// </summary>
             public vulkan.VkImageAspectFlagBits plane;
             
+            /// <summary>
+            /// A the Metal `id&lt;MTLTexture&gt;` object that is to underlie the <see cref="T:VkImage"/> plane.
+            /// </summary>
             public vulkan.MTLTexture_id mtlTexture;
         }
         
+        /// <summary>
+        /// Structure that identifies a VkImage object and corresponding Metal IOSurfaceRef object
+        /// </summary>
         public partial struct VkExportMetalIOSurfaceInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A <see cref="T:VkImage"/>.
+            /// </summary>
             public vulkan.VkImage image;
             
+            /// <summary>
+            /// The Metal basetype:IOSurfaceRef object underlying the <see cref="T:VkImage"/> object in <see cref="M:image"/>. The implementation will return the basetype:IOSurfaceRef in this member, or it will return `NULL` if no basetype:IOSurfaceRef could be found underlying the <see cref="T:VkImage"/> object.
+            /// </summary>
             public vulkan.IOSurfaceRef ioSurface;
         }
         
@@ -293,25 +440,52 @@ namespace XenoAtom.Interop
             public static bool operator !=(IOSurfaceRef left, IOSurfaceRef right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure that identifies a VkImage object and corresponding Metal IOSurfaceRef object to use.
+        /// </summary>
         public partial struct VkImportMetalIOSurfaceInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Dlink:VK_NULL_HANDLE or the Metal basetype:IOSurfaceRef object that is to underlie the <see cref="T:VkImage"/>.
+            /// </summary>
             public vulkan.IOSurfaceRef ioSurface;
         }
         
+        /// <summary>
+        /// Structure that identifies a VkSemaphore or VkEvent object and corresponding Metal MTLSharedEvent object
+        /// </summary>
         public partial struct VkExportMetalSharedEventInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// Dlink:VK_NULL_HANDLE or a <see cref="T:VkSemaphore"/>.
+            /// </summary>
             public vulkan.VkSemaphore semaphore;
             
             public vulkan.VkEvent @event;
             
+            /// <summary>
+            /// The Metal `id&lt;MTLSharedEvent&gt;` object underlying the <see cref="T:VkSemaphore"/> or <see cref="T:VkEvent"/> object in <see cref="M:semaphore"/> or <see cref="M:event"/>, respectively. The implementation will return the code:MTLSharedEvent in this member, or it will return `NULL` if no code:MTLSharedEvent could be found underlying the <see cref="T:VkSemaphore"/> or <see cref="T:VkEvent"/> object.
+            /// </summary>
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
         
@@ -338,12 +512,24 @@ namespace XenoAtom.Interop
             public static bool operator !=(MTLSharedEvent_id left, MTLSharedEvent_id right) => !left.Equals(right);
         }
         
+        /// <summary>
+        /// Structure that identifies a VkSemaphore or VkEvent object and corresponding Metal Shared Event object to use.
+        /// </summary>
         public partial struct VkImportMetalSharedEventInfoEXT
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// The Metal `id&lt;MTLSharedEvent&gt;` object that is to underlie the <see cref="T:VkSemaphore"/> or <see cref="T:VkEvent"/>.
+            /// </summary>
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
         
@@ -369,7 +555,14 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCreateMetalSurfaceEXT left, PFN_vkCreateMetalSurfaceEXT right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkMetalSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, ref vulkan.VkSurfaceKHR pSurface)
+            /// <summary>
+            /// Create a VkSurfaceKHR object for CAMetalLayer
+            /// </summary>
+            /// <param name="instance">The instance with which to associate the surface.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkMetalSurfaceCreateInfoEXT"/> structure specifying parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see &lt;&lt;memory-allocation,Memory Allocation&gt;&gt;).</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkMetalSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
                 fixed (vulkan.VkMetalSurfaceCreateInfoEXT* __pCreateInfo = &pCreateInfo)
                 fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
@@ -431,7 +624,12 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkExportMetalObjectsEXT left, PFN_vkExportMetalObjectsEXT right) => !left.Equals(right);
             
-            public void Invoke(vulkan.VkDevice device, ref vulkan.VkExportMetalObjectsInfoEXT pMetalObjectsInfo)
+            /// <summary>
+            /// Export Metal objects from the corresponding Vulkan objects
+            /// </summary>
+            /// <param name="device">The device that created the Vulkan objects.</param>
+            /// <param name="pMetalObjectsInfo">A pointer to a <see cref="T:VkExportMetalObjectsInfoEXT"/> structure whose <paramref name="pNext"/> chain contains structures, each identifying a Vulkan object and providing a pointer through which the Metal object will be returned.</param>
+            public void Invoke(vulkan.VkDevice device, out vulkan.VkExportMetalObjectsInfoEXT pMetalObjectsInfo)
             {
                 fixed (vulkan.VkExportMetalObjectsInfoEXT* __pMetalObjectsInfo = &pMetalObjectsInfo)
                 Value(device, __pMetalObjectsInfo);
