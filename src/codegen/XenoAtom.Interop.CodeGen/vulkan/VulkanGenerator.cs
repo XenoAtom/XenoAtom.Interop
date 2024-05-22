@@ -19,9 +19,13 @@ namespace XenoAtom.Interop.CodeGen.vulkan;
 
 internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase(descriptor)
 {
+    private const string CommonVkExt = "(AMD|AMDX|ARM|EXT|GOOGLE|HUAWEI|IMG|INTEL|KHR|LUNARG|NV|NVX|QCOM|SEC|VALVE)";
+    private const string CommonVkUint = "(MAX|QUEUE|REMAINING|SHADER|VERSION_1|TRUE|FALSE|UUID|ATTACHMENT|LUID)";
     private readonly List<CppFunction> _extensionFunctions = new();
-    private readonly Dictionary<string, VulkanCommand> _registry = new();
+    private readonly Dictionary<string, VulkanCommand> _functionRegistry = new();
     private readonly Dictionary<VulkanDocTypeKind, VulkanDocDefinitions> _docDefinitions = new();
+    private readonly Dictionary<string, CSharpStruct> _structFunctionPointers = new();
+    private readonly Dictionary<string, CSharpStruct> _structAsEnumFlags = new();
 
     public override async Task Initialize(ApkManager apkHelper)
     {
@@ -40,14 +44,13 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         await DownloadAndProcessManPages();
     }
 
+
     protected override async Task<CSharpCompilation?> Generate()
     {
         var sysIncludes = Apk.GetSysIncludeDirectory("main");
         var mainInclude = Apk.GetIncludeDirectory("main");
         var vulkanSysIncludes = Path.Combine(AppContext.BaseDirectory, "vulkan_sys_includes");
 
-        const string CommonVkExt = "(AMD|AMDX|ARM|EXT|GOOGLE|HUAWEI|IMG|INTEL|KHR|LUNARG|NV|NVX|QCOM|SEC|VALVE)";
-        const string CommonVkUint = "(MAX|QUEUE|REMAINING|SHADER|VERSION_1|TRUE|FALSE|UUID|ATTACHMENT|LUID)";
 
         var csOptions = new CSharpConverterOptions()
         {
@@ -132,15 +135,11 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             }
         }
 
-        var csEnumFlags = new Dictionary<string, CSharpStruct>();
-        var functionPFNs = new Dictionary<string, CSharpStruct>();
-
         foreach (var csEnum in csCompilation.AllEnums)
         {
             ApplyDocumentation(csEnum);
         }
-
-
+        
         foreach (var csStruct in csCompilation.AllStructs)
         {
             ApplyDocumentation(csStruct);
@@ -148,166 +147,24 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             // Associate Enum XXXFlagBits with Struct XXXFlags
             if (csStruct.Name.Contains("Flags", StringComparison.Ordinal))
             {
-                csEnumFlags.Add(csStruct.Name, csStruct);
+                _structAsEnumFlags.Add(csStruct.Name, csStruct);
             }
 
             // Collect PFN function pointers
             if (csStruct.Name.Contains("PFN_vk", StringComparison.Ordinal))
             {
-                functionPFNs.Add(csStruct.Name["PFN_".Length..], csStruct);
+                _structFunctionPointers.Add(csStruct.Name["PFN_".Length..], csStruct);
             }
         }
-
-
-        var commandExtRegex = new Regex($"{CommonVkExt}$");
+        
         foreach (var csFunction in csCompilation.AllFunctions)
         {
-            var isExtensionFunction = commandExtRegex.IsMatch(csFunction.Name);
-
-            // Apply doc to the function
-            ApplyDocumentation(csFunction);
-            
-            if (functionPFNs.TryGetValue(csFunction.Name, out var pfn))
-            {
-                pfn.BaseTypes.Add(new CSharpFreeType("IvkFunctionPointer"));
-
-                var csProperty = new CSharpProperty(csFunction.Name + "_")
-                {
-                    ReturnType = new CSharpGenericTypeReference($"vkFunctionPointerPrototype", [pfn]),
-                    GetBodyInlined = $"new(\"{csFunction.Name}\"u8)",
-                    Visibility = CSharpVisibility.Public,
-                    Modifiers = CSharpModifiers.Static,
-                };
-                var parent = (ICSharpContainer)csFunction.Parent!;
-                parent.Members.Insert(parent.Members.IndexOf(csFunction) + 1, csProperty);
-
-                // Extension functions are not part of the core API, so we should remove LibraryImport for them
-                if (isExtensionFunction)
-                {
-                    parent.Members.Remove(csFunction);
-
-                    // Record the extension function to still expose it in the supported API list of functions
-                    _extensionFunctions.Add((CppFunction)csFunction.CppElement!);
-                }
-
-                // Add an invoke method to the function pointer to allow calling the function pointers with proper arguments names and ref/in types
-                var csMethod = new CSharpMethod("Invoke")
-                {
-                    Comment = csFunction.Comment,
-                    ReturnType = csFunction.ReturnType,
-                    Visibility = CSharpVisibility.Public,
-                    Body = (writer, _) =>
-                    {
-                        var isReturnVoid = csFunction.ReturnType is CSharpPrimitiveType primitiveType && primitiveType.Kind == CSharpPrimitiveKind.Void;
-
-                        foreach (var csParameter in csFunction.Parameters)
-                        {
-                            if (csParameter.ParameterType is CSharpRefType refType)
-                            {
-                                writer.Write("fixed (");
-                                refType.ElementType.DumpReferenceTo(writer);
-                                writer.WriteLine($"* __{csParameter.Name} = &{csParameter.Name})");
-                            }
-                        }
-
-                        if (!isReturnVoid)
-                        {
-                            writer.Write("return ");
-                        }
-                        writer.Write("Value(");
-                        for (var i = 0; i < csFunction.Parameters.Count; i++)
-                        {
-                            var csParameter = csFunction.Parameters[i];
-                            if (i > 0)
-                            {
-                                writer.Write(", ");
-                            }
-                            writer.Write(csParameter.ParameterType is CSharpRefType ? $"__{csParameter.Name}" : csParameter.Name);
-                        }
-
-                        writer.WriteLine(");");
-                    }
-                };
-                var csPointerProperty = new CSharpProperty("Pointer")
-                {
-                    ReturnType = CSharpPrimitiveType.IntPtr(),
-                    GetBodyInlined = "(nint)Value",
-                    Visibility = CSharpVisibility.Public,
-                };
-
-                var csIsNullProperty = new CSharpProperty("IsNull")
-                {
-                    ReturnType = CSharpPrimitiveType.Bool(),
-                    GetBodyInlined = "(nint)Value == 0",
-                    Visibility = CSharpVisibility.Public,
-                };
-
-                pfn.Members.Add(csMethod);
-                pfn.Members.Add(csPointerProperty);
-                pfn.Members.Add(csIsNullProperty);
-
-                // Replicate parameters
-                foreach (var csParameter in csFunction.Parameters)
-                {
-                    csMethod.Parameters.Add(csParameter);
-                }
-            }
-            else
-            {
-               throw new InvalidOperationException($"Cannot find PFN for function {csFunction.Name}");
-            }
+            ProcessVulkanFunction(csFunction);
         }
 
         foreach (var csEnum in csCompilation.AllEnums)
         {
-            if (csEnum.Name.Contains("FlagBits", StringComparison.Ordinal))
-            {
-                csEnum.Attributes.Add(new CSharpFreeAttribute("Flags"));
-                
-                var structName = csEnum.Name.Replace("FlagBits", "Flags", StringComparison.Ordinal);
-                if (csEnumFlags.TryGetValue(structName, out var csStruct))
-                {
-                    // Add implicit operators between XXXFlagBits and Struct XXXFlags
-                    csStruct.Members.Add(new CSharpMethod(string.Empty)
-                    {
-                        Kind = CSharpMethodKind.Operator,
-                        ReturnType = csEnum,
-                        Modifiers = CSharpModifiers.Static | CSharpModifiers.Implicit,
-                        Parameters =
-                        {
-                            new CSharpParameter("from") {ParameterType = csStruct},
-                        },
-                        BodyInline = ((writer, _) =>
-                        {
-                            writer.Write("(");
-                            csEnum.DumpReferenceTo(writer);
-                            writer.Write(")(uint)from.Value");
-                        }),
-                        Visibility = CSharpVisibility.Public
-                    });
-                    csStruct.Members.Add(new CSharpMethod(string.Empty)
-                    {
-                        Kind = CSharpMethodKind.Operator,
-                        ReturnType = csStruct,
-                        Modifiers = CSharpModifiers.Static | CSharpModifiers.Implicit,
-                        Parameters =
-                        {
-                            new CSharpParameter("from") {ParameterType = csEnum},
-                        },
-                        BodyInline = (writer, element) =>
-                        {
-                            writer.Write("new ");
-                            csStruct.DumpReferenceTo(writer);
-                            writer.Write("((uint)from)");
-                        },
-                        Visibility = CSharpVisibility.Public
-                    });
-                }
-                else
-                {
-                    Console.Error.WriteLine($"Cannot find struct {structName} for enum {csEnum.Name}");
-                }
-            }
+            ProcessVulkanEnum(csEnum);
         }
 
         // Transform const string literal into ReadOnlySpanUtf8
@@ -329,6 +186,290 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
  
         return csCompilation;
+    }
+
+    private void ProcessVulkanEnum(CSharpEnum csEnum)
+    {
+        // We only need to modify flags in this method
+        if (!csEnum.Name.Contains("FlagBits", StringComparison.Ordinal))
+        {
+            return;
+        }
+
+        csEnum.Attributes.Add(new CSharpFreeAttribute("Flags"));
+                
+        var structName = csEnum.Name.Replace("FlagBits", "Flags", StringComparison.Ordinal);
+        if (_structAsEnumFlags.TryGetValue(structName, out var csStruct))
+        {
+            // Add implicit operators between XXXFlagBits and Struct XXXFlags
+            csStruct.Members.Add(new CSharpMethod(string.Empty)
+            {
+                Kind = CSharpMethodKind.Operator,
+                ReturnType = csEnum,
+                Modifiers = CSharpModifiers.Static | CSharpModifiers.Implicit,
+                Parameters =
+                {
+                    new CSharpParameter("from") {ParameterType = csStruct},
+                },
+                BodyInline = ((writer, _) =>
+                {
+                    writer.Write("(");
+                    csEnum.DumpReferenceTo(writer);
+                    writer.Write(")(uint)from.Value");
+                }),
+                Visibility = CSharpVisibility.Public
+            });
+            csStruct.Members.Add(new CSharpMethod(string.Empty)
+            {
+                Kind = CSharpMethodKind.Operator,
+                ReturnType = csStruct,
+                Modifiers = CSharpModifiers.Static | CSharpModifiers.Implicit,
+                Parameters =
+                {
+                    new CSharpParameter("from") {ParameterType = csEnum},
+                },
+                BodyInline = (writer, element) =>
+                {
+                    writer.Write("new ");
+                    csStruct.DumpReferenceTo(writer);
+                    writer.Write("((uint)from)");
+                },
+                Visibility = CSharpVisibility.Public
+            });
+        }
+        else
+        {
+            Console.Error.WriteLine($"Cannot find struct {structName} for enum {csEnum.Name}");
+        }
+    }
+
+    [GeneratedRegex($"{CommonVkExt}")]
+    private static partial Regex RegexCommandExt();
+
+    private void ProcessVulkanFunction(CSharpMethod csFunction)
+    {
+        // Apply doc to the function
+        ApplyDocumentation(csFunction);
+
+        if (!_structFunctionPointers.TryGetValue(csFunction.Name, out var pfn))
+        {
+            Console.WriteLine($"Warning, cannot find PFN for function {csFunction.Name}");
+            return;
+        }
+
+        var cppFunction = (CppFunction)csFunction.CppElement!;
+
+        pfn.BaseTypes.Add(new CSharpFreeType("IvkFunctionPointer"));
+
+        var csProperty = new CSharpProperty(csFunction.Name + "_")
+        {
+            ReturnType = new CSharpGenericTypeReference($"vkFunctionPointerPrototype", [pfn]),
+            GetBodyInlined = $"new(\"{csFunction.Name}\"u8)",
+            Visibility = CSharpVisibility.Public,
+            Modifiers = CSharpModifiers.Static,
+        };
+        var parent = (ICSharpContainer)csFunction.Parent!;
+        parent.Members.Insert(parent.Members.IndexOf(csFunction) + 1, csProperty);
+
+        // Extension functions are not part of the core API, so we should remove LibraryImport for them
+        var isExtensionFunction = RegexCommandExt().IsMatch(csFunction.Name);
+        if (isExtensionFunction)
+        {
+            parent.Members.Remove(csFunction);
+
+            // Record the extension function to still expose it in the supported API list of functions
+            _extensionFunctions.Add(cppFunction);
+        }
+
+        // Add an invoke method to the function pointer to allow calling the function pointers with proper arguments names and ref/in types
+        var csMethod = new CSharpMethod("Invoke")
+        {
+            Comment = csFunction.Comment,
+            ReturnType = csFunction.ReturnType,
+            Visibility = CSharpVisibility.Public,
+            Body = (writer, _) =>
+            {
+                var isReturnVoid = csFunction.ReturnType is CSharpPrimitiveType primitiveType && primitiveType.Kind == CSharpPrimitiveKind.Void;
+
+                foreach (var csParameter in csFunction.Parameters)
+                {
+                    if (csParameter.ParameterType is CSharpRefType refType)
+                    {
+                        writer.Write("fixed (");
+                        refType.ElementType.DumpReferenceTo(writer);
+                        writer.WriteLine($"* __{csParameter.Name} = &{csParameter.Name})");
+                    }
+                }
+
+                if (!isReturnVoid)
+                {
+                    writer.Write("return ");
+                }
+                writer.Write("Value(");
+                for (var i = 0; i < csFunction.Parameters.Count; i++)
+                {
+                    var csParameter = csFunction.Parameters[i];
+                    if (i > 0)
+                    {
+                        writer.Write(", ");
+                    }
+                    writer.Write(csParameter.ParameterType is CSharpRefType ? $"__{csParameter.Name}" : csParameter.Name);
+                }
+
+                writer.WriteLine(");");
+            }
+        };
+        var csPointerProperty = new CSharpProperty("Pointer")
+        {
+            ReturnType = CSharpPrimitiveType.IntPtr(),
+            GetBodyInlined = "(nint)Value",
+            Visibility = CSharpVisibility.Public,
+        };
+
+        var csIsNullProperty = new CSharpProperty("IsNull")
+        {
+            ReturnType = CSharpPrimitiveType.Bool(),
+            GetBodyInlined = "(nint)Value == 0",
+            Visibility = CSharpVisibility.Public,
+        };
+
+        pfn.Members.Add(csMethod);
+        pfn.Members.Add(csPointerProperty);
+        pfn.Members.Add(csIsNullProperty);
+
+        // Replicate parameters
+        foreach (var csParameter in csFunction.Parameters)
+        {
+            csMethod.Parameters.Add(csParameter);
+        }
+
+
+        if (_functionRegistry.TryGetValue(cppFunction.Name, out var command))
+        {
+            if (command.Parameters.Count != cppFunction.Parameters.Count)
+            {
+                Console.WriteLine($"Warning: Function {cppFunction.Name} has different number of parameters {cppFunction.Parameters.Count} than in the registry {command.Parameters.Count}");
+            }
+            else
+            {
+                var lengthParameterCount = command.Parameters.Count(x => x.Kind == VulkanCommandParameterKind.Length);
+                var arrayParameterCount = command.Parameters.Count(x => x.Kind == VulkanCommandParameterKind.Array);
+                var lengthParameterIndex = command.Parameters.FindIndex(x => x.Kind == VulkanCommandParameterKind.Length);
+                var arrayParameterIndex = command.Parameters.FindIndex(x => x.Kind == VulkanCommandParameterKind.Array);
+                if (lengthParameterCount == 1 && arrayParameterCount == 1 && IsValidPointerTypeForSpan(cppFunction.Parameters[arrayParameterIndex].Type))
+                {
+                    // For now, handle only 1 array parameter
+
+                    var cppLengthParameter = cppFunction.Parameters[lengthParameterIndex];
+                    var csLengthParameter = csFunction.Parameters[lengthParameterIndex];
+                    bool isLengthByRef = cppLengthParameter.Type is CppPointerType;
+
+                    var newMethod = csFunction.Clone();
+                    if (isExtensionFunction)
+                    {
+                        newMethod.Name = "Invoke";
+                        newMethod.Modifiers &= ~CSharpModifiers.Static;
+                    }
+
+                    newMethod.Parent = null;
+                    // Remove the partial attribute as we are giving it a body
+                    newMethod.Modifiers &= ~CSharpModifiers.Partial;
+                    // We remove all attributes as we are calling to call the interop method from the body
+                    newMethod.Attributes.Clear();
+
+                    newMethod.Parameters.RemoveAt(lengthParameterIndex);
+                    var newArrayParameterIndex = lengthParameterIndex < arrayParameterIndex ? arrayParameterIndex - 1 : arrayParameterIndex;
+
+                    var arrayParameter = newMethod.Parameters[newArrayParameterIndex];
+                    var arrayParameterPointerType = (CSharpPointerType)arrayParameter.ParameterType!;
+                    var arrayElementType = arrayParameterPointerType.ElementType;
+
+                    var isConst = arrayParameterPointerType.CppElement is CppPointerType cppPointerType && cppPointerType.ElementType is CppQualifiedType cppQualifiedType && cppQualifiedType.Qualifier == CppTypeQualifier.Const;
+
+                    // Replace the array parameter with the appropriate span
+                    var spanParameterType = isConst ? new CSharpGenericTypeReference("ReadOnlySpan", [arrayElementType]) : new CSharpGenericTypeReference("Span", [arrayElementType]);
+
+                    newMethod.Parameters[newArrayParameterIndex].ParameterType = spanParameterType;
+
+                    newMethod.Body = (writer, _) =>
+                    {
+                        string lengthParameterName = $"{arrayParameter.Name}.Length";
+                        if (isLengthByRef)
+                        {
+                            var lengthParameterType = ((CSharpRefType)csLengthParameter.ParameterType!).ElementType;
+                            lengthParameterType.DumpReferenceTo(writer);
+                            lengthParameterName = $"__{cppLengthParameter.Name}";
+                            writer.Write($" {lengthParameterName} = checked((");
+                            lengthParameterType.DumpReferenceTo(writer);
+                            writer.WriteLine($"){arrayParameter.Name}.Length);");
+                        }
+
+                        writer.Write("fixed (");
+                        arrayElementType.DumpReferenceTo(writer);
+                        writer.WriteLine($"* __{arrayParameter.Name} = {arrayParameter.Name})");
+                        if (newMethod.ReturnType is not CSharpPrimitiveType primitiveType || primitiveType.Kind != CSharpPrimitiveKind.Void)
+                        {
+                            writer.Write("return ");
+                        }
+
+                        writer.Write(isExtensionFunction ? "this.Invoke" : csFunction.Name);
+                        writer.Write("(");
+                        for (var i = 0; i < csFunction.Parameters.Count; i++)
+                        {
+                            if (i > 0)
+                            {
+                                writer.Write(", ");
+                            }
+
+                            if (i == lengthParameterIndex)
+                            {
+                                if (isLengthByRef)
+                                {
+                                    writer.Write($"ref {lengthParameterName}");
+                                }
+                                else
+                                {
+                                    // Force casting
+                                    writer.Write("checked((");
+                                    csLengthParameter.ParameterType!.DumpReferenceTo(writer);
+                                    writer.Write($"){lengthParameterName})");
+                                }
+                            }
+                            else if (i == arrayParameterIndex)
+                            {
+                                writer.Write($"__{arrayParameter.Name}");
+                            }
+                            else
+                            {
+                                var csParameter = csFunction.Parameters[i];
+                                if (csParameter.ParameterType is CSharpRefType refType && (refType.Kind != CSharpRefKind.None && refType.Kind != CSharpRefKind.In))
+                                {
+                                    refType.DumpTo(writer);
+                                    writer.Write(" ");
+                                }
+
+                                writer.Write(csParameter.Name);
+                            }
+                        }
+
+                        writer.WriteLine(");");
+                    };
+
+                    if (isExtensionFunction)
+                    {
+                        // If it is an extension function, add it to the extension function pointer
+                        pfn.Members.Add(newMethod);
+                    }
+                    else
+                    {
+                        // Insert the overload after the original function
+                        parent.Members.Insert(parent.Members.IndexOf(csFunction) + 1, newMethod);
+                    }
+                }
+            }
+        }
+
+
     }
 
     private void ApplyDocumentation(CSharpElement element)
@@ -435,7 +576,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             return;
         }
         var parameterIndex = function.Parameters.IndexOf(cppParameter);
-        if (!_registry.TryGetValue(function.Name, out var command))
+        if (!_functionRegistry.TryGetValue(function.Name, out var command))
         {
             Console.WriteLine($"Warning: Function {function.Name} not found in the registry");
             return;
@@ -443,7 +584,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
         if (command.Alias != null)
         {
-            command = _registry[command.Alias];
+            command = _functionRegistry[command.Alias];
         }
         
         if (command.Parameters.Count != function.Parameters.Count)
@@ -502,7 +643,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             if (alias != null)
             {
                 name = xmlCommand.Attribute("name")!.Value;
-                _registry.Add(name, new VulkanCommand(name) { Alias = alias });
+                _functionRegistry.Add(name, new VulkanCommand(name) { Alias = alias });
                 continue;
             }
 
@@ -517,8 +658,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             var parameters = xmlCommand.Elements("param").ToList();
 
             var vulcanCommand = new VulkanCommand(name);
-            foreach (var parameter in parameters)
+            for (var parameterIndex = 0; parameterIndex < parameters.Count; parameterIndex++)
             {
+                var parameter = parameters[parameterIndex];
                 var paramName = parameter.Element("name")!.Value;
                 var optionalAttr = parameter.Attribute("optional");
                 var paramOptional = optionalAttr?.Value switch
@@ -528,7 +670,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                     _ => VulkanCommandOptional.None,
                 };
                 var lenAttr = parameter.Attribute("len");
-                int parameterIndex = -1;
+                int lengthParameterIndex = -1;
                 var parameterKind = VulkanCommandParameterKind.Standard;
                 if (lenAttr != null)
                 {
@@ -536,25 +678,28 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                     if (!lenValue.StartsWith("null-"))
                     {
                         parameterKind = VulkanCommandParameterKind.Array; // we still record this to record that a parameter is an array
-                        parameterIndex = parameters.FindIndex(element => string.Equals(element.Descendants("name").First().Value, lenValue, StringComparison.Ordinal));
-                        if (parameterIndex < 0)
+                        lengthParameterIndex = parameters.FindIndex(element => string.Equals(element.Descendants("name").First().Value, lenValue, StringComparison.Ordinal));
+                        if (lengthParameterIndex < 0)
                         {
                             Console.WriteLine($"Warning, special length parameter `{lenValue}` not handled for {name}");
                         }
                         else
                         {
-                            vulcanCommand.Parameters[parameterIndex].Kind = VulkanCommandParameterKind.Length;
+                            var lengthParameter = vulcanCommand.Parameters[lengthParameterIndex];
+                            lengthParameter.Kind = VulkanCommandParameterKind.Length;
+                            lengthParameter.LinkedArrayParameters ??= [];
+                            lengthParameter.LinkedArrayParameters.Add(parameterIndex);
                         }
                     }
                 }
 
-                vulcanCommand.Parameters.Add(new VulkanCommandParameter(paramName, paramOptional, parameterIndex)
+                vulcanCommand.Parameters.Add(new VulkanCommandParameter(paramName, paramOptional, lengthParameterIndex)
                 {
                     Kind = parameterKind
                 });
             }
 
-            _registry.Add(name, vulcanCommand);
+            _functionRegistry.Add(name, vulcanCommand);
 
             //Console.WriteLine($"Function {name} {parameters.Count}");
             commandCount++;
@@ -798,7 +943,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         // Struct => sname:VkDeviceMemory
         // Function => fname:vkCmdClearAttachments
         // Struct field => slink:VkImageSubresourceRange::pname:aspectMask
-        // And simiar with elink, slink, flink
+        // And similarly for elink, slink, flink
 
         // We substitute the special markers <<id,content>> with just the content
         text = ParseSpecialTextMarkers().Replace(text, m =>
@@ -931,6 +1076,26 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         return group;
     }
 
+    private bool IsValidPointerTypeForSpan(CppType type)
+    {
+        if (type is CppPointerType pointerType)
+        {
+            if (pointerType.ElementType is CppPrimitiveType primitiveType && primitiveType.Kind == CppPrimitiveKind.Void)
+            {
+                return false;
+            }
+            else if (pointerType.ElementType is CppQualifiedType qualifiedType && qualifiedType.ElementType is CppPrimitiveType anotherPrimitiveType && anotherPrimitiveType.Kind == CppPrimitiveKind.Void)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+
     private class VulkanDocDefinitions() : Dictionary<string, VulkanDocDefinition>(StringComparer.Ordinal);
 
     private record VulkanDocDefinition(string Name)
@@ -971,14 +1136,22 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
     private record VulkanCommand(string Name)
     {
-        public string? Alias { get; set; }
+        public string? Alias { get; init; }
 
-        public List<VulkanCommandParameter> Parameters { get; } = new();
+        public List<VulkanCommandParameter> Parameters { get; } = [];
     }
 
     private record VulkanCommandParameter(string Name, VulkanCommandOptional Optional, int LengthParameterIndex)
     {
+        /// <summary>
+        /// Gets or sets the kind of this parameter
+        /// </summary>
         public VulkanCommandParameterKind Kind { get; set; }
+
+        /// <summary>
+        /// If <see cref="M:Kind"/> is <see cref="VulkanCommandParameterKind.Length"/>, this is the list of linked array parameters
+        /// </summary>
+        public List<int>? LinkedArrayParameters { get; set; }
     }
 
     private enum VulkanCommandParameterKind

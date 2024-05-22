@@ -1040,6 +1040,20 @@ namespace XenoAtom.Interop
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Query supported presentation modes
+            /// </summary>
+            /// <param name="physicalDevice">The physical device that will be associated with the swapchain to be created, as described for <see cref="M:vkCreateSwapchainKHR"/>.</param>
+            /// <param name="pSurfaceInfo">A pointer to a <see cref="T:VkPhysicalDeviceSurfaceInfo2KHR"/> structure describing the surface and other fixed parameters that would be consumed by <see cref="M:vkCreateSwapchainKHR"/>.</param>
+            /// <param name="pPresentModeCount">A pointer to an integer related to the number of presentation modes available or queried, as described below.</param>
+            /// <param name="pPresentModes">Either `NULL` or a pointer to an array of <see cref="T:VkPresentModeKHR"/> values, indicating the supported presentation modes.</param>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, Span<vulkan.VkPresentModeKHR> pPresentModes)
+            {
+                uint __pPresentModeCount = checked((uint)pPresentModes.Length);
+                fixed (vulkan.VkPresentModeKHR* __pPresentModes = pPresentModes)
+                return this.Invoke(physicalDevice, pSurfaceInfo, ref __pPresentModeCount, __pPresentModes);
+            }
         }
         
         public readonly partial struct PFN_vkAcquireFullScreenExclusiveModeEXT : IEquatable<PFN_vkAcquireFullScreenExclusiveModeEXT>, IvkFunctionPointer
