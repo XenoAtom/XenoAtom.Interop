@@ -8,9 +8,10 @@ using System.Text;
 namespace XenoAtom.Interop;
 
 /// <summary>
-/// Represents a read-only span of UTF-8 encoded text.
+/// Represents a null terminated read-only span of UTF-8 encoded text.
 /// </summary>
 /// <param name="span">The span of UTF-8 bytes.</param>
+/// <remarks>This class should be used only with UTF-8 string literals.</remarks>
 public readonly ref struct ReadOnlySpanUtf8(ReadOnlySpan<byte> span)
 {
     private readonly ReadOnlySpan<byte> _span = span;
