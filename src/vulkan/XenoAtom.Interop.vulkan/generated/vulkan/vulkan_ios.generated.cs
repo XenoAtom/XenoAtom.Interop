@@ -93,14 +93,20 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance with which to associate the surface.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkIOSSurfaceCreateInfoMVK"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkIOSSurfaceCreateInfoMVK pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkIOSSurfaceCreateInfoMVK* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
-                fixed (vulkan.VkIOSSurfaceCreateInfoMVK* __pCreateInfo = &pCreateInfo)
-                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
-                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+                return Value(instance, pCreateInfo, pAllocator, pSurface);
             }
             
             public nint Pointer => (nint)Value;
@@ -113,11 +119,43 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="instance">The instance with which to associate the surface.</param>
         /// <param name="pCreateInfo">A pointer to a <see cref="T:VkIOSSurfaceCreateInfoMVK"/> structure containing parameters affecting the creation of the surface object.</param>
-        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
         /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateIOSSurfaceMVK")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateIOSSurfaceMVK(vulkan.VkInstance instance, in vulkan.VkIOSSurfaceCreateInfoMVK pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface);
+        public static partial vulkan.VkResult vkCreateIOSSurfaceMVK(vulkan.VkInstance instance, vulkan.VkIOSSurfaceCreateInfoMVK* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface);
+        
+        /// <summary>
+        /// Create a VkSurfaceKHR object for an iOS UIView
+        /// </summary>
+        /// <param name="instance">The instance with which to associate the surface.</param>
+        /// <param name="pCreateInfo">A pointer to a <see cref="T:VkIOSSurfaceCreateInfoMVK"/> structure containing parameters affecting the creation of the surface object.</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
+        /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkCreateIOSSurfaceMVK(vulkan.VkInstance instance, in vulkan.VkIOSSurfaceCreateInfoMVK pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
+        {
+            fixed (vulkan.VkIOSSurfaceCreateInfoMVK* __pCreateInfo_local = &pCreateInfo)
+            fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
+            return vkCreateIOSSurfaceMVK(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateIOSSurfaceMVK> vkCreateIOSSurfaceMVK_ => new("vkCreateIOSSurfaceMVK"u8);
     }

@@ -236,14 +236,20 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkScreenSurfaceCreateInfoQNX"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkScreenSurfaceCreateInfoQNX pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkScreenSurfaceCreateInfoQNX* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
-                fixed (vulkan.VkScreenSurfaceCreateInfoQNX* __pCreateInfo = &pCreateInfo)
-                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
-                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+                return Value(instance, pCreateInfo, pAllocator, pSurface);
             }
             
             public nint Pointer => (nint)Value;
@@ -317,10 +323,18 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
             /// <param name="buffer">The QNX Screen buffer which will be imported.</param>
             /// <param name="pProperties">A pointer to a <see cref="T:VkScreenBufferPropertiesQNX"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan._screen_buffer buffer, out vulkan.VkScreenBufferPropertiesQNX pProperties)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan._screen_buffer buffer, vulkan.VkScreenBufferPropertiesQNX* pProperties)
             {
-                fixed (vulkan.VkScreenBufferPropertiesQNX* __pProperties = &pProperties)
-                return Value(device, buffer, __pProperties);
+                return Value(device, buffer, pProperties);
             }
             
             public nint Pointer => (nint)Value;
@@ -333,11 +347,43 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="instance">The instance to associate the surface with.</param>
         /// <param name="pCreateInfo">A pointer to a <see cref="T:VkScreenSurfaceCreateInfoQNX"/> structure containing parameters affecting the creation of the surface object.</param>
-        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
         /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateScreenSurfaceQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateScreenSurfaceQNX(vulkan.VkInstance instance, in vulkan.VkScreenSurfaceCreateInfoQNX pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface);
+        public static partial vulkan.VkResult vkCreateScreenSurfaceQNX(vulkan.VkInstance instance, vulkan.VkScreenSurfaceCreateInfoQNX* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface);
+        
+        /// <summary>
+        /// Create a <see cref="T:VkSurfaceKHR"/> object for a QNX Screen window
+        /// </summary>
+        /// <param name="instance">The instance to associate the surface with.</param>
+        /// <param name="pCreateInfo">A pointer to a <see cref="T:VkScreenSurfaceCreateInfoQNX"/> structure containing parameters affecting the creation of the surface object.</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
+        /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkCreateScreenSurfaceQNX(vulkan.VkInstance instance, in vulkan.VkScreenSurfaceCreateInfoQNX pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
+        {
+            fixed (vulkan.VkScreenSurfaceCreateInfoQNX* __pCreateInfo_local = &pCreateInfo)
+            fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
+            return vkCreateScreenSurfaceQNX(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateScreenSurfaceQNX> vkCreateScreenSurfaceQNX_ => new("vkCreateScreenSurfaceQNX"u8);
         
@@ -359,9 +405,39 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
         /// <param name="buffer">The QNX Screen buffer which will be imported.</param>
         /// <param name="pProperties">A pointer to a <see cref="T:VkScreenBufferPropertiesQNX"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetScreenBufferPropertiesQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetScreenBufferPropertiesQNX(vulkan.VkDevice device, vulkan._screen_buffer buffer, out vulkan.VkScreenBufferPropertiesQNX pProperties);
+        public static partial vulkan.VkResult vkGetScreenBufferPropertiesQNX(vulkan.VkDevice device, vulkan._screen_buffer buffer, vulkan.VkScreenBufferPropertiesQNX* pProperties);
+        
+        /// <summary>
+        /// Get Properties of External Memory QNX Screen Buffers
+        /// </summary>
+        /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
+        /// <param name="buffer">The QNX Screen buffer which will be imported.</param>
+        /// <param name="pProperties">A pointer to a <see cref="T:VkScreenBufferPropertiesQNX"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkGetScreenBufferPropertiesQNX(vulkan.VkDevice device, vulkan._screen_buffer buffer, out vulkan.VkScreenBufferPropertiesQNX pProperties)
+        {
+            fixed (vulkan.VkScreenBufferPropertiesQNX* __pProperties_local = &pProperties)
+            return vkGetScreenBufferPropertiesQNX(device, buffer, __pProperties_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetScreenBufferPropertiesQNX> vkGetScreenBufferPropertiesQNX_ => new("vkGetScreenBufferPropertiesQNX"u8);
     }

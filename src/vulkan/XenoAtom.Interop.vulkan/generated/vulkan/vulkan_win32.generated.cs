@@ -673,19 +673,48 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkWin32SurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWin32SurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkWin32SurfaceCreateInfoKHR* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
-                fixed (vulkan.VkWin32SurfaceCreateInfoKHR* __pCreateInfo = &pCreateInfo)
-                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
-                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+                return Value(instance, pCreateInfo, pAllocator, pSurface);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Create a VkSurfaceKHR object for an Win32 native window
+            /// </summary>
+            /// <param name="instance">The instance to associate the surface with.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkWin32SurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWin32SurfaceCreateInfoKHR pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkWin32SurfaceCreateInfoKHR* __pCreateInfo_local = &pCreateInfo)
+                fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
+                return this.Invoke(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR : IEquatable<PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR>, IvkFunctionPointer
@@ -753,16 +782,45 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that created the device memory being exported.</param>
             /// <param name="pGetWin32HandleInfo">A pointer to a <see cref="T:VkMemoryGetWin32HandleInfoKHR"/> structure containing parameters of the export operation.</param>
             /// <param name="pHandle">Will return the Windows handle representing the payload of the device memory object.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkMemoryGetWin32HandleInfoKHR* pGetWin32HandleInfo, nint* pHandle)
             {
-                fixed (vulkan.VkMemoryGetWin32HandleInfoKHR* __pGetWin32HandleInfo = &pGetWin32HandleInfo)
-                fixed (nint* __pHandle = &pHandle)
-                return Value(device, __pGetWin32HandleInfo, __pHandle);
+                return Value(device, pGetWin32HandleInfo, pHandle);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Get a Windows HANDLE for a memory object
+            /// </summary>
+            /// <param name="device">The logical device that created the device memory being exported.</param>
+            /// <param name="pGetWin32HandleInfo">A pointer to a <see cref="T:VkMemoryGetWin32HandleInfoKHR"/> structure containing parameters of the export operation.</param>
+            /// <param name="pHandle">Will return the Windows handle representing the payload of the device memory object.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
+            {
+                fixed (vulkan.VkMemoryGetWin32HandleInfoKHR* __pGetWin32HandleInfo_local = &pGetWin32HandleInfo)
+                fixed (nint* __pHandle_local = &pHandle)
+                return this.Invoke(device, __pGetWin32HandleInfo_local, __pHandle_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetMemoryWin32HandlePropertiesKHR : IEquatable<PFN_vkGetMemoryWin32HandlePropertiesKHR>, IvkFunctionPointer
@@ -794,15 +852,45 @@ namespace XenoAtom.Interop
             /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of the handle <paramref name="handle"/>.</param>
             /// <param name="handle">The handle which will be imported.</param>
             /// <param name="pMemoryWin32HandleProperties">A pointer to a <see cref="T:VkMemoryWin32HandlePropertiesKHR"/> structure in which properties of <paramref name="handle"/> are returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, out vulkan.VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, vulkan.VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties)
             {
-                fixed (vulkan.VkMemoryWin32HandlePropertiesKHR* __pMemoryWin32HandleProperties = &pMemoryWin32HandleProperties)
-                return Value(device, handleType, handle, __pMemoryWin32HandleProperties);
+                return Value(device, handleType, handle, pMemoryWin32HandleProperties);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Get Properties of External Memory Win32 Handles
+            /// </summary>
+            /// <param name="device">The logical device that will be importing <paramref name="handle"/>.</param>
+            /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of the handle <paramref name="handle"/>.</param>
+            /// <param name="handle">The handle which will be imported.</param>
+            /// <param name="pMemoryWin32HandleProperties">A pointer to a <see cref="T:VkMemoryWin32HandlePropertiesKHR"/> structure in which properties of <paramref name="handle"/> are returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, out vulkan.VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties)
+            {
+                fixed (vulkan.VkMemoryWin32HandlePropertiesKHR* __pMemoryWin32HandleProperties_local = &pMemoryWin32HandleProperties)
+                return this.Invoke(device, handleType, handle, __pMemoryWin32HandleProperties_local);
+            }
         }
         
         public readonly partial struct PFN_vkImportSemaphoreWin32HandleKHR : IEquatable<PFN_vkImportSemaphoreWin32HandleKHR>, IvkFunctionPointer
@@ -832,15 +920,43 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The logical device that created the semaphore.</param>
             /// <param name="pImportSemaphoreWin32HandleInfo">A pointer to a <see cref="T:VkImportSemaphoreWin32HandleInfoKHR"/> structure specifying the semaphore and import parameters.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportSemaphoreWin32HandleInfoKHR pImportSemaphoreWin32HandleInfo)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkImportSemaphoreWin32HandleInfoKHR* pImportSemaphoreWin32HandleInfo)
             {
-                fixed (vulkan.VkImportSemaphoreWin32HandleInfoKHR* __pImportSemaphoreWin32HandleInfo = &pImportSemaphoreWin32HandleInfo)
-                return Value(device, __pImportSemaphoreWin32HandleInfo);
+                return Value(device, pImportSemaphoreWin32HandleInfo);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Import a semaphore from a Windows HANDLE
+            /// </summary>
+            /// <param name="device">The logical device that created the semaphore.</param>
+            /// <param name="pImportSemaphoreWin32HandleInfo">A pointer to a <see cref="T:VkImportSemaphoreWin32HandleInfoKHR"/> structure specifying the semaphore and import parameters.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportSemaphoreWin32HandleInfoKHR pImportSemaphoreWin32HandleInfo)
+            {
+                fixed (vulkan.VkImportSemaphoreWin32HandleInfoKHR* __pImportSemaphoreWin32HandleInfo_local = &pImportSemaphoreWin32HandleInfo)
+                return this.Invoke(device, __pImportSemaphoreWin32HandleInfo_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetSemaphoreWin32HandleKHR : IEquatable<PFN_vkGetSemaphoreWin32HandleKHR>, IvkFunctionPointer
@@ -871,16 +987,45 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that created the semaphore being exported.</param>
             /// <param name="pGetWin32HandleInfo">A pointer to a <see cref="T:VkSemaphoreGetWin32HandleInfoKHR"/> structure containing parameters of the export operation.</param>
             /// <param name="pHandle">Will return the Windows handle representing the semaphore state.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkSemaphoreGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSemaphoreGetWin32HandleInfoKHR* pGetWin32HandleInfo, nint* pHandle)
             {
-                fixed (vulkan.VkSemaphoreGetWin32HandleInfoKHR* __pGetWin32HandleInfo = &pGetWin32HandleInfo)
-                fixed (nint* __pHandle = &pHandle)
-                return Value(device, __pGetWin32HandleInfo, __pHandle);
+                return Value(device, pGetWin32HandleInfo, pHandle);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Get a Windows HANDLE for a semaphore
+            /// </summary>
+            /// <param name="device">The logical device that created the semaphore being exported.</param>
+            /// <param name="pGetWin32HandleInfo">A pointer to a <see cref="T:VkSemaphoreGetWin32HandleInfoKHR"/> structure containing parameters of the export operation.</param>
+            /// <param name="pHandle">Will return the Windows handle representing the semaphore state.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkSemaphoreGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
+            {
+                fixed (vulkan.VkSemaphoreGetWin32HandleInfoKHR* __pGetWin32HandleInfo_local = &pGetWin32HandleInfo)
+                fixed (nint* __pHandle_local = &pHandle)
+                return this.Invoke(device, __pGetWin32HandleInfo_local, __pHandle_local);
+            }
         }
         
         public readonly partial struct PFN_vkImportFenceWin32HandleKHR : IEquatable<PFN_vkImportFenceWin32HandleKHR>, IvkFunctionPointer
@@ -910,15 +1055,43 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The logical device that created the fence.</param>
             /// <param name="pImportFenceWin32HandleInfo">A pointer to a <see cref="T:VkImportFenceWin32HandleInfoKHR"/> structure specifying the fence and import parameters.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportFenceWin32HandleInfoKHR pImportFenceWin32HandleInfo)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkImportFenceWin32HandleInfoKHR* pImportFenceWin32HandleInfo)
             {
-                fixed (vulkan.VkImportFenceWin32HandleInfoKHR* __pImportFenceWin32HandleInfo = &pImportFenceWin32HandleInfo)
-                return Value(device, __pImportFenceWin32HandleInfo);
+                return Value(device, pImportFenceWin32HandleInfo);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Import a fence from a Windows HANDLE
+            /// </summary>
+            /// <param name="device">The logical device that created the fence.</param>
+            /// <param name="pImportFenceWin32HandleInfo">A pointer to a <see cref="T:VkImportFenceWin32HandleInfoKHR"/> structure specifying the fence and import parameters.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportFenceWin32HandleInfoKHR pImportFenceWin32HandleInfo)
+            {
+                fixed (vulkan.VkImportFenceWin32HandleInfoKHR* __pImportFenceWin32HandleInfo_local = &pImportFenceWin32HandleInfo)
+                return this.Invoke(device, __pImportFenceWin32HandleInfo_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetFenceWin32HandleKHR : IEquatable<PFN_vkGetFenceWin32HandleKHR>, IvkFunctionPointer
@@ -949,16 +1122,45 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that created the fence being exported.</param>
             /// <param name="pGetWin32HandleInfo">A pointer to a <see cref="T:VkFenceGetWin32HandleInfoKHR"/> structure containing parameters of the export operation.</param>
             /// <param name="pHandle">Will return the Windows handle representing the fence state.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkFenceGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkFenceGetWin32HandleInfoKHR* pGetWin32HandleInfo, nint* pHandle)
             {
-                fixed (vulkan.VkFenceGetWin32HandleInfoKHR* __pGetWin32HandleInfo = &pGetWin32HandleInfo)
-                fixed (nint* __pHandle = &pHandle)
-                return Value(device, __pGetWin32HandleInfo, __pHandle);
+                return Value(device, pGetWin32HandleInfo, pHandle);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Get a Windows HANDLE for a fence
+            /// </summary>
+            /// <param name="device">The logical device that created the fence being exported.</param>
+            /// <param name="pGetWin32HandleInfo">A pointer to a <see cref="T:VkFenceGetWin32HandleInfoKHR"/> structure containing parameters of the export operation.</param>
+            /// <param name="pHandle">Will return the Windows handle representing the fence state.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkFenceGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
+            {
+                fixed (vulkan.VkFenceGetWin32HandleInfoKHR* __pGetWin32HandleInfo_local = &pGetWin32HandleInfo)
+                fixed (nint* __pHandle_local = &pHandle)
+                return this.Invoke(device, __pGetWin32HandleInfo_local, __pHandle_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetMemoryWin32HandleNV : IEquatable<PFN_vkGetMemoryWin32HandleNV>, IvkFunctionPointer
@@ -990,15 +1192,45 @@ namespace XenoAtom.Interop
             /// <param name="memory">The <see cref="T:VkDeviceMemory"/> object.</param>
             /// <param name="handleType">A bitmask of <see cref="T:VkExternalMemoryHandleTypeFlagBitsNV"/> containing a single bit specifying the type of handle requested.</param>
             /// <param name="handle">A pointer to a Windows <c>HANDLE</c> in which the handle is returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkDeviceMemory memory, vulkan.VkExternalMemoryHandleTypeFlagsNV handleType, out nint pHandle)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkDeviceMemory memory, vulkan.VkExternalMemoryHandleTypeFlagsNV handleType, nint* pHandle)
             {
-                fixed (nint* __pHandle = &pHandle)
-                return Value(device, memory, handleType, __pHandle);
+                return Value(device, memory, handleType, pHandle);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Retrieve Win32 handle to a device memory object
+            /// </summary>
+            /// <param name="device">The logical device that owns the memory.</param>
+            /// <param name="memory">The <see cref="T:VkDeviceMemory"/> object.</param>
+            /// <param name="handleType">A bitmask of <see cref="T:VkExternalMemoryHandleTypeFlagBitsNV"/> containing a single bit specifying the type of handle requested.</param>
+            /// <param name="handle">A pointer to a Windows <c>HANDLE</c> in which the handle is returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkDeviceMemory memory, vulkan.VkExternalMemoryHandleTypeFlagsNV handleType, out nint pHandle)
+            {
+                fixed (nint* __pHandle_local = &pHandle)
+                return this.Invoke(device, memory, handleType, __pHandle_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT : IEquatable<PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>, IvkFunctionPointer
@@ -1029,12 +1261,19 @@ namespace XenoAtom.Interop
             /// <param name="physicalDevice">The physical device that will be associated with the swapchain to be created, as described for <see cref="M:vkCreateSwapchainKHR"/>.</param>
             /// <param name="pSurfaceInfo">A pointer to a <see cref="T:VkPhysicalDeviceSurfaceInfo2KHR"/> structure describing the surface and other fixed parameters that would be consumed by <see cref="M:vkCreateSwapchainKHR"/>.</param>
             /// <param name="pPresentModeCount">A pointer to an integer related to the number of presentation modes available or queried, as described below.</param>
-            /// <param name="pPresentModes">Either `NULL` or a pointer to an array of <see cref="T:VkPresentModeKHR"/> values, indicating the supported presentation modes.</param>
-            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, ref uint pPresentModeCount, vulkan.VkPresentModeKHR* pPresentModes)
+            /// <param name="pPresentModes">Either `NULL` or a pointer to an array of <see cref="T:VkPresentModeKHR"/> values, indicating the supported presentation modes. This parameter is optional.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_INCOMPLETE</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, uint* pPresentModeCount, vulkan.VkPresentModeKHR* pPresentModes)
             {
-                fixed (vulkan.VkPhysicalDeviceSurfaceInfo2KHR* __pSurfaceInfo = &pSurfaceInfo)
-                fixed (uint* __pPresentModeCount = &pPresentModeCount)
-                return Value(physicalDevice, __pSurfaceInfo, __pPresentModeCount, pPresentModes);
+                return Value(physicalDevice, pSurfaceInfo, pPresentModeCount, pPresentModes);
             }
             
             public nint Pointer => (nint)Value;
@@ -1047,12 +1286,46 @@ namespace XenoAtom.Interop
             /// <param name="physicalDevice">The physical device that will be associated with the swapchain to be created, as described for <see cref="M:vkCreateSwapchainKHR"/>.</param>
             /// <param name="pSurfaceInfo">A pointer to a <see cref="T:VkPhysicalDeviceSurfaceInfo2KHR"/> structure describing the surface and other fixed parameters that would be consumed by <see cref="M:vkCreateSwapchainKHR"/>.</param>
             /// <param name="pPresentModeCount">A pointer to an integer related to the number of presentation modes available or queried, as described below.</param>
-            /// <param name="pPresentModes">Either `NULL` or a pointer to an array of <see cref="T:VkPresentModeKHR"/> values, indicating the supported presentation modes.</param>
+            /// <param name="pPresentModes">Either `NULL` or a pointer to an array of <see cref="T:VkPresentModeKHR"/> values, indicating the supported presentation modes. This parameter is optional.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_INCOMPLETE</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, Span<vulkan.VkPresentModeKHR> pPresentModes)
             {
-                uint __pPresentModeCount = checked((uint)pPresentModes.Length);
-                fixed (vulkan.VkPresentModeKHR* __pPresentModes = pPresentModes)
-                return this.Invoke(physicalDevice, pSurfaceInfo, ref __pPresentModeCount, __pPresentModes);
+                uint __pPresentModeCount_local = checked((uint)pPresentModes.Length);
+                fixed (vulkan.VkPhysicalDeviceSurfaceInfo2KHR* __pSurfaceInfo_local = &pSurfaceInfo)
+                fixed (vulkan.VkPresentModeKHR* __pPresentModes_local = pPresentModes)
+                return this.Invoke(physicalDevice, __pSurfaceInfo_local, &__pPresentModeCount_local, __pPresentModes_local);
+            }
+            
+            /// <summary>
+            /// Query supported presentation modes
+            /// </summary>
+            /// <param name="physicalDevice">The physical device that will be associated with the swapchain to be created, as described for <see cref="M:vkCreateSwapchainKHR"/>.</param>
+            /// <param name="pSurfaceInfo">A pointer to a <see cref="T:VkPhysicalDeviceSurfaceInfo2KHR"/> structure describing the surface and other fixed parameters that would be consumed by <see cref="M:vkCreateSwapchainKHR"/>.</param>
+            /// <param name="pPresentModeCount">A pointer to an integer related to the number of presentation modes available or queried, as described below.</param>
+            /// <param name="pPresentModes">Either `NULL` or a pointer to an array of <see cref="T:VkPresentModeKHR"/> values, indicating the supported presentation modes. This parameter is optional.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_INCOMPLETE</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, out uint pPresentModeCount)
+            {
+                pPresentModeCount = default;
+                fixed (vulkan.VkPhysicalDeviceSurfaceInfo2KHR* __pSurfaceInfo_local = &pSurfaceInfo)
+                fixed (uint* __pPresentModeCount_local = &pPresentModeCount)
+                return this.Invoke(physicalDevice, __pSurfaceInfo_local, __pPresentModeCount_local, default);
             }
         }
         
@@ -1083,6 +1356,15 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The device associated with <paramref name="swapchain"/>.</param>
             /// <param name="swapchain">The swapchain to acquire exclusive full-screen access for.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSwapchainKHR swapchain)
             {
                 return Value(device, swapchain);
@@ -1120,6 +1402,15 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The device associated with <paramref name="swapchain"/>.</param>
             /// <param name="swapchain">The swapchain to release exclusive full-screen access from.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSwapchainKHR swapchain)
             {
                 return Value(device, swapchain);
@@ -1158,16 +1449,44 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device.</param>
             /// <param name="pSurfaceInfo">A pointer to a <see cref="T:VkPhysicalDeviceSurfaceInfo2KHR"/> structure describing the surface and other fixed parameters that would be consumed by <see cref="M:vkCreateSwapchainKHR"/>.</param>
             /// <param name="pModes">A pointer to a tlink:VkDeviceGroupPresentModeFlagsKHR in which the supported device group present modes for the surface are returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, out vulkan.VkDeviceGroupPresentModeFlagsKHR pModes)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, vulkan.VkDeviceGroupPresentModeFlagsKHR* pModes)
             {
-                fixed (vulkan.VkPhysicalDeviceSurfaceInfo2KHR* __pSurfaceInfo = &pSurfaceInfo)
-                fixed (vulkan.VkDeviceGroupPresentModeFlagsKHR* __pModes = &pModes)
-                return Value(device, __pSurfaceInfo, __pModes);
+                return Value(device, pSurfaceInfo, pModes);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Query device group present capabilities for a surface
+            /// </summary>
+            /// <param name="device">The logical device.</param>
+            /// <param name="pSurfaceInfo">A pointer to a <see cref="T:VkPhysicalDeviceSurfaceInfo2KHR"/> structure describing the surface and other fixed parameters that would be consumed by <see cref="M:vkCreateSwapchainKHR"/>.</param>
+            /// <param name="pModes">A pointer to a tlink:VkDeviceGroupPresentModeFlagsKHR in which the supported device group present modes for the surface are returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, vulkan.VkDeviceGroupPresentModeFlagsKHR* pModes)
+            {
+                fixed (vulkan.VkPhysicalDeviceSurfaceInfo2KHR* __pSurfaceInfo_local = &pSurfaceInfo)
+                return this.Invoke(device, __pSurfaceInfo_local, pModes);
+            }
         }
         
         public readonly partial struct PFN_vkAcquireWinrtDisplayNV : IEquatable<PFN_vkAcquireWinrtDisplayNV>, IvkFunctionPointer
@@ -1197,6 +1516,15 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="physicalDevice">The physical device the display is on.</param>
             /// <param name="display">The display the caller wishes to control in Vulkan.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, vulkan.VkDisplayKHR display)
             {
                 return Value(physicalDevice, display);
@@ -1235,15 +1563,44 @@ namespace XenoAtom.Interop
             /// <param name="physicalDevice">The physical device on which to query the display handle.</param>
             /// <param name="deviceRelativeId">The value of the https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displaytarget.adapterrelativeid["`AdapterRelativeId`"] property of a https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displaytarget["`DisplayTarget`"] that is enumerated by a https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displayadapter["`DisplayAdapter`"] with an https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displayadapter.id["`Id`"] property matching the <paramref name="deviceLUID"/> property of a <see cref="T:VkPhysicalDeviceIDProperties"/> for <paramref name="physicalDevice"/>.</param>
             /// <param name="pDisplay">The corresponding <see cref="T:VkDisplayKHR"/> handle will be returned here.</param>
-            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, uint deviceRelativeId, out vulkan.VkDisplayKHR pDisplay)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, uint deviceRelativeId, vulkan.VkDisplayKHR* pDisplay)
             {
-                fixed (vulkan.VkDisplayKHR* __pDisplay = &pDisplay)
-                return Value(physicalDevice, deviceRelativeId, __pDisplay);
+                return Value(physicalDevice, deviceRelativeId, pDisplay);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Query the VkDisplayKHR corresponding to a WinRT DisplayTarget
+            /// </summary>
+            /// <param name="physicalDevice">The physical device on which to query the display handle.</param>
+            /// <param name="deviceRelativeId">The value of the https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displaytarget.adapterrelativeid["`AdapterRelativeId`"] property of a https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displaytarget["`DisplayTarget`"] that is enumerated by a https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displayadapter["`DisplayAdapter`"] with an https://docs.microsoft.com/en-us/uwp/api/windows.devices.display.core.displayadapter.id["`Id`"] property matching the <paramref name="deviceLUID"/> property of a <see cref="T:VkPhysicalDeviceIDProperties"/> for <paramref name="physicalDevice"/>.</param>
+            /// <param name="pDisplay">The corresponding <see cref="T:VkDisplayKHR"/> handle will be returned here.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, uint deviceRelativeId, out vulkan.VkDisplayKHR pDisplay)
+            {
+                fixed (vulkan.VkDisplayKHR* __pDisplay_local = &pDisplay)
+                return this.Invoke(physicalDevice, deviceRelativeId, __pDisplay_local);
+            }
         }
         
         public const int VK_KHR_win32_surface = 1;

@@ -2926,16 +2926,45 @@ namespace XenoAtom.Interop
             /// <param name="physicalDevice">The physical device to query the video encode quality level properties for.</param>
             /// <param name="pQualityLevelInfo">A pointer to a <see cref="T:VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR"/> structure specifying the video encode profile and quality level to query properties for.</param>
             /// <param name="pQualityLevelProperties">A pointer to a <see cref="T:VkVideoEncodeQualityLevelPropertiesKHR"/> structure in which the properties are returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pQualityLevelInfo, out vulkan.VkVideoEncodeQualityLevelPropertiesKHR pQualityLevelProperties)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* pQualityLevelInfo, vulkan.VkVideoEncodeQualityLevelPropertiesKHR* pQualityLevelProperties)
             {
-                fixed (vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* __pQualityLevelInfo = &pQualityLevelInfo)
-                fixed (vulkan.VkVideoEncodeQualityLevelPropertiesKHR* __pQualityLevelProperties = &pQualityLevelProperties)
-                return Value(physicalDevice, __pQualityLevelInfo, __pQualityLevelProperties);
+                return Value(physicalDevice, pQualityLevelInfo, pQualityLevelProperties);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Query video encode quality level properties
+            /// </summary>
+            /// <param name="physicalDevice">The physical device to query the video encode quality level properties for.</param>
+            /// <param name="pQualityLevelInfo">A pointer to a <see cref="T:VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR"/> structure specifying the video encode profile and quality level to query properties for.</param>
+            /// <param name="pQualityLevelProperties">A pointer to a <see cref="T:VkVideoEncodeQualityLevelPropertiesKHR"/> structure in which the properties are returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pQualityLevelInfo, out vulkan.VkVideoEncodeQualityLevelPropertiesKHR pQualityLevelProperties)
+            {
+                fixed (vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* __pQualityLevelInfo_local = &pQualityLevelInfo)
+                fixed (vulkan.VkVideoEncodeQualityLevelPropertiesKHR* __pQualityLevelProperties_local = &pQualityLevelProperties)
+                return this.Invoke(physicalDevice, __pQualityLevelInfo_local, __pQualityLevelProperties_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetEncodedVideoSessionParametersKHR : IEquatable<PFN_vkGetEncodedVideoSessionParametersKHR>, IvkFunctionPointer
@@ -2965,20 +2994,49 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The logical device that owns the video session parameters object.</param>
             /// <param name="pVideoSessionParametersInfo">A pointer to a <see cref="T:VkVideoEncodeSessionParametersGetInfoKHR"/> structure specifying the parameters of the encoded parameter data to retrieve.</param>
-            /// <param name="pFeedbackInfo">Either `NULL` or a pointer to a <see cref="T:VkVideoEncodeSessionParametersFeedbackInfoKHR"/> structure in which feedback about the requested parameter data is returned.</param>
+            /// <param name="pFeedbackInfo">Either `NULL` or a pointer to a <see cref="T:VkVideoEncodeSessionParametersFeedbackInfoKHR"/> structure in which feedback about the requested parameter data is returned. This parameter is optional.</param>
             /// <param name="pDataSize">A pointer to a <c>size_t</c> value related to the amount of encode parameter data returned, as described below.</param>
-            /// <param name="pData">Either `NULL` or a pointer to a buffer to write the encoded parameter data to.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkVideoEncodeSessionParametersGetInfoKHR pVideoSessionParametersInfo, out vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR pFeedbackInfo, ref nuint pDataSize, void* pData)
+            /// <param name="pData">Either `NULL` or a pointer to a buffer to write the encoded parameter data to. This parameter is optional.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_INCOMPLETE</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkVideoEncodeSessionParametersGetInfoKHR* pVideoSessionParametersInfo, vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR* pFeedbackInfo, nuint* pDataSize, void* pData)
             {
-                fixed (vulkan.VkVideoEncodeSessionParametersGetInfoKHR* __pVideoSessionParametersInfo = &pVideoSessionParametersInfo)
-                fixed (vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR* __pFeedbackInfo = &pFeedbackInfo)
-                fixed (nuint* __pDataSize = &pDataSize)
-                return Value(device, __pVideoSessionParametersInfo, __pFeedbackInfo, __pDataSize, pData);
+                return Value(device, pVideoSessionParametersInfo, pFeedbackInfo, pDataSize, pData);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Get encoded parameter sets from a video session parameters object
+            /// </summary>
+            /// <param name="device">The logical device that owns the video session parameters object.</param>
+            /// <param name="pVideoSessionParametersInfo">A pointer to a <see cref="T:VkVideoEncodeSessionParametersGetInfoKHR"/> structure specifying the parameters of the encoded parameter data to retrieve.</param>
+            /// <param name="pFeedbackInfo">Either `NULL` or a pointer to a <see cref="T:VkVideoEncodeSessionParametersFeedbackInfoKHR"/> structure in which feedback about the requested parameter data is returned. This parameter is optional.</param>
+            /// <param name="pDataSize">A pointer to a <c>size_t</c> value related to the amount of encode parameter data returned, as described below.</param>
+            /// <param name="pData">Either `NULL` or a pointer to a buffer to write the encoded parameter data to. This parameter is optional.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_INCOMPLETE</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkVideoEncodeSessionParametersGetInfoKHR pVideoSessionParametersInfo, vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR* pFeedbackInfo, nuint* pDataSize, void* pData)
+            {
+                fixed (vulkan.VkVideoEncodeSessionParametersGetInfoKHR* __pVideoSessionParametersInfo_local = &pVideoSessionParametersInfo)
+                return this.Invoke(device, __pVideoSessionParametersInfo_local, pFeedbackInfo, pDataSize, pData);
+            }
         }
         
         public readonly partial struct PFN_vkCmdEncodeVideoKHR : IEquatable<PFN_vkCmdEncodeVideoKHR>, IvkFunctionPointer
@@ -3008,15 +3066,25 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="commandBuffer">The command buffer to be filled with this function for encoding to generate a bitstream.</param>
             /// <param name="pEncodeInfo">A pointer to a <see cref="T:VkVideoEncodeInfoKHR"/> structure.</param>
-            public void Invoke(vulkan.VkCommandBuffer commandBuffer, in vulkan.VkVideoEncodeInfoKHR pEncodeInfo)
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkVideoEncodeInfoKHR* pEncodeInfo)
             {
-                fixed (vulkan.VkVideoEncodeInfoKHR* __pEncodeInfo = &pEncodeInfo)
-                Value(commandBuffer, __pEncodeInfo);
+                Value(commandBuffer, pEncodeInfo);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Encode operation for bitstream generation
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer to be filled with this function for encoding to generate a bitstream.</param>
+            /// <param name="pEncodeInfo">A pointer to a <see cref="T:VkVideoEncodeInfoKHR"/> structure.</param>
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, in vulkan.VkVideoEncodeInfoKHR pEncodeInfo)
+            {
+                fixed (vulkan.VkVideoEncodeInfoKHR* __pEncodeInfo_local = &pEncodeInfo)
+                this.Invoke(commandBuffer, __pEncodeInfo_local);
+            }
         }
         
         public readonly partial struct PFN_vkCreateExecutionGraphPipelinesAMDX : IEquatable<PFN_vkCreateExecutionGraphPipelinesAMDX>, IvkFunctionPointer
@@ -3045,15 +3113,23 @@ namespace XenoAtom.Interop
             /// Creates a new execution graph pipeline object
             /// </summary>
             /// <param name="device">The logical device that creates the execution graph pipelines.</param>
-            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command.</param>
+            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command. This parameter is optional.</param>
             /// <param name="createInfoCount">The length of the <paramref name="pCreateInfos"/> and <paramref name="pPipelines"/> arrays.</param>
             /// <param name="pCreateInfos">A pointer to an array of <see cref="T:VkExecutionGraphPipelineCreateInfoAMDX"/> structures.</param>
-            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
             /// <param name="pPipelines">A pointer to an array of <see cref="T:VkPipeline"/> handles in which the resulting execution graph pipeline objects are returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, uint createInfoCount, vulkan.VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, in vulkan.VkAllocationCallbacks pAllocator, vulkan.VkPipeline* pPipelines)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_PIPELINE_COMPILE_REQUIRED_EXT</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, uint createInfoCount, vulkan.VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkPipeline* pPipelines)
             {
-                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                return Value(device, pipelineCache, createInfoCount, pCreateInfos, __pAllocator, pPipelines);
+                return Value(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
             }
             
             public nint Pointer => (nint)Value;
@@ -3064,16 +3140,26 @@ namespace XenoAtom.Interop
             /// Creates a new execution graph pipeline object
             /// </summary>
             /// <param name="device">The logical device that creates the execution graph pipelines.</param>
-            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command.</param>
+            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command. This parameter is optional.</param>
             /// <param name="createInfoCount">The length of the <paramref name="pCreateInfos"/> and <paramref name="pPipelines"/> arrays.</param>
             /// <param name="pCreateInfos">A pointer to an array of <see cref="T:VkExecutionGraphPipelineCreateInfoAMDX"/> structures.</param>
-            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
             /// <param name="pPipelines">A pointer to an array of <see cref="T:VkPipeline"/> handles in which the resulting execution graph pipeline objects are returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, ReadOnlySpan<vulkan.VkExecutionGraphPipelineCreateInfoAMDX> pCreateInfos, in vulkan.VkAllocationCallbacks pAllocator, Span<vulkan.VkPipeline> pPipelines)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_PIPELINE_COMPILE_REQUIRED_EXT</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, ReadOnlySpan<vulkan.VkExecutionGraphPipelineCreateInfoAMDX> pCreateInfos, vulkan.VkAllocationCallbacks* pAllocator, Span<vulkan.VkPipeline> pPipelines)
             {
-                fixed (vulkan.VkExecutionGraphPipelineCreateInfoAMDX* __pCreateInfos = pCreateInfos)
-                fixed (vulkan.VkPipeline* __pPipelines = pPipelines)
-                return this.Invoke(device, pipelineCache, checked((uint)pCreateInfos.Length), __pCreateInfos, pAllocator, __pPipelines);
+                uint __createInfoCount_local = checked((uint)pCreateInfos.Length);
+                fixed (vulkan.VkExecutionGraphPipelineCreateInfoAMDX* __pCreateInfos_local = pCreateInfos)
+                fixed (vulkan.VkPipeline* __pPipelines_local = pPipelines)
+                return this.Invoke(device, pipelineCache, __createInfoCount_local, __pCreateInfos_local, pAllocator, __pPipelines_local);
             }
         }
         
@@ -3105,15 +3191,44 @@ namespace XenoAtom.Interop
             /// <param name="device">The that <paramref name="executionGraph"/> was created on.</param>
             /// <param name="executionGraph">The execution graph pipeline to query the scratch space for.</param>
             /// <param name="pSizeInfo">A pointer to a <see cref="T:VkExecutionGraphPipelineScratchSizeAMDX"/> structure that will contain the required scratch size.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, out vulkan.VkExecutionGraphPipelineScratchSizeAMDX pSizeInfo)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, vulkan.VkExecutionGraphPipelineScratchSizeAMDX* pSizeInfo)
             {
-                fixed (vulkan.VkExecutionGraphPipelineScratchSizeAMDX* __pSizeInfo = &pSizeInfo)
-                return Value(device, executionGraph, __pSizeInfo);
+                return Value(device, executionGraph, pSizeInfo);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Query scratch space required to dispatch an execution graph
+            /// </summary>
+            /// <param name="device">The that <paramref name="executionGraph"/> was created on.</param>
+            /// <param name="executionGraph">The execution graph pipeline to query the scratch space for.</param>
+            /// <param name="pSizeInfo">A pointer to a <see cref="T:VkExecutionGraphPipelineScratchSizeAMDX"/> structure that will contain the required scratch size.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, out vulkan.VkExecutionGraphPipelineScratchSizeAMDX pSizeInfo)
+            {
+                fixed (vulkan.VkExecutionGraphPipelineScratchSizeAMDX* __pSizeInfo_local = &pSizeInfo)
+                return this.Invoke(device, executionGraph, __pSizeInfo_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetExecutionGraphPipelineNodeIndexAMDX : IEquatable<PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>, IvkFunctionPointer
@@ -3145,16 +3260,46 @@ namespace XenoAtom.Interop
             /// <param name="executionGraph">The execution graph pipeline to query the internal node index for.</param>
             /// <param name="pNodeInfo">A pointer to a <see cref="T:VkPipelineShaderStageNodeCreateInfoAMDX"/> structure identifying the name and index of the node to query.</param>
             /// <param name="pNodeIndex">The returned internal node index of the identified node.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, in vulkan.VkPipelineShaderStageNodeCreateInfoAMDX pNodeInfo, out uint pNodeIndex)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, vulkan.VkPipelineShaderStageNodeCreateInfoAMDX* pNodeInfo, uint* pNodeIndex)
             {
-                fixed (vulkan.VkPipelineShaderStageNodeCreateInfoAMDX* __pNodeInfo = &pNodeInfo)
-                fixed (uint* __pNodeIndex = &pNodeIndex)
-                return Value(device, executionGraph, __pNodeInfo, __pNodeIndex);
+                return Value(device, executionGraph, pNodeInfo, pNodeIndex);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Query internal id of a node in an execution graph
+            /// </summary>
+            /// <param name="device">The that <paramref name="executionGraph"/> was created on.</param>
+            /// <param name="executionGraph">The execution graph pipeline to query the internal node index for.</param>
+            /// <param name="pNodeInfo">A pointer to a <see cref="T:VkPipelineShaderStageNodeCreateInfoAMDX"/> structure identifying the name and index of the node to query.</param>
+            /// <param name="pNodeIndex">The returned internal node index of the identified node.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, in vulkan.VkPipelineShaderStageNodeCreateInfoAMDX pNodeInfo, out uint pNodeIndex)
+            {
+                fixed (vulkan.VkPipelineShaderStageNodeCreateInfoAMDX* __pNodeInfo_local = &pNodeInfo)
+                fixed (uint* __pNodeIndex_local = &pNodeIndex)
+                return this.Invoke(device, executionGraph, __pNodeInfo_local, __pNodeIndex_local);
+            }
         }
         
         public readonly partial struct PFN_vkCmdInitializeGraphScratchMemoryAMDX : IEquatable<PFN_vkCmdInitializeGraphScratchMemoryAMDX>, IvkFunctionPointer
@@ -3222,15 +3367,26 @@ namespace XenoAtom.Interop
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
             /// <param name="scratch">A pointer to the scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
-            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDispatchGraphCountInfoAMDX* pCountInfo)
             {
-                fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo = &pCountInfo)
-                Value(commandBuffer, scratch, __pCountInfo);
+                Value(commandBuffer, scratch, pCountInfo);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Dispatch an execution graph
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
+            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
+            {
+                fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo_local = &pCountInfo)
+                this.Invoke(commandBuffer, scratch, __pCountInfo_local);
+            }
         }
         
         public readonly partial struct PFN_vkCmdDispatchGraphIndirectAMDX : IEquatable<PFN_vkCmdDispatchGraphIndirectAMDX>, IvkFunctionPointer
@@ -3261,15 +3417,26 @@ namespace XenoAtom.Interop
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
             /// <param name="scratch">A pointer to the scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
-            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDispatchGraphCountInfoAMDX* pCountInfo)
             {
-                fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo = &pCountInfo)
-                Value(commandBuffer, scratch, __pCountInfo);
+                Value(commandBuffer, scratch, pCountInfo);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Dispatch an execution graph with node and payload parameters read on the device
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
+            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
+            {
+                fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo_local = &pCountInfo)
+                this.Invoke(commandBuffer, scratch, __pCountInfo_local);
+            }
         }
         
         public readonly partial struct PFN_vkCmdDispatchGraphIndirectCountAMDX : IEquatable<PFN_vkCmdDispatchGraphIndirectCountAMDX>, IvkFunctionPointer

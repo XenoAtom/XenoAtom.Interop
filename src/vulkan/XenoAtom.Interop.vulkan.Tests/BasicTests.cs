@@ -11,7 +11,6 @@ public class BasicTests
     [TestMethod]
     public unsafe void TestSimple()
     {
-
         // Vulkan application information
         VkApplicationInfo appInfo = new () {
             sType = VK_STRUCTURE_TYPE_APPLICATION_INFO,
@@ -24,24 +23,27 @@ public class BasicTests
             pApplicationInfo = &appInfo,
         };
 
-        var result = vkCreateInstance(createInfo, Unsafe.NullRef<VkAllocationCallbacks>(), out var instance);
+        var result = vkCreateInstance(createInfo, null, out var instance);
         Assert.AreEqual(VK_SUCCESS, result);
+        result.VkCheck(); // Should not throw
+
+        result = VkResult.VK_ERROR_DEVICE_LOST;
+        Assert.ThrowsException<VulkanException>(() => result.VkCheck());
 
         // Destroy the instance
-        vkDestroyInstance(instance, Unsafe.NullRef<VkAllocationCallbacks>());
+        vkDestroyInstance(instance, default);
     }
 
     [TestMethod]
     public unsafe void TestListExtensions()
     {
-        uint count = 0;
-        vkEnumerateInstanceExtensionProperties(null, ref count, null);
+        vkEnumerateInstanceExtensionProperties(default, out var count);
         if (count > 0)
         {
-            VkExtensionProperties* propArrays = stackalloc VkExtensionProperties[(int)count];
-            vkEnumerateInstanceExtensionProperties(null, ref count, propArrays);
+            Span<VkExtensionProperties> propArrays = stackalloc VkExtensionProperties[(int)count];
+            vkEnumerateInstanceExtensionProperties(default, propArrays);
 
-            for (uint i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
                 var prop = propArrays[i];
                 Console.WriteLine($"Extension: {Marshal.PtrToStringUTF8((nint)prop.extensionName)}");

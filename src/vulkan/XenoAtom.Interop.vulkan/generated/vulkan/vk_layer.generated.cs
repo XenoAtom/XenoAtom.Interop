@@ -449,10 +449,9 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkNegotiateLoaderLayerInterfaceVersion left, PFN_vkNegotiateLoaderLayerInterfaceVersion right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(ref vulkan.VkNegotiateLayerInterface pVersionStruct)
+            public vulkan.VkResult Invoke(vulkan.VkNegotiateLayerInterface* pVersionStruct)
             {
-                fixed (vulkan.VkNegotiateLayerInterface* __pVersionStruct = &pVersionStruct)
-                return Value(__pVersionStruct);
+                return Value(pVersionStruct);
             }
             
             public nint Pointer => (nint)Value;
@@ -541,7 +540,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkNegotiateLoaderLayerInterfaceVersion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkNegotiateLoaderLayerInterfaceVersion(ref vulkan.VkNegotiateLayerInterface pVersionStruct);
+        public static partial vulkan.VkResult vkNegotiateLoaderLayerInterfaceVersion(vulkan.VkNegotiateLayerInterface* pVersionStruct);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion> vkNegotiateLoaderLayerInterfaceVersion_ => new("vkNegotiateLoaderLayerInterfaceVersion"u8);
     }

@@ -98,19 +98,48 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkDirectFBSurfaceCreateInfoEXT"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkDirectFBSurfaceCreateInfoEXT pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkDirectFBSurfaceCreateInfoEXT* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
-                fixed (vulkan.VkDirectFBSurfaceCreateInfoEXT* __pCreateInfo = &pCreateInfo)
-                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
-                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+                return Value(instance, pCreateInfo, pAllocator, pSurface);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Create a <see cref="T:VkSurfaceKHR"/> object for a DirectFB surface
+            /// </summary>
+            /// <param name="instance">The instance to associate the surface with.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkDirectFBSurfaceCreateInfoEXT"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkDirectFBSurfaceCreateInfoEXT pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkDirectFBSurfaceCreateInfoEXT* __pCreateInfo_local = &pCreateInfo)
+                fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
+                return this.Invoke(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT : IEquatable<PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>, IvkFunctionPointer

@@ -305,10 +305,9 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vk_icdNegotiateLoaderICDInterfaceVersion left, PFN_vk_icdNegotiateLoaderICDInterfaceVersion right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(ref uint pVersion)
+            public vulkan.VkResult Invoke(uint* pVersion)
             {
-                fixed (uint* __pVersion = &pVersion)
-                return Value(__pVersion);
+                return Value(pVersion);
             }
             
             public nint Pointer => (nint)Value;
@@ -402,11 +401,9 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vk_icdEnumerateAdapterPhysicalDevices left, PFN_vk_icdEnumerateAdapterPhysicalDevices right) => !left.Equals(right);
             
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, ulong adapterLUID, ref uint pPhysicalDeviceCount, ref vulkan.VkPhysicalDevice pPhysicalDevices)
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, ulong adapterLUID, uint* pPhysicalDeviceCount, vulkan.VkPhysicalDevice* pPhysicalDevices)
             {
-                fixed (uint* __pPhysicalDeviceCount = &pPhysicalDeviceCount)
-                fixed (vulkan.VkPhysicalDevice* __pPhysicalDevices = &pPhysicalDevices)
-                return Value(instance, adapterLUID, __pPhysicalDeviceCount, __pPhysicalDevices);
+                return Value(instance, adapterLUID, pPhysicalDeviceCount, pPhysicalDevices);
             }
             
             public nint Pointer => (nint)Value;
@@ -416,7 +413,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vk_icdNegotiateLoaderICDInterfaceVersion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vk_icdNegotiateLoaderICDInterfaceVersion(ref uint pVersion);
+        public static partial vulkan.VkResult vk_icdNegotiateLoaderICDInterfaceVersion(uint* pVersion);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion> vk_icdNegotiateLoaderICDInterfaceVersion_ => new("vk_icdNegotiateLoaderICDInterfaceVersion"u8);
         
@@ -434,7 +431,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vk_icdEnumerateAdapterPhysicalDevices")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vk_icdEnumerateAdapterPhysicalDevices(vulkan.VkInstance instance, ulong adapterLUID, ref uint pPhysicalDeviceCount, ref vulkan.VkPhysicalDevice pPhysicalDevices);
+        public static partial vulkan.VkResult vk_icdEnumerateAdapterPhysicalDevices(vulkan.VkInstance instance, ulong adapterLUID, uint* pPhysicalDeviceCount, vulkan.VkPhysicalDevice* pPhysicalDevices);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices> vk_icdEnumerateAdapterPhysicalDevices_ => new("vk_icdEnumerateAdapterPhysicalDevices"u8);
     }

@@ -674,14 +674,20 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate with the surface.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkImagePipeSurfaceCreateInfoFUCHSIA"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
-                fixed (vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA* __pCreateInfo = &pCreateInfo)
-                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
-                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+                return Value(instance, pCreateInfo, pAllocator, pSurface);
             }
             
             public nint Pointer => (nint)Value;
@@ -717,11 +723,18 @@ namespace XenoAtom.Interop
             /// <param name="device">The <see cref="T:VkDevice"/>.</param>
             /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkMemoryGetZirconHandleInfoFUCHSIA"/> structure.</param>
             /// <param name="pZirconHandle">A pointer to a <c>zx_handle_t</c> which holds the resulting Zircon handle.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkMemoryGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, uint* pZirconHandle)
             {
-                fixed (vulkan.VkMemoryGetZirconHandleInfoFUCHSIA* __pGetZirconHandleInfo = &pGetZirconHandleInfo)
-                fixed (uint* __pZirconHandle = &pZirconHandle)
-                return Value(device, __pGetZirconHandleInfo, __pZirconHandle);
+                return Value(device, pGetZirconHandleInfo, pZirconHandle);
             }
             
             public nint Pointer => (nint)Value;
@@ -758,10 +771,18 @@ namespace XenoAtom.Interop
             /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <paramref name="zirconHandle"/></param>
             /// <param name="zirconHandle">A <c>zx_handle_t</c> (Zircon) handle to the external resource.</param>
             /// <param name="pMemoryZirconHandleProperties">A pointer to a <see cref="T:VkMemoryZirconHandlePropertiesFUCHSIA"/> structure in which the result will be stored.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, out vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties)
             {
-                fixed (vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* __pMemoryZirconHandleProperties = &pMemoryZirconHandleProperties)
-                return Value(device, handleType, zirconHandle, __pMemoryZirconHandleProperties);
+                return Value(device, handleType, zirconHandle, pMemoryZirconHandleProperties);
             }
             
             public nint Pointer => (nint)Value;
@@ -796,10 +817,18 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The logical device that created the semaphore.</param>
             /// <param name="pImportSemaphoreZirconHandleInfo">A pointer to a <see cref="T:VkImportSemaphoreZirconHandleInfoFUCHSIA"/> structure specifying the semaphore and import parameters.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA pImportSemaphoreZirconHandleInfo)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo)
             {
-                fixed (vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA* __pImportSemaphoreZirconHandleInfo = &pImportSemaphoreZirconHandleInfo)
-                return Value(device, __pImportSemaphoreZirconHandleInfo);
+                return Value(device, pImportSemaphoreZirconHandleInfo);
             }
             
             public nint Pointer => (nint)Value;
@@ -835,11 +864,18 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that created the semaphore being exported.</param>
             /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkSemaphoreGetZirconHandleInfoFUCHSIA"/> structure containing parameters of the export operation.</param>
             /// <param name="pZirconHandle">Will return the Zircon event handle representing the semaphore payload.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, uint* pZirconHandle)
             {
-                fixed (vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA* __pGetZirconHandleInfo = &pGetZirconHandleInfo)
-                fixed (uint* __pZirconHandle = &pZirconHandle)
-                return Value(device, __pGetZirconHandleInfo, __pZirconHandle);
+                return Value(device, pGetZirconHandleInfo, pZirconHandle);
             }
             
             public nint Pointer => (nint)Value;
@@ -874,14 +910,20 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkBufferCollectionCreateInfoFUCHSIA"/> structure containing parameters affecting creation of the buffer collection</param>
-            /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter</param>
+            /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
             /// <param name="pBufferCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkBufferCollectionCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkBufferCollectionFUCHSIA pCollection)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionCreateInfoFUCHSIA* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkBufferCollectionFUCHSIA* pCollection)
             {
-                fixed (vulkan.VkBufferCollectionCreateInfoFUCHSIA* __pCreateInfo = &pCreateInfo)
-                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                fixed (vulkan.VkBufferCollectionFUCHSIA* __pCollection = &pCollection)
-                return Value(device, __pCreateInfo, __pAllocator, __pCollection);
+                return Value(device, pCreateInfo, pAllocator, pCollection);
             }
             
             public nint Pointer => (nint)Value;
@@ -917,10 +959,18 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device</param>
             /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
             /// <param name="pImageConstraintsInfo">A pointer to a <see cref="T:VkImageConstraintsInfoFUCHSIA"/> structure</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkImageConstraintsInfoFUCHSIA pImageConstraintsInfo)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkImageConstraintsInfoFUCHSIA* pImageConstraintsInfo)
             {
-                fixed (vulkan.VkImageConstraintsInfoFUCHSIA* __pImageConstraintsInfo = &pImageConstraintsInfo)
-                return Value(device, collection, __pImageConstraintsInfo);
+                return Value(device, collection, pImageConstraintsInfo);
             }
             
             public nint Pointer => (nint)Value;
@@ -956,10 +1006,18 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device</param>
             /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
             /// <param name="pBufferConstraintsInfo">A pointer to a <see cref="T:VkBufferConstraintsInfoFUCHSIA"/> structure</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkBufferConstraintsInfoFUCHSIA pBufferConstraintsInfo)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkBufferConstraintsInfoFUCHSIA* pBufferConstraintsInfo)
             {
-                fixed (vulkan.VkBufferConstraintsInfoFUCHSIA* __pBufferConstraintsInfo = &pBufferConstraintsInfo)
-                return Value(device, collection, __pBufferConstraintsInfo);
+                return Value(device, collection, pBufferConstraintsInfo);
             }
             
             public nint Pointer => (nint)Value;
@@ -994,11 +1052,10 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
             /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
-            /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter</param>
-            public void Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkAllocationCallbacks pAllocator)
+            /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
+            public void Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkAllocationCallbacks* pAllocator)
             {
-                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                Value(device, collection, __pAllocator);
+                Value(device, collection, pAllocator);
             }
             
             public nint Pointer => (nint)Value;
@@ -1034,10 +1091,18 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device handle</param>
             /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
             /// <param name="pProperties">A pointer to the retrieved <see cref="T:VkBufferCollectionPropertiesFUCHSIA"/> struct</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, out vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkBufferCollectionPropertiesFUCHSIA* pProperties)
             {
-                fixed (vulkan.VkBufferCollectionPropertiesFUCHSIA* __pProperties = &pProperties)
-                return Value(device, collection, __pProperties);
+                return Value(device, collection, pProperties);
             }
             
             public nint Pointer => (nint)Value;
@@ -1050,11 +1115,43 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="instance">The instance to associate with the surface.</param>
         /// <param name="pCreateInfo">A pointer to a <see cref="T:VkImagePipeSurfaceCreateInfoFUCHSIA"/> structure containing parameters affecting the creation of the surface object.</param>
-        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
         /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateImagePipeSurfaceFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateImagePipeSurfaceFUCHSIA(vulkan.VkInstance instance, in vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface);
+        public static partial vulkan.VkResult vkCreateImagePipeSurfaceFUCHSIA(vulkan.VkInstance instance, vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface);
+        
+        /// <summary>
+        /// Create a <see cref="T:VkSurfaceKHR"/> object for a Fuchsia ImagePipe
+        /// </summary>
+        /// <param name="instance">The instance to associate with the surface.</param>
+        /// <param name="pCreateInfo">A pointer to a <see cref="T:VkImagePipeSurfaceCreateInfoFUCHSIA"/> structure containing parameters affecting the creation of the surface object.</param>
+        /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
+        /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkCreateImagePipeSurfaceFUCHSIA(vulkan.VkInstance instance, in vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
+        {
+            fixed (vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA* __pCreateInfo_local = &pCreateInfo)
+            fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
+            return vkCreateImagePipeSurfaceFUCHSIA(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA> vkCreateImagePipeSurfaceFUCHSIA_ => new("vkCreateImagePipeSurfaceFUCHSIA"u8);
         
@@ -1064,9 +1161,40 @@ namespace XenoAtom.Interop
         /// <param name="device">The <see cref="T:VkDevice"/>.</param>
         /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkMemoryGetZirconHandleInfoFUCHSIA"/> structure.</param>
         /// <param name="pZirconHandle">A pointer to a <c>zx_handle_t</c> which holds the resulting Zircon handle.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryZirconHandleFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetMemoryZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle);
+        public static partial vulkan.VkResult vkGetMemoryZirconHandleFUCHSIA(vulkan.VkDevice device, vulkan.VkMemoryGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, uint* pZirconHandle);
+        
+        /// <summary>
+        /// Get a Zircon handle for an external memory object
+        /// </summary>
+        /// <param name="device">The <see cref="T:VkDevice"/>.</param>
+        /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkMemoryGetZirconHandleInfoFUCHSIA"/> structure.</param>
+        /// <param name="pZirconHandle">A pointer to a <c>zx_handle_t</c> which holds the resulting Zircon handle.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkGetMemoryZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle)
+        {
+            fixed (vulkan.VkMemoryGetZirconHandleInfoFUCHSIA* __pGetZirconHandleInfo_local = &pGetZirconHandleInfo)
+            fixed (uint* __pZirconHandle_local = &pZirconHandle)
+            return vkGetMemoryZirconHandleFUCHSIA(device, __pGetZirconHandleInfo_local, __pZirconHandle_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandleFUCHSIA> vkGetMemoryZirconHandleFUCHSIA_ => new("vkGetMemoryZirconHandleFUCHSIA"u8);
         
@@ -1077,9 +1205,40 @@ namespace XenoAtom.Interop
         /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <paramref name="zirconHandle"/></param>
         /// <param name="zirconHandle">A <c>zx_handle_t</c> (Zircon) handle to the external resource.</param>
         /// <param name="pMemoryZirconHandleProperties">A pointer to a <see cref="T:VkMemoryZirconHandlePropertiesFUCHSIA"/> structure in which the result will be stored.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryZirconHandlePropertiesFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, out vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties);
+        public static partial vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties);
+        
+        /// <summary>
+        /// Get a Zircon handle properties for an external memory object
+        /// </summary>
+        /// <param name="device">The <see cref="T:VkDevice"/>.</param>
+        /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <paramref name="zirconHandle"/></param>
+        /// <param name="zirconHandle">A <c>zx_handle_t</c> (Zircon) handle to the external resource.</param>
+        /// <param name="pMemoryZirconHandleProperties">A pointer to a <see cref="T:VkMemoryZirconHandlePropertiesFUCHSIA"/> structure in which the result will be stored.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, out vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties)
+        {
+            fixed (vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* __pMemoryZirconHandleProperties_local = &pMemoryZirconHandleProperties)
+            return vkGetMemoryZirconHandlePropertiesFUCHSIA(device, handleType, zirconHandle, __pMemoryZirconHandleProperties_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA> vkGetMemoryZirconHandlePropertiesFUCHSIA_ => new("vkGetMemoryZirconHandlePropertiesFUCHSIA"u8);
         
@@ -1088,9 +1247,38 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="device">The logical device that created the semaphore.</param>
         /// <param name="pImportSemaphoreZirconHandleInfo">A pointer to a <see cref="T:VkImportSemaphoreZirconHandleInfoFUCHSIA"/> structure specifying the semaphore and import parameters.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkImportSemaphoreZirconHandleFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkImportSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA pImportSemaphoreZirconHandleInfo);
+        public static partial vulkan.VkResult vkImportSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo);
+        
+        /// <summary>
+        /// Import a semaphore from a Zircon event handle
+        /// </summary>
+        /// <param name="device">The logical device that created the semaphore.</param>
+        /// <param name="pImportSemaphoreZirconHandleInfo">A pointer to a <see cref="T:VkImportSemaphoreZirconHandleInfoFUCHSIA"/> structure specifying the semaphore and import parameters.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkImportSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA pImportSemaphoreZirconHandleInfo)
+        {
+            fixed (vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA* __pImportSemaphoreZirconHandleInfo_local = &pImportSemaphoreZirconHandleInfo)
+            return vkImportSemaphoreZirconHandleFUCHSIA(device, __pImportSemaphoreZirconHandleInfo_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkImportSemaphoreZirconHandleFUCHSIA> vkImportSemaphoreZirconHandleFUCHSIA_ => new("vkImportSemaphoreZirconHandleFUCHSIA"u8);
         
@@ -1100,9 +1288,40 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device that created the semaphore being exported.</param>
         /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkSemaphoreGetZirconHandleInfoFUCHSIA"/> structure containing parameters of the export operation.</param>
         /// <param name="pZirconHandle">Will return the Zircon event handle representing the semaphore payload.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetSemaphoreZirconHandleFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle);
+        public static partial vulkan.VkResult vkGetSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, uint* pZirconHandle);
+        
+        /// <summary>
+        /// Get a Zircon event handle for a semaphore
+        /// </summary>
+        /// <param name="device">The logical device that created the semaphore being exported.</param>
+        /// <param name="pGetZirconHandleInfo">A pointer to a <see cref="T:VkSemaphoreGetZirconHandleInfoFUCHSIA"/> structure containing parameters of the export operation.</param>
+        /// <param name="pZirconHandle">Will return the Zircon event handle representing the semaphore payload.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkGetSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle)
+        {
+            fixed (vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA* __pGetZirconHandleInfo_local = &pGetZirconHandleInfo)
+            fixed (uint* __pZirconHandle_local = &pZirconHandle)
+            return vkGetSemaphoreZirconHandleFUCHSIA(device, __pGetZirconHandleInfo_local, __pZirconHandle_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetSemaphoreZirconHandleFUCHSIA> vkGetSemaphoreZirconHandleFUCHSIA_ => new("vkGetSemaphoreZirconHandleFUCHSIA"u8);
         
@@ -1111,11 +1330,43 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
         /// <param name="pCreateInfo">A pointer to a <see cref="T:VkBufferCollectionCreateInfoFUCHSIA"/> structure containing parameters affecting creation of the buffer collection</param>
-        /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter</param>
+        /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
         /// <param name="pBufferCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateBufferCollectionFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkCreateBufferCollectionFUCHSIA(vulkan.VkDevice device, in vulkan.VkBufferCollectionCreateInfoFUCHSIA pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkBufferCollectionFUCHSIA pCollection);
+        public static partial vulkan.VkResult vkCreateBufferCollectionFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionCreateInfoFUCHSIA* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkBufferCollectionFUCHSIA* pCollection);
+        
+        /// <summary>
+        /// Create a new buffer collection
+        /// </summary>
+        /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
+        /// <param name="pCreateInfo">A pointer to a <see cref="T:VkBufferCollectionCreateInfoFUCHSIA"/> structure containing parameters affecting creation of the buffer collection</param>
+        /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
+        /// <param name="pBufferCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkCreateBufferCollectionFUCHSIA(vulkan.VkDevice device, in vulkan.VkBufferCollectionCreateInfoFUCHSIA pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkBufferCollectionFUCHSIA pCollection)
+        {
+            fixed (vulkan.VkBufferCollectionCreateInfoFUCHSIA* __pCreateInfo_local = &pCreateInfo)
+            fixed (vulkan.VkBufferCollectionFUCHSIA* __pCollection_local = &pCollection)
+            return vkCreateBufferCollectionFUCHSIA(device, __pCreateInfo_local, pAllocator, __pCollection_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateBufferCollectionFUCHSIA> vkCreateBufferCollectionFUCHSIA_ => new("vkCreateBufferCollectionFUCHSIA"u8);
         
@@ -1125,9 +1376,39 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device</param>
         /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
         /// <param name="pImageConstraintsInfo">A pointer to a <see cref="T:VkImageConstraintsInfoFUCHSIA"/> structure</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkSetBufferCollectionImageConstraintsFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkSetBufferCollectionImageConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkImageConstraintsInfoFUCHSIA pImageConstraintsInfo);
+        public static partial vulkan.VkResult vkSetBufferCollectionImageConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkImageConstraintsInfoFUCHSIA* pImageConstraintsInfo);
+        
+        /// <summary>
+        /// Set image-based constraints for a buffer collection
+        /// </summary>
+        /// <param name="device">The logical device</param>
+        /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+        /// <param name="pImageConstraintsInfo">A pointer to a <see cref="T:VkImageConstraintsInfoFUCHSIA"/> structure</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkSetBufferCollectionImageConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkImageConstraintsInfoFUCHSIA pImageConstraintsInfo)
+        {
+            fixed (vulkan.VkImageConstraintsInfoFUCHSIA* __pImageConstraintsInfo_local = &pImageConstraintsInfo)
+            return vkSetBufferCollectionImageConstraintsFUCHSIA(device, collection, __pImageConstraintsInfo_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA> vkSetBufferCollectionImageConstraintsFUCHSIA_ => new("vkSetBufferCollectionImageConstraintsFUCHSIA"u8);
         
@@ -1137,9 +1418,39 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device</param>
         /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
         /// <param name="pBufferConstraintsInfo">A pointer to a <see cref="T:VkBufferConstraintsInfoFUCHSIA"/> structure</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkSetBufferCollectionBufferConstraintsFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkSetBufferCollectionBufferConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkBufferConstraintsInfoFUCHSIA pBufferConstraintsInfo);
+        public static partial vulkan.VkResult vkSetBufferCollectionBufferConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkBufferConstraintsInfoFUCHSIA* pBufferConstraintsInfo);
+        
+        /// <summary>
+        /// Set buffer-based constraints for a buffer collection
+        /// </summary>
+        /// <param name="device">The logical device</param>
+        /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+        /// <param name="pBufferConstraintsInfo">A pointer to a <see cref="T:VkBufferConstraintsInfoFUCHSIA"/> structure</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkSetBufferCollectionBufferConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkBufferConstraintsInfoFUCHSIA pBufferConstraintsInfo)
+        {
+            fixed (vulkan.VkBufferConstraintsInfoFUCHSIA* __pBufferConstraintsInfo_local = &pBufferConstraintsInfo)
+            return vkSetBufferCollectionBufferConstraintsFUCHSIA(device, collection, __pBufferConstraintsInfo_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA> vkSetBufferCollectionBufferConstraintsFUCHSIA_ => new("vkSetBufferCollectionBufferConstraintsFUCHSIA"u8);
         
@@ -1148,10 +1459,10 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
         /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
-        /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter</param>
+        /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkDestroyBufferCollectionFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial void vkDestroyBufferCollectionFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkAllocationCallbacks pAllocator);
+        public static partial void vkDestroyBufferCollectionFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkAllocationCallbacks* pAllocator);
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkDestroyBufferCollectionFUCHSIA> vkDestroyBufferCollectionFUCHSIA_ => new("vkDestroyBufferCollectionFUCHSIA"u8);
         
@@ -1161,9 +1472,39 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device handle</param>
         /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
         /// <param name="pProperties">A pointer to the retrieved <see cref="T:VkBufferCollectionPropertiesFUCHSIA"/> struct</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetBufferCollectionPropertiesFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetBufferCollectionPropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, out vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties);
+        public static partial vulkan.VkResult vkGetBufferCollectionPropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkBufferCollectionPropertiesFUCHSIA* pProperties);
+        
+        /// <summary>
+        /// Retrieve properties from a buffer collection
+        /// </summary>
+        /// <param name="device">The logical device handle</param>
+        /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
+        /// <param name="pProperties">A pointer to the retrieved <see cref="T:VkBufferCollectionPropertiesFUCHSIA"/> struct</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkGetBufferCollectionPropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, out vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties)
+        {
+            fixed (vulkan.VkBufferCollectionPropertiesFUCHSIA* __pProperties_local = &pProperties)
+            return vkGetBufferCollectionPropertiesFUCHSIA(device, collection, __pProperties_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetBufferCollectionPropertiesFUCHSIA> vkGetBufferCollectionPropertiesFUCHSIA_ => new("vkGetBufferCollectionPropertiesFUCHSIA"u8);
     }

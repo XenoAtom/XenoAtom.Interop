@@ -18,6 +18,9 @@ using CppAst.CodeGen.CSharp;
 
 namespace XenoAtom.Interop.CodeGen.vulkan;
 
+/// <summary>
+/// Generator for Vulkan API.
+/// </summary>
 internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase(descriptor)
 {
     private const string CommonVkExt = "(AMD|AMDX|ARM|EXT|GOOGLE|HUAWEI|IMG|INTEL|KHR|LUNARG|NV|NVX|QCOM|SEC|VALVE)";
@@ -27,6 +30,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     private readonly Dictionary<VulkanDocTypeKind, VulkanDocDefinitions> _docDefinitions = new();
     private readonly Dictionary<string, CSharpStruct> _structFunctionPointers = new();
     private readonly Dictionary<string, CSharpStruct> _structAsEnumFlags = new();
+    private readonly List<int> _tempOptionalParameterIndexList = new();
 
     public override async Task Initialize(ApkManager apkHelper)
     {
@@ -44,7 +48,6 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
         await DownloadAndProcessManPages();
     }
-
 
     protected override async Task<CSharpCompilation?> Generate()
     {
@@ -100,6 +103,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             DispatchOutputPerInclude = true,
             DisableRuntimeMarshalling = true,
             AllowMarshalForString = false,
+            EnableAutoByRef = false,
             MapCLongToIntPtr = true,
 
             MappingRules =
@@ -110,7 +114,6 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 e => e.MapMacroToConst($@"VK_{CommonVkExt}_\w+_NAME", "char*"),
                 e => e.MapMacroToConst($@"VK_{CommonVkUint}\w*", "unsigned int"),
                 e => e.MapMacroToConst($@"VK_LOD_CLAMP_NONE", "float"),
-                e => e.MapAll<CppParameter>().CppAction(ProcessParameters)
             },
         };
 
@@ -343,45 +346,72 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         {
             csMethod.Parameters.Add(csParameter);
         }
-        
-        if (TryGetVulkanCommand(cppFunction.Name, out var command))
-        {
-            if (command.Parameters.Count != cppFunction.Parameters.Count)
-            {
-                Console.WriteLine($"Warning: Function {cppFunction.Name} has different number of parameters {cppFunction.Parameters.Count} than in the registry {command.Parameters.Count}");
-            }
-            else
-            {
-                CreateNewFunctionOverloads(csFunction, command);
-            }
-        }
+
+        CreateNewFunctionOverloads(csFunction);
     }
 
     private static bool IsFunctionPointerStruct(CppFunction cppFunction)
     {
         return RegexCommandExt().IsMatch(cppFunction.Name);
     }
-
-
-    private void CreateNewFunctionOverloads(CSharpMethod csFunction, VulkanCommand command)
+    
+    private void CreateNewFunctionOverloads(CSharpMethod csFunction)
     {
         var cppFunction = (CppFunction)csFunction.CppElement!;
-        var parameterListToProcess = GetParameterListToProcess(command, csFunction, cppFunction);
-        if (parameterListToProcess == null)
+        var pfn = _structFunctionPointers[cppFunction.Name];
+        bool isExtensionFunction = IsFunctionPointerStruct(cppFunction);
+
+        if (!TryGetVulkanCommand(cppFunction.Name, out var command))
         {
+            Console.WriteLine($"Warning, cannot find Vulkan command for function {cppFunction.Name}");
             return;
         }
 
-        CreateNewFunctionOverload(csFunction, parameterListToProcess);
+        if (command.Parameters.Count != csFunction.Parameters.Count)
+        {
+            Console.WriteLine($"Warning, Vulkan command {cppFunction.Name} from registry has different number of parameters {command.Parameters.Count} than the C function {csFunction.Name} {cppFunction.Parameters.Count}");
+            return;
+        }
+
+        _tempOptionalParameterIndexList.Clear();
+        var parameterListToProcess = GetParamToProcessArray(csFunction, command, cppFunction, _tempOptionalParameterIndexList);
+
+        // Process optional parameters
+        int lastIndex = cppFunction.Parameters.Count - 1;
+        for (var i = _tempOptionalParameterIndexList.Count - 1; i >= 0 ; i--)
+        {
+            var optionalIndex = _tempOptionalParameterIndexList[i];
+            if (optionalIndex != lastIndex)
+            {
+                break;
+            }
+            lastIndex--;
+
+            csFunction.Parameters[optionalIndex].DefaultValue = "default";
+        }
+
+        // If there are no parameters to marshal, we don't need to create a new overload
+        if (parameterListToProcess.All(x => x is null))
+        {
+            return;
+        }
+        
+        CreateNewFunctionOverload(csFunction, command, parameterListToProcess, false);
+
+
+        if (parameterListToProcess.Any(x => x is not null && x.VkParameter.Kind == VulkanCommandParameterKind.Length && x.RefKind == CSharpRefKind.Ref))
+        {
+            CreateNewFunctionOverload(csFunction, command, parameterListToProcess, true);
+        }
+
     }
 
-    private void CreateNewFunctionOverload(CSharpMethod csFunction, List<VulkanCommandParameterToProcess> parameterListToProcess)
+    private void CreateNewFunctionOverload(CSharpMethod csFunction, VulkanCommand command, ParamToProcess?[] paramsToProcess, bool makeLengthOut)
     {
         var cppFunction = (CppFunction)csFunction.CppElement!;
         var pfn = _structFunctionPointers[cppFunction.Name];
         bool isExtensionFunction = IsFunctionPointerStruct(cppFunction);
         var parent = (ICSharpContainer)csFunction.Parent!;
-
 
         // Create the new method
         var newMethod = csFunction.Clone();
@@ -392,60 +422,175 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
 
         newMethod.Parent = null;
+
         // Remove the partial attribute as we are giving it a body
         newMethod.Modifiers &= ~CSharpModifiers.Partial;
         // We remove all attributes as we are calling to call the interop method from the body
         newMethod.Attributes.Clear();
 
         // We go down from the last parameter to the first one to replace the array parameters with Span
-        for (var index = parameterListToProcess.Count - 1; index >= 0; index--)
+        for (var index = paramsToProcess.Length - 1; index >= 0; index--)
         {
-            var parameterGroup = parameterListToProcess[index];
-
-            foreach (var arrayParameter in parameterGroup.SupportedArrayParameters)
+            var paramToProcess = paramsToProcess[index];
+            if (paramToProcess == null)
             {
-                var arrayParameterPointerType = (CSharpPointerType)arrayParameter.AttachedCSharpParameter!.ParameterType!;
-                var arrayElementType = arrayParameterPointerType.ElementType;
-                var isConst = arrayParameterPointerType.CppElement is CppPointerType cppPointerType && cppPointerType.ElementType is CppQualifiedType cppQualifiedType && cppQualifiedType.Qualifier == CppTypeQualifier.Const;
-
-                // Replace the array parameter with the appropriate span
-                var spanParameterType = isConst ? new CSharpGenericTypeReference("ReadOnlySpan", [arrayElementType]) : new CSharpGenericTypeReference("Span", [arrayElementType]);
-
-                newMethod.Parameters[arrayParameter.Index].ParameterType = spanParameterType;
+                continue;
             }
 
-            // We remove the length parameter
-            newMethod.Parameters.RemoveAt(parameterGroup.LengthParameter.Index);
+            // command.Parameters[index]
+
+            var vkParameter = command.Parameters[index];
+            if (vkParameter.Kind == VulkanCommandParameterKind.Array)
+            {
+                // The array is optional, so we need to remove the array from the parameters
+                if (makeLengthOut && command.Parameters[vkParameter.LengthParameterIndex].Optional != VulkanCommandOptional.None && paramsToProcess[vkParameter.LengthParameterIndex]!.RefKind == CSharpRefKind.Ref)
+                {
+                    newMethod.Parameters.RemoveAt(index);
+                }
+                else
+                {
+                    // Convert this array parameter to Span
+                    var arrayElementType = paramToProcess.ElementType;
+                    var spanParameterType = paramToProcess.IsConst ? new CSharpGenericTypeReference("ReadOnlySpan", [arrayElementType]) : new CSharpGenericTypeReference("Span", [arrayElementType]);
+                    newMethod.Parameters[index].ParameterType = spanParameterType;
+                }
+            }
+            else if (vkParameter.Kind == VulkanCommandParameterKind.Length)
+            {
+                if (makeLengthOut && vkParameter.Optional != VulkanCommandOptional.None && paramToProcess.RefKind == CSharpRefKind.Ref)
+                {
+                    // Convert this parameter to out
+                    var refType = new CSharpRefType(CSharpRefKind.Out, paramToProcess.ElementType);
+                    newMethod.Parameters[index].ParameterType = refType;
+                }
+                else if (paramToProcess.SupportedArrayParameters != null)
+                {
+                    // Length parameters are removed if they are used by an array parameter that will be converted to Span
+                    newMethod.Parameters.RemoveAt(index);
+                }
+            }
+            else if (vkParameter.Kind == VulkanCommandParameterKind.NullTerminated)
+            {
+                // Convert this parameter to string
+                newMethod.Parameters[index].ParameterType = new CSharpGenericTypeReference("ReadOnlySpan", [CSharpPrimitiveType.Char()]);
+            }
+            else if (paramToProcess.RefKind != CSharpRefKind.None)
+            {
+                // Convert this parameter to ref/in
+                var refType = new CSharpRefType(paramToProcess.RefKind, paramToProcess.ElementType);
+                newMethod.Parameters[index].ParameterType = refType;
+            }
+            else
+            {
+                // TODO? Check what is left here?
+            }
         }
 
         newMethod.Body = (writer, _) =>
         {
-            // We go down from the last parameter to the first one to replace the array parameters with Span
-            foreach (var parameterGroup in parameterListToProcess)
-            {
-                var csLengthParameter = parameterGroup.LengthParameter.AttachedCSharpParameter!;
-                var firstArrayParameter = parameterGroup.SupportedArrayParameters[0];
+            bool hasReturnType = newMethod.ReturnType is not CSharpPrimitiveType primitiveType || primitiveType.Kind != CSharpPrimitiveKind.Void;
+            bool hasStrings = false;
 
-                parameterGroup.LengthParameter.IndexParameterName = $"{firstArrayParameter.Name}.Length";
-                if (parameterGroup.IsLengthByRef)
+            // Write local variables for each parameter that is required locally (string, length by ref...)
+            for (var paramIndex = 0; paramIndex < paramsToProcess.Length; paramIndex++)
+            {
+                var paramToProcess = paramsToProcess[paramIndex];
+                if (paramToProcess == null)
                 {
-                    var lengthParameterType = ((CSharpRefType)csLengthParameter.ParameterType!).ElementType;
-                    lengthParameterType.DumpReferenceTo(writer);
-                    parameterGroup.LengthParameter.IndexParameterName = $"__{parameterGroup.LengthParameter.Name}";
-                    writer.Write($" {parameterGroup.LengthParameter.IndexParameterName} = checked((");
-                    lengthParameterType.DumpReferenceTo(writer);
-                    writer.WriteLine($"){firstArrayParameter.Name}.Length);");
+                    continue;
                 }
 
-                foreach (var arrayParameter in parameterGroup.SupportedArrayParameters)
+                var csParameter = csFunction.Parameters[paramIndex];
+                var cppParameter = cppFunction.Parameters[paramIndex];
+                var vkParameter = command.Parameters[paramIndex];
+
+                if (vkParameter.Kind == VulkanCommandParameterKind.NullTerminated)
                 {
-                    writer.Write("fixed (");
-                    arrayParameter.AttachedCSharpParameter!.ParameterType!.DumpReferenceTo(writer);
-                    writer.WriteLine($" __{arrayParameter.Name} = {arrayParameter.Name})");
+                    writer.WriteLine($"byte* {paramToProcess.LocalVariableName!} = default;");
+                    writer.WriteLine($"global::XenoAtom.Interop.Utf8CustomMarshaller.ManagedToUnmanagedIn {paramToProcess.LocalVariableName!}__marshaller = new();");
+                    hasStrings = true;
+                }
+                else if (vkParameter.Kind == VulkanCommandParameterKind.Length)
+                {
+                    if (makeLengthOut && vkParameter.Optional != VulkanCommandOptional.None && paramToProcess.RefKind == CSharpRefKind.Ref)
+                    {
+                        writer.WriteLine($"{csParameter.Name} = default;");
+                    }
+                    else
+                    {
+                        var firstArrayParameterIndex = paramToProcess.SupportedArrayParameters![0];
+                        var csArrayParameter = csFunction.Parameters[firstArrayParameterIndex];
+
+                        paramToProcess.ElementType.DumpReferenceTo(writer);
+                        writer.Write($" {paramToProcess.LocalVariableName} = checked((");
+                        paramToProcess.ElementType.DumpReferenceTo(writer);
+                        writer.WriteLine($"){csArrayParameter.Name}.Length);");
+                    }
                 }
             }
 
-            if (newMethod.ReturnType is not CSharpPrimitiveType primitiveType || primitiveType.Kind != CSharpPrimitiveKind.Void)
+            // Write all fixed statements required by spans and by ref
+            for (var paramIndex = 0; paramIndex < paramsToProcess.Length; paramIndex++)
+            {
+                var paramToProcess = paramsToProcess[paramIndex];
+                if (paramToProcess == null)
+                {
+                    continue;
+                }
+
+                var csParameter = csFunction.Parameters[paramIndex];
+                var cppParameter = cppFunction.Parameters[paramIndex];
+                var vkParameter = command.Parameters[paramIndex];
+
+                if (vkParameter.Kind == VulkanCommandParameterKind.Array)
+                {
+                    if (!makeLengthOut || !paramToProcess.IsArrayOptional)
+                    {
+                        writer.Write("fixed (");
+                        paramToProcess.ElementType.DumpReferenceTo(writer);
+                        writer.WriteLine($"* {paramToProcess.LocalVariableName} = {csParameter.Name})");
+                    }
+                }
+                else if (vkParameter.Kind == VulkanCommandParameterKind.Standard && paramToProcess.RefKind != CSharpRefKind.None)
+                {
+                    writer.Write("fixed (");
+                    paramToProcess.ElementType.DumpReferenceTo(writer);
+                    writer.WriteLine($"* {paramToProcess.LocalVariableName} = &{csParameter.Name})");
+                }
+                else if (makeLengthOut && vkParameter.Kind == VulkanCommandParameterKind.Length && paramToProcess.RefKind == CSharpRefKind.Ref)
+                {
+                    writer.Write("fixed (");
+                    paramToProcess.ElementType.DumpReferenceTo(writer);
+                    writer.WriteLine($"* {paramToProcess.LocalVariableName} = &{csParameter.Name})");
+                }
+            }
+
+            if (hasStrings)
+            {
+                writer.WriteLine("try");
+                writer.OpenBraceBlock();
+
+                // Write local variables for each parameter that is required locally (string, length by ref...)
+                for (var paramIndex = 0; paramIndex < paramsToProcess.Length; paramIndex++)
+                {
+                    var paramToProcess = paramsToProcess[paramIndex];
+                    if (paramToProcess == null)
+                    {
+                        continue;
+                    }
+
+                    var csParameter = csFunction.Parameters[paramIndex];
+                    var vkParameter = command.Parameters[paramIndex];
+
+                    if (vkParameter.Kind == VulkanCommandParameterKind.NullTerminated)
+                    {
+                       writer.WriteLine($"{paramToProcess.LocalVariableName}__marshaller.FromManaged({csParameter.Name}, stackalloc byte[global::XenoAtom.Interop.Utf8CustomMarshaller.ManagedToUnmanagedIn.BufferSize]);");
+                       writer.WriteLine($"{paramToProcess.LocalVariableName} = {paramToProcess.LocalVariableName}__marshaller.ToUnmanaged();");
+                    }
+                }
+            }
+
+            if (hasReturnType)
             {
                 writer.Write("return ");
             }
@@ -459,50 +604,61 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                     writer.Write(", ");
                 }
 
-                int localI = i;
-                var lengthParameterIndex = parameterListToProcess.FindIndex(x => x.LengthParameter.Index == localI);
-                var lengthParameterWithArray = parameterListToProcess.SelectMany(x => x.SupportedArrayParameters).FirstOrDefault(x => x.Index == localI);
+                var paramToProcess = paramsToProcess[i];
+                var csParameter = csFunction.Parameters[i];
+                var vkParameter = command.Parameters[i];
 
-                CSharpParameter? arrayParameter = null;
-                if (lengthParameterWithArray != null)
+                if (paramToProcess == null || paramToProcess.LocalVariableName is null)
                 {
-                    arrayParameter = lengthParameterWithArray.AttachedCSharpParameter!;
+                    writer.Write(csParameter.Name);
                 }
-
-                if (lengthParameterIndex >= 0)
+                else if (paramToProcess.LocalVariableName != null)
                 {
-                    var lengthParameter = parameterListToProcess[lengthParameterIndex];
-
-                    if (lengthParameter.IsLengthByRef)
+                    // TODO: handle address to local length variable
+                    if (vkParameter.Kind == VulkanCommandParameterKind.Length && paramToProcess.RefKind == CSharpRefKind.Ref)
                     {
-                        writer.Write($"ref {lengthParameter.LengthParameter.IndexParameterName}");
+                        writer.Write(makeLengthOut ? $"{paramToProcess.LocalVariableName}" : $"&{paramToProcess.LocalVariableName}");
                     }
                     else
                     {
-                        // Force casting
-                        writer.Write("checked((");
-                        lengthParameter.LengthParameter.AttachedCSharpParameter!.ParameterType!.DumpReferenceTo(writer);
-                        writer.Write($"){lengthParameter.LengthParameter.IndexParameterName})");
+                        if (makeLengthOut && paramToProcess.IsArrayOptional)
+                        {
+                            writer.Write("default");
+                        }
+                        else
+                        {
+                            writer.Write(paramToProcess.LocalVariableName);
+                        }
                     }
-                }
-                else if (arrayParameter != null)
-                {
-                    writer.Write($"__{arrayParameter.Name}");
-                }
-                else
-                {
-                    var csParameter = csFunction.Parameters[i];
-                    if (csParameter.ParameterType is CSharpRefType refType && (refType.Kind != CSharpRefKind.None && refType.Kind != CSharpRefKind.In))
-                    {
-                        refType.Kind.DumpTo(writer);
-                        writer.Write(" ");
-                    }
-
-                    writer.Write(csParameter.Name);
                 }
             }
-
             writer.WriteLine(");");
+
+            if (hasStrings)
+            {
+                writer.CloseBraceBlock();
+                writer.WriteLine("finally");
+                writer.OpenBraceBlock();
+
+                // Write local variables for each parameter that is required locally (string, length by ref...)
+                for (var paramIndex = 0; paramIndex < paramsToProcess.Length; paramIndex++)
+                {
+                    var paramToProcess = paramsToProcess[paramIndex];
+                    if (paramToProcess == null)
+                    {
+                        continue;
+                    }
+
+                    var vkParameter = command.Parameters[paramIndex];
+
+                    if (vkParameter.Kind == VulkanCommandParameterKind.NullTerminated)
+                    {
+                        writer.WriteLine($"{paramToProcess.LocalVariableName}__marshaller.Free();");
+                    }
+                }
+
+                writer.CloseBraceBlock();
+            }
         };
 
         if (isExtensionFunction)
@@ -517,60 +673,140 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
     }
 
-
-    private class VulkanCommandParameterToProcess
+    private static string GetLocalVariableFromParameter(string parameterName) => $"__{parameterName}_local";
+    
+    /// <summary>
+    /// This class is used to identify parameters that we want to process to create new overloads:
+    /// - Ref parameters
+    /// - Length/Array parameters to convert to Span
+    /// - Null terminated strings
+    /// </summary>
+    /// <param name="Index"></param>
+    private class ParamToProcess(int Index)
     {
-        public bool IsLengthByRef { get; init; }
+        public required VulkanCommandParameter VkParameter { get; init; }
 
-        public required VulkanCommandParameter LengthParameter { get; init; }
+        public CSharpRefKind RefKind { get; init; }
 
-        public List<VulkanCommandParameter> SupportedArrayParameters { get; } = new();
+        public bool IsConst { get; init; }
+
+        public bool IsArrayOptional { get; set; }
+
+        public required CSharpType ElementType { get; init; }
+
+        public List<int>? SupportedArrayParameters { get; set; }
+
+        public required string? LocalVariableName { get; init; }
     }
 
-    private List<VulkanCommandParameterToProcess>? GetParameterListToProcess(VulkanCommand command, CSharpMethod csFunction, CppFunction cppFunction)
+    private ParamToProcess?[] GetParamToProcessArray(CSharpMethod csFunction, VulkanCommand command, CppFunction cppFunction, List<int> optionalParameters)
     {
-        List<VulkanCommandParameterToProcess>? groups = null;
-        for (var i = 0; i < command.Parameters.Count; i++)
+        var paramsToProcess = new ParamToProcess?[cppFunction.Parameters.Count];
+        for (var i = 0; i < cppFunction.Parameters.Count; i++)
         {
-            var parameter = command.Parameters[i];
-            if (parameter.Kind == VulkanCommandParameterKind.Length)
+            var cppParameter = cppFunction.Parameters[i];
+            var csParameter = csFunction.Parameters[i];
+            var vkParameter = command.Parameters[i];
+
+            CSharpType elementType = csParameter.ParameterType!;
+
+            bool isPointerType = false;
+            if (elementType is CSharpPointerType lengthPointerType)
             {
-                var cppLengthParameter = cppFunction.Parameters[i];
-                bool isLengthByRef = cppLengthParameter.Type is CppPointerType;
+                isPointerType = true;
+                elementType = lengthPointerType.ElementType;
+            }
 
-                parameter.AttachedCSharpParameter = csFunction.Parameters[i];
+            cppParameter.Type.TryGetElementTypeFromPointer(out var isConst, out var _);
 
-                var currentGroup = new VulkanCommandParameterToProcess
+            ParamToProcess? paramToProcess = null;
+            if (vkParameter.Kind == VulkanCommandParameterKind.Length)
+            {
+                var refKind = isPointerType ? CSharpRefKind.Ref : CSharpRefKind.None;
+                paramToProcess = new ParamToProcess(i)
                 {
-                    IsLengthByRef = isLengthByRef,
-                    LengthParameter = parameter,
+                    VkParameter = vkParameter,
+                    RefKind = refKind,
+                    ElementType = elementType,
+                    LocalVariableName = GetLocalVariableFromParameter(cppParameter.Name),
                 };
-
-                groups ??= new();
-                groups.Add(currentGroup);
             }
-        }
+            else if (vkParameter.Kind == VulkanCommandParameterKind.NullTerminated)
+            {
+                if (cppParameter.Type.TryGetElementTypeFromPointer(out var isConstString, out var _) && isConstString)
+                {
+                    paramToProcess = new ParamToProcess(i)
+                    {
+                        VkParameter = vkParameter,
+                        ElementType = elementType, // ElementType is not used for strings
+                        LocalVariableName = GetLocalVariableFromParameter(cppParameter.Name),
+                    };
+                }
+            }
+            else if (vkParameter.Kind == VulkanCommandParameterKind.Array)
+            {
+                if (IsValidPointerTypeToProcess(cppParameter.Type) && IsValidPointerTypeForSpan(cppParameter.Type) && isPointerType && vkParameter.LengthParameterIndex >= 0)
+                {
+                    paramToProcess = new ParamToProcess(i)
+                    {
+                        VkParameter = vkParameter,
+                        IsConst = isConst,
+                        ElementType = elementType,
+                        LocalVariableName = GetLocalVariableFromParameter(cppParameter.Name),
+                        IsArrayOptional = command.Parameters[vkParameter.LengthParameterIndex].Optional != VulkanCommandOptional.None && paramsToProcess[vkParameter.LengthParameterIndex]!.RefKind == CSharpRefKind.Ref,
+                    };
+                }
+            }
+            else if (IsValidPointerTypeToProcess(cppParameter.Type) && isPointerType)
+            {
+                if (vkParameter.Optional == VulkanCommandOptional.None)
+                {
+                    paramToProcess = new ParamToProcess(i)
+                    {
+                        VkParameter = vkParameter,
+                        RefKind = isConst ? CSharpRefKind.In : CSharpRefKind.Out,
+                        ElementType = elementType,
+                        LocalVariableName = GetLocalVariableFromParameter(cppParameter.Name),
+                    };
+                }
+            }
+            else if (vkParameter.Optional == VulkanCommandOptional.True)
+            {
+                optionalParameters.Add(i);
+            }
 
-        if (groups == null)
-        {
-            return null;
+            paramsToProcess[i] = paramToProcess;
         }
 
         for (var i = 0; i < command.Parameters.Count; i++)
         {
             var parameter = command.Parameters[i];
-            if (parameter.Kind == VulkanCommandParameterKind.Array && IsValidPointerTypeForSpan(cppFunction.Parameters[i].Type))
+            if (parameter.Kind == VulkanCommandParameterKind.Array && paramsToProcess[i] != null)
             {
-                var group = groups!.Find(x => x.LengthParameter.Index == parameter.LengthParameterIndex)!;
-                group.SupportedArrayParameters.Add(parameter);
-                parameter.AttachedCSharpParameter = csFunction.Parameters[i];
+                var lengthParamToProcess = paramsToProcess[parameter.LengthParameterIndex]!;
+                // Tag the length parameter as used by an array parameter that will be converted to Span
+                lengthParamToProcess.SupportedArrayParameters ??= [];
+                lengthParamToProcess.SupportedArrayParameters!.Add(i);
             }
         }
 
-        // Remove groups that don't have any array parameters
-        groups.RemoveAll(x => x.SupportedArrayParameters.Count == 0);
+        for (var i = 0; i < paramsToProcess.Length; i++)
+        {
+            var paramToProcess = paramsToProcess[i];
+            if (paramToProcess == null)
+            {
+                continue;
+            }
 
-        return groups.Count == 0 ? null : groups;
+            // If there is a length parameter, but it is not used, we don't process this parameter
+            var parameter = command.Parameters[i];
+            if (parameter.Kind == VulkanCommandParameterKind.Length && paramToProcess.SupportedArrayParameters is null)
+            {
+                paramsToProcess[i] = null;
+            }
+        }
+
+        return paramsToProcess;
     }
 
     private void ApplyDocumentation(CSharpElement element)
@@ -596,8 +832,14 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                             docParameter.Description
                         }
                     };
-                    additionalComments??= new List<CSharpComment>();
+                    additionalComments ??= [];
                     additionalComments.Add(xmlParamDoc);
+                }
+
+                if (definition.Return != null)
+                {
+                    additionalComments ??= [];
+                    additionalComments.Add(definition.Return);
                 }
             }
         }
@@ -680,64 +922,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
         return false;
     }
-    
-
-    private void ProcessParameters(CSharpConverter converter, CppElement element)
-    {
-        var cppParameter = (CppParameter)element;
-        var function = cppParameter.Parent as CppFunction;
-        if (function == null)
-        {
-            // function type
-            return;
-        }
-        var parameterIndex = function.Parameters.IndexOf(cppParameter);
-        if (!TryGetVulkanCommand(function.Name, out var command))
-        {
-            Console.WriteLine($"Warning: Function {function.Name} not found in the registry");
-            return;
-        }
-        
-        if (command.Parameters.Count != function.Parameters.Count)
-        {
-            Console.WriteLine($"Warning: Function {function.Name} has different number of parameters in the registry");
-            return;
-        }
-
-        var vulkanParameter = command.Parameters[parameterIndex];
-
-        if (vulkanParameter.Kind == VulkanCommandParameterKind.Array)
-        {
-            converter.CurrentParameterRefKind = CSharpRefKind.None;
-        }
-        else if (cppParameter.Type is CppPointerType pointerType)
-        {
-            if (pointerType.ElementType is CppQualifiedType qualified && qualified.Qualifier == CppTypeQualifier.Const)
-            {
-                if (qualified.ElementType is CppPrimitiveType primitiveType && (primitiveType.Kind == CppPrimitiveKind.Void || primitiveType.Kind == CppPrimitiveKind.Char || primitiveType.Kind == CppPrimitiveKind.UnsignedChar))
-                {
-                    converter.CurrentParameterRefKind = CSharpRefKind.None;
-                }
-                else
-                {
-                    converter.CurrentParameterRefKind = CSharpRefKind.In;
-                }
-            }
-            else
-            {
-                if (pointerType.ElementType is CppPrimitiveType primitiveType && (primitiveType.Kind == CppPrimitiveKind.Void || primitiveType.Kind == CppPrimitiveKind.Char || primitiveType.Kind == CppPrimitiveKind.UnsignedChar))
-                {
-                    converter.CurrentParameterRefKind = CSharpRefKind.None;
-                }
-                else
-                {
-                    // length parameters by pointers should be ref
-                    converter.CurrentParameterRefKind = vulkanParameter.Kind == VulkanCommandParameterKind.Length ? CSharpRefKind.Ref : CSharpRefKind.Out;
-                }
-            }
-        }
-    }
-
+  
     protected override IEnumerable<CppFunction> GetAdditionalExportedCppFunctions() => _extensionFunctions;
 
     private void LoadVulkanParametersFromRegistry(string registryPath)
@@ -764,11 +949,18 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 continue;
             }
 
+            string? successcodes = xmlCommand.Attribute("successcodes")?.Value;
+            string? errorcodes = xmlCommand.Attribute("errorcodes")?.Value;
+
             var proto = xmlCommand.Element("proto")!;
             name = proto.Element("name")!.Value;
             var parameters = xmlCommand.Elements("param").ToList();
 
-            var vulcanCommand = new VulkanCommand(name);
+            var vulcanCommand = new VulkanCommand(name)
+            {
+                ReturnSuccessCodes = successcodes?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
+                ReturnErrorCodes = errorcodes?.Split(',', StringSplitOptions.RemoveEmptyEntries|StringSplitOptions.TrimEntries),
+            };
             for (var parameterIndex = 0; parameterIndex < parameters.Count; parameterIndex++)
             {
                 var parameter = parameters[parameterIndex];
@@ -786,7 +978,11 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 if (lenAttr != null)
                 {
                     var lenValue = lenAttr.Value;
-                    if (!lenValue.StartsWith("null-"))
+                    if (lenValue.StartsWith("null-"))
+                    {
+                        parameterKind = VulkanCommandParameterKind.NullTerminated;
+                    }
+                    else
                     {
                         parameterKind = VulkanCommandParameterKind.Array; // we still record this to record that a parameter is an array
                         lengthParameterIndex = parameters.FindIndex(element => string.Equals(element.Descendants("name").First().Value, lenValue, StringComparison.Ordinal));
@@ -910,8 +1106,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 }
 
                 var isFunction = kind == VulkanDocTypeKind.Function;
+                _functionRegistry.TryGetValue(name, out var command);
                 definition.Description = TransformTextContentToCSharpComment(dict.TryGetValue("desc", out var value) ? value! : string.Empty, isFunction);
-
+                
                 // The following code will try to parse the parameters of the function, like this example:
 
                 // include::{generated}/api/protos/vkCmdClearColorImage.adoc[]
@@ -967,8 +1164,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                         {
                             if (currentParameterName != null)
                             {
-                                var paramDesc = paramDocBuilder.ToString();
-                                definition.Parameters.Add(new VulkanDocParameter(currentParameterName, TransformTextContentToCSharpComment(paramDesc, isFunction)));
+                                AddVkParameter(command, currentParameterName, definition, isFunction);
                             }
 
                             currentParameterName = match.Groups["pname"].Value;
@@ -986,14 +1182,96 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
                     if (currentParameterName != null)
                     {
-                        var paramDesc = paramDocBuilder.ToString();
-                        definition.Parameters.Add(new VulkanDocParameter(currentParameterName, TransformTextContentToCSharpComment(paramDesc, isFunction)));
+                        AddVkParameter(command, currentParameterName, definition, isFunction);
+                    }
+                }
+
+                if (isFunction && command != null)
+                {
+                    if (command.ReturnSuccessCodes != null || command.ReturnErrorCodes != null)
+                    {
+                        var remarks = new CSharpXmlComment("remarks");
+
+                        AddReturnCodes(remarks, "On success, this command returns: ", command.ReturnSuccessCodes);
+                        //AddReturnCodes(remarks, "", command.ReturnSuccessCodes);
+                        AddReturnCodes(remarks, "On failure, this command returns: ", command.ReturnErrorCodes);
+                        definition.Return = remarks;
                     }
                 }
             }
             else
             {
                 Console.WriteLine($"Doc (unknown): {desc}");
+            }
+        }
+
+        void AddVkParameter(VulkanCommand? command, string currentParameterName, VulkanDocDefinition definition, bool isFunction)
+        {
+            var paramDesc = paramDocBuilder.ToString();
+
+            if (command != null)
+            {
+                var parameterIndex = command.Parameters.FindIndex(p => p.Name == currentParameterName);
+
+                if (parameterIndex >= 0)
+                {
+                    var vkParameter = command.Parameters[parameterIndex];
+                    if (vkParameter.Optional == VulkanCommandOptional.True)
+                    {
+                        paramDesc += " This parameter is optional.";
+                    }
+                }
+            }
+            definition.Parameters.Add(new VulkanDocParameter(currentParameterName, TransformTextContentToCSharpComment(paramDesc, isFunction)));
+        }
+
+        void AddReturnCodes(CSharpXmlComment remarks, string context, string[]? codes)
+        {
+            if (codes is null) return;
+            
+            var listSuccessCodes = new CSharpXmlComment("list")
+            {
+                Attributes = { new CSharpXmlAttribute("type", "bullet") },
+            };
+            remarks.Children.Add(listSuccessCodes);
+            
+            listSuccessCodes.Children.Add(new CSharpXmlComment("listheader")
+            {
+                IsInline = true,
+                Children =
+                {
+                    new CSharpXmlComment("description")
+                    {
+                        IsInline = true,
+                        Children =
+                        {
+                            new CSharpTextComment(context)
+                        }
+                    }
+                }
+            });
+
+            foreach (var code in codes)
+            {
+                listSuccessCodes.Children.Add(new CSharpXmlComment("item")
+                {
+                    IsInline = true,
+                    Children =
+                    {
+                        new CSharpXmlComment("description")
+                        {
+                            IsInline = true,
+                            Children =
+                            {
+                                new CSharpXmlComment("c")
+                                {
+                                    IsInline = true,
+                                    Children = { new CSharpTextComment(code) }
+                                }
+                            }
+                        }
+                    }
+                });
             }
         }
     }
@@ -1187,33 +1465,40 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         return group;
     }
 
-    private bool IsValidPointerTypeForSpan(CppType type)
+    private static bool IsValidPointerTypeForSpan(CppType type)
+    {
+        return type is CppPointerType { ElementType: not CppPointerType } pointerType;
+    }
+    
+    private static bool IsValidPointerTypeToProcess(CppType type)
     {
         if (type is CppPointerType pointerType)
         {
+            var elementType = pointerType.ElementType;
+
+            // void* is not supported
             if (pointerType.ElementType is CppPrimitiveType primitiveType && primitiveType.Kind == CppPrimitiveKind.Void)
             {
                 return false;
             }
-            else if (pointerType.ElementType is CppQualifiedType qualifiedType &&
-                     ((qualifiedType.ElementType is CppPrimitiveType anotherPrimitiveType && anotherPrimitiveType.Kind == CppPrimitiveKind.Void) ||
-                      (qualifiedType.ElementType is CppPointerType)))
+            // const void* is not supported
+            else if (pointerType.ElementType is CppQualifiedType qualifiedType)
             {
-                return false;
-            }
-            else if (pointerType.ElementType is CppPointerType)
-            {
-                // Span of pointers is not possible
-                return false;
+                elementType = qualifiedType.ElementType;
+                if (((elementType is CppPrimitiveType anotherPrimitiveType && anotherPrimitiveType.Kind == CppPrimitiveKind.Void) || (elementType is CppPointerType)))
+                {
+                    return false;
+                }
             }
 
+            // We keep VkAllocationCallbacks* as a pointer
             return true;
+            //return elementType is not ICppMember member || member.Name != "VkAllocationCallbacks";
         }
 
         return false;
     }
-
-
+    
     private class VulkanDocDefinitions() : Dictionary<string, VulkanDocDefinition>(StringComparer.Ordinal);
 
     private record VulkanDocDefinition(string Name)
@@ -1223,6 +1508,8 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         public VulkanDocTypeKind Kind { get; set; }
 
         public List<VulkanDocParameter> Parameters { get; } = new();
+
+        public CSharpComment? Return { get; set; }
     }
 
     private record VulkanDocParameter(string Name, CSharpComment Description);
@@ -1257,6 +1544,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         public string? Alias { get; init; }
 
         public List<VulkanCommandParameter> Parameters { get; } = [];
+
+        public string[]? ReturnSuccessCodes { get; init; }
+
+        public string[]? ReturnErrorCodes { get; init; }
     }
 
     private record VulkanCommandParameter(int Index, string Name, VulkanCommandOptional Optional, int LengthParameterIndex)
@@ -1270,10 +1561,6 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         /// If <see cref="M:Kind"/> is <see cref="VulkanCommandParameterKind.Length"/>, this is the list of linked array parameters
         /// </summary>
         public List<int>? LinkedArrayParameters { get; set; }
-
-        public string? IndexParameterName { get; set; }
-        
-        public CSharpParameter? AttachedCSharpParameter { get; set; }
     }
 
     private enum VulkanCommandParameterKind
@@ -1281,6 +1568,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         Standard,
         Length,
         Array,
+        NullTerminated,
     }
 
     private enum VulkanCommandOptional

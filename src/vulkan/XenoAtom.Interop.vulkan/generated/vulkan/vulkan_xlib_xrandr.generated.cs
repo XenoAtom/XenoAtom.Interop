@@ -45,6 +45,15 @@ namespace XenoAtom.Interop
             /// <param name="physicalDevice">The physical device the display is on.</param>
             /// <param name="dpy">A connection to the X11 server that currently owns <paramref name="display"/>.</param>
             /// <param name="display">The display the caller wishes to control in Vulkan.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, vulkan.VkDisplayKHR display)
             {
                 return Value(physicalDevice, dpy, display);
@@ -84,15 +93,45 @@ namespace XenoAtom.Interop
             /// <param name="dpy">A connection to the X11 server from which <paramref name="rrOutput"/> was queried.</param>
             /// <param name="rrOutput">An X11 RandR output ID.</param>
             /// <param name="pDisplay">The corresponding <see cref="T:VkDisplayKHR"/> handle will be returned here.</param>
-            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, nuint rrOutput, out vulkan.VkDisplayKHR pDisplay)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, nuint rrOutput, vulkan.VkDisplayKHR* pDisplay)
             {
-                fixed (vulkan.VkDisplayKHR* __pDisplay = &pDisplay)
-                return Value(physicalDevice, dpy, rrOutput, __pDisplay);
+                return Value(physicalDevice, dpy, rrOutput, pDisplay);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Query the VkDisplayKHR corresponding to an X11 RandR Output
+            /// </summary>
+            /// <param name="physicalDevice">The physical device to query the display handle on.</param>
+            /// <param name="dpy">A connection to the X11 server from which <paramref name="rrOutput"/> was queried.</param>
+            /// <param name="rrOutput">An X11 RandR output ID.</param>
+            /// <param name="pDisplay">The corresponding <see cref="T:VkDisplayKHR"/> handle will be returned here.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, nuint rrOutput, out vulkan.VkDisplayKHR pDisplay)
+            {
+                fixed (vulkan.VkDisplayKHR* __pDisplay_local = &pDisplay)
+                return this.Invoke(physicalDevice, dpy, rrOutput, __pDisplay_local);
+            }
         }
         
         public const int VK_EXT_acquire_xlib_display = 1;

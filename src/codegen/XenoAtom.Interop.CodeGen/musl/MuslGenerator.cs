@@ -1240,7 +1240,7 @@ internal partial class MuslGenerator : GeneratorBase
         {
             var param = csMethod.Parameters[i];
             var cppType = (CppType)param.ParameterType!.CppElement!;
-            if (TryGetElementTypeFromPointerToConst(cppType, out var isConst, out var elementType) && isConst)
+            if (cppType.TryGetElementTypeFromPointer(out var isConst, out var elementType) && isConst)
             {
                 if (elementType is CppPrimitiveType { Kind: CppPrimitiveKind.Char })
                 {
@@ -1254,7 +1254,8 @@ internal partial class MuslGenerator : GeneratorBase
             }
         }
 
-        if (TryGetElementTypeFromPointerToConst(((CppType)csMethod.ReturnType!.CppElement!), out var isConstReturn, out var returnElementType))
+        var returnType = ((CppType)csMethod.ReturnType!.CppElement!);
+        if (returnType.TryGetElementTypeFromPointer(out var isConstReturn, out var returnElementType))
         {
             if (returnElementType is CppPrimitiveType { Kind: CppPrimitiveKind.Char })
             {
@@ -1274,25 +1275,6 @@ internal partial class MuslGenerator : GeneratorBase
             var indexOf = parent.Members.IndexOf(csMethod);
             parent.Members.Insert(indexOf + 1, newManagedMethod);
         }
-    }
-
-    private static bool TryGetElementTypeFromPointerToConst(CppType cppType, out bool isConst, [NotNullWhen(true)] out CppType? elementType)
-    {
-        isConst = false;
-        if (cppType is CppPointerType cppPointerType)
-        {
-            if (cppPointerType.ElementType is CppQualifiedType elementType1 && elementType1.Qualifier == CppTypeQualifier.Const)
-            {
-                isConst = true;
-                elementType = elementType1.ElementType;
-                return true;
-            }
-
-            elementType = cppPointerType.ElementType;
-            return true;
-        }
-        elementType = null;
-        return false;
     }
 
     private record ManFunction(int ManSection, string BaseFunctionName, string FunctionName, string Summary);

@@ -315,19 +315,48 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkAndroidSurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
-            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation).</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
             /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkAndroidSurfaceCreateInfoKHR pCreateInfo, in vulkan.VkAllocationCallbacks pAllocator, out vulkan.VkSurfaceKHR pSurface)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkAndroidSurfaceCreateInfoKHR* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
-                fixed (vulkan.VkAndroidSurfaceCreateInfoKHR* __pCreateInfo = &pCreateInfo)
-                fixed (vulkan.VkAllocationCallbacks* __pAllocator = &pAllocator)
-                fixed (vulkan.VkSurfaceKHR* __pSurface = &pSurface)
-                return Value(instance, __pCreateInfo, __pAllocator, __pSurface);
+                return Value(instance, pCreateInfo, pAllocator, pSurface);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Create a <see cref="T:VkSurfaceKHR"/> object for an Android native window
+            /// </summary>
+            /// <param name="instance">The instance to associate the surface with.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkAndroidSurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
+            /// <param name="pAllocator">The allocator used for host memory allocated for the surface object when there is no more specific allocator available (see Memory Allocation). This parameter is optional.</param>
+            /// <param name="pSurface">A pointer to a <see cref="T:VkSurfaceKHR"/> handle in which the created surface object is returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkAndroidSurfaceCreateInfoKHR pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
+            {
+                fixed (vulkan.VkAndroidSurfaceCreateInfoKHR* __pCreateInfo_local = &pCreateInfo)
+                fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
+                return this.Invoke(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
+            }
         }
         
         public readonly partial struct PFN_vkGetAndroidHardwareBufferPropertiesANDROID : IEquatable<PFN_vkGetAndroidHardwareBufferPropertiesANDROID>, IvkFunctionPointer
@@ -358,10 +387,18 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
             /// <param name="buffer">The Android hardware buffer which will be imported.</param>
             /// <param name="pProperties">A pointer to a <see cref="T:VkAndroidHardwareBufferPropertiesANDROID"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, out vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID* pProperties)
             {
-                fixed (vulkan.VkAndroidHardwareBufferPropertiesANDROID* __pProperties = &pProperties)
-                return Value(device, buffer, __pProperties);
+                return Value(device, buffer, pProperties);
             }
             
             public nint Pointer => (nint)Value;
@@ -397,11 +434,18 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that created the device memory being exported.</param>
             /// <param name="pInfo">A pointer to a <see cref="T:VkMemoryGetAndroidHardwareBufferInfoANDROID"/> structure containing parameters of the export operation.</param>
             /// <param name="pBuffer">Will return an Android hardware buffer referencing the payload of the device memory object.</param>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, out vulkan.AHardwareBuffer pBuffer)
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// </list>
+            /// 
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, vulkan.AHardwareBuffer* pBuffer)
             {
-                fixed (vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID* __pInfo = &pInfo)
-                fixed (vulkan.AHardwareBuffer* __pBuffer = &pBuffer)
-                return Value(device, __pInfo, __pBuffer);
+                return Value(device, pInfo, pBuffer);
             }
             
             public nint Pointer => (nint)Value;
@@ -423,9 +467,39 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
         /// <param name="buffer">The Android hardware buffer which will be imported.</param>
         /// <param name="pProperties">A pointer to a <see cref="T:VkAndroidHardwareBufferPropertiesANDROID"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetAndroidHardwareBufferPropertiesANDROID")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetAndroidHardwareBufferPropertiesANDROID(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, out vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties);
+        public static partial vulkan.VkResult vkGetAndroidHardwareBufferPropertiesANDROID(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID* pProperties);
+        
+        /// <summary>
+        /// Get Properties of External Memory Android Hardware Buffers
+        /// </summary>
+        /// <param name="device">The logical device that will be importing <paramref name="buffer"/>.</param>
+        /// <param name="buffer">The Android hardware buffer which will be imported.</param>
+        /// <param name="pProperties">A pointer to a <see cref="T:VkAndroidHardwareBufferPropertiesANDROID"/> structure in which the properties of <paramref name="buffer"/> are returned.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkGetAndroidHardwareBufferPropertiesANDROID(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, out vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties)
+        {
+            fixed (vulkan.VkAndroidHardwareBufferPropertiesANDROID* __pProperties_local = &pProperties)
+            return vkGetAndroidHardwareBufferPropertiesANDROID(device, buffer, __pProperties_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID> vkGetAndroidHardwareBufferPropertiesANDROID_ => new("vkGetAndroidHardwareBufferPropertiesANDROID"u8);
         
@@ -435,9 +509,40 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device that created the device memory being exported.</param>
         /// <param name="pInfo">A pointer to a <see cref="T:VkMemoryGetAndroidHardwareBufferInfoANDROID"/> structure containing parameters of the export operation.</param>
         /// <param name="pBuffer">Will return an Android hardware buffer referencing the payload of the device memory object.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryAndroidHardwareBufferANDROID")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetMemoryAndroidHardwareBufferANDROID(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, out vulkan.AHardwareBuffer pBuffer);
+        public static partial vulkan.VkResult vkGetMemoryAndroidHardwareBufferANDROID(vulkan.VkDevice device, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, vulkan.AHardwareBuffer* pBuffer);
+        
+        /// <summary>
+        /// Get an Android hardware buffer for a memory object
+        /// </summary>
+        /// <param name="device">The logical device that created the device memory being exported.</param>
+        /// <param name="pInfo">A pointer to a <see cref="T:VkMemoryGetAndroidHardwareBufferInfoANDROID"/> structure containing parameters of the export operation.</param>
+        /// <param name="pBuffer">Will return an Android hardware buffer referencing the payload of the device memory object.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+        /// </list>
+        /// <list type="bullet">
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// </list>
+        /// 
+        /// </remarks>
+        public static vulkan.VkResult vkGetMemoryAndroidHardwareBufferANDROID(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, out vulkan.AHardwareBuffer pBuffer)
+        {
+            fixed (vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID* __pInfo_local = &pInfo)
+            fixed (vulkan.AHardwareBuffer* __pBuffer_local = &pBuffer)
+            return vkGetMemoryAndroidHardwareBufferANDROID(device, __pInfo_local, __pBuffer_local);
+        }
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID> vkGetMemoryAndroidHardwareBufferANDROID_ => new("vkGetMemoryAndroidHardwareBufferANDROID"u8);
     }
