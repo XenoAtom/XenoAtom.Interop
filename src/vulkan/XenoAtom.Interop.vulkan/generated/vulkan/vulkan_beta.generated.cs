@@ -22,27 +22,57 @@ namespace XenoAtom.Interop
         /// </summary>
         public enum VkVideoEncodeTuningModeKHR : uint
         {
+            /// <summary>
+            /// Specifies the default tuning mode.
+            /// </summary>
             VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR = unchecked((uint)0),
             
+            /// <summary>
+            /// Specifies that video encoding is tuned for high quality. When using this tuning mode, the implementation may: compromise the latency of video encoding operations to improve quality.
+            /// </summary>
             VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR = unchecked((uint)1),
             
+            /// <summary>
+            /// Specifies that video encoding is tuned for low latency. When using this tuning mode, the implementation may: compromise quality to increase the performance and lower the latency of video encode operations.
+            /// </summary>
             VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR = unchecked((uint)2),
             
+            /// <summary>
+            /// Specifies that video encoding is tuned for ultra-low latency. When using this tuning mode, the implementation may: compromise quality to maximize the performance and minimize the latency of video encoding operations.
+            /// </summary>
             VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR = unchecked((uint)3),
             
+            /// <summary>
+            /// Specifies that video encoding is tuned for lossless encoding. When using this tuning mode, video encode operations produce lossless output.
+            /// </summary>
             VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR = unchecked((uint)4),
             
             VK_VIDEO_ENCODE_TUNING_MODE_MAX_ENUM_KHR = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Specifies the default tuning mode.
+        /// </summary>
         public const vulkan.VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR = VkVideoEncodeTuningModeKHR.VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is tuned for high quality. When using this tuning mode, the implementation may: compromise the latency of video encoding operations to improve quality.
+        /// </summary>
         public const vulkan.VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR = VkVideoEncodeTuningModeKHR.VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is tuned for low latency. When using this tuning mode, the implementation may: compromise quality to increase the performance and lower the latency of video encode operations.
+        /// </summary>
         public const vulkan.VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR = VkVideoEncodeTuningModeKHR.VK_VIDEO_ENCODE_TUNING_MODE_LOW_LATENCY_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is tuned for ultra-low latency. When using this tuning mode, the implementation may: compromise quality to maximize the performance and minimize the latency of video encoding operations.
+        /// </summary>
         public const vulkan.VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR = VkVideoEncodeTuningModeKHR.VK_VIDEO_ENCODE_TUNING_MODE_ULTRA_LOW_LATENCY_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is tuned for lossless encoding. When using this tuning mode, video encode operations produce lossless output.
+        /// </summary>
         public const vulkan.VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR = VkVideoEncodeTuningModeKHR.VK_VIDEO_ENCODE_TUNING_MODE_LOSSLESS_KHR;
         
         public const vulkan.VkVideoEncodeTuningModeKHR VK_VIDEO_ENCODE_TUNING_MODE_MAX_ENUM_KHR = VkVideoEncodeTuningModeKHR.VK_VIDEO_ENCODE_TUNING_MODE_MAX_ENUM_KHR;
@@ -68,23 +98,47 @@ namespace XenoAtom.Interop
         [Flags]
         public enum VkVideoEncodeRateControlModeFlagBitsKHR : uint
         {
+            /// <summary>
+            /// Specifies the use of implementation-specific rate control.
+            /// </summary>
             VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR = unchecked((uint)0),
             
+            /// <summary>
+            /// Specifies that rate control is disabled and any quality control parameters for the encoding are provided on a per-picture basis. In this mode implementations will encode pictures independently of the output bitrate of prior video encode operations. When using an H.264 encode profile, implementations will use the QP values specified in the <see cref="T:VkVideoEncodeH264RateControlInfoEXT"/> structure for the encoded picture. When using an H.265 encode profile, implementations will use the QP values specified in the <see cref="T:VkVideoEncodeH265RateControlInfoEXT"/> structure for the encoded picture.
+            /// </summary>
             VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR = unchecked((uint)1),
             
+            /// <summary>
+            /// Specifies the use of constant bitrate rate control mode.
+            /// </summary>
             VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR = unchecked((uint)2),
             
+            /// <summary>
+            /// Specifies the use of variable bitrate rate control mode.
+            /// </summary>
             VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR = unchecked((uint)4),
             
             VK_VIDEO_ENCODE_RATE_CONTROL_MODE_FLAG_BITS_MAX_ENUM_KHR = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Specifies the use of implementation-specific rate control.
+        /// </summary>
         public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR;
         
+        /// <summary>
+        /// Specifies that rate control is disabled and any quality control parameters for the encoding are provided on a per-picture basis. In this mode implementations will encode pictures independently of the output bitrate of prior video encode operations. When using an H.264 encode profile, implementations will use the QP values specified in the <see cref="T:VkVideoEncodeH264RateControlInfoEXT"/> structure for the encoded picture. When using an H.265 encode profile, implementations will use the QP values specified in the <see cref="T:VkVideoEncodeH265RateControlInfoEXT"/> structure for the encoded picture.
+        /// </summary>
         public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR;
         
+        /// <summary>
+        /// Specifies the use of constant bitrate rate control mode.
+        /// </summary>
         public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR;
         
+        /// <summary>
+        /// Specifies the use of variable bitrate rate control mode.
+        /// </summary>
         public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR;
         
         public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_FLAG_BITS_MAX_ENUM_KHR;
@@ -95,19 +149,37 @@ namespace XenoAtom.Interop
         [Flags]
         public enum VkVideoEncodeFeedbackFlagBitsKHR : uint
         {
+            /// <summary>
+            /// Specifies that queries managed by the pool will capture the byte offset of the bitstream data written by the video encode operation to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/> relative to the offset specified in <see cref="T:VkVideoEncodeInfoKHR.dstBufferOffset"/>.
+            /// </summary>
             VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR = unchecked((uint)1),
             
+            /// <summary>
+            /// Specifies that queries managed by the pool will capture the number of bytes written by the video encode operation to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/>.
+            /// </summary>
             VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR = unchecked((uint)2),
             
+            /// <summary>
+            /// Specifies that queries managed by the pool will capture a boolean value indicating that the data written to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/> contains overridden parameters.
+            /// </summary>
             VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR = unchecked((uint)4),
             
             VK_VIDEO_ENCODE_FEEDBACK_FLAG_BITS_MAX_ENUM_KHR = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Specifies that queries managed by the pool will capture the byte offset of the bitstream data written by the video encode operation to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/> relative to the offset specified in <see cref="T:VkVideoEncodeInfoKHR.dstBufferOffset"/>.
+        /// </summary>
         public const vulkan.VkVideoEncodeFeedbackFlagBitsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR = VkVideoEncodeFeedbackFlagBitsKHR.VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR;
         
+        /// <summary>
+        /// Specifies that queries managed by the pool will capture the number of bytes written by the video encode operation to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/>.
+        /// </summary>
         public const vulkan.VkVideoEncodeFeedbackFlagBitsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR = VkVideoEncodeFeedbackFlagBitsKHR.VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR;
         
+        /// <summary>
+        /// Specifies that queries managed by the pool will capture a boolean value indicating that the data written to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/> contains overridden parameters.
+        /// </summary>
         public const vulkan.VkVideoEncodeFeedbackFlagBitsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR = VkVideoEncodeFeedbackFlagBitsKHR.VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR;
         
         public const vulkan.VkVideoEncodeFeedbackFlagBitsKHR VK_VIDEO_ENCODE_FEEDBACK_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeFeedbackFlagBitsKHR.VK_VIDEO_ENCODE_FEEDBACK_FLAG_BITS_MAX_ENUM_KHR;
@@ -120,12 +192,24 @@ namespace XenoAtom.Interop
         {
             VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR = unchecked((uint)0),
             
+            /// <summary>
+            /// Specifies that video encoding is intended to be used in conjunction with video decoding to transcode a video bitstream with the same and/or different codecs.
+            /// </summary>
             VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR = unchecked((uint)1),
             
+            /// <summary>
+            /// Specifies that video encoding is intended to be used to produce a video bitstream that is expected to be sent as a continuous flow over network.
+            /// </summary>
             VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR = unchecked((uint)2),
             
+            /// <summary>
+            /// Specifies that video encoding is intended to be used for real-time recording for offline consumption.
+            /// </summary>
             VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR = unchecked((uint)4),
             
+            /// <summary>
+            /// Specifies that video encoding is intended to be used in a video conferencing scenario.
+            /// </summary>
             VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR = unchecked((uint)8),
             
             VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR = unchecked((uint)2147483647),
@@ -133,12 +217,24 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is intended to be used in conjunction with video decoding to transcode a video bitstream with the same and/or different codecs.
+        /// </summary>
         public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is intended to be used to produce a video bitstream that is expected to be sent as a continuous flow over network.
+        /// </summary>
         public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is intended to be used for real-time recording for offline consumption.
+        /// </summary>
         public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is intended to be used in a video conferencing scenario.
+        /// </summary>
         public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR;
         
         public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR;
@@ -151,10 +247,19 @@ namespace XenoAtom.Interop
         {
             VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR = unchecked((uint)0),
             
+            /// <summary>
+            /// Specifies that video encoding is intended to be used to encode camera content.
+            /// </summary>
             VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR = unchecked((uint)1),
             
+            /// <summary>
+            /// Specifies that video encoding is intended to be used to encode desktop content.
+            /// </summary>
             VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR = unchecked((uint)2),
             
+            /// <summary>
+            /// Specified that video encoding is intended to be used to encode rendered (e.g. game) content.
+            /// </summary>
             VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR = unchecked((uint)4),
             
             VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR = unchecked((uint)2147483647),
@@ -162,10 +267,19 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is intended to be used to encode camera content.
+        /// </summary>
         public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR;
         
+        /// <summary>
+        /// Specifies that video encoding is intended to be used to encode desktop content.
+        /// </summary>
         public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR;
         
+        /// <summary>
+        /// Specified that video encoding is intended to be used to encode rendered (e.g. game) content.
+        /// </summary>
         public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR;
         
         public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR;
@@ -176,6 +290,9 @@ namespace XenoAtom.Interop
         [Flags]
         public enum VkVideoEncodeH264CapabilityFlagBitsEXT : uint
         {
+            /// <summary>
+            /// Indicates if the implementation guarantees generating a HRD compliant bitstream if <c>nal_hrd_parameters_present_flag</c> or <c>vcl_hrd_parameters_present_flag</c> are enabled in <c>StdVideoH264SpsVuiFlags</c>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT"/> indicates that when <c>weighted_pred_flag</c> is enabled or <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is used, the implementation is able to internally decide syntax for <c>pred_weight_table</c>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT"/> indicates that each slice in a frame with multiple slices may begin or finish at any offset in a macroblock row. If not supported, all slices in the frame must: begin at the start of a macroblock row (and hence each slice must: finish at the end of a macroblock row). * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT"/> indicates that when a frame is encoded with multiple slices, the implementation allows encoding each slice with a different <c>StdVideoEncodeH264SliceHeader</c>. If not supported, all slices of the frame must: be encoded with the same <c>slice_type</c> which corresponds to the picture type of the frame. For example, all slices of a P-frame would be encoded as P-slices. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT"/> indicates support for using a B frame as L0 reference. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT"/> indicates support for using a B frame as L1 reference. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT"/> indicates support for specifying different QP values in the members of <see cref="T:VkVideoEncodeH264QpEXT"/>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT"/> indicates support for specifying different constant QP values for each slice. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT"/> indicates support for generating prefix NALUs by setting <see cref="T:VkVideoEncodeH264PictureInfoEXT.generatePrefixNalu"/> to <see cref="T:VK_TRUE"/>.
+            /// </summary>
             VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = unchecked((uint)1),
             
             VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = unchecked((uint)2),
@@ -197,6 +314,9 @@ namespace XenoAtom.Interop
             VK_VIDEO_ENCODE_H264_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Indicates if the implementation guarantees generating a HRD compliant bitstream if <c>nal_hrd_parameters_present_flag</c> or <c>vcl_hrd_parameters_present_flag</c> are enabled in <c>StdVideoH264SpsVuiFlags</c>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT"/> indicates that when <c>weighted_pred_flag</c> is enabled or <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is used, the implementation is able to internally decide syntax for <c>pred_weight_table</c>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT"/> indicates that each slice in a frame with multiple slices may begin or finish at any offset in a macroblock row. If not supported, all slices in the frame must: begin at the start of a macroblock row (and hence each slice must: finish at the end of a macroblock row). * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT"/> indicates that when a frame is encoded with multiple slices, the implementation allows encoding each slice with a different <c>StdVideoEncodeH264SliceHeader</c>. If not supported, all slices of the frame must: be encoded with the same <c>slice_type</c> which corresponds to the picture type of the frame. For example, all slices of a P-frame would be encoded as P-slices. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT"/> indicates support for using a B frame as L0 reference. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT"/> indicates support for using a B frame as L1 reference. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT"/> indicates support for specifying different QP values in the members of <see cref="T:VkVideoEncodeH264QpEXT"/>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT"/> indicates support for specifying different constant QP values for each slice. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT"/> indicates support for generating prefix NALUs by setting <see cref="T:VkVideoEncodeH264PictureInfoEXT.generatePrefixNalu"/> to <see cref="T:VK_TRUE"/>.
+        /// </summary>
         public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT;
@@ -229,12 +349,21 @@ namespace XenoAtom.Interop
             
             VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT = unchecked((uint)4),
             
+            /// <summary>
+            /// Indicates if setting non-zero <c>chroma_qp_index_offset</c> in <c>StdVideoH264PictureParameterSet</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT"/> indicates if setting non-zero <c>second_chroma_qp_index_offset</c> in <c>StdVideoH264PictureParameterSet</c> is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT = unchecked((uint)8),
             
             VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT = unchecked((uint)16),
             
+            /// <summary>
+            /// Indicates if setting non-zero <c>pic_init_qp_minus26</c> in <c>StdVideoH264PictureParameterSet</c> is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT = unchecked((uint)32),
             
+            /// <summary>
+            /// Indicates if enabling <c>weighted_pred_flag</c> in <c>StdVideoH264PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_IMPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT"/> indicates if enabling <c>transform_8x8_mode_flag</c> in <c>StdVideoH264PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT"/> indicates if disabling <c>StdVideoEncodeH264SliceHeaderFlags</c> is supported when it is present in the slice header. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT"/> indicates if CAVLC entropy coding is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT"/> indicates if CABAC entropy coding is supported. An implementation must: support at least one entropy coding mode. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT"/> indicates if disabling <c>direct_8x8_inference_flag</c> in <c>StdVideoH264SpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>constrained_intra_pred_flag</c> in <c>StdVideoH264PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED</c> from StdVideoH264DisableDeblockingFilterIdc is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED</c> from StdVideoH264DisableDeblockingFilterIdc is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL</c> from StdVideoH264DisableDeblockingFilterIdc is supported. An implementation must: support at least one deblocking filter mode.
+            /// </summary>
             VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = unchecked((uint)64),
             
             VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT = unchecked((uint)128),
@@ -268,12 +397,21 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT;
         
+        /// <summary>
+        /// Indicates if setting non-zero <c>chroma_qp_index_offset</c> in <c>StdVideoH264PictureParameterSet</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT"/> indicates if setting non-zero <c>second_chroma_qp_index_offset</c> in <c>StdVideoH264PictureParameterSet</c> is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT;
         
+        /// <summary>
+        /// Indicates if setting non-zero <c>pic_init_qp_minus26</c> in <c>StdVideoH264PictureParameterSet</c> is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT;
         
+        /// <summary>
+        /// Indicates if enabling <c>weighted_pred_flag</c> in <c>StdVideoH264PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_IMPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT"/> indicates if enabling <c>transform_8x8_mode_flag</c> in <c>StdVideoH264PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT"/> indicates if disabling <c>StdVideoEncodeH264SliceHeaderFlags</c> is supported when it is present in the slice header. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT"/> indicates if CAVLC entropy coding is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT"/> indicates if CABAC entropy coding is supported. An implementation must: support at least one entropy coding mode. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT"/> indicates if disabling <c>direct_8x8_inference_flag</c> in <c>StdVideoH264SpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>constrained_intra_pred_flag</c> in <c>StdVideoH264PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED</c> from StdVideoH264DisableDeblockingFilterIdc is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED</c> from StdVideoH264DisableDeblockingFilterIdc is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL</c> from StdVideoH264DisableDeblockingFilterIdc is supported. An implementation must: support at least one deblocking filter mode.
+        /// </summary>
         public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT;
@@ -308,6 +446,9 @@ namespace XenoAtom.Interop
         {
             VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = unchecked((uint)1),
             
+            /// <summary>
+            /// Specifies that the application intends to use a regular GOP structure according to the parameters specified in the <see cref="M:gopFrameCount"/>, <see cref="M:idrPeriod"/>, and <see cref="M:consecutiveBFrameCount"/> members of the <see cref="T:VkVideoEncodeH264RateControlInfoEXT"/> structure. * <see cref="T:VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT"/> specifies that the application intends to follow a flat reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic temporal layer pattern.
+            /// </summary>
             VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT = unchecked((uint)2),
             
             VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = unchecked((uint)4),
@@ -321,6 +462,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT;
         
+        /// <summary>
+        /// Specifies that the application intends to use a regular GOP structure according to the parameters specified in the <see cref="M:gopFrameCount"/>, <see cref="M:idrPeriod"/>, and <see cref="M:consecutiveBFrameCount"/> members of the <see cref="T:VkVideoEncodeH264RateControlInfoEXT"/> structure. * <see cref="T:VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT"/> specifies that the application intends to follow a flat reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic temporal layer pattern.
+        /// </summary>
         public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT;
@@ -337,6 +481,9 @@ namespace XenoAtom.Interop
         [Flags]
         public enum VkVideoEncodeH265CapabilityFlagBitsEXT : uint
         {
+            /// <summary>
+            /// Indicates if the implementation guarantees generating a HRD compliant bitstream if <c>nal_hrd_parameters_present_flag</c>, <c>vcl_hrd_parameters_present_flag</c>, or <c>sub_pic_hrd_params_present_flag</c> are enabled in <c>StdVideoH265HrdFlags</c>, or <c>vui_hrd_parameters_present_flag</c> is enabled in <c>StdVideoH265SpsVuiFlags</c>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT"/> indicates that when <c>weighted_pred_flag</c> or <c>weighted_bipred_flag</c> in <c>StdVideoH265PpsFlags</c> are enabled, the implementation is able to internally decide syntax for <c>pred_weight_table</c>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT"/> indicates that each slice segment in a frame with a single or multiple tiles per slice may begin or finish at any offset in a CTB row. If not supported, all slice segments in such a frame must: begin at the start of a CTB row (and hence each slice segment must: finish at the end of a CTB row). Also indicates that each slice segment in a frame with multiple slices per tile may begin or finish at any offset within the enclosing tile's CTB row. If not supported, slice segments in such a frame must: begin at the start of the enclosing tile's CTB row (and hence each slice segment must: finish at the end of the enclosing tile's CTB row). * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT"/> indicates that when a frame is encoded with multiple slice segments, the implementation allows encoding each slice segment with a different <c>StdVideoEncodeH265SliceSegmentHeader</c>. If not supported, all slice segments of the frame must: be encoded with the same <c>slice_type</c> which corresponds to the picture type of the frame. For example, all slice segments of a P-frame would be encoded as P-slices. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT"/> indicates support for using a B frame as L0 reference. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT"/> indicates support for using a B frame as L1 reference. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT"/> indicates support for specifying different QP values in the members of <see cref="T:VkVideoEncodeH265QpEXT"/>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT"/> indicates support for specifying different constant QP values for each slice segment. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT"/> indicates if encoding multiple tiles per slice segment is supported. If not set, the implementation is only able to encode a single tile for each slice segment. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT"/> indicates if encoding multiple slice segments per tile is supported. If not set, the implementation is only able to encode a single slice segment for each tile.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = unchecked((uint)1),
             
             VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = unchecked((uint)2),
@@ -360,6 +507,9 @@ namespace XenoAtom.Interop
             VK_VIDEO_ENCODE_H265_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Indicates if the implementation guarantees generating a HRD compliant bitstream if <c>nal_hrd_parameters_present_flag</c>, <c>vcl_hrd_parameters_present_flag</c>, or <c>sub_pic_hrd_params_present_flag</c> are enabled in <c>StdVideoH265HrdFlags</c>, or <c>vui_hrd_parameters_present_flag</c> is enabled in <c>StdVideoH265SpsVuiFlags</c>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT"/> indicates that when <c>weighted_pred_flag</c> or <c>weighted_bipred_flag</c> in <c>StdVideoH265PpsFlags</c> are enabled, the implementation is able to internally decide syntax for <c>pred_weight_table</c>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT"/> indicates that each slice segment in a frame with a single or multiple tiles per slice may begin or finish at any offset in a CTB row. If not supported, all slice segments in such a frame must: begin at the start of a CTB row (and hence each slice segment must: finish at the end of a CTB row). Also indicates that each slice segment in a frame with multiple slices per tile may begin or finish at any offset within the enclosing tile's CTB row. If not supported, slice segments in such a frame must: begin at the start of the enclosing tile's CTB row (and hence each slice segment must: finish at the end of the enclosing tile's CTB row). * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT"/> indicates that when a frame is encoded with multiple slice segments, the implementation allows encoding each slice segment with a different <c>StdVideoEncodeH265SliceSegmentHeader</c>. If not supported, all slice segments of the frame must: be encoded with the same <c>slice_type</c> which corresponds to the picture type of the frame. For example, all slice segments of a P-frame would be encoded as P-slices. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT"/> indicates support for using a B frame as L0 reference. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT"/> indicates support for using a B frame as L1 reference. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT"/> indicates support for specifying different QP values in the members of <see cref="T:VkVideoEncodeH265QpEXT"/>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT"/> indicates support for specifying different constant QP values for each slice segment. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT"/> indicates if encoding multiple tiles per slice segment is supported. If not set, the implementation is only able to encode a single tile for each slice segment. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT"/> indicates if encoding multiple slice segments per tile is supported. If not set, the implementation is only able to encode a single slice segment for each tile.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT;
@@ -394,12 +544,21 @@ namespace XenoAtom.Interop
             
             VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT = unchecked((uint)4),
             
+            /// <summary>
+            /// Indicates if enabling <c>pcm_enable_flag</c> in <c>StdVideoH265SpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>sps_temporal_mvp_enabled_flag</c> in <c>StdVideoH265SpsFlags</c> is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT = unchecked((uint)8),
             
             VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT = unchecked((uint)16),
             
+            /// <summary>
+            /// Indicates if setting non-zero <c>init_qp_minus26</c> in <c>StdVideoH265PictureParameterSet</c> is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT = unchecked((uint)32),
             
+            /// <summary>
+            /// Indicates if enabling <c>weighted_pred_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>weighted_bipred_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT"/> indicates if setting non-zero value for <c>log2_parallel_merge_level_minus2</c> in <c>StdVideoH265PictureParameterSet</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>sign_data_hiding_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>transform_skip_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT"/> indicates if disabling <c>transform_skip_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. Implementations must: report at least one of <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT"/> and <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT"/> as supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT"/> indicates if enabling <c>pps_slice_chroma_qp_offsets_present_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>transquant_bypass_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>constrained_intra_pred_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>entropy_coding_sync_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>deblocking_filter_override_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>dependent_slice_segments_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT"/> indicates if enabling <c>dependent_slice_segment_flag</c> in <c>StdVideoEncodeH265SliceHeaderFlags</c> is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = unchecked((uint)64),
             
             VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT = unchecked((uint)128),
@@ -435,12 +594,21 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT;
         
+        /// <summary>
+        /// Indicates if enabling <c>pcm_enable_flag</c> in <c>StdVideoH265SpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>sps_temporal_mvp_enabled_flag</c> in <c>StdVideoH265SpsFlags</c> is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT;
         
+        /// <summary>
+        /// Indicates if setting non-zero <c>init_qp_minus26</c> in <c>StdVideoH265PictureParameterSet</c> is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT;
         
+        /// <summary>
+        /// Indicates if enabling <c>weighted_pred_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>weighted_bipred_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT"/> indicates if setting non-zero value for <c>log2_parallel_merge_level_minus2</c> in <c>StdVideoH265PictureParameterSet</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>sign_data_hiding_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>transform_skip_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT"/> indicates if disabling <c>transform_skip_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. Implementations must: report at least one of <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT"/> and <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT"/> as supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT"/> indicates if enabling <c>pps_slice_chroma_qp_offsets_present_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>transquant_bypass_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>constrained_intra_pred_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>entropy_coding_sync_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>deblocking_filter_override_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>dependent_slice_segments_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT"/> indicates if enabling <c>dependent_slice_segment_flag</c> in <c>StdVideoEncodeH265SliceHeaderFlags</c> is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT;
@@ -475,19 +643,37 @@ namespace XenoAtom.Interop
         [Flags]
         public enum VkVideoEncodeH265CtbSizeFlagBitsEXT : uint
         {
+            /// <summary>
+            /// Specifies that a CTB size of 16x16 is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT = unchecked((uint)1),
             
+            /// <summary>
+            /// Specifies that a CTB size of 32x32 is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT = unchecked((uint)2),
             
+            /// <summary>
+            /// Specifies that a CTB size of 64x64 is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT = unchecked((uint)4),
             
             VK_VIDEO_ENCODE_H265_CTB_SIZE_FLAG_BITS_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Specifies that a CTB size of 16x16 is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT = VkVideoEncodeH265CtbSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT;
         
+        /// <summary>
+        /// Specifies that a CTB size of 32x32 is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT = VkVideoEncodeH265CtbSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT;
         
+        /// <summary>
+        /// Specifies that a CTB size of 64x64 is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT = VkVideoEncodeH265CtbSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265CtbSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_FLAG_BITS_MAX_ENUM_EXT;
@@ -498,23 +684,47 @@ namespace XenoAtom.Interop
         [Flags]
         public enum VkVideoEncodeH265TransformBlockSizeFlagBitsEXT : uint
         {
+            /// <summary>
+            /// Specifies that a transform block size of 4x4 is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT = unchecked((uint)1),
             
+            /// <summary>
+            /// Specifies that a transform block size of 8x8 is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT = unchecked((uint)2),
             
+            /// <summary>
+            /// Specifies that a transform block size of 16x16 is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT = unchecked((uint)4),
             
+            /// <summary>
+            /// Specifies that a transform block size of 32x32 is supported.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT = unchecked((uint)8),
             
             VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_FLAG_BITS_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Specifies that a transform block size of 4x4 is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT;
         
+        /// <summary>
+        /// Specifies that a transform block size of 8x8 is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT;
         
+        /// <summary>
+        /// Specifies that a transform block size of 16x16 is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT;
         
+        /// <summary>
+        /// Specifies that a transform block size of 32x32 is supported.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_FLAG_BITS_MAX_ENUM_EXT;
@@ -527,6 +737,9 @@ namespace XenoAtom.Interop
         {
             VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = unchecked((uint)1),
             
+            /// <summary>
+            /// Specifies that the application intends to use a regular GOP structure according to the parameters specified in the <see cref="M:gopFrameCount"/>, <see cref="M:idrPeriod"/>, and <see cref="M:consecutiveBFrameCount"/> members of the <see cref="T:VkVideoEncodeH265RateControlInfoEXT"/> structure. * <see cref="T:VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT"/> specifies that the application intends to follow a flat reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic temporal sub-layer pattern.
+            /// </summary>
             VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT = unchecked((uint)2),
             
             VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = unchecked((uint)4),
@@ -540,6 +753,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT;
         
+        /// <summary>
+        /// Specifies that the application intends to use a regular GOP structure according to the parameters specified in the <see cref="M:gopFrameCount"/>, <see cref="M:idrPeriod"/>, and <see cref="M:consecutiveBFrameCount"/> members of the <see cref="T:VkVideoEncodeH265RateControlInfoEXT"/> structure. * <see cref="T:VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT"/> specifies that the application intends to follow a flat reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic temporal sub-layer pattern.
+        /// </summary>
         public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT;
         
         public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT;
@@ -555,6 +771,9 @@ namespace XenoAtom.Interop
         /// </summary>
         public enum VkDisplacementMicromapFormatNV : uint
         {
+            /// <summary>
+            /// Indicates that the given micromap format encodes 64 micro-triangles worth of displacements in 64 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV"/> indicates that the given micromap format encodes 256 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV"/> indicates that the given micromap format encodes 1024 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding.
+            /// </summary>
             VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = unchecked((uint)1),
             
             VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV = unchecked((uint)2),
@@ -564,6 +783,9 @@ namespace XenoAtom.Interop
             VK_DISPLACEMENT_MICROMAP_FORMAT_MAX_ENUM_NV = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Indicates that the given micromap format encodes 64 micro-triangles worth of displacements in 64 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV"/> indicates that the given micromap format encodes 256 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV"/> indicates that the given micromap format encodes 1024 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding.
+        /// </summary>
         public const vulkan.VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = VkDisplacementMicromapFormatNV.VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV;
         
         public const vulkan.VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV = VkDisplacementMicromapFormatNV.VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV;

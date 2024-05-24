@@ -186,9 +186,5 @@ public static unsafe partial class vulkan
                 _ => $"0x{(uint)result:X8}",
             };
         }
-
-
     }
-
-
 }

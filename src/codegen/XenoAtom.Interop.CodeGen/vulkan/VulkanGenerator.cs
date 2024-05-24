@@ -173,7 +173,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         {
             ProcessVulkanEnum(csEnum);
         }
-
+        
         // Transform const string literal into ReadOnlySpanUtf8
         foreach (var csField in csCompilation.AllFields)
         {
@@ -189,6 +189,22 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 var parent = (ICSharpContainer)csField.Parent!;
                 parent.Members.Insert(parent.Members.IndexOf(csField) + 1, csProperty);
                 parent.Members.Remove(csField);
+            }
+        }
+
+        foreach (var csClass in csCompilation.AllClasses)
+        {
+            foreach (var csField in csClass.Members.OfType<CSharpField>())
+            {
+                if (csField.FieldType is CSharpEnum csEnum)
+                {
+                    // Copy the comment from the enum to the field
+                    var csEnumItem = (CSharpEnumItem?)csEnum.Members.FirstOrDefault(x => x is CSharpEnumItem csEnumItem && csEnumItem.Name == csField.Name);
+                    if (csEnumItem is not null && csField.Comment is null)
+                    {
+                        csField.Comment = csEnumItem.Comment;
+                    }
+                }
             }
         }
  
@@ -847,11 +863,33 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 }
             }
         }
-        else if (element is CSharpEnum && element.CppElement is CppEnum cppEnum)
+        else if (element is CSharpEnum csEnum && element.CppElement is CppEnum cppEnum)
         {
             if (_docDefinitions.TryGetValue(VulkanDocTypeKind.Enum, out var definitions) && definitions.TryGetValue(cppEnum.Name, out var definition))
             {
                 description = definition.Description;
+
+                var enumItems = csEnum.Members.OfType<CSharpEnumItem>().ToList();
+                foreach (var docParameter in definition.Parameters)
+                {
+                    var enumItem = enumItems.FirstOrDefault(f => f.Name == docParameter.Name);
+                    if (enumItem != null)
+                    {
+                        enumItem.Comment = new CSharpFullComment()
+                        {
+                            Children =
+                            {
+                                new CSharpXmlComment("summary")
+                                {
+                                    Children =
+                                    {
+                                        docParameter.Description
+                                    }
+                                }
+                            }
+                        };
+                    }
+                }
             }
         }
         else if (element is CSharpStruct csStruct && element.CppElement is CppClass cppStruct)
@@ -1186,7 +1224,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
     }
 
-    [GeneratedRegex(@"^\s+\*\s+pname:(?<pname>\w+)\s+(?<content>.+)")]
+    [GeneratedRegex(@"^\s+\*\s+(pname|ename):(?<name>\w+)\s+(?<content>.+)")]
     private static partial Regex RegexParseParam();
 
     private void ProcessVulkanDoc(StreamReader reader)
@@ -1236,7 +1274,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 var isFunction = kind == VulkanDocTypeKind.Function;
                 _functionRegistry.TryGetValue(name, out var command);
                 definition.Description = TransformTextContentToCSharpComment(dict.TryGetValue("desc", out var value) ? value! : string.Empty, isFunction);
-                
+
                 // The following code will try to parse the parameters of the function, like this example:
 
                 // include::{generated}/api/protos/vkCmdClearColorImage.adoc[]
@@ -1264,6 +1302,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 // Each specified range in pname:pRanges is cleared to the value specified by
                 // pname:pColor.
 
+                string? currentParameterName = null;
                 while ((line = reader.ReadLine()) != null)
                 {
                     // End of section
@@ -1272,46 +1311,46 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                         break;
                     }
 
-                    if (!string.IsNullOrWhiteSpace(line))
+                    if (string.IsNullOrWhiteSpace(line))
                     {
+                        if (currentParameterName != null)
+                        {
+                            AddVkParameter(command, currentParameterName, definition, isFunction);
+                        }
+
+                        currentParameterName = null;
+                        paramDocBuilder.Clear();
                         continue;
                     }
 
-                    line = reader.ReadLine()!;
                     var match = RegexParseParam().Match(line);
                     if (!match.Success)
                     {
-                        continue;
-                    }
-
-                    string? currentParameterName = null;
-                    while (!string.IsNullOrWhiteSpace(line))
-                    {
-                        match = RegexParseParam().Match(line);
-                        if (match.Success)
+                        if (currentParameterName != null)
                         {
-                            if (currentParameterName != null)
+                            if (!line.StartsWith("ifdef::", StringComparison.Ordinal) && !line.StartsWith("endif::", StringComparison.Ordinal))
                             {
-                                AddVkParameter(command, currentParameterName, definition, isFunction);
+                                paramDocBuilder.Append(' ');
+                                paramDocBuilder.Append(line.Trim());
                             }
-
-                            currentParameterName = match.Groups["pname"].Value;
-                            paramDocBuilder.Clear();
-                            paramDocBuilder.Append(match.Groups["content"].Value);
-                        }
-                        else if (!line.StartsWith("ifdef::", StringComparison.Ordinal) && !line.StartsWith("endif::", StringComparison.Ordinal))
-                        {
-                            paramDocBuilder.Append(' ');
-                            paramDocBuilder.Append(line.Trim());
                         }
 
-                        line = reader.ReadLine()!;
+                        continue;
                     }
 
                     if (currentParameterName != null)
                     {
                         AddVkParameter(command, currentParameterName, definition, isFunction);
                     }
+
+                    currentParameterName = match.Groups["name"].Value;
+                    paramDocBuilder.Clear();
+                    paramDocBuilder.Append(match.Groups["content"].Value);
+                }
+
+                if (currentParameterName != null)
+                {
+                    AddVkParameter(command, currentParameterName, definition, isFunction);
                 }
 
                 if (isFunction && command != null)
@@ -1498,7 +1537,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             {
                 index += 2;
                 match = regex.Match(text, index);
-                if (!match.Success) throw new InvalidOperationException($"Invalid link format in {text}, expecting link after :: at index {index}");
+                if (!match.Success)
+                {
+                    throw new InvalidOperationException($"Invalid link format in {text}, expecting link after :: at index {index}");
+                }
 
                 memberTarget = $".{match.Groups["target"].Value}";
                 index = match.Index + match.Length;

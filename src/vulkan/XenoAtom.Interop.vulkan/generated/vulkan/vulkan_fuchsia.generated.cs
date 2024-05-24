@@ -31,6 +31,9 @@ namespace XenoAtom.Interop
             
             VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA = unchecked((uint)8),
             
+            /// <summary>
+            /// Specifies that protected memory is optional for the buffer collection.
+            /// </summary>
             VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA = unchecked((uint)16),
             
             VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA = unchecked((uint)2147483647),
@@ -44,6 +47,9 @@ namespace XenoAtom.Interop
         
         public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA;
         
+        /// <summary>
+        /// Specifies that protected memory is optional for the buffer collection.
+        /// </summary>
         public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA;
         
         public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA;

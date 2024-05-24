@@ -23,31 +23,67 @@ namespace XenoAtom.Interop
         [Flags]
         public enum VkExportMetalObjectTypeFlagBitsEXT : uint
         {
+            /// <summary>
+            /// Indicates a Metal <c>MTLDevice</c> may be exported.
+            /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = unchecked((uint)1),
             
+            /// <summary>
+            /// Indicates a Metal <c>MTLCommandQueue</c> may be exported.
+            /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = unchecked((uint)2),
             
+            /// <summary>
+            /// Indicates a Metal <c>MTLBuffer</c> may be exported.
+            /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT = unchecked((uint)4),
             
+            /// <summary>
+            /// Indicates a Metal <c>MTLTexture</c> may be exported.
+            /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT = unchecked((uint)8),
             
+            /// <summary>
+            /// Indicates a Metal <c>IOSurface</c> may be exported.
+            /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT = unchecked((uint)16),
             
+            /// <summary>
+            /// Indicates a Metal <c>MTLSharedEvent</c> may be exported.
+            /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT = unchecked((uint)32),
             
             VK_EXPORT_METAL_OBJECT_TYPE_FLAG_BITS_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Indicates a Metal <c>MTLDevice</c> may be exported.
+        /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT;
         
+        /// <summary>
+        /// Indicates a Metal <c>MTLCommandQueue</c> may be exported.
+        /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT;
         
+        /// <summary>
+        /// Indicates a Metal <c>MTLBuffer</c> may be exported.
+        /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT;
         
+        /// <summary>
+        /// Indicates a Metal <c>MTLTexture</c> may be exported.
+        /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT;
         
+        /// <summary>
+        /// Indicates a Metal <c>IOSurface</c> may be exported.
+        /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT;
         
+        /// <summary>
+        /// Indicates a Metal <c>MTLSharedEvent</c> may be exported.
+        /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT;
         
         public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_FLAG_BITS_MAX_ENUM_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_FLAG_BITS_MAX_ENUM_EXT;

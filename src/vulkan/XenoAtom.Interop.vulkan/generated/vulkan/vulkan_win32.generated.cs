@@ -22,23 +22,47 @@ namespace XenoAtom.Interop
         /// </summary>
         public enum VkFullScreenExclusiveEXT : uint
         {
+            /// <summary>
+            /// Indicates the implementation should: determine the appropriate full-screen method by whatever means it deems appropriate.
+            /// </summary>
             VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT = unchecked((uint)0),
             
+            /// <summary>
+            /// Indicates the implementation may: use full-screen exclusive mechanisms when available. Such mechanisms may: result in better performance and/or the availability of different presentation capabilities, but may: require a more disruptive transition during swapchain initialization, first presentation and/or destruction.
+            /// </summary>
             VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT = unchecked((uint)1),
             
+            /// <summary>
+            /// Indicates the implementation should: avoid using full-screen mechanisms which rely on disruptive transitions.
+            /// </summary>
             VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT = unchecked((uint)2),
             
+            /// <summary>
+            /// Indicates the application will manage full-screen exclusive mode by using the <see cref="M:vkAcquireFullScreenExclusiveModeEXT"/> and <see cref="M:vkReleaseFullScreenExclusiveModeEXT"/> commands.
+            /// </summary>
             VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT = unchecked((uint)3),
             
             VK_FULL_SCREEN_EXCLUSIVE_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
+        /// <summary>
+        /// Indicates the implementation should: determine the appropriate full-screen method by whatever means it deems appropriate.
+        /// </summary>
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT;
         
+        /// <summary>
+        /// Indicates the implementation may: use full-screen exclusive mechanisms when available. Such mechanisms may: result in better performance and/or the availability of different presentation capabilities, but may: require a more disruptive transition during swapchain initialization, first presentation and/or destruction.
+        /// </summary>
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT;
         
+        /// <summary>
+        /// Indicates the implementation should: avoid using full-screen mechanisms which rely on disruptive transitions.
+        /// </summary>
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT;
         
+        /// <summary>
+        /// Indicates the application will manage full-screen exclusive mode by using the <see cref="M:vkAcquireFullScreenExclusiveModeEXT"/> and <see cref="M:vkReleaseFullScreenExclusiveModeEXT"/> commands.
+        /// </summary>
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT;
         
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_MAX_ENUM_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_MAX_ENUM_EXT;
