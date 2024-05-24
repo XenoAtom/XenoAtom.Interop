@@ -51,6 +51,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created ImagePipe surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
+        /// </remarks>
         public partial struct VkImagePipeSurfaceCreateInfoFUCHSIA
         {
             /// <summary>
@@ -74,6 +77,9 @@ namespace XenoAtom.Interop
             public uint imagePipeHandle;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
+        /// </remarks>
         public readonly partial struct VkImagePipeSurfaceCreateFlagsFUCHSIA : IEquatable<VkImagePipeSurfaceCreateFlagsFUCHSIA>
         {
             public VkImagePipeSurfaceCreateFlagsFUCHSIA(vulkan.VkFlags value) => this.Value = value;
@@ -100,6 +106,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying import parameters for Zircon handle to external memory
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_external_memory</para>
+        /// </remarks>
         public partial struct VkImportMemoryZirconHandleInfoFUCHSIA
         {
             /// <summary>
@@ -126,6 +135,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying Zircon handle compatible external memory
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_external_memory</para>
+        /// </remarks>
         public partial struct VkMemoryZirconHandlePropertiesFUCHSIA
         {
             /// <summary>
@@ -147,6 +159,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying export parameters for Zircon handle to device memory
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_external_memory</para>
+        /// </remarks>
         public partial struct VkMemoryGetZirconHandleInfoFUCHSIA
         {
             /// <summary>
@@ -173,6 +188,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying Zircon event handle to import to a semaphore
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
+        /// </remarks>
         public partial struct VkImportSemaphoreZirconHandleInfoFUCHSIA
         {
             /// <summary>
@@ -209,6 +227,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing a Zircon event handle semaphore export operation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
+        /// </remarks>
         public partial struct VkSemaphoreGetZirconHandleInfoFUCHSIA
         {
             /// <summary>
@@ -235,6 +256,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying desired parameters to create the buffer collection
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkBufferCollectionCreateInfoFUCHSIA
         {
             /// <summary>
@@ -256,6 +280,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure to specify the Sysmem buffer to import
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkImportMemoryBufferCollectionFUCHSIA
         {
             /// <summary>
@@ -279,6 +306,9 @@ namespace XenoAtom.Interop
             public uint index;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public readonly partial struct VkBufferCollectionFUCHSIA : IEquatable<VkBufferCollectionFUCHSIA>
         {
             public VkBufferCollectionFUCHSIA(vulkan.VkBufferCollectionFUCHSIA_T value) => this.Value = value;
@@ -305,6 +335,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Create a VkBufferCollectionFUCHSIA-compatible VkImage
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkBufferCollectionImageCreateInfoFUCHSIA
         {
             /// <summary>
@@ -331,6 +364,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure of general buffer collection constraints
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkBufferCollectionConstraintsInfoFUCHSIA
         {
             /// <summary>
@@ -372,6 +408,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure buffer-based buffer collection constraints
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkBufferConstraintsInfoFUCHSIA
         {
             /// <summary>
@@ -400,6 +439,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Create a VkBufferCollectionFUCHSIA-compatible VkBuffer
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkBufferCollectionBufferCreateInfoFUCHSIA
         {
             /// <summary>
@@ -426,6 +468,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the buffer collections color space
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkSysmemColorSpaceFUCHSIA
         {
             /// <summary>
@@ -447,6 +492,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying the negotiated format chosen by Sysmem
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkBufferCollectionPropertiesFUCHSIA
         {
             /// <summary>
@@ -518,6 +566,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure image-based buffer collection constraints
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkImageFormatConstraintsInfoFUCHSIA
         {
             /// <summary>
@@ -561,6 +612,9 @@ namespace XenoAtom.Interop
             public vulkan.VkSysmemColorSpaceFUCHSIA* pColorSpaces;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public readonly partial struct VkImageFormatConstraintsFlagsFUCHSIA : IEquatable<VkImageFormatConstraintsFlagsFUCHSIA>
         {
             public VkImageFormatConstraintsFlagsFUCHSIA(vulkan.VkFlags value) => this.Value = value;
@@ -587,6 +641,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure of image-based buffer collection constraints
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public partial struct VkImageConstraintsInfoFUCHSIA
         {
             /// <summary>
@@ -620,6 +677,9 @@ namespace XenoAtom.Interop
             public vulkan.VkImageConstraintsInfoFlagsFUCHSIA flags;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         public readonly partial struct VkImageConstraintsInfoFlagsFUCHSIA : IEquatable<VkImageConstraintsInfoFlagsFUCHSIA>
         {
             public VkImageConstraintsInfoFlagsFUCHSIA(vulkan.VkFlags value) => this.Value = value;
@@ -683,7 +743,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -730,7 +790,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_FUCHSIA_external_memory</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkMemoryGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, uint* pZirconHandle)
             {
@@ -778,7 +838,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_FUCHSIA_external_memory</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties)
             {
@@ -824,7 +884,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo)
             {
@@ -871,7 +931,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, uint* pZirconHandle)
             {
@@ -919,7 +979,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionCreateInfoFUCHSIA* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkBufferCollectionFUCHSIA* pCollection)
             {
@@ -966,7 +1026,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkImageConstraintsInfoFUCHSIA* pImageConstraintsInfo)
             {
@@ -1013,7 +1073,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkBufferConstraintsInfoFUCHSIA* pBufferConstraintsInfo)
             {
@@ -1053,6 +1113,9 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
             /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
             /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
+            /// <remarks>
+            /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+            /// </remarks>
             public void Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkAllocationCallbacks* pAllocator)
             {
                 Value(device, collection, pAllocator);
@@ -1098,7 +1161,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkBufferCollectionPropertiesFUCHSIA* pProperties)
             {
@@ -1124,7 +1187,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateImagePipeSurfaceFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -1144,7 +1207,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
         /// </remarks>
         public static vulkan.VkResult vkCreateImagePipeSurfaceFUCHSIA(vulkan.VkInstance instance, in vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
         {
@@ -1168,7 +1231,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryZirconHandleFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -1187,7 +1250,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
         public static vulkan.VkResult vkGetMemoryZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkMemoryGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle)
         {
@@ -1212,7 +1275,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryZirconHandlePropertiesFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -1232,7 +1295,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
         public static vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, out vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties)
         {
@@ -1254,7 +1317,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkImportSemaphoreZirconHandleFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -1272,7 +1335,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
         public static vulkan.VkResult vkImportSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA pImportSemaphoreZirconHandleInfo)
         {
@@ -1295,7 +1358,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetSemaphoreZirconHandleFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -1314,7 +1377,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
         public static vulkan.VkResult vkGetSemaphoreZirconHandleFUCHSIA(vulkan.VkDevice device, in vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA pGetZirconHandleInfo, out uint pZirconHandle)
         {
@@ -1339,7 +1402,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateBufferCollectionFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -1359,7 +1422,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
         public static vulkan.VkResult vkCreateBufferCollectionFUCHSIA(vulkan.VkDevice device, in vulkan.VkBufferCollectionCreateInfoFUCHSIA pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkBufferCollectionFUCHSIA pCollection)
         {
@@ -1383,7 +1446,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkSetBufferCollectionImageConstraintsFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -1402,7 +1465,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
         public static vulkan.VkResult vkSetBufferCollectionImageConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkImageConstraintsInfoFUCHSIA pImageConstraintsInfo)
         {
@@ -1425,7 +1488,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkSetBufferCollectionBufferConstraintsFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -1444,7 +1507,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
         public static vulkan.VkResult vkSetBufferCollectionBufferConstraintsFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, in vulkan.VkBufferConstraintsInfoFUCHSIA pBufferConstraintsInfo)
         {
@@ -1460,6 +1523,9 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
         /// <param name="collection">The <see cref="T:VkBufferCollectionFUCHSIA"/> handle</param>
         /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
+        /// <remarks>
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkDestroyBufferCollectionFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial void vkDestroyBufferCollectionFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkAllocationCallbacks* pAllocator);
@@ -1479,7 +1545,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetBufferCollectionPropertiesFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -1498,7 +1564,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
         public static vulkan.VkResult vkGetBufferCollectionPropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, out vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties)
         {

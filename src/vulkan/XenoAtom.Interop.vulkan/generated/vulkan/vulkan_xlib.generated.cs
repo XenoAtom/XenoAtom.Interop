@@ -20,6 +20,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created Xlib surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_xlib_surface</para>
+        /// </remarks>
         public partial struct VkXlibSurfaceCreateInfoKHR
         {
             /// <summary>
@@ -48,6 +51,9 @@ namespace XenoAtom.Interop
             public nuint window;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_xlib_surface</para>
+        /// </remarks>
         public readonly partial struct VkXlibSurfaceCreateFlagsKHR : IEquatable<VkXlibSurfaceCreateFlagsKHR>
         {
             public VkXlibSurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -107,7 +113,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_xlib_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkXlibSurfaceCreateInfoKHR* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -132,7 +138,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_xlib_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkXlibSurfaceCreateInfoKHR pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -171,6 +177,9 @@ namespace XenoAtom.Interop
             /// <param name="queueFamilyIndex">The queue family index.</param>
             /// <param name="dpy">A pointer to an Xlib <c>Display</c> connection to the server.</param>
             /// <param name="visualId">An X11 visual (<c>VisualID</c>).</param>
+            /// <remarks>
+            /// <para>Extension: VK_KHR_xlib_surface</para>
+            /// </remarks>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dpy, nuint visualID)
             {
                 return Value(physicalDevice, queueFamilyIndex, dpy, visualID);

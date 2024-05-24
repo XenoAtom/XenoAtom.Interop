@@ -20,6 +20,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created Xcb surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_xcb_surface</para>
+        /// </remarks>
         public partial struct VkXcbSurfaceCreateInfoKHR
         {
             /// <summary>
@@ -48,6 +51,9 @@ namespace XenoAtom.Interop
             public uint window;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_xcb_surface</para>
+        /// </remarks>
         public readonly partial struct VkXcbSurfaceCreateFlagsKHR : IEquatable<VkXcbSurfaceCreateFlagsKHR>
         {
             public VkXcbSurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -107,7 +113,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_xcb_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkXcbSurfaceCreateInfoKHR* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -132,7 +138,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_xcb_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkXcbSurfaceCreateInfoKHR pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -171,6 +177,9 @@ namespace XenoAtom.Interop
             /// <param name="queueFamilyIndex">The queue family index.</param>
             /// <param name="connection">A pointer to an <c>xcb_connection_t</c> to the X server.</param>
             /// <param name="visual_id">An X11 visual (<c>xcb_visualid_t</c>).</param>
+            /// <remarks>
+            /// <para>Extension: VK_KHR_xcb_surface</para>
+            /// </remarks>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* connection, uint visual_id)
             {
                 return Value(physicalDevice, queueFamilyIndex, connection, visual_id);

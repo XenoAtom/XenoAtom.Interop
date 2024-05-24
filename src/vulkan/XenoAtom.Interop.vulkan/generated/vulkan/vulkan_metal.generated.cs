@@ -55,6 +55,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created Metal surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_surface</para>
+        /// </remarks>
         public partial struct VkMetalSurfaceCreateInfoEXT
         {
             /// <summary>
@@ -78,6 +81,9 @@ namespace XenoAtom.Interop
             public void* pLayer;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_surface</para>
+        /// </remarks>
         public readonly partial struct VkMetalSurfaceCreateFlagsEXT : IEquatable<VkMetalSurfaceCreateFlagsEXT>
         {
             public VkMetalSurfaceCreateFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -104,6 +110,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies the Metal objects that can be exported from Vulkan objects
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkExportMetalObjectCreateInfoEXT
         {
             /// <summary>
@@ -125,6 +134,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure whose pNext chain identifies Vulkan objects and corresponding Metal objects
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkExportMetalObjectsInfoEXT
         {
             /// <summary>
@@ -141,6 +153,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies a VkDevice object and corresponding Metal MTLDevice object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkExportMetalDeviceInfoEXT
         {
             /// <summary>
@@ -159,6 +174,9 @@ namespace XenoAtom.Interop
             public vulkan.MTLDevice_id mtlDevice;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public readonly partial struct MTLDevice_id : IEquatable<MTLDevice_id>
         {
             public MTLDevice_id(void* value) => this.Value = value;
@@ -185,6 +203,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies a VkQueue object and corresponding Metal MTLCommandQueue object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkExportMetalCommandQueueInfoEXT
         {
             /// <summary>
@@ -208,6 +229,9 @@ namespace XenoAtom.Interop
             public vulkan.MTLCommandQueue_id mtlCommandQueue;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public readonly partial struct MTLCommandQueue_id : IEquatable<MTLCommandQueue_id>
         {
             public MTLCommandQueue_id(void* value) => this.Value = value;
@@ -234,6 +258,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies a VkDeviceMemory object and corresponding Metal MTLBuffer object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkExportMetalBufferInfoEXT
         {
             /// <summary>
@@ -257,6 +284,9 @@ namespace XenoAtom.Interop
             public vulkan.MTLBuffer_id mtlBuffer;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public readonly partial struct MTLBuffer_id : IEquatable<MTLBuffer_id>
         {
             public MTLBuffer_id(void* value) => this.Value = value;
@@ -283,6 +313,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies a Metal MTLBuffer object to use when creating a VkDeviceMemory object.
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkImportMetalBufferInfoEXT
         {
             /// <summary>
@@ -304,6 +337,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies a VkImage, VkImageView, or VkBufferView object and corresponding Metal MTLTexture object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkExportMetalTextureInfoEXT
         {
             /// <summary>
@@ -342,6 +378,9 @@ namespace XenoAtom.Interop
             public vulkan.MTLTexture_id mtlTexture;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public readonly partial struct MTLTexture_id : IEquatable<MTLTexture_id>
         {
             public MTLTexture_id(void* value) => this.Value = value;
@@ -368,6 +407,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies Metal MTLTexture objects to use when creating a VkImage.
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkImportMetalTextureInfoEXT
         {
             /// <summary>
@@ -394,6 +436,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies a VkImage object and corresponding Metal IOSurfaceRef object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkExportMetalIOSurfaceInfoEXT
         {
             /// <summary>
@@ -417,6 +462,9 @@ namespace XenoAtom.Interop
             public vulkan.IOSurfaceRef ioSurface;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public readonly partial struct IOSurfaceRef : IEquatable<IOSurfaceRef>
         {
             public IOSurfaceRef(vulkan.__IOSurface value) => this.Value = value;
@@ -443,6 +491,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies a VkImage object and corresponding Metal IOSurfaceRef object to use.
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkImportMetalIOSurfaceInfoEXT
         {
             /// <summary>
@@ -464,6 +515,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies a VkSemaphore or VkEvent object and corresponding Metal MTLSharedEvent object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkExportMetalSharedEventInfoEXT
         {
             /// <summary>
@@ -489,6 +543,9 @@ namespace XenoAtom.Interop
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public readonly partial struct MTLSharedEvent_id : IEquatable<MTLSharedEvent_id>
         {
             public MTLSharedEvent_id(void* value) => this.Value = value;
@@ -515,6 +572,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure that identifies a VkSemaphore or VkEvent object and corresponding Metal Shared Event object to use.
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public partial struct VkImportMetalSharedEventInfoEXT
         {
             /// <summary>
@@ -569,7 +629,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_metal_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkMetalSurfaceCreateInfoEXT* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -594,7 +654,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_metal_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkMetalSurfaceCreateInfoEXT pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -604,6 +664,9 @@ namespace XenoAtom.Interop
             }
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_metal_objects</para>
+        /// </remarks>
         public readonly partial struct VkExportMetalObjectTypeFlagsEXT : IEquatable<VkExportMetalObjectTypeFlagsEXT>
         {
             public VkExportMetalObjectTypeFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -658,6 +721,9 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The device that created the Vulkan objects.</param>
             /// <param name="pMetalObjectsInfo">A pointer to a <see cref="T:VkExportMetalObjectsInfoEXT"/> structure whose <paramref name="pNext"/> chain contains structures, each identifying a Vulkan object and providing a pointer through which the Metal object will be returned.</param>
+            /// <remarks>
+            /// <para>Extension: VK_EXT_metal_objects</para>
+            /// </remarks>
             public void Invoke(vulkan.VkDevice device, vulkan.VkExportMetalObjectsInfoEXT* pMetalObjectsInfo)
             {
                 Value(device, pMetalObjectsInfo);
@@ -672,6 +738,9 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="device">The device that created the Vulkan objects.</param>
             /// <param name="pMetalObjectsInfo">A pointer to a <see cref="T:VkExportMetalObjectsInfoEXT"/> structure whose <paramref name="pNext"/> chain contains structures, each identifying a Vulkan object and providing a pointer through which the Metal object will be returned.</param>
+            /// <remarks>
+            /// <para>Extension: VK_EXT_metal_objects</para>
+            /// </remarks>
             public void Invoke(vulkan.VkDevice device, out vulkan.VkExportMetalObjectsInfoEXT pMetalObjectsInfo)
             {
                 fixed (vulkan.VkExportMetalObjectsInfoEXT* __pMetalObjectsInfo_local = &pMetalObjectsInfo)

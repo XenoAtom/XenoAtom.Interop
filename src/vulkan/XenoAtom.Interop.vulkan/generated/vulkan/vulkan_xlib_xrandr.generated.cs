@@ -52,7 +52,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_acquire_xlib_display</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, vulkan.VkDisplayKHR display)
             {
@@ -100,7 +100,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_acquire_xlib_display</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, nuint rrOutput, vulkan.VkDisplayKHR* pDisplay)
             {
@@ -125,7 +125,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_acquire_xlib_display</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, void* dpy, nuint rrOutput, out vulkan.VkDisplayKHR pDisplay)
             {

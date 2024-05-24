@@ -20,6 +20,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created Android surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_android_surface</para>
+        /// </remarks>
         public partial struct VkAndroidSurfaceCreateInfoKHR
         {
             /// <summary>
@@ -43,6 +46,9 @@ namespace XenoAtom.Interop
             public vulkan.ANativeWindow window;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_android_surface</para>
+        /// </remarks>
         public readonly partial struct VkAndroidSurfaceCreateFlagsKHR : IEquatable<VkAndroidSurfaceCreateFlagsKHR>
         {
             public VkAndroidSurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -69,6 +75,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Struct containing Android hardware buffer usage flags
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
+        /// </remarks>
         public partial struct VkAndroidHardwareBufferUsageANDROID
         {
             /// <summary>
@@ -90,6 +99,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Properties of External Memory Android Hardware Buffers
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
+        /// </remarks>
         public partial struct VkAndroidHardwareBufferPropertiesANDROID
         {
             /// <summary>
@@ -116,6 +128,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the image format properties of an Android hardware buffer
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
+        /// </remarks>
         public partial struct VkAndroidHardwareBufferFormatPropertiesANDROID
         {
             /// <summary>
@@ -172,6 +187,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Import memory from an Android hardware buffer
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
+        /// </remarks>
         public partial struct VkImportAndroidHardwareBufferInfoANDROID
         {
             /// <summary>
@@ -193,6 +211,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing an Android hardware buffer memory export operation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
+        /// </remarks>
         public partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID
         {
             /// <summary>
@@ -214,6 +235,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure containing an Android hardware buffer external format
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
+        /// </remarks>
         public partial struct VkExternalFormatANDROID
         {
             /// <summary>
@@ -235,6 +259,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the image format properties of an Android hardware buffer
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
+        /// </remarks>
         public partial struct VkAndroidHardwareBufferFormatProperties2ANDROID
         {
             /// <summary>
@@ -324,7 +351,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_android_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkAndroidSurfaceCreateInfoKHR* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -349,7 +376,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_android_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkAndroidSurfaceCreateInfoKHR pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -394,7 +421,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID* pProperties)
             {
@@ -441,7 +468,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, vulkan.AHardwareBuffer* pBuffer)
             {
@@ -474,7 +501,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetAndroidHardwareBufferPropertiesANDROID")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -493,7 +520,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
         public static vulkan.VkResult vkGetAndroidHardwareBufferPropertiesANDROID(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, out vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties)
         {
@@ -516,7 +543,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryAndroidHardwareBufferANDROID")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -535,7 +562,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
         public static vulkan.VkResult vkGetMemoryAndroidHardwareBufferANDROID(vulkan.VkDevice device, in vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID pInfo, out vulkan.AHardwareBuffer pBuffer)
         {

@@ -908,6 +908,9 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkShaderEXT_T left, VkShaderEXT_T right) => !left.Equals(right);
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_android_surface</para>
+        /// </remarks>
         public readonly partial struct ANativeWindow : IEquatable<ANativeWindow>
         {
             public ANativeWindow(nint handle) => Handle = handle;
@@ -927,6 +930,9 @@ namespace XenoAtom.Interop
             public static bool operator !=(ANativeWindow left, ANativeWindow right) => !left.Equals(right);
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
+        /// </remarks>
         public readonly partial struct AHardwareBuffer : IEquatable<AHardwareBuffer>
         {
             public AHardwareBuffer(nint handle) => Handle = handle;

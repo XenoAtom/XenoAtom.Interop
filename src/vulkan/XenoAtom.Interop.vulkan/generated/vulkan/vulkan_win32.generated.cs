@@ -46,6 +46,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created Win32 surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_win32_surface</para>
+        /// </remarks>
         public partial struct VkWin32SurfaceCreateInfoKHR
         {
             /// <summary>
@@ -74,6 +77,9 @@ namespace XenoAtom.Interop
             public nint hwnd;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_win32_surface</para>
+        /// </remarks>
         public readonly partial struct VkWin32SurfaceCreateFlagsKHR : IEquatable<VkWin32SurfaceCreateFlagsKHR>
         {
             public VkWin32SurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -100,6 +106,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Import Win32 memory created on the same physical device
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_memory_win32</para>
+        /// </remarks>
         public partial struct VkImportMemoryWin32HandleInfoKHR
         {
             /// <summary>
@@ -131,6 +140,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying additional attributes of Windows handles exported from a memory
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_memory_win32</para>
+        /// </remarks>
         public partial struct VkExportMemoryWin32HandleInfoKHR
         {
             /// <summary>
@@ -162,6 +174,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Properties of External Memory Windows Handles
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_memory_win32</para>
+        /// </remarks>
         public partial struct VkMemoryWin32HandlePropertiesKHR
         {
             /// <summary>
@@ -183,6 +198,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing a Win32 handle memory export operation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_memory_win32</para>
+        /// </remarks>
         public partial struct VkMemoryGetWin32HandleInfoKHR
         {
             /// <summary>
@@ -209,6 +227,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Use the Windows keyed mutex mechanism to synchronize work
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_win32_keyed_mutex</para>
+        /// </remarks>
         public partial struct VkWin32KeyedMutexAcquireReleaseInfoKHR
         {
             /// <summary>
@@ -260,6 +281,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying Windows handle to import to a semaphore
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_semaphore_win32</para>
+        /// </remarks>
         public partial struct VkImportSemaphoreWin32HandleInfoKHR
         {
             /// <summary>
@@ -301,6 +325,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying additional attributes of Windows handles exported from a semaphore
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_semaphore_win32</para>
+        /// </remarks>
         public partial struct VkExportSemaphoreWin32HandleInfoKHR
         {
             /// <summary>
@@ -332,6 +359,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying values for Direct3D 12 fence-backed semaphores
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_semaphore_win32</para>
+        /// </remarks>
         public partial struct VkD3D12FenceSubmitInfoKHR
         {
             /// <summary>
@@ -368,6 +398,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing a Win32 handle semaphore export operation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_semaphore_win32</para>
+        /// </remarks>
         public partial struct VkSemaphoreGetWin32HandleInfoKHR
         {
             /// <summary>
@@ -394,6 +427,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// (None)
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_fence_win32</para>
+        /// </remarks>
         public partial struct VkImportFenceWin32HandleInfoKHR
         {
             /// <summary>
@@ -435,6 +471,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying additional attributes of Windows handles exported from a fence
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_fence_win32</para>
+        /// </remarks>
         public partial struct VkExportFenceWin32HandleInfoKHR
         {
             /// <summary>
@@ -466,6 +505,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing a Win32 handle fence export operation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_external_fence_win32</para>
+        /// </remarks>
         public partial struct VkFenceGetWin32HandleInfoKHR
         {
             /// <summary>
@@ -492,6 +534,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Import Win32 memory created on the same physical device
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_external_memory_win32</para>
+        /// </remarks>
         public partial struct VkImportMemoryWin32HandleInfoNV
         {
             /// <summary>
@@ -518,6 +563,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Specify security attributes and access rights for Win32 memory handles
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_external_memory_win32</para>
+        /// </remarks>
         public partial struct VkExportMemoryWin32HandleInfoNV
         {
             /// <summary>
@@ -544,6 +592,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Use Windows keyex mutex mechanism to synchronize work
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_win32_keyed_mutex</para>
+        /// </remarks>
         public partial struct VkWin32KeyedMutexAcquireReleaseInfoNV
         {
             public vulkan.VkStructureType sType;
@@ -589,6 +640,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying the preferred full-screen transition behavior
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_full_screen_exclusive</para>
+        /// </remarks>
         public partial struct VkSurfaceFullScreenExclusiveInfoEXT
         {
             /// <summary>
@@ -610,6 +664,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing full screen exclusive capabilities of a surface
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_full_screen_exclusive</para>
+        /// </remarks>
         public partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT
         {
             /// <summary>
@@ -628,6 +685,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying additional creation parameters specific to Win32 fullscreen exclusive mode
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_full_screen_exclusive</para>
+        /// </remarks>
         public partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT
         {
             /// <summary>
@@ -682,7 +742,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_win32_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkWin32SurfaceCreateInfoKHR* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -707,7 +767,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_win32_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWin32SurfaceCreateInfoKHR pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -744,6 +804,9 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="physicalDevice">The physical device.</param>
             /// <param name="queueFamilyIndex">The queue family index.</param>
+            /// <remarks>
+            /// <para>Extension: VK_KHR_win32_surface</para>
+            /// </remarks>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex)
             {
                 return Value(physicalDevice, queueFamilyIndex);
@@ -789,7 +852,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkMemoryGetWin32HandleInfoKHR* pGetWin32HandleInfo, nint* pHandle)
             {
@@ -813,7 +876,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
             {
@@ -859,7 +922,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, vulkan.VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties)
             {
@@ -884,7 +947,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, out vulkan.VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties)
             {
@@ -927,7 +990,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_semaphore_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkImportSemaphoreWin32HandleInfoKHR* pImportSemaphoreWin32HandleInfo)
             {
@@ -950,7 +1013,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_semaphore_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportSemaphoreWin32HandleInfoKHR pImportSemaphoreWin32HandleInfo)
             {
@@ -994,7 +1057,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_semaphore_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSemaphoreGetWin32HandleInfoKHR* pGetWin32HandleInfo, nint* pHandle)
             {
@@ -1018,7 +1081,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_semaphore_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkSemaphoreGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
             {
@@ -1062,7 +1125,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_fence_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkImportFenceWin32HandleInfoKHR* pImportFenceWin32HandleInfo)
             {
@@ -1085,7 +1148,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_fence_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkImportFenceWin32HandleInfoKHR pImportFenceWin32HandleInfo)
             {
@@ -1129,7 +1192,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_fence_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkFenceGetWin32HandleInfoKHR* pGetWin32HandleInfo, nint* pHandle)
             {
@@ -1153,7 +1216,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_external_fence_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkFenceGetWin32HandleInfoKHR pGetWin32HandleInfo, out nint pHandle)
             {
@@ -1199,7 +1262,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_NV_external_memory_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkDeviceMemory memory, vulkan.VkExternalMemoryHandleTypeFlagsNV handleType, nint* pHandle)
             {
@@ -1224,7 +1287,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_NV_external_memory_win32</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkDeviceMemory memory, vulkan.VkExternalMemoryHandleTypeFlagsNV handleType, out nint pHandle)
             {
@@ -1269,7 +1332,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, uint* pPresentModeCount, vulkan.VkPresentModeKHR* pPresentModes)
             {
@@ -1294,7 +1357,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, Span<vulkan.VkPresentModeKHR> pPresentModes)
             {
@@ -1318,7 +1381,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, out uint pPresentModeCount)
             {
@@ -1363,7 +1426,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSwapchainKHR swapchain)
             {
@@ -1409,7 +1472,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkSwapchainKHR swapchain)
             {
@@ -1456,7 +1519,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, vulkan.VkDeviceGroupPresentModeFlagsKHR* pModes)
             {
@@ -1480,7 +1543,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkPhysicalDeviceSurfaceInfo2KHR pSurfaceInfo, vulkan.VkDeviceGroupPresentModeFlagsKHR* pModes)
             {
@@ -1523,7 +1586,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_NV_acquire_winrt_display</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, vulkan.VkDisplayKHR display)
             {
@@ -1570,7 +1633,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_NV_acquire_winrt_display</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, uint deviceRelativeId, vulkan.VkDisplayKHR* pDisplay)
             {
@@ -1594,7 +1657,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_NV_acquire_winrt_display</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, uint deviceRelativeId, out vulkan.VkDisplayKHR pDisplay)
             {

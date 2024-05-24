@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 using CppAst;
 using CppAst.CodeGen.CSharp;
@@ -30,6 +31,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     private readonly Dictionary<VulkanDocTypeKind, VulkanDocDefinitions> _docDefinitions = new();
     private readonly Dictionary<string, CSharpStruct> _structFunctionPointers = new();
     private readonly Dictionary<string, CSharpStruct> _structAsEnumFlags = new();
+    private readonly Dictionary<string, VulkanElementInfo> _vulkanElementInfos = new();
     private readonly List<int> _tempOptionalParameterIndexList = new();
 
     public override async Task Initialize(ApkManager apkHelper)
@@ -44,7 +46,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             throw new FileNotFoundException($"Cannot find Vulkan registry: {vkXml}");
         }
 
-        LoadVulkanParametersFromRegistry(vkXml);
+        LoadVulkanRegistry(vkXml);
 
         await DownloadAndProcessManPages();
     }
@@ -147,6 +149,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         foreach (var csStruct in csCompilation.AllStructs)
         {
             ApplyDocumentation(csStruct);
+            AddVulkanVersionAndExtensionInfoToCSharpElement(csStruct);
 
             // Associate Enum XXXFlagBits with Struct XXXFlags
             if (csStruct.Name.Contains("Flags", StringComparison.Ordinal))
@@ -254,6 +257,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     {
         // Apply doc to the function
         ApplyDocumentation(csFunction);
+        AddVulkanVersionAndExtensionInfoToCSharpElement(csFunction);
 
         if (!_structFunctionPointers.TryGetValue(csFunction.Name, out var pfn))
         {
@@ -925,10 +929,130 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
   
     protected override IEnumerable<CppFunction> GetAdditionalExportedCppFunctions() => _extensionFunctions;
 
-    private void LoadVulkanParametersFromRegistry(string registryPath)
+    private void LoadVulkanRegistry(string registryPath)
     {
         var doc = XDocument.Load(registryPath);
+        LoadApiVersionsAndExtensions(doc);
+        LoadVulkanParametersFromRegistry(doc);
+    }
 
+    private void AddVulkanVersionAndExtensionInfoToCSharpElement(CSharpElement element)
+    {
+        var cppElement = (ICppMember)element.CppElement!;
+        var csElementComments = (ICSharpWithComment)element;
+
+        if (_vulkanElementInfos.TryGetValue(cppElement.Name, out var info))
+        {
+            var fullComment = csElementComments.Comment as CSharpFullComment;
+            if (fullComment == null)
+            {
+                fullComment = new CSharpFullComment();
+                csElementComments.Comment = fullComment;
+            }
+
+            var remarks = (CSharpXmlComment?)fullComment.Children.FirstOrDefault(x => x is CSharpXmlComment xmlComment && xmlComment.TagName == "remarks");
+            if (remarks == null)
+            {
+                remarks = new CSharpXmlComment("remarks");
+                fullComment.Children.Add(remarks);
+            }
+
+            if (info.ApiVersion != null)
+            {
+                remarks.Children.Add(new CSharpXmlComment("para")
+                {
+                    IsInline = true,
+                    Children =
+                    {
+                        new CSharpTextComment($"API Version: {info.ApiVersion}")
+                    }
+                });
+            }
+
+            if (info.Extension != null)
+            {
+                remarks.Children.Add(new CSharpXmlComment("para")
+                {
+                    IsInline = true,
+                    Children =
+                    {
+                        new CSharpTextComment($"Extension: {info.Extension}")
+                    }
+                });
+            }
+        }
+    }
+    
+    private void LoadApiVersionsAndExtensions(XDocument doc)
+    {
+        var features = doc.Descendants("feature");
+        foreach (var feature in features)
+        {
+            var api = feature.Attribute("api")!.Value!;
+            var version = feature.Attribute("number")!.Value!;
+            if (!api.Split(",").Contains("vulkan"))
+            {
+                continue;
+            }
+
+            foreach (var type in feature.Descendants("type"))
+            {
+                var name = type.Attribute("name")!.Value!;
+                var info = GetVulkanElementInfo(name);
+                info.ApiVersion = version;
+            }
+
+            foreach (var command in feature.Descendants("command"))
+            {
+                var name = command.Attribute("name")!.Value!;
+                var info = GetVulkanElementInfo(name);
+                info.ApiVersion = version;
+            }
+        }
+
+        var extensions = doc.Descendants("extensions").FirstOrDefault();
+        if (extensions != null)
+        {
+            foreach (var extension in extensions.Elements("extension"))
+            {
+                var supportedApis = extension.Attribute("supported")!.Value!;
+                if (!supportedApis.Split(",").Contains("vulkan"))
+                {
+                    continue;
+                }
+
+                var extensionName = extension.Attribute("name")!.Value!;
+
+                foreach (var type in extension.Descendants("type"))
+                {
+                    var name = type.Attribute("name")!.Value!;
+                    var info = GetVulkanElementInfo(name);
+                    info.Extension = extensionName;
+                }
+
+                foreach (var command in extension.Descendants("command"))
+                {
+                    var name = command.Attribute("name")!.Value!;
+                    var info = GetVulkanElementInfo(name);
+                    info.Extension = extensionName;
+                }
+            }
+        }
+        
+        VulkanElementInfo GetVulkanElementInfo(string name)
+        {
+            if (_vulkanElementInfos.TryGetValue(name, out var info))
+            {
+                return info;
+            }
+            info = new VulkanElementInfo();
+            _vulkanElementInfos.Add(name, info);
+            return info;
+        }
+    }
+    
+    private void LoadVulkanParametersFromRegistry(XDocument doc)
+    {
         var commands = doc.Descendants("commands").First();
 
         int commandCount = 0;
@@ -959,7 +1083,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             var vulcanCommand = new VulkanCommand(name)
             {
                 ReturnSuccessCodes = successcodes?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
-                ReturnErrorCodes = errorcodes?.Split(',', StringSplitOptions.RemoveEmptyEntries|StringSplitOptions.TrimEntries),
+                ReturnErrorCodes = errorcodes?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries),
             };
             for (var parameterIndex = 0; parameterIndex < parameters.Count; parameterIndex++)
             {
@@ -1013,6 +1137,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
         Console.WriteLine($"Total commands: {commandCount} processed from the registry");
     }
+
+
+
+
 
     [GeneratedRegex(@"^(\d+\.\d+\.\d+)")]
     private static partial Regex ParseVulkanVersion();
@@ -1576,5 +1704,12 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         None,
         True,
         Both,
+    }
+
+    private record VulkanElementInfo
+    {
+        public string? ApiVersion { get; set; }
+
+        public string? Extension { get; set; }
     }
 }

@@ -20,6 +20,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created Wayland surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_wayland_surface</para>
+        /// </remarks>
         public partial struct VkWaylandSurfaceCreateInfoKHR
         {
             /// <summary>
@@ -45,6 +48,9 @@ namespace XenoAtom.Interop
             public vulkan.wl_surface surface;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_wayland_surface</para>
+        /// </remarks>
         public readonly partial struct VkWaylandSurfaceCreateFlagsKHR : IEquatable<VkWaylandSurfaceCreateFlagsKHR>
         {
             public VkWaylandSurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -104,7 +110,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_wayland_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkWaylandSurfaceCreateInfoKHR* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -129,7 +135,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_wayland_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkWaylandSurfaceCreateInfoKHR pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -167,6 +173,9 @@ namespace XenoAtom.Interop
             /// <param name="physicalDevice">The physical device.</param>
             /// <param name="queueFamilyIndex">The queue family index.</param>
             /// <param name="display">A pointer to the <c>wl_display</c> associated with a Wayland compositor.</param>
+            /// <remarks>
+            /// <para>Extension: VK_KHR_wayland_surface</para>
+            /// </remarks>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan.wl_display display)
             {
                 return Value(physicalDevice, queueFamilyIndex, display);

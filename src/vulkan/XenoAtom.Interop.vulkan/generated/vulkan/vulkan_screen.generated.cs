@@ -20,6 +20,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created QNX Screen surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_QNX_screen_surface</para>
+        /// </remarks>
         public partial struct VkScreenSurfaceCreateInfoQNX
         {
             /// <summary>
@@ -45,6 +48,9 @@ namespace XenoAtom.Interop
             public vulkan._screen_window window;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_QNX_screen_surface</para>
+        /// </remarks>
         public readonly partial struct VkScreenSurfaceCreateFlagsQNX : IEquatable<VkScreenSurfaceCreateFlagsQNX>
         {
             public VkScreenSurfaceCreateFlagsQNX(vulkan.VkFlags value) => this.Value = value;
@@ -71,6 +77,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Properties of External Memory QNX Screen Buffers
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
+        /// </remarks>
         public partial struct VkScreenBufferPropertiesQNX
         {
             /// <summary>
@@ -97,6 +106,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the image format properties of a QNX Screen buffer
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
+        /// </remarks>
         public partial struct VkScreenBufferFormatPropertiesQNX
         {
             /// <summary>
@@ -158,6 +170,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Import memory from a QNX Screen buffer
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
+        /// </remarks>
         public partial struct VkImportScreenBufferInfoQNX
         {
             /// <summary>
@@ -179,6 +194,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure containing a QNX Screen buffer external format
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
+        /// </remarks>
         public partial struct VkExternalFormatQNX
         {
             /// <summary>
@@ -200,6 +218,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing QNX Screen Buffer features that can be supported by an implementation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
+        /// </remarks>
         public partial struct VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX
         {
             public vulkan.VkStructureType sType;
@@ -245,7 +266,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_QNX_screen_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkScreenSurfaceCreateInfoQNX* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -285,6 +306,9 @@ namespace XenoAtom.Interop
             /// <param name="physicalDevice">The physical device.</param>
             /// <param name="queueFamilyIndex">The queue family index.</param>
             /// <param name="window">The QNX Screen <c>window</c> object.</param>
+            /// <remarks>
+            /// <para>Extension: VK_QNX_screen_surface</para>
+            /// </remarks>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan._screen_window window)
             {
                 return Value(physicalDevice, queueFamilyIndex, window);
@@ -330,7 +354,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan._screen_buffer buffer, vulkan.VkScreenBufferPropertiesQNX* pProperties)
             {
@@ -356,7 +380,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_QNX_screen_surface</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateScreenSurfaceQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -376,7 +400,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_QNX_screen_surface</para>
         /// </remarks>
         public static vulkan.VkResult vkCreateScreenSurfaceQNX(vulkan.VkInstance instance, in vulkan.VkScreenSurfaceCreateInfoQNX pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
         {
@@ -393,6 +417,9 @@ namespace XenoAtom.Interop
         /// <param name="physicalDevice">The physical device.</param>
         /// <param name="queueFamilyIndex">The queue family index.</param>
         /// <param name="window">The QNX Screen <c>window</c> object.</param>
+        /// <remarks>
+        /// <para>Extension: VK_QNX_screen_surface</para>
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetPhysicalDeviceScreenPresentationSupportQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan._screen_window window);
@@ -412,7 +439,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetScreenBufferPropertiesQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -431,7 +458,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
         /// </remarks>
         public static vulkan.VkResult vkGetScreenBufferPropertiesQNX(vulkan.VkDevice device, vulkan._screen_buffer buffer, out vulkan.VkScreenBufferPropertiesQNX pProperties)
         {

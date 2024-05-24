@@ -20,6 +20,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created Google Games Platform stream surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_GGP_stream_descriptor_surface</para>
+        /// </remarks>
         public partial struct VkStreamDescriptorSurfaceCreateInfoGGP
         {
             /// <summary>
@@ -43,6 +46,9 @@ namespace XenoAtom.Interop
             public int streamDescriptor;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_GGP_stream_descriptor_surface</para>
+        /// </remarks>
         public readonly partial struct VkStreamDescriptorSurfaceCreateFlagsGGP : IEquatable<VkStreamDescriptorSurfaceCreateFlagsGGP>
         {
             public VkStreamDescriptorSurfaceCreateFlagsGGP(vulkan.VkFlags value) => this.Value = value;
@@ -69,6 +75,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// The Google Games Platform frame token
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_GGP_frame_token</para>
+        /// </remarks>
         public partial struct VkPresentFrameTokenGGP
         {
             /// <summary>
@@ -123,7 +132,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_GGP_stream_descriptor_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkStreamDescriptorSurfaceCreateInfoGGP* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -149,7 +158,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_GGP_stream_descriptor_surface</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateStreamDescriptorSurfaceGGP")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -169,7 +178,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_GGP_stream_descriptor_surface</para>
         /// </remarks>
         public static vulkan.VkResult vkCreateStreamDescriptorSurfaceGGP(vulkan.VkInstance instance, in vulkan.VkStreamDescriptorSurfaceCreateInfoGGP pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
         {

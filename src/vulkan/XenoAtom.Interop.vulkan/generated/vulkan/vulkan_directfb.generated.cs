@@ -20,6 +20,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created DirectFB surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_directfb_surface</para>
+        /// </remarks>
         public partial struct VkDirectFBSurfaceCreateInfoEXT
         {
             /// <summary>
@@ -48,6 +51,9 @@ namespace XenoAtom.Interop
             public void* surface;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_directfb_surface</para>
+        /// </remarks>
         public readonly partial struct VkDirectFBSurfaceCreateFlagsEXT : IEquatable<VkDirectFBSurfaceCreateFlagsEXT>
         {
             public VkDirectFBSurfaceCreateFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -107,7 +113,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_directfb_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkDirectFBSurfaceCreateInfoEXT* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -132,7 +138,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_EXT_directfb_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, in vulkan.VkDirectFBSurfaceCreateInfoEXT pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
             {
@@ -170,6 +176,9 @@ namespace XenoAtom.Interop
             /// <param name="physicalDevice">The physical device.</param>
             /// <param name="queueFamilyIndex">The queue family index.</param>
             /// <param name="dfb">A pointer to the <c>IDirectFB</c> main interface of DirectFB.</param>
+            /// <remarks>
+            /// <para>Extension: VK_EXT_directfb_surface</para>
+            /// </remarks>
             public vulkan.VkBool32 Invoke(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, void* dfb)
             {
                 return Value(physicalDevice, queueFamilyIndex, dfb);

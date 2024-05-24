@@ -575,6 +575,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the features that may not be supported by an implementation of the Vulkan 1.0 Portability Subset
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_portability_subset</para>
+        /// </remarks>
         public partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR
         {
             /// <summary>
@@ -621,6 +624,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing additional properties supported by a portable implementation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_portability_subset</para>
+        /// </remarks>
         public partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR
         {
             /// <summary>
@@ -639,6 +645,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure to chain codec-specific structures to
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkVideoEncodeInfoKHR
         {
             /// <summary>
@@ -697,6 +706,9 @@ namespace XenoAtom.Interop
             public uint precedingExternallyEncodedBytes;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeFlagsKHR : IEquatable<VkVideoEncodeFlagsKHR>
         {
             public VkVideoEncodeFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -723,6 +735,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying encode capabilities
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkVideoEncodeCapabilitiesKHR
         {
             /// <summary>
@@ -771,6 +786,9 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeCapabilityFlagsKHR : IEquatable<VkVideoEncodeCapabilityFlagsKHR>
         {
             public VkVideoEncodeCapabilityFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -798,6 +816,9 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeCapabilityFlagsKHR (vulkan.VkVideoEncodeCapabilityFlagBitsKHR from) => new vulkan.VkVideoEncodeCapabilityFlagsKHR((uint)from);
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeRateControlModeFlagsKHR : IEquatable<VkVideoEncodeRateControlModeFlagsKHR>
         {
             public VkVideoEncodeRateControlModeFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -825,6 +846,9 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeRateControlModeFlagsKHR (vulkan.VkVideoEncodeRateControlModeFlagBitsKHR from) => new vulkan.VkVideoEncodeRateControlModeFlagsKHR((uint)from);
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeFeedbackFlagsKHR : IEquatable<VkVideoEncodeFeedbackFlagsKHR>
         {
             public VkVideoEncodeFeedbackFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -855,6 +879,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying enabled video encode feedback values
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR
         {
             /// <summary>
@@ -876,6 +903,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying video encode usage information
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkVideoEncodeUsageInfoKHR
         {
             /// <summary>
@@ -904,6 +934,9 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeTuningModeKHR tuningMode;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeUsageFlagsKHR : IEquatable<VkVideoEncodeUsageFlagsKHR>
         {
             public VkVideoEncodeUsageFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -931,6 +964,9 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeUsageFlagsKHR (vulkan.VkVideoEncodeUsageFlagBitsKHR from) => new vulkan.VkVideoEncodeUsageFlagsKHR((uint)from);
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeContentFlagsKHR : IEquatable<VkVideoEncodeContentFlagsKHR>
         {
             public VkVideoEncodeContentFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -961,6 +997,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure to set encode per-layer rate control parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkVideoEncodeRateControlLayerInfoKHR
         {
             /// <summary>
@@ -997,6 +1036,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure to set encode stream rate control parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkVideoEncodeRateControlInfoKHR
         {
             /// <summary>
@@ -1040,6 +1082,9 @@ namespace XenoAtom.Interop
             public uint initialVirtualBufferSizeInMs;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeRateControlFlagsKHR : IEquatable<VkVideoEncodeRateControlFlagsKHR>
         {
             public VkVideoEncodeRateControlFlagsKHR(vulkan.VkFlags value) => this.Value = value;
@@ -1066,6 +1111,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the video encode profile and quality level to query properties for
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR
         {
             /// <summary>
@@ -1092,6 +1140,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the video encode quality level properties
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkVideoEncodeQualityLevelPropertiesKHR
         {
             /// <summary>
@@ -1118,6 +1169,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying used video encode quality level
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkVideoEncodeQualityLevelInfoKHR
         {
             /// <summary>
@@ -1139,6 +1193,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters for retrieving encoded video session parameter data
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkVideoEncodeSessionParametersGetInfoKHR
         {
             /// <summary>
@@ -1160,6 +1217,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure providing feedback about the requested video session parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_KHR_video_encode_queue</para>
+        /// </remarks>
         public partial struct VkVideoEncodeSessionParametersFeedbackInfoKHR
         {
             /// <summary>
@@ -1181,6 +1241,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying H.264 encode capabilities
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264CapabilitiesEXT
         {
             /// <summary>
@@ -1259,6 +1322,9 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH264StdFlagsEXT stdSyntaxFlags;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeH264CapabilityFlagsEXT : IEquatable<VkVideoEncodeH264CapabilityFlagsEXT>
         {
             public VkVideoEncodeH264CapabilityFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -1286,6 +1352,9 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeH264CapabilityFlagsEXT (vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT from) => new vulkan.VkVideoEncodeH264CapabilityFlagsEXT((uint)from);
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeH264StdFlagsEXT : IEquatable<VkVideoEncodeH264StdFlagsEXT>
         {
             public VkVideoEncodeH264StdFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -1316,6 +1385,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing H.264 QP values per picture type
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264QpEXT
         {
             /// <summary>
@@ -1337,6 +1409,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the H.264 encode quality level properties
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264QualityLevelPropertiesEXT
         {
             /// <summary>
@@ -1395,6 +1470,9 @@ namespace XenoAtom.Interop
             public vulkan.VkBool32 preferredStdEntropyCodingModeFlag;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeH264RateControlFlagsEXT : IEquatable<VkVideoEncodeH264RateControlFlagsEXT>
         {
             public VkVideoEncodeH264RateControlFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -1425,6 +1503,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.264 encode session parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264SessionCreateInfoEXT
         {
             /// <summary>
@@ -1451,6 +1532,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.264 encoder parameter set information
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264SessionParametersAddInfoEXT
         {
             /// <summary>
@@ -1487,6 +1571,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.264 encoder parameter set information
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264SessionParametersCreateInfoEXT
         {
             /// <summary>
@@ -1518,6 +1605,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters for retrieving encoded H.264 parameter set data
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264SessionParametersGetInfoEXT
         {
             /// <summary>
@@ -1554,6 +1644,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure providing feedback about the requested H.264 video session parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264SessionParametersFeedbackInfoEXT
         {
             /// <summary>
@@ -1580,6 +1673,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.264 encode slice NALU parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264NaluSliceInfoEXT
         {
             /// <summary>
@@ -1606,6 +1702,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.264 encode frame parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264PictureInfoEXT
         {
             /// <summary>
@@ -1642,6 +1741,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.264 encode DPB picture information
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264DpbSlotInfoEXT
         {
             /// <summary>
@@ -1663,6 +1765,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying H.264 encode profile
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264ProfileInfoEXT
         {
             /// <summary>
@@ -1684,6 +1789,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing H.264 stream rate control parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264RateControlInfoEXT
         {
             /// <summary>
@@ -1725,6 +1833,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing frame size values per H.264 picture type
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264FrameSizeEXT
         {
             /// <summary>
@@ -1746,6 +1857,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing H.264 per-layer rate control parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264RateControlLayerInfoEXT
         {
             /// <summary>
@@ -1792,6 +1906,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying H.264 encode rate control GOP remaining frame counts
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h264</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH264GopRemainingFrameInfoEXT
         {
             /// <summary>
@@ -1828,6 +1945,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying H.265 encode capabilities
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265CapabilitiesEXT
         {
             /// <summary>
@@ -1921,6 +2041,9 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH265StdFlagsEXT stdSyntaxFlags;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeH265CapabilityFlagsEXT : IEquatable<VkVideoEncodeH265CapabilityFlagsEXT>
         {
             public VkVideoEncodeH265CapabilityFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -1948,6 +2071,9 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeH265CapabilityFlagsEXT (vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT from) => new vulkan.VkVideoEncodeH265CapabilityFlagsEXT((uint)from);
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeH265CtbSizeFlagsEXT : IEquatable<VkVideoEncodeH265CtbSizeFlagsEXT>
         {
             public VkVideoEncodeH265CtbSizeFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -1975,6 +2101,9 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeH265CtbSizeFlagsEXT (vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT from) => new vulkan.VkVideoEncodeH265CtbSizeFlagsEXT((uint)from);
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeH265TransformBlockSizeFlagsEXT : IEquatable<VkVideoEncodeH265TransformBlockSizeFlagsEXT>
         {
             public VkVideoEncodeH265TransformBlockSizeFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -2002,6 +2131,9 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT (vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT from) => new vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT((uint)from);
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeH265StdFlagsEXT : IEquatable<VkVideoEncodeH265StdFlagsEXT>
         {
             public VkVideoEncodeH265StdFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -2032,6 +2164,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.265 encode session parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265SessionCreateInfoEXT
         {
             /// <summary>
@@ -2058,6 +2193,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing H.265 QP values per picture type
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265QpEXT
         {
             /// <summary>
@@ -2079,6 +2217,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the H.265 encode quality level properties
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265QualityLevelPropertiesEXT
         {
             /// <summary>
@@ -2132,6 +2273,9 @@ namespace XenoAtom.Interop
             public uint preferredMaxL1ReferenceCount;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public readonly partial struct VkVideoEncodeH265RateControlFlagsEXT : IEquatable<VkVideoEncodeH265RateControlFlagsEXT>
         {
             public VkVideoEncodeH265RateControlFlagsEXT(vulkan.VkFlags value) => this.Value = value;
@@ -2162,6 +2306,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.265 encoder parameter set info
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265SessionParametersAddInfoEXT
         {
             /// <summary>
@@ -2208,6 +2355,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.265 encoder parameter set info
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265SessionParametersCreateInfoEXT
         {
             /// <summary>
@@ -2244,6 +2394,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters for retrieving encoded H.265 parameter set data
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265SessionParametersGetInfoEXT
         {
             /// <summary>
@@ -2290,6 +2443,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure providing feedback about the requested H.265 video session parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265SessionParametersFeedbackInfoEXT
         {
             /// <summary>
@@ -2321,6 +2477,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.265 encode slice segment NALU parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265NaluSliceSegmentInfoEXT
         {
             /// <summary>
@@ -2347,6 +2506,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.265 encode frame parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265PictureInfoEXT
         {
             /// <summary>
@@ -2378,6 +2540,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifies H.265 encode decoded pic info
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265DpbSlotInfoEXT
         {
             /// <summary>
@@ -2399,6 +2564,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying H.265 encode profile
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265ProfileInfoEXT
         {
             /// <summary>
@@ -2420,6 +2588,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing H.265 stream rate control parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265RateControlInfoEXT
         {
             /// <summary>
@@ -2461,6 +2632,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing frame size values per H.265 picture type
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265FrameSizeEXT
         {
             /// <summary>
@@ -2482,6 +2656,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing H.265 per-layer rate control parameters
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265RateControlLayerInfoEXT
         {
             /// <summary>
@@ -2528,6 +2705,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying H.265 encode rate control GOP remaining frame counts
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_video_encode_h265</para>
+        /// </remarks>
         public partial struct VkVideoEncodeH265GopRemainingFrameInfoEXT
         {
             /// <summary>
@@ -2564,6 +2744,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing whether shader enqueue within execution graphs are supported by the implementation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_shader_enqueue</para>
+        /// </remarks>
         public partial struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX
         {
             public vulkan.VkStructureType sType;
@@ -2576,6 +2759,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing shader enqueue limits of an implementation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_shader_enqueue</para>
+        /// </remarks>
         public partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX
         {
             /// <summary>
@@ -2602,6 +2788,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the scratch space required to dispatch an execution graph
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_shader_enqueue</para>
+        /// </remarks>
         public partial struct VkExecutionGraphPipelineScratchSizeAMDX
         {
             /// <summary>
@@ -2623,6 +2812,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created execution graph pipeline
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_shader_enqueue</para>
+        /// </remarks>
         public partial struct VkExecutionGraphPipelineCreateInfoAMDX
         {
             /// <summary>
@@ -2674,6 +2866,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Union specifying a const device or host address
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_shader_enqueue</para>
+        /// </remarks>
         [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
         public partial struct VkDeviceOrHostAddressConstAMDX
         {
@@ -2693,6 +2888,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying node parameters for execution graph dispatch
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_shader_enqueue</para>
+        /// </remarks>
         public partial struct VkDispatchGraphInfoAMDX
         {
             /// <summary>
@@ -2719,6 +2917,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying count parameters for execution graph dispatch
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_shader_enqueue</para>
+        /// </remarks>
         public partial struct VkDispatchGraphCountInfoAMDX
         {
             /// <summary>
@@ -2740,6 +2941,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying the shader name and index with an execution graph
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_shader_enqueue</para>
+        /// </remarks>
         public partial struct VkPipelineShaderStageNodeCreateInfoAMDX
         {
             /// <summary>
@@ -2766,6 +2970,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the ray tracing displacement micromap features that can be supported by an implementation
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_displacement_micromap</para>
+        /// </remarks>
         public partial struct VkPhysicalDeviceDisplacementMicromapFeaturesNV
         {
             /// <summary>
@@ -2784,6 +2991,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure describing the displacement micromap properties of a physical device
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_displacement_micromap</para>
+        /// </remarks>
         public partial struct VkPhysicalDeviceDisplacementMicromapPropertiesNV
         {
             /// <summary>
@@ -2805,6 +3015,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying a displacement micromap in a bottom-level acceleration structure
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_displacement_micromap</para>
+        /// </remarks>
         public partial struct VkAccelerationStructureTrianglesDisplacementMicromapNV
         {
             /// <summary>
@@ -2933,7 +3146,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_video_encode_queue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* pQualityLevelInfo, vulkan.VkVideoEncodeQualityLevelPropertiesKHR* pQualityLevelProperties)
             {
@@ -2957,7 +3170,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR</c></description></item><item><description><c>VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_video_encode_queue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pQualityLevelInfo, out vulkan.VkVideoEncodeQualityLevelPropertiesKHR pQualityLevelProperties)
             {
@@ -3004,7 +3217,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_video_encode_queue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkVideoEncodeSessionParametersGetInfoKHR* pVideoSessionParametersInfo, vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR* pFeedbackInfo, nuint* pDataSize, void* pData)
             {
@@ -3030,7 +3243,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_KHR_video_encode_queue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkVideoEncodeSessionParametersGetInfoKHR pVideoSessionParametersInfo, vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR* pFeedbackInfo, nuint* pDataSize, void* pData)
             {
@@ -3066,6 +3279,9 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="commandBuffer">The command buffer to be filled with this function for encoding to generate a bitstream.</param>
             /// <param name="pEncodeInfo">A pointer to a <see cref="T:VkVideoEncodeInfoKHR"/> structure.</param>
+            /// <remarks>
+            /// <para>Extension: VK_KHR_video_encode_queue</para>
+            /// </remarks>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkVideoEncodeInfoKHR* pEncodeInfo)
             {
                 Value(commandBuffer, pEncodeInfo);
@@ -3080,6 +3296,9 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="commandBuffer">The command buffer to be filled with this function for encoding to generate a bitstream.</param>
             /// <param name="pEncodeInfo">A pointer to a <see cref="T:VkVideoEncodeInfoKHR"/> structure.</param>
+            /// <remarks>
+            /// <para>Extension: VK_KHR_video_encode_queue</para>
+            /// </remarks>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, in vulkan.VkVideoEncodeInfoKHR pEncodeInfo)
             {
                 fixed (vulkan.VkVideoEncodeInfoKHR* __pEncodeInfo_local = &pEncodeInfo)
@@ -3125,7 +3344,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, uint createInfoCount, vulkan.VkExecutionGraphPipelineCreateInfoAMDX* pCreateInfos, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkPipeline* pPipelines)
             {
@@ -3152,7 +3371,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipelineCache pipelineCache, ReadOnlySpan<vulkan.VkExecutionGraphPipelineCreateInfoAMDX> pCreateInfos, vulkan.VkAllocationCallbacks* pAllocator, Span<vulkan.VkPipeline> pPipelines)
             {
@@ -3198,7 +3417,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, vulkan.VkExecutionGraphPipelineScratchSizeAMDX* pSizeInfo)
             {
@@ -3222,7 +3441,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, out vulkan.VkExecutionGraphPipelineScratchSizeAMDX pSizeInfo)
             {
@@ -3267,7 +3486,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, vulkan.VkPipelineShaderStageNodeCreateInfoAMDX* pNodeInfo, uint* pNodeIndex)
             {
@@ -3292,7 +3511,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, in vulkan.VkPipelineShaderStageNodeCreateInfoAMDX pNodeInfo, out uint pNodeIndex)
             {
@@ -3329,6 +3548,9 @@ namespace XenoAtom.Interop
             /// </summary>
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
             /// <param name="scratch">A pointer to the scratch memory to be initialized.</param>
+            /// <remarks>
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
+            /// </remarks>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch)
             {
                 Value(commandBuffer, scratch);
@@ -3367,6 +3589,9 @@ namespace XenoAtom.Interop
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
             /// <param name="scratch">A pointer to the scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
+            /// <remarks>
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
+            /// </remarks>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDispatchGraphCountInfoAMDX* pCountInfo)
             {
                 Value(commandBuffer, scratch, pCountInfo);
@@ -3382,6 +3607,9 @@ namespace XenoAtom.Interop
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
             /// <param name="scratch">A pointer to the scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
+            /// <remarks>
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
+            /// </remarks>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
             {
                 fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo_local = &pCountInfo)
@@ -3417,6 +3645,9 @@ namespace XenoAtom.Interop
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
             /// <param name="scratch">A pointer to the scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
+            /// <remarks>
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
+            /// </remarks>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDispatchGraphCountInfoAMDX* pCountInfo)
             {
                 Value(commandBuffer, scratch, pCountInfo);
@@ -3432,6 +3663,9 @@ namespace XenoAtom.Interop
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
             /// <param name="scratch">A pointer to the scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
+            /// <remarks>
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
+            /// </remarks>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
             {
                 fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo_local = &pCountInfo)
@@ -3467,6 +3701,9 @@ namespace XenoAtom.Interop
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
             /// <param name="scratch">A pointer to the scratch memory to be used.</param>
             /// <param name="countInfo">A device address of a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
+            /// <remarks>
+            /// <para>Extension: VK_AMDX_shader_enqueue</para>
+            /// </remarks>
             public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDeviceAddress countInfo)
             {
                 Value(commandBuffer, scratch, countInfo);

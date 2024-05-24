@@ -20,6 +20,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Structure specifying parameters of a newly created macOS surface object
         /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_MVK_macos_surface</para>
+        /// </remarks>
         public partial struct VkMacOSSurfaceCreateInfoMVK
         {
             /// <summary>
@@ -43,6 +46,9 @@ namespace XenoAtom.Interop
             public void* pView;
         }
         
+        /// <remarks>
+        /// <para>Extension: VK_MVK_macos_surface</para>
+        /// </remarks>
         public readonly partial struct VkMacOSSurfaceCreateFlagsMVK : IEquatable<VkMacOSSurfaceCreateFlagsMVK>
         {
             public VkMacOSSurfaceCreateFlagsMVK(vulkan.VkFlags value) => this.Value = value;
@@ -102,7 +108,7 @@ namespace XenoAtom.Interop
             /// <list type="bullet">
             /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
             /// </list>
-            /// 
+            /// <para>Extension: VK_MVK_macos_surface</para>
             /// </remarks>
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, vulkan.VkMacOSSurfaceCreateInfoMVK* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkSurfaceKHR* pSurface)
             {
@@ -128,7 +134,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_MVK_macos_surface</para>
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkCreateMacOSSurfaceMVK")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
@@ -148,7 +154,7 @@ namespace XenoAtom.Interop
         /// <list type="bullet">
         /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
         /// </list>
-        /// 
+        /// <para>Extension: VK_MVK_macos_surface</para>
         /// </remarks>
         public static vulkan.VkResult vkCreateMacOSSurfaceMVK(vulkan.VkInstance instance, in vulkan.VkMacOSSurfaceCreateInfoMVK pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkSurfaceKHR pSurface)
         {
