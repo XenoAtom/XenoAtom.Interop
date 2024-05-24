@@ -3,6 +3,8 @@
 // See license.txt file in the project root for full license information.
 
 using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace XenoAtom.Interop;
@@ -49,4 +51,13 @@ public readonly ref struct ReadOnlySpanUtf8(ReadOnlySpan<byte> span)
     public static bool operator ==(ReadOnlySpanUtf8 left, ReadOnlySpanUtf8 right) => left._span.SequenceEqual(right._span);
 
     public static bool operator !=(ReadOnlySpanUtf8 left, ReadOnlySpanUtf8 right) => !left._span.SequenceEqual(right._span);
+
+    /// <summary>
+    /// Casts a <see cref="ReadOnlySpanUtf8"/> to a byte pointer.
+    /// </summary>
+    /// <param name="span">The UTF8 span.</param>
+    /// <remarks>
+    /// In order to safely use this operator, the Span must have been created from a string literal or a pinned array otherwise unexpected pointers will be returned.
+    /// </remarks>
+    public static unsafe explicit operator byte*(ReadOnlySpanUtf8 span) => (byte*)Unsafe.AsPointer(ref MemoryMarshal.GetReference(span._span));
 }
