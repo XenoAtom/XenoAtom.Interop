@@ -17,6 +17,9 @@ public static partial class Program
     static async Task Main(string[] args)
     {
         var genManager = new GeneratorManager(LibDescriptors);
+
+        //genManager.LibFilter.Add("libdrm");
+        
         await genManager.Initialize();
         await genManager.Run();
     }

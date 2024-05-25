@@ -28,6 +28,8 @@ public class GeneratorManager
         RepositoryRootFolder = repositoryRootFolder ?? Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"..", "..", "..", "..", "..", "..", ".."));
     }
 
+    public HashSet<string> LibFilter { get; } = new();
+
     public LibDescriptor[] LibDescriptors { get; }
 
     public ApkManager ApkManager { get; }
@@ -42,6 +44,11 @@ public class GeneratorManager
         // Initialize all generators
         foreach (var libDescriptor in LibDescriptors)
         {
+            if (LibFilter.Count > 0 && !LibFilter.Contains(libDescriptor.Name))
+            {
+                continue;
+            }
+
             Console.WriteLine($"=================================================");
             Console.WriteLine($"Initializing {libDescriptor.Name} generator");
             Console.WriteLine($"=================================================");
@@ -58,6 +65,11 @@ public class GeneratorManager
         // Run all generators
         foreach (var libDescriptor in LibDescriptors)
         {
+            if (LibFilter.Count > 0 && !LibFilter.Contains(libDescriptor.Name))
+            {
+                continue;
+            }
+            
             Console.WriteLine($"=================================================");
             Console.WriteLine($"Generating {libDescriptor.Name} bindings");
             Console.WriteLine($"=================================================");
@@ -65,7 +77,10 @@ public class GeneratorManager
             await generator.Run();
         }
 
-        UpdateReadme();
+        if (LibFilter.Count == 0)
+        {
+            UpdateReadme();
+        }
     }
 
     private void UpdateReadme()
