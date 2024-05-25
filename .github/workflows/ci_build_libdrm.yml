@@ -1,0 +1,24 @@
+name: ci_build_libdrm
+
+on:
+  push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '**' 
+    paths:
+    - 'src/*.props'
+    - 'src/libdrm/**'
+  pull_request:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+#GITHUB_ACTION_PRE_STEP
+      - name: "Build, Test and Pack libdrm"
+        uses: xoofx/.github/.github/actions/dotnet-releaser-action@main   
+        with:
+          dotnet-releaser-path: 'src/libdrm/dotnet-releaser.toml'
+          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+#GITHUB_ACTION_POST_STEP
