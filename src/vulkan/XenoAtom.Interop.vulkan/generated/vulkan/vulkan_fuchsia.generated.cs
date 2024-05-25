@@ -86,7 +86,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
         /// </remarks>
-        public readonly partial struct VkImagePipeSurfaceCreateFlagsFUCHSIA : IEquatable<VkImagePipeSurfaceCreateFlagsFUCHSIA>
+        public readonly partial struct VkImagePipeSurfaceCreateFlagsFUCHSIA : IEquatable<vulkan.VkImagePipeSurfaceCreateFlagsFUCHSIA>
         {
             public VkImagePipeSurfaceCreateFlagsFUCHSIA(vulkan.VkFlags value) => this.Value = value;
             
@@ -315,7 +315,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public readonly partial struct VkBufferCollectionFUCHSIA : IEquatable<VkBufferCollectionFUCHSIA>
+        public readonly partial struct VkBufferCollectionFUCHSIA : IEquatable<vulkan.VkBufferCollectionFUCHSIA>
         {
             public VkBufferCollectionFUCHSIA(vulkan.VkBufferCollectionFUCHSIA_T value) => this.Value = value;
             
@@ -621,7 +621,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public readonly partial struct VkImageFormatConstraintsFlagsFUCHSIA : IEquatable<VkImageFormatConstraintsFlagsFUCHSIA>
+        public readonly partial struct VkImageFormatConstraintsFlagsFUCHSIA : IEquatable<vulkan.VkImageFormatConstraintsFlagsFUCHSIA>
         {
             public VkImageFormatConstraintsFlagsFUCHSIA(vulkan.VkFlags value) => this.Value = value;
             
@@ -686,7 +686,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public readonly partial struct VkImageConstraintsInfoFlagsFUCHSIA : IEquatable<VkImageConstraintsInfoFlagsFUCHSIA>
+        public readonly partial struct VkImageConstraintsInfoFlagsFUCHSIA : IEquatable<vulkan.VkImageConstraintsInfoFlagsFUCHSIA>
         {
             public VkImageConstraintsInfoFlagsFUCHSIA(vulkan.VkFlags value) => this.Value = value;
             
@@ -713,7 +713,7 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkImageConstraintsInfoFlagsFUCHSIA (vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA from) => new vulkan.VkImageConstraintsInfoFlagsFUCHSIA((uint)from);
         }
         
-        public readonly partial struct PFN_vkCreateImagePipeSurfaceFUCHSIA : IEquatable<PFN_vkCreateImagePipeSurfaceFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateImagePipeSurfaceFUCHSIA : IEquatable<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkCreateImagePipeSurfaceFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -761,7 +761,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryZirconHandleFUCHSIA : IEquatable<PFN_vkGetMemoryZirconHandleFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetMemoryZirconHandleFUCHSIA : IEquatable<vulkan.PFN_vkGetMemoryZirconHandleFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkGetMemoryZirconHandleFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetZirconHandleInfoFUCHSIA*, uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -808,7 +808,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA : IEquatable<PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA : IEquatable<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -856,7 +856,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkImportSemaphoreZirconHandleFUCHSIA : IEquatable<PFN_vkImportSemaphoreZirconHandleFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkImportSemaphoreZirconHandleFUCHSIA : IEquatable<vulkan.PFN_vkImportSemaphoreZirconHandleFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkImportSemaphoreZirconHandleFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -902,7 +902,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetSemaphoreZirconHandleFUCHSIA : IEquatable<PFN_vkGetSemaphoreZirconHandleFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetSemaphoreZirconHandleFUCHSIA : IEquatable<vulkan.PFN_vkGetSemaphoreZirconHandleFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkGetSemaphoreZirconHandleFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA*, uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -949,7 +949,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkCreateBufferCollectionFUCHSIA : IEquatable<PFN_vkCreateBufferCollectionFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateBufferCollectionFUCHSIA : IEquatable<vulkan.PFN_vkCreateBufferCollectionFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkCreateBufferCollectionFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionCreateInfoFUCHSIA*, vulkan.VkAllocationCallbacks*, vulkan.VkBufferCollectionFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -997,7 +997,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkSetBufferCollectionImageConstraintsFUCHSIA : IEquatable<PFN_vkSetBufferCollectionImageConstraintsFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkSetBufferCollectionImageConstraintsFUCHSIA : IEquatable<vulkan.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkSetBufferCollectionImageConstraintsFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionFUCHSIA, vulkan.VkImageConstraintsInfoFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1044,7 +1044,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA : IEquatable<PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA : IEquatable<vulkan.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionFUCHSIA, vulkan.VkBufferConstraintsInfoFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1091,7 +1091,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkDestroyBufferCollectionFUCHSIA : IEquatable<PFN_vkDestroyBufferCollectionFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkDestroyBufferCollectionFUCHSIA : IEquatable<vulkan.PFN_vkDestroyBufferCollectionFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkDestroyBufferCollectionFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionFUCHSIA, vulkan.VkAllocationCallbacks*, void> value) => this.Value = value;
             
@@ -1132,7 +1132,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetBufferCollectionPropertiesFUCHSIA : IEquatable<PFN_vkGetBufferCollectionPropertiesFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetBufferCollectionPropertiesFUCHSIA : IEquatable<vulkan.PFN_vkGetBufferCollectionPropertiesFUCHSIA>, IvkFunctionPointer
         {
             public PFN_vkGetBufferCollectionPropertiesFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionFUCHSIA, vulkan.VkBufferCollectionPropertiesFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             

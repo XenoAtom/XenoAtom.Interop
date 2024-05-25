@@ -277,7 +277,7 @@ namespace XenoAtom.Interop
         /// 0 to fail the connection
         /// or &gt; 0 to indicate that the callback refused to act and that
         /// the existing validity determination should be honored</returns>
-        public readonly partial struct git_transport_certificate_check_cb : IEquatable<git_transport_certificate_check_cb>
+        public readonly partial struct git_transport_certificate_check_cb : IEquatable<libgit2.git_transport_certificate_check_cb>
         {
             public git_transport_certificate_check_cb(delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> value) => this.Value = value;
             

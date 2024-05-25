@@ -135,7 +135,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// The base structure for all credential types
         /// </summary>
-        public readonly partial struct git_credential : IEquatable<git_credential>
+        public readonly partial struct git_credential : IEquatable<libgit2.git_credential>
         {
             public git_credential(nint handle) => Handle = handle;
             
@@ -154,7 +154,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(git_credential left, git_credential right) => !left.Equals(right);
         }
         
-        public readonly partial struct git_credential_userpass_plaintext : IEquatable<git_credential_userpass_plaintext>
+        public readonly partial struct git_credential_userpass_plaintext : IEquatable<libgit2.git_credential_userpass_plaintext>
         {
             public git_credential_userpass_plaintext(nint handle) => Handle = handle;
             
@@ -176,7 +176,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Username-only credential information
         /// </summary>
-        public readonly partial struct git_credential_username : IEquatable<git_credential_username>
+        public readonly partial struct git_credential_username : IEquatable<libgit2.git_credential_username>
         {
             public git_credential_username(nint handle) => Handle = handle;
             
@@ -198,7 +198,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// A ssh key from disk
         /// </summary>
-        public readonly partial struct git_credential_ssh_key : IEquatable<git_credential_ssh_key>
+        public readonly partial struct git_credential_ssh_key : IEquatable<libgit2.git_credential_ssh_key>
         {
             public git_credential_ssh_key(nint handle) => Handle = handle;
             
@@ -220,7 +220,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Keyboard-interactive based ssh authentication
         /// </summary>
-        public readonly partial struct git_credential_ssh_interactive : IEquatable<git_credential_ssh_interactive>
+        public readonly partial struct git_credential_ssh_interactive : IEquatable<libgit2.git_credential_ssh_interactive>
         {
             public git_credential_ssh_interactive(nint handle) => Handle = handle;
             
@@ -242,7 +242,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// A key with a custom signature function
         /// </summary>
-        public readonly partial struct git_credential_ssh_custom : IEquatable<git_credential_ssh_custom>
+        public readonly partial struct git_credential_ssh_custom : IEquatable<libgit2.git_credential_ssh_custom>
         {
             public git_credential_ssh_custom(nint handle) => Handle = handle;
             
@@ -283,7 +283,7 @@ namespace XenoAtom.Interop
         /// an error. As such, it's easy to get in a loop if you fail to stop providing
         /// the same incorrect credentials.
         /// </remarks>
-        public readonly partial struct git_credential_acquire_cb : IEquatable<git_credential_acquire_cb>
+        public readonly partial struct git_credential_acquire_cb : IEquatable<libgit2.git_credential_acquire_cb>
         {
             public git_credential_acquire_cb(delegate*unmanaged[Cdecl]<libgit2.git_credential*, byte*, byte*, uint, void*, int> value) => this.Value = value;
             
@@ -306,7 +306,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(git_credential_acquire_cb left, git_credential_acquire_cb right) => !left.Equals(right);
         }
         
-        public readonly partial struct git_credential_ssh_interactive_cb : IEquatable<git_credential_ssh_interactive_cb>
+        public readonly partial struct git_credential_ssh_interactive_cb : IEquatable<libgit2.git_credential_ssh_interactive_cb>
         {
             public git_credential_ssh_interactive_cb(delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> value) => this.Value = value;
             
@@ -329,7 +329,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(git_credential_ssh_interactive_cb left, git_credential_ssh_interactive_cb right) => !left.Equals(right);
         }
         
-        public readonly partial struct git_credential_sign_cb : IEquatable<git_credential_sign_cb>
+        public readonly partial struct git_credential_sign_cb : IEquatable<libgit2.git_credential_sign_cb>
         {
             public git_credential_sign_cb(delegate*unmanaged[Cdecl]<libgit2._LIBSSH2_SESSION, byte**, nuint*, byte*, nuint, void**, int> value) => this.Value = value;
             

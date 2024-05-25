@@ -64,7 +64,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// A git indexer object
         /// </summary>
-        public readonly partial struct git_indexer : IEquatable<git_indexer>
+        public readonly partial struct git_indexer : IEquatable<libgit2.git_indexer>
         {
             public git_indexer(nint handle) => Handle = handle;
             
@@ -112,7 +112,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="payload">Payload provided by caller</param>
         /// <param name="stats">Structure containing information about the state of the transfer</param>
-        public readonly partial struct git_indexer_progress_cb : IEquatable<git_indexer_progress_cb>
+        public readonly partial struct git_indexer_progress_cb : IEquatable<libgit2.git_indexer_progress_cb>
         {
             public git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> value) => this.Value = value;
             

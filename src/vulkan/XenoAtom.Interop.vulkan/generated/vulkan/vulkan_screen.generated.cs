@@ -51,7 +51,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_QNX_screen_surface</para>
         /// </remarks>
-        public readonly partial struct VkScreenSurfaceCreateFlagsQNX : IEquatable<VkScreenSurfaceCreateFlagsQNX>
+        public readonly partial struct VkScreenSurfaceCreateFlagsQNX : IEquatable<vulkan.VkScreenSurfaceCreateFlagsQNX>
         {
             public VkScreenSurfaceCreateFlagsQNX(vulkan.VkFlags value) => this.Value = value;
             
@@ -230,7 +230,7 @@ namespace XenoAtom.Interop
             public vulkan.VkBool32 screenBufferImport;
         }
         
-        public readonly partial struct PFN_vkCreateScreenSurfaceQNX : IEquatable<PFN_vkCreateScreenSurfaceQNX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateScreenSurfaceQNX : IEquatable<vulkan.PFN_vkCreateScreenSurfaceQNX>, IvkFunctionPointer
         {
             public PFN_vkCreateScreenSurfaceQNX(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkScreenSurfaceCreateInfoQNX*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -278,7 +278,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX : IEquatable<PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX : IEquatable<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>, IvkFunctionPointer
         {
             public PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan._screen_window, vulkan.VkBool32> value) => this.Value = value;
             
@@ -319,7 +319,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetScreenBufferPropertiesQNX : IEquatable<PFN_vkGetScreenBufferPropertiesQNX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetScreenBufferPropertiesQNX : IEquatable<vulkan.PFN_vkGetScreenBufferPropertiesQNX>, IvkFunctionPointer
         {
             public PFN_vkGetScreenBufferPropertiesQNX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan._screen_buffer, vulkan.VkScreenBufferPropertiesQNX*, vulkan.VkResult> value) => this.Value = value;
             

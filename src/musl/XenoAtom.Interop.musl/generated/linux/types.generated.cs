@@ -13,7 +13,7 @@ namespace XenoAtom.Interop
 {
     public static unsafe partial class musl
     {
-        public readonly partial struct __poll_t : IEquatable<__poll_t>
+        public readonly partial struct __poll_t : IEquatable<musl.__poll_t>
         {
             public __poll_t(uint value) => this.Value = value;
             

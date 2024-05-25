@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
-        public readonly partial struct PFN_vkAcquireXlibDisplayEXT : IEquatable<PFN_vkAcquireXlibDisplayEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkAcquireXlibDisplayEXT : IEquatable<vulkan.PFN_vkAcquireXlibDisplayEXT>, IvkFunctionPointer
         {
             public PFN_vkAcquireXlibDisplayEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, vulkan.VkDisplayKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -64,7 +64,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetRandROutputDisplayEXT : IEquatable<PFN_vkGetRandROutputDisplayEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetRandROutputDisplayEXT : IEquatable<vulkan.PFN_vkGetRandROutputDisplayEXT>, IvkFunctionPointer
         {
             public PFN_vkGetRandROutputDisplayEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, nuint, vulkan.VkDisplayKHR*, vulkan.VkResult> value) => this.Value = value;
             

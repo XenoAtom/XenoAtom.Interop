@@ -13,7 +13,7 @@ namespace XenoAtom.Interop
 {
     public static unsafe partial class musl
     {
-        public readonly partial struct caddr_t : IEquatable<caddr_t>
+        public readonly partial struct caddr_t : IEquatable<musl.caddr_t>
         {
             public caddr_t(byte* value) => this.Value = value;
             
@@ -36,7 +36,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(caddr_t left, caddr_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct quad_t : IEquatable<quad_t>
+        public readonly partial struct quad_t : IEquatable<musl.quad_t>
         {
             public quad_t(long value) => this.Value = value;
             
@@ -59,7 +59,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(quad_t left, quad_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct u_quad_t : IEquatable<u_quad_t>
+        public readonly partial struct u_quad_t : IEquatable<musl.u_quad_t>
         {
             public u_quad_t(ulong value) => this.Value = value;
             

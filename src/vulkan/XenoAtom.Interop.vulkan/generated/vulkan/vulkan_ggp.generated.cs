@@ -49,7 +49,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_GGP_stream_descriptor_surface</para>
         /// </remarks>
-        public readonly partial struct VkStreamDescriptorSurfaceCreateFlagsGGP : IEquatable<VkStreamDescriptorSurfaceCreateFlagsGGP>
+        public readonly partial struct VkStreamDescriptorSurfaceCreateFlagsGGP : IEquatable<vulkan.VkStreamDescriptorSurfaceCreateFlagsGGP>
         {
             public VkStreamDescriptorSurfaceCreateFlagsGGP(vulkan.VkFlags value) => this.Value = value;
             
@@ -96,7 +96,7 @@ namespace XenoAtom.Interop
             public uint frameToken;
         }
         
-        public readonly partial struct PFN_vkCreateStreamDescriptorSurfaceGGP : IEquatable<PFN_vkCreateStreamDescriptorSurfaceGGP>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateStreamDescriptorSurfaceGGP : IEquatable<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP>, IvkFunctionPointer
         {
             public PFN_vkCreateStreamDescriptorSurfaceGGP(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkStreamDescriptorSurfaceCreateInfoGGP*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             

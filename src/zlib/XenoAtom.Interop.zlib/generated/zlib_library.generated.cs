@@ -137,7 +137,7 @@ namespace XenoAtom.Interop
         
         public const zlib.z_datatype_t Z_DEFLATED = z_datatype_t.Z_DEFLATED;
         
-        public readonly partial struct internal_state : IEquatable<internal_state>
+        public readonly partial struct internal_state : IEquatable<zlib.internal_state>
         {
             public internal_state(nint handle) => Handle = handle;
             

@@ -49,7 +49,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_MVK_ios_surface</para>
         /// </remarks>
-        public readonly partial struct VkIOSSurfaceCreateFlagsMVK : IEquatable<VkIOSSurfaceCreateFlagsMVK>
+        public readonly partial struct VkIOSSurfaceCreateFlagsMVK : IEquatable<vulkan.VkIOSSurfaceCreateFlagsMVK>
         {
             public VkIOSSurfaceCreateFlagsMVK(vulkan.VkFlags value) => this.Value = value;
             
@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkIOSSurfaceCreateFlagsMVK left, VkIOSSurfaceCreateFlagsMVK right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateIOSSurfaceMVK : IEquatable<PFN_vkCreateIOSSurfaceMVK>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateIOSSurfaceMVK : IEquatable<vulkan.PFN_vkCreateIOSSurfaceMVK>, IvkFunctionPointer
         {
             public PFN_vkCreateIOSSurfaceMVK(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkIOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             

@@ -549,7 +549,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Checkout notification callback function
         /// </summary>
-        public readonly partial struct git_checkout_notify_cb : IEquatable<git_checkout_notify_cb>
+        public readonly partial struct git_checkout_notify_cb : IEquatable<libgit2.git_checkout_notify_cb>
         {
             public git_checkout_notify_cb(delegate*unmanaged[Cdecl]<libgit2.git_checkout_notify_t, byte*, libgit2.git_diff_file*, libgit2.git_diff_file*, libgit2.git_diff_file*, void*, int> value) => this.Value = value;
             
@@ -575,7 +575,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Checkout progress notification function
         /// </summary>
-        public readonly partial struct git_checkout_progress_cb : IEquatable<git_checkout_progress_cb>
+        public readonly partial struct git_checkout_progress_cb : IEquatable<libgit2.git_checkout_progress_cb>
         {
             public git_checkout_progress_cb(delegate*unmanaged[Cdecl]<byte*, nuint, nuint, void*, void> value) => this.Value = value;
             
@@ -601,7 +601,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Checkout perfdata notification function
         /// </summary>
-        public readonly partial struct git_checkout_perfdata_cb : IEquatable<git_checkout_perfdata_cb>
+        public readonly partial struct git_checkout_perfdata_cb : IEquatable<libgit2.git_checkout_perfdata_cb>
         {
             public git_checkout_perfdata_cb(delegate*unmanaged[Cdecl]<libgit2.git_checkout_perfdata*, void*, void> value) => this.Value = value;
             

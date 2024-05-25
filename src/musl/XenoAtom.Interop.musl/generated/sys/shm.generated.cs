@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        public readonly partial struct shmatt_t : IEquatable<shmatt_t>
+        public readonly partial struct shmatt_t : IEquatable<musl.shmatt_t>
         {
             public shmatt_t(nuint value) => this.Value = value;
             

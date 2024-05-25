@@ -22,7 +22,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// Return a negative value to cancel the network operation.
         /// </remarks>
-        public readonly partial struct git_transport_message_cb : IEquatable<git_transport_message_cb>
+        public readonly partial struct git_transport_message_cb : IEquatable<libgit2.git_transport_message_cb>
         {
             public git_transport_message_cb(delegate*unmanaged[Cdecl]<byte*, int, void*, int> value) => this.Value = value;
             
@@ -48,7 +48,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Signature of a function which creates a transport
         /// </summary>
-        public readonly partial struct git_transport_cb : IEquatable<git_transport_cb>
+        public readonly partial struct git_transport_cb : IEquatable<libgit2.git_transport_cb>
         {
             public git_transport_cb(delegate*unmanaged[Cdecl]<libgit2.git_transport*, libgit2.git_remote, void*, int> value) => this.Value = value;
             

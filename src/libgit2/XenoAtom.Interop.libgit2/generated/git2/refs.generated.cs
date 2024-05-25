@@ -101,7 +101,7 @@ namespace XenoAtom.Interop
         /// <param name="payload">Payload passed to git_reference_foreach</param>
         /// <returns>@return non-zero to terminate the iteration</returns>
         /// <seealso cref="git_reference_foreach"/>
-        public readonly partial struct git_reference_foreach_cb : IEquatable<git_reference_foreach_cb>
+        public readonly partial struct git_reference_foreach_cb : IEquatable<libgit2.git_reference_foreach_cb>
         {
             public git_reference_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_reference, void*, int> value) => this.Value = value;
             
@@ -131,7 +131,7 @@ namespace XenoAtom.Interop
         /// <param name="payload">Payload passed to git_reference_foreach_name</param>
         /// <returns>@return non-zero to terminate the iteration</returns>
         /// <seealso cref="git_reference_foreach_name"/>
-        public readonly partial struct git_reference_foreach_name_cb : IEquatable<git_reference_foreach_name_cb>
+        public readonly partial struct git_reference_foreach_name_cb : IEquatable<libgit2.git_reference_foreach_name_cb>
         {
             public git_reference_foreach_name_cb(delegate*unmanaged[Cdecl]<byte*, void*, int> value) => this.Value = value;
             

@@ -24,7 +24,7 @@ namespace XenoAtom.Interop
             public musl.rlim_t rlim_max;
         }
         
-        public readonly partial struct rlim_t : IEquatable<rlim_t>
+        public readonly partial struct rlim_t : IEquatable<musl.rlim_t>
         {
             public rlim_t(ulong value) => this.Value = value;
             

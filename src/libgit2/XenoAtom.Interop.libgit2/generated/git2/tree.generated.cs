@@ -103,7 +103,7 @@ namespace XenoAtom.Interop
         /// entry should be left alone and any non-zero value meaning that the
         /// entry should be removed from the treebuilder list (i.e. filtered out).
         /// </remarks>
-        public readonly partial struct git_treebuilder_filter_cb : IEquatable<git_treebuilder_filter_cb>
+        public readonly partial struct git_treebuilder_filter_cb : IEquatable<libgit2.git_treebuilder_filter_cb>
         {
             public git_treebuilder_filter_cb(delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> value) => this.Value = value;
             
@@ -129,7 +129,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Callback for the tree traversal method
         /// </summary>
-        public readonly partial struct git_treewalk_cb : IEquatable<git_treewalk_cb>
+        public readonly partial struct git_treewalk_cb : IEquatable<libgit2.git_treewalk_cb>
         {
             public git_treewalk_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> value) => this.Value = value;
             

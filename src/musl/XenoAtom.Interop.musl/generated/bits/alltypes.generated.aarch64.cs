@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
     {
         public static unsafe partial class aarch64
         {
-            public readonly partial struct blksize_t : IEquatable<blksize_t>
+            public readonly partial struct blksize_t : IEquatable<musl.aarch64.blksize_t>
             {
                 public blksize_t(int value) => this.Value = value;
                 
@@ -40,7 +40,7 @@ namespace XenoAtom.Interop
                 public static bool operator !=(blksize_t left, blksize_t right) => !left.Equals(right);
             }
             
-            public readonly partial struct nlink_t : IEquatable<nlink_t>
+            public readonly partial struct nlink_t : IEquatable<musl.aarch64.nlink_t>
             {
                 public nlink_t(uint value) => this.Value = value;
                 

@@ -120,7 +120,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_surface</para>
         /// </remarks>
-        public readonly partial struct VkMetalSurfaceCreateFlagsEXT : IEquatable<VkMetalSurfaceCreateFlagsEXT>
+        public readonly partial struct VkMetalSurfaceCreateFlagsEXT : IEquatable<vulkan.VkMetalSurfaceCreateFlagsEXT>
         {
             public VkMetalSurfaceCreateFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -213,7 +213,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLDevice_id : IEquatable<MTLDevice_id>
+        public readonly partial struct MTLDevice_id : IEquatable<vulkan.MTLDevice_id>
         {
             public MTLDevice_id(void* value) => this.Value = value;
             
@@ -268,7 +268,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLCommandQueue_id : IEquatable<MTLCommandQueue_id>
+        public readonly partial struct MTLCommandQueue_id : IEquatable<vulkan.MTLCommandQueue_id>
         {
             public MTLCommandQueue_id(void* value) => this.Value = value;
             
@@ -323,7 +323,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLBuffer_id : IEquatable<MTLBuffer_id>
+        public readonly partial struct MTLBuffer_id : IEquatable<vulkan.MTLBuffer_id>
         {
             public MTLBuffer_id(void* value) => this.Value = value;
             
@@ -417,7 +417,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLTexture_id : IEquatable<MTLTexture_id>
+        public readonly partial struct MTLTexture_id : IEquatable<vulkan.MTLTexture_id>
         {
             public MTLTexture_id(void* value) => this.Value = value;
             
@@ -501,7 +501,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct IOSurfaceRef : IEquatable<IOSurfaceRef>
+        public readonly partial struct IOSurfaceRef : IEquatable<vulkan.IOSurfaceRef>
         {
             public IOSurfaceRef(vulkan.__IOSurface value) => this.Value = value;
             
@@ -582,7 +582,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLSharedEvent_id : IEquatable<MTLSharedEvent_id>
+        public readonly partial struct MTLSharedEvent_id : IEquatable<vulkan.MTLSharedEvent_id>
         {
             public MTLSharedEvent_id(void* value) => this.Value = value;
             
@@ -629,7 +629,7 @@ namespace XenoAtom.Interop
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
         
-        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<PFN_vkCreateMetalSurfaceEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<vulkan.PFN_vkCreateMetalSurfaceEXT>, IvkFunctionPointer
         {
             public PFN_vkCreateMetalSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -703,7 +703,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct VkExportMetalObjectTypeFlagsEXT : IEquatable<VkExportMetalObjectTypeFlagsEXT>
+        public readonly partial struct VkExportMetalObjectTypeFlagsEXT : IEquatable<vulkan.VkExportMetalObjectTypeFlagsEXT>
         {
             public VkExportMetalObjectTypeFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -730,7 +730,7 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkExportMetalObjectTypeFlagsEXT (vulkan.VkExportMetalObjectTypeFlagBitsEXT from) => new vulkan.VkExportMetalObjectTypeFlagsEXT((uint)from);
         }
         
-        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<PFN_vkExportMetalObjectsEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<vulkan.PFN_vkExportMetalObjectsEXT>, IvkFunctionPointer
         {
             public PFN_vkExportMetalObjectsEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExportMetalObjectsInfoEXT*, void> value) => this.Value = value;
             

@@ -422,7 +422,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Push network progress notification function
         /// </summary>
-        public readonly partial struct git_push_transfer_progress_cb : IEquatable<git_push_transfer_progress_cb>
+        public readonly partial struct git_push_transfer_progress_cb : IEquatable<libgit2.git_push_transfer_progress_cb>
         {
             public git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> value) => this.Value = value;
             
@@ -452,7 +452,7 @@ namespace XenoAtom.Interop
         /// as commands to the destination.</param>
         /// <param name="len">number of elements in `updates`</param>
         /// <param name="payload">Payload provided by the caller</param>
-        public readonly partial struct git_push_negotiation : IEquatable<git_push_negotiation>
+        public readonly partial struct git_push_negotiation : IEquatable<libgit2.git_push_negotiation>
         {
             public git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> value) => this.Value = value;
             
@@ -487,7 +487,7 @@ namespace XenoAtom.Interop
         /// not `NULL`, the update was rejected by the remote server
         /// and `status` contains the reason given.
         /// </remarks>
-        public readonly partial struct git_push_update_reference_cb : IEquatable<git_push_update_reference_cb>
+        public readonly partial struct git_push_update_reference_cb : IEquatable<libgit2.git_push_update_reference_cb>
         {
             public git_push_update_reference_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
             
@@ -519,7 +519,7 @@ namespace XenoAtom.Interop
         /// <param name="direction">GIT_DIRECTION_FETCH or GIT_DIRECTION_PUSH</param>
         /// <param name="payload">Payload provided by the caller</param>
         /// <returns>@return 0 on success, or an error</returns>
-        public readonly partial struct git_remote_ready_cb : IEquatable<git_remote_ready_cb>
+        public readonly partial struct git_remote_ready_cb : IEquatable<libgit2.git_remote_ready_cb>
         {
             public git_remote_ready_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> value) => this.Value = value;
             

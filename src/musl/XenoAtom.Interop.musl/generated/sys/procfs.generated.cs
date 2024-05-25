@@ -51,7 +51,7 @@ namespace XenoAtom.Interop
             public fixed byte pr_psargs[80];
         }
         
-        public readonly partial struct psaddr_t : IEquatable<psaddr_t>
+        public readonly partial struct psaddr_t : IEquatable<musl.psaddr_t>
         {
             public psaddr_t(void* value) => this.Value = value;
             
@@ -74,7 +74,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(psaddr_t left, psaddr_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct lwpid_t : IEquatable<lwpid_t>
+        public readonly partial struct lwpid_t : IEquatable<musl.lwpid_t>
         {
             public lwpid_t(musl.pid_t value) => this.Value = value;
             
@@ -97,7 +97,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(lwpid_t left, lwpid_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct prpsinfo_t : IEquatable<prpsinfo_t>
+        public readonly partial struct prpsinfo_t : IEquatable<musl.prpsinfo_t>
         {
             public prpsinfo_t(musl.elf_prpsinfo value) => this.Value = value;
             

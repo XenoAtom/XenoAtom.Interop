@@ -134,7 +134,7 @@ namespace XenoAtom.Interop
         /// continues
         /// - returns 0, the delta is applied, and the apply process continues.
         /// </remarks>
-        public readonly partial struct git_apply_delta_cb : IEquatable<git_apply_delta_cb>
+        public readonly partial struct git_apply_delta_cb : IEquatable<libgit2.git_apply_delta_cb>
         {
             public git_apply_delta_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, void*, int> value) => this.Value = value;
             
@@ -175,7 +175,7 @@ namespace XenoAtom.Interop
         /// continues
         /// - returns 0, the hunk is applied, and the apply process continues.
         /// </remarks>
-        public readonly partial struct git_apply_hunk_cb : IEquatable<git_apply_hunk_cb>
+        public readonly partial struct git_apply_hunk_cb : IEquatable<libgit2.git_apply_hunk_cb>
         {
             public git_apply_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_hunk*, void*, int> value) => this.Value = value;
             

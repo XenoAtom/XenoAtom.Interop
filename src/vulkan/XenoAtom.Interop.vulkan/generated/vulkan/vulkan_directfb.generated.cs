@@ -54,7 +54,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_directfb_surface</para>
         /// </remarks>
-        public readonly partial struct VkDirectFBSurfaceCreateFlagsEXT : IEquatable<VkDirectFBSurfaceCreateFlagsEXT>
+        public readonly partial struct VkDirectFBSurfaceCreateFlagsEXT : IEquatable<vulkan.VkDirectFBSurfaceCreateFlagsEXT>
         {
             public VkDirectFBSurfaceCreateFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -77,7 +77,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDirectFBSurfaceCreateFlagsEXT left, VkDirectFBSurfaceCreateFlagsEXT right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateDirectFBSurfaceEXT : IEquatable<PFN_vkCreateDirectFBSurfaceEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateDirectFBSurfaceEXT : IEquatable<vulkan.PFN_vkCreateDirectFBSurfaceEXT>, IvkFunctionPointer
         {
             public PFN_vkCreateDirectFBSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkDirectFBSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -148,7 +148,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT : IEquatable<PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT : IEquatable<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>, IvkFunctionPointer
         {
             public PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, vulkan.VkBool32> value) => this.Value = value;
             

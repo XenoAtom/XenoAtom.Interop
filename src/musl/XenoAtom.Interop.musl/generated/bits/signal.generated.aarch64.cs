@@ -60,7 +60,7 @@ namespace XenoAtom.Interop
                 public FixedArray32<global::System.UInt128> vregs;
             }
             
-            public readonly partial struct greg_t : IEquatable<greg_t>
+            public readonly partial struct greg_t : IEquatable<musl.aarch64.greg_t>
             {
                 public greg_t(nuint value) => this.Value = value;
                 
@@ -83,7 +83,7 @@ namespace XenoAtom.Interop
                 public static bool operator !=(greg_t left, greg_t right) => !left.Equals(right);
             }
             
-            public readonly partial struct gregset_t : IEquatable<gregset_t>
+            public readonly partial struct gregset_t : IEquatable<musl.aarch64.gregset_t>
             {
                 public gregset_t(FixedArray34<nuint> value) => this.Value = value;
                 
@@ -106,7 +106,7 @@ namespace XenoAtom.Interop
                 public static bool operator !=(gregset_t left, gregset_t right) => !left.Equals(right);
             }
             
-            public readonly partial struct mcontext_t : IEquatable<mcontext_t>
+            public readonly partial struct mcontext_t : IEquatable<musl.aarch64.mcontext_t>
             {
                 public mcontext_t(musl.aarch64.sigcontext value) => this.Value = value;
                 
@@ -430,7 +430,7 @@ namespace XenoAtom.Interop
                 public musl.aarch64.mcontext_t uc_mcontext;
             }
             
-            public readonly partial struct ucontext_t : IEquatable<ucontext_t>
+            public readonly partial struct ucontext_t : IEquatable<musl.aarch64.ucontext_t>
             {
                 public ucontext_t(musl.aarch64.ucontext value) => this.Value = value;
                 

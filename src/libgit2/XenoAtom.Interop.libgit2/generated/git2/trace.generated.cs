@@ -97,7 +97,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An instance for a tracing function
         /// </summary>
-        public readonly partial struct git_trace_cb : IEquatable<git_trace_cb>
+        public readonly partial struct git_trace_cb : IEquatable<libgit2.git_trace_cb>
         {
             public git_trace_cb(delegate*unmanaged[Cdecl]<libgit2.git_trace_level_t, byte*, void> value) => this.Value = value;
             

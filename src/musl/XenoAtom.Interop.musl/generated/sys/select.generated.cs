@@ -25,7 +25,7 @@ namespace XenoAtom.Interop
             public fixed int fds_bits[32];
         }
         
-        public readonly partial struct fd_mask : IEquatable<fd_mask>
+        public readonly partial struct fd_mask : IEquatable<musl.fd_mask>
         {
             public fd_mask(nuint value) => this.Value = value;
             

@@ -22,7 +22,7 @@ namespace XenoAtom.Interop
             public fixed int __val[2];
         }
         
-        public readonly partial struct fsid_t : IEquatable<fsid_t>
+        public readonly partial struct fsid_t : IEquatable<musl.fsid_t>
         {
             public fsid_t(musl.__fsid_t value) => this.Value = value;
             

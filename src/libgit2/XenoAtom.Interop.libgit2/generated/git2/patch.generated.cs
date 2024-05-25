@@ -24,7 +24,7 @@ namespace XenoAtom.Interop
         /// You can easily loop over the content of patches and get information about
         /// them.
         /// </remarks>
-        public readonly partial struct git_patch : IEquatable<git_patch>
+        public readonly partial struct git_patch : IEquatable<libgit2.git_patch>
         {
             public git_patch(nint handle) => Handle = handle;
             

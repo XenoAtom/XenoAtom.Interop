@@ -104,7 +104,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_win32_surface</para>
         /// </remarks>
-        public readonly partial struct VkWin32SurfaceCreateFlagsKHR : IEquatable<VkWin32SurfaceCreateFlagsKHR>
+        public readonly partial struct VkWin32SurfaceCreateFlagsKHR : IEquatable<vulkan.VkWin32SurfaceCreateFlagsKHR>
         {
             public VkWin32SurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -730,7 +730,7 @@ namespace XenoAtom.Interop
             public nint hmonitor;
         }
         
-        public readonly partial struct PFN_vkCreateWin32SurfaceKHR : IEquatable<PFN_vkCreateWin32SurfaceKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateWin32SurfaceKHR : IEquatable<vulkan.PFN_vkCreateWin32SurfaceKHR>, IvkFunctionPointer
         {
             public PFN_vkCreateWin32SurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkWin32SurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -801,7 +801,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR : IEquatable<PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR>, IvkFunctionPointer
         {
             public PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkBool32> value) => this.Value = value;
             
@@ -841,7 +841,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryWin32HandleKHR : IEquatable<PFN_vkGetMemoryWin32HandleKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetMemoryWin32HandleKHR : IEquatable<vulkan.PFN_vkGetMemoryWin32HandleKHR>, IvkFunctionPointer
         {
             public PFN_vkGetMemoryWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -910,7 +910,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetMemoryWin32HandlePropertiesKHR : IEquatable<PFN_vkGetMemoryWin32HandlePropertiesKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetMemoryWin32HandlePropertiesKHR : IEquatable<vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR>, IvkFunctionPointer
         {
             public PFN_vkGetMemoryWin32HandlePropertiesKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -980,7 +980,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkImportSemaphoreWin32HandleKHR : IEquatable<PFN_vkImportSemaphoreWin32HandleKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkImportSemaphoreWin32HandleKHR : IEquatable<vulkan.PFN_vkImportSemaphoreWin32HandleKHR>, IvkFunctionPointer
         {
             public PFN_vkImportSemaphoreWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportSemaphoreWin32HandleInfoKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1046,7 +1046,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetSemaphoreWin32HandleKHR : IEquatable<PFN_vkGetSemaphoreWin32HandleKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetSemaphoreWin32HandleKHR : IEquatable<vulkan.PFN_vkGetSemaphoreWin32HandleKHR>, IvkFunctionPointer
         {
             public PFN_vkGetSemaphoreWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSemaphoreGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1115,7 +1115,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkImportFenceWin32HandleKHR : IEquatable<PFN_vkImportFenceWin32HandleKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkImportFenceWin32HandleKHR : IEquatable<vulkan.PFN_vkImportFenceWin32HandleKHR>, IvkFunctionPointer
         {
             public PFN_vkImportFenceWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportFenceWin32HandleInfoKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1181,7 +1181,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetFenceWin32HandleKHR : IEquatable<PFN_vkGetFenceWin32HandleKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetFenceWin32HandleKHR : IEquatable<vulkan.PFN_vkGetFenceWin32HandleKHR>, IvkFunctionPointer
         {
             public PFN_vkGetFenceWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkFenceGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1250,7 +1250,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetMemoryWin32HandleNV : IEquatable<PFN_vkGetMemoryWin32HandleNV>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetMemoryWin32HandleNV : IEquatable<vulkan.PFN_vkGetMemoryWin32HandleNV>, IvkFunctionPointer
         {
             public PFN_vkGetMemoryWin32HandleNV(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkDeviceMemory, vulkan.VkExternalMemoryHandleTypeFlagsNV, nint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1320,7 +1320,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT : IEquatable<PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT : IEquatable<vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>, IvkFunctionPointer
         {
             public PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, uint*, vulkan.VkPresentModeKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1416,7 +1416,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkAcquireFullScreenExclusiveModeEXT : IEquatable<PFN_vkAcquireFullScreenExclusiveModeEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkAcquireFullScreenExclusiveModeEXT : IEquatable<vulkan.PFN_vkAcquireFullScreenExclusiveModeEXT>, IvkFunctionPointer
         {
             public PFN_vkAcquireFullScreenExclusiveModeEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -1462,7 +1462,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkReleaseFullScreenExclusiveModeEXT : IEquatable<PFN_vkReleaseFullScreenExclusiveModeEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkReleaseFullScreenExclusiveModeEXT : IEquatable<vulkan.PFN_vkReleaseFullScreenExclusiveModeEXT>, IvkFunctionPointer
         {
             public PFN_vkReleaseFullScreenExclusiveModeEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -1508,7 +1508,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetDeviceGroupSurfacePresentModes2EXT : IEquatable<PFN_vkGetDeviceGroupSurfacePresentModes2EXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetDeviceGroupSurfacePresentModes2EXT : IEquatable<vulkan.PFN_vkGetDeviceGroupSurfacePresentModes2EXT>, IvkFunctionPointer
         {
             public PFN_vkGetDeviceGroupSurfacePresentModes2EXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, vulkan.VkDeviceGroupPresentModeFlagsKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1576,7 +1576,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkAcquireWinrtDisplayNV : IEquatable<PFN_vkAcquireWinrtDisplayNV>, IvkFunctionPointer
+        public readonly partial struct PFN_vkAcquireWinrtDisplayNV : IEquatable<vulkan.PFN_vkAcquireWinrtDisplayNV>, IvkFunctionPointer
         {
             public PFN_vkAcquireWinrtDisplayNV(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkDisplayKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -1622,7 +1622,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetWinrtDisplayNV : IEquatable<PFN_vkGetWinrtDisplayNV>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetWinrtDisplayNV : IEquatable<vulkan.PFN_vkGetWinrtDisplayNV>, IvkFunctionPointer
         {
             public PFN_vkGetWinrtDisplayNV(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkDisplayKHR*, vulkan.VkResult> value) => this.Value = value;
             

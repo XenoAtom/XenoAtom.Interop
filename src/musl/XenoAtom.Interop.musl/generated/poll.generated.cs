@@ -26,7 +26,7 @@ namespace XenoAtom.Interop
             public short revents;
         }
         
-        public readonly partial struct nfds_t : IEquatable<nfds_t>
+        public readonly partial struct nfds_t : IEquatable<musl.nfds_t>
         {
             public nfds_t(nuint value) => this.Value = value;
             

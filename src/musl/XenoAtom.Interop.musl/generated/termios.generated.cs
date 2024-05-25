@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        public readonly partial struct tcflag_t : IEquatable<tcflag_t>
+        public readonly partial struct tcflag_t : IEquatable<musl.tcflag_t>
         {
             public tcflag_t(uint value) => this.Value = value;
             
@@ -40,7 +40,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(tcflag_t left, tcflag_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct cc_t : IEquatable<cc_t>
+        public readonly partial struct cc_t : IEquatable<musl.cc_t>
         {
             public cc_t(byte value) => this.Value = value;
             
@@ -63,7 +63,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(cc_t left, cc_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct speed_t : IEquatable<speed_t>
+        public readonly partial struct speed_t : IEquatable<musl.speed_t>
         {
             public speed_t(uint value) => this.Value = value;
             

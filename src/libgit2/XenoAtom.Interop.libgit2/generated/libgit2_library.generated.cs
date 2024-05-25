@@ -15,7 +15,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class libgit2
     {
-        public readonly partial struct _LIBSSH2_SESSION : IEquatable<_LIBSSH2_SESSION>
+        public readonly partial struct _LIBSSH2_SESSION : IEquatable<libgit2._LIBSSH2_SESSION>
         {
             public _LIBSSH2_SESSION(nint handle) => Handle = handle;
             
@@ -34,7 +34,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(_LIBSSH2_SESSION left, _LIBSSH2_SESSION right) => !left.Equals(right);
         }
         
-        public readonly partial struct _LIBSSH2_USERAUTH_KBDINT_PROMPT : IEquatable<_LIBSSH2_USERAUTH_KBDINT_PROMPT>
+        public readonly partial struct _LIBSSH2_USERAUTH_KBDINT_PROMPT : IEquatable<libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT>
         {
             public _LIBSSH2_USERAUTH_KBDINT_PROMPT(nint handle) => Handle = handle;
             
@@ -53,7 +53,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(_LIBSSH2_USERAUTH_KBDINT_PROMPT left, _LIBSSH2_USERAUTH_KBDINT_PROMPT right) => !left.Equals(right);
         }
         
-        public readonly partial struct _LIBSSH2_USERAUTH_KBDINT_RESPONSE : IEquatable<_LIBSSH2_USERAUTH_KBDINT_RESPONSE>
+        public readonly partial struct _LIBSSH2_USERAUTH_KBDINT_RESPONSE : IEquatable<libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE>
         {
             public _LIBSSH2_USERAUTH_KBDINT_RESPONSE(nint handle) => Handle = handle;
             
@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(_LIBSSH2_USERAUTH_KBDINT_RESPONSE left, _LIBSSH2_USERAUTH_KBDINT_RESPONSE right) => !left.Equals(right);
         }
         
-        public readonly partial struct git_iterator : IEquatable<git_iterator>
+        public readonly partial struct git_iterator : IEquatable<libgit2.git_iterator>
         {
             public git_iterator(nint handle) => Handle = handle;
             
@@ -96,7 +96,7 @@ namespace XenoAtom.Interop
         /// &lt;
         /// 0 if an error.
         /// </summary>
-        public readonly partial struct git_result : IEquatable<git_result>
+        public readonly partial struct git_result : IEquatable<libgit2.git_result>
         {
             public git_result(int value) => this.Value = value;
             

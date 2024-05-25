@@ -39,7 +39,7 @@ namespace XenoAtom.Interop
         /// <param name="payload">Payload passed to git_packbuilder_foreach</param>
         /// <returns>@return non-zero to terminate the iteration</returns>
         /// <seealso cref="git_packbuilder_foreach"/>
-        public readonly partial struct git_packbuilder_foreach_cb : IEquatable<git_packbuilder_foreach_cb>
+        public readonly partial struct git_packbuilder_foreach_cb : IEquatable<libgit2.git_packbuilder_foreach_cb>
         {
             public git_packbuilder_foreach_cb(delegate*unmanaged[Cdecl]<void*, nuint, void*, int> value) => this.Value = value;
             
@@ -65,7 +65,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Packbuilder progress notification function
         /// </summary>
-        public readonly partial struct git_packbuilder_progress : IEquatable<git_packbuilder_progress>
+        public readonly partial struct git_packbuilder_progress : IEquatable<libgit2.git_packbuilder_progress>
         {
             public git_packbuilder_progress(delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> value) => this.Value = value;
             

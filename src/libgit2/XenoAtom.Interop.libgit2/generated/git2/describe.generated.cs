@@ -111,7 +111,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// A struct that stores the result of a describe operation.
         /// </summary>
-        public readonly partial struct git_describe_result : IEquatable<git_describe_result>
+        public readonly partial struct git_describe_result : IEquatable<libgit2.git_describe_result>
         {
             public git_describe_result(nint handle) => Handle = handle;
             

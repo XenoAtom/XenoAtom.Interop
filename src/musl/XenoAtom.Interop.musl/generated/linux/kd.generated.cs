@@ -199,7 +199,7 @@ namespace XenoAtom.Interop
             public byte* data;
         }
         
-        public readonly partial struct scrnmap_t : IEquatable<scrnmap_t>
+        public readonly partial struct scrnmap_t : IEquatable<musl.scrnmap_t>
         {
             public scrnmap_t(byte value) => this.Value = value;
             

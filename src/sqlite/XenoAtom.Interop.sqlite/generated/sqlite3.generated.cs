@@ -31,7 +31,7 @@ namespace XenoAtom.Interop
         /// * [sqlite3_busy_timeout()] to name but three) that are methods on an
         /// * sqlite3 object.
         /// </summary>
-        public readonly partial struct sqlite3 : IEquatable<sqlite3>
+        public readonly partial struct sqlite3 : IEquatable<sqlite.sqlite3>
         {
             public sqlite3(nint handle) => Handle = handle;
             
@@ -115,7 +115,7 @@ namespace XenoAtom.Interop
         /// *
         /// * Mutexes are created using [sqlite3_mutex_alloc()].
         /// </summary>
-        public readonly partial struct sqlite3_mutex : IEquatable<sqlite3_mutex>
+        public readonly partial struct sqlite3_mutex : IEquatable<sqlite.sqlite3_mutex>
         {
             public sqlite3_mutex(nint handle) => Handle = handle;
             
@@ -142,7 +142,7 @@ namespace XenoAtom.Interop
         /// * structure must be typedefed in order to work around compiler warnings
         /// * on some platforms.
         /// </summary>
-        public readonly partial struct sqlite3_api_routines : IEquatable<sqlite3_api_routines>
+        public readonly partial struct sqlite3_api_routines : IEquatable<sqlite.sqlite3_api_routines>
         {
             public sqlite3_api_routines(nint handle) => Handle = handle;
             
@@ -251,7 +251,7 @@ namespace XenoAtom.Interop
         /// * &lt;li&gt;sqlite3_uri_key()
         /// * &lt;/ul&gt;
         /// </summary>
-        public readonly partial struct sqlite3_filename : IEquatable<sqlite3_filename>
+        public readonly partial struct sqlite3_filename : IEquatable<sqlite.sqlite3_filename>
         {
             public sqlite3_filename(byte* value) => this.Value = value;
             
@@ -340,7 +340,7 @@ namespace XenoAtom.Interop
         /// * &lt;li&gt;Destroy the object using [sqlite3_finalize()].
         /// * &lt;/ol&gt;
         /// </summary>
-        public readonly partial struct sqlite3_stmt : IEquatable<sqlite3_stmt>
+        public readonly partial struct sqlite3_stmt : IEquatable<sqlite.sqlite3_stmt>
         {
             public sqlite3_stmt(nint handle) => Handle = handle;
             
@@ -401,7 +401,7 @@ namespace XenoAtom.Interop
         /// * The [sqlite3_value_blob | sqlite3_value_type()] family of
         /// * interfaces require protected sqlite3_value objects.
         /// </summary>
-        public readonly partial struct sqlite3_value : IEquatable<sqlite3_value>
+        public readonly partial struct sqlite3_value : IEquatable<sqlite.sqlite3_value>
         {
             public sqlite3_value(nint handle) => Handle = handle;
             
@@ -432,7 +432,7 @@ namespace XenoAtom.Interop
         /// * [sqlite3_context_db_handle()], [sqlite3_get_auxdata()],
         /// * and/or [sqlite3_set_auxdata()].
         /// </summary>
-        public readonly partial struct sqlite3_context : IEquatable<sqlite3_context>
+        public readonly partial struct sqlite3_context : IEquatable<sqlite.sqlite3_context>
         {
             public sqlite3_context(nint handle) => Handle = handle;
             
@@ -836,7 +836,7 @@ namespace XenoAtom.Interop
         /// * can be used to read or write small subsections of the BLOB.
         /// * ^The [sqlite3_blob_bytes()] interface returns the size of the BLOB in bytes.
         /// </summary>
-        public readonly partial struct sqlite3_blob : IEquatable<sqlite3_blob>
+        public readonly partial struct sqlite3_blob : IEquatable<sqlite.sqlite3_blob>
         {
             public sqlite3_blob(nint handle) => Handle = handle;
             
@@ -891,7 +891,7 @@ namespace XenoAtom.Interop
         /// * is returned using the [sqlite3_str_finish()] interface.
         /// * &lt;/ol&gt;
         /// </summary>
-        public readonly partial struct sqlite3_str : IEquatable<sqlite3_str>
+        public readonly partial struct sqlite3_str : IEquatable<sqlite.sqlite3_str>
         {
             public sqlite3_str(nint handle) => Handle = handle;
             
@@ -921,7 +921,7 @@ namespace XenoAtom.Interop
         /// *
         /// * See [sqlite3_pcache_methods2] for additional information.
         /// </summary>
-        public readonly partial struct sqlite3_pcache : IEquatable<sqlite3_pcache>
+        public readonly partial struct sqlite3_pcache : IEquatable<sqlite.sqlite3_pcache>
         {
             public sqlite3_pcache(nint handle) => Handle = handle;
             
@@ -1017,7 +1017,7 @@ namespace XenoAtom.Interop
         /// *
         /// * See Also: [Using the SQLite Online Backup API]
         /// </summary>
-        public readonly partial struct sqlite3_backup : IEquatable<sqlite3_backup>
+        public readonly partial struct sqlite3_backup : IEquatable<sqlite.sqlite3_backup>
         {
             public sqlite3_backup(nint handle) => Handle = handle;
             
@@ -1462,7 +1462,7 @@ namespace XenoAtom.Interop
             public delegate*unmanaged[Cdecl]<sqlite.Fts5Context, sqlite.Fts5PhraseIter*, int*, void> xPhraseNextColumn;
         }
         
-        public readonly partial struct Fts5Context : IEquatable<Fts5Context>
+        public readonly partial struct Fts5Context : IEquatable<sqlite.Fts5Context>
         {
             public Fts5Context(nint handle) => Handle = handle;
             
@@ -1695,7 +1695,7 @@ namespace XenoAtom.Interop
         /// *   text (method (2)), not both. Doing so will not cause any errors, but is
         /// *   inefficient.
         /// </summary>
-        public readonly partial struct Fts5Tokenizer : IEquatable<Fts5Tokenizer>
+        public readonly partial struct Fts5Tokenizer : IEquatable<sqlite.Fts5Tokenizer>
         {
             public Fts5Tokenizer(nint handle) => Handle = handle;
             
@@ -1746,7 +1746,7 @@ namespace XenoAtom.Interop
             public delegate*unmanaged[Cdecl]<sqlite.fts5_api*, byte*, void*, sqlite.fts5_extension_function, delegate*unmanaged[Cdecl]<void*, void>, int> xCreateFunction;
         }
         
-        public readonly partial struct fts5_extension_function : IEquatable<fts5_extension_function>
+        public readonly partial struct fts5_extension_function : IEquatable<sqlite.fts5_extension_function>
         {
             public fts5_extension_function(delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> value) => this.Value = value;
             
@@ -1774,7 +1774,7 @@ namespace XenoAtom.Interop
         /// * This is legacy and deprecated.  It is included for historical
         /// * compatibility and is not documented.
         /// </summary>
-        public readonly partial struct sqlite3_callback : IEquatable<sqlite3_callback>
+        public readonly partial struct sqlite3_callback : IEquatable<sqlite.sqlite3_callback>
         {
             public sqlite3_callback(delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> value) => this.Value = value;
             
@@ -1797,7 +1797,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(sqlite3_callback left, sqlite3_callback right) => !left.Equals(right);
         }
         
-        public readonly partial struct sqlite3_syscall_ptr : IEquatable<sqlite3_syscall_ptr>
+        public readonly partial struct sqlite3_syscall_ptr : IEquatable<sqlite.sqlite3_syscall_ptr>
         {
             public sqlite3_syscall_ptr(delegate*unmanaged[Cdecl]<void> value) => this.Value = value;
             
@@ -1834,7 +1834,7 @@ namespace XenoAtom.Interop
         /// * The typedef is necessary to work around problems in certain
         /// * C++ compilers.
         /// </summary>
-        public readonly partial struct sqlite3_destructor_type : IEquatable<sqlite3_destructor_type>
+        public readonly partial struct sqlite3_destructor_type : IEquatable<sqlite.sqlite3_destructor_type>
         {
             public sqlite3_destructor_type(delegate*unmanaged[Cdecl]<void*, void> value) => this.Value = value;
             
@@ -1857,7 +1857,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(sqlite3_destructor_type left, sqlite3_destructor_type right) => !left.Equals(right);
         }
         
-        public readonly partial struct sqlite3_rtree_dbl : IEquatable<sqlite3_rtree_dbl>
+        public readonly partial struct sqlite3_rtree_dbl : IEquatable<sqlite.sqlite3_rtree_dbl>
         {
             public sqlite3_rtree_dbl(double value) => this.Value = value;
             

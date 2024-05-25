@@ -49,7 +49,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_android_surface</para>
         /// </remarks>
-        public readonly partial struct VkAndroidSurfaceCreateFlagsKHR : IEquatable<VkAndroidSurfaceCreateFlagsKHR>
+        public readonly partial struct VkAndroidSurfaceCreateFlagsKHR : IEquatable<vulkan.VkAndroidSurfaceCreateFlagsKHR>
         {
             public VkAndroidSurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -315,7 +315,7 @@ namespace XenoAtom.Interop
             public vulkan.VkChromaLocation suggestedYChromaOffset;
         }
         
-        public readonly partial struct PFN_vkCreateAndroidSurfaceKHR : IEquatable<PFN_vkCreateAndroidSurfaceKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateAndroidSurfaceKHR : IEquatable<vulkan.PFN_vkCreateAndroidSurfaceKHR>, IvkFunctionPointer
         {
             public PFN_vkCreateAndroidSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkAndroidSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -386,7 +386,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetAndroidHardwareBufferPropertiesANDROID : IEquatable<PFN_vkGetAndroidHardwareBufferPropertiesANDROID>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetAndroidHardwareBufferPropertiesANDROID : IEquatable<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID>, IvkFunctionPointer
         {
             public PFN_vkGetAndroidHardwareBufferPropertiesANDROID(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.AHardwareBuffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID*, vulkan.VkResult> value) => this.Value = value;
             
@@ -433,7 +433,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryAndroidHardwareBufferANDROID : IEquatable<PFN_vkGetMemoryAndroidHardwareBufferANDROID>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetMemoryAndroidHardwareBufferANDROID : IEquatable<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID>, IvkFunctionPointer
         {
             public PFN_vkGetMemoryAndroidHardwareBufferANDROID(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID*, vulkan.AHardwareBuffer*, vulkan.VkResult> value) => this.Value = value;
             

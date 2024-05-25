@@ -22,7 +22,7 @@ namespace XenoAtom.Interop
             public nint tv_nsec;
         }
         
-        public readonly partial struct time_t : IEquatable<time_t>
+        public readonly partial struct time_t : IEquatable<musl.time_t>
         {
             public time_t(long value) => this.Value = value;
             
@@ -48,7 +48,7 @@ namespace XenoAtom.Interop
         public partial struct pthread_attr_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_attr_t__struct_0
+            public unsafe partial struct pthread_attr_t__union_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[14];
@@ -60,10 +60,10 @@ namespace XenoAtom.Interop
                 public FixedArray7<nuint> __s;
             }
             
-            public musl.pthread_attr_t.pthread_attr_t__struct_0 __u;
+            public musl.pthread_attr_t.pthread_attr_t__union_0 __u;
         }
         
-        public readonly partial struct pid_t : IEquatable<pid_t>
+        public readonly partial struct pid_t : IEquatable<musl.pid_t>
         {
             public pid_t(int value) => this.Value = value;
             
@@ -109,7 +109,7 @@ namespace XenoAtom.Interop
         public partial struct pthread_mutex_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_mutex_t__struct_0
+            public unsafe partial struct pthread_mutex_t__union_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[10];
@@ -121,13 +121,13 @@ namespace XenoAtom.Interop
                 public FixedArray5<nint> __p;
             }
             
-            public musl.pthread_mutex_t.pthread_mutex_t__struct_0 __u;
+            public musl.pthread_mutex_t.pthread_mutex_t__union_0 __u;
         }
         
         public partial struct pthread_cond_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_cond_t__struct_0
+            public unsafe partial struct pthread_cond_t__union_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[12];
@@ -139,13 +139,13 @@ namespace XenoAtom.Interop
                 public FixedArray6<nint> __p;
             }
             
-            public musl.pthread_cond_t.pthread_cond_t__struct_0 __u;
+            public musl.pthread_cond_t.pthread_cond_t__union_0 __u;
         }
         
         public partial struct pthread_rwlock_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_rwlock_t__struct_0
+            public unsafe partial struct pthread_rwlock_t__union_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[14];
@@ -157,13 +157,13 @@ namespace XenoAtom.Interop
                 public FixedArray7<nint> __p;
             }
             
-            public musl.pthread_rwlock_t.pthread_rwlock_t__struct_0 __u;
+            public musl.pthread_rwlock_t.pthread_rwlock_t__union_0 __u;
         }
         
         public partial struct pthread_barrier_t
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public unsafe partial struct pthread_barrier_t__struct_0
+            public unsafe partial struct pthread_barrier_t__union_0
             {
                 [FieldOffset(0)]
                 public fixed int __i[8];
@@ -175,7 +175,7 @@ namespace XenoAtom.Interop
                 public FixedArray4<nint> __p;
             }
             
-            public musl.pthread_barrier_t.pthread_barrier_t__struct_0 __u;
+            public musl.pthread_barrier_t.pthread_barrier_t__union_0 __u;
         }
         
         public partial struct timeval
@@ -185,7 +185,7 @@ namespace XenoAtom.Interop
             public musl.suseconds_t tv_usec;
         }
         
-        public readonly partial struct suseconds_t : IEquatable<suseconds_t>
+        public readonly partial struct suseconds_t : IEquatable<musl.suseconds_t>
         {
             public suseconds_t(long value) => this.Value = value;
             
@@ -220,7 +220,7 @@ namespace XenoAtom.Interop
             public nuint iov_len;
         }
         
-        public readonly partial struct off_t : IEquatable<off_t>
+        public readonly partial struct off_t : IEquatable<musl.off_t>
         {
             public off_t(long value) => this.Value = value;
             
@@ -243,7 +243,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(off_t left, off_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct fsblkcnt_t : IEquatable<fsblkcnt_t>
+        public readonly partial struct fsblkcnt_t : IEquatable<musl.fsblkcnt_t>
         {
             public fsblkcnt_t(ulong value) => this.Value = value;
             
@@ -266,7 +266,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(fsblkcnt_t left, fsblkcnt_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct fsfilcnt_t : IEquatable<fsfilcnt_t>
+        public readonly partial struct fsfilcnt_t : IEquatable<musl.fsfilcnt_t>
         {
             public fsfilcnt_t(ulong value) => this.Value = value;
             
@@ -300,7 +300,7 @@ namespace XenoAtom.Interop
             public ushort ws_ypixel;
         }
         
-        public readonly partial struct key_t : IEquatable<key_t>
+        public readonly partial struct key_t : IEquatable<musl.key_t>
         {
             public key_t(int value) => this.Value = value;
             
@@ -323,7 +323,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(key_t left, key_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct uid_t : IEquatable<uid_t>
+        public readonly partial struct uid_t : IEquatable<musl.uid_t>
         {
             public uid_t(uint value) => this.Value = value;
             
@@ -346,7 +346,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(uid_t left, uid_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct gid_t : IEquatable<gid_t>
+        public readonly partial struct gid_t : IEquatable<musl.gid_t>
         {
             public gid_t(uint value) => this.Value = value;
             
@@ -369,7 +369,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(gid_t left, gid_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct mode_t : IEquatable<mode_t>
+        public readonly partial struct mode_t : IEquatable<musl.mode_t>
         {
             public mode_t(uint value) => this.Value = value;
             
@@ -392,7 +392,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(mode_t left, mode_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct sigset_t : IEquatable<sigset_t>
+        public readonly partial struct sigset_t : IEquatable<musl.sigset_t>
         {
             public sigset_t(musl.__sigset_t value) => this.Value = value;
             
@@ -415,7 +415,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(sigset_t left, sigset_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct clock_t : IEquatable<clock_t>
+        public readonly partial struct clock_t : IEquatable<musl.clock_t>
         {
             public clock_t(nint value) => this.Value = value;
             
@@ -438,7 +438,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(clock_t left, clock_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct socklen_t : IEquatable<socklen_t>
+        public readonly partial struct socklen_t : IEquatable<musl.socklen_t>
         {
             public socklen_t(uint value) => this.Value = value;
             
@@ -461,7 +461,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(socklen_t left, socklen_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct sa_family_t : IEquatable<sa_family_t>
+        public readonly partial struct sa_family_t : IEquatable<musl.sa_family_t>
         {
             public sa_family_t(ushort value) => this.Value = value;
             
@@ -484,7 +484,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(sa_family_t left, sa_family_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct dev_t : IEquatable<dev_t>
+        public readonly partial struct dev_t : IEquatable<musl.dev_t>
         {
             public dev_t(ulong value) => this.Value = value;
             
@@ -507,7 +507,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(dev_t left, dev_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct ino_t : IEquatable<ino_t>
+        public readonly partial struct ino_t : IEquatable<musl.ino_t>
         {
             public ino_t(ulong value) => this.Value = value;
             
@@ -530,7 +530,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(ino_t left, ino_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct nlink_t : IEquatable<nlink_t>
+        public readonly partial struct nlink_t : IEquatable<musl.nlink_t>
         {
             public nlink_t(nuint value) => this.Value = value;
             
@@ -553,7 +553,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(nlink_t left, nlink_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct blksize_t : IEquatable<blksize_t>
+        public readonly partial struct blksize_t : IEquatable<musl.blksize_t>
         {
             public blksize_t(nint value) => this.Value = value;
             
@@ -576,7 +576,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(blksize_t left, blksize_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct blkcnt_t : IEquatable<blkcnt_t>
+        public readonly partial struct blkcnt_t : IEquatable<musl.blkcnt_t>
         {
             public blkcnt_t(long value) => this.Value = value;
             
@@ -599,7 +599,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(blkcnt_t left, blkcnt_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct useconds_t : IEquatable<useconds_t>
+        public readonly partial struct useconds_t : IEquatable<musl.useconds_t>
         {
             public useconds_t(uint value) => this.Value = value;
             
@@ -622,7 +622,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(useconds_t left, useconds_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct timer_t : IEquatable<timer_t>
+        public readonly partial struct timer_t : IEquatable<musl.timer_t>
         {
             public timer_t(void* value) => this.Value = value;
             
@@ -645,7 +645,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(timer_t left, timer_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct clockid_t : IEquatable<clockid_t>
+        public readonly partial struct clockid_t : IEquatable<musl.clockid_t>
         {
             public clockid_t(int value) => this.Value = value;
             
@@ -668,7 +668,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(clockid_t left, clockid_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct locale_t : IEquatable<locale_t>
+        public readonly partial struct locale_t : IEquatable<musl.locale_t>
         {
             public locale_t(musl.__locale_struct value) => this.Value = value;
             
@@ -691,7 +691,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(locale_t left, locale_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct intmax_t : IEquatable<intmax_t>
+        public readonly partial struct intmax_t : IEquatable<musl.intmax_t>
         {
             public intmax_t(long value) => this.Value = value;
             
@@ -714,7 +714,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(intmax_t left, intmax_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct uintmax_t : IEquatable<uintmax_t>
+        public readonly partial struct uintmax_t : IEquatable<musl.uintmax_t>
         {
             public uintmax_t(ulong value) => this.Value = value;
             
@@ -737,7 +737,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(uintmax_t left, uintmax_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct register_t : IEquatable<register_t>
+        public readonly partial struct register_t : IEquatable<musl.register_t>
         {
             public register_t(nint value) => this.Value = value;
             
@@ -760,7 +760,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(register_t left, register_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct u_int64_t : IEquatable<u_int64_t>
+        public readonly partial struct u_int64_t : IEquatable<musl.u_int64_t>
         {
             public u_int64_t(ulong value) => this.Value = value;
             
@@ -783,7 +783,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(u_int64_t left, u_int64_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct id_t : IEquatable<id_t>
+        public readonly partial struct id_t : IEquatable<musl.id_t>
         {
             public id_t(uint value) => this.Value = value;
             
@@ -806,7 +806,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(id_t left, id_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct pthread_t : IEquatable<pthread_t>
+        public readonly partial struct pthread_t : IEquatable<musl.pthread_t>
         {
             public pthread_t(nuint value) => this.Value = value;
             
@@ -829,7 +829,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(pthread_t left, pthread_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct pthread_once_t : IEquatable<pthread_once_t>
+        public readonly partial struct pthread_once_t : IEquatable<musl.pthread_once_t>
         {
             public pthread_once_t(int value) => this.Value = value;
             
@@ -852,7 +852,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(pthread_once_t left, pthread_once_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct pthread_key_t : IEquatable<pthread_key_t>
+        public readonly partial struct pthread_key_t : IEquatable<musl.pthread_key_t>
         {
             public pthread_key_t(uint value) => this.Value = value;
             
@@ -875,7 +875,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(pthread_key_t left, pthread_key_t right) => !left.Equals(right);
         }
         
-        public readonly partial struct pthread_spinlock_t : IEquatable<pthread_spinlock_t>
+        public readonly partial struct pthread_spinlock_t : IEquatable<musl.pthread_spinlock_t>
         {
             public pthread_spinlock_t(int value) => this.Value = value;
             

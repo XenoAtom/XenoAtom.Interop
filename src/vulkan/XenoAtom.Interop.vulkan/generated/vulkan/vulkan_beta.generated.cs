@@ -931,7 +931,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeFlagsKHR : IEquatable<VkVideoEncodeFlagsKHR>
+        public readonly partial struct VkVideoEncodeFlagsKHR : IEquatable<vulkan.VkVideoEncodeFlagsKHR>
         {
             public VkVideoEncodeFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -1011,7 +1011,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeCapabilityFlagsKHR : IEquatable<VkVideoEncodeCapabilityFlagsKHR>
+        public readonly partial struct VkVideoEncodeCapabilityFlagsKHR : IEquatable<vulkan.VkVideoEncodeCapabilityFlagsKHR>
         {
             public VkVideoEncodeCapabilityFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -1041,7 +1041,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeRateControlModeFlagsKHR : IEquatable<VkVideoEncodeRateControlModeFlagsKHR>
+        public readonly partial struct VkVideoEncodeRateControlModeFlagsKHR : IEquatable<vulkan.VkVideoEncodeRateControlModeFlagsKHR>
         {
             public VkVideoEncodeRateControlModeFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -1071,7 +1071,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeFeedbackFlagsKHR : IEquatable<VkVideoEncodeFeedbackFlagsKHR>
+        public readonly partial struct VkVideoEncodeFeedbackFlagsKHR : IEquatable<vulkan.VkVideoEncodeFeedbackFlagsKHR>
         {
             public VkVideoEncodeFeedbackFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -1159,7 +1159,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeUsageFlagsKHR : IEquatable<VkVideoEncodeUsageFlagsKHR>
+        public readonly partial struct VkVideoEncodeUsageFlagsKHR : IEquatable<vulkan.VkVideoEncodeUsageFlagsKHR>
         {
             public VkVideoEncodeUsageFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -1189,7 +1189,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeContentFlagsKHR : IEquatable<VkVideoEncodeContentFlagsKHR>
+        public readonly partial struct VkVideoEncodeContentFlagsKHR : IEquatable<vulkan.VkVideoEncodeContentFlagsKHR>
         {
             public VkVideoEncodeContentFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -1307,7 +1307,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeRateControlFlagsKHR : IEquatable<VkVideoEncodeRateControlFlagsKHR>
+        public readonly partial struct VkVideoEncodeRateControlFlagsKHR : IEquatable<vulkan.VkVideoEncodeRateControlFlagsKHR>
         {
             public VkVideoEncodeRateControlFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -1547,7 +1547,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeH264CapabilityFlagsEXT : IEquatable<VkVideoEncodeH264CapabilityFlagsEXT>
+        public readonly partial struct VkVideoEncodeH264CapabilityFlagsEXT : IEquatable<vulkan.VkVideoEncodeH264CapabilityFlagsEXT>
         {
             public VkVideoEncodeH264CapabilityFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -1577,7 +1577,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeH264StdFlagsEXT : IEquatable<VkVideoEncodeH264StdFlagsEXT>
+        public readonly partial struct VkVideoEncodeH264StdFlagsEXT : IEquatable<vulkan.VkVideoEncodeH264StdFlagsEXT>
         {
             public VkVideoEncodeH264StdFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -1695,7 +1695,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeH264RateControlFlagsEXT : IEquatable<VkVideoEncodeH264RateControlFlagsEXT>
+        public readonly partial struct VkVideoEncodeH264RateControlFlagsEXT : IEquatable<vulkan.VkVideoEncodeH264RateControlFlagsEXT>
         {
             public VkVideoEncodeH264RateControlFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -2266,7 +2266,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeH265CapabilityFlagsEXT : IEquatable<VkVideoEncodeH265CapabilityFlagsEXT>
+        public readonly partial struct VkVideoEncodeH265CapabilityFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265CapabilityFlagsEXT>
         {
             public VkVideoEncodeH265CapabilityFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -2296,7 +2296,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeH265CtbSizeFlagsEXT : IEquatable<VkVideoEncodeH265CtbSizeFlagsEXT>
+        public readonly partial struct VkVideoEncodeH265CtbSizeFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265CtbSizeFlagsEXT>
         {
             public VkVideoEncodeH265CtbSizeFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -2326,7 +2326,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeH265TransformBlockSizeFlagsEXT : IEquatable<VkVideoEncodeH265TransformBlockSizeFlagsEXT>
+        public readonly partial struct VkVideoEncodeH265TransformBlockSizeFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT>
         {
             public VkVideoEncodeH265TransformBlockSizeFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -2356,7 +2356,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeH265StdFlagsEXT : IEquatable<VkVideoEncodeH265StdFlagsEXT>
+        public readonly partial struct VkVideoEncodeH265StdFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265StdFlagsEXT>
         {
             public VkVideoEncodeH265StdFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -2498,7 +2498,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public readonly partial struct VkVideoEncodeH265RateControlFlagsEXT : IEquatable<VkVideoEncodeH265RateControlFlagsEXT>
+        public readonly partial struct VkVideoEncodeH265RateControlFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265RateControlFlagsEXT>
         {
             public VkVideoEncodeH265RateControlFlagsEXT(vulkan.VkFlags value) => this.Value = value;
             
@@ -3333,7 +3333,7 @@ namespace XenoAtom.Interop
             public vulkan.VkMicromapEXT micromap;
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR : IEquatable<PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR>, IvkFunctionPointer
         {
             public PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, vulkan.VkVideoEncodeQualityLevelPropertiesKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3402,7 +3402,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetEncodedVideoSessionParametersKHR : IEquatable<PFN_vkGetEncodedVideoSessionParametersKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetEncodedVideoSessionParametersKHR : IEquatable<vulkan.PFN_vkGetEncodedVideoSessionParametersKHR>, IvkFunctionPointer
         {
             public PFN_vkGetEncodedVideoSessionParametersKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkVideoEncodeSessionParametersGetInfoKHR*, vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3474,7 +3474,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdEncodeVideoKHR : IEquatable<PFN_vkCmdEncodeVideoKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCmdEncodeVideoKHR : IEquatable<vulkan.PFN_vkCmdEncodeVideoKHR>, IvkFunctionPointer
         {
             public PFN_vkCmdEncodeVideoKHR(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkVideoEncodeInfoKHR*, void> value) => this.Value = value;
             
@@ -3528,7 +3528,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCreateExecutionGraphPipelinesAMDX : IEquatable<PFN_vkCreateExecutionGraphPipelinesAMDX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateExecutionGraphPipelinesAMDX : IEquatable<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX>, IvkFunctionPointer
         {
             public PFN_vkCreateExecutionGraphPipelinesAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipelineCache, uint, vulkan.VkExecutionGraphPipelineCreateInfoAMDX*, vulkan.VkAllocationCallbacks*, vulkan.VkPipeline*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3604,7 +3604,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetExecutionGraphPipelineScratchSizeAMDX : IEquatable<PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetExecutionGraphPipelineScratchSizeAMDX : IEquatable<vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>, IvkFunctionPointer
         {
             public PFN_vkGetExecutionGraphPipelineScratchSizeAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkExecutionGraphPipelineScratchSizeAMDX*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3672,7 +3672,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetExecutionGraphPipelineNodeIndexAMDX : IEquatable<PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetExecutionGraphPipelineNodeIndexAMDX : IEquatable<vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>, IvkFunctionPointer
         {
             public PFN_vkGetExecutionGraphPipelineNodeIndexAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3743,7 +3743,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdInitializeGraphScratchMemoryAMDX : IEquatable<PFN_vkCmdInitializeGraphScratchMemoryAMDX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCmdInitializeGraphScratchMemoryAMDX : IEquatable<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX>, IvkFunctionPointer
         {
             public PFN_vkCmdInitializeGraphScratchMemoryAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> value) => this.Value = value;
             
@@ -3783,7 +3783,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkCmdDispatchGraphAMDX : IEquatable<PFN_vkCmdDispatchGraphAMDX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCmdDispatchGraphAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphAMDX>, IvkFunctionPointer
         {
             public PFN_vkCmdDispatchGraphAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
             
@@ -3839,7 +3839,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdDispatchGraphIndirectAMDX : IEquatable<PFN_vkCmdDispatchGraphIndirectAMDX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCmdDispatchGraphIndirectAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX>, IvkFunctionPointer
         {
             public PFN_vkCmdDispatchGraphIndirectAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
             
@@ -3895,7 +3895,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdDispatchGraphIndirectCountAMDX : IEquatable<PFN_vkCmdDispatchGraphIndirectCountAMDX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCmdDispatchGraphIndirectCountAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX>, IvkFunctionPointer
         {
             public PFN_vkCmdDispatchGraphIndirectCountAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> value) => this.Value = value;
             

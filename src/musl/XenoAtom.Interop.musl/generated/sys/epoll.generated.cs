@@ -40,7 +40,7 @@ namespace XenoAtom.Interop
             public musl.epoll_data_t data;
         }
         
-        public readonly partial struct epoll_data_t : IEquatable<epoll_data_t>
+        public readonly partial struct epoll_data_t : IEquatable<musl.epoll_data_t>
         {
             public epoll_data_t(musl.epoll_data value) => this.Value = value;
             

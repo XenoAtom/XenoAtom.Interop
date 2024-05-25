@@ -249,7 +249,7 @@ namespace XenoAtom.Interop
         /// Return 0 to continue processing, or a negative value to
         /// abort the stash application.
         /// </summary>
-        public readonly partial struct git_stash_apply_progress_cb : IEquatable<git_stash_apply_progress_cb>
+        public readonly partial struct git_stash_apply_progress_cb : IEquatable<libgit2.git_stash_apply_progress_cb>
         {
             public git_stash_apply_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> value) => this.Value = value;
             
@@ -282,7 +282,7 @@ namespace XenoAtom.Interop
         /// <param name="stash_id">The commit oid of the stashed state.</param>
         /// <param name="payload">Extra parameter to callback function.</param>
         /// <returns>@return 0 to continue iterating or non-zero to stop.</returns>
-        public readonly partial struct git_stash_cb : IEquatable<git_stash_cb>
+        public readonly partial struct git_stash_cb : IEquatable<libgit2.git_stash_cb>
         {
             public git_stash_cb(delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> value) => this.Value = value;
             

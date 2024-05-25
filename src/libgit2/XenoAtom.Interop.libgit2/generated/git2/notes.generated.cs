@@ -26,7 +26,7 @@ namespace XenoAtom.Interop
         /// - annotated_object_id: Oid of the git object being annotated
         /// - payload: Payload data passed to `git_note_foreach`
         /// </remarks>
-        public readonly partial struct git_note_foreach_cb : IEquatable<git_note_foreach_cb>
+        public readonly partial struct git_note_foreach_cb : IEquatable<libgit2.git_note_foreach_cb>
         {
             public git_note_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> value) => this.Value = value;
             

@@ -113,7 +113,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Compiled pathspec
         /// </summary>
-        public readonly partial struct git_pathspec : IEquatable<git_pathspec>
+        public readonly partial struct git_pathspec : IEquatable<libgit2.git_pathspec>
         {
             public git_pathspec(nint handle) => Handle = handle;
             
@@ -135,7 +135,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// List of filenames matching a pathspec
         /// </summary>
-        public readonly partial struct git_pathspec_match_list : IEquatable<git_pathspec_match_list>
+        public readonly partial struct git_pathspec_match_list : IEquatable<libgit2.git_pathspec_match_list>
         {
             public git_pathspec_match_list(nint handle) => Handle = handle;
             

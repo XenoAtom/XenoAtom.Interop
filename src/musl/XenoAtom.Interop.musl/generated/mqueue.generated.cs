@@ -30,7 +30,7 @@ namespace XenoAtom.Interop
             public FixedArray4<nint> __unused;
         }
         
-        public readonly partial struct mqd_t : IEquatable<mqd_t>
+        public readonly partial struct mqd_t : IEquatable<musl.mqd_t>
         {
             public mqd_t(int value) => this.Value = value;
             

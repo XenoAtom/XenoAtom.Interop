@@ -166,7 +166,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An opaque structure for a configuration iterator
         /// </summary>
-        public readonly partial struct git_config_iterator : IEquatable<git_config_iterator>
+        public readonly partial struct git_config_iterator : IEquatable<libgit2.git_config_iterator>
         {
             public git_config_iterator(nint handle) => Handle = handle;
             
@@ -203,7 +203,7 @@ namespace XenoAtom.Interop
         /// <param name="entry">the entry currently being enumerated</param>
         /// <param name="payload">a user-specified pointer</param>
         /// <returns>@return non-zero to terminate the iteration.</returns>
-        public readonly partial struct git_config_foreach_cb : IEquatable<git_config_foreach_cb>
+        public readonly partial struct git_config_foreach_cb : IEquatable<libgit2.git_config_foreach_cb>
         {
             public git_config_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> value) => this.Value = value;
             

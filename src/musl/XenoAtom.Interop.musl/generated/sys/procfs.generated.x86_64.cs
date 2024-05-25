@@ -47,7 +47,7 @@ namespace XenoAtom.Interop
                 public int pr_fpvalid;
             }
             
-            public readonly partial struct prfpregset_t : IEquatable<prfpregset_t>
+            public readonly partial struct prfpregset_t : IEquatable<musl.x86_64.prfpregset_t>
             {
                 public prfpregset_t(musl.x86_64.elf_fpregset_t value) => this.Value = value;
                 
@@ -70,7 +70,7 @@ namespace XenoAtom.Interop
                 public static bool operator !=(prfpregset_t left, prfpregset_t right) => !left.Equals(right);
             }
             
-            public readonly partial struct prgregset_t : IEquatable<prgregset_t>
+            public readonly partial struct prgregset_t : IEquatable<musl.x86_64.prgregset_t>
             {
                 public prgregset_t(musl.x86_64.elf_gregset_t value) => this.Value = value;
                 
@@ -93,7 +93,7 @@ namespace XenoAtom.Interop
                 public static bool operator !=(prgregset_t left, prgregset_t right) => !left.Equals(right);
             }
             
-            public readonly partial struct prstatus_t : IEquatable<prstatus_t>
+            public readonly partial struct prstatus_t : IEquatable<musl.x86_64.prstatus_t>
             {
                 public prstatus_t(musl.x86_64.elf_prstatus value) => this.Value = value;
                 

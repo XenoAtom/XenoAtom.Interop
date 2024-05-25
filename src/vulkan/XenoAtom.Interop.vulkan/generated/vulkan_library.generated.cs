@@ -15,7 +15,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
-        public readonly partial struct VkBuffer_T : IEquatable<VkBuffer_T>
+        public readonly partial struct VkBuffer_T : IEquatable<vulkan.VkBuffer_T>
         {
             public VkBuffer_T(nint handle) => Handle = handle;
             
@@ -34,7 +34,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkBuffer_T left, VkBuffer_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkImage_T : IEquatable<VkImage_T>
+        public readonly partial struct VkImage_T : IEquatable<vulkan.VkImage_T>
         {
             public VkImage_T(nint handle) => Handle = handle;
             
@@ -53,7 +53,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkImage_T left, VkImage_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkInstance_T : IEquatable<VkInstance_T>
+        public readonly partial struct VkInstance_T : IEquatable<vulkan.VkInstance_T>
         {
             public VkInstance_T(nint handle) => Handle = handle;
             
@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkInstance_T left, VkInstance_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkPhysicalDevice_T : IEquatable<VkPhysicalDevice_T>
+        public readonly partial struct VkPhysicalDevice_T : IEquatable<vulkan.VkPhysicalDevice_T>
         {
             public VkPhysicalDevice_T(nint handle) => Handle = handle;
             
@@ -91,7 +91,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkPhysicalDevice_T left, VkPhysicalDevice_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDevice_T : IEquatable<VkDevice_T>
+        public readonly partial struct VkDevice_T : IEquatable<vulkan.VkDevice_T>
         {
             public VkDevice_T(nint handle) => Handle = handle;
             
@@ -110,7 +110,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDevice_T left, VkDevice_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkQueue_T : IEquatable<VkQueue_T>
+        public readonly partial struct VkQueue_T : IEquatable<vulkan.VkQueue_T>
         {
             public VkQueue_T(nint handle) => Handle = handle;
             
@@ -129,7 +129,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkQueue_T left, VkQueue_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkSemaphore_T : IEquatable<VkSemaphore_T>
+        public readonly partial struct VkSemaphore_T : IEquatable<vulkan.VkSemaphore_T>
         {
             public VkSemaphore_T(nint handle) => Handle = handle;
             
@@ -148,7 +148,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkSemaphore_T left, VkSemaphore_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkCommandBuffer_T : IEquatable<VkCommandBuffer_T>
+        public readonly partial struct VkCommandBuffer_T : IEquatable<vulkan.VkCommandBuffer_T>
         {
             public VkCommandBuffer_T(nint handle) => Handle = handle;
             
@@ -167,7 +167,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkCommandBuffer_T left, VkCommandBuffer_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkFence_T : IEquatable<VkFence_T>
+        public readonly partial struct VkFence_T : IEquatable<vulkan.VkFence_T>
         {
             public VkFence_T(nint handle) => Handle = handle;
             
@@ -186,7 +186,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkFence_T left, VkFence_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDeviceMemory_T : IEquatable<VkDeviceMemory_T>
+        public readonly partial struct VkDeviceMemory_T : IEquatable<vulkan.VkDeviceMemory_T>
         {
             public VkDeviceMemory_T(nint handle) => Handle = handle;
             
@@ -205,7 +205,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDeviceMemory_T left, VkDeviceMemory_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkEvent_T : IEquatable<VkEvent_T>
+        public readonly partial struct VkEvent_T : IEquatable<vulkan.VkEvent_T>
         {
             public VkEvent_T(nint handle) => Handle = handle;
             
@@ -224,7 +224,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkEvent_T left, VkEvent_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkQueryPool_T : IEquatable<VkQueryPool_T>
+        public readonly partial struct VkQueryPool_T : IEquatable<vulkan.VkQueryPool_T>
         {
             public VkQueryPool_T(nint handle) => Handle = handle;
             
@@ -243,7 +243,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkQueryPool_T left, VkQueryPool_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkBufferView_T : IEquatable<VkBufferView_T>
+        public readonly partial struct VkBufferView_T : IEquatable<vulkan.VkBufferView_T>
         {
             public VkBufferView_T(nint handle) => Handle = handle;
             
@@ -262,7 +262,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkBufferView_T left, VkBufferView_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkImageView_T : IEquatable<VkImageView_T>
+        public readonly partial struct VkImageView_T : IEquatable<vulkan.VkImageView_T>
         {
             public VkImageView_T(nint handle) => Handle = handle;
             
@@ -281,7 +281,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkImageView_T left, VkImageView_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkShaderModule_T : IEquatable<VkShaderModule_T>
+        public readonly partial struct VkShaderModule_T : IEquatable<vulkan.VkShaderModule_T>
         {
             public VkShaderModule_T(nint handle) => Handle = handle;
             
@@ -300,7 +300,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkShaderModule_T left, VkShaderModule_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkPipelineCache_T : IEquatable<VkPipelineCache_T>
+        public readonly partial struct VkPipelineCache_T : IEquatable<vulkan.VkPipelineCache_T>
         {
             public VkPipelineCache_T(nint handle) => Handle = handle;
             
@@ -319,7 +319,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkPipelineCache_T left, VkPipelineCache_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkPipelineLayout_T : IEquatable<VkPipelineLayout_T>
+        public readonly partial struct VkPipelineLayout_T : IEquatable<vulkan.VkPipelineLayout_T>
         {
             public VkPipelineLayout_T(nint handle) => Handle = handle;
             
@@ -338,7 +338,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkPipelineLayout_T left, VkPipelineLayout_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkPipeline_T : IEquatable<VkPipeline_T>
+        public readonly partial struct VkPipeline_T : IEquatable<vulkan.VkPipeline_T>
         {
             public VkPipeline_T(nint handle) => Handle = handle;
             
@@ -357,7 +357,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkPipeline_T left, VkPipeline_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkRenderPass_T : IEquatable<VkRenderPass_T>
+        public readonly partial struct VkRenderPass_T : IEquatable<vulkan.VkRenderPass_T>
         {
             public VkRenderPass_T(nint handle) => Handle = handle;
             
@@ -376,7 +376,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkRenderPass_T left, VkRenderPass_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDescriptorSetLayout_T : IEquatable<VkDescriptorSetLayout_T>
+        public readonly partial struct VkDescriptorSetLayout_T : IEquatable<vulkan.VkDescriptorSetLayout_T>
         {
             public VkDescriptorSetLayout_T(nint handle) => Handle = handle;
             
@@ -395,7 +395,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDescriptorSetLayout_T left, VkDescriptorSetLayout_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkSampler_T : IEquatable<VkSampler_T>
+        public readonly partial struct VkSampler_T : IEquatable<vulkan.VkSampler_T>
         {
             public VkSampler_T(nint handle) => Handle = handle;
             
@@ -414,7 +414,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkSampler_T left, VkSampler_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDescriptorSet_T : IEquatable<VkDescriptorSet_T>
+        public readonly partial struct VkDescriptorSet_T : IEquatable<vulkan.VkDescriptorSet_T>
         {
             public VkDescriptorSet_T(nint handle) => Handle = handle;
             
@@ -433,7 +433,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDescriptorSet_T left, VkDescriptorSet_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDescriptorPool_T : IEquatable<VkDescriptorPool_T>
+        public readonly partial struct VkDescriptorPool_T : IEquatable<vulkan.VkDescriptorPool_T>
         {
             public VkDescriptorPool_T(nint handle) => Handle = handle;
             
@@ -452,7 +452,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDescriptorPool_T left, VkDescriptorPool_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkFramebuffer_T : IEquatable<VkFramebuffer_T>
+        public readonly partial struct VkFramebuffer_T : IEquatable<vulkan.VkFramebuffer_T>
         {
             public VkFramebuffer_T(nint handle) => Handle = handle;
             
@@ -471,7 +471,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkFramebuffer_T left, VkFramebuffer_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkCommandPool_T : IEquatable<VkCommandPool_T>
+        public readonly partial struct VkCommandPool_T : IEquatable<vulkan.VkCommandPool_T>
         {
             public VkCommandPool_T(nint handle) => Handle = handle;
             
@@ -490,7 +490,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkCommandPool_T left, VkCommandPool_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkSamplerYcbcrConversion_T : IEquatable<VkSamplerYcbcrConversion_T>
+        public readonly partial struct VkSamplerYcbcrConversion_T : IEquatable<vulkan.VkSamplerYcbcrConversion_T>
         {
             public VkSamplerYcbcrConversion_T(nint handle) => Handle = handle;
             
@@ -509,7 +509,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkSamplerYcbcrConversion_T left, VkSamplerYcbcrConversion_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDescriptorUpdateTemplate_T : IEquatable<VkDescriptorUpdateTemplate_T>
+        public readonly partial struct VkDescriptorUpdateTemplate_T : IEquatable<vulkan.VkDescriptorUpdateTemplate_T>
         {
             public VkDescriptorUpdateTemplate_T(nint handle) => Handle = handle;
             
@@ -528,7 +528,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDescriptorUpdateTemplate_T left, VkDescriptorUpdateTemplate_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkPrivateDataSlot_T : IEquatable<VkPrivateDataSlot_T>
+        public readonly partial struct VkPrivateDataSlot_T : IEquatable<vulkan.VkPrivateDataSlot_T>
         {
             public VkPrivateDataSlot_T(nint handle) => Handle = handle;
             
@@ -547,7 +547,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkPrivateDataSlot_T left, VkPrivateDataSlot_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkSurfaceKHR_T : IEquatable<VkSurfaceKHR_T>
+        public readonly partial struct VkSurfaceKHR_T : IEquatable<vulkan.VkSurfaceKHR_T>
         {
             public VkSurfaceKHR_T(nint handle) => Handle = handle;
             
@@ -566,7 +566,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkSurfaceKHR_T left, VkSurfaceKHR_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkSwapchainKHR_T : IEquatable<VkSwapchainKHR_T>
+        public readonly partial struct VkSwapchainKHR_T : IEquatable<vulkan.VkSwapchainKHR_T>
         {
             public VkSwapchainKHR_T(nint handle) => Handle = handle;
             
@@ -585,7 +585,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkSwapchainKHR_T left, VkSwapchainKHR_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDisplayKHR_T : IEquatable<VkDisplayKHR_T>
+        public readonly partial struct VkDisplayKHR_T : IEquatable<vulkan.VkDisplayKHR_T>
         {
             public VkDisplayKHR_T(nint handle) => Handle = handle;
             
@@ -604,7 +604,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDisplayKHR_T left, VkDisplayKHR_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDisplayModeKHR_T : IEquatable<VkDisplayModeKHR_T>
+        public readonly partial struct VkDisplayModeKHR_T : IEquatable<vulkan.VkDisplayModeKHR_T>
         {
             public VkDisplayModeKHR_T(nint handle) => Handle = handle;
             
@@ -623,7 +623,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDisplayModeKHR_T left, VkDisplayModeKHR_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkVideoSessionKHR_T : IEquatable<VkVideoSessionKHR_T>
+        public readonly partial struct VkVideoSessionKHR_T : IEquatable<vulkan.VkVideoSessionKHR_T>
         {
             public VkVideoSessionKHR_T(nint handle) => Handle = handle;
             
@@ -642,7 +642,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkVideoSessionKHR_T left, VkVideoSessionKHR_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkVideoSessionParametersKHR_T : IEquatable<VkVideoSessionParametersKHR_T>
+        public readonly partial struct VkVideoSessionParametersKHR_T : IEquatable<vulkan.VkVideoSessionParametersKHR_T>
         {
             public VkVideoSessionParametersKHR_T(nint handle) => Handle = handle;
             
@@ -661,7 +661,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkVideoSessionParametersKHR_T left, VkVideoSessionParametersKHR_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDeferredOperationKHR_T : IEquatable<VkDeferredOperationKHR_T>
+        public readonly partial struct VkDeferredOperationKHR_T : IEquatable<vulkan.VkDeferredOperationKHR_T>
         {
             public VkDeferredOperationKHR_T(nint handle) => Handle = handle;
             
@@ -680,7 +680,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDeferredOperationKHR_T left, VkDeferredOperationKHR_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDebugReportCallbackEXT_T : IEquatable<VkDebugReportCallbackEXT_T>
+        public readonly partial struct VkDebugReportCallbackEXT_T : IEquatable<vulkan.VkDebugReportCallbackEXT_T>
         {
             public VkDebugReportCallbackEXT_T(nint handle) => Handle = handle;
             
@@ -699,7 +699,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDebugReportCallbackEXT_T left, VkDebugReportCallbackEXT_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkCuModuleNVX_T : IEquatable<VkCuModuleNVX_T>
+        public readonly partial struct VkCuModuleNVX_T : IEquatable<vulkan.VkCuModuleNVX_T>
         {
             public VkCuModuleNVX_T(nint handle) => Handle = handle;
             
@@ -718,7 +718,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkCuModuleNVX_T left, VkCuModuleNVX_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkCuFunctionNVX_T : IEquatable<VkCuFunctionNVX_T>
+        public readonly partial struct VkCuFunctionNVX_T : IEquatable<vulkan.VkCuFunctionNVX_T>
         {
             public VkCuFunctionNVX_T(nint handle) => Handle = handle;
             
@@ -737,7 +737,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkCuFunctionNVX_T left, VkCuFunctionNVX_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkDebugUtilsMessengerEXT_T : IEquatable<VkDebugUtilsMessengerEXT_T>
+        public readonly partial struct VkDebugUtilsMessengerEXT_T : IEquatable<vulkan.VkDebugUtilsMessengerEXT_T>
         {
             public VkDebugUtilsMessengerEXT_T(nint handle) => Handle = handle;
             
@@ -756,7 +756,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDebugUtilsMessengerEXT_T left, VkDebugUtilsMessengerEXT_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkValidationCacheEXT_T : IEquatable<VkValidationCacheEXT_T>
+        public readonly partial struct VkValidationCacheEXT_T : IEquatable<vulkan.VkValidationCacheEXT_T>
         {
             public VkValidationCacheEXT_T(nint handle) => Handle = handle;
             
@@ -775,7 +775,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkValidationCacheEXT_T left, VkValidationCacheEXT_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkAccelerationStructureNV_T : IEquatable<VkAccelerationStructureNV_T>
+        public readonly partial struct VkAccelerationStructureNV_T : IEquatable<vulkan.VkAccelerationStructureNV_T>
         {
             public VkAccelerationStructureNV_T(nint handle) => Handle = handle;
             
@@ -794,7 +794,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkAccelerationStructureNV_T left, VkAccelerationStructureNV_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkPerformanceConfigurationINTEL_T : IEquatable<VkPerformanceConfigurationINTEL_T>
+        public readonly partial struct VkPerformanceConfigurationINTEL_T : IEquatable<vulkan.VkPerformanceConfigurationINTEL_T>
         {
             public VkPerformanceConfigurationINTEL_T(nint handle) => Handle = handle;
             
@@ -813,7 +813,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkPerformanceConfigurationINTEL_T left, VkPerformanceConfigurationINTEL_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkIndirectCommandsLayoutNV_T : IEquatable<VkIndirectCommandsLayoutNV_T>
+        public readonly partial struct VkIndirectCommandsLayoutNV_T : IEquatable<vulkan.VkIndirectCommandsLayoutNV_T>
         {
             public VkIndirectCommandsLayoutNV_T(nint handle) => Handle = handle;
             
@@ -832,7 +832,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkIndirectCommandsLayoutNV_T left, VkIndirectCommandsLayoutNV_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkAccelerationStructureKHR_T : IEquatable<VkAccelerationStructureKHR_T>
+        public readonly partial struct VkAccelerationStructureKHR_T : IEquatable<vulkan.VkAccelerationStructureKHR_T>
         {
             public VkAccelerationStructureKHR_T(nint handle) => Handle = handle;
             
@@ -851,7 +851,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkAccelerationStructureKHR_T left, VkAccelerationStructureKHR_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkMicromapEXT_T : IEquatable<VkMicromapEXT_T>
+        public readonly partial struct VkMicromapEXT_T : IEquatable<vulkan.VkMicromapEXT_T>
         {
             public VkMicromapEXT_T(nint handle) => Handle = handle;
             
@@ -870,7 +870,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkMicromapEXT_T left, VkMicromapEXT_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkOpticalFlowSessionNV_T : IEquatable<VkOpticalFlowSessionNV_T>
+        public readonly partial struct VkOpticalFlowSessionNV_T : IEquatable<vulkan.VkOpticalFlowSessionNV_T>
         {
             public VkOpticalFlowSessionNV_T(nint handle) => Handle = handle;
             
@@ -889,7 +889,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkOpticalFlowSessionNV_T left, VkOpticalFlowSessionNV_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkShaderEXT_T : IEquatable<VkShaderEXT_T>
+        public readonly partial struct VkShaderEXT_T : IEquatable<vulkan.VkShaderEXT_T>
         {
             public VkShaderEXT_T(nint handle) => Handle = handle;
             
@@ -911,7 +911,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_android_surface</para>
         /// </remarks>
-        public readonly partial struct ANativeWindow : IEquatable<ANativeWindow>
+        public readonly partial struct ANativeWindow : IEquatable<vulkan.ANativeWindow>
         {
             public ANativeWindow(nint handle) => Handle = handle;
             
@@ -933,7 +933,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
-        public readonly partial struct AHardwareBuffer : IEquatable<AHardwareBuffer>
+        public readonly partial struct AHardwareBuffer : IEquatable<vulkan.AHardwareBuffer>
         {
             public AHardwareBuffer(nint handle) => Handle = handle;
             
@@ -952,7 +952,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(AHardwareBuffer left, AHardwareBuffer right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkBufferCollectionFUCHSIA_T : IEquatable<VkBufferCollectionFUCHSIA_T>
+        public readonly partial struct VkBufferCollectionFUCHSIA_T : IEquatable<vulkan.VkBufferCollectionFUCHSIA_T>
         {
             public VkBufferCollectionFUCHSIA_T(nint handle) => Handle = handle;
             
@@ -971,7 +971,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkBufferCollectionFUCHSIA_T left, VkBufferCollectionFUCHSIA_T right) => !left.Equals(right);
         }
         
-        public readonly partial struct __IOSurface : IEquatable<__IOSurface>
+        public readonly partial struct __IOSurface : IEquatable<vulkan.__IOSurface>
         {
             public __IOSurface(nint handle) => Handle = handle;
             
@@ -990,7 +990,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(__IOSurface left, __IOSurface right) => !left.Equals(right);
         }
         
-        public readonly partial struct wl_display : IEquatable<wl_display>
+        public readonly partial struct wl_display : IEquatable<vulkan.wl_display>
         {
             public wl_display(nint handle) => Handle = handle;
             
@@ -1009,7 +1009,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(wl_display left, wl_display right) => !left.Equals(right);
         }
         
-        public readonly partial struct wl_surface : IEquatable<wl_surface>
+        public readonly partial struct wl_surface : IEquatable<vulkan.wl_surface>
         {
             public wl_surface(nint handle) => Handle = handle;
             
@@ -1028,7 +1028,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(wl_surface left, wl_surface right) => !left.Equals(right);
         }
         
-        public readonly partial struct _screen_context : IEquatable<_screen_context>
+        public readonly partial struct _screen_context : IEquatable<vulkan._screen_context>
         {
             public _screen_context(nint handle) => Handle = handle;
             
@@ -1047,7 +1047,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(_screen_context left, _screen_context right) => !left.Equals(right);
         }
         
-        public readonly partial struct _screen_window : IEquatable<_screen_window>
+        public readonly partial struct _screen_window : IEquatable<vulkan._screen_window>
         {
             public _screen_window(nint handle) => Handle = handle;
             
@@ -1066,7 +1066,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(_screen_window left, _screen_window right) => !left.Equals(right);
         }
         
-        public readonly partial struct _screen_buffer : IEquatable<_screen_buffer>
+        public readonly partial struct _screen_buffer : IEquatable<vulkan._screen_buffer>
         {
             public _screen_buffer(nint handle) => Handle = handle;
             

@@ -129,7 +129,7 @@ namespace XenoAtom.Interop
         /// * "ident" which replaces "$Id$" in a blob with "$Id: &lt;blob OID&gt;$" upon
         /// checkout and replaced "$Id: &lt;anything&gt;$" with "$Id$" on checkin.
         /// </remarks>
-        public readonly partial struct git_filter : IEquatable<git_filter>
+        public readonly partial struct git_filter : IEquatable<libgit2.git_filter>
         {
             public git_filter(nint handle) => Handle = handle;
             
@@ -159,7 +159,7 @@ namespace XenoAtom.Interop
         /// handle conversions for you, but it can be convenient to be able to
         /// build and apply the list sometimes.
         /// </remarks>
-        public readonly partial struct git_filter_list : IEquatable<git_filter_list>
+        public readonly partial struct git_filter_list : IEquatable<libgit2.git_filter_list>
         {
             public git_filter_list(nint handle) => Handle = handle;
             

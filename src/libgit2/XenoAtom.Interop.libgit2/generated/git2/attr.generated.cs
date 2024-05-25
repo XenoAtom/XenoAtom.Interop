@@ -99,7 +99,7 @@ namespace XenoAtom.Interop
         /// used.
         /// </remarks>
         /// <seealso cref="git_attr_foreach."/>
-        public readonly partial struct git_attr_foreach_cb : IEquatable<git_attr_foreach_cb>
+        public readonly partial struct git_attr_foreach_cb : IEquatable<libgit2.git_attr_foreach_cb>
         {
             public git_attr_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
             

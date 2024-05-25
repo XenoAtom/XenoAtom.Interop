@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        public readonly partial struct eventfd_t : IEquatable<eventfd_t>
+        public readonly partial struct eventfd_t : IEquatable<musl.eventfd_t>
         {
             public eventfd_t(ulong value) => this.Value = value;
             

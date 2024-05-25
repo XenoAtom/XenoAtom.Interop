@@ -127,7 +127,7 @@ namespace XenoAtom.Interop
         public partial struct VkLayerInstanceCreateInfo
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public partial struct VkLayerInstanceCreateInfo__struct_0
+            public partial struct VkLayerInstanceCreateInfo__union_0
             {
                 public partial struct VkLayerInstanceCreateInfo_layerDevice
                 {
@@ -143,7 +143,7 @@ namespace XenoAtom.Interop
                 public vulkan.PFN_vkSetInstanceLoaderData pfnSetInstanceLoaderData;
                 
                 [FieldOffset(0)]
-                public vulkan.VkLayerInstanceCreateInfo.VkLayerInstanceCreateInfo__struct_0.VkLayerInstanceCreateInfo_layerDevice layerDevice;
+                public vulkan.VkLayerInstanceCreateInfo.VkLayerInstanceCreateInfo__union_0.VkLayerInstanceCreateInfo_layerDevice layerDevice;
                 
                 [FieldOffset(0)]
                 public vulkan.VkLoaderFeatureFlags loaderFeatures;
@@ -158,10 +158,10 @@ namespace XenoAtom.Interop
             
             public vulkan.VkLayerFunction function;
             
-            public vulkan.VkLayerInstanceCreateInfo.VkLayerInstanceCreateInfo__struct_0 u;
+            public vulkan.VkLayerInstanceCreateInfo.VkLayerInstanceCreateInfo__union_0 u;
         }
         
-        public readonly partial struct PFN_vkLayerCreateDevice : IEquatable<PFN_vkLayerCreateDevice>
+        public readonly partial struct PFN_vkLayerCreateDevice : IEquatable<vulkan.PFN_vkLayerCreateDevice>
         {
             public PFN_vkLayerCreateDevice(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkPhysicalDevice, vulkan.VkDeviceCreateInfo*, vulkan.VkAllocationCallbacks*, vulkan.VkDevice*, vulkan.PFN_vkGetInstanceProcAddr, vulkan.PFN_vkGetDeviceProcAddr*, vulkan.VkResult> value) => this.Value = value;
             
@@ -184,7 +184,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(PFN_vkLayerCreateDevice left, PFN_vkLayerCreateDevice right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkLayerDestroyDevice : IEquatable<PFN_vkLayerDestroyDevice>
+        public readonly partial struct PFN_vkLayerDestroyDevice : IEquatable<vulkan.PFN_vkLayerDestroyDevice>
         {
             public PFN_vkLayerDestroyDevice(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkAllocationCallbacks*, vulkan.PFN_vkDestroyDevice, void> value) => this.Value = value;
             
@@ -207,7 +207,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(PFN_vkLayerDestroyDevice left, PFN_vkLayerDestroyDevice right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkLayerInstanceLink : IEquatable<VkLayerInstanceLink>
+        public readonly partial struct VkLayerInstanceLink : IEquatable<vulkan.VkLayerInstanceLink>
         {
             public VkLayerInstanceLink(vulkan.VkLayerInstanceLink_ value) => this.Value = value;
             
@@ -230,7 +230,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkLayerInstanceLink left, VkLayerInstanceLink right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkSetInstanceLoaderData : IEquatable<PFN_vkSetInstanceLoaderData>
+        public readonly partial struct PFN_vkSetInstanceLoaderData : IEquatable<vulkan.PFN_vkSetInstanceLoaderData>
         {
             public PFN_vkSetInstanceLoaderData(delegate*unmanaged[Stdcall]<vulkan.VkInstance, void*, vulkan.VkResult> value) => this.Value = value;
             
@@ -253,7 +253,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(PFN_vkSetInstanceLoaderData left, PFN_vkSetInstanceLoaderData right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkLoaderFeatureFlags : IEquatable<VkLoaderFeatureFlags>
+        public readonly partial struct VkLoaderFeatureFlags : IEquatable<vulkan.VkLoaderFeatureFlags>
         {
             public VkLoaderFeatureFlags(vulkan.VkFlags value) => this.Value = value;
             
@@ -286,7 +286,7 @@ namespace XenoAtom.Interop
         /// or sType == VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO
         /// then VkLayerFunction indicates struct type pointed to by pNext
         /// </summary>
-        public readonly partial struct VkLayerFunction : IEquatable<VkLayerFunction>
+        public readonly partial struct VkLayerFunction : IEquatable<vulkan.VkLayerFunction>
         {
             public VkLayerFunction(vulkan.VkLayerFunction_ value) => this.Value = value;
             
@@ -321,7 +321,7 @@ namespace XenoAtom.Interop
         public partial struct VkLayerDeviceCreateInfo
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public partial struct VkLayerDeviceCreateInfo__struct_0
+            public partial struct VkLayerDeviceCreateInfo__union_0
             {
                 [FieldOffset(0)]
                 public vulkan.VkLayerDeviceLink* pLayerInfo;
@@ -339,10 +339,10 @@ namespace XenoAtom.Interop
             
             public vulkan.VkLayerFunction function;
             
-            public vulkan.VkLayerDeviceCreateInfo.VkLayerDeviceCreateInfo__struct_0 u;
+            public vulkan.VkLayerDeviceCreateInfo.VkLayerDeviceCreateInfo__union_0 u;
         }
         
-        public readonly partial struct VkLayerDeviceLink : IEquatable<VkLayerDeviceLink>
+        public readonly partial struct VkLayerDeviceLink : IEquatable<vulkan.VkLayerDeviceLink>
         {
             public VkLayerDeviceLink(vulkan.VkLayerDeviceLink_ value) => this.Value = value;
             
@@ -365,7 +365,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkLayerDeviceLink left, VkLayerDeviceLink right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkSetDeviceLoaderData : IEquatable<PFN_vkSetDeviceLoaderData>
+        public readonly partial struct PFN_vkSetDeviceLoaderData : IEquatable<vulkan.PFN_vkSetDeviceLoaderData>
         {
             public PFN_vkSetDeviceLoaderData(delegate*unmanaged[Stdcall]<vulkan.VkDevice, void*, vulkan.VkResult> value) => this.Value = value;
             
@@ -427,7 +427,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Version negotiation functions
         /// </summary>
-        public readonly partial struct PFN_vkNegotiateLoaderLayerInterfaceVersion : IEquatable<PFN_vkNegotiateLoaderLayerInterfaceVersion>, IvkFunctionPointer
+        public readonly partial struct PFN_vkNegotiateLoaderLayerInterfaceVersion : IEquatable<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>, IvkFunctionPointer
         {
             public PFN_vkNegotiateLoaderLayerInterfaceVersion(delegate*unmanaged[Stdcall]<vulkan.VkNegotiateLayerInterface*, vulkan.VkResult> value) => this.Value = value;
             
@@ -462,7 +462,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Function prototype for unknown physical device extension command
         /// </summary>
-        public readonly partial struct PFN_PhysDevExt : IEquatable<PFN_PhysDevExt>
+        public readonly partial struct PFN_PhysDevExt : IEquatable<vulkan.PFN_PhysDevExt>
         {
             public PFN_PhysDevExt(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkResult> value) => this.Value = value;
             
@@ -492,7 +492,7 @@ namespace XenoAtom.Interop
         /// VkLayerDeviceInfo avoids issues with finding the
         /// exact instance being used.
         /// </summary>
-        public readonly partial struct VkLayerDeviceInfo : IEquatable<VkLayerDeviceInfo>
+        public readonly partial struct VkLayerDeviceInfo : IEquatable<vulkan.VkLayerDeviceInfo>
         {
             public VkLayerDeviceInfo(vulkan.VkLayerDeviceInfo_ value) => this.Value = value;
             
@@ -515,7 +515,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkLayerDeviceInfo left, VkLayerDeviceInfo right) => !left.Equals(right);
         }
         
-        public readonly partial struct VkLoaderFlagBits : IEquatable<VkLoaderFlagBits>
+        public readonly partial struct VkLoaderFlagBits : IEquatable<vulkan.VkLoaderFlagBits>
         {
             public VkLoaderFlagBits(vulkan.VkLoaderFeatureFlagBits value) => this.Value = value;
             

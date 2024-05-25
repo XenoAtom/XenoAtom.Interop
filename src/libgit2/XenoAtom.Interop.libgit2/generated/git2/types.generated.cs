@@ -335,7 +335,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An open object database handle.
         /// </summary>
-        public readonly partial struct git_odb : IEquatable<git_odb>
+        public readonly partial struct git_odb : IEquatable<libgit2.git_odb>
         {
             public git_odb(nint handle) => Handle = handle;
             
@@ -357,7 +357,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// A custom backend in an ODB
         /// </summary>
-        public readonly partial struct git_odb_backend : IEquatable<git_odb_backend>
+        public readonly partial struct git_odb_backend : IEquatable<libgit2.git_odb_backend>
         {
             public git_odb_backend(nint handle) => Handle = handle;
             
@@ -379,7 +379,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An object read from the ODB
         /// </summary>
-        public readonly partial struct git_odb_object : IEquatable<git_odb_object>
+        public readonly partial struct git_odb_object : IEquatable<libgit2.git_odb_object>
         {
             public git_odb_object(nint handle) => Handle = handle;
             
@@ -455,7 +455,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// The maximum size of an object
         /// </summary>
-        public readonly partial struct git_object_size_t : IEquatable<git_object_size_t>
+        public readonly partial struct git_object_size_t : IEquatable<libgit2.git_object_size_t>
         {
             public git_object_size_t(ulong value) => this.Value = value;
             
@@ -495,7 +495,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// a writer for multi-pack-index files.
         /// </summary>
-        public readonly partial struct git_midx_writer : IEquatable<git_midx_writer>
+        public readonly partial struct git_midx_writer : IEquatable<libgit2.git_midx_writer>
         {
             public git_midx_writer(nint handle) => Handle = handle;
             
@@ -517,7 +517,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An open refs database handle.
         /// </summary>
-        public readonly partial struct git_refdb : IEquatable<git_refdb>
+        public readonly partial struct git_refdb : IEquatable<libgit2.git_refdb>
         {
             public git_refdb(nint handle) => Handle = handle;
             
@@ -539,7 +539,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// A custom backend for refs
         /// </summary>
-        public readonly partial struct git_refdb_backend : IEquatable<git_refdb_backend>
+        public readonly partial struct git_refdb_backend : IEquatable<libgit2.git_refdb_backend>
         {
             public git_refdb_backend(nint handle) => Handle = handle;
             
@@ -561,7 +561,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// A git commit-graph
         /// </summary>
-        public readonly partial struct git_commit_graph : IEquatable<git_commit_graph>
+        public readonly partial struct git_commit_graph : IEquatable<libgit2.git_commit_graph>
         {
             public git_commit_graph(nint handle) => Handle = handle;
             
@@ -583,7 +583,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// a writer for commit-graph files.
         /// </summary>
-        public readonly partial struct git_commit_graph_writer : IEquatable<git_commit_graph_writer>
+        public readonly partial struct git_commit_graph_writer : IEquatable<libgit2.git_commit_graph_writer>
         {
             public git_commit_graph_writer(nint handle) => Handle = handle;
             
@@ -606,7 +606,7 @@ namespace XenoAtom.Interop
         /// Representation of an existing git repository,
         /// including all its object contents
         /// </summary>
-        public readonly partial struct git_repository : IEquatable<git_repository>
+        public readonly partial struct git_repository : IEquatable<libgit2.git_repository>
         {
             public git_repository(nint handle) => Handle = handle;
             
@@ -628,7 +628,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of a working tree
         /// </summary>
-        public readonly partial struct git_worktree : IEquatable<git_worktree>
+        public readonly partial struct git_worktree : IEquatable<libgit2.git_worktree>
         {
             public git_worktree(nint handle) => Handle = handle;
             
@@ -650,7 +650,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of a generic object in a repository
         /// </summary>
-        public readonly partial struct git_object : IEquatable<git_object>
+        public readonly partial struct git_object : IEquatable<libgit2.git_object>
         {
             public git_object(nint handle) => Handle = handle;
             
@@ -672,7 +672,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of an in-progress walk through the commits in a repo
         /// </summary>
-        public readonly partial struct git_revwalk : IEquatable<git_revwalk>
+        public readonly partial struct git_revwalk : IEquatable<libgit2.git_revwalk>
         {
             public git_revwalk(nint handle) => Handle = handle;
             
@@ -694,7 +694,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Parsed representation of a tag object.
         /// </summary>
-        public readonly partial struct git_tag : IEquatable<git_tag>
+        public readonly partial struct git_tag : IEquatable<libgit2.git_tag>
         {
             public git_tag(nint handle) => Handle = handle;
             
@@ -716,7 +716,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// In-memory representation of a blob object.
         /// </summary>
-        public readonly partial struct git_blob : IEquatable<git_blob>
+        public readonly partial struct git_blob : IEquatable<libgit2.git_blob>
         {
             public git_blob(nint handle) => Handle = handle;
             
@@ -738,7 +738,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Parsed representation of a commit object.
         /// </summary>
-        public readonly partial struct git_commit : IEquatable<git_commit>
+        public readonly partial struct git_commit : IEquatable<libgit2.git_commit>
         {
             public git_commit(nint handle) => Handle = handle;
             
@@ -760,7 +760,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of each one of the entries in a tree object.
         /// </summary>
-        public readonly partial struct git_tree_entry : IEquatable<git_tree_entry>
+        public readonly partial struct git_tree_entry : IEquatable<libgit2.git_tree_entry>
         {
             public git_tree_entry(nint handle) => Handle = handle;
             
@@ -782,7 +782,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of a tree object.
         /// </summary>
-        public readonly partial struct git_tree : IEquatable<git_tree>
+        public readonly partial struct git_tree : IEquatable<libgit2.git_tree>
         {
             public git_tree(nint handle) => Handle = handle;
             
@@ -804,7 +804,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Constructor for in-memory trees
         /// </summary>
-        public readonly partial struct git_treebuilder : IEquatable<git_treebuilder>
+        public readonly partial struct git_treebuilder : IEquatable<libgit2.git_treebuilder>
         {
             public git_treebuilder(nint handle) => Handle = handle;
             
@@ -826,7 +826,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Memory representation of an index file.
         /// </summary>
-        public readonly partial struct git_index : IEquatable<git_index>
+        public readonly partial struct git_index : IEquatable<libgit2.git_index>
         {
             public git_index(nint handle) => Handle = handle;
             
@@ -848,7 +848,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An iterator for entries in the index.
         /// </summary>
-        public readonly partial struct git_index_iterator : IEquatable<git_index_iterator>
+        public readonly partial struct git_index_iterator : IEquatable<libgit2.git_index_iterator>
         {
             public git_index_iterator(nint handle) => Handle = handle;
             
@@ -870,7 +870,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An iterator for conflicts in the index.
         /// </summary>
-        public readonly partial struct git_index_conflict_iterator : IEquatable<git_index_conflict_iterator>
+        public readonly partial struct git_index_conflict_iterator : IEquatable<libgit2.git_index_conflict_iterator>
         {
             public git_index_conflict_iterator(nint handle) => Handle = handle;
             
@@ -892,7 +892,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Memory representation of a set of config files
         /// </summary>
-        public readonly partial struct git_config : IEquatable<git_config>
+        public readonly partial struct git_config : IEquatable<libgit2.git_config>
         {
             public git_config(nint handle) => Handle = handle;
             
@@ -914,7 +914,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Interface to access a configuration file
         /// </summary>
-        public readonly partial struct git_config_backend : IEquatable<git_config_backend>
+        public readonly partial struct git_config_backend : IEquatable<libgit2.git_config_backend>
         {
             public git_config_backend(nint handle) => Handle = handle;
             
@@ -936,7 +936,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of a reference log entry
         /// </summary>
-        public readonly partial struct git_reflog_entry : IEquatable<git_reflog_entry>
+        public readonly partial struct git_reflog_entry : IEquatable<libgit2.git_reflog_entry>
         {
             public git_reflog_entry(nint handle) => Handle = handle;
             
@@ -958,7 +958,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of a reference log
         /// </summary>
-        public readonly partial struct git_reflog : IEquatable<git_reflog>
+        public readonly partial struct git_reflog : IEquatable<libgit2.git_reflog>
         {
             public git_reflog(nint handle) => Handle = handle;
             
@@ -980,7 +980,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of a git note
         /// </summary>
-        public readonly partial struct git_note : IEquatable<git_note>
+        public readonly partial struct git_note : IEquatable<libgit2.git_note>
         {
             public git_note(nint handle) => Handle = handle;
             
@@ -1002,7 +1002,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of a git packbuilder
         /// </summary>
-        public readonly partial struct git_packbuilder : IEquatable<git_packbuilder>
+        public readonly partial struct git_packbuilder : IEquatable<libgit2.git_packbuilder>
         {
             public git_packbuilder(nint handle) => Handle = handle;
             
@@ -1042,7 +1042,7 @@ namespace XenoAtom.Interop
             public byte sign;
         }
         
-        public readonly partial struct git_time_t : IEquatable<git_time_t>
+        public readonly partial struct git_time_t : IEquatable<libgit2.git_time_t>
         {
             public git_time_t(long value) => this.Value = value;
             
@@ -1089,7 +1089,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// In-memory representation of a reference.
         /// </summary>
-        public readonly partial struct git_reference : IEquatable<git_reference>
+        public readonly partial struct git_reference : IEquatable<libgit2.git_reference>
         {
             public git_reference(nint handle) => Handle = handle;
             
@@ -1111,7 +1111,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Iterator for references
         /// </summary>
-        public readonly partial struct git_reference_iterator : IEquatable<git_reference_iterator>
+        public readonly partial struct git_reference_iterator : IEquatable<libgit2.git_reference_iterator>
         {
             public git_reference_iterator(nint handle) => Handle = handle;
             
@@ -1133,7 +1133,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Transactional interface to references
         /// </summary>
-        public readonly partial struct git_transaction : IEquatable<git_transaction>
+        public readonly partial struct git_transaction : IEquatable<libgit2.git_transaction>
         {
             public git_transaction(nint handle) => Handle = handle;
             
@@ -1155,7 +1155,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Annotated commits, the input to merge and rebase.
         /// </summary>
-        public readonly partial struct git_annotated_commit : IEquatable<git_annotated_commit>
+        public readonly partial struct git_annotated_commit : IEquatable<libgit2.git_annotated_commit>
         {
             public git_annotated_commit(nint handle) => Handle = handle;
             
@@ -1177,7 +1177,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of a status collection
         /// </summary>
-        public readonly partial struct git_status_list : IEquatable<git_status_list>
+        public readonly partial struct git_status_list : IEquatable<libgit2.git_status_list>
         {
             public git_status_list(nint handle) => Handle = handle;
             
@@ -1199,7 +1199,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of a rebase
         /// </summary>
-        public readonly partial struct git_rebase : IEquatable<git_rebase>
+        public readonly partial struct git_rebase : IEquatable<libgit2.git_rebase>
         {
             public git_rebase(nint handle) => Handle = handle;
             
@@ -1222,7 +1222,7 @@ namespace XenoAtom.Interop
         /// A refspec specifies the mapping between remote and local reference
         /// names when fetch or pushing.
         /// </summary>
-        public readonly partial struct git_refspec : IEquatable<git_refspec>
+        public readonly partial struct git_refspec : IEquatable<libgit2.git_refspec>
         {
             public git_refspec(nint handle) => Handle = handle;
             
@@ -1245,7 +1245,7 @@ namespace XenoAtom.Interop
         /// Git's idea of a remote repository. A remote can be anonymous (in
         /// which case it does not have backing configuration entries).
         /// </summary>
-        public readonly partial struct git_remote : IEquatable<git_remote>
+        public readonly partial struct git_remote : IEquatable<libgit2.git_remote>
         {
             public git_remote(nint handle) => Handle = handle;
             
@@ -1268,7 +1268,7 @@ namespace XenoAtom.Interop
         /// Interface which represents a transport to communicate with a
         /// remote.
         /// </summary>
-        public readonly partial struct git_transport : IEquatable<git_transport>
+        public readonly partial struct git_transport : IEquatable<libgit2.git_transport>
         {
             public git_transport(nint handle) => Handle = handle;
             
@@ -1291,7 +1291,7 @@ namespace XenoAtom.Interop
         /// Preparation for a push operation. Can be used to configure what to
         /// push and the level of parallelism of the packfile builder.
         /// </summary>
-        public readonly partial struct git_push : IEquatable<git_push>
+        public readonly partial struct git_push : IEquatable<libgit2.git_push>
         {
             public git_push(nint handle) => Handle = handle;
             
@@ -1452,7 +1452,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Opaque structure representing a submodule.
         /// </summary>
-        public readonly partial struct git_submodule : IEquatable<git_submodule>
+        public readonly partial struct git_submodule : IEquatable<libgit2.git_submodule>
         {
             public git_submodule(nint handle) => Handle = handle;
             
@@ -1486,7 +1486,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of .mailmap file state.
         /// </summary>
-        public readonly partial struct git_mailmap : IEquatable<git_mailmap>
+        public readonly partial struct git_mailmap : IEquatable<libgit2.git_mailmap>
         {
             public git_mailmap(nint handle) => Handle = handle;
             
@@ -1512,7 +1512,7 @@ namespace XenoAtom.Interop
         /// before us (directly or indirectly), they'll get 32 bit off_t in their client
         /// app, even though /we/ define _FILE_OFFSET_BITS=64.
         /// </summary>
-        public readonly partial struct git_off_t : IEquatable<git_off_t>
+        public readonly partial struct git_off_t : IEquatable<libgit2.git_off_t>
         {
             public git_off_t(long value) => this.Value = value;
             

@@ -36,7 +36,7 @@ namespace XenoAtom.Interop
         public unsafe partial struct __ptrace_syscall_info
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
-            public partial struct __ptrace_syscall_info__struct_0
+            public partial struct __ptrace_syscall_info__union_0
             {
                 public unsafe partial struct __ptrace_syscall_info_entry
                 {
@@ -62,13 +62,13 @@ namespace XenoAtom.Interop
                 }
                 
                 [FieldOffset(0)]
-                public musl.__ptrace_syscall_info.__ptrace_syscall_info__struct_0.__ptrace_syscall_info_entry entry;
+                public musl.__ptrace_syscall_info.__ptrace_syscall_info__union_0.__ptrace_syscall_info_entry entry;
                 
                 [FieldOffset(0)]
-                public musl.__ptrace_syscall_info.__ptrace_syscall_info__struct_0.__ptrace_syscall_info_exit exit;
+                public musl.__ptrace_syscall_info.__ptrace_syscall_info__union_0.__ptrace_syscall_info_exit exit;
                 
                 [FieldOffset(0)]
-                public musl.__ptrace_syscall_info.__ptrace_syscall_info__struct_0.__ptrace_syscall_info_seccomp seccomp;
+                public musl.__ptrace_syscall_info.__ptrace_syscall_info__union_0.__ptrace_syscall_info_seccomp seccomp;
             }
             
             public byte op;
@@ -81,7 +81,7 @@ namespace XenoAtom.Interop
             
             public ulong stack_pointer;
             
-            public musl.__ptrace_syscall_info.__ptrace_syscall_info__struct_0 __ptrace_syscall_info__struct_5;
+            public musl.__ptrace_syscall_info.__ptrace_syscall_info__union_0 __ptrace_syscall_info__field_5;
         }
         
         public partial struct __ptrace_rseq_configuration

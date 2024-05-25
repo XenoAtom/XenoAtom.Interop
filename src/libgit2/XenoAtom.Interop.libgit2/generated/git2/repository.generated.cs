@@ -460,7 +460,7 @@ namespace XenoAtom.Interop
         /// <param name="payload">Payload passed to git_repository_fetchhead_foreach</param>
         /// <returns>@return non-zero to terminate the iteration</returns>
         /// <seealso cref="git_repository_fetchhead_foreach"/>
-        public readonly partial struct git_repository_fetchhead_foreach_cb : IEquatable<git_repository_fetchhead_foreach_cb>
+        public readonly partial struct git_repository_fetchhead_foreach_cb : IEquatable<libgit2.git_repository_fetchhead_foreach_cb>
         {
             public git_repository_fetchhead_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, libgit2.git_oid*, uint, void*, int> value) => this.Value = value;
             
@@ -490,7 +490,7 @@ namespace XenoAtom.Interop
         /// <param name="payload">Payload passed to git_repository_mergehead_foreach</param>
         /// <returns>@return non-zero to terminate the iteration</returns>
         /// <seealso cref="git_repository_mergehead_foreach"/>
-        public readonly partial struct git_repository_mergehead_foreach_cb : IEquatable<git_repository_mergehead_foreach_cb>
+        public readonly partial struct git_repository_mergehead_foreach_cb : IEquatable<libgit2.git_repository_mergehead_foreach_cb>
         {
             public git_repository_mergehead_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> value) => this.Value = value;
             

@@ -15,7 +15,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        public readonly partial struct __locale_struct : IEquatable<__locale_struct>
+        public readonly partial struct __locale_struct : IEquatable<musl.__locale_struct>
         {
             public __locale_struct(nint handle) => Handle = handle;
             

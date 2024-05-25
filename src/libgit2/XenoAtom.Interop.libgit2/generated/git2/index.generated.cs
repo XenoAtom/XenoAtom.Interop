@@ -232,7 +232,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Callback for APIs that add/remove/update files matching pathspec
         /// </summary>
-        public readonly partial struct git_index_matched_path_cb : IEquatable<git_index_matched_path_cb>
+        public readonly partial struct git_index_matched_path_cb : IEquatable<libgit2.git_index_matched_path_cb>
         {
             public git_index_matched_path_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
             

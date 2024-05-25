@@ -20,7 +20,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Iterator type for branches
         /// </summary>
-        public readonly partial struct git_branch_iterator : IEquatable<git_branch_iterator>
+        public readonly partial struct git_branch_iterator : IEquatable<libgit2.git_branch_iterator>
         {
             public git_branch_iterator(nint handle) => Handle = handle;
             

@@ -25,7 +25,7 @@ namespace XenoAtom.Interop
         /// <param name="payload">Payload passed to git_tag_foreach</param>
         /// <returns>@return non-zero to terminate the iteration</returns>
         /// <seealso cref="git_tag_foreach"/>
-        public readonly partial struct git_tag_foreach_cb : IEquatable<git_tag_foreach_cb>
+        public readonly partial struct git_tag_foreach_cb : IEquatable<libgit2.git_tag_foreach_cb>
         {
             public git_tag_foreach_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> value) => this.Value = value;
             

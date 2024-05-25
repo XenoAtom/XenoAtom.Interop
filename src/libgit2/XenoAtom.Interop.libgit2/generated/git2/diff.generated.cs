@@ -1094,7 +1094,7 @@ namespace XenoAtom.Interop
         /// responsible for releasing the object memory when done, using the
         /// `git_diff_free()` function.
         /// </remarks>
-        public readonly partial struct git_diff : IEquatable<git_diff>
+        public readonly partial struct git_diff : IEquatable<libgit2.git_diff>
         {
             public git_diff(nint handle) => Handle = handle;
             
@@ -1330,7 +1330,7 @@ namespace XenoAtom.Interop
         /// - returns 0, the delta is inserted into the diff, and the diff process
         /// continues.
         /// </remarks>
-        public readonly partial struct git_diff_notify_cb : IEquatable<git_diff_notify_cb>
+        public readonly partial struct git_diff_notify_cb : IEquatable<libgit2.git_diff_notify_cb>
         {
             public git_diff_notify_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, libgit2.git_diff_delta*, byte*, void*, int> value) => this.Value = value;
             
@@ -1363,7 +1363,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// Called before each file comparison.
         /// </remarks>
-        public readonly partial struct git_diff_progress_cb : IEquatable<git_diff_progress_cb>
+        public readonly partial struct git_diff_progress_cb : IEquatable<libgit2.git_diff_progress_cb>
         {
             public git_diff_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff, byte*, byte*, void*, int> value) => this.Value = value;
             
@@ -1633,7 +1633,7 @@ namespace XenoAtom.Interop
         /// You are responsible for releasing the object memory when done, using the
         /// `git_diff_stats_free()` function.
         /// </summary>
-        public readonly partial struct git_diff_stats : IEquatable<git_diff_stats>
+        public readonly partial struct git_diff_stats : IEquatable<libgit2.git_diff_stats>
         {
             public git_diff_stats(nint handle) => Handle = handle;
             
@@ -1670,7 +1670,7 @@ namespace XenoAtom.Interop
         /// <param name="delta">A pointer to the delta data for the file</param>
         /// <param name="progress">Goes from 0 to 1 over the diff</param>
         /// <param name="payload">User-specified pointer from foreach function</param>
-        public readonly partial struct git_diff_file_cb : IEquatable<git_diff_file_cb>
+        public readonly partial struct git_diff_file_cb : IEquatable<libgit2.git_diff_file_cb>
         {
             public git_diff_file_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int> value) => this.Value = value;
             
@@ -1697,7 +1697,7 @@ namespace XenoAtom.Interop
         /// When iterating over a diff, callback that will be made for
         /// binary content within the diff.
         /// </summary>
-        public readonly partial struct git_diff_binary_cb : IEquatable<git_diff_binary_cb>
+        public readonly partial struct git_diff_binary_cb : IEquatable<libgit2.git_diff_binary_cb>
         {
             public git_diff_binary_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int> value) => this.Value = value;
             
@@ -1723,7 +1723,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// When iterating over a diff, callback that will be made per hunk.
         /// </summary>
-        public readonly partial struct git_diff_hunk_cb : IEquatable<git_diff_hunk_cb>
+        public readonly partial struct git_diff_hunk_cb : IEquatable<libgit2.git_diff_hunk_cb>
         {
             public git_diff_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int> value) => this.Value = value;
             
@@ -1755,7 +1755,7 @@ namespace XenoAtom.Interop
         /// of text.  This uses some extra GIT_DIFF_LINE_... constants for output
         /// of lines of file and hunk headers.
         /// </remarks>
-        public readonly partial struct git_diff_line_cb : IEquatable<git_diff_line_cb>
+        public readonly partial struct git_diff_line_cb : IEquatable<libgit2.git_diff_line_cb>
         {
             public git_diff_line_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, libgit2.git_diff_line*, void*, int> value) => this.Value = value;
             

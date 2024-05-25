@@ -256,7 +256,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Opaque structure to hold blame results
         /// </summary>
-        public readonly partial struct git_blame : IEquatable<git_blame>
+        public readonly partial struct git_blame : IEquatable<libgit2.git_blame>
         {
             public git_blame(nint handle) => Handle = handle;
             

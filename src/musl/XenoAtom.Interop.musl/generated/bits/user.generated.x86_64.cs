@@ -23,7 +23,7 @@ namespace XenoAtom.Interop
             
             public const int UPAGES = 1;
             
-            public readonly partial struct elf_fpregset_t : IEquatable<elf_fpregset_t>
+            public readonly partial struct elf_fpregset_t : IEquatable<musl.x86_64.elf_fpregset_t>
             {
                 public elf_fpregset_t(musl.x86_64.user_fpregs_struct value) => this.Value = value;
                 
@@ -46,7 +46,7 @@ namespace XenoAtom.Interop
                 public static bool operator !=(elf_fpregset_t left, elf_fpregset_t right) => !left.Equals(right);
             }
             
-            public readonly partial struct elf_greg_t : IEquatable<elf_greg_t>
+            public readonly partial struct elf_greg_t : IEquatable<musl.x86_64.elf_greg_t>
             {
                 public elf_greg_t(ulong value) => this.Value = value;
                 
@@ -69,7 +69,7 @@ namespace XenoAtom.Interop
                 public static bool operator !=(elf_greg_t left, elf_greg_t right) => !left.Equals(right);
             }
             
-            public readonly partial struct elf_gregset_t : IEquatable<elf_gregset_t>
+            public readonly partial struct elf_gregset_t : IEquatable<musl.x86_64.elf_gregset_t>
             {
                 public elf_gregset_t(FixedArray27<ulong> value) => this.Value = value;
                 

@@ -54,7 +54,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_xlib_surface</para>
         /// </remarks>
-        public readonly partial struct VkXlibSurfaceCreateFlagsKHR : IEquatable<VkXlibSurfaceCreateFlagsKHR>
+        public readonly partial struct VkXlibSurfaceCreateFlagsKHR : IEquatable<vulkan.VkXlibSurfaceCreateFlagsKHR>
         {
             public VkXlibSurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
             
@@ -77,7 +77,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkXlibSurfaceCreateFlagsKHR left, VkXlibSurfaceCreateFlagsKHR right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateXlibSurfaceKHR : IEquatable<PFN_vkCreateXlibSurfaceKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateXlibSurfaceKHR : IEquatable<vulkan.PFN_vkCreateXlibSurfaceKHR>, IvkFunctionPointer
         {
             public PFN_vkCreateXlibSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkXlibSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -148,7 +148,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR : IEquatable<PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR>, IvkFunctionPointer
         {
             public PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, nuint, vulkan.VkBool32> value) => this.Value = value;
             

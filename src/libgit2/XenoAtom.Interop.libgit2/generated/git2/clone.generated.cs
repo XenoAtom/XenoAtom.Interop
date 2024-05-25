@@ -158,7 +158,7 @@ namespace XenoAtom.Interop
         /// to override the repository creation and customization process
         /// during a clone operation.
         /// </remarks>
-        public readonly partial struct git_repository_create_cb : IEquatable<git_repository_create_cb>
+        public readonly partial struct git_repository_create_cb : IEquatable<libgit2.git_repository_create_cb>
         {
             public git_repository_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> value) => this.Value = value;
             
@@ -195,7 +195,7 @@ namespace XenoAtom.Interop
         /// Callers of git_clone may provide a function matching this signature to override
         /// the remote creation and customization process during a clone operation.
         /// </remarks>
-        public readonly partial struct git_remote_create_cb : IEquatable<git_remote_create_cb>
+        public readonly partial struct git_remote_create_cb : IEquatable<libgit2.git_remote_create_cb>
         {
             public git_remote_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> value) => this.Value = value;
             

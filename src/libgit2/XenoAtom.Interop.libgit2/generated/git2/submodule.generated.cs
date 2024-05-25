@@ -145,7 +145,7 @@ namespace XenoAtom.Interop
         /// <param name="name">name of the submodule</param>
         /// <param name="payload">value you passed to the foreach function as payload</param>
         /// <returns>@return 0 on success or error code</returns>
-        public readonly partial struct git_submodule_cb : IEquatable<git_submodule_cb>
+        public readonly partial struct git_submodule_cb : IEquatable<libgit2.git_submodule_cb>
         {
             public git_submodule_cb(delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> value) => this.Value = value;
             

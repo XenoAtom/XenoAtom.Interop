@@ -47,7 +47,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// OID Shortener object
         /// </summary>
-        public readonly partial struct git_oid_shorten : IEquatable<git_oid_shorten>
+        public readonly partial struct git_oid_shorten : IEquatable<libgit2.git_oid_shorten>
         {
             public git_oid_shorten(nint handle) => Handle = handle;
             

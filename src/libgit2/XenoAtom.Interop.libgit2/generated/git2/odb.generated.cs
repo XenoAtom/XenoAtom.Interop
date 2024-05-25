@@ -84,7 +84,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Function type for callbacks from git_odb_foreach.
         /// </summary>
-        public readonly partial struct git_odb_foreach_cb : IEquatable<git_odb_foreach_cb>
+        public readonly partial struct git_odb_foreach_cb : IEquatable<libgit2.git_odb_foreach_cb>
         {
             public git_odb_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> value) => this.Value = value;
             

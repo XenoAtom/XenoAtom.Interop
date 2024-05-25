@@ -54,7 +54,7 @@ namespace XenoAtom.Interop
             public fixed byte ac_pad[10];
         }
         
-        public readonly partial struct comp_t : IEquatable<comp_t>
+        public readonly partial struct comp_t : IEquatable<musl.comp_t>
         {
             public comp_t(ushort value) => this.Value = value;
             

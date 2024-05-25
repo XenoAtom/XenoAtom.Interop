@@ -54,7 +54,7 @@ namespace XenoAtom.Interop
                 public fixed uint padding[24];
             }
             
-            public readonly partial struct fpregset_t : IEquatable<fpregset_t>
+            public readonly partial struct fpregset_t : IEquatable<musl.x86_64.fpregset_t>
             {
                 public fpregset_t(musl.x86_64._fpstate* value) => this.Value = value;
                 
@@ -77,7 +77,7 @@ namespace XenoAtom.Interop
                 public static bool operator !=(fpregset_t left, fpregset_t right) => !left.Equals(right);
             }
             
-            public readonly partial struct greg_t : IEquatable<greg_t>
+            public readonly partial struct greg_t : IEquatable<musl.x86_64.greg_t>
             {
                 public greg_t(long value) => this.Value = value;
                 
@@ -100,7 +100,7 @@ namespace XenoAtom.Interop
                 public static bool operator !=(greg_t left, greg_t right) => !left.Equals(right);
             }
             
-            public readonly partial struct gregset_t : IEquatable<gregset_t>
+            public readonly partial struct gregset_t : IEquatable<musl.x86_64.gregset_t>
             {
                 public gregset_t(FixedArray23<long> value) => this.Value = value;
                 
@@ -470,7 +470,7 @@ namespace XenoAtom.Interop
                 public FixedArray64<nuint> __fpregs_mem;
             }
             
-            public readonly partial struct ucontext_t : IEquatable<ucontext_t>
+            public readonly partial struct ucontext_t : IEquatable<musl.x86_64.ucontext_t>
             {
                 public ucontext_t(musl.x86_64.ucontext value) => this.Value = value;
                 

@@ -42,7 +42,7 @@ namespace XenoAtom.Interop
         /// commit and wants the calling function to create the commit as
         /// if no callback had been specified, any other value to stop
         /// and return a failure</returns>
-        public readonly partial struct git_commit_create_cb : IEquatable<git_commit_create_cb>
+        public readonly partial struct git_commit_create_cb : IEquatable<libgit2.git_commit_create_cb>
         {
             public git_commit_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> value) => this.Value = value;
             

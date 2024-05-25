@@ -86,7 +86,7 @@ namespace XenoAtom.Interop
         /// <param name="commit_id">oid of Commit</param>
         /// <param name="payload">User-specified pointer to data to be passed as data payload</param>
         /// <returns>@return non-zero to hide the commmit and it parent.</returns>
-        public readonly partial struct git_revwalk_hide_cb : IEquatable<git_revwalk_hide_cb>
+        public readonly partial struct git_revwalk_hide_cb : IEquatable<libgit2.git_revwalk_hide_cb>
         {
             public git_revwalk_hide_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> value) => this.Value = value;
             

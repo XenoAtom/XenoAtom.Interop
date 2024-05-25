@@ -88,7 +88,7 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
                 e => e.Map<CppFunction>("sqlite3_str_.*appendf").Discard(),
             },
         };
-        csOptions.Plugins.Insert(0, new CustomTypeConverter());
+        csOptions.Plugins.Add(new CustomTypeConverter());
         
         foreach (var srcFolder in srcFolders)
         {
