@@ -4,10 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Formats.Tar;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -20,6 +23,7 @@ public partial class ApkManager
     private const string IncludeFolder = "include";
     private const string ManFolder = "man";
     private const string SysIncludeFolder = "system_include";
+    private const string PackagesIncludeFolder = "packages_include";
     private Dictionary<string, PackageMap> _archToPackages = new();
 
     public const string DefaultArch = "x86_64";
@@ -81,9 +85,11 @@ public partial class ApkManager
                 }
 
                 var apkIndex = GetLocalPackagePath(arch, repository, ApkIndex);
-                if (!File.Exists(apkIndex))
+                var apkUrl = GetApkUrl(arch, repository, ApkIndex);
+                var lastModified = await GetLastModifiedForUrl(apkUrl);
+                
+                if (!File.Exists(apkIndex) || (lastModified.HasValue && File.GetLastWriteTime(apkIndex) < lastModified.Value))
                 {
-                    var apkUrl = GetApkUrl(arch, repository, ApkIndex);
                     await DownloadFile(apkUrl, apkIndex);
                 }
 
@@ -91,6 +97,10 @@ public partial class ApkManager
             }
         }
     }
+
+    [GeneratedRegex(@"((?<prefix>\w+):)?(?<name>[^>=]+)((?<range>=|>=|>)(?<version>.+))?", RegexOptions.Multiline)]
+    private static partial Regex RegexParseDependency();
+
 
     private async Task ReadIndex(string arch, string repository, string apkIndexPath)
     {
@@ -129,47 +139,69 @@ public partial class ApkManager
                     var currentPackageVersion = line.Substring(2);
                     packages.SetPackageVersion(currentPackage ?? throw new ArgumentNullException("Version found before package name"), currentPackageVersion);
                 }
-                else if (currentPackage != null && line.StartsWith("D:", StringComparison.Ordinal))
+                else if (currentPackage != null && (line.StartsWith("D:", StringComparison.Ordinal) || line.StartsWith("p:", StringComparison.Ordinal)))
                 {
                     // D:pc:skalibs pkgconfig s6-dns=2.3.7.0-r0
                     // D:so:libc.musl-x86_64.so.1 so:libskarnet.so.2.14
                     var parts = line.Substring(2).Split(' ');
                     foreach (var part in parts)
                     {
-                        var indexColon  = part.IndexOf(':', StringComparison.Ordinal);
-                        if (indexColon > 0)
+                        var match = RegexParseDependency().Match(part);
+                        if (!match.Success)
                         {
-                            var name = part.Substring(indexColon + 1);
-                            var prefix = part.Substring(0, indexColon);
-                            var kind = prefix switch
-                            {
-                                "pc" => PackageProvideKind.PackageConfig,
-                                "so" => PackageProvideKind.SharedObject,
-                                "cmd" => PackageProvideKind.Command,
-                                "dbus" => PackageProvideKind.Dbus,
-                                _ => throw new InvalidOperationException($"Invalid prefix {prefix}")
-                            };
+                            throw new InvalidOperationException($"Invalid dependency line part `{part}` in `{line}` from package {currentPackage}");
+                        }
 
-                            // We don't handle dbus dependencies
-                            if (kind == PackageProvideKind.Dbus)
+                        var name = match.Groups["name"].Value;
+                        var prefix = match.Groups["prefix"].Value;
+                        var range = match.Groups["range"].Value;
+                        var version = match.Groups["version"].Value;
+
+                        var kind = prefix switch
+                        {
+                            "pc" => PackageProvideKind.PackageConfig,
+                            "so" => PackageProvideKind.SharedObject,
+                            "cmd" => PackageProvideKind.Command,
+                            "dbus" => PackageProvideKind.Dbus,
+                            "" => PackageProvideKind.Package,
+                            _ => throw new InvalidOperationException($"Invalid prefix {prefix} in dependency line part `{part}` in `{line}` from package {currentPackage}")
+                        };
+
+                        var pkgRange = range switch
+                        {
+                            "=" => PackageVersionRange.Equal,
+                            ">" => PackageVersionRange.GreaterThan,
+                            ">=" => PackageVersionRange.GreaterThanOrEqual,
+                            "" => PackageVersionRange.None,
+                            _ => throw new InvalidOperationException($"Invalid range {range} in dependency line part `{part}` in `{line}` from package {currentPackage}")
+                        };
+
+
+                        // We don't handle dbus dependencies
+                        if (kind == PackageProvideKind.Dbus)
+                        {
+                            continue;
+                        }
+
+                        if (IsPackageSupported(name))
+                        {
+                            var package = packages.GetOrCreatePackage(currentPackage!);
+                            if (line.StartsWith("D:", StringComparison.Ordinal))
                             {
-                                continue;
+                                package.Dependencies.Add(new PackageDep(name, kind, pkgRange, version));
                             }
-
-                            string pkgName = GetPackageAndVersion(name, out var pkgVersion, out var range);
-                            if (IsPackageSupported(pkgName))
+                            else
                             {
-                                packages.AddPackageDep(currentPackage!, new PackageDep(pkgName, kind, range, pkgVersion));
+                                package.ContentDependencies.Add(new PackageContent(name, kind, pkgRange, version));
+
+                                // Register package configs
+                                if (kind == PackageProvideKind.PackageConfig)
+                                {
+                                    packages.PackageConfigs[name] = package;
+                                }
                             }
                         }
-                        else 
-                        {
-                            var pkgName = GetPackageAndVersion(part, out var pkgVersion, out var range);
-                            if (IsPackageSupported(pkgName))
-                            {
-                                packages.AddPackageDep(currentPackage!, new PackageDep(pkgName, PackageProvideKind.Package, range, pkgVersion));
-                            }
-                        }
+                        
                     }
                 }
                 else if (string.IsNullOrWhiteSpace(line))
@@ -265,6 +297,14 @@ public partial class ApkManager
 
     public async Task EnsureIncludes(string packageName)
     {
+        var visited = new HashSet<string>();
+        await EnsureIncludes(packageName, visited);
+    }
+    
+    private async Task EnsureIncludes(string packageName, HashSet<string> visited)
+    {
+        if (!visited.Add(packageName)) return;
+
         foreach (var arch in Architectures)
         {
             try
@@ -276,27 +316,30 @@ public partial class ApkManager
                     throw new InvalidOperationException($"Package {packageName} not found");
                 }
 
-                foreach (var dep in info)
+                foreach (var dep in info.Dependencies)
                 {
-                    if (dep.Kind == PackageProvideKind.Package)
+                    if (dep.Kind == PackageProvideKind.PackageConfig)
                     {
-                        if (dep.Name.EndsWith("-dev"))
+                        if (packages.PackageConfigs.TryGetValue(dep.Name, out var linkedPackage))
                         {
-                            await EnsureIncludes(dep.Name);
+                            await EnsureIncludes(linkedPackage.Name, visited);
                         }
                     }
                 }
 
                 var packageFile = $"{packageName}-{info.Version}.apk";
-                var localPath = GetLocalPackagePath(arch, info.Repository, packageFile);
-                if (!File.Exists(localPath))
+                var localPackagePath = GetLocalPackagePath(arch, info.Repository, packageFile);
+                if (!File.Exists(localPackagePath))
                 {
                     var apkUrl = GetApkUrl(arch, info.Repository, packageFile);
-                    DownloadFile(apkUrl, localPath).Wait();
+                    DownloadFile(apkUrl, localPackagePath).Wait();
                 }
 
                 var includeDirectory = packageName == "musl-dev" ? GetSysIncludeDirectory(arch, info.Repository) : GetIncludeDirectory(arch, info.Repository);
-                await ExtractFiles("usr/include/", localPath, includeDirectory);
+                await ExtractFiles("usr/include/", localPackagePath, includeDirectory);
+
+                includeDirectory = GetPackageIncludeDirectory(packageName, arch);
+                await ExtractFiles("usr/include/", localPackagePath, includeDirectory);
             }
             catch (Exception ex)
             {
@@ -392,33 +435,7 @@ public partial class ApkManager
             }
         }
     }
-
-    private string GetPackageAndVersion(string part, out string? packageVersion, out PackageVersionRange range)
-    {
-        var indexEqual = part.IndexOf('=');
-        if (indexEqual > 0)
-        {
-            packageVersion = part.Substring(indexEqual + 1);
-            part = part.Substring(0, indexEqual);
-            range = PackageVersionRange.Equal;
-            return part;
-        }
-        var indexSup = part.IndexOf('>');
-        if (indexSup > 0)
-        {
-            packageVersion = part.Substring(indexEqual + 1);
-            part = part.Substring(0, indexSup);
-            range = PackageVersionRange.GreaterThan;
-            return part;
-        }
-
-        packageVersion = null;
-        range = PackageVersionRange.None;
-        return part;
-    }
-
-
-
+    
     private async Task DownloadFile(string url, string localPath)
     {
         using var client = new System.Net.Http.HttpClient();
@@ -430,10 +447,30 @@ public partial class ApkManager
         await using var fileStream = new FileStream(localPath, FileMode.Create, FileAccess.Write, FileShare.None);
         await response.Content.CopyToAsync(fileStream);
     }
-    
+
+    private async Task<DateTimeOffset?> GetLastModifiedForUrl(string url)
+    {
+        using var client = new System.Net.Http.HttpClient();
+        using HttpRequestMessage request = new(HttpMethod.Head, url);
+
+        using HttpResponseMessage response = await client.SendAsync(request);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new InvalidOperationException($"Failed to check {url}. Status code: {response.StatusCode}");
+        }
+
+        return response.Content.Headers.LastModified;
+    }
+
     private string GetCacheDirectory(string arch, string repository)
     {
         return Path.Combine(CacheRootName, Version, repository, arch);
+    }
+
+    private string GetPackagesIncludeFolderForArch(string arch)
+    {
+        return Path.Combine(CacheRootName, Version, PackagesIncludeFolder, arch);
     }
 
     private string GetPackageDirectory(string arch, string repository)
@@ -449,6 +486,67 @@ public partial class ApkManager
     public string GetSubCacheDirectory(string name, string arch, string repository)
     {
         return Path.Combine(GetCacheDirectory(arch, repository), name);
+    }
+
+    public string GetPackageIncludeDirectory(string packageName, string? arch = null)
+    {
+        arch ??= DefaultArch;
+        var info = GetPackages(arch);
+        if (!info.ContainsKey(packageName))
+        {
+            throw new InvalidOperationException($"Package {packageName} not found");
+        }
+
+        var includesFolder = GetPackagesIncludeFolderForArch(arch);
+        var fullPath  = Path.GetFullPath(Path.Combine(includesFolder, packageName));
+        if (!Directory.Exists(fullPath))
+        {
+            Directory.CreateDirectory(fullPath);
+        }
+        return fullPath;
+    }
+    
+    private bool IsDevPackage(string packageName)
+    {
+        return packageName.EndsWith("-dev") || packageName.EndsWith("-headers");
+    }
+
+    public List<string> GetPackageIncludeDirectoryAndDependencies(string packageName, out string packageIncludeFolder, string? arch = null)
+    {
+        var visited = new HashSet<string>();
+        var directoryIncludes = new List<string>();
+
+        arch ??= DefaultArch;
+        FindPackageIncludeDependencies(packageName, arch ?? DefaultArch, directoryIncludes, visited);
+
+        packageIncludeFolder = directoryIncludes[^1];
+        directoryIncludes.RemoveAt(directoryIncludes.Count - 1);
+        
+        return directoryIncludes;
+    }
+    
+    private void FindPackageIncludeDependencies(string packageName, string arch, List<string> directoryIncludes, HashSet<string> visited)
+    {
+        if (!visited.Add(packageName)) return;
+        
+        var packages = GetPackages(arch);
+        if (!packages.TryGetValue(packageName, out var packageInfo))
+        {
+            throw new InvalidOperationException($"Package {packageName} not found");
+        }
+
+        foreach (var dep in packageInfo.Dependencies)
+        {
+            if (dep.Kind == PackageProvideKind.PackageConfig)
+            {
+                if (packages.PackageConfigs.TryGetValue(dep.Name, out var linkedPackage))
+                {
+                    FindPackageIncludeDependencies(linkedPackage.Name, arch, directoryIncludes, visited);
+                }
+            }
+        }
+
+        directoryIncludes.Add(GetPackageIncludeDirectory(packageName, arch));
     }
 
     public string GetIncludeDirectory(string repository)
@@ -496,9 +594,13 @@ public partial class ApkManager
 
 public record PackageDep(string Name, PackageProvideKind Kind, PackageVersionRange VersionRange = PackageVersionRange.None, string? Version = null);
 
+public record PackageContent(string Name, PackageProvideKind Kind, PackageVersionRange VersionRange = PackageVersionRange.None, string? Version = null);
+
 public class PackageMap : Dictionary<string, PackageInfo>
 {
-    internal void AddPackageDep(string packageName, PackageDep dep)
+    public Dictionary<string, PackageInfo> PackageConfigs { get; } = new();
+    
+    internal PackageInfo GetOrCreatePackage(string packageName)
     {
         if (!TryGetValue(packageName, out var info))
         {
@@ -509,7 +611,7 @@ public class PackageMap : Dictionary<string, PackageInfo>
             Add(packageName, info);
         }
 
-        info.Add(dep);
+        return info;
     }
 
     internal void CreatePackage(string packageName, string repository)
@@ -542,7 +644,8 @@ public class PackageMap : Dictionary<string, PackageInfo>
 }
 
 
-public class PackageInfo : List<PackageDep>
+[DebuggerDisplay("{Name} {Version}")]
+public class PackageInfo
 {
     public PackageInfo()
     {
@@ -555,6 +658,10 @@ public class PackageInfo : List<PackageDep>
     public string Version { get; set; }
 
     public string Repository { get; set; }
+
+    public List<PackageDep> Dependencies { get; } = new();
+
+    public List<PackageContent> ContentDependencies { get; } = new();
 }
 
 public enum PackageVersionRange
@@ -562,6 +669,7 @@ public enum PackageVersionRange
     None,
     Equal,
     GreaterThan,
+    GreaterThanOrEqual,
 }
 
 

@@ -54,9 +54,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     protected override async Task<CSharpCompilation?> Generate()
     {
         var sysIncludes = Apk.GetSysIncludeDirectory("main");
-        var mainInclude = Apk.GetIncludeDirectory("main");
         var vulkanSysIncludes = Path.Combine(AppContext.BaseDirectory, "vulkan_sys_includes");
 
+        var vulkanInclude = Apk.GetPackageIncludeDirectory("vulkan-headers");
 
         var csOptions = new CSharpConverterOptions()
         {
@@ -96,7 +96,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             },
             IncludeFolders =
             {
-                mainInclude
+                vulkanInclude
             },
             PreHeaderText = @"
 #define LUID unsigned long long
@@ -121,9 +121,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
         var files = new List<string>()
         {
-            Path.Combine(mainInclude, "vulkan/vulkan.h"),
-            Path.Combine(mainInclude, "vulkan/vk_icd.h"),
-            Path.Combine(mainInclude, "vulkan/vk_layer.h"),
+            Path.Combine(vulkanInclude, "vulkan/vulkan.h"),
+            Path.Combine(vulkanInclude, "vulkan/vk_icd.h"),
+            Path.Combine(vulkanInclude, "vulkan/vk_layer.h"),
         };
 
         var csCompilation = CSharpConverter.Convert(files, csOptions);
