@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props"/>
+  <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props" />
 
   <PropertyGroup>
     <Description>This package provides the shared types `FixedArray#&gt;T&lt;` to interop between .NET and C/C++.</Description>
@@ -26,6 +26,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>FixedArrays.tt</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>
