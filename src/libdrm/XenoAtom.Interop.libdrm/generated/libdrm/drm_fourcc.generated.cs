@@ -16,586 +16,586 @@ namespace XenoAtom.Interop
         /// <summary>
         /// format is big endian instead of little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BIG_ENDIAN = 2147483648;
+        public const uint DRM_FORMAT_BIG_ENDIAN = 2147483648;
         
-        public const ulong DRM_FORMAT_INVALID = 0;
+        public const uint DRM_FORMAT_INVALID = 0;
         
         /// <summary>
         /// [7:0] C0:C1:C2:C3:C4:C5:C6:C7 1:1:1:1:1:1:1:1 eight pixels/byte
         /// </summary>
-        public const ulong DRM_FORMAT_C1 = 538980675;
+        public const uint DRM_FORMAT_C1 = 538980675;
         
         /// <summary>
         /// [7:0] C0:C1:C2:C3 2:2:2:2 four pixels/byte
         /// </summary>
-        public const ulong DRM_FORMAT_C2 = 538980931;
+        public const uint DRM_FORMAT_C2 = 538980931;
         
         /// <summary>
         /// [7:0] C0:C1 4:4 two pixels/byte
         /// </summary>
-        public const ulong DRM_FORMAT_C4 = 538981443;
+        public const uint DRM_FORMAT_C4 = 538981443;
         
         /// <summary>
         /// [7:0] C
         /// </summary>
-        public const ulong DRM_FORMAT_C8 = 538982467;
+        public const uint DRM_FORMAT_C8 = 538982467;
         
         /// <summary>
         /// [7:0] D0:D1:D2:D3:D4:D5:D6:D7 1:1:1:1:1:1:1:1 eight pixels/byte
         /// </summary>
-        public const ulong DRM_FORMAT_D1 = 538980676;
+        public const uint DRM_FORMAT_D1 = 538980676;
         
         /// <summary>
         /// [7:0] D0:D1:D2:D3 2:2:2:2 four pixels/byte
         /// </summary>
-        public const ulong DRM_FORMAT_D2 = 538980932;
+        public const uint DRM_FORMAT_D2 = 538980932;
         
         /// <summary>
         /// [7:0] D0:D1 4:4 two pixels/byte
         /// </summary>
-        public const ulong DRM_FORMAT_D4 = 538981444;
+        public const uint DRM_FORMAT_D4 = 538981444;
         
         /// <summary>
         /// [7:0] D
         /// </summary>
-        public const ulong DRM_FORMAT_D8 = 538982468;
+        public const uint DRM_FORMAT_D8 = 538982468;
         
         /// <summary>
         /// [7:0] R0:R1:R2:R3:R4:R5:R6:R7 1:1:1:1:1:1:1:1 eight pixels/byte
         /// </summary>
-        public const ulong DRM_FORMAT_R1 = 538980690;
+        public const uint DRM_FORMAT_R1 = 538980690;
         
         /// <summary>
         /// [7:0] R0:R1:R2:R3 2:2:2:2 four pixels/byte
         /// </summary>
-        public const ulong DRM_FORMAT_R2 = 538980946;
+        public const uint DRM_FORMAT_R2 = 538980946;
         
         /// <summary>
         /// [7:0] R0:R1 4:4 two pixels/byte
         /// </summary>
-        public const ulong DRM_FORMAT_R4 = 538981458;
+        public const uint DRM_FORMAT_R4 = 538981458;
         
         /// <summary>
         /// [7:0] R
         /// </summary>
-        public const ulong DRM_FORMAT_R8 = 538982482;
+        public const uint DRM_FORMAT_R8 = 538982482;
         
         /// <summary>
         /// [15:0] x:R 6:10 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_R10 = 540029266;
+        public const uint DRM_FORMAT_R10 = 540029266;
         
         /// <summary>
         /// [15:0] x:R 4:12 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_R12 = 540160338;
+        public const uint DRM_FORMAT_R12 = 540160338;
         
         /// <summary>
         /// [15:0] R little endian
         /// </summary>
-        public const ulong DRM_FORMAT_R16 = 540422482;
+        public const uint DRM_FORMAT_R16 = 540422482;
         
         /// <summary>
         /// [15:0] R:G 8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RG88 = 943212370;
+        public const uint DRM_FORMAT_RG88 = 943212370;
         
         /// <summary>
         /// [15:0] G:R 8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_GR88 = 943215175;
+        public const uint DRM_FORMAT_GR88 = 943215175;
         
         /// <summary>
         /// [31:0] R:G 16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RG1616 = 842221394;
+        public const uint DRM_FORMAT_RG1616 = 842221394;
         
         /// <summary>
         /// [31:0] G:R 16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_GR1616 = 842224199;
+        public const uint DRM_FORMAT_GR1616 = 842224199;
         
         /// <summary>
         /// [7:0] R:G:B 3:3:2
         /// </summary>
-        public const ulong DRM_FORMAT_RGB332 = 943867730;
+        public const uint DRM_FORMAT_RGB332 = 943867730;
         
         /// <summary>
         /// [7:0] B:G:R 2:3:3
         /// </summary>
-        public const ulong DRM_FORMAT_BGR233 = 944916290;
+        public const uint DRM_FORMAT_BGR233 = 944916290;
         
         /// <summary>
         /// [15:0] x:R:G:B 4:4:4:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XRGB4444 = 842093144;
+        public const uint DRM_FORMAT_XRGB4444 = 842093144;
         
         /// <summary>
         /// [15:0] x:B:G:R 4:4:4:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XBGR4444 = 842089048;
+        public const uint DRM_FORMAT_XBGR4444 = 842089048;
         
         /// <summary>
         /// [15:0] R:G:B:x 4:4:4:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGBX4444 = 842094674;
+        public const uint DRM_FORMAT_RGBX4444 = 842094674;
         
         /// <summary>
         /// [15:0] B:G:R:x 4:4:4:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGRX4444 = 842094658;
+        public const uint DRM_FORMAT_BGRX4444 = 842094658;
         
         /// <summary>
         /// [15:0] A:R:G:B 4:4:4:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ARGB4444 = 842093121;
+        public const uint DRM_FORMAT_ARGB4444 = 842093121;
         
         /// <summary>
         /// [15:0] A:B:G:R 4:4:4:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ABGR4444 = 842089025;
+        public const uint DRM_FORMAT_ABGR4444 = 842089025;
         
         /// <summary>
         /// [15:0] R:G:B:A 4:4:4:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGBA4444 = 842088786;
+        public const uint DRM_FORMAT_RGBA4444 = 842088786;
         
         /// <summary>
         /// [15:0] B:G:R:A 4:4:4:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGRA4444 = 842088770;
+        public const uint DRM_FORMAT_BGRA4444 = 842088770;
         
         /// <summary>
         /// [15:0] x:R:G:B 1:5:5:5 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XRGB1555 = 892424792;
+        public const uint DRM_FORMAT_XRGB1555 = 892424792;
         
         /// <summary>
         /// [15:0] x:B:G:R 1:5:5:5 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XBGR1555 = 892420696;
+        public const uint DRM_FORMAT_XBGR1555 = 892420696;
         
         /// <summary>
         /// [15:0] R:G:B:x 5:5:5:1 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGBX5551 = 892426322;
+        public const uint DRM_FORMAT_RGBX5551 = 892426322;
         
         /// <summary>
         /// [15:0] B:G:R:x 5:5:5:1 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGRX5551 = 892426306;
+        public const uint DRM_FORMAT_BGRX5551 = 892426306;
         
         /// <summary>
         /// [15:0] A:R:G:B 1:5:5:5 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ARGB1555 = 892424769;
+        public const uint DRM_FORMAT_ARGB1555 = 892424769;
         
         /// <summary>
         /// [15:0] A:B:G:R 1:5:5:5 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ABGR1555 = 892420673;
+        public const uint DRM_FORMAT_ABGR1555 = 892420673;
         
         /// <summary>
         /// [15:0] R:G:B:A 5:5:5:1 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGBA5551 = 892420434;
+        public const uint DRM_FORMAT_RGBA5551 = 892420434;
         
         /// <summary>
         /// [15:0] B:G:R:A 5:5:5:1 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGRA5551 = 892420418;
+        public const uint DRM_FORMAT_BGRA5551 = 892420418;
         
         /// <summary>
         /// [15:0] R:G:B 5:6:5 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGB565 = 909199186;
+        public const uint DRM_FORMAT_RGB565 = 909199186;
         
         /// <summary>
         /// [15:0] B:G:R 5:6:5 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGR565 = 909199170;
+        public const uint DRM_FORMAT_BGR565 = 909199170;
         
         /// <summary>
         /// [23:0] R:G:B little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGB888 = 875710290;
+        public const uint DRM_FORMAT_RGB888 = 875710290;
         
         /// <summary>
         /// [23:0] B:G:R little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGR888 = 875710274;
+        public const uint DRM_FORMAT_BGR888 = 875710274;
         
         /// <summary>
         /// [31:0] x:R:G:B 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XRGB8888 = 875713112;
+        public const uint DRM_FORMAT_XRGB8888 = 875713112;
         
         /// <summary>
         /// [31:0] x:B:G:R 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XBGR8888 = 875709016;
+        public const uint DRM_FORMAT_XBGR8888 = 875709016;
         
         /// <summary>
         /// [31:0] R:G:B:x 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGBX8888 = 875714642;
+        public const uint DRM_FORMAT_RGBX8888 = 875714642;
         
         /// <summary>
         /// [31:0] B:G:R:x 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGRX8888 = 875714626;
+        public const uint DRM_FORMAT_BGRX8888 = 875714626;
         
         /// <summary>
         /// [31:0] A:R:G:B 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ARGB8888 = 875713089;
+        public const uint DRM_FORMAT_ARGB8888 = 875713089;
         
         /// <summary>
         /// [31:0] A:B:G:R 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ABGR8888 = 875708993;
+        public const uint DRM_FORMAT_ABGR8888 = 875708993;
         
         /// <summary>
         /// [31:0] R:G:B:A 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGBA8888 = 875708754;
+        public const uint DRM_FORMAT_RGBA8888 = 875708754;
         
         /// <summary>
         /// [31:0] B:G:R:A 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGRA8888 = 875708738;
+        public const uint DRM_FORMAT_BGRA8888 = 875708738;
         
         /// <summary>
         /// [31:0] x:R:G:B 2:10:10:10 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XRGB2101010 = 808669784;
+        public const uint DRM_FORMAT_XRGB2101010 = 808669784;
         
         /// <summary>
         /// [31:0] x:B:G:R 2:10:10:10 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XBGR2101010 = 808665688;
+        public const uint DRM_FORMAT_XBGR2101010 = 808665688;
         
         /// <summary>
         /// [31:0] R:G:B:x 10:10:10:2 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGBX1010102 = 808671314;
+        public const uint DRM_FORMAT_RGBX1010102 = 808671314;
         
         /// <summary>
         /// [31:0] B:G:R:x 10:10:10:2 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGRX1010102 = 808671298;
+        public const uint DRM_FORMAT_BGRX1010102 = 808671298;
         
         /// <summary>
         /// [31:0] A:R:G:B 2:10:10:10 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ARGB2101010 = 808669761;
+        public const uint DRM_FORMAT_ARGB2101010 = 808669761;
         
         /// <summary>
         /// [31:0] A:B:G:R 2:10:10:10 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ABGR2101010 = 808665665;
+        public const uint DRM_FORMAT_ABGR2101010 = 808665665;
         
         /// <summary>
         /// [31:0] R:G:B:A 10:10:10:2 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_RGBA1010102 = 808665426;
+        public const uint DRM_FORMAT_RGBA1010102 = 808665426;
         
         /// <summary>
         /// [31:0] B:G:R:A 10:10:10:2 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_BGRA1010102 = 808665410;
+        public const uint DRM_FORMAT_BGRA1010102 = 808665410;
         
         /// <summary>
         /// [63:0] x:R:G:B 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XRGB16161616 = 942953048;
+        public const uint DRM_FORMAT_XRGB16161616 = 942953048;
         
         /// <summary>
         /// [63:0] x:B:G:R 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XBGR16161616 = 942948952;
+        public const uint DRM_FORMAT_XBGR16161616 = 942948952;
         
         /// <summary>
         /// [63:0] A:R:G:B 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ARGB16161616 = 942953025;
+        public const uint DRM_FORMAT_ARGB16161616 = 942953025;
         
         /// <summary>
         /// [63:0] A:B:G:R 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ABGR16161616 = 942948929;
+        public const uint DRM_FORMAT_ABGR16161616 = 942948929;
         
         /// <summary>
         /// [63:0] x:R:G:B 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XRGB16161616F = 1211388504;
+        public const uint DRM_FORMAT_XRGB16161616F = 1211388504;
         
         /// <summary>
         /// [63:0] x:B:G:R 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XBGR16161616F = 1211384408;
+        public const uint DRM_FORMAT_XBGR16161616F = 1211384408;
         
         /// <summary>
         /// [63:0] A:R:G:B 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ARGB16161616F = 1211388481;
+        public const uint DRM_FORMAT_ARGB16161616F = 1211388481;
         
         /// <summary>
         /// [63:0] A:B:G:R 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_ABGR16161616F = 1211384385;
+        public const uint DRM_FORMAT_ABGR16161616F = 1211384385;
         
         /// <summary>
         /// [63:0] A:x:B:x:G:x:R:x 10:6:10:6:10:6:10:6 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_AXBXGXRX106106106106 = 808534593;
+        public const uint DRM_FORMAT_AXBXGXRX106106106106 = 808534593;
         
         /// <summary>
         /// [31:0] Cr0:Y1:Cb0:Y0 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_YUYV = 1448695129;
+        public const uint DRM_FORMAT_YUYV = 1448695129;
         
         /// <summary>
         /// [31:0] Cb0:Y1:Cr0:Y0 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_YVYU = 1431918169;
+        public const uint DRM_FORMAT_YVYU = 1431918169;
         
         /// <summary>
         /// [31:0] Y1:Cr0:Y0:Cb0 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_UYVY = 1498831189;
+        public const uint DRM_FORMAT_UYVY = 1498831189;
         
         /// <summary>
         /// [31:0] Y1:Cb0:Y0:Cr0 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_VYUY = 1498765654;
+        public const uint DRM_FORMAT_VYUY = 1498765654;
         
         /// <summary>
         /// [31:0] A:Y:Cb:Cr 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_AYUV = 1448433985;
+        public const uint DRM_FORMAT_AYUV = 1448433985;
         
         /// <summary>
         /// [31:0] A:Cr:Cb:Y 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_AVUY8888 = 1498764865;
+        public const uint DRM_FORMAT_AVUY8888 = 1498764865;
         
         /// <summary>
         /// [31:0] X:Y:Cb:Cr 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XYUV8888 = 1448434008;
+        public const uint DRM_FORMAT_XYUV8888 = 1448434008;
         
         /// <summary>
         /// [31:0] X:Cr:Cb:Y 8:8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XVUY8888 = 1498764888;
+        public const uint DRM_FORMAT_XVUY8888 = 1498764888;
         
         /// <summary>
         /// [23:0] Cr:Cb:Y 8:8:8 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_VUY888 = 875713878;
+        public const uint DRM_FORMAT_VUY888 = 875713878;
         
         /// <summary>
         /// Y followed by U then V, 10:10:10. Non-linear modifier only
         /// </summary>
-        public const ulong DRM_FORMAT_VUY101010 = 808670550;
+        public const uint DRM_FORMAT_VUY101010 = 808670550;
         
         /// <summary>
         /// [63:0] Cr0:0:Y1:0:Cb0:0:Y0:0 10:6:10:6:10:6:10:6 little endian per 2 Y pixels
         /// </summary>
-        public const ulong DRM_FORMAT_Y210 = 808530521;
+        public const uint DRM_FORMAT_Y210 = 808530521;
         
         /// <summary>
         /// [63:0] Cr0:0:Y1:0:Cb0:0:Y0:0 12:4:12:4:12:4:12:4 little endian per 2 Y pixels
         /// </summary>
-        public const ulong DRM_FORMAT_Y212 = 842084953;
+        public const uint DRM_FORMAT_Y212 = 842084953;
         
         /// <summary>
         /// [63:0] Cr0:Y1:Cb0:Y0 16:16:16:16 little endian per 2 Y pixels
         /// </summary>
-        public const ulong DRM_FORMAT_Y216 = 909193817;
+        public const uint DRM_FORMAT_Y216 = 909193817;
         
         /// <summary>
         /// [31:0] A:Cr:Y:Cb 2:10:10:10 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_Y410 = 808531033;
+        public const uint DRM_FORMAT_Y410 = 808531033;
         
         /// <summary>
         /// [63:0] A:0:Cr:0:Y:0:Cb:0 12:4:12:4:12:4:12:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_Y412 = 842085465;
+        public const uint DRM_FORMAT_Y412 = 842085465;
         
         /// <summary>
         /// [63:0] A:Cr:Y:Cb 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_Y416 = 909194329;
+        public const uint DRM_FORMAT_Y416 = 909194329;
         
         /// <summary>
         /// [31:0] X:Cr:Y:Cb 2:10:10:10 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XVYU2101010 = 808670808;
+        public const uint DRM_FORMAT_XVYU2101010 = 808670808;
         
         /// <summary>
         /// [63:0] X:0:Cr:0:Y:0:Cb:0 12:4:12:4:12:4:12:4 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XVYU12_16161616 = 909334104;
+        public const uint DRM_FORMAT_XVYU12_16161616 = 909334104;
         
         /// <summary>
         /// [63:0] X:Cr:Y:Cb 16:16:16:16 little endian
         /// </summary>
-        public const ulong DRM_FORMAT_XVYU16161616 = 942954072;
+        public const uint DRM_FORMAT_XVYU16161616 = 942954072;
         
-        public const ulong DRM_FORMAT_Y0L0 = 810299481;
+        public const uint DRM_FORMAT_Y0L0 = 810299481;
         
-        public const ulong DRM_FORMAT_X0L0 = 810299480;
+        public const uint DRM_FORMAT_X0L0 = 810299480;
         
-        public const ulong DRM_FORMAT_Y0L2 = 843853913;
+        public const uint DRM_FORMAT_Y0L2 = 843853913;
         
-        public const ulong DRM_FORMAT_X0L2 = 843853912;
+        public const uint DRM_FORMAT_X0L2 = 843853912;
         
-        public const ulong DRM_FORMAT_YUV420_8BIT = 942691673;
+        public const uint DRM_FORMAT_YUV420_8BIT = 942691673;
         
-        public const ulong DRM_FORMAT_YUV420_10BIT = 808539481;
+        public const uint DRM_FORMAT_YUV420_10BIT = 808539481;
         
-        public const ulong DRM_FORMAT_XRGB8888_A8 = 943805016;
+        public const uint DRM_FORMAT_XRGB8888_A8 = 943805016;
         
-        public const ulong DRM_FORMAT_XBGR8888_A8 = 943800920;
+        public const uint DRM_FORMAT_XBGR8888_A8 = 943800920;
         
-        public const ulong DRM_FORMAT_RGBX8888_A8 = 943806546;
+        public const uint DRM_FORMAT_RGBX8888_A8 = 943806546;
         
-        public const ulong DRM_FORMAT_BGRX8888_A8 = 943806530;
+        public const uint DRM_FORMAT_BGRX8888_A8 = 943806530;
         
-        public const ulong DRM_FORMAT_RGB888_A8 = 943798354;
+        public const uint DRM_FORMAT_RGB888_A8 = 943798354;
         
-        public const ulong DRM_FORMAT_BGR888_A8 = 943798338;
+        public const uint DRM_FORMAT_BGR888_A8 = 943798338;
         
-        public const ulong DRM_FORMAT_RGB565_A8 = 943797586;
+        public const uint DRM_FORMAT_RGB565_A8 = 943797586;
         
-        public const ulong DRM_FORMAT_BGR565_A8 = 943797570;
+        public const uint DRM_FORMAT_BGR565_A8 = 943797570;
         
         /// <summary>
         /// 2x2 subsampled Cr:Cb plane
         /// </summary>
-        public const ulong DRM_FORMAT_NV12 = 842094158;
+        public const uint DRM_FORMAT_NV12 = 842094158;
         
         /// <summary>
         /// 2x2 subsampled Cb:Cr plane
         /// </summary>
-        public const ulong DRM_FORMAT_NV21 = 825382478;
+        public const uint DRM_FORMAT_NV21 = 825382478;
         
         /// <summary>
         /// 2x1 subsampled Cr:Cb plane
         /// </summary>
-        public const ulong DRM_FORMAT_NV16 = 909203022;
+        public const uint DRM_FORMAT_NV16 = 909203022;
         
         /// <summary>
         /// 2x1 subsampled Cb:Cr plane
         /// </summary>
-        public const ulong DRM_FORMAT_NV61 = 825644622;
+        public const uint DRM_FORMAT_NV61 = 825644622;
         
         /// <summary>
         /// non-subsampled Cr:Cb plane
         /// </summary>
-        public const ulong DRM_FORMAT_NV24 = 875714126;
+        public const uint DRM_FORMAT_NV24 = 875714126;
         
         /// <summary>
         /// non-subsampled Cb:Cr plane
         /// </summary>
-        public const ulong DRM_FORMAT_NV42 = 842290766;
+        public const uint DRM_FORMAT_NV42 = 842290766;
         
         /// <summary>
         /// 2x2 subsampled Cr:Cb plane
         /// </summary>
-        public const ulong DRM_FORMAT_NV15 = 892425806;
+        public const uint DRM_FORMAT_NV15 = 892425806;
         
         /// <summary>
         /// 2x1 subsampled Cr:Cb plane
         /// </summary>
-        public const ulong DRM_FORMAT_NV20 = 808605262;
+        public const uint DRM_FORMAT_NV20 = 808605262;
         
         /// <summary>
         /// non-subsampled Cr:Cb plane
         /// </summary>
-        public const ulong DRM_FORMAT_NV30 = 808670798;
+        public const uint DRM_FORMAT_NV30 = 808670798;
         
         /// <summary>
         /// 2x1 subsampled Cr:Cb plane, 10 bit per channel
         /// </summary>
-        public const ulong DRM_FORMAT_P210 = 808530512;
+        public const uint DRM_FORMAT_P210 = 808530512;
         
         /// <summary>
         /// 2x2 subsampled Cr:Cb plane 10 bits per channel
         /// </summary>
-        public const ulong DRM_FORMAT_P010 = 808530000;
+        public const uint DRM_FORMAT_P010 = 808530000;
         
         /// <summary>
         /// 2x2 subsampled Cr:Cb plane 12 bits per channel
         /// </summary>
-        public const ulong DRM_FORMAT_P012 = 842084432;
+        public const uint DRM_FORMAT_P012 = 842084432;
         
         /// <summary>
         /// 2x2 subsampled Cr:Cb plane 16 bits per channel
         /// </summary>
-        public const ulong DRM_FORMAT_P016 = 909193296;
+        public const uint DRM_FORMAT_P016 = 909193296;
         
         /// <summary>
         /// 2x2 subsampled Cr:Cb plane 10 bits per channel packed
         /// </summary>
-        public const ulong DRM_FORMAT_P030 = 808661072;
+        public const uint DRM_FORMAT_P030 = 808661072;
         
-        public const ulong DRM_FORMAT_Q410 = 808531025;
+        public const uint DRM_FORMAT_Q410 = 808531025;
         
-        public const ulong DRM_FORMAT_Q401 = 825242705;
+        public const uint DRM_FORMAT_Q401 = 825242705;
         
         /// <summary>
         /// 4x4 subsampled Cb (1) and Cr (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YUV410 = 961959257;
+        public const uint DRM_FORMAT_YUV410 = 961959257;
         
         /// <summary>
         /// 4x4 subsampled Cr (1) and Cb (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YVU410 = 961893977;
+        public const uint DRM_FORMAT_YVU410 = 961893977;
         
         /// <summary>
         /// 4x1 subsampled Cb (1) and Cr (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YUV411 = 825316697;
+        public const uint DRM_FORMAT_YUV411 = 825316697;
         
         /// <summary>
         /// 4x1 subsampled Cr (1) and Cb (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YVU411 = 825316953;
+        public const uint DRM_FORMAT_YVU411 = 825316953;
         
         /// <summary>
         /// 2x2 subsampled Cb (1) and Cr (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YUV420 = 842093913;
+        public const uint DRM_FORMAT_YUV420 = 842093913;
         
         /// <summary>
         /// 2x2 subsampled Cr (1) and Cb (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YVU420 = 842094169;
+        public const uint DRM_FORMAT_YVU420 = 842094169;
         
         /// <summary>
         /// 2x1 subsampled Cb (1) and Cr (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YUV422 = 909202777;
+        public const uint DRM_FORMAT_YUV422 = 909202777;
         
         /// <summary>
         /// 2x1 subsampled Cr (1) and Cb (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YVU422 = 909203033;
+        public const uint DRM_FORMAT_YVU422 = 909203033;
         
         /// <summary>
         /// non-subsampled Cb (1) and Cr (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YUV444 = 875713881;
+        public const uint DRM_FORMAT_YUV444 = 875713881;
         
         /// <summary>
         /// non-subsampled Cr (1) and Cb (2) planes
         /// </summary>
-        public const ulong DRM_FORMAT_YVU444 = 875714137;
+        public const uint DRM_FORMAT_YVU444 = 875714137;
         
         public const ulong DRM_FORMAT_MOD_VENDOR_NONE = 0;
         
@@ -619,8 +619,6 @@ namespace XenoAtom.Interop
         
         public const ulong DRM_FORMAT_MOD_VENDOR_AMLOGIC = 10;
         
-        public const ulong DRM_FORMAT_RESERVED = 72057594037927935;
-        
         public const ulong DRM_FORMAT_MOD_GENERIC_16_16_TILE = 288230376151711746;
         
         public const ulong DRM_FORMAT_MOD_INVALID = 72057594037927935;
@@ -628,6 +626,36 @@ namespace XenoAtom.Interop
         public const ulong DRM_FORMAT_MOD_LINEAR = 0;
         
         public const ulong DRM_FORMAT_MOD_NONE = 0;
+        
+        public const ulong I915_FORMAT_MOD_X_TILED = 72057594037927937;
+        
+        public const ulong I915_FORMAT_MOD_Y_TILED = 72057594037927938;
+        
+        public const ulong I915_FORMAT_MOD_Yf_TILED = 72057594037927939;
+        
+        public const ulong I915_FORMAT_MOD_Y_TILED_CCS = 72057594037927940;
+        
+        public const ulong I915_FORMAT_MOD_Yf_TILED_CCS = 72057594037927941;
+        
+        public const ulong I915_FORMAT_MOD_Y_TILED_GEN12_RC_CCS = 72057594037927942;
+        
+        public const ulong I915_FORMAT_MOD_Y_TILED_GEN12_MC_CCS = 72057594037927943;
+        
+        public const ulong I915_FORMAT_MOD_Y_TILED_GEN12_RC_CCS_CC = 72057594037927944;
+        
+        public const ulong I915_FORMAT_MOD_4_TILED = 72057594037927945;
+        
+        public const ulong I915_FORMAT_MOD_4_TILED_DG2_RC_CCS = 72057594037927946;
+        
+        public const ulong I915_FORMAT_MOD_4_TILED_DG2_MC_CCS = 72057594037927947;
+        
+        public const ulong I915_FORMAT_MOD_4_TILED_DG2_RC_CCS_CC = 72057594037927948;
+        
+        public const ulong I915_FORMAT_MOD_4_TILED_MTL_RC_CCS = 72057594037927949;
+        
+        public const ulong I915_FORMAT_MOD_4_TILED_MTL_MC_CCS = 72057594037927950;
+        
+        public const ulong I915_FORMAT_MOD_4_TILED_MTL_RC_CCS_CC = 72057594037927951;
         
         public const ulong DRM_FORMAT_MOD_SAMSUNG_64_32_TILE = 288230376151711745;
         
@@ -646,6 +674,22 @@ namespace XenoAtom.Interop
         public const ulong DRM_FORMAT_MOD_VIVANTE_SPLIT_TILED = 432345564227567619;
         
         public const ulong DRM_FORMAT_MOD_VIVANTE_SPLIT_SUPER_TILED = 432345564227567620;
+        
+        public const ulong VIVANTE_MOD_TS_64_4 = 281474976710656;
+        
+        public const ulong VIVANTE_MOD_TS_64_2 = 562949953421312;
+        
+        public const ulong VIVANTE_MOD_TS_128_4 = 844424930131968;
+        
+        public const ulong VIVANTE_MOD_TS_256_4 = 1125899906842624;
+        
+        public const ulong VIVANTE_MOD_TS_MASK = 4222124650659840;
+        
+        public const ulong VIVANTE_MOD_COMP_DEC400 = 4503599627370496;
+        
+        public const ulong VIVANTE_MOD_COMP_MASK = 67553994410557440;
+        
+        public const ulong VIVANTE_MOD_EXT_MASK = 71776119061217280;
         
         public const ulong DRM_FORMAT_MOD_NVIDIA_TEGRA_TILED = 216172782113783809;
         
@@ -677,10 +721,120 @@ namespace XenoAtom.Interop
         
         public const ulong DRM_FORMAT_MOD_ARM_TYPE_MISC = 1;
         
+        public const ulong AFBC_FORMAT_MOD_BLOCK_SIZE_MASK = 15;
+        
+        public const ulong AFBC_FORMAT_MOD_BLOCK_SIZE_16x16 = 1;
+        
+        public const ulong AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 = 2;
+        
+        public const ulong AFBC_FORMAT_MOD_BLOCK_SIZE_64x4 = 3;
+        
+        public const ulong AFBC_FORMAT_MOD_BLOCK_SIZE_32x8_64x4 = 4;
+        
+        public const ulong AFBC_FORMAT_MOD_YTR = 16;
+        
+        public const ulong AFBC_FORMAT_MOD_SPLIT = 32;
+        
+        public const ulong AFBC_FORMAT_MOD_SPARSE = 64;
+        
+        public const ulong AFBC_FORMAT_MOD_CBR = 128;
+        
+        public const ulong AFBC_FORMAT_MOD_TILED = 256;
+        
+        public const ulong AFBC_FORMAT_MOD_SC = 512;
+        
+        public const ulong AFBC_FORMAT_MOD_DB = 1024;
+        
+        public const ulong AFBC_FORMAT_MOD_BCH = 2048;
+        
+        public const ulong AFBC_FORMAT_MOD_USM = 4096;
+        
         public const ulong DRM_FORMAT_MOD_ARM_TYPE_AFRC = 2;
         
         public const ulong DRM_FORMAT_MOD_ARM_16X16_BLOCK_U_INTERLEAVED = 580964351930793985;
         
         public const ulong DRM_FORMAT_MOD_ALLWINNER_TILED = 648518346341351425;
+        
+        public const int AMD_FMT_MOD_TILE_VER_GFX9 = 1;
+        
+        public const int AMD_FMT_MOD_TILE_VER_GFX10 = 2;
+        
+        public const int AMD_FMT_MOD_TILE_VER_GFX10_RBPLUS = 3;
+        
+        public const int AMD_FMT_MOD_TILE_VER_GFX11 = 4;
+        
+        public const int AMD_FMT_MOD_TILE_GFX9_64K_S = 9;
+        
+        public const int AMD_FMT_MOD_TILE_GFX9_64K_D = 10;
+        
+        public const int AMD_FMT_MOD_TILE_GFX9_64K_S_X = 25;
+        
+        public const int AMD_FMT_MOD_TILE_GFX9_64K_D_X = 26;
+        
+        public const int AMD_FMT_MOD_TILE_GFX9_64K_R_X = 27;
+        
+        public const int AMD_FMT_MOD_TILE_GFX11_256K_R_X = 31;
+        
+        public const int AMD_FMT_MOD_DCC_BLOCK_64B = 0;
+        
+        public const int AMD_FMT_MOD_DCC_BLOCK_128B = 1;
+        
+        public const int AMD_FMT_MOD_DCC_BLOCK_256B = 2;
+        
+        public const int AMD_FMT_MOD_TILE_VERSION_SHIFT = 0;
+        
+        public const int AMD_FMT_MOD_TILE_VERSION_MASK = 255;
+        
+        public const int AMD_FMT_MOD_TILE_SHIFT = 8;
+        
+        public const int AMD_FMT_MOD_TILE_MASK = 31;
+        
+        public const int AMD_FMT_MOD_DCC_SHIFT = 13;
+        
+        public const int AMD_FMT_MOD_DCC_MASK = 1;
+        
+        public const int AMD_FMT_MOD_DCC_RETILE_SHIFT = 14;
+        
+        public const int AMD_FMT_MOD_DCC_RETILE_MASK = 1;
+        
+        public const int AMD_FMT_MOD_DCC_PIPE_ALIGN_SHIFT = 15;
+        
+        public const int AMD_FMT_MOD_DCC_PIPE_ALIGN_MASK = 1;
+        
+        public const int AMD_FMT_MOD_DCC_INDEPENDENT_64B_SHIFT = 16;
+        
+        public const int AMD_FMT_MOD_DCC_INDEPENDENT_64B_MASK = 1;
+        
+        public const int AMD_FMT_MOD_DCC_INDEPENDENT_128B_SHIFT = 17;
+        
+        public const int AMD_FMT_MOD_DCC_INDEPENDENT_128B_MASK = 1;
+        
+        public const int AMD_FMT_MOD_DCC_MAX_COMPRESSED_BLOCK_SHIFT = 18;
+        
+        public const int AMD_FMT_MOD_DCC_MAX_COMPRESSED_BLOCK_MASK = 3;
+        
+        public const int AMD_FMT_MOD_DCC_CONSTANT_ENCODE_SHIFT = 20;
+        
+        public const int AMD_FMT_MOD_DCC_CONSTANT_ENCODE_MASK = 1;
+        
+        public const int AMD_FMT_MOD_PIPE_XOR_BITS_SHIFT = 21;
+        
+        public const int AMD_FMT_MOD_PIPE_XOR_BITS_MASK = 7;
+        
+        public const int AMD_FMT_MOD_BANK_XOR_BITS_SHIFT = 24;
+        
+        public const int AMD_FMT_MOD_BANK_XOR_BITS_MASK = 7;
+        
+        public const int AMD_FMT_MOD_PACKERS_SHIFT = 27;
+        
+        public const int AMD_FMT_MOD_PACKERS_MASK = 7;
+        
+        public const int AMD_FMT_MOD_RB_SHIFT = 30;
+        
+        public const int AMD_FMT_MOD_RB_MASK = 7;
+        
+        public const int AMD_FMT_MOD_PIPE_SHIFT = 33;
+        
+        public const int AMD_FMT_MOD_PIPE_MASK = 7;
     }
 }

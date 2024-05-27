@@ -67,8 +67,21 @@ internal partial class LibdrmGenerator(LibDescriptor descriptor) : GeneratorBase
 
             MappingRules =
             {
-                e => e.MapMacroToConst("DRM_FORMAT_.*", "unsigned long long"),
+                e => e.MapMacroToConst("DRM_DIR_NAME", "char*"),
+                e => e.MapMacroToConst("DRM_PRIMARY_MINOR_NAME", "char*"),
+                e => e.MapMacroToConst("DRM_DEV_DIRMODE", "int"),
+                e => e.MapMacroToConst("DRM_ERR_.*", "int"),
+                e => e.MapMacroToConst("DRM_LOCK_.*", "unsigned int"),
+                e => e.MapMacroToConst("DRM_EVENT_CONTEXT_VERSION", "int"),
+                e => e.MapMacroToConst("DRM_BUS_.*", "int"),
+                e => e.MapMacroToConst("DRM_DEVICE_GET_PCI_REVISION", "int"),
+                e => e.MapMacroToConst("DRM_PLANE_TYPE_.*", "int"),
+
+                e => e.MapMacroToConst("DRM_FORMAT_(?!MOD_|RESERVED).*", "unsigned int"),
+                e => e.MapMacroToConst("(I915|DRM|AFBC)_FORMAT_MOD_.*", "unsigned long long"),
+                e => e.MapMacroToConst("VIVANTE_MOD_.*", "unsigned long long"),
                 e => e.MapMacroToConst("DRM_MODE_.*", "int"),
+                e => e.MapMacroToConst("AMD_FMT_MOD_.*", "int"),
                 e => e.Map<CppFunction>("drmModeFormatModifierBlobIterNext").Type("unsigned char"),
                 e => e.Map<CppTypedef>("drmSizePtr").Discard(),
                 // We handle this manually
@@ -85,16 +98,16 @@ internal partial class LibdrmGenerator(LibDescriptor descriptor) : GeneratorBase
         typeDefConverter.StandardCTypes.Add("gid_t", () => CSharpPrimitiveType.UInt());
         typeDefConverter.StandardCTypes.Add("mode_t", () => CSharpPrimitiveType.UInt());
         typeDefConverter.StandardCTypes.Add("dev_t", () => CSharpPrimitiveType.UIntPtr());
-        
+
         csOptions.Plugins.Add(new CustomTypedefConverterPlugin());
-        
+
         foreach (var folder in sysFolders)
         {
             csOptions.SystemIncludeFolders.Add(folder);
         }
 
         csOptions.IncludeFolders.Add(Path.Combine(libdrmIncludeFolder, "libdrm"));
-        
+
         var files = new List<string>()
         {
             Path.Combine(libdrmIncludeFolder, "libdrm/drm.h"),
@@ -119,8 +132,22 @@ internal partial class LibdrmGenerator(LibDescriptor descriptor) : GeneratorBase
                 Environment.Exit(1);
             }
         }
-       
+
+        foreach (var csFunction in csCompilation.AllFunctions)
+        {
+            ProcessFunctionStrings(csFunction);
+        }
+
         return csCompilation;
+    }
+
+    private void ProcessFunctionStrings(CSharpMethod csFunction)
+    {
+        // We will provide manual overloads
+        if (csFunction.Name.StartsWith("drm") && csFunction.Name.EndsWith("Name"))
+        {
+            csFunction.Name = $"{csFunction.Name}_";
+        }
     }
 
 

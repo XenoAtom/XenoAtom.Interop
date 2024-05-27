@@ -492,6 +492,12 @@ namespace XenoAtom.Interop
         
         public const int DRM_MODE_FEATURE_DIRTYFB = 1;
         
+        public const int DRM_PLANE_TYPE_OVERLAY = 0;
+        
+        public const int DRM_PLANE_TYPE_PRIMARY = 1;
+        
+        public const int DRM_PLANE_TYPE_CURSOR = 2;
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmModeFreeModeInfo")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial void drmModeFreeModeInfo(libdrm.drmModeModeInfo* ptr);
@@ -826,7 +832,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmModeGetConnectorTypeName")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* drmModeGetConnectorTypeName(uint connector_type);
+        public static partial byte* drmModeGetConnectorTypeName_(uint connector_type);
         
         /// <summary>
         /// Create a dumb buffer.

@@ -17,7 +17,7 @@ public static unsafe partial class libdrm
     private const DllImportSearchPath DefaultDllImportSearchPath = DllImportSearchPath.ApplicationDirectory | DllImportSearchPath.UserDirectories | DllImportSearchPath.UseDllDirectoryForDependencies;
 
     /// <summary>
-    /// Set the resolver for the libdrm native library. 
+    /// Set the resolver for the libdrm native library.
     /// </summary>
     static libdrm()
     {
@@ -37,23 +37,6 @@ public static unsafe partial class libdrm
                     return ptr;
                 }
 
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    if (NativeLibrary.TryLoad(LibraryNameWindows, typeof(libdrm).Assembly, DefaultDllImportSearchPath, out ptr))
-                    {
-                        return ptr;
-                    }
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    if (NativeLibrary.TryLoad(LibraryNameMacOS, typeof(libdrm).Assembly, DefaultDllImportSearchPath, out ptr) ||
-                        NativeLibrary.TryLoad(LibraryNameMacOSAlternative, typeof(libdrm).Assembly, DefaultDllImportSearchPath, out ptr))
-
-                    {
-                        return ptr;
-                    }
-                }
-                else
                 {
                     if (NativeLibrary.TryLoad(LibraryNameUnix, typeof(libdrm).Assembly, DefaultDllImportSearchPath, out ptr) ||
                         NativeLibrary.TryLoad(LibraryNameUnixAlternative, typeof(libdrm).Assembly, DefaultDllImportSearchPath, out ptr))
@@ -71,9 +54,6 @@ public static unsafe partial class libdrm
 
 
     private const string LibraryName = "libdrm";
-    private const string LibraryNameWindows = "libdrm-1";
-    private const string LibraryNameUnix = "liblibdrm.so.1";
-    private const string LibraryNameUnixAlternative = "liblibdrm.so";
-    private const string LibraryNameMacOS = "liblibdrm.dylib.1";
-    private const string LibraryNameMacOSAlternative = "liblibdrm.dylib";
+    private const string LibraryNameUnix = "libdrm.so.2";
+    private const string LibraryNameUnixAlternative = "libdrm.so";
 }

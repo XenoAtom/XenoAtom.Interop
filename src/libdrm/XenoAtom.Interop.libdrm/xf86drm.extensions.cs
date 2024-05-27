@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace XenoAtom.Interop;
 
@@ -15,6 +16,16 @@ namespace XenoAtom.Interop;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 unsafe partial class libdrm
 {
+    [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetFormatModifierName")]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+    [return: MarshalUsing(typeof(Utf8CustomMarshaller))]
+    public static partial string drmGetFormatModifierName(ulong modifier);
+
+    [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetFormatName")]
+    [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+    [return: MarshalUsing(typeof(Utf8CustomMarshaller))]
+    public static partial string drmGetFormatName(uint format);
+
     public partial struct drmServerInfo
     {
         public delegate* unmanaged[Cdecl]<byte*, nint> debug_print; // void (*debug_print)(const char *format, ...);

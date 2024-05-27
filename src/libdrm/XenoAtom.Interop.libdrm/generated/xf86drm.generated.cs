@@ -942,6 +942,38 @@ namespace XenoAtom.Interop
             public libdrm.drmDevice._drmDevice__union_1 deviceinfo;
         }
         
+        public const int DRM_DEV_DIRMODE = 493;
+        
+        public const string DRM_DIR_NAME = "/dev/dri";
+        
+        public const string DRM_PRIMARY_MINOR_NAME = "card";
+        
+        public const int DRM_ERR_NO_DEVICE = -1001;
+        
+        public const int DRM_ERR_NO_ACCESS = -1002;
+        
+        public const int DRM_ERR_NOT_ROOT = -1003;
+        
+        public const int DRM_ERR_INVALID = -1004;
+        
+        public const int DRM_ERR_NO_FD = -1005;
+        
+        public const uint DRM_LOCK_HELD = 2147483648;
+        
+        public const uint DRM_LOCK_CONT = 1073741824;
+        
+        public const int DRM_EVENT_CONTEXT_VERSION = 4;
+        
+        public const int DRM_BUS_PCI = 0;
+        
+        public const int DRM_BUS_USB = 1;
+        
+        public const int DRM_BUS_PLATFORM = 2;
+        
+        public const int DRM_BUS_HOST1X = 3;
+        
+        public const int DRM_DEVICE_GET_PCI_REVISION = 1;
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmIoctl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int drmIoctl(int fd, nuint request, void* arg);
@@ -1573,10 +1605,10 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetFormatModifierName")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* drmGetFormatModifierName(ulong modifier);
+        public static partial byte* drmGetFormatModifierName_(ulong modifier);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetFormatName")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* drmGetFormatName(uint format);
+        public static partial byte* drmGetFormatName_(uint format);
     }
 }
