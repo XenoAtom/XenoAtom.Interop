@@ -9,7 +9,7 @@
     <XenoAtomNoInterop>true</XenoAtomNoInterop>
     <PackageId>XenoAtom.Interop</PackageId>
     <AssemblyName>XenoAtom.Interop</AssemblyName>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <XenoAtomNoMinVer>true</XenoAtomNoMinVer>
   </PropertyGroup>
 
