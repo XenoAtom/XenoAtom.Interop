@@ -52,10 +52,10 @@ partial class Program
             UsageInCSharp =
                 """
                 Example of using this library in C#:
-                
+
                 ```csharp
                 using static XenoAtom.Interop.musl;
-                
+
                 var ret = mkdir("test_directory", S_IRWXU | S_IRWXG | S_IRWXO);
                 if (ret == -1)
                 {
@@ -89,10 +89,10 @@ partial class Program
                 // Initialize libgit2
                 var ret = git_libgit2_init();
                 ret.Check(); // Automatically throws LibGit2Exception exception if the return value is not 0
-                
+
                 // Open a repository
                 git_repository_open(out var repo, "path/to/repo").Check();
-                
+
                 // Do something with the repository
                 // ...
                 ```
@@ -158,7 +158,7 @@ partial class Program
                 {
                     // ...
                 }
-                
+
                 // Decompress a buffer
                 var decompressedData = new byte[32];
                 ret = uncompress(decompressedData, out var decompressedSize, compressedData);
@@ -198,6 +198,7 @@ partial class Program
             UrlDocumentation = "https://gitlab.freedesktop.org/mesa/drm",
             Generator = desc => new LibdrmGenerator(desc),
             ApkDeps = ["libdrm-dev"],
+            SupportedArchitectures = [ "linux" ]
         },
     ];
 }
