@@ -7,6 +7,14 @@ using System.Runtime.CompilerServices;
 namespace XenoAtom.Interop;
 
 
+/// <summary>Fixed size array of <typeparamref name="T"/> with 1 elements.</summary>
+/// <typeparam name="T">Type of the elements.</typeparam>
+[InlineArray(1)]
+public struct FixedArray1<T>
+{
+    private T _element;
+}
+
 /// <summary>Fixed size array of <typeparamref name="T"/> with 2 elements.</summary>
 /// <typeparam name="T">Type of the elements.</typeparam>
 [InlineArray(2)]

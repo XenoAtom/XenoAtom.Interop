@@ -92,6 +92,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.vulkan", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.vulkan.Tests", "vulkan\XenoAtom.Interop.vulkan.Tests\XenoAtom.Interop.vulkan.Tests.csproj", "{75E2676A-38CE-4264-9717-082A384D29EC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libdrm", "libdrm", "{17B06B80-5543-4A5F-910C-9BEB3356E056}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libdrm", "libdrm\XenoAtom.Interop.libdrm\XenoAtom.Interop.libdrm.csproj", "{E0A94974-C786-4B94-8600-99C8295EB739}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libdrm.Tests", "libdrm\XenoAtom.Interop.libdrm.Tests\XenoAtom.Interop.libdrm.Tests.csproj", "{533FA1BD-B624-41CA-A792-423401BFBC99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -150,6 +156,14 @@ Global
 		{75E2676A-38CE-4264-9717-082A384D29EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75E2676A-38CE-4264-9717-082A384D29EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75E2676A-38CE-4264-9717-082A384D29EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0A94974-C786-4B94-8600-99C8295EB739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0A94974-C786-4B94-8600-99C8295EB739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0A94974-C786-4B94-8600-99C8295EB739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0A94974-C786-4B94-8600-99C8295EB739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{533FA1BD-B624-41CA-A792-423401BFBC99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{533FA1BD-B624-41CA-A792-423401BFBC99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{533FA1BD-B624-41CA-A792-423401BFBC99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{533FA1BD-B624-41CA-A792-423401BFBC99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -174,6 +188,9 @@ Global
 		{E1CE2480-5854-437F-B715-352BD3C6F21C} = {DA3698BE-1790-4569-A569-ECA2F29E25A9}
 		{AD8EE508-E6D0-404C-B710-20C2BC61FB0C} = {E1CE2480-5854-437F-B715-352BD3C6F21C}
 		{75E2676A-38CE-4264-9717-082A384D29EC} = {E1CE2480-5854-437F-B715-352BD3C6F21C}
+		{17B06B80-5543-4A5F-910C-9BEB3356E056} = {DA3698BE-1790-4569-A569-ECA2F29E25A9}
+		{E0A94974-C786-4B94-8600-99C8295EB739} = {17B06B80-5543-4A5F-910C-9BEB3356E056}
+		{533FA1BD-B624-41CA-A792-423401BFBC99} = {17B06B80-5543-4A5F-910C-9BEB3356E056}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95E8F3B3-49E8-400E-97A1-38D8B946DFCA}

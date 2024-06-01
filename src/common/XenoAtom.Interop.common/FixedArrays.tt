@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 
 namespace XenoAtom.Interop;
 
-<# for (int i = 2; i <= 256; i++) { #>
+<# for (int i = 1; i <= 256; i++) { #>
 
 /// <summary>Fixed size array of <typeparamref name="T"/> with <#= i #> elements.</summary>
 /// <typeparam name="T">Type of the elements.</typeparam>
