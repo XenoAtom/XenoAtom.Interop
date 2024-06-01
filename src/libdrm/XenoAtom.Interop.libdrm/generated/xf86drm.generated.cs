@@ -1447,7 +1447,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetDeviceNameFromFd")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* drmGetDeviceNameFromFd(int fd);
+        public static partial byte* drmGetDeviceNameFromFd_(int fd);
         
         /// <summary>
         /// Improved version of drmGetDeviceNameFromFd which attributes for any type of
@@ -1455,7 +1455,7 @@ namespace XenoAtom.Interop
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetDeviceNameFromFd2")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* drmGetDeviceNameFromFd2(int fd);
+        public static partial byte* drmGetDeviceNameFromFd2_(int fd);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetNodeTypeFromFd")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -1491,11 +1491,11 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetPrimaryDeviceNameFromFd")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* drmGetPrimaryDeviceNameFromFd(int fd);
+        public static partial byte* drmGetPrimaryDeviceNameFromFd_(int fd);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetRenderDeviceNameFromFd")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* drmGetRenderDeviceNameFromFd(int fd);
+        public static partial byte* drmGetRenderDeviceNameFromFd_(int fd);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetDevice")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

@@ -144,7 +144,7 @@ internal partial class LibdrmGenerator(LibDescriptor descriptor) : GeneratorBase
     private void ProcessFunctionStrings(CSharpMethod csFunction)
     {
         // We will provide manual overloads
-        if (csFunction.Name.StartsWith("drm") && csFunction.Name.EndsWith("Name"))
+        if (csFunction.Name.StartsWith("drm") && csFunction.Name.Contains("Name"))
         {
             csFunction.Name = $"{csFunction.Name}_";
         }
