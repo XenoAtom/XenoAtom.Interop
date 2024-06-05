@@ -3,6 +3,7 @@
 // See license.txt file in the project root for full license information.
 using XenoAtom.Interop.CodeGen.common;
 using XenoAtom.Interop.CodeGen.libdrm;
+using XenoAtom.Interop.CodeGen.libgbm;
 using XenoAtom.Interop.CodeGen.libgit2;
 using XenoAtom.Interop.CodeGen.musl;
 using XenoAtom.Interop.CodeGen.sqlite;
@@ -198,6 +199,17 @@ partial class Program
             UrlDocumentation = "https://gitlab.freedesktop.org/mesa/drm",
             Generator = desc => new LibdrmGenerator(desc),
             ApkDeps = ["libdrm-dev"],
+            SupportedArchitectures = [ "linux" ]
+        },
+        new()
+        {
+            Name = "libgbm",
+            Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the libgbm Mesa API.",
+            CppDescription = "libgbm is a userspace library that provides an abstraction for buffer management used by graphics drivers.",
+            Url = "https://gitlab.freedesktop.org/mesa/mesa",
+            UrlDocumentation = "https://gitlab.freedesktop.org/mesa/mesa",
+            Generator = desc => new LibgbmGenerator(desc),
+            ApkDeps = ["mesa-dev"],
             SupportedArchitectures = [ "linux" ]
         },
     ];

@@ -1,0 +1,22 @@
+name: ci_publish_libgbm
+
+on:
+  push:
+    tags:
+      - "libgbm/*"
+    paths:
+    - 'src/*.props'
+    - 'src/libgbm/**'
+  pull_request:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+#GITHUB_ACTION_PRE_STEP
+      - name: "Build, Test and Publish libgbm"
+        uses: xoofx/.github/.github/actions/dotnet-releaser-action@main   
+        with:
+          dotnet-releaser-path: 'src/libgbm/dotnet-releaser.toml'
+          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+#GITHUB_ACTION_POST_STEP

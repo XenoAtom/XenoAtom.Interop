@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props"/>
+
+  <PropertyGroup>
+    <Description>This package provides a low-level and modern .NET P/Invoke wrapper around the libgbm Mesa API.</Description>
+    <PackageTags>gbm;mesa;drm;libgbm;libdrm</PackageTags>
+    <MinVerTagPrefix>libgbm/</MinVerTagPrefix>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)../../TestsShared.props"/>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XenoAtom.Interop.libgbm\XenoAtom.Interop.libgbm.csproj" />
+  </ItemGroup>
+
+</Project>
