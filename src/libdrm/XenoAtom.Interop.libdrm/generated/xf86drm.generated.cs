@@ -962,6 +962,17 @@ namespace XenoAtom.Interop
         
         public const uint DRM_LOCK_CONT = 1073741824;
         
+        public const int DRM_NODE_PRIMARY = 0;
+        
+        /// <summary>
+        /// deprecated: never returned
+        /// </summary>
+        public const int DRM_NODE_CONTROL = 1;
+        
+        public const int DRM_NODE_RENDER = 2;
+        
+        public const int DRM_NODE_MAX = 3;
+        
         public const int DRM_EVENT_CONTEXT_VERSION = 4;
         
         public const int DRM_BUS_PCI = 0;

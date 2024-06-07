@@ -76,6 +76,7 @@ internal partial class LibdrmGenerator(LibDescriptor descriptor) : GeneratorBase
                 e => e.MapMacroToConst("DRM_BUS_.*", "int"),
                 e => e.MapMacroToConst("DRM_DEVICE_GET_PCI_REVISION", "int"),
                 e => e.MapMacroToConst("DRM_PLANE_TYPE_.*", "int"),
+                e => e.MapMacroToConst("DRM_NODE_(?!NAME_MAX).*", "int"),
 
                 e => e.MapMacroToConst("DRM_FORMAT_(?!MOD_|RESERVED).*", "unsigned int"),
                 e => e.MapMacroToConst("(I915|DRM|AFBC)_FORMAT_MOD_.*", "unsigned long long"),
