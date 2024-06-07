@@ -42,6 +42,19 @@ static unsafe class Utf8CustomMarshaller
 
         return UTF8EncodingRelaxed.Default.GetString(unmanaged, new ReadOnlySpan<byte>(unmanaged, int.MaxValue).IndexOf((byte)0));
     }
+    
+    /// <summary>Converts an unmanaged string to a managed version.</summary>
+    /// <param name="unmanaged">The unmanaged string to convert.</param>
+    /// <returns>A managed string.</returns>
+    public static string? ConvertToManaged(byte* unmanaged, int maxLength)
+    {
+        if (unmanaged == null)
+            return null;
+
+        var span = new ReadOnlySpan<byte>(unmanaged, maxLength);
+        var indexOfZero = span.IndexOf((byte)0);
+        return indexOfZero < 0 ? UTF8EncodingRelaxed.Default.GetString(span) : UTF8EncodingRelaxed.Default.GetString(span.Slice(0, indexOfZero));
+    }
 
     /// <param name="unmanaged">The memory allocated for the unmanaged string.</param>
     public static void UserFree(byte* unmanaged) => NativeMemory.Free(unmanaged);

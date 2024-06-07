@@ -27,4 +27,32 @@ unsafe partial class libdrm
     [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
     [return: MarshalUsing(typeof(Utf8CustomMarshaller))]
     public static partial string drmModeGetConnectorTypeName(uint connector_type);
+
+
+    partial struct drmModeModeInfo
+    {
+        public string Name
+        {
+            get
+            {
+                fixed (drmModeModeInfo* pThis = &this)
+                {
+                    return Utf8CustomMarshaller.ConvertToManaged(pThis->name, 32)!;
+                }
+            }
+        }
+    }
+    partial struct drmModePropertyRes
+    {
+        public string Name
+        {
+            get
+            {
+                fixed (drmModePropertyRes* pThis = &this)
+                {
+                    return Utf8CustomMarshaller.ConvertToManaged(pThis->name, 32)!;
+                }
+            }
+        }
+    }
 }

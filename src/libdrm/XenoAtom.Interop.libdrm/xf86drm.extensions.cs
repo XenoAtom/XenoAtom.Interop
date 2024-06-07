@@ -62,4 +62,19 @@ unsafe partial class libdrm
     [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmSetServerInfo")]
     [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
     public static partial void drmSetServerInfo(drmServerInfo* info);
+
+
+    partial struct drmVersion
+    {
+        public string Name
+        {
+            get
+            {
+                fixed (drmVersion* pThis = &this)
+                {
+                    return Utf8CustomMarshaller.ConvertToManaged(pThis->name, name_len)!;
+                }
+            }
+        }
+    }
 }
