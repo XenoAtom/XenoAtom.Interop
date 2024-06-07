@@ -765,6 +765,12 @@ namespace XenoAtom.Interop
         
         public const ulong DRM_FORMAT_MOD_ALLWINNER_TILED = 648518346341351425;
         
+        public const int AMLOGIC_FBC_LAYOUT_BASIC = 1;
+        
+        public const int AMLOGIC_FBC_LAYOUT_SCATTER = 2;
+        
+        public const int AMLOGIC_FBC_OPTION_MEM_SAVING = 1;
+        
         public const int AMD_FMT_MOD_TILE_VER_GFX9 = 1;
         
         public const int AMD_FMT_MOD_TILE_VER_GFX10 = 2;
