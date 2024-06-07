@@ -1672,5 +1672,43 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(drm_handle_t left, drm_handle_t right) => !left.Equals(right);
         }
+        
+        public const int DRM_CAP_DUMB_BUFFER = 1;
+        
+        public const int DRM_CAP_VBLANK_HIGH_CRTC = 2;
+        
+        public const int DRM_CAP_DUMB_PREFERRED_DEPTH = 3;
+        
+        public const int DRM_CAP_DUMB_PREFER_SHADOW = 4;
+        
+        public const int DRM_CAP_PRIME = 5;
+        
+        public const int DRM_CAP_TIMESTAMP_MONOTONIC = 6;
+        
+        public const int DRM_CAP_ASYNC_PAGE_FLIP = 7;
+        
+        public const int DRM_CAP_CURSOR_WIDTH = 8;
+        
+        public const int DRM_CAP_CURSOR_HEIGHT = 9;
+        
+        public const int DRM_CAP_ADDFB2_MODIFIERS = 16;
+        
+        public const int DRM_CAP_PAGE_FLIP_TARGET = 17;
+        
+        public const int DRM_CAP_CRTC_IN_VBLANK_EVENT = 18;
+        
+        public const int DRM_CAP_SYNCOBJ = 19;
+        
+        public const int DRM_CAP_SYNCOBJ_TIMELINE = 20;
+        
+        public const int DRM_CLIENT_CAP_STEREO_3D = 1;
+        
+        public const int DRM_CLIENT_CAP_UNIVERSAL_PLANES = 2;
+        
+        public const int DRM_CLIENT_CAP_ATOMIC = 3;
+        
+        public const int DRM_CLIENT_CAP_ASPECT_RATIO = 4;
+        
+        public const int DRM_CLIENT_CAP_WRITEBACK_CONNECTORS = 5;
     }
 }
