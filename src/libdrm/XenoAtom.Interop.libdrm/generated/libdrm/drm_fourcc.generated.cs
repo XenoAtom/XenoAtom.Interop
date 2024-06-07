@@ -751,6 +751,16 @@ namespace XenoAtom.Interop
         
         public const ulong DRM_FORMAT_MOD_ARM_TYPE_AFRC = 2;
         
+        public const ulong AFRC_FORMAT_MOD_CU_SIZE_MASK = 15;
+        
+        public const ulong AFRC_FORMAT_MOD_CU_SIZE_16 = 1;
+        
+        public const ulong AFRC_FORMAT_MOD_CU_SIZE_24 = 2;
+        
+        public const ulong AFRC_FORMAT_MOD_CU_SIZE_32 = 3;
+        
+        public const ulong AFRC_FORMAT_MOD_LAYOUT_SCAN = 256;
+        
         public const ulong DRM_FORMAT_MOD_ARM_16X16_BLOCK_U_INTERLEAVED = 580964351930793985;
         
         public const ulong DRM_FORMAT_MOD_ALLWINNER_TILED = 648518346341351425;
