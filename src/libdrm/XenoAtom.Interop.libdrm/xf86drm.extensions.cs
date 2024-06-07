@@ -76,5 +76,27 @@ unsafe partial class libdrm
                 }
             }
         }
+
+        public string Date
+        {
+            get
+            {
+                fixed (drmVersion* pThis = &this)
+                {
+                    return Utf8CustomMarshaller.ConvertToManaged(pThis->date, date_len)!;
+                }
+            }
+        }
+
+        public string Desc
+        {
+            get
+            {
+                fixed (drmVersion* pThis = &this)
+                {
+                    return Utf8CustomMarshaller.ConvertToManaged(pThis->desc, desc_len)!;
+                }
+            }
+        }
     }
 }
