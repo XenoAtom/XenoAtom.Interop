@@ -13,6 +13,754 @@ namespace XenoAtom.Interop
 {
     public static unsafe partial class libdrm
     {
+        [Flags]
+        public enum drm_mode_type : uint
+        {
+            /// <summary>
+            /// deprecated
+            /// </summary>
+            DRM_MODE_TYPE_BUILTIN = unchecked((uint)1),
+            
+            /// <summary>
+            /// deprecated
+            /// </summary>
+            DRM_MODE_TYPE_CLOCK_C = unchecked((uint)3),
+            
+            /// <summary>
+            /// deprecated
+            /// </summary>
+            DRM_MODE_TYPE_CRTC_C = unchecked((uint)5),
+            
+            DRM_MODE_TYPE_PREFERRED = unchecked((uint)8),
+            
+            /// <summary>
+            /// deprecated
+            /// </summary>
+            DRM_MODE_TYPE_DEFAULT = unchecked((uint)16),
+            
+            DRM_MODE_TYPE_USERDEF = unchecked((uint)32),
+            
+            DRM_MODE_TYPE_DRIVER = unchecked((uint)64),
+            
+            DRM_MODE_TYPE_ALL = unchecked((uint)104),
+        }
+        
+        /// <summary>
+        /// deprecated
+        /// </summary>
+        public const libdrm.drm_mode_type DRM_MODE_TYPE_BUILTIN = drm_mode_type.DRM_MODE_TYPE_BUILTIN;
+        
+        /// <summary>
+        /// deprecated
+        /// </summary>
+        public const libdrm.drm_mode_type DRM_MODE_TYPE_CLOCK_C = drm_mode_type.DRM_MODE_TYPE_CLOCK_C;
+        
+        /// <summary>
+        /// deprecated
+        /// </summary>
+        public const libdrm.drm_mode_type DRM_MODE_TYPE_CRTC_C = drm_mode_type.DRM_MODE_TYPE_CRTC_C;
+        
+        public const libdrm.drm_mode_type DRM_MODE_TYPE_PREFERRED = drm_mode_type.DRM_MODE_TYPE_PREFERRED;
+        
+        /// <summary>
+        /// deprecated
+        /// </summary>
+        public const libdrm.drm_mode_type DRM_MODE_TYPE_DEFAULT = drm_mode_type.DRM_MODE_TYPE_DEFAULT;
+        
+        public const libdrm.drm_mode_type DRM_MODE_TYPE_USERDEF = drm_mode_type.DRM_MODE_TYPE_USERDEF;
+        
+        public const libdrm.drm_mode_type DRM_MODE_TYPE_DRIVER = drm_mode_type.DRM_MODE_TYPE_DRIVER;
+        
+        public const libdrm.drm_mode_type DRM_MODE_TYPE_ALL = drm_mode_type.DRM_MODE_TYPE_ALL;
+        
+        [Flags]
+        public enum drm_mode_flag : uint
+        {
+            DRM_MODE_FLAG_PHSYNC = unchecked((uint)1),
+            
+            DRM_MODE_FLAG_NHSYNC = unchecked((uint)2),
+            
+            DRM_MODE_FLAG_PVSYNC = unchecked((uint)4),
+            
+            DRM_MODE_FLAG_NVSYNC = unchecked((uint)8),
+            
+            DRM_MODE_FLAG_INTERLACE = unchecked((uint)16),
+            
+            DRM_MODE_FLAG_DBLSCAN = unchecked((uint)32),
+            
+            DRM_MODE_FLAG_CSYNC = unchecked((uint)64),
+            
+            DRM_MODE_FLAG_PCSYNC = unchecked((uint)128),
+            
+            DRM_MODE_FLAG_NCSYNC = unchecked((uint)256),
+            
+            /// <summary>
+            /// hskew provided
+            /// </summary>
+            DRM_MODE_FLAG_HSKEW = unchecked((uint)512),
+            
+            /// <summary>
+            /// deprecated
+            /// </summary>
+            DRM_MODE_FLAG_BCAST = unchecked((uint)1024),
+            
+            /// <summary>
+            /// deprecated
+            /// </summary>
+            DRM_MODE_FLAG_PIXMUX = unchecked((uint)2048),
+            
+            DRM_MODE_FLAG_DBLCLK = unchecked((uint)4096),
+            
+            DRM_MODE_FLAG_CLKDIV2 = unchecked((uint)8192),
+            
+            DRM_MODE_FLAG_3D_MASK = unchecked((uint)507904),
+            
+            DRM_MODE_FLAG_3D_NONE = unchecked((uint)0),
+            
+            DRM_MODE_FLAG_3D_FRAME_PACKING = unchecked((uint)16384),
+            
+            DRM_MODE_FLAG_3D_FIELD_ALTERNATIVE = unchecked((uint)32768),
+            
+            DRM_MODE_FLAG_3D_LINE_ALTERNATIVE = unchecked((uint)49152),
+            
+            DRM_MODE_FLAG_3D_SIDE_BY_SIDE_FULL = unchecked((uint)65536),
+            
+            DRM_MODE_FLAG_3D_L_DEPTH = unchecked((uint)81920),
+            
+            DRM_MODE_FLAG_3D_L_DEPTH_GFX_GFX_DEPTH = unchecked((uint)98304),
+            
+            DRM_MODE_FLAG_3D_TOP_AND_BOTTOM = unchecked((uint)114688),
+            
+            DRM_MODE_FLAG_3D_SIDE_BY_SIDE_HALF = unchecked((uint)131072),
+            
+            DRM_MODE_FLAG_PIC_AR_MASK = unchecked((uint)7864320),
+            
+            DRM_MODE_FLAG_PIC_AR_NONE = unchecked((uint)0),
+            
+            DRM_MODE_FLAG_PIC_AR_4_3 = unchecked((uint)524288),
+            
+            DRM_MODE_FLAG_PIC_AR_16_9 = unchecked((uint)1048576),
+            
+            DRM_MODE_FLAG_PIC_AR_64_27 = unchecked((uint)1572864),
+            
+            DRM_MODE_FLAG_PIC_AR_256_135 = unchecked((uint)2097152),
+            
+            DRM_MODE_FLAG_ALL = unchecked((uint)521215),
+        }
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PHSYNC = drm_mode_flag.DRM_MODE_FLAG_PHSYNC;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_NHSYNC = drm_mode_flag.DRM_MODE_FLAG_NHSYNC;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PVSYNC = drm_mode_flag.DRM_MODE_FLAG_PVSYNC;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_NVSYNC = drm_mode_flag.DRM_MODE_FLAG_NVSYNC;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_INTERLACE = drm_mode_flag.DRM_MODE_FLAG_INTERLACE;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_DBLSCAN = drm_mode_flag.DRM_MODE_FLAG_DBLSCAN;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_CSYNC = drm_mode_flag.DRM_MODE_FLAG_CSYNC;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PCSYNC = drm_mode_flag.DRM_MODE_FLAG_PCSYNC;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_NCSYNC = drm_mode_flag.DRM_MODE_FLAG_NCSYNC;
+        
+        /// <summary>
+        /// hskew provided
+        /// </summary>
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_HSKEW = drm_mode_flag.DRM_MODE_FLAG_HSKEW;
+        
+        /// <summary>
+        /// deprecated
+        /// </summary>
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_BCAST = drm_mode_flag.DRM_MODE_FLAG_BCAST;
+        
+        /// <summary>
+        /// deprecated
+        /// </summary>
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PIXMUX = drm_mode_flag.DRM_MODE_FLAG_PIXMUX;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_DBLCLK = drm_mode_flag.DRM_MODE_FLAG_DBLCLK;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_CLKDIV2 = drm_mode_flag.DRM_MODE_FLAG_CLKDIV2;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_MASK = drm_mode_flag.DRM_MODE_FLAG_3D_MASK;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_NONE = drm_mode_flag.DRM_MODE_FLAG_3D_NONE;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_FRAME_PACKING = drm_mode_flag.DRM_MODE_FLAG_3D_FRAME_PACKING;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_FIELD_ALTERNATIVE = drm_mode_flag.DRM_MODE_FLAG_3D_FIELD_ALTERNATIVE;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_LINE_ALTERNATIVE = drm_mode_flag.DRM_MODE_FLAG_3D_LINE_ALTERNATIVE;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_SIDE_BY_SIDE_FULL = drm_mode_flag.DRM_MODE_FLAG_3D_SIDE_BY_SIDE_FULL;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_L_DEPTH = drm_mode_flag.DRM_MODE_FLAG_3D_L_DEPTH;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_L_DEPTH_GFX_GFX_DEPTH = drm_mode_flag.DRM_MODE_FLAG_3D_L_DEPTH_GFX_GFX_DEPTH;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_TOP_AND_BOTTOM = drm_mode_flag.DRM_MODE_FLAG_3D_TOP_AND_BOTTOM;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_3D_SIDE_BY_SIDE_HALF = drm_mode_flag.DRM_MODE_FLAG_3D_SIDE_BY_SIDE_HALF;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PIC_AR_MASK = drm_mode_flag.DRM_MODE_FLAG_PIC_AR_MASK;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PIC_AR_NONE = drm_mode_flag.DRM_MODE_FLAG_PIC_AR_NONE;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PIC_AR_4_3 = drm_mode_flag.DRM_MODE_FLAG_PIC_AR_4_3;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PIC_AR_16_9 = drm_mode_flag.DRM_MODE_FLAG_PIC_AR_16_9;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PIC_AR_64_27 = drm_mode_flag.DRM_MODE_FLAG_PIC_AR_64_27;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_PIC_AR_256_135 = drm_mode_flag.DRM_MODE_FLAG_PIC_AR_256_135;
+        
+        public const libdrm.drm_mode_flag DRM_MODE_FLAG_ALL = drm_mode_flag.DRM_MODE_FLAG_ALL;
+        
+        public enum drm_mode_picture_aspect : uint
+        {
+            DRM_MODE_PICTURE_ASPECT_NONE = unchecked((uint)0),
+            
+            DRM_MODE_PICTURE_ASPECT_4_3 = unchecked((uint)1),
+            
+            DRM_MODE_PICTURE_ASPECT_16_9 = unchecked((uint)2),
+            
+            DRM_MODE_PICTURE_ASPECT_64_27 = unchecked((uint)3),
+            
+            DRM_MODE_PICTURE_ASPECT_256_135 = unchecked((uint)4),
+        }
+        
+        public const libdrm.drm_mode_picture_aspect DRM_MODE_PICTURE_ASPECT_NONE = drm_mode_picture_aspect.DRM_MODE_PICTURE_ASPECT_NONE;
+        
+        public const libdrm.drm_mode_picture_aspect DRM_MODE_PICTURE_ASPECT_4_3 = drm_mode_picture_aspect.DRM_MODE_PICTURE_ASPECT_4_3;
+        
+        public const libdrm.drm_mode_picture_aspect DRM_MODE_PICTURE_ASPECT_16_9 = drm_mode_picture_aspect.DRM_MODE_PICTURE_ASPECT_16_9;
+        
+        public const libdrm.drm_mode_picture_aspect DRM_MODE_PICTURE_ASPECT_64_27 = drm_mode_picture_aspect.DRM_MODE_PICTURE_ASPECT_64_27;
+        
+        public const libdrm.drm_mode_picture_aspect DRM_MODE_PICTURE_ASPECT_256_135 = drm_mode_picture_aspect.DRM_MODE_PICTURE_ASPECT_256_135;
+        
+        public enum drm_mode_content_type : uint
+        {
+            DRM_MODE_CONTENT_TYPE_NO_DATA = unchecked((uint)0),
+            
+            DRM_MODE_CONTENT_TYPE_GRAPHICS = unchecked((uint)1),
+            
+            DRM_MODE_CONTENT_TYPE_PHOTO = unchecked((uint)2),
+            
+            DRM_MODE_CONTENT_TYPE_CINEMA = unchecked((uint)3),
+            
+            DRM_MODE_CONTENT_TYPE_GAME = unchecked((uint)4),
+        }
+        
+        public const libdrm.drm_mode_content_type DRM_MODE_CONTENT_TYPE_NO_DATA = drm_mode_content_type.DRM_MODE_CONTENT_TYPE_NO_DATA;
+        
+        public const libdrm.drm_mode_content_type DRM_MODE_CONTENT_TYPE_GRAPHICS = drm_mode_content_type.DRM_MODE_CONTENT_TYPE_GRAPHICS;
+        
+        public const libdrm.drm_mode_content_type DRM_MODE_CONTENT_TYPE_PHOTO = drm_mode_content_type.DRM_MODE_CONTENT_TYPE_PHOTO;
+        
+        public const libdrm.drm_mode_content_type DRM_MODE_CONTENT_TYPE_CINEMA = drm_mode_content_type.DRM_MODE_CONTENT_TYPE_CINEMA;
+        
+        public const libdrm.drm_mode_content_type DRM_MODE_CONTENT_TYPE_GAME = drm_mode_content_type.DRM_MODE_CONTENT_TYPE_GAME;
+        
+        public enum drm_mode_dpms : uint
+        {
+            DRM_MODE_DPMS_ON = unchecked((uint)0),
+            
+            DRM_MODE_DPMS_STANDBY = unchecked((uint)1),
+            
+            DRM_MODE_DPMS_SUSPEND = unchecked((uint)2),
+            
+            DRM_MODE_DPMS_OFF = unchecked((uint)3),
+        }
+        
+        public const libdrm.drm_mode_dpms DRM_MODE_DPMS_ON = drm_mode_dpms.DRM_MODE_DPMS_ON;
+        
+        public const libdrm.drm_mode_dpms DRM_MODE_DPMS_STANDBY = drm_mode_dpms.DRM_MODE_DPMS_STANDBY;
+        
+        public const libdrm.drm_mode_dpms DRM_MODE_DPMS_SUSPEND = drm_mode_dpms.DRM_MODE_DPMS_SUSPEND;
+        
+        public const libdrm.drm_mode_dpms DRM_MODE_DPMS_OFF = drm_mode_dpms.DRM_MODE_DPMS_OFF;
+        
+        public enum drm_mode_scale : uint
+        {
+            /// <summary>
+            /// Unmodified timing (display or
+            /// software can still scale)
+            /// </summary>
+            DRM_MODE_SCALE_NONE = unchecked((uint)0),
+            
+            /// <summary>
+            /// Full screen, ignore aspect
+            /// </summary>
+            DRM_MODE_SCALE_FULLSCREEN = unchecked((uint)1),
+            
+            /// <summary>
+            /// Centered, no scaling
+            /// </summary>
+            DRM_MODE_SCALE_CENTER = unchecked((uint)2),
+            
+            /// <summary>
+            /// Full screen, preserve aspect
+            /// </summary>
+            DRM_MODE_SCALE_ASPECT = unchecked((uint)3),
+        }
+        
+        /// <summary>
+        /// Unmodified timing (display or
+        /// software can still scale)
+        /// </summary>
+        public const libdrm.drm_mode_scale DRM_MODE_SCALE_NONE = drm_mode_scale.DRM_MODE_SCALE_NONE;
+        
+        /// <summary>
+        /// Full screen, ignore aspect
+        /// </summary>
+        public const libdrm.drm_mode_scale DRM_MODE_SCALE_FULLSCREEN = drm_mode_scale.DRM_MODE_SCALE_FULLSCREEN;
+        
+        /// <summary>
+        /// Centered, no scaling
+        /// </summary>
+        public const libdrm.drm_mode_scale DRM_MODE_SCALE_CENTER = drm_mode_scale.DRM_MODE_SCALE_CENTER;
+        
+        /// <summary>
+        /// Full screen, preserve aspect
+        /// </summary>
+        public const libdrm.drm_mode_scale DRM_MODE_SCALE_ASPECT = drm_mode_scale.DRM_MODE_SCALE_ASPECT;
+        
+        public enum drm_mode_dithering : uint
+        {
+            DRM_MODE_DITHERING_OFF = unchecked((uint)0),
+            
+            DRM_MODE_DITHERING_ON = unchecked((uint)1),
+            
+            DRM_MODE_DITHERING_AUTO = unchecked((uint)2),
+        }
+        
+        public const libdrm.drm_mode_dithering DRM_MODE_DITHERING_OFF = drm_mode_dithering.DRM_MODE_DITHERING_OFF;
+        
+        public const libdrm.drm_mode_dithering DRM_MODE_DITHERING_ON = drm_mode_dithering.DRM_MODE_DITHERING_ON;
+        
+        public const libdrm.drm_mode_dithering DRM_MODE_DITHERING_AUTO = drm_mode_dithering.DRM_MODE_DITHERING_AUTO;
+        
+        public enum drm_mode_dirty : uint
+        {
+            DRM_MODE_DIRTY_OFF = unchecked((uint)0),
+            
+            DRM_MODE_DIRTY_ON = unchecked((uint)1),
+            
+            DRM_MODE_DIRTY_ANNOTATE = unchecked((uint)2),
+        }
+        
+        public const libdrm.drm_mode_dirty DRM_MODE_DIRTY_OFF = drm_mode_dirty.DRM_MODE_DIRTY_OFF;
+        
+        public const libdrm.drm_mode_dirty DRM_MODE_DIRTY_ON = drm_mode_dirty.DRM_MODE_DIRTY_ON;
+        
+        public const libdrm.drm_mode_dirty DRM_MODE_DIRTY_ANNOTATE = drm_mode_dirty.DRM_MODE_DIRTY_ANNOTATE;
+        
+        [Flags]
+        public enum drm_mode_rotate : uint
+        {
+            DRM_MODE_ROTATE_0 = unchecked((uint)1),
+            
+            DRM_MODE_ROTATE_90 = unchecked((uint)2),
+            
+            DRM_MODE_ROTATE_180 = unchecked((uint)4),
+            
+            DRM_MODE_ROTATE_270 = unchecked((uint)8),
+            
+            DRM_MODE_ROTATE_MASK = unchecked((uint)15),
+        }
+        
+        public const libdrm.drm_mode_rotate DRM_MODE_ROTATE_0 = drm_mode_rotate.DRM_MODE_ROTATE_0;
+        
+        public const libdrm.drm_mode_rotate DRM_MODE_ROTATE_90 = drm_mode_rotate.DRM_MODE_ROTATE_90;
+        
+        public const libdrm.drm_mode_rotate DRM_MODE_ROTATE_180 = drm_mode_rotate.DRM_MODE_ROTATE_180;
+        
+        public const libdrm.drm_mode_rotate DRM_MODE_ROTATE_270 = drm_mode_rotate.DRM_MODE_ROTATE_270;
+        
+        public const libdrm.drm_mode_rotate DRM_MODE_ROTATE_MASK = drm_mode_rotate.DRM_MODE_ROTATE_MASK;
+        
+        [Flags]
+        public enum drm_mode_reflect : uint
+        {
+            DRM_MODE_REFLECT_X = unchecked((uint)16),
+            
+            DRM_MODE_REFLECT_Y = unchecked((uint)32),
+            
+            DRM_MODE_REFLECT_MASK = unchecked((uint)48),
+        }
+        
+        public const libdrm.drm_mode_reflect DRM_MODE_REFLECT_X = drm_mode_reflect.DRM_MODE_REFLECT_X;
+        
+        public const libdrm.drm_mode_reflect DRM_MODE_REFLECT_Y = drm_mode_reflect.DRM_MODE_REFLECT_Y;
+        
+        public const libdrm.drm_mode_reflect DRM_MODE_REFLECT_MASK = drm_mode_reflect.DRM_MODE_REFLECT_MASK;
+        
+        public enum drm_mode_content_protection : uint
+        {
+            DRM_MODE_CONTENT_PROTECTION_UNDESIRED = unchecked((uint)0),
+            
+            DRM_MODE_CONTENT_PROTECTION_DESIRED = unchecked((uint)1),
+            
+            DRM_MODE_CONTENT_PROTECTION_ENABLED = unchecked((uint)2),
+        }
+        
+        public const libdrm.drm_mode_content_protection DRM_MODE_CONTENT_PROTECTION_UNDESIRED = drm_mode_content_protection.DRM_MODE_CONTENT_PROTECTION_UNDESIRED;
+        
+        public const libdrm.drm_mode_content_protection DRM_MODE_CONTENT_PROTECTION_DESIRED = drm_mode_content_protection.DRM_MODE_CONTENT_PROTECTION_DESIRED;
+        
+        public const libdrm.drm_mode_content_protection DRM_MODE_CONTENT_PROTECTION_ENABLED = drm_mode_content_protection.DRM_MODE_CONTENT_PROTECTION_ENABLED;
+        
+        [Flags]
+        public enum drm_mode_present : uint
+        {
+            DRM_MODE_PRESENT_TOP_FIELD = unchecked((uint)1),
+            
+            DRM_MODE_PRESENT_BOTTOM_FIELD = unchecked((uint)2),
+        }
+        
+        public const libdrm.drm_mode_present DRM_MODE_PRESENT_TOP_FIELD = drm_mode_present.DRM_MODE_PRESENT_TOP_FIELD;
+        
+        public const libdrm.drm_mode_present DRM_MODE_PRESENT_BOTTOM_FIELD = drm_mode_present.DRM_MODE_PRESENT_BOTTOM_FIELD;
+        
+        public enum drm_mode_encoder : uint
+        {
+            DRM_MODE_ENCODER_NONE = unchecked((uint)0),
+            
+            DRM_MODE_ENCODER_DAC = unchecked((uint)1),
+            
+            DRM_MODE_ENCODER_TMDS = unchecked((uint)2),
+            
+            DRM_MODE_ENCODER_LVDS = unchecked((uint)3),
+            
+            DRM_MODE_ENCODER_TVDAC = unchecked((uint)4),
+            
+            DRM_MODE_ENCODER_VIRTUAL = unchecked((uint)5),
+            
+            DRM_MODE_ENCODER_DSI = unchecked((uint)6),
+            
+            DRM_MODE_ENCODER_DPMST = unchecked((uint)7),
+            
+            DRM_MODE_ENCODER_DPI = unchecked((uint)8),
+        }
+        
+        public const libdrm.drm_mode_encoder DRM_MODE_ENCODER_NONE = drm_mode_encoder.DRM_MODE_ENCODER_NONE;
+        
+        public const libdrm.drm_mode_encoder DRM_MODE_ENCODER_DAC = drm_mode_encoder.DRM_MODE_ENCODER_DAC;
+        
+        public const libdrm.drm_mode_encoder DRM_MODE_ENCODER_TMDS = drm_mode_encoder.DRM_MODE_ENCODER_TMDS;
+        
+        public const libdrm.drm_mode_encoder DRM_MODE_ENCODER_LVDS = drm_mode_encoder.DRM_MODE_ENCODER_LVDS;
+        
+        public const libdrm.drm_mode_encoder DRM_MODE_ENCODER_TVDAC = drm_mode_encoder.DRM_MODE_ENCODER_TVDAC;
+        
+        public const libdrm.drm_mode_encoder DRM_MODE_ENCODER_VIRTUAL = drm_mode_encoder.DRM_MODE_ENCODER_VIRTUAL;
+        
+        public const libdrm.drm_mode_encoder DRM_MODE_ENCODER_DSI = drm_mode_encoder.DRM_MODE_ENCODER_DSI;
+        
+        public const libdrm.drm_mode_encoder DRM_MODE_ENCODER_DPMST = drm_mode_encoder.DRM_MODE_ENCODER_DPMST;
+        
+        public const libdrm.drm_mode_encoder DRM_MODE_ENCODER_DPI = drm_mode_encoder.DRM_MODE_ENCODER_DPI;
+        
+        public enum drm_mode_connector : uint
+        {
+            DRM_MODE_CONNECTOR_Unknown = unchecked((uint)0),
+            
+            DRM_MODE_CONNECTOR_VGA = unchecked((uint)1),
+            
+            DRM_MODE_CONNECTOR_DVII = unchecked((uint)2),
+            
+            DRM_MODE_CONNECTOR_DVID = unchecked((uint)3),
+            
+            DRM_MODE_CONNECTOR_DVIA = unchecked((uint)4),
+            
+            DRM_MODE_CONNECTOR_Composite = unchecked((uint)5),
+            
+            DRM_MODE_CONNECTOR_SVIDEO = unchecked((uint)6),
+            
+            DRM_MODE_CONNECTOR_LVDS = unchecked((uint)7),
+            
+            DRM_MODE_CONNECTOR_Component = unchecked((uint)8),
+            
+            DRM_MODE_CONNECTOR_9PinDIN = unchecked((uint)9),
+            
+            DRM_MODE_CONNECTOR_DisplayPort = unchecked((uint)10),
+            
+            DRM_MODE_CONNECTOR_HDMIA = unchecked((uint)11),
+            
+            DRM_MODE_CONNECTOR_HDMIB = unchecked((uint)12),
+            
+            DRM_MODE_CONNECTOR_TV = unchecked((uint)13),
+            
+            DRM_MODE_CONNECTOR_eDP = unchecked((uint)14),
+            
+            DRM_MODE_CONNECTOR_VIRTUAL = unchecked((uint)15),
+            
+            DRM_MODE_CONNECTOR_DSI = unchecked((uint)16),
+            
+            DRM_MODE_CONNECTOR_DPI = unchecked((uint)17),
+            
+            DRM_MODE_CONNECTOR_WRITEBACK = unchecked((uint)18),
+            
+            DRM_MODE_CONNECTOR_SPI = unchecked((uint)19),
+            
+            DRM_MODE_CONNECTOR_USB = unchecked((uint)20),
+        }
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_Unknown = drm_mode_connector.DRM_MODE_CONNECTOR_Unknown;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_VGA = drm_mode_connector.DRM_MODE_CONNECTOR_VGA;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_DVII = drm_mode_connector.DRM_MODE_CONNECTOR_DVII;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_DVID = drm_mode_connector.DRM_MODE_CONNECTOR_DVID;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_DVIA = drm_mode_connector.DRM_MODE_CONNECTOR_DVIA;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_Composite = drm_mode_connector.DRM_MODE_CONNECTOR_Composite;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_SVIDEO = drm_mode_connector.DRM_MODE_CONNECTOR_SVIDEO;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_LVDS = drm_mode_connector.DRM_MODE_CONNECTOR_LVDS;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_Component = drm_mode_connector.DRM_MODE_CONNECTOR_Component;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_9PinDIN = drm_mode_connector.DRM_MODE_CONNECTOR_9PinDIN;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_DisplayPort = drm_mode_connector.DRM_MODE_CONNECTOR_DisplayPort;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_HDMIA = drm_mode_connector.DRM_MODE_CONNECTOR_HDMIA;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_HDMIB = drm_mode_connector.DRM_MODE_CONNECTOR_HDMIB;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_TV = drm_mode_connector.DRM_MODE_CONNECTOR_TV;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_eDP = drm_mode_connector.DRM_MODE_CONNECTOR_eDP;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_VIRTUAL = drm_mode_connector.DRM_MODE_CONNECTOR_VIRTUAL;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_DSI = drm_mode_connector.DRM_MODE_CONNECTOR_DSI;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_DPI = drm_mode_connector.DRM_MODE_CONNECTOR_DPI;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_WRITEBACK = drm_mode_connector.DRM_MODE_CONNECTOR_WRITEBACK;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_SPI = drm_mode_connector.DRM_MODE_CONNECTOR_SPI;
+        
+        public const libdrm.drm_mode_connector DRM_MODE_CONNECTOR_USB = drm_mode_connector.DRM_MODE_CONNECTOR_USB;
+        
+        [Flags]
+        public enum drm_mode_prop : uint
+        {
+            /// <summary>
+            /// deprecated, do not use
+            /// </summary>
+            DRM_MODE_PROP_PENDING = unchecked((uint)1),
+            
+            DRM_MODE_PROP_RANGE = unchecked((uint)2),
+            
+            DRM_MODE_PROP_IMMUTABLE = unchecked((uint)4),
+            
+            /// <summary>
+            /// enumerated type with text strings
+            /// </summary>
+            DRM_MODE_PROP_ENUM = unchecked((uint)8),
+            
+            DRM_MODE_PROP_BLOB = unchecked((uint)16),
+            
+            /// <summary>
+            /// bitmask of enumerated types
+            /// </summary>
+            DRM_MODE_PROP_BITMASK = unchecked((uint)32),
+            
+            DRM_MODE_PROP_LEGACY_TYPE = unchecked((uint)58),
+            
+            DRM_MODE_PROP_EXTENDED_TYPE = unchecked((uint)65472),
+            
+            DRM_MODE_PROP_OBJECT = unchecked((uint)64),
+            
+            DRM_MODE_PROP_SIGNED_RANGE = unchecked((uint)128),
+            
+            DRM_MODE_PROP_ATOMIC = unchecked((uint)-2147483648),
+        }
+        
+        /// <summary>
+        /// deprecated, do not use
+        /// </summary>
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_PENDING = drm_mode_prop.DRM_MODE_PROP_PENDING;
+        
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_RANGE = drm_mode_prop.DRM_MODE_PROP_RANGE;
+        
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_IMMUTABLE = drm_mode_prop.DRM_MODE_PROP_IMMUTABLE;
+        
+        /// <summary>
+        /// enumerated type with text strings
+        /// </summary>
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_ENUM = drm_mode_prop.DRM_MODE_PROP_ENUM;
+        
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_BLOB = drm_mode_prop.DRM_MODE_PROP_BLOB;
+        
+        /// <summary>
+        /// bitmask of enumerated types
+        /// </summary>
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_BITMASK = drm_mode_prop.DRM_MODE_PROP_BITMASK;
+        
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_LEGACY_TYPE = drm_mode_prop.DRM_MODE_PROP_LEGACY_TYPE;
+        
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_EXTENDED_TYPE = drm_mode_prop.DRM_MODE_PROP_EXTENDED_TYPE;
+        
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_OBJECT = drm_mode_prop.DRM_MODE_PROP_OBJECT;
+        
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_SIGNED_RANGE = drm_mode_prop.DRM_MODE_PROP_SIGNED_RANGE;
+        
+        public const libdrm.drm_mode_prop DRM_MODE_PROP_ATOMIC = drm_mode_prop.DRM_MODE_PROP_ATOMIC;
+        
+        public enum drm_mode_object : uint
+        {
+            DRM_MODE_OBJECT_CRTC = unchecked((uint)-858993460),
+            
+            DRM_MODE_OBJECT_CONNECTOR = unchecked((uint)-1061109568),
+            
+            DRM_MODE_OBJECT_ENCODER = unchecked((uint)-522133280),
+            
+            DRM_MODE_OBJECT_MODE = unchecked((uint)-555819298),
+            
+            DRM_MODE_OBJECT_PROPERTY = unchecked((uint)-1330597712),
+            
+            DRM_MODE_OBJECT_FB = unchecked((uint)-67372037),
+            
+            DRM_MODE_OBJECT_BLOB = unchecked((uint)-1145324613),
+            
+            DRM_MODE_OBJECT_PLANE = unchecked((uint)-286331154),
+            
+            DRM_MODE_OBJECT_ANY = unchecked((uint)0),
+        }
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_CRTC = drm_mode_object.DRM_MODE_OBJECT_CRTC;
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_CONNECTOR = drm_mode_object.DRM_MODE_OBJECT_CONNECTOR;
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_ENCODER = drm_mode_object.DRM_MODE_OBJECT_ENCODER;
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_MODE = drm_mode_object.DRM_MODE_OBJECT_MODE;
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_PROPERTY = drm_mode_object.DRM_MODE_OBJECT_PROPERTY;
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_FB = drm_mode_object.DRM_MODE_OBJECT_FB;
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_BLOB = drm_mode_object.DRM_MODE_OBJECT_BLOB;
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_PLANE = drm_mode_object.DRM_MODE_OBJECT_PLANE;
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_ANY = drm_mode_object.DRM_MODE_OBJECT_ANY;
+        
+        [Flags]
+        public enum drm_mode_fb : uint
+        {
+            /// <summary>
+            /// for interlaced framebuffers
+            /// </summary>
+            DRM_MODE_FB_INTERLACED = unchecked((uint)1),
+            
+            /// <summary>
+            /// enables -&gt;modifer[]
+            /// </summary>
+            DRM_MODE_FB_MODIFIERS = unchecked((uint)2),
+        }
+        
+        /// <summary>
+        /// for interlaced framebuffers
+        /// </summary>
+        public const libdrm.drm_mode_fb DRM_MODE_FB_INTERLACED = drm_mode_fb.DRM_MODE_FB_INTERLACED;
+        
+        /// <summary>
+        /// enables -&gt;modifer[]
+        /// </summary>
+        public const libdrm.drm_mode_fb DRM_MODE_FB_MODIFIERS = drm_mode_fb.DRM_MODE_FB_MODIFIERS;
+        
+        public enum drm_mode_fb_dirty : uint
+        {
+            DRM_MODE_FB_DIRTY_ANNOTATE_COPY = unchecked((uint)1),
+            
+            DRM_MODE_FB_DIRTY_ANNOTATE_FILL = unchecked((uint)2),
+            
+            DRM_MODE_FB_DIRTY_FLAGS = unchecked((uint)3),
+            
+            DRM_MODE_FB_DIRTY_MAX_CLIPS = unchecked((uint)256),
+        }
+        
+        public const libdrm.drm_mode_fb_dirty DRM_MODE_FB_DIRTY_ANNOTATE_COPY = drm_mode_fb_dirty.DRM_MODE_FB_DIRTY_ANNOTATE_COPY;
+        
+        public const libdrm.drm_mode_fb_dirty DRM_MODE_FB_DIRTY_ANNOTATE_FILL = drm_mode_fb_dirty.DRM_MODE_FB_DIRTY_ANNOTATE_FILL;
+        
+        public const libdrm.drm_mode_fb_dirty DRM_MODE_FB_DIRTY_FLAGS = drm_mode_fb_dirty.DRM_MODE_FB_DIRTY_FLAGS;
+        
+        public const libdrm.drm_mode_fb_dirty DRM_MODE_FB_DIRTY_MAX_CLIPS = drm_mode_fb_dirty.DRM_MODE_FB_DIRTY_MAX_CLIPS;
+        
+        public enum drm_mode_cursor_flags : uint
+        {
+            DRM_MODE_CURSOR_BO = unchecked((uint)1),
+            
+            DRM_MODE_CURSOR_MOVE = unchecked((uint)2),
+            
+            DRM_MODE_CURSOR_FLAGS = unchecked((uint)3),
+        }
+        
+        public const libdrm.drm_mode_cursor_flags DRM_MODE_CURSOR_BO = drm_mode_cursor_flags.DRM_MODE_CURSOR_BO;
+        
+        public const libdrm.drm_mode_cursor_flags DRM_MODE_CURSOR_MOVE = drm_mode_cursor_flags.DRM_MODE_CURSOR_MOVE;
+        
+        public const libdrm.drm_mode_cursor_flags DRM_MODE_CURSOR_FLAGS = drm_mode_cursor_flags.DRM_MODE_CURSOR_FLAGS;
+        
+        public enum drm_mode_page_flip : uint
+        {
+            DRM_MODE_PAGE_FLIP_EVENT = unchecked((uint)1),
+            
+            DRM_MODE_PAGE_FLIP_ASYNC = unchecked((uint)2),
+            
+            DRM_MODE_PAGE_FLIP_TARGET_ABSOLUTE = unchecked((uint)4),
+            
+            DRM_MODE_PAGE_FLIP_TARGET_RELATIVE = unchecked((uint)8),
+            
+            DRM_MODE_PAGE_FLIP_TARGET = unchecked((uint)12),
+            
+            DRM_MODE_PAGE_FLIP_FLAGS = unchecked((uint)15),
+        }
+        
+        public const libdrm.drm_mode_page_flip DRM_MODE_PAGE_FLIP_EVENT = drm_mode_page_flip.DRM_MODE_PAGE_FLIP_EVENT;
+        
+        public const libdrm.drm_mode_page_flip DRM_MODE_PAGE_FLIP_ASYNC = drm_mode_page_flip.DRM_MODE_PAGE_FLIP_ASYNC;
+        
+        public const libdrm.drm_mode_page_flip DRM_MODE_PAGE_FLIP_TARGET_ABSOLUTE = drm_mode_page_flip.DRM_MODE_PAGE_FLIP_TARGET_ABSOLUTE;
+        
+        public const libdrm.drm_mode_page_flip DRM_MODE_PAGE_FLIP_TARGET_RELATIVE = drm_mode_page_flip.DRM_MODE_PAGE_FLIP_TARGET_RELATIVE;
+        
+        public const libdrm.drm_mode_page_flip DRM_MODE_PAGE_FLIP_TARGET = drm_mode_page_flip.DRM_MODE_PAGE_FLIP_TARGET;
+        
+        public const libdrm.drm_mode_page_flip DRM_MODE_PAGE_FLIP_FLAGS = drm_mode_page_flip.DRM_MODE_PAGE_FLIP_FLAGS;
+        
+        public enum drm_mode_atomic_flags : uint
+        {
+            DRM_MODE_ATOMIC_TEST_ONLY = unchecked((uint)256),
+            
+            DRM_MODE_ATOMIC_NONBLOCK = unchecked((uint)512),
+            
+            DRM_MODE_ATOMIC_ALLOW_MODESET = unchecked((uint)1024),
+            
+            DRM_MODE_ATOMIC_FLAGS = unchecked((uint)1795),
+        }
+        
+        public const libdrm.drm_mode_atomic_flags DRM_MODE_ATOMIC_TEST_ONLY = drm_mode_atomic_flags.DRM_MODE_ATOMIC_TEST_ONLY;
+        
+        public const libdrm.drm_mode_atomic_flags DRM_MODE_ATOMIC_NONBLOCK = drm_mode_atomic_flags.DRM_MODE_ATOMIC_NONBLOCK;
+        
+        public const libdrm.drm_mode_atomic_flags DRM_MODE_ATOMIC_ALLOW_MODESET = drm_mode_atomic_flags.DRM_MODE_ATOMIC_ALLOW_MODESET;
+        
+        public const libdrm.drm_mode_atomic_flags DRM_MODE_ATOMIC_FLAGS = drm_mode_atomic_flags.DRM_MODE_ATOMIC_FLAGS;
+        
         public readonly partial struct drmModeAtomicReq : IEquatable<libdrm.drmModeAtomicReq>
         {
             public drmModeAtomicReq(nint handle) => Handle = handle;

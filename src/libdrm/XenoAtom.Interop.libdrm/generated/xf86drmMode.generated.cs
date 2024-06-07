@@ -123,9 +123,9 @@ namespace XenoAtom.Interop
             
             public uint vrefresh;
             
-            public uint flags;
+            public libdrm.drm_mode_flag flags;
             
-            public uint type;
+            public libdrm.drm_mode_type type;
             
             public fixed byte name[32];
         }
@@ -259,7 +259,7 @@ namespace XenoAtom.Interop
         {
             public uint encoder_id;
             
-            public uint encoder_type;
+            public libdrm.drm_mode_encoder encoder_type;
             
             public uint crtc_id;
             
@@ -277,7 +277,7 @@ namespace XenoAtom.Interop
             /// </summary>
             public uint encoder_id;
             
-            public uint connector_type;
+            public libdrm.drm_mode_connector connector_type;
             
             public uint connector_type_id;
             
