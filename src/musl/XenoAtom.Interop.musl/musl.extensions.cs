@@ -58,7 +58,32 @@ static unsafe partial class musl
         });
     }
 
+    private static void Initialize()
+    {
+        // Force initialization of the static constructor
+    }
+
+    partial class x86_64
+    {
+        static x86_64() => Initialize();
+    }
+
+    partial class aarch64
+    {
+        static aarch64() => Initialize();
+    }
+    
     public static System.Runtime.InteropServices.DllImportResolver? MuslDllImportResolver { get; set; }
 
     private const string LibraryName = "musl";
+
+    public static dev_t makedev(ulong x, ulong y)
+    {
+        return (((x & 0xfffff000L) << 32) | (((x) & 0x00000fffL) << 8) | (((y) & 0xffffff00L) << 12) | (((y) & 0x000000ffL)));
+    }
+
+    public static dev_t makedev(long x, long y)
+    {
+        return (ulong)(((x & 0xfffff000L) << 32) | (((x) & 0x00000fffL) << 8) | (((y) & 0xffffff00L) << 12) | (((y) & 0x000000ffL)));
+    }
 }
