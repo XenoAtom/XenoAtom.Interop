@@ -1710,5 +1710,229 @@ namespace XenoAtom.Interop
         public const int DRM_CLIENT_CAP_ASPECT_RATIO = 4;
         
         public const int DRM_CLIENT_CAP_WRITEBACK_CONNECTORS = 5;
+        
+        public const nuint DRM_IOCTL_BASE = 100;
+        
+        public const nuint DRM_IOCTL_VERSION = 3225445376;
+        
+        public const nuint DRM_IOCTL_GET_UNIQUE = 3222299649;
+        
+        public const nuint DRM_IOCTL_GET_MAGIC = 2147771394;
+        
+        public const nuint DRM_IOCTL_IRQ_BUSID = 3222299651;
+        
+        public const nuint DRM_IOCTL_GET_MAP = 3223872516;
+        
+        public const nuint DRM_IOCTL_GET_CLIENT = 3223872517;
+        
+        public const nuint DRM_IOCTL_GET_STATS = 2163762182;
+        
+        public const nuint DRM_IOCTL_SET_VERSION = 3222299655;
+        
+        public const nuint DRM_IOCTL_MODESET_CTL = 1074291720;
+        
+        public const nuint DRM_IOCTL_GEM_CLOSE = 1074291721;
+        
+        public const nuint DRM_IOCTL_GEM_FLINK = 3221775370;
+        
+        public const nuint DRM_IOCTL_GEM_OPEN = 3222299659;
+        
+        public const nuint DRM_IOCTL_GET_CAP = 3222299660;
+        
+        public const nuint DRM_IOCTL_SET_CLIENT_CAP = 1074816013;
+        
+        public const nuint DRM_IOCTL_SET_UNIQUE = 1074816016;
+        
+        public const nuint DRM_IOCTL_AUTH_MAGIC = 1074029585;
+        
+        public const nuint DRM_IOCTL_BLOCK = 3221513234;
+        
+        public const nuint DRM_IOCTL_UNBLOCK = 3221513235;
+        
+        public const nuint DRM_IOCTL_CONTROL = 1074291732;
+        
+        public const nuint DRM_IOCTL_ADD_MAP = 3223872533;
+        
+        public const nuint DRM_IOCTL_ADD_BUFS = 3223348246;
+        
+        public const nuint DRM_IOCTL_MARK_BUFS = 1075864599;
+        
+        public const nuint DRM_IOCTL_INFO_BUFS = 3222299672;
+        
+        public const nuint DRM_IOCTL_MAP_BUFS = 3222823961;
+        
+        public const nuint DRM_IOCTL_FREE_BUFS = 1074816026;
+        
+        public const nuint DRM_IOCTL_RM_MAP = 1076388891;
+        
+        public const nuint DRM_IOCTL_SET_SAREA_CTX = 1074816028;
+        
+        public const nuint DRM_IOCTL_GET_SAREA_CTX = 3222299677;
+        
+        public const nuint DRM_IOCTL_SET_MASTER = 25630;
+        
+        public const nuint DRM_IOCTL_DROP_MASTER = 25631;
+        
+        public const nuint DRM_IOCTL_ADD_CTX = 3221775392;
+        
+        public const nuint DRM_IOCTL_RM_CTX = 3221775393;
+        
+        public const nuint DRM_IOCTL_MOD_CTX = 1074291746;
+        
+        public const nuint DRM_IOCTL_GET_CTX = 3221775395;
+        
+        public const nuint DRM_IOCTL_SWITCH_CTX = 1074291748;
+        
+        public const nuint DRM_IOCTL_NEW_CTX = 1074291749;
+        
+        public const nuint DRM_IOCTL_RES_CTX = 3222299686;
+        
+        public const nuint DRM_IOCTL_ADD_DRAW = 3221513255;
+        
+        public const nuint DRM_IOCTL_RM_DRAW = 3221513256;
+        
+        public const nuint DRM_IOCTL_DMA = 3225445417;
+        
+        public const nuint DRM_IOCTL_LOCK = 1074291754;
+        
+        public const nuint DRM_IOCTL_UNLOCK = 1074291755;
+        
+        public const nuint DRM_IOCTL_FINISH = 1074291756;
+        
+        public const nuint DRM_IOCTL_PRIME_HANDLE_TO_FD = 3222037549;
+        
+        public const nuint DRM_IOCTL_PRIME_FD_TO_HANDLE = 3222037550;
+        
+        public const nuint DRM_IOCTL_AGP_ACQUIRE = 25648;
+        
+        public const nuint DRM_IOCTL_AGP_RELEASE = 25649;
+        
+        public const nuint DRM_IOCTL_AGP_ENABLE = 1074291762;
+        
+        public const nuint DRM_IOCTL_AGP_INFO = 2151179315;
+        
+        public const nuint DRM_IOCTL_AGP_ALLOC = 3223348276;
+        
+        public const nuint DRM_IOCTL_AGP_FREE = 1075864629;
+        
+        public const nuint DRM_IOCTL_AGP_BIND = 1074816054;
+        
+        public const nuint DRM_IOCTL_AGP_UNBIND = 1074816055;
+        
+        public const nuint DRM_IOCTL_SG_ALLOC = 3222299704;
+        
+        public const nuint DRM_IOCTL_SG_FREE = 1074816057;
+        
+        public const nuint DRM_IOCTL_WAIT_VBLANK = 3222823994;
+        
+        public const nuint DRM_IOCTL_CRTC_GET_SEQUENCE = 3222823995;
+        
+        public const nuint DRM_IOCTL_CRTC_QUEUE_SEQUENCE = 3222823996;
+        
+        public const nuint DRM_IOCTL_UPDATE_DRAW = 1075340351;
+        
+        public const nuint DRM_IOCTL_MODE_GETRESOURCES = 3225445536;
+        
+        public const nuint DRM_IOCTL_MODE_GETCRTC = 3228066977;
+        
+        public const nuint DRM_IOCTL_MODE_SETCRTC = 3228066978;
+        
+        public const nuint DRM_IOCTL_MODE_CURSOR = 3223086243;
+        
+        public const nuint DRM_IOCTL_MODE_GETGAMMA = 3223348388;
+        
+        public const nuint DRM_IOCTL_MODE_SETGAMMA = 3223348389;
+        
+        public const nuint DRM_IOCTL_MODE_GETENCODER = 3222561958;
+        
+        public const nuint DRM_IOCTL_MODE_GETCONNECTOR = 3226494119;
+        
+        /// <summary>
+        /// deprecated (never worked)
+        /// </summary>
+        public const nuint DRM_IOCTL_MODE_ATTACHMODE = 3225969832;
+        
+        /// <summary>
+        /// deprecated (never worked)
+        /// </summary>
+        public const nuint DRM_IOCTL_MODE_DETACHMODE = 3225969833;
+        
+        public const nuint DRM_IOCTL_MODE_GETPROPERTY = 3225445546;
+        
+        public const nuint DRM_IOCTL_MODE_SETPROPERTY = 3222299819;
+        
+        public const nuint DRM_IOCTL_MODE_GETPROPBLOB = 3222299820;
+        
+        public const nuint DRM_IOCTL_MODE_GETFB = 3223086253;
+        
+        public const nuint DRM_IOCTL_MODE_ADDFB = 3223086254;
+        
+        public const nuint DRM_IOCTL_MODE_RMFB = 3221513391;
+        
+        public const nuint DRM_IOCTL_MODE_PAGE_FLIP = 3222824112;
+        
+        public const nuint DRM_IOCTL_MODE_DIRTYFB = 3222824113;
+        
+        public const nuint DRM_IOCTL_MODE_CREATE_DUMB = 3223348402;
+        
+        public const nuint DRM_IOCTL_MODE_MAP_DUMB = 3222299827;
+        
+        public const nuint DRM_IOCTL_MODE_DESTROY_DUMB = 3221513396;
+        
+        public const nuint DRM_IOCTL_MODE_GETPLANERESOURCES = 3222299829;
+        
+        public const nuint DRM_IOCTL_MODE_GETPLANE = 3223348406;
+        
+        public const nuint DRM_IOCTL_MODE_SETPLANE = 3224396983;
+        
+        public const nuint DRM_IOCTL_MODE_ADDFB2 = 3228067000;
+        
+        public const nuint DRM_IOCTL_MODE_OBJ_GETPROPERTIES = 3223348409;
+        
+        public const nuint DRM_IOCTL_MODE_OBJ_SETPROPERTY = 3222824122;
+        
+        public const nuint DRM_IOCTL_MODE_CURSOR2 = 3223610555;
+        
+        public const nuint DRM_IOCTL_MODE_ATOMIC = 3224921276;
+        
+        public const nuint DRM_IOCTL_MODE_CREATEPROPBLOB = 3222299837;
+        
+        public const nuint DRM_IOCTL_MODE_DESTROYPROPBLOB = 3221513406;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_CREATE = 3221775551;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_DESTROY = 3221775552;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_HANDLE_TO_FD = 3222299841;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_FD_TO_HANDLE = 3222299842;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_WAIT = 3223348419;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_RESET = 3222299844;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_SIGNAL = 3222299845;
+        
+        public const nuint DRM_IOCTL_MODE_CREATE_LEASE = 3222824134;
+        
+        public const nuint DRM_IOCTL_MODE_LIST_LESSEES = 3222299847;
+        
+        public const nuint DRM_IOCTL_MODE_GET_LEASE = 3222299848;
+        
+        public const nuint DRM_IOCTL_MODE_REVOKE_LEASE = 3221513417;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_TIMELINE_WAIT = 3223872714;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_QUERY = 3222824139;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_TRANSFER = 3223348428;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_TIMELINE_SIGNAL = 3222824141;
+        
+        public const nuint DRM_IOCTL_MODE_GETFB2 = 3228067022;
+        
+        public const nuint DRM_IOCTL_SYNCOBJ_EVENTFD = 3222824143;
+        
+        public const nuint DRM_IOCTL_MODE_CLOSEFB = 3221775568;
     }
 }
