@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)../../LibraryShared.props"/>
+
+  <PropertyGroup>
+    <Description>This package provides a low-level and modern .NET P/Invoke wrapper around the libshaderc API.</Description>
+    <PackageTags>shaderc;glsl;hlsl;spirv;pinvoke;interop</PackageTags>
+    <MinVerTagPrefix>libshaderc/</MinVerTagPrefix>
+  </PropertyGroup>
+
+</Project>

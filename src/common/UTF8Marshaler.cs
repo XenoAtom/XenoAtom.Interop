@@ -72,6 +72,8 @@ static unsafe class Utf8CustomMarshaller
         private unsafe byte* _unmanagedValue;
         private bool _allocated;
 
+        public int Length { get; private set; }
+
         /// <summary>Gets the requested buffer size for optimized marshalling.</summary>
         public static int BufferSize => 256;
 
@@ -98,6 +100,7 @@ static unsafe class Utf8CustomMarshaller
                 }
                 this._unmanagedValue = (byte*)Unsafe.AsPointer<byte>(ref MemoryMarshal.GetReference<byte>(buffer));
                 int bytes = UTF8EncodingRelaxed.Default.GetBytes(managed, buffer);
+                Length = bytes;
                 buffer[bytes] = (byte)0;
             }
         }

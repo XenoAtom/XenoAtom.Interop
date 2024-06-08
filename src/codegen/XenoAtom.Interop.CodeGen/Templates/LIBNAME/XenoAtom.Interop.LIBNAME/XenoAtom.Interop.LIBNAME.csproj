@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <Description>LIBSUMMARY</Description>
-    <PackageTags>tag1;tag2;tag3</PackageTags>
+    <PackageTags>tag1;pinvoke;interop</PackageTags>
     <MinVerTagPrefix>LIBNAME/</MinVerTagPrefix>
   </PropertyGroup>
 
