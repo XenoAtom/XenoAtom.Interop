@@ -1,0 +1,9 @@
+# configuration file for dotnet-releaser
+[msbuild]
+project = "XenoAtom.Interop.libshaderc.sln"
+[changelog]
+publish = false # Disable changelog for now
+[github]
+user = "XenoAtom"
+repo = "XenoAtom.Interop"
+version_prefix = "libshaderc/"

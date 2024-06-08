@@ -70,12 +70,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-ci", "01-ci", "{F7B3343D
 		..\.github\workflows\ci_build_codegen.yml = ..\.github\workflows\ci_build_codegen.yml
 		..\.github\workflows\ci_build_common.yml = ..\.github\workflows\ci_build_common.yml
 		..\.github\workflows\ci_build_libgit2.yml = ..\.github\workflows\ci_build_libgit2.yml
+		..\.github\workflows\ci_build_libshaderc.yml = ..\.github\workflows\ci_build_libshaderc.yml
 		..\.github\workflows\ci_build_musl.yml = ..\.github\workflows\ci_build_musl.yml
 		..\.github\workflows\ci_build_sqlite.yml = ..\.github\workflows\ci_build_sqlite.yml
 		..\.github\workflows\ci_build_vulkan.yml = ..\.github\workflows\ci_build_vulkan.yml
 		..\.github\workflows\ci_build_zlib.yml = ..\.github\workflows\ci_build_zlib.yml
 		..\.github\workflows\ci_publish_common.yml = ..\.github\workflows\ci_publish_common.yml
 		..\.github\workflows\ci_publish_libgit2.yml = ..\.github\workflows\ci_publish_libgit2.yml
+		..\.github\workflows\ci_publish_libshaderc.yml = ..\.github\workflows\ci_publish_libshaderc.yml
 		..\.github\workflows\ci_publish_musl.yml = ..\.github\workflows\ci_publish_musl.yml
 		..\.github\workflows\ci_publish_sqlite.yml = ..\.github\workflows\ci_publish_sqlite.yml
 		..\.github\workflows\ci_publish_vulkan.yml = ..\.github\workflows\ci_publish_vulkan.yml
@@ -103,6 +105,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libgbm", "libgbm\XenoAtom.Interop.libgbm\XenoAtom.Interop.libgbm.csproj", "{938E33A3-6B26-49F1-88C8-FF8E70ECCB70}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libgbm.Tests", "libgbm\XenoAtom.Interop.libgbm.Tests\XenoAtom.Interop.libgbm.Tests.csproj", "{670B3F77-DC62-43D5-B8CE-BC063724D35A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libshaderc", "libshaderc", "{0742D969-0B9F-4034-BFC4-7B0C5B2FDFB7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libshaderc", "libshaderc\XenoAtom.Interop.libshaderc\XenoAtom.Interop.libshaderc.csproj", "{D4EA7E38-0C3F-48BA-9188-A925B4E8ABE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libshaderc.Tests", "libshaderc\XenoAtom.Interop.libshaderc.Tests\XenoAtom.Interop.libshaderc.Tests.csproj", "{76422969-B89F-4EBE-AB76-E51917A8EA9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -178,6 +186,14 @@ Global
 		{670B3F77-DC62-43D5-B8CE-BC063724D35A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{670B3F77-DC62-43D5-B8CE-BC063724D35A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{670B3F77-DC62-43D5-B8CE-BC063724D35A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4EA7E38-0C3F-48BA-9188-A925B4E8ABE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4EA7E38-0C3F-48BA-9188-A925B4E8ABE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4EA7E38-0C3F-48BA-9188-A925B4E8ABE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4EA7E38-0C3F-48BA-9188-A925B4E8ABE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76422969-B89F-4EBE-AB76-E51917A8EA9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76422969-B89F-4EBE-AB76-E51917A8EA9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76422969-B89F-4EBE-AB76-E51917A8EA9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76422969-B89F-4EBE-AB76-E51917A8EA9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -208,6 +224,9 @@ Global
 		{1B295861-4E88-497C-9C6B-01D1E358F592} = {DA3698BE-1790-4569-A569-ECA2F29E25A9}
 		{938E33A3-6B26-49F1-88C8-FF8E70ECCB70} = {1B295861-4E88-497C-9C6B-01D1E358F592}
 		{670B3F77-DC62-43D5-B8CE-BC063724D35A} = {1B295861-4E88-497C-9C6B-01D1E358F592}
+		{0742D969-0B9F-4034-BFC4-7B0C5B2FDFB7} = {DA3698BE-1790-4569-A569-ECA2F29E25A9}
+		{D4EA7E38-0C3F-48BA-9188-A925B4E8ABE2} = {0742D969-0B9F-4034-BFC4-7B0C5B2FDFB7}
+		{76422969-B89F-4EBE-AB76-E51917A8EA9A} = {0742D969-0B9F-4034-BFC4-7B0C5B2FDFB7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95E8F3B3-49E8-400E-97A1-38D8B946DFCA}

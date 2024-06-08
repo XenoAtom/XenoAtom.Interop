@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)../../TestsShared.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Silk.NET.Shaderc.Native" Version="2.21.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XenoAtom.Interop.libshaderc\XenoAtom.Interop.libshaderc.csproj" />
+  </ItemGroup>
+
+</Project>

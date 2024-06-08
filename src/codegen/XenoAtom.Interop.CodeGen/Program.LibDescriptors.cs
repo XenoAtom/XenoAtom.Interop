@@ -5,6 +5,7 @@ using XenoAtom.Interop.CodeGen.common;
 using XenoAtom.Interop.CodeGen.libdrm;
 using XenoAtom.Interop.CodeGen.libgbm;
 using XenoAtom.Interop.CodeGen.libgit2;
+using XenoAtom.Interop.CodeGen.libshaderc;
 using XenoAtom.Interop.CodeGen.musl;
 using XenoAtom.Interop.CodeGen.sqlite;
 using XenoAtom.Interop.CodeGen.vulkan;
@@ -211,6 +212,17 @@ partial class Program
             Generator = desc => new LibgbmGenerator(desc),
             ApkDeps = ["mesa-dev"],
             SupportedArchitectures = [ "linux" ]
+        },
+        new()
+        {
+            Name = "libshaderc",
+            Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the libshaderc API.",
+            CppDescription = "libshaderc is a library for compiling GLSL/HLSL to SPIR-V.",
+            NativeNuGets = [new("Silk.NET.Shaderc.Native", "2.21.0")],
+            Url = "https://github.com/google/shaderc",
+            UrlDocumentation = "https://github.com/google/shaderc",
+            Generator = desc => new LibshadercGenerator(desc),
+            ApkDeps = ["shaderc-dev"],
         },
     ];
 }
