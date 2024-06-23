@@ -2,6 +2,7 @@
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
 
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
@@ -72,5 +73,69 @@ unsafe partial class vulkan
         public static implicit operator bool(vulkan.VkBool32 from) => from.Value != 0;
 
         public static implicit operator vulkan.VkBool32(bool from) => new(from ? 1U : 0U);
+    }
+
+    partial struct VkClearColorValue
+    {
+        public VkClearColorValue(float r, float g, float b, float a)
+        {
+            float32[0] = r;
+            float32[1] = g;
+            float32[2] = b;
+            float32[3] = a;
+        }
+    }
+
+    partial record struct VkOffset2D
+    {
+        public VkOffset2D(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    partial record struct VkOffset3D
+    {
+        public VkOffset3D(int x, int y, int z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+    }
+
+    partial record struct VkExtent2D
+    {
+        public VkExtent2D(uint width, uint height)
+        {
+            this.width = width;
+            this.height = height;
+        }
+    }
+
+    partial record struct VkExtent3D
+    {
+        public VkExtent3D(uint width, uint height, uint depth)
+        {
+            this.width = width;
+            this.height = height;
+            this.depth = depth;
+        }
+    }
+    
+    partial record struct VkRect2D
+    {
+        public VkRect2D(int x, int y, uint width, uint height)
+        {
+            this.offset = new(x, y);
+            this.extent = new(width, height);
+        }
+
+        public VkRect2D(VkOffset2D offset, VkExtent2D extent)
+        {
+            this.offset = offset;
+            this.extent = extent;
+        }
     }
 }

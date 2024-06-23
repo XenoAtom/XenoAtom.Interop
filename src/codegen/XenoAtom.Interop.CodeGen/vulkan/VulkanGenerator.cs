@@ -35,6 +35,15 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     private readonly List<int> _tempOptionalParameterIndexList = new();
     private readonly Dictionary<string, Dictionary<string, string>> _mapStructToFieldsWithDefaultValue = new();
 
+    private readonly HashSet<string> _structsAsRecord = new()
+    {
+        "VkOffset2D",
+        "VkOffset3D",
+        "VkExtent2D",
+        "VkExtent3D",
+        "VkRect2D",
+    };
+
     public override async Task Initialize(ApkManager apkHelper)
     {
         await base.Initialize(apkHelper);
@@ -151,7 +160,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         {
             ApplyDocumentation(csStruct);
             AddVulkanVersionAndExtensionInfoToCSharpElement(csStruct);
-            AddDefaultFields(csStruct);
+            ProcessStruct(csStruct);
 
             // Associate Enum XXXFlagBits with Struct XXXFlags
             if (csStruct.Name.Contains("Flags", StringComparison.Ordinal))
@@ -213,10 +222,16 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         return csCompilation;
     }
 
-    private void AddDefaultFields(CSharpStruct csStruct)
+    private void ProcessStruct(CSharpStruct csStruct)
     {
-        var cppType = ((ICppMember)csStruct.CppElement!).Name;
-        if (!_mapStructToFieldsWithDefaultValue.TryGetValue(cppType, out var fieldsWithDefaultValue))
+        var cppName = ((ICppMember)csStruct.CppElement!).Name;
+
+        if (_structsAsRecord.Contains(cppName))
+        {
+            csStruct.IsRecord = true;
+        }
+        
+        if (!_mapStructToFieldsWithDefaultValue.TryGetValue(cppName, out var fieldsWithDefaultValue))
         {
             return;
         }
