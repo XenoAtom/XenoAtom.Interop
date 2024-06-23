@@ -138,4 +138,13 @@ unsafe partial class vulkan
             this.extent = extent;
         }
     }
+
+    partial struct VkClearDepthStencilValue
+    {
+        public VkClearDepthStencilValue(float depth, uint stencil)
+        {
+            this.depth = depth;
+            this.stencil = stencil;
+        }
+    }
 }
