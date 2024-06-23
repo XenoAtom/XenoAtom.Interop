@@ -73,12 +73,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_win32_surface</para>
         /// </remarks>
-        public partial struct VkWin32SurfaceCreateInfoKHR
+        public partial struct VkWin32SurfaceCreateInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -133,12 +133,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_memory_win32</para>
         /// </remarks>
-        public partial struct VkImportMemoryWin32HandleInfoKHR
+        public partial struct VkImportMemoryWin32HandleInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -167,12 +167,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_memory_win32</para>
         /// </remarks>
-        public partial struct VkExportMemoryWin32HandleInfoKHR
+        public partial struct VkExportMemoryWin32HandleInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -201,12 +201,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_memory_win32</para>
         /// </remarks>
-        public partial struct VkMemoryWin32HandlePropertiesKHR
+        public partial struct VkMemoryWin32HandlePropertiesKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_WIN32_HANDLE_PROPERTIES_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -225,12 +225,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_memory_win32</para>
         /// </remarks>
-        public partial struct VkMemoryGetWin32HandleInfoKHR
+        public partial struct VkMemoryGetWin32HandleInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -254,12 +254,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_win32_keyed_mutex</para>
         /// </remarks>
-        public partial struct VkWin32KeyedMutexAcquireReleaseInfoKHR
+        public partial struct VkWin32KeyedMutexAcquireReleaseInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -308,12 +308,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_semaphore_win32</para>
         /// </remarks>
-        public partial struct VkImportSemaphoreWin32HandleInfoKHR
+        public partial struct VkImportSemaphoreWin32HandleInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -352,12 +352,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_semaphore_win32</para>
         /// </remarks>
-        public partial struct VkExportSemaphoreWin32HandleInfoKHR
+        public partial struct VkExportSemaphoreWin32HandleInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -386,12 +386,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_semaphore_win32</para>
         /// </remarks>
-        public partial struct VkD3D12FenceSubmitInfoKHR
+        public partial struct VkD3D12FenceSubmitInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -425,12 +425,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_semaphore_win32</para>
         /// </remarks>
-        public partial struct VkSemaphoreGetWin32HandleInfoKHR
+        public partial struct VkSemaphoreGetWin32HandleInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -454,12 +454,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_fence_win32</para>
         /// </remarks>
-        public partial struct VkImportFenceWin32HandleInfoKHR
+        public partial struct VkImportFenceWin32HandleInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_FENCE_WIN32_HANDLE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -498,12 +498,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_fence_win32</para>
         /// </remarks>
-        public partial struct VkExportFenceWin32HandleInfoKHR
+        public partial struct VkExportFenceWin32HandleInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -532,12 +532,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_external_fence_win32</para>
         /// </remarks>
-        public partial struct VkFenceGetWin32HandleInfoKHR
+        public partial struct VkFenceGetWin32HandleInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_FENCE_GET_WIN32_HANDLE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -561,12 +561,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_NV_external_memory_win32</para>
         /// </remarks>
-        public partial struct VkImportMemoryWin32HandleInfoNV
+        public partial struct VkImportMemoryWin32HandleInfoNV()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -590,12 +590,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_NV_external_memory_win32</para>
         /// </remarks>
-        public partial struct VkExportMemoryWin32HandleInfoNV
+        public partial struct VkExportMemoryWin32HandleInfoNV()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -619,9 +619,9 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_NV_win32_keyed_mutex</para>
         /// </remarks>
-        public partial struct VkWin32KeyedMutexAcquireReleaseInfoNV
+        public partial struct VkWin32KeyedMutexAcquireReleaseInfoNV()
         {
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV;
             
             public void* pNext;
             
@@ -667,12 +667,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_full_screen_exclusive</para>
         /// </remarks>
-        public partial struct VkSurfaceFullScreenExclusiveInfoEXT
+        public partial struct VkSurfaceFullScreenExclusiveInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -691,12 +691,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_full_screen_exclusive</para>
         /// </remarks>
-        public partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT
+        public partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -712,12 +712,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_full_screen_exclusive</para>
         /// </remarks>
-        public partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT
+        public partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.

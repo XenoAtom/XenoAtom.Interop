@@ -94,12 +94,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_surface</para>
         /// </remarks>
-        public partial struct VkMetalSurfaceCreateInfoEXT
+        public partial struct VkMetalSurfaceCreateInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -149,12 +149,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkExportMetalObjectCreateInfoEXT
+        public partial struct VkExportMetalObjectCreateInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECT_CREATE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -173,12 +173,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkExportMetalObjectsInfoEXT
+        public partial struct VkExportMetalObjectsInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_OBJECTS_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -192,12 +192,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkExportMetalDeviceInfoEXT
+        public partial struct VkExportMetalDeviceInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_DEVICE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -242,12 +242,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkExportMetalCommandQueueInfoEXT
+        public partial struct VkExportMetalCommandQueueInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_COMMAND_QUEUE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -297,12 +297,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkExportMetalBufferInfoEXT
+        public partial struct VkExportMetalBufferInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_BUFFER_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -352,12 +352,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkImportMetalBufferInfoEXT
+        public partial struct VkImportMetalBufferInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_METAL_BUFFER_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -376,12 +376,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkExportMetalTextureInfoEXT
+        public partial struct VkExportMetalTextureInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_TEXTURE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -446,12 +446,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkImportMetalTextureInfoEXT
+        public partial struct VkImportMetalTextureInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_METAL_TEXTURE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -475,12 +475,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkExportMetalIOSurfaceInfoEXT
+        public partial struct VkExportMetalIOSurfaceInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_IO_SURFACE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -530,12 +530,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkImportMetalIOSurfaceInfoEXT
+        public partial struct VkImportMetalIOSurfaceInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_METAL_IO_SURFACE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -554,12 +554,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkExportMetalSharedEventInfoEXT
+        public partial struct VkExportMetalSharedEventInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXPORT_METAL_SHARED_EVENT_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -611,12 +611,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public partial struct VkImportMetalSharedEventInfoEXT
+        public partial struct VkImportMetalSharedEventInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_METAL_SHARED_EVENT_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.

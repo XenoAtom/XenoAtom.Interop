@@ -23,12 +23,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_QNX_screen_surface</para>
         /// </remarks>
-        public partial struct VkScreenSurfaceCreateInfoQNX
+        public partial struct VkScreenSurfaceCreateInfoQNX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_SCREEN_SURFACE_CREATE_INFO_QNX;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -80,12 +80,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
         /// </remarks>
-        public partial struct VkScreenBufferPropertiesQNX
+        public partial struct VkScreenBufferPropertiesQNX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_SCREEN_BUFFER_PROPERTIES_QNX;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -109,12 +109,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
         /// </remarks>
-        public partial struct VkScreenBufferFormatPropertiesQNX
+        public partial struct VkScreenBufferFormatPropertiesQNX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_SCREEN_BUFFER_FORMAT_PROPERTIES_QNX;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -173,12 +173,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
         /// </remarks>
-        public partial struct VkImportScreenBufferInfoQNX
+        public partial struct VkImportScreenBufferInfoQNX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_SCREEN_BUFFER_INFO_QNX;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -197,12 +197,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
         /// </remarks>
-        public partial struct VkExternalFormatQNX
+        public partial struct VkExternalFormatQNX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_QNX;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -221,9 +221,9 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
         /// </remarks>
-        public partial struct VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX
+        public partial struct VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX()
         {
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX;
             
             public void* pNext;
             

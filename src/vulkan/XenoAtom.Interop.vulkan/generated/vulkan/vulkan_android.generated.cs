@@ -23,12 +23,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_android_surface</para>
         /// </remarks>
-        public partial struct VkAndroidSurfaceCreateInfoKHR
+        public partial struct VkAndroidSurfaceCreateInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -78,12 +78,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
-        public partial struct VkAndroidHardwareBufferUsageANDROID
+        public partial struct VkAndroidHardwareBufferUsageANDROID()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -102,12 +102,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
-        public partial struct VkAndroidHardwareBufferPropertiesANDROID
+        public partial struct VkAndroidHardwareBufferPropertiesANDROID()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -131,12 +131,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
-        public partial struct VkAndroidHardwareBufferFormatPropertiesANDROID
+        public partial struct VkAndroidHardwareBufferFormatPropertiesANDROID()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -190,12 +190,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
-        public partial struct VkImportAndroidHardwareBufferInfoANDROID
+        public partial struct VkImportAndroidHardwareBufferInfoANDROID()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -214,12 +214,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
-        public partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID
+        public partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -238,12 +238,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
-        public partial struct VkExternalFormatANDROID
+        public partial struct VkExternalFormatANDROID()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -262,12 +262,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
-        public partial struct VkAndroidHardwareBufferFormatProperties2ANDROID
+        public partial struct VkAndroidHardwareBufferFormatProperties2ANDROID()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.

@@ -33,6 +33,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     private readonly Dictionary<string, CSharpStruct> _structAsEnumFlags = new();
     private readonly Dictionary<string, VulkanElementInfo> _vulkanElementInfos = new();
     private readonly List<int> _tempOptionalParameterIndexList = new();
+    private readonly Dictionary<string, Dictionary<string, string>> _mapStructToFieldsWithDefaultValue = new();
 
     public override async Task Initialize(ApkManager apkHelper)
     {
@@ -150,6 +151,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         {
             ApplyDocumentation(csStruct);
             AddVulkanVersionAndExtensionInfoToCSharpElement(csStruct);
+            AddDefaultFields(csStruct);
 
             // Associate Enum XXXFlagBits with Struct XXXFlags
             if (csStruct.Name.Contains("Flags", StringComparison.Ordinal))
@@ -209,6 +211,25 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
  
         return csCompilation;
+    }
+
+    private void AddDefaultFields(CSharpStruct csStruct)
+    {
+        var cppType = ((ICppMember)csStruct.CppElement!).Name;
+        if (!_mapStructToFieldsWithDefaultValue.TryGetValue(cppType, out var fieldsWithDefaultValue))
+        {
+            return;
+        }
+
+        // Apply default value
+        foreach (var csField in csStruct.Members.OfType<CSharpField>())
+        {
+            if (fieldsWithDefaultValue.TryGetValue(csField.Name, out var defaultValue))
+            {
+                csField.InitValue = defaultValue;
+                csStruct.ForcePrimaryConstructorParameters = true;
+            }
+        }
     }
 
     private void ProcessVulkanEnum(CSharpEnum csEnum)
@@ -1173,12 +1194,42 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             //Console.WriteLine($"Function {name} {parameters.Count}");
             commandCount++;
         }
+
+
+        var types = doc.Descendants("types").FirstOrDefault();
+
+        if (types != null)
+        {
+            // Collect default values for struct fields
+            foreach (var type in types.Elements("type"))
+            {
+                if (type.Attribute("category")?.Value != "struct")
+                {
+                    continue;
+                }
+
+                var structName = type.Attribute("name")!.Value;
+
+                foreach (var member in type.Elements("member"))
+                {
+                    var attr = member.Attribute("values");
+                    if (attr != null && attr.Value.StartsWith("VK_"))
+                    {
+                        if (!_mapStructToFieldsWithDefaultValue.TryGetValue(structName, out var fields))
+                        {
+                            fields = new();
+                            _mapStructToFieldsWithDefaultValue.Add(structName, fields);
+                        }
+
+                        var fieldName = member.Element("name")!.Value;
+                        fields[fieldName] = attr.Value;
+                    }
+                }
+            }
+        }
+
         Console.WriteLine($"Total commands: {commandCount} processed from the registry");
     }
-
-
-
-
 
     [GeneratedRegex(@"^(\d+\.\d+\.\d+)")]
     private static partial Regex ParseVulkanVersion();

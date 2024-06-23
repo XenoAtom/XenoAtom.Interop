@@ -23,12 +23,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_xlib_surface</para>
         /// </remarks>
-        public partial struct VkXlibSurfaceCreateInfoKHR
+        public partial struct VkXlibSurfaceCreateInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.

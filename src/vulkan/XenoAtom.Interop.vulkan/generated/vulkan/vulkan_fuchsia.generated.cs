@@ -60,12 +60,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
         /// </remarks>
-        public partial struct VkImagePipeSurfaceCreateInfoFUCHSIA
+        public partial struct VkImagePipeSurfaceCreateInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMAGEPIPE_SURFACE_CREATE_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -115,12 +115,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
-        public partial struct VkImportMemoryZirconHandleInfoFUCHSIA
+        public partial struct VkImportMemoryZirconHandleInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -144,12 +144,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
-        public partial struct VkMemoryZirconHandlePropertiesFUCHSIA
+        public partial struct VkMemoryZirconHandlePropertiesFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -168,12 +168,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
-        public partial struct VkMemoryGetZirconHandleInfoFUCHSIA
+        public partial struct VkMemoryGetZirconHandleInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -197,12 +197,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
-        public partial struct VkImportSemaphoreZirconHandleInfoFUCHSIA
+        public partial struct VkImportSemaphoreZirconHandleInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -236,12 +236,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
-        public partial struct VkSemaphoreGetZirconHandleInfoFUCHSIA
+        public partial struct VkSemaphoreGetZirconHandleInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_SEMAPHORE_GET_ZIRCON_HANDLE_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -265,12 +265,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkBufferCollectionCreateInfoFUCHSIA
+        public partial struct VkBufferCollectionCreateInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CREATE_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure
@@ -289,12 +289,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkImportMemoryBufferCollectionFUCHSIA
+        public partial struct VkImportMemoryBufferCollectionFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_BUFFER_COLLECTION_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure
@@ -344,12 +344,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkBufferCollectionImageCreateInfoFUCHSIA
+        public partial struct VkBufferCollectionImageCreateInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_COLLECTION_IMAGE_CREATE_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure
@@ -373,12 +373,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkBufferCollectionConstraintsInfoFUCHSIA
+        public partial struct VkBufferCollectionConstraintsInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure
@@ -417,12 +417,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkBufferConstraintsInfoFUCHSIA
+        public partial struct VkBufferConstraintsInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_CONSTRAINTS_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure
@@ -448,12 +448,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkBufferCollectionBufferCreateInfoFUCHSIA
+        public partial struct VkBufferCollectionBufferCreateInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_COLLECTION_BUFFER_CREATE_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure
@@ -477,12 +477,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkSysmemColorSpaceFUCHSIA
+        public partial struct VkSysmemColorSpaceFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_SYSMEM_COLOR_SPACE_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure
@@ -501,12 +501,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkBufferCollectionPropertiesFUCHSIA
+        public partial struct VkBufferCollectionPropertiesFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_BUFFER_COLLECTION_PROPERTIES_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure
@@ -575,12 +575,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkImageFormatConstraintsInfoFUCHSIA
+        public partial struct VkImageFormatConstraintsInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_FORMAT_CONSTRAINTS_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure
@@ -650,12 +650,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public partial struct VkImageConstraintsInfoFUCHSIA
+        public partial struct VkImageConstraintsInfoFUCHSIA()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMAGE_CONSTRAINTS_INFO_FUCHSIA;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.

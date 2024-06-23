@@ -23,12 +23,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_GGP_stream_descriptor_surface</para>
         /// </remarks>
-        public partial struct VkStreamDescriptorSurfaceCreateInfoGGP
+        public partial struct VkStreamDescriptorSurfaceCreateInfoGGP()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -78,12 +78,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_GGP_frame_token</para>
         /// </remarks>
-        public partial struct VkPresentFrameTokenGGP
+        public partial struct VkPresentFrameTokenGGP()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.

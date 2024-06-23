@@ -23,12 +23,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_directfb_surface</para>
         /// </remarks>
-        public partial struct VkDirectFBSurfaceCreateInfoEXT
+        public partial struct VkDirectFBSurfaceCreateInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.

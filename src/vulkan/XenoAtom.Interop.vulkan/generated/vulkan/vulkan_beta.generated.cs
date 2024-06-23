@@ -800,12 +800,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_portability_subset</para>
         /// </remarks>
-        public partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR
+        public partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure. * [[features-constantAlphaColorBlendFactors]] <see cref="M:constantAlphaColorBlendFactors"/> indicates whether this implementation supports constant _alpha_ or a different number of bits in each component, than the texel format of the underlying <see cref="T:VkImage"/>. * [[features-imageViewFormatSwizzle]] <see cref="M:imageViewFormatSwizzle"/> indicates whether this implementation supports remapping format components using <see cref="T:VkImageViewCreateInfo.components"/>. * [[features-imageView2DOn3DImage]] <see cref="M:imageView2DOn3DImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created with the <see cref="T:VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT"/> flag set, permitting a 2D or 2D array image view to be created on a 3D <see cref="T:VkImage"/>. * [[features-multisampleArrayImage]] <see cref="M:multisampleArrayImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created as a 2D array with multiple samples per texel. * [[features-mutableComparisonSamplers]] <see cref="M:mutableComparisonSamplers"/> indicates whether this implementation allows descriptors with comparison samplers to be &lt;&lt;descriptorsets-updates, updated. * [[features-pointPolygons]] <see cref="M:pointPolygons"/> indicates whether this implementation supports mipmap LOD bias value when creating a sampler. * [[features-separateStencilMaskRef]] <see cref="M:separateStencilMaskRef"/> indicates whether this implementation supports separate front and back <c>InterpolationFunction</c> capability and the extended instructions `InterpolateAtCentroid`, `InterpolateAtOffset`, and `InterpolateAtSample` from the `GLSL.std.450` extended instruction set. This member is only meaningful if the <see cref="M:sampleRateShading"/> feature is supported. * [[features-tessellationIsolines]] <see cref="M:tessellationIsolines"/> indicates whether this implementation supports isoline output from the <see cref="M:tessellationShader"/> are supported. * [[features-tessellationPointMode]] <see cref="M:tessellationPointMode"/> indicates whether this implementation supports point output from the <see cref="M:tessellationShader"/> are supported. * [[features-triangleFans]] <see cref="M:triangleFans"/> indicates whether this implementation supports &lt;&lt;drawing-triangle-fans&gt;&gt; primitive topology. * [[features-vertexAttributeAccessBeyondStride]] <see cref="M:vertexAttributeAccessBeyondStride"/> indicates whether this implementation supports accessing a vertex input attribute beyond the stride of the corresponding vertex input binding.
@@ -849,12 +849,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_portability_subset</para>
         /// </remarks>
-        public partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR
+        public partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_PROPERTIES_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure. * [[limits-minVertexInputBindingStrideAlignment]] <see cref="M:minVertexInputBindingStrideAlignment"/> indicates the minimum alignment for vertex input strides. <see cref="T:VkVertexInputBindingDescription.stride"/> must: be a multiple of, and at least as large as, this value. The value must: be a power of two.
@@ -870,12 +870,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkVideoEncodeInfoKHR
+        public partial struct VkVideoEncodeInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_INFO_KHR;
             
             /// <summary>
             /// A pointer to a structure extending this structure. A codec-specific extension structure must: be chained to specify what bitstream unit to generate with this encode operation.
@@ -960,12 +960,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkVideoEncodeCapabilitiesKHR
+        public partial struct VkVideoEncodeCapabilitiesKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_CAPABILITIES_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1104,12 +1104,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR
+        public partial struct VkQueryPoolVideoEncodeFeedbackCreateInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_QUERY_POOL_VIDEO_ENCODE_FEEDBACK_CREATE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1128,12 +1128,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkVideoEncodeUsageInfoKHR
+        public partial struct VkVideoEncodeUsageInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_USAGE_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1222,12 +1222,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkVideoEncodeRateControlLayerInfoKHR
+        public partial struct VkVideoEncodeRateControlLayerInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_RATE_CONTROL_LAYER_INFO_KHR;
             
             /// <summary>
             /// A pointer to a structure extending this structure.
@@ -1261,12 +1261,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkVideoEncodeRateControlInfoKHR
+        public partial struct VkVideoEncodeRateControlInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_RATE_CONTROL_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1336,12 +1336,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR
+        public partial struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1365,12 +1365,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkVideoEncodeQualityLevelPropertiesKHR
+        public partial struct VkVideoEncodeQualityLevelPropertiesKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_PROPERTIES_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1394,12 +1394,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkVideoEncodeQualityLevelInfoKHR
+        public partial struct VkVideoEncodeQualityLevelInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1418,12 +1418,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkVideoEncodeSessionParametersGetInfoKHR
+        public partial struct VkVideoEncodeSessionParametersGetInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_PARAMETERS_GET_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1442,12 +1442,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_video_encode_queue</para>
         /// </remarks>
-        public partial struct VkVideoEncodeSessionParametersFeedbackInfoKHR
+        public partial struct VkVideoEncodeSessionParametersFeedbackInfoKHR()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_SESSION_PARAMETERS_FEEDBACK_INFO_KHR;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1466,12 +1466,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264CapabilitiesEXT
+        public partial struct VkVideoEncodeH264CapabilitiesEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_CAPABILITIES_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1634,12 +1634,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264QualityLevelPropertiesEXT
+        public partial struct VkVideoEncodeH264QualityLevelPropertiesEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_QUALITY_LEVEL_PROPERTIES_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1728,12 +1728,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264SessionCreateInfoEXT
+        public partial struct VkVideoEncodeH264SessionCreateInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_CREATE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1757,12 +1757,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264SessionParametersAddInfoEXT
+        public partial struct VkVideoEncodeH264SessionParametersAddInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_ADD_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1796,12 +1796,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264SessionParametersCreateInfoEXT
+        public partial struct VkVideoEncodeH264SessionParametersCreateInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_CREATE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1830,12 +1830,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264SessionParametersGetInfoEXT
+        public partial struct VkVideoEncodeH264SessionParametersGetInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_GET_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1869,12 +1869,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264SessionParametersFeedbackInfoEXT
+        public partial struct VkVideoEncodeH264SessionParametersFeedbackInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1898,12 +1898,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264NaluSliceInfoEXT
+        public partial struct VkVideoEncodeH264NaluSliceInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_NALU_SLICE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1927,12 +1927,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264PictureInfoEXT
+        public partial struct VkVideoEncodeH264PictureInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PICTURE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1966,12 +1966,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264DpbSlotInfoEXT
+        public partial struct VkVideoEncodeH264DpbSlotInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_DPB_SLOT_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -1990,12 +1990,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264ProfileInfoEXT
+        public partial struct VkVideoEncodeH264ProfileInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_PROFILE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2014,12 +2014,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264RateControlInfoEXT
+        public partial struct VkVideoEncodeH264RateControlInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2082,12 +2082,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264RateControlLayerInfoEXT
+        public partial struct VkVideoEncodeH264RateControlLayerInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_LAYER_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2131,12 +2131,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h264</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH264GopRemainingFrameInfoEXT
+        public partial struct VkVideoEncodeH264GopRemainingFrameInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_GOP_REMAINING_FRAME_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2170,12 +2170,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265CapabilitiesEXT
+        public partial struct VkVideoEncodeH265CapabilitiesEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_CAPABILITIES_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2389,12 +2389,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265SessionCreateInfoEXT
+        public partial struct VkVideoEncodeH265SessionCreateInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_CREATE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2442,12 +2442,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265QualityLevelPropertiesEXT
+        public partial struct VkVideoEncodeH265QualityLevelPropertiesEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_QUALITY_LEVEL_PROPERTIES_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2531,12 +2531,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265SessionParametersAddInfoEXT
+        public partial struct VkVideoEncodeH265SessionParametersAddInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2580,12 +2580,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265SessionParametersCreateInfoEXT
+        public partial struct VkVideoEncodeH265SessionParametersCreateInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2619,12 +2619,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265SessionParametersGetInfoEXT
+        public partial struct VkVideoEncodeH265SessionParametersGetInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_GET_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2668,12 +2668,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265SessionParametersFeedbackInfoEXT
+        public partial struct VkVideoEncodeH265SessionParametersFeedbackInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2702,12 +2702,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265NaluSliceSegmentInfoEXT
+        public partial struct VkVideoEncodeH265NaluSliceSegmentInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_NALU_SLICE_SEGMENT_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2731,12 +2731,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265PictureInfoEXT
+        public partial struct VkVideoEncodeH265PictureInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PICTURE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2765,12 +2765,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265DpbSlotInfoEXT
+        public partial struct VkVideoEncodeH265DpbSlotInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_DPB_SLOT_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2789,12 +2789,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265ProfileInfoEXT
+        public partial struct VkVideoEncodeH265ProfileInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_PROFILE_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2813,12 +2813,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265RateControlInfoEXT
+        public partial struct VkVideoEncodeH265RateControlInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2881,12 +2881,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265RateControlLayerInfoEXT
+        public partial struct VkVideoEncodeH265RateControlLayerInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_RATE_CONTROL_LAYER_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2930,12 +2930,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_video_encode_h265</para>
         /// </remarks>
-        public partial struct VkVideoEncodeH265GopRemainingFrameInfoEXT
+        public partial struct VkVideoEncodeH265GopRemainingFrameInfoEXT()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_VIDEO_ENCODE_H265_GOP_REMAINING_FRAME_INFO_EXT;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -2969,9 +2969,9 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_AMDX_shader_enqueue</para>
         /// </remarks>
-        public partial struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX
+        public partial struct VkPhysicalDeviceShaderEnqueueFeaturesAMDX()
         {
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_FEATURES_AMDX;
             
             public void* pNext;
             
@@ -2984,12 +2984,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_AMDX_shader_enqueue</para>
         /// </remarks>
-        public partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX
+        public partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure. * [[limits-maxExecutionGraphDepth]] <see cref="M:maxExecutionGraphDepth"/> defines the maximum node chain depth in the graph. The dispatched node is at depth 1 and the node enqueued by it is at depth 2, and so on. If a node enqueues itself, each recursive enqueue increases the depth by 1 as well. * [[limits-maxExecutionGraphShaderOutputNodes]] <see cref="M:maxExecutionGraphShaderOutputNodes"/> specifies the maximum number of unique nodes that can be dispatched from a single shader, and must be at least 256. * [[limits-maxExecutionGraphShaderPayloadSize]] <see cref="M:maxExecutionGraphShaderPayloadSize"/> specifies the maximum total size of payload declarations in a shader. For any payload declarations that share resources, indicated by <c>NodeSharesPayloadLimitsWithAMDX</c> decorations, the maximum size of each set of shared payload declarations is taken. The sum of each shared set's maximum size and the size of each unshared payload is counted against this limit. * [[limits-maxExecutionGraphShaderPayloadCount]] <see cref="M:maxExecutionGraphShaderPayloadCount"/> specifies the maximum number of output payloads that can be initialized in a single workgroup. * [[limits-executionGraphDispatchAddressAlignment]] <see cref="M:executionGraphDispatchAddressAlignment"/> specifies the alignment of non-scratch basetype:VkDeviceAddress arguments consumed by graph dispatch commands.
@@ -3013,12 +3013,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_AMDX_shader_enqueue</para>
         /// </remarks>
-        public partial struct VkExecutionGraphPipelineScratchSizeAMDX
+        public partial struct VkExecutionGraphPipelineScratchSizeAMDX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_SCRATCH_SIZE_AMDX;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -3037,12 +3037,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_AMDX_shader_enqueue</para>
         /// </remarks>
-        public partial struct VkExecutionGraphPipelineCreateInfoAMDX
+        public partial struct VkExecutionGraphPipelineCreateInfoAMDX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_EXECUTION_GRAPH_PIPELINE_CREATE_INFO_AMDX;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -3166,12 +3166,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_AMDX_shader_enqueue</para>
         /// </remarks>
-        public partial struct VkPipelineShaderStageNodeCreateInfoAMDX
+        public partial struct VkPipelineShaderStageNodeCreateInfoAMDX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_NODE_CREATE_INFO_AMDX;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -3195,12 +3195,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_NV_displacement_micromap</para>
         /// </remarks>
-        public partial struct VkPhysicalDeviceDisplacementMicromapFeaturesNV
+        public partial struct VkPhysicalDeviceDisplacementMicromapFeaturesNV()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure. * [[features-displacementMicromap]] <see cref="M:displacementMicromap"/> indicates whether the implementation supports the displacement micromap feature.
@@ -3216,12 +3216,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_NV_displacement_micromap</para>
         /// </remarks>
-        public partial struct VkPhysicalDeviceDisplacementMicromapPropertiesNV
+        public partial struct VkPhysicalDeviceDisplacementMicromapPropertiesNV()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
@@ -3240,12 +3240,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_NV_displacement_micromap</para>
         /// </remarks>
-        public partial struct VkAccelerationStructureTrianglesDisplacementMicromapNV
+        public partial struct VkAccelerationStructureTrianglesDisplacementMicromapNV()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_TRIANGLES_DISPLACEMENT_MICROMAP_NV;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.

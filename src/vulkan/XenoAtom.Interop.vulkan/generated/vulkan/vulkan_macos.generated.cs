@@ -23,12 +23,12 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_MVK_macos_surface</para>
         /// </remarks>
-        public partial struct VkMacOSSurfaceCreateInfoMVK
+        public partial struct VkMacOSSurfaceCreateInfoMVK()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
             /// </summary>
-            public vulkan.VkStructureType sType;
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK;
             
             /// <summary>
             /// `NULL` or a pointer to a structure extending this structure.
