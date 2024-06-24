@@ -36,7 +36,7 @@ public readonly ref struct ReadOnlySpanUtf8(ReadOnlySpan<byte> span)
     }
     
     /// <inheritdoc />
-    public override string? ToString() => _span.IsEmpty ? null : Encoding.UTF8.GetString(_span);
+    public override string? ToString() => Unsafe.IsNullRef(ref MemoryMarshal.GetReference(_span)) ? null : Encoding.UTF8.GetString(_span);
 
     /// <summary>
     /// Converts a <see cref="ReadOnlySpanUtf8"/> to a <see cref="string"/>.
