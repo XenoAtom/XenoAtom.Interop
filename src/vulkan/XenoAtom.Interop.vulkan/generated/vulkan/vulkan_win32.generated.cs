@@ -1694,55 +1694,55 @@ namespace XenoAtom.Interop
         
         public const int VK_KHR_WIN32_SURFACE_SPEC_VERSION = 6;
         
-        public static ReadOnlySpanUtf8 VK_KHR_WIN32_SURFACE_EXTENSION_NAME => "VK_KHR_win32_surface"u8;
+        public static ReadOnlyMemoryUtf8 VK_KHR_WIN32_SURFACE_EXTENSION_NAME => "VK_KHR_win32_surface"u8;
         
         public const int VK_KHR_external_memory_win32 = 1;
         
         public const int VK_KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME => "VK_KHR_external_memory_win32"u8;
+        public static ReadOnlyMemoryUtf8 VK_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME => "VK_KHR_external_memory_win32"u8;
         
         public const int VK_KHR_win32_keyed_mutex = 1;
         
         public const int VK_KHR_WIN32_KEYED_MUTEX_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_KHR_WIN32_KEYED_MUTEX_EXTENSION_NAME => "VK_KHR_win32_keyed_mutex"u8;
+        public static ReadOnlyMemoryUtf8 VK_KHR_WIN32_KEYED_MUTEX_EXTENSION_NAME => "VK_KHR_win32_keyed_mutex"u8;
         
         public const int VK_KHR_external_semaphore_win32 = 1;
         
         public const int VK_KHR_EXTERNAL_SEMAPHORE_WIN32_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_KHR_EXTERNAL_SEMAPHORE_WIN32_EXTENSION_NAME => "VK_KHR_external_semaphore_win32"u8;
+        public static ReadOnlyMemoryUtf8 VK_KHR_EXTERNAL_SEMAPHORE_WIN32_EXTENSION_NAME => "VK_KHR_external_semaphore_win32"u8;
         
         public const int VK_KHR_external_fence_win32 = 1;
         
         public const int VK_KHR_EXTERNAL_FENCE_WIN32_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_KHR_EXTERNAL_FENCE_WIN32_EXTENSION_NAME => "VK_KHR_external_fence_win32"u8;
+        public static ReadOnlyMemoryUtf8 VK_KHR_EXTERNAL_FENCE_WIN32_EXTENSION_NAME => "VK_KHR_external_fence_win32"u8;
         
         public const int VK_NV_external_memory_win32 = 1;
         
         public const int VK_NV_EXTERNAL_MEMORY_WIN32_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_NV_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME => "VK_NV_external_memory_win32"u8;
+        public static ReadOnlyMemoryUtf8 VK_NV_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME => "VK_NV_external_memory_win32"u8;
         
         public const int VK_NV_win32_keyed_mutex = 1;
         
         public const int VK_NV_WIN32_KEYED_MUTEX_SPEC_VERSION = 2;
         
-        public static ReadOnlySpanUtf8 VK_NV_WIN32_KEYED_MUTEX_EXTENSION_NAME => "VK_NV_win32_keyed_mutex"u8;
+        public static ReadOnlyMemoryUtf8 VK_NV_WIN32_KEYED_MUTEX_EXTENSION_NAME => "VK_NV_win32_keyed_mutex"u8;
         
         public const int VK_EXT_full_screen_exclusive = 1;
         
         public const int VK_EXT_FULL_SCREEN_EXCLUSIVE_SPEC_VERSION = 4;
         
-        public static ReadOnlySpanUtf8 VK_EXT_FULL_SCREEN_EXCLUSIVE_EXTENSION_NAME => "VK_EXT_full_screen_exclusive"u8;
+        public static ReadOnlyMemoryUtf8 VK_EXT_FULL_SCREEN_EXCLUSIVE_EXTENSION_NAME => "VK_EXT_full_screen_exclusive"u8;
         
         public const int VK_NV_acquire_winrt_display = 1;
         
         public const int VK_NV_ACQUIRE_WINRT_DISPLAY_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME => "VK_NV_acquire_winrt_display"u8;
+        public static ReadOnlyMemoryUtf8 VK_NV_ACQUIRE_WINRT_DISPLAY_EXTENSION_NAME => "VK_NV_acquire_winrt_display"u8;
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateWin32SurfaceKHR> vkCreateWin32SurfaceKHR_ => new("vkCreateWin32SurfaceKHR"u8);
         

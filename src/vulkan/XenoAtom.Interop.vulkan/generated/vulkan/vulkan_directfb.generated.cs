@@ -193,7 +193,7 @@ namespace XenoAtom.Interop
         
         public const int VK_EXT_DIRECTFB_SURFACE_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_EXT_DIRECTFB_SURFACE_EXTENSION_NAME => "VK_EXT_directfb_surface"u8;
+        public static ReadOnlyMemoryUtf8 VK_EXT_DIRECTFB_SURFACE_EXTENSION_NAME => "VK_EXT_directfb_surface"u8;
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateDirectFBSurfaceEXT> vkCreateDirectFBSurfaceEXT_ => new("vkCreateDirectFBSurfaceEXT"u8);
         

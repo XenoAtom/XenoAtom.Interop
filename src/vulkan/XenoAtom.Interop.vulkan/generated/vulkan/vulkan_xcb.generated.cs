@@ -194,7 +194,7 @@ namespace XenoAtom.Interop
         
         public const int VK_KHR_XCB_SURFACE_SPEC_VERSION = 6;
         
-        public static ReadOnlySpanUtf8 VK_KHR_XCB_SURFACE_EXTENSION_NAME => "VK_KHR_xcb_surface"u8;
+        public static ReadOnlyMemoryUtf8 VK_KHR_XCB_SURFACE_EXTENSION_NAME => "VK_KHR_xcb_surface"u8;
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateXcbSurfaceKHR> vkCreateXcbSurfaceKHR_ => new("vkCreateXcbSurfaceKHR"u8);
         

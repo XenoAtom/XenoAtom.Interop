@@ -17,6 +17,11 @@ unsafe partial class vulkan
     public const ulong VK_WHOLE_SIZE = ulong.MaxValue;
 
     /// <summary>
+    /// The VK_LAYER_KHRONOS_validation extension name.
+    /// </summary>
+    public static ReadOnlyMemoryUtf8 VK_LAYER_KHRONOS_VALIDATION_EXTENSION_NAME => "VK_LAYER_KHRONOS_validation"u8;
+
+    /// <summary>
     /// Base interfaces for all function pointers.
     /// </summary>
     public interface IvkFunctionPointer

@@ -138,7 +138,7 @@ namespace XenoAtom.Interop
         
         public const int VK_EXT_ACQUIRE_XLIB_DISPLAY_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_EXT_ACQUIRE_XLIB_DISPLAY_EXTENSION_NAME => "VK_EXT_acquire_xlib_display"u8;
+        public static ReadOnlyMemoryUtf8 VK_EXT_ACQUIRE_XLIB_DISPLAY_EXTENSION_NAME => "VK_EXT_acquire_xlib_display"u8;
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkAcquireXlibDisplayEXT> vkAcquireXlibDisplayEXT_ => new("vkAcquireXlibDisplayEXT"u8);
         

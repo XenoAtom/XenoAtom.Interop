@@ -184,15 +184,15 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         {
             ProcessVulkanEnum(csEnum);
         }
-        
-        // Transform const string literal into ReadOnlySpanUtf8
+
+        // Transform const string literal into ReadOnlyMemoryUtf8
         foreach (var csField in csCompilation.AllFields)
         {
             if (csField.FieldType is CSharpPrimitiveType primitiveType && primitiveType.Kind == CSharpPrimitiveKind.String)
             {
                 var csProperty = new CSharpProperty(csField.Name)
                 {
-                    ReturnType = new CSharpFreeType("ReadOnlySpanUtf8"),
+                    ReturnType = new CSharpFreeType("ReadOnlyMemoryUtf8"),
                     GetBodyInlined = csField.InitValue + "u8",
                     Visibility = CSharpVisibility.Public,
                     Modifiers = CSharpModifiers.Static,

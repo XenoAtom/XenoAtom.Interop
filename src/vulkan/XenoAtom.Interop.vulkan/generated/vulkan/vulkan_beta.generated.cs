@@ -3940,31 +3940,31 @@ namespace XenoAtom.Interop
         
         public const int VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME => "VK_KHR_portability_subset"u8;
+        public static ReadOnlyMemoryUtf8 VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME => "VK_KHR_portability_subset"u8;
         
         public const int VK_KHR_video_encode_queue = 1;
         
         public const int VK_KHR_VIDEO_ENCODE_QUEUE_SPEC_VERSION = 9;
         
-        public static ReadOnlySpanUtf8 VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME => "VK_KHR_video_encode_queue"u8;
+        public static ReadOnlyMemoryUtf8 VK_KHR_VIDEO_ENCODE_QUEUE_EXTENSION_NAME => "VK_KHR_video_encode_queue"u8;
         
         public const int VK_EXT_video_encode_h264 = 1;
         
         public const int VK_EXT_VIDEO_ENCODE_H264_SPEC_VERSION = 11;
         
-        public static ReadOnlySpanUtf8 VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME => "VK_EXT_video_encode_h264"u8;
+        public static ReadOnlyMemoryUtf8 VK_EXT_VIDEO_ENCODE_H264_EXTENSION_NAME => "VK_EXT_video_encode_h264"u8;
         
         public const int VK_EXT_video_encode_h265 = 1;
         
         public const int VK_EXT_VIDEO_ENCODE_H265_SPEC_VERSION = 11;
         
-        public static ReadOnlySpanUtf8 VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME => "VK_EXT_video_encode_h265"u8;
+        public static ReadOnlyMemoryUtf8 VK_EXT_VIDEO_ENCODE_H265_EXTENSION_NAME => "VK_EXT_video_encode_h265"u8;
         
         public const int VK_AMDX_shader_enqueue = 1;
         
         public const int VK_AMDX_SHADER_ENQUEUE_SPEC_VERSION = 1;
         
-        public static ReadOnlySpanUtf8 VK_AMDX_SHADER_ENQUEUE_EXTENSION_NAME => "VK_AMDX_shader_enqueue"u8;
+        public static ReadOnlyMemoryUtf8 VK_AMDX_SHADER_ENQUEUE_EXTENSION_NAME => "VK_AMDX_shader_enqueue"u8;
         
         public const uint VK_SHADER_INDEX_UNUSED_AMDX = 4294967295;
         
@@ -3972,7 +3972,7 @@ namespace XenoAtom.Interop
         
         public const int VK_NV_DISPLACEMENT_MICROMAP_SPEC_VERSION = 2;
         
-        public static ReadOnlySpanUtf8 VK_NV_DISPLACEMENT_MICROMAP_EXTENSION_NAME => "VK_NV_displacement_micromap"u8;
+        public static ReadOnlyMemoryUtf8 VK_NV_DISPLACEMENT_MICROMAP_EXTENSION_NAME => "VK_NV_displacement_micromap"u8;
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR> vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR_ => new("vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR"u8);
         

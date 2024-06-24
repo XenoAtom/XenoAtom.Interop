@@ -190,7 +190,7 @@ namespace XenoAtom.Interop
         
         public const int VK_KHR_WAYLAND_SURFACE_SPEC_VERSION = 6;
         
-        public static ReadOnlySpanUtf8 VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME => "VK_KHR_wayland_surface"u8;
+        public static ReadOnlyMemoryUtf8 VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME => "VK_KHR_wayland_surface"u8;
         
         public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateWaylandSurfaceKHR> vkCreateWaylandSurfaceKHR_ => new("vkCreateWaylandSurfaceKHR"u8);
         
