@@ -713,7 +713,7 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkImageConstraintsInfoFlagsFUCHSIA (vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA from) => new vulkan.VkImageConstraintsInfoFlagsFUCHSIA((uint)from);
         }
         
-        public readonly partial struct PFN_vkCreateImagePipeSurfaceFUCHSIA : IEquatable<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateImagePipeSurfaceFUCHSIA : IEquatable<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA>
         {
             public PFN_vkCreateImagePipeSurfaceFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -734,6 +734,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateImagePipeSurfaceFUCHSIA left, PFN_vkCreateImagePipeSurfaceFUCHSIA right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateImagePipeSurfaceFUCHSIA left, PFN_vkCreateImagePipeSurfaceFUCHSIA right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateImagePipeSurfaceFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA> Prototype => new("vkCreateImagePipeSurfaceFUCHSIA"u8);
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a Fuchsia ImagePipe
@@ -761,7 +766,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryZirconHandleFUCHSIA : IEquatable<vulkan.PFN_vkGetMemoryZirconHandleFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetMemoryZirconHandleFUCHSIA : IEquatable<vulkan.PFN_vkGetMemoryZirconHandleFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkGetMemoryZirconHandleFUCHSIA>
         {
             public PFN_vkGetMemoryZirconHandleFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetZirconHandleInfoFUCHSIA*, uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -782,6 +787,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetMemoryZirconHandleFUCHSIA left, PFN_vkGetMemoryZirconHandleFUCHSIA right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetMemoryZirconHandleFUCHSIA left, PFN_vkGetMemoryZirconHandleFUCHSIA right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetMemoryZirconHandleFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandleFUCHSIA> Prototype => new("vkGetMemoryZirconHandleFUCHSIA"u8);
             
             /// <summary>
             /// Get a Zircon handle for an external memory object
@@ -808,7 +818,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA : IEquatable<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA : IEquatable<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA>
         {
             public PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -829,6 +839,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA left, PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA left, PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetMemoryZirconHandlePropertiesFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA> Prototype => new("vkGetMemoryZirconHandlePropertiesFUCHSIA"u8);
             
             /// <summary>
             /// Get a Zircon handle properties for an external memory object
@@ -856,7 +871,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkImportSemaphoreZirconHandleFUCHSIA : IEquatable<vulkan.PFN_vkImportSemaphoreZirconHandleFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkImportSemaphoreZirconHandleFUCHSIA : IEquatable<vulkan.PFN_vkImportSemaphoreZirconHandleFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkImportSemaphoreZirconHandleFUCHSIA>
         {
             public PFN_vkImportSemaphoreZirconHandleFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -877,6 +892,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkImportSemaphoreZirconHandleFUCHSIA left, PFN_vkImportSemaphoreZirconHandleFUCHSIA right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkImportSemaphoreZirconHandleFUCHSIA left, PFN_vkImportSemaphoreZirconHandleFUCHSIA right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkImportSemaphoreZirconHandleFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkImportSemaphoreZirconHandleFUCHSIA> Prototype => new("vkImportSemaphoreZirconHandleFUCHSIA"u8);
             
             /// <summary>
             /// Import a semaphore from a Zircon event handle
@@ -902,7 +922,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetSemaphoreZirconHandleFUCHSIA : IEquatable<vulkan.PFN_vkGetSemaphoreZirconHandleFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetSemaphoreZirconHandleFUCHSIA : IEquatable<vulkan.PFN_vkGetSemaphoreZirconHandleFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkGetSemaphoreZirconHandleFUCHSIA>
         {
             public PFN_vkGetSemaphoreZirconHandleFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSemaphoreGetZirconHandleInfoFUCHSIA*, uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -923,6 +943,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetSemaphoreZirconHandleFUCHSIA left, PFN_vkGetSemaphoreZirconHandleFUCHSIA right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetSemaphoreZirconHandleFUCHSIA left, PFN_vkGetSemaphoreZirconHandleFUCHSIA right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetSemaphoreZirconHandleFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetSemaphoreZirconHandleFUCHSIA> Prototype => new("vkGetSemaphoreZirconHandleFUCHSIA"u8);
             
             /// <summary>
             /// Get a Zircon event handle for a semaphore
@@ -949,7 +974,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkCreateBufferCollectionFUCHSIA : IEquatable<vulkan.PFN_vkCreateBufferCollectionFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateBufferCollectionFUCHSIA : IEquatable<vulkan.PFN_vkCreateBufferCollectionFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkCreateBufferCollectionFUCHSIA>
         {
             public PFN_vkCreateBufferCollectionFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionCreateInfoFUCHSIA*, vulkan.VkAllocationCallbacks*, vulkan.VkBufferCollectionFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -970,6 +995,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateBufferCollectionFUCHSIA left, PFN_vkCreateBufferCollectionFUCHSIA right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateBufferCollectionFUCHSIA left, PFN_vkCreateBufferCollectionFUCHSIA right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateBufferCollectionFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateBufferCollectionFUCHSIA> Prototype => new("vkCreateBufferCollectionFUCHSIA"u8);
             
             /// <summary>
             /// Create a new buffer collection
@@ -997,7 +1027,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkSetBufferCollectionImageConstraintsFUCHSIA : IEquatable<vulkan.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkSetBufferCollectionImageConstraintsFUCHSIA : IEquatable<vulkan.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA>
         {
             public PFN_vkSetBufferCollectionImageConstraintsFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionFUCHSIA, vulkan.VkImageConstraintsInfoFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1018,6 +1048,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkSetBufferCollectionImageConstraintsFUCHSIA left, PFN_vkSetBufferCollectionImageConstraintsFUCHSIA right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkSetBufferCollectionImageConstraintsFUCHSIA left, PFN_vkSetBufferCollectionImageConstraintsFUCHSIA right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkSetBufferCollectionImageConstraintsFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA> Prototype => new("vkSetBufferCollectionImageConstraintsFUCHSIA"u8);
             
             /// <summary>
             /// Set image-based constraints for a buffer collection
@@ -1044,7 +1079,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA : IEquatable<vulkan.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA : IEquatable<vulkan.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA>
         {
             public PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionFUCHSIA, vulkan.VkBufferConstraintsInfoFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1065,6 +1100,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA left, PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA left, PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkSetBufferCollectionBufferConstraintsFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA> Prototype => new("vkSetBufferCollectionBufferConstraintsFUCHSIA"u8);
             
             /// <summary>
             /// Set buffer-based constraints for a buffer collection
@@ -1091,7 +1131,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkDestroyBufferCollectionFUCHSIA : IEquatable<vulkan.PFN_vkDestroyBufferCollectionFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkDestroyBufferCollectionFUCHSIA : IEquatable<vulkan.PFN_vkDestroyBufferCollectionFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkDestroyBufferCollectionFUCHSIA>
         {
             public PFN_vkDestroyBufferCollectionFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionFUCHSIA, vulkan.VkAllocationCallbacks*, void> value) => this.Value = value;
             
@@ -1114,6 +1154,11 @@ namespace XenoAtom.Interop
             public static bool operator !=(PFN_vkDestroyBufferCollectionFUCHSIA left, PFN_vkDestroyBufferCollectionFUCHSIA right) => !left.Equals(right);
             
             /// <summary>
+            /// Gets the prototype of the function `vkDestroyBufferCollectionFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkDestroyBufferCollectionFUCHSIA> Prototype => new("vkDestroyBufferCollectionFUCHSIA"u8);
+            
+            /// <summary>
             /// Destroy a buffer collection
             /// </summary>
             /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
@@ -1132,7 +1177,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetBufferCollectionPropertiesFUCHSIA : IEquatable<vulkan.PFN_vkGetBufferCollectionPropertiesFUCHSIA>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetBufferCollectionPropertiesFUCHSIA : IEquatable<vulkan.PFN_vkGetBufferCollectionPropertiesFUCHSIA>, IvkFunctionPointer<vulkan.PFN_vkGetBufferCollectionPropertiesFUCHSIA>
         {
             public PFN_vkGetBufferCollectionPropertiesFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkBufferCollectionFUCHSIA, vulkan.VkBufferCollectionPropertiesFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1153,6 +1198,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetBufferCollectionPropertiesFUCHSIA left, PFN_vkGetBufferCollectionPropertiesFUCHSIA right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetBufferCollectionPropertiesFUCHSIA left, PFN_vkGetBufferCollectionPropertiesFUCHSIA right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetBufferCollectionPropertiesFUCHSIA`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetBufferCollectionPropertiesFUCHSIA> Prototype => new("vkGetBufferCollectionPropertiesFUCHSIA"u8);
             
             /// <summary>
             /// Retrieve properties from a buffer collection
@@ -1222,8 +1272,6 @@ namespace XenoAtom.Interop
             return vkCreateImagePipeSurfaceFUCHSIA(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
         }
         
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA> vkCreateImagePipeSurfaceFUCHSIA_ => new("vkCreateImagePipeSurfaceFUCHSIA"u8);
-        
         /// <summary>
         /// Get a Zircon handle for an external memory object
         /// </summary>
@@ -1264,8 +1312,6 @@ namespace XenoAtom.Interop
             fixed (uint* __pZirconHandle_local = &pZirconHandle)
             return vkGetMemoryZirconHandleFUCHSIA(device, __pGetZirconHandleInfo_local, __pZirconHandle_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandleFUCHSIA> vkGetMemoryZirconHandleFUCHSIA_ => new("vkGetMemoryZirconHandleFUCHSIA"u8);
         
         /// <summary>
         /// Get a Zircon handle properties for an external memory object
@@ -1309,8 +1355,6 @@ namespace XenoAtom.Interop
             return vkGetMemoryZirconHandlePropertiesFUCHSIA(device, handleType, zirconHandle, __pMemoryZirconHandleProperties_local);
         }
         
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA> vkGetMemoryZirconHandlePropertiesFUCHSIA_ => new("vkGetMemoryZirconHandlePropertiesFUCHSIA"u8);
-        
         /// <summary>
         /// Import a semaphore from a Zircon event handle
         /// </summary>
@@ -1348,8 +1392,6 @@ namespace XenoAtom.Interop
             fixed (vulkan.VkImportSemaphoreZirconHandleInfoFUCHSIA* __pImportSemaphoreZirconHandleInfo_local = &pImportSemaphoreZirconHandleInfo)
             return vkImportSemaphoreZirconHandleFUCHSIA(device, __pImportSemaphoreZirconHandleInfo_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkImportSemaphoreZirconHandleFUCHSIA> vkImportSemaphoreZirconHandleFUCHSIA_ => new("vkImportSemaphoreZirconHandleFUCHSIA"u8);
         
         /// <summary>
         /// Get a Zircon event handle for a semaphore
@@ -1391,8 +1433,6 @@ namespace XenoAtom.Interop
             fixed (uint* __pZirconHandle_local = &pZirconHandle)
             return vkGetSemaphoreZirconHandleFUCHSIA(device, __pGetZirconHandleInfo_local, __pZirconHandle_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetSemaphoreZirconHandleFUCHSIA> vkGetSemaphoreZirconHandleFUCHSIA_ => new("vkGetSemaphoreZirconHandleFUCHSIA"u8);
         
         /// <summary>
         /// Create a new buffer collection
@@ -1437,8 +1477,6 @@ namespace XenoAtom.Interop
             return vkCreateBufferCollectionFUCHSIA(device, __pCreateInfo_local, pAllocator, __pCollection_local);
         }
         
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateBufferCollectionFUCHSIA> vkCreateBufferCollectionFUCHSIA_ => new("vkCreateBufferCollectionFUCHSIA"u8);
-        
         /// <summary>
         /// Set image-based constraints for a buffer collection
         /// </summary>
@@ -1478,8 +1516,6 @@ namespace XenoAtom.Interop
             fixed (vulkan.VkImageConstraintsInfoFUCHSIA* __pImageConstraintsInfo_local = &pImageConstraintsInfo)
             return vkSetBufferCollectionImageConstraintsFUCHSIA(device, collection, __pImageConstraintsInfo_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA> vkSetBufferCollectionImageConstraintsFUCHSIA_ => new("vkSetBufferCollectionImageConstraintsFUCHSIA"u8);
         
         /// <summary>
         /// Set buffer-based constraints for a buffer collection
@@ -1521,8 +1557,6 @@ namespace XenoAtom.Interop
             return vkSetBufferCollectionBufferConstraintsFUCHSIA(device, collection, __pBufferConstraintsInfo_local);
         }
         
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA> vkSetBufferCollectionBufferConstraintsFUCHSIA_ => new("vkSetBufferCollectionBufferConstraintsFUCHSIA"u8);
-        
         /// <summary>
         /// Destroy a buffer collection
         /// </summary>
@@ -1535,8 +1569,6 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkDestroyBufferCollectionFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial void vkDestroyBufferCollectionFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, vulkan.VkAllocationCallbacks* pAllocator);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkDestroyBufferCollectionFUCHSIA> vkDestroyBufferCollectionFUCHSIA_ => new("vkDestroyBufferCollectionFUCHSIA"u8);
         
         /// <summary>
         /// Retrieve properties from a buffer collection
@@ -1577,7 +1609,5 @@ namespace XenoAtom.Interop
             fixed (vulkan.VkBufferCollectionPropertiesFUCHSIA* __pProperties_local = &pProperties)
             return vkGetBufferCollectionPropertiesFUCHSIA(device, collection, __pProperties_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetBufferCollectionPropertiesFUCHSIA> vkGetBufferCollectionPropertiesFUCHSIA_ => new("vkGetBufferCollectionPropertiesFUCHSIA"u8);
     }
 }

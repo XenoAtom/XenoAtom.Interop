@@ -74,7 +74,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkWaylandSurfaceCreateFlagsKHR left, VkWaylandSurfaceCreateFlagsKHR right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateWaylandSurfaceKHR : IEquatable<vulkan.PFN_vkCreateWaylandSurfaceKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateWaylandSurfaceKHR : IEquatable<vulkan.PFN_vkCreateWaylandSurfaceKHR>, IvkFunctionPointer<vulkan.PFN_vkCreateWaylandSurfaceKHR>
         {
             public PFN_vkCreateWaylandSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkWaylandSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -95,6 +95,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateWaylandSurfaceKHR left, PFN_vkCreateWaylandSurfaceKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateWaylandSurfaceKHR left, PFN_vkCreateWaylandSurfaceKHR right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateWaylandSurfaceKHR`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateWaylandSurfaceKHR> Prototype => new("vkCreateWaylandSurfaceKHR"u8);
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a Wayland window
@@ -145,7 +150,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR>, IvkFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR>
         {
             public PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.wl_display, vulkan.VkBool32> value) => this.Value = value;
             
@@ -166,6 +171,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR left, PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR left, PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetPhysicalDeviceWaylandPresentationSupportKHR`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR> Prototype => new("vkGetPhysicalDeviceWaylandPresentationSupportKHR"u8);
             
             /// <summary>
             /// Query physical device for presentation to Wayland
@@ -191,9 +201,5 @@ namespace XenoAtom.Interop
         public const int VK_KHR_WAYLAND_SURFACE_SPEC_VERSION = 6;
         
         public static ReadOnlyMemoryUtf8 VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME => "VK_KHR_wayland_surface"u8;
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateWaylandSurfaceKHR> vkCreateWaylandSurfaceKHR_ => new("vkCreateWaylandSurfaceKHR"u8);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR> vkGetPhysicalDeviceWaylandPresentationSupportKHR_ => new("vkGetPhysicalDeviceWaylandPresentationSupportKHR"u8);
     }
 }

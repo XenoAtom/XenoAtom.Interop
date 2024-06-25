@@ -77,7 +77,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkXcbSurfaceCreateFlagsKHR left, VkXcbSurfaceCreateFlagsKHR right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateXcbSurfaceKHR : IEquatable<vulkan.PFN_vkCreateXcbSurfaceKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateXcbSurfaceKHR : IEquatable<vulkan.PFN_vkCreateXcbSurfaceKHR>, IvkFunctionPointer<vulkan.PFN_vkCreateXcbSurfaceKHR>
         {
             public PFN_vkCreateXcbSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkXcbSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -98,6 +98,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateXcbSurfaceKHR left, PFN_vkCreateXcbSurfaceKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateXcbSurfaceKHR left, PFN_vkCreateXcbSurfaceKHR right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateXcbSurfaceKHR`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateXcbSurfaceKHR> Prototype => new("vkCreateXcbSurfaceKHR"u8);
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a X11 window, using the XCB client-side library
@@ -148,7 +153,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR>, IvkFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR>
         {
             public PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, uint, vulkan.VkBool32> value) => this.Value = value;
             
@@ -169,6 +174,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR left, PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR left, PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetPhysicalDeviceXcbPresentationSupportKHR`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR> Prototype => new("vkGetPhysicalDeviceXcbPresentationSupportKHR"u8);
             
             /// <summary>
             /// Query physical device for presentation to X11 server using XCB
@@ -195,9 +205,5 @@ namespace XenoAtom.Interop
         public const int VK_KHR_XCB_SURFACE_SPEC_VERSION = 6;
         
         public static ReadOnlyMemoryUtf8 VK_KHR_XCB_SURFACE_EXTENSION_NAME => "VK_KHR_xcb_surface"u8;
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateXcbSurfaceKHR> vkCreateXcbSurfaceKHR_ => new("vkCreateXcbSurfaceKHR"u8);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR> vkGetPhysicalDeviceXcbPresentationSupportKHR_ => new("vkGetPhysicalDeviceXcbPresentationSupportKHR"u8);
     }
 }

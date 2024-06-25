@@ -230,7 +230,7 @@ namespace XenoAtom.Interop
             public vulkan.VkBool32 screenBufferImport;
         }
         
-        public readonly partial struct PFN_vkCreateScreenSurfaceQNX : IEquatable<vulkan.PFN_vkCreateScreenSurfaceQNX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateScreenSurfaceQNX : IEquatable<vulkan.PFN_vkCreateScreenSurfaceQNX>, IvkFunctionPointer<vulkan.PFN_vkCreateScreenSurfaceQNX>
         {
             public PFN_vkCreateScreenSurfaceQNX(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkScreenSurfaceCreateInfoQNX*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -251,6 +251,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateScreenSurfaceQNX left, PFN_vkCreateScreenSurfaceQNX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateScreenSurfaceQNX left, PFN_vkCreateScreenSurfaceQNX right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateScreenSurfaceQNX`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateScreenSurfaceQNX> Prototype => new("vkCreateScreenSurfaceQNX"u8);
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a QNX Screen window
@@ -278,7 +283,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX : IEquatable<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX : IEquatable<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>, IvkFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>
         {
             public PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan._screen_window, vulkan.VkBool32> value) => this.Value = value;
             
@@ -301,6 +306,11 @@ namespace XenoAtom.Interop
             public static bool operator !=(PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX left, PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX right) => !left.Equals(right);
             
             /// <summary>
+            /// Gets the prototype of the function `vkGetPhysicalDeviceScreenPresentationSupportQNX`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX> Prototype => new("vkGetPhysicalDeviceScreenPresentationSupportQNX"u8);
+            
+            /// <summary>
             /// Query physical device for presentation to QNX Screen
             /// </summary>
             /// <param name="physicalDevice">The physical device.</param>
@@ -319,7 +329,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetScreenBufferPropertiesQNX : IEquatable<vulkan.PFN_vkGetScreenBufferPropertiesQNX>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetScreenBufferPropertiesQNX : IEquatable<vulkan.PFN_vkGetScreenBufferPropertiesQNX>, IvkFunctionPointer<vulkan.PFN_vkGetScreenBufferPropertiesQNX>
         {
             public PFN_vkGetScreenBufferPropertiesQNX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan._screen_buffer, vulkan.VkScreenBufferPropertiesQNX*, vulkan.VkResult> value) => this.Value = value;
             
@@ -340,6 +350,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetScreenBufferPropertiesQNX left, PFN_vkGetScreenBufferPropertiesQNX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetScreenBufferPropertiesQNX left, PFN_vkGetScreenBufferPropertiesQNX right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetScreenBufferPropertiesQNX`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetScreenBufferPropertiesQNX> Prototype => new("vkGetScreenBufferPropertiesQNX"u8);
             
             /// <summary>
             /// Get Properties of External Memory QNX Screen Buffers
@@ -409,8 +424,6 @@ namespace XenoAtom.Interop
             return vkCreateScreenSurfaceQNX(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
         }
         
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateScreenSurfaceQNX> vkCreateScreenSurfaceQNX_ => new("vkCreateScreenSurfaceQNX"u8);
-        
         /// <summary>
         /// Query physical device for presentation to QNX Screen
         /// </summary>
@@ -423,8 +436,6 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetPhysicalDeviceScreenPresentationSupportQNX")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX(vulkan.VkPhysicalDevice physicalDevice, uint queueFamilyIndex, vulkan._screen_window window);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX> vkGetPhysicalDeviceScreenPresentationSupportQNX_ => new("vkGetPhysicalDeviceScreenPresentationSupportQNX"u8);
         
         /// <summary>
         /// Get Properties of External Memory QNX Screen Buffers
@@ -465,7 +476,5 @@ namespace XenoAtom.Interop
             fixed (vulkan.VkScreenBufferPropertiesQNX* __pProperties_local = &pProperties)
             return vkGetScreenBufferPropertiesQNX(device, buffer, __pProperties_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetScreenBufferPropertiesQNX> vkGetScreenBufferPropertiesQNX_ => new("vkGetScreenBufferPropertiesQNX"u8);
     }
 }

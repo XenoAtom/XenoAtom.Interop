@@ -319,17 +319,31 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
         var cppFunction = (CppFunction)csFunction.CppElement!;
 
-        pfn.BaseTypes.Add(new CSharpFreeType("IvkFunctionPointer"));
+        pfn.BaseTypes.Add(new CSharpGenericTypeReference("IvkFunctionPointer", [pfn]));
 
-        var csProperty = new CSharpProperty(csFunction.Name + "_")
+        var csProperty = new CSharpProperty("Prototype")
         {
             ReturnType = new CSharpGenericTypeReference($"vkFunctionPointerPrototype", [pfn]),
             GetBodyInlined = $"new(\"{csFunction.Name}\"u8)",
             Visibility = CSharpVisibility.Public,
             Modifiers = CSharpModifiers.Static,
         };
+
+        csProperty.Comment = new CSharpFullComment()
+        {
+            Children =
+            {
+                new CSharpXmlComment("summary")
+                {
+                    Children =
+                    {
+                        new CSharpTextComment($"Gets the prototype of the function `{csFunction.Name}`.")
+                    }
+                }
+            }
+        };
         var parent = (ICSharpContainer)csFunction.Parent!;
-        parent.Members.Insert(parent.Members.IndexOf(csFunction) + 1, csProperty);
+        pfn.Members.Add(csProperty);
 
         // Extension functions are not part of the core API, so we should remove LibraryImport for them
         var isExtensionFunction = IsFunctionPointerStruct(cppFunction);

@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkIOSSurfaceCreateFlagsMVK left, VkIOSSurfaceCreateFlagsMVK right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateIOSSurfaceMVK : IEquatable<vulkan.PFN_vkCreateIOSSurfaceMVK>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateIOSSurfaceMVK : IEquatable<vulkan.PFN_vkCreateIOSSurfaceMVK>, IvkFunctionPointer<vulkan.PFN_vkCreateIOSSurfaceMVK>
         {
             public PFN_vkCreateIOSSurfaceMVK(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkIOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -93,6 +93,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateIOSSurfaceMVK left, PFN_vkCreateIOSSurfaceMVK right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateIOSSurfaceMVK left, PFN_vkCreateIOSSurfaceMVK right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateIOSSurfaceMVK`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateIOSSurfaceMVK> Prototype => new("vkCreateIOSSurfaceMVK"u8);
             
             /// <summary>
             /// Create a VkSurfaceKHR object for an iOS UIView
@@ -162,7 +167,5 @@ namespace XenoAtom.Interop
             fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
             return vkCreateIOSSurfaceMVK(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateIOSSurfaceMVK> vkCreateIOSSurfaceMVK_ => new("vkCreateIOSSurfaceMVK"u8);
     }
 }

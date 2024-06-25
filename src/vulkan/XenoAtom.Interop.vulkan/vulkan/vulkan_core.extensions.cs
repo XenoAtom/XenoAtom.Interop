@@ -20,7 +20,7 @@ unsafe partial class vulkan
     /// The VK_LAYER_KHRONOS_validation extension name.
     /// </summary>
     public static ReadOnlyMemoryUtf8 VK_LAYER_KHRONOS_VALIDATION_EXTENSION_NAME => "VK_LAYER_KHRONOS_validation"u8;
-
+    
     /// <summary>
     /// Base interfaces for all function pointers.
     /// </summary>
@@ -33,11 +33,23 @@ unsafe partial class vulkan
     }
 
     /// <summary>
+    /// Base interfaces for all function pointers including access to the prototype.
+    /// </summary>
+    public interface IvkFunctionPointer<TPFN> : IvkFunctionPointer
+        where TPFN : unmanaged, IvkFunctionPointer<TPFN>
+    {
+        /// <summary>
+        /// Gets the prototype of the function.
+        /// </summary>
+        static abstract vkFunctionPointerPrototype<TPFN> Prototype { get; }
+    }
+
+    /// <summary>
     /// Represents a prototype of a function pointer.
     /// </summary>
     /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
     /// <param name="name">The name of the exported function.</param>
-    public readonly ref struct vkFunctionPointerPrototype<TPFN>(ReadOnlySpanUtf8 name) where TPFN: unmanaged, IvkFunctionPointer
+    public readonly ref struct vkFunctionPointerPrototype<TPFN>(ReadOnlySpanUtf8 name) where TPFN: unmanaged, IvkFunctionPointer<TPFN>
     {
         public ReadOnlySpanUtf8 Name { get; } = name;
     }
@@ -46,9 +58,9 @@ unsafe partial class vulkan
     /// Gets the address of the specified exported function from the Vulkan library.
     /// </summary>
     /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
-    public static TPFN vkGetInstanceProcAddr<TPFN>(global::XenoAtom.Interop.vulkan.VkInstance instance, vkFunctionPointerPrototype<TPFN> pPrototype) where TPFN: unmanaged, IvkFunctionPointer
+    public static TPFN vkGetInstanceProcAddr<TPFN>(global::XenoAtom.Interop.vulkan.VkInstance instance) where TPFN: unmanaged, IvkFunctionPointer<TPFN>
     {
-        fixed (byte* pName = pPrototype.Name.Bytes)
+        fixed (byte* pName = TPFN.Prototype.Name.Bytes)
         {
             return Unsafe.BitCast<PFN_vkVoidFunction, TPFN>(vkGetInstanceProcAddr(instance, pName));
         }
@@ -58,9 +70,9 @@ unsafe partial class vulkan
     /// Gets the address of the specified exported function from the Vulkan library.
     /// </summary>
     /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
-    public static TPFN vkGetDeviceProcAddr<TPFN>(global::XenoAtom.Interop.vulkan.VkDevice device, vkFunctionPointerPrototype<TPFN> pPrototype) where TPFN: unmanaged, IvkFunctionPointer
+    public static TPFN vkGetDeviceProcAddr<TPFN>(global::XenoAtom.Interop.vulkan.VkDevice device) where TPFN : unmanaged, IvkFunctionPointer<TPFN>
     {
-        fixed (byte* pName = pPrototype.Name.Bytes)
+        fixed (byte* pName = TPFN.Prototype.Name.Bytes)
         {
             return Unsafe.BitCast<PFN_vkVoidFunction, TPFN>(vkGetDeviceProcAddr(device, pName));
         }

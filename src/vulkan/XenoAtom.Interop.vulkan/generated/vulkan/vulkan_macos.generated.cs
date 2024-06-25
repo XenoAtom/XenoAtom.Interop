@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkMacOSSurfaceCreateFlagsMVK left, VkMacOSSurfaceCreateFlagsMVK right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateMacOSSurfaceMVK : IEquatable<vulkan.PFN_vkCreateMacOSSurfaceMVK>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateMacOSSurfaceMVK : IEquatable<vulkan.PFN_vkCreateMacOSSurfaceMVK>, IvkFunctionPointer<vulkan.PFN_vkCreateMacOSSurfaceMVK>
         {
             public PFN_vkCreateMacOSSurfaceMVK(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMacOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -93,6 +93,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateMacOSSurfaceMVK left, PFN_vkCreateMacOSSurfaceMVK right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateMacOSSurfaceMVK left, PFN_vkCreateMacOSSurfaceMVK right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateMacOSSurfaceMVK`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateMacOSSurfaceMVK> Prototype => new("vkCreateMacOSSurfaceMVK"u8);
             
             /// <summary>
             /// Create a VkSurfaceKHR object for a macOS NSView
@@ -162,7 +167,5 @@ namespace XenoAtom.Interop
             fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
             return vkCreateMacOSSurfaceMVK(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateMacOSSurfaceMVK> vkCreateMacOSSurfaceMVK_ => new("vkCreateMacOSSurfaceMVK"u8);
     }
 }

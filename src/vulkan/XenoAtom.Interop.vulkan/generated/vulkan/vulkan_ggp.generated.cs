@@ -96,7 +96,7 @@ namespace XenoAtom.Interop
             public uint frameToken;
         }
         
-        public readonly partial struct PFN_vkCreateStreamDescriptorSurfaceGGP : IEquatable<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateStreamDescriptorSurfaceGGP : IEquatable<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP>, IvkFunctionPointer<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP>
         {
             public PFN_vkCreateStreamDescriptorSurfaceGGP(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkStreamDescriptorSurfaceCreateInfoGGP*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -117,6 +117,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateStreamDescriptorSurfaceGGP left, PFN_vkCreateStreamDescriptorSurfaceGGP right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateStreamDescriptorSurfaceGGP left, PFN_vkCreateStreamDescriptorSurfaceGGP right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateStreamDescriptorSurfaceGGP`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP> Prototype => new("vkCreateStreamDescriptorSurfaceGGP"u8);
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a Google Games Platform stream
@@ -186,7 +191,5 @@ namespace XenoAtom.Interop
             fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
             return vkCreateStreamDescriptorSurfaceGGP(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP> vkCreateStreamDescriptorSurfaceGGP_ => new("vkCreateStreamDescriptorSurfaceGGP"u8);
     }
 }

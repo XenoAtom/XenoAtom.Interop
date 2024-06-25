@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkViSurfaceCreateFlagsNN left, VkViSurfaceCreateFlagsNN right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateViSurfaceNN : IEquatable<vulkan.PFN_vkCreateViSurfaceNN>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateViSurfaceNN : IEquatable<vulkan.PFN_vkCreateViSurfaceNN>, IvkFunctionPointer<vulkan.PFN_vkCreateViSurfaceNN>
         {
             public PFN_vkCreateViSurfaceNN(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkViSurfaceCreateInfoNN*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -93,6 +93,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateViSurfaceNN left, PFN_vkCreateViSurfaceNN right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateViSurfaceNN left, PFN_vkCreateViSurfaceNN right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateViSurfaceNN`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateViSurfaceNN> Prototype => new("vkCreateViSurfaceNN"u8);
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a VI layer
@@ -162,7 +167,5 @@ namespace XenoAtom.Interop
             fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
             return vkCreateViSurfaceNN(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateViSurfaceNN> vkCreateViSurfaceNN_ => new("vkCreateViSurfaceNN"u8);
     }
 }

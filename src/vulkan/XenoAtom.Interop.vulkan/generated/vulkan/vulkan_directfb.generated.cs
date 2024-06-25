@@ -77,7 +77,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDirectFBSurfaceCreateFlagsEXT left, VkDirectFBSurfaceCreateFlagsEXT right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateDirectFBSurfaceEXT : IEquatable<vulkan.PFN_vkCreateDirectFBSurfaceEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateDirectFBSurfaceEXT : IEquatable<vulkan.PFN_vkCreateDirectFBSurfaceEXT>, IvkFunctionPointer<vulkan.PFN_vkCreateDirectFBSurfaceEXT>
         {
             public PFN_vkCreateDirectFBSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkDirectFBSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -98,6 +98,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateDirectFBSurfaceEXT left, PFN_vkCreateDirectFBSurfaceEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateDirectFBSurfaceEXT left, PFN_vkCreateDirectFBSurfaceEXT right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateDirectFBSurfaceEXT`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateDirectFBSurfaceEXT> Prototype => new("vkCreateDirectFBSurfaceEXT"u8);
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a DirectFB surface
@@ -148,7 +153,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT : IEquatable<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT : IEquatable<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>, IvkFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>
         {
             public PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, vulkan.VkBool32> value) => this.Value = value;
             
@@ -169,6 +174,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT left, PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT left, PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetPhysicalDeviceDirectFBPresentationSupportEXT`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT> Prototype => new("vkGetPhysicalDeviceDirectFBPresentationSupportEXT"u8);
             
             /// <summary>
             /// Query physical device for presentation with DirectFB
@@ -194,9 +204,5 @@ namespace XenoAtom.Interop
         public const int VK_EXT_DIRECTFB_SURFACE_SPEC_VERSION = 1;
         
         public static ReadOnlyMemoryUtf8 VK_EXT_DIRECTFB_SURFACE_EXTENSION_NAME => "VK_EXT_directfb_surface"u8;
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateDirectFBSurfaceEXT> vkCreateDirectFBSurfaceEXT_ => new("vkCreateDirectFBSurfaceEXT"u8);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT> vkGetPhysicalDeviceDirectFBPresentationSupportEXT_ => new("vkGetPhysicalDeviceDirectFBPresentationSupportEXT"u8);
     }
 }

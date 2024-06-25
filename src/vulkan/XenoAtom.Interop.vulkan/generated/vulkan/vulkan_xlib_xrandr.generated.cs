@@ -17,7 +17,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
-        public readonly partial struct PFN_vkAcquireXlibDisplayEXT : IEquatable<vulkan.PFN_vkAcquireXlibDisplayEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkAcquireXlibDisplayEXT : IEquatable<vulkan.PFN_vkAcquireXlibDisplayEXT>, IvkFunctionPointer<vulkan.PFN_vkAcquireXlibDisplayEXT>
         {
             public PFN_vkAcquireXlibDisplayEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, vulkan.VkDisplayKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -38,6 +38,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkAcquireXlibDisplayEXT left, PFN_vkAcquireXlibDisplayEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkAcquireXlibDisplayEXT left, PFN_vkAcquireXlibDisplayEXT right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkAcquireXlibDisplayEXT`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkAcquireXlibDisplayEXT> Prototype => new("vkAcquireXlibDisplayEXT"u8);
             
             /// <summary>
             /// Acquire access to a VkDisplayKHR using Xlib
@@ -64,7 +69,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetRandROutputDisplayEXT : IEquatable<vulkan.PFN_vkGetRandROutputDisplayEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetRandROutputDisplayEXT : IEquatable<vulkan.PFN_vkGetRandROutputDisplayEXT>, IvkFunctionPointer<vulkan.PFN_vkGetRandROutputDisplayEXT>
         {
             public PFN_vkGetRandROutputDisplayEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, nuint, vulkan.VkDisplayKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -85,6 +90,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetRandROutputDisplayEXT left, PFN_vkGetRandROutputDisplayEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetRandROutputDisplayEXT left, PFN_vkGetRandROutputDisplayEXT right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetRandROutputDisplayEXT`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetRandROutputDisplayEXT> Prototype => new("vkGetRandROutputDisplayEXT"u8);
             
             /// <summary>
             /// Query the VkDisplayKHR corresponding to an X11 RandR Output
@@ -139,9 +149,5 @@ namespace XenoAtom.Interop
         public const int VK_EXT_ACQUIRE_XLIB_DISPLAY_SPEC_VERSION = 1;
         
         public static ReadOnlyMemoryUtf8 VK_EXT_ACQUIRE_XLIB_DISPLAY_EXTENSION_NAME => "VK_EXT_acquire_xlib_display"u8;
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkAcquireXlibDisplayEXT> vkAcquireXlibDisplayEXT_ => new("vkAcquireXlibDisplayEXT"u8);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetRandROutputDisplayEXT> vkGetRandROutputDisplayEXT_ => new("vkGetRandROutputDisplayEXT"u8);
     }
 }

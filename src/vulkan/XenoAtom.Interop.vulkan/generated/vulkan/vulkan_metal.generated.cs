@@ -629,7 +629,7 @@ namespace XenoAtom.Interop
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
         
-        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<vulkan.PFN_vkCreateMetalSurfaceEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<vulkan.PFN_vkCreateMetalSurfaceEXT>, IvkFunctionPointer<vulkan.PFN_vkCreateMetalSurfaceEXT>
         {
             public PFN_vkCreateMetalSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -650,6 +650,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateMetalSurfaceEXT left, PFN_vkCreateMetalSurfaceEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateMetalSurfaceEXT left, PFN_vkCreateMetalSurfaceEXT right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateMetalSurfaceEXT`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateMetalSurfaceEXT> Prototype => new("vkCreateMetalSurfaceEXT"u8);
             
             /// <summary>
             /// Create a VkSurfaceKHR object for CAMetalLayer
@@ -730,7 +735,7 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkExportMetalObjectTypeFlagsEXT (vulkan.VkExportMetalObjectTypeFlagBitsEXT from) => new vulkan.VkExportMetalObjectTypeFlagsEXT((uint)from);
         }
         
-        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<vulkan.PFN_vkExportMetalObjectsEXT>, IvkFunctionPointer
+        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<vulkan.PFN_vkExportMetalObjectsEXT>, IvkFunctionPointer<vulkan.PFN_vkExportMetalObjectsEXT>
         {
             public PFN_vkExportMetalObjectsEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExportMetalObjectsInfoEXT*, void> value) => this.Value = value;
             
@@ -751,6 +756,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkExportMetalObjectsEXT left, PFN_vkExportMetalObjectsEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkExportMetalObjectsEXT left, PFN_vkExportMetalObjectsEXT right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkExportMetalObjectsEXT`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkExportMetalObjectsEXT> Prototype => new("vkExportMetalObjectsEXT"u8);
             
             /// <summary>
             /// Export Metal objects from the corresponding Vulkan objects
@@ -795,9 +805,5 @@ namespace XenoAtom.Interop
         public const int VK_EXT_METAL_OBJECTS_SPEC_VERSION = 1;
         
         public static ReadOnlyMemoryUtf8 VK_EXT_METAL_OBJECTS_EXTENSION_NAME => "VK_EXT_metal_objects"u8;
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateMetalSurfaceEXT> vkCreateMetalSurfaceEXT_ => new("vkCreateMetalSurfaceEXT"u8);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkExportMetalObjectsEXT> vkExportMetalObjectsEXT_ => new("vkExportMetalObjectsEXT"u8);
     }
 }

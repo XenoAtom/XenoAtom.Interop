@@ -283,7 +283,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Typedefs for loader/ICD interface
         /// </summary>
-        public readonly partial struct PFN_vk_icdNegotiateLoaderICDInterfaceVersion : IEquatable<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>, IvkFunctionPointer
+        public readonly partial struct PFN_vk_icdNegotiateLoaderICDInterfaceVersion : IEquatable<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>, IvkFunctionPointer<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>
         {
             public PFN_vk_icdNegotiateLoaderICDInterfaceVersion(delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -305,6 +305,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vk_icdNegotiateLoaderICDInterfaceVersion left, PFN_vk_icdNegotiateLoaderICDInterfaceVersion right) => !left.Equals(right);
             
+            /// <summary>
+            /// Gets the prototype of the function `vk_icdNegotiateLoaderICDInterfaceVersion`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion> Prototype => new("vk_icdNegotiateLoaderICDInterfaceVersion"u8);
+            
             public vulkan.VkResult Invoke(uint* pVersion)
             {
                 return Value(pVersion);
@@ -315,7 +320,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vk_icdGetInstanceProcAddr : IEquatable<vulkan.PFN_vk_icdGetInstanceProcAddr>, IvkFunctionPointer
+        public readonly partial struct PFN_vk_icdGetInstanceProcAddr : IEquatable<vulkan.PFN_vk_icdGetInstanceProcAddr>, IvkFunctionPointer<vulkan.PFN_vk_icdGetInstanceProcAddr>
         {
             public PFN_vk_icdGetInstanceProcAddr(delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> value) => this.Value = value;
             
@@ -337,6 +342,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vk_icdGetInstanceProcAddr left, PFN_vk_icdGetInstanceProcAddr right) => !left.Equals(right);
             
+            /// <summary>
+            /// Gets the prototype of the function `vk_icdGetInstanceProcAddr`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdGetInstanceProcAddr> Prototype => new("vk_icdGetInstanceProcAddr"u8);
+            
             public vulkan.PFN_vkVoidFunction Invoke(vulkan.VkInstance instance, byte* pName)
             {
                 return Value(instance, pName);
@@ -347,7 +357,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vk_icdGetPhysicalDeviceProcAddr : IEquatable<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>, IvkFunctionPointer
+        public readonly partial struct PFN_vk_icdGetPhysicalDeviceProcAddr : IEquatable<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>, IvkFunctionPointer<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>
         {
             public PFN_vk_icdGetPhysicalDeviceProcAddr(delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> value) => this.Value = value;
             
@@ -369,6 +379,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vk_icdGetPhysicalDeviceProcAddr left, PFN_vk_icdGetPhysicalDeviceProcAddr right) => !left.Equals(right);
             
+            /// <summary>
+            /// Gets the prototype of the function `vk_icdGetPhysicalDeviceProcAddr`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr> Prototype => new("vk_icdGetPhysicalDeviceProcAddr"u8);
+            
             public vulkan.PFN_vkVoidFunction Invoke(vulkan.VkInstance instance, byte* pName)
             {
                 return Value(instance, pName);
@@ -379,7 +394,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vk_icdEnumerateAdapterPhysicalDevices : IEquatable<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>, IvkFunctionPointer
+        public readonly partial struct PFN_vk_icdEnumerateAdapterPhysicalDevices : IEquatable<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>, IvkFunctionPointer<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>
         {
             public PFN_vk_icdEnumerateAdapterPhysicalDevices(delegate*unmanaged[Stdcall]<vulkan.VkInstance, ulong, uint*, vulkan.VkPhysicalDevice*, vulkan.VkResult> value) => this.Value = value;
             
@@ -401,6 +416,11 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vk_icdEnumerateAdapterPhysicalDevices left, PFN_vk_icdEnumerateAdapterPhysicalDevices right) => !left.Equals(right);
             
+            /// <summary>
+            /// Gets the prototype of the function `vk_icdEnumerateAdapterPhysicalDevices`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices> Prototype => new("vk_icdEnumerateAdapterPhysicalDevices"u8);
+            
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, ulong adapterLUID, uint* pPhysicalDeviceCount, vulkan.VkPhysicalDevice* pPhysicalDevices)
             {
                 return Value(instance, adapterLUID, pPhysicalDeviceCount, pPhysicalDevices);
@@ -415,24 +435,16 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vk_icdNegotiateLoaderICDInterfaceVersion(uint* pVersion);
         
-        public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion> vk_icdNegotiateLoaderICDInterfaceVersion_ => new("vk_icdNegotiateLoaderICDInterfaceVersion"u8);
-        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vk_icdGetInstanceProcAddr")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.PFN_vkVoidFunction vk_icdGetInstanceProcAddr(vulkan.VkInstance instance, byte* pName);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdGetInstanceProcAddr> vk_icdGetInstanceProcAddr_ => new("vk_icdGetInstanceProcAddr"u8);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vk_icdGetPhysicalDeviceProcAddr")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.PFN_vkVoidFunction vk_icdGetPhysicalDeviceProcAddr(vulkan.VkInstance instance, byte* pName);
         
-        public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr> vk_icdGetPhysicalDeviceProcAddr_ => new("vk_icdGetPhysicalDeviceProcAddr"u8);
-        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vk_icdEnumerateAdapterPhysicalDevices")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vk_icdEnumerateAdapterPhysicalDevices(vulkan.VkInstance instance, ulong adapterLUID, uint* pPhysicalDeviceCount, vulkan.VkPhysicalDevice* pPhysicalDevices);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices> vk_icdEnumerateAdapterPhysicalDevices_ => new("vk_icdEnumerateAdapterPhysicalDevices"u8);
     }
 }

@@ -427,7 +427,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Version negotiation functions
         /// </summary>
-        public readonly partial struct PFN_vkNegotiateLoaderLayerInterfaceVersion : IEquatable<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>, IvkFunctionPointer
+        public readonly partial struct PFN_vkNegotiateLoaderLayerInterfaceVersion : IEquatable<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>, IvkFunctionPointer<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>
         {
             public PFN_vkNegotiateLoaderLayerInterfaceVersion(delegate*unmanaged[Stdcall]<vulkan.VkNegotiateLayerInterface*, vulkan.VkResult> value) => this.Value = value;
             
@@ -448,6 +448,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkNegotiateLoaderLayerInterfaceVersion left, PFN_vkNegotiateLoaderLayerInterfaceVersion right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkNegotiateLoaderLayerInterfaceVersion left, PFN_vkNegotiateLoaderLayerInterfaceVersion right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkNegotiateLoaderLayerInterfaceVersion`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion> Prototype => new("vkNegotiateLoaderLayerInterfaceVersion"u8);
             
             public vulkan.VkResult Invoke(vulkan.VkNegotiateLayerInterface* pVersionStruct)
             {
@@ -541,7 +546,5 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkNegotiateLoaderLayerInterfaceVersion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial vulkan.VkResult vkNegotiateLoaderLayerInterfaceVersion(vulkan.VkNegotiateLayerInterface* pVersionStruct);
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion> vkNegotiateLoaderLayerInterfaceVersion_ => new("vkNegotiateLoaderLayerInterfaceVersion"u8);
     }
 }

@@ -315,7 +315,7 @@ namespace XenoAtom.Interop
             public vulkan.VkChromaLocation suggestedYChromaOffset;
         }
         
-        public readonly partial struct PFN_vkCreateAndroidSurfaceKHR : IEquatable<vulkan.PFN_vkCreateAndroidSurfaceKHR>, IvkFunctionPointer
+        public readonly partial struct PFN_vkCreateAndroidSurfaceKHR : IEquatable<vulkan.PFN_vkCreateAndroidSurfaceKHR>, IvkFunctionPointer<vulkan.PFN_vkCreateAndroidSurfaceKHR>
         {
             public PFN_vkCreateAndroidSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkAndroidSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -336,6 +336,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkCreateAndroidSurfaceKHR left, PFN_vkCreateAndroidSurfaceKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateAndroidSurfaceKHR left, PFN_vkCreateAndroidSurfaceKHR right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateAndroidSurfaceKHR`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateAndroidSurfaceKHR> Prototype => new("vkCreateAndroidSurfaceKHR"u8);
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for an Android native window
@@ -386,7 +391,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetAndroidHardwareBufferPropertiesANDROID : IEquatable<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetAndroidHardwareBufferPropertiesANDROID : IEquatable<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID>, IvkFunctionPointer<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID>
         {
             public PFN_vkGetAndroidHardwareBufferPropertiesANDROID(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.AHardwareBuffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID*, vulkan.VkResult> value) => this.Value = value;
             
@@ -407,6 +412,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetAndroidHardwareBufferPropertiesANDROID left, PFN_vkGetAndroidHardwareBufferPropertiesANDROID right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetAndroidHardwareBufferPropertiesANDROID left, PFN_vkGetAndroidHardwareBufferPropertiesANDROID right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetAndroidHardwareBufferPropertiesANDROID`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID> Prototype => new("vkGetAndroidHardwareBufferPropertiesANDROID"u8);
             
             /// <summary>
             /// Get Properties of External Memory Android Hardware Buffers
@@ -433,7 +443,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryAndroidHardwareBufferANDROID : IEquatable<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID>, IvkFunctionPointer
+        public readonly partial struct PFN_vkGetMemoryAndroidHardwareBufferANDROID : IEquatable<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID>, IvkFunctionPointer<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID>
         {
             public PFN_vkGetMemoryAndroidHardwareBufferANDROID(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID*, vulkan.AHardwareBuffer*, vulkan.VkResult> value) => this.Value = value;
             
@@ -454,6 +464,11 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkGetMemoryAndroidHardwareBufferANDROID left, PFN_vkGetMemoryAndroidHardwareBufferANDROID right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetMemoryAndroidHardwareBufferANDROID left, PFN_vkGetMemoryAndroidHardwareBufferANDROID right) => !left.Equals(right);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetMemoryAndroidHardwareBufferANDROID`.
+            /// </summary>
+            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID> Prototype => new("vkGetMemoryAndroidHardwareBufferANDROID"u8);
             
             /// <summary>
             /// Get an Android hardware buffer for a memory object
@@ -485,8 +500,6 @@ namespace XenoAtom.Interop
         public const int VK_KHR_ANDROID_SURFACE_SPEC_VERSION = 6;
         
         public static ReadOnlyMemoryUtf8 VK_KHR_ANDROID_SURFACE_EXTENSION_NAME => "VK_KHR_android_surface"u8;
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateAndroidSurfaceKHR> vkCreateAndroidSurfaceKHR_ => new("vkCreateAndroidSurfaceKHR"u8);
         
         /// <summary>
         /// Get Properties of External Memory Android Hardware Buffers
@@ -528,8 +541,6 @@ namespace XenoAtom.Interop
             return vkGetAndroidHardwareBufferPropertiesANDROID(device, buffer, __pProperties_local);
         }
         
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID> vkGetAndroidHardwareBufferPropertiesANDROID_ => new("vkGetAndroidHardwareBufferPropertiesANDROID"u8);
-        
         /// <summary>
         /// Get an Android hardware buffer for a memory object
         /// </summary>
@@ -570,7 +581,5 @@ namespace XenoAtom.Interop
             fixed (vulkan.AHardwareBuffer* __pBuffer_local = &pBuffer)
             return vkGetMemoryAndroidHardwareBufferANDROID(device, __pInfo_local, __pBuffer_local);
         }
-        
-        public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID> vkGetMemoryAndroidHardwareBufferANDROID_ => new("vkGetMemoryAndroidHardwareBufferANDROID"u8);
     }
 }
