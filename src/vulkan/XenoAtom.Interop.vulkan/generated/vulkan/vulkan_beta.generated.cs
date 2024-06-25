@@ -3394,7 +3394,7 @@ namespace XenoAtom.Interop
             /// </list>
             /// <para>Extension: VK_KHR_video_encode_queue</para>
             /// </remarks>
-            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pQualityLevelInfo, out vulkan.VkVideoEncodeQualityLevelPropertiesKHR pQualityLevelProperties)
+            public vulkan.VkResult Invoke(vulkan.VkPhysicalDevice physicalDevice, in vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pQualityLevelInfo, ref vulkan.VkVideoEncodeQualityLevelPropertiesKHR pQualityLevelProperties)
             {
                 fixed (vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR* __pQualityLevelInfo_local = &pQualityLevelInfo)
                 fixed (vulkan.VkVideoEncodeQualityLevelPropertiesKHR* __pQualityLevelProperties_local = &pQualityLevelProperties)
@@ -3665,7 +3665,7 @@ namespace XenoAtom.Interop
             /// </list>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, out vulkan.VkExecutionGraphPipelineScratchSizeAMDX pSizeInfo)
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkPipeline executionGraph, ref vulkan.VkExecutionGraphPipelineScratchSizeAMDX pSizeInfo)
             {
                 fixed (vulkan.VkExecutionGraphPipelineScratchSizeAMDX* __pSizeInfo_local = &pSizeInfo)
                 return this.Invoke(device, executionGraph, __pSizeInfo_local);

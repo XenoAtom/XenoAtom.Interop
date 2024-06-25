@@ -973,7 +973,7 @@ namespace XenoAtom.Interop
             /// </list>
             /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, out vulkan.VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties)
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, ref vulkan.VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties)
             {
                 fixed (vulkan.VkMemoryWin32HandlePropertiesKHR* __pMemoryWin32HandleProperties_local = &pMemoryWin32HandleProperties)
                 return this.Invoke(device, handleType, handle, __pMemoryWin32HandleProperties_local);

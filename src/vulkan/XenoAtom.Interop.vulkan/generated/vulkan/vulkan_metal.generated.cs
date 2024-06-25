@@ -777,7 +777,7 @@ namespace XenoAtom.Interop
             /// <remarks>
             /// <para>Extension: VK_EXT_metal_objects</para>
             /// </remarks>
-            public void Invoke(vulkan.VkDevice device, out vulkan.VkExportMetalObjectsInfoEXT pMetalObjectsInfo)
+            public void Invoke(vulkan.VkDevice device, ref vulkan.VkExportMetalObjectsInfoEXT pMetalObjectsInfo)
             {
                 fixed (vulkan.VkExportMetalObjectsInfoEXT* __pMetalObjectsInfo_local = &pMetalObjectsInfo)
                 this.Invoke(device, __pMetalObjectsInfo_local);

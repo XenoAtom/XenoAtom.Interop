@@ -1303,7 +1303,7 @@ namespace XenoAtom.Interop
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
-        public static vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, out vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties)
+        public static vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, ref vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties)
         {
             fixed (vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* __pMemoryZirconHandleProperties_local = &pMemoryZirconHandleProperties)
             return vkGetMemoryZirconHandlePropertiesFUCHSIA(device, handleType, zirconHandle, __pMemoryZirconHandleProperties_local);
@@ -1572,7 +1572,7 @@ namespace XenoAtom.Interop
         /// </list>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
-        public static vulkan.VkResult vkGetBufferCollectionPropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, out vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties)
+        public static vulkan.VkResult vkGetBufferCollectionPropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkBufferCollectionFUCHSIA collection, ref vulkan.VkBufferCollectionPropertiesFUCHSIA pProperties)
         {
             fixed (vulkan.VkBufferCollectionPropertiesFUCHSIA* __pProperties_local = &pProperties)
             return vkGetBufferCollectionPropertiesFUCHSIA(device, collection, __pProperties_local);

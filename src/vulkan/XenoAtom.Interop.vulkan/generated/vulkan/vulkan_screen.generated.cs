@@ -460,7 +460,7 @@ namespace XenoAtom.Interop
         /// </list>
         /// <para>Extension: VK_QNX_external_memory_screen_buffer</para>
         /// </remarks>
-        public static vulkan.VkResult vkGetScreenBufferPropertiesQNX(vulkan.VkDevice device, vulkan._screen_buffer buffer, out vulkan.VkScreenBufferPropertiesQNX pProperties)
+        public static vulkan.VkResult vkGetScreenBufferPropertiesQNX(vulkan.VkDevice device, vulkan._screen_buffer buffer, ref vulkan.VkScreenBufferPropertiesQNX pProperties)
         {
             fixed (vulkan.VkScreenBufferPropertiesQNX* __pProperties_local = &pProperties)
             return vkGetScreenBufferPropertiesQNX(device, buffer, __pProperties_local);

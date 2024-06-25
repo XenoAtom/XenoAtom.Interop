@@ -25,7 +25,7 @@ namespace XenoAtom.Interop.CodeGen.vulkan;
 internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase(descriptor)
 {
     private const string CommonVkExt = "(AMD|AMDX|ARM|EXT|GOOGLE|HUAWEI|IMG|INTEL|KHR|LUNARG|NV|NVX|QCOM|SEC|VALVE)";
-    private const string CommonVkUint = "(MAX|QUEUE|REMAINING|SHADER|VERSION_1|TRUE|FALSE|UUID|ATTACHMENT|LUID)";
+    private const string CommonVkUint = "(MAX|QUEUE|REMAINING|SHADER|VERSION_1|TRUE|FALSE|UUID|ATTACHMENT|LUID|SUBPASS)";
     private readonly List<CppFunction> _extensionFunctions = new();
     private readonly Dictionary<string, VulkanCommand> _functionRegistry = new();
     private readonly Dictionary<VulkanDocTypeKind, VulkanDocDefinitions> _docDefinitions = new();
@@ -813,14 +813,21 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                     };
                 }
             }
-            else if (IsValidPointerTypeToProcess(cppParameter.Type) && isPointerType)
+            else if (IsValidPointerTypeToProcess(cppParameter.Type, out var pointerElementType) && isPointerType)
             {
                 if (vkParameter.Optional == VulkanCommandOptional.None)
                 {
+                    var refKind = isConst ? CSharpRefKind.In : CSharpRefKind.Out;
+                    // Structures that have a sType field are always passed by ref as they need to be initialized before calling the function
+                    if (!isConst && pointerElementType is CppClass cppClass && cppClass.Fields.Any(f => f.Name == "sType"))
+                    {
+                        refKind = CSharpRefKind.Ref;
+                    }
+
                     paramToProcess = new ParamToProcess(i)
                     {
                         VkParameter = vkParameter,
-                        RefKind = isConst ? CSharpRefKind.In : CSharpRefKind.Out,
+                        RefKind = refKind,
                         ElementType = elementType,
                         LocalVariableName = GetLocalVariableFromParameter(cppParameter.Name),
                     };
@@ -1705,16 +1712,18 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     {
         return type is CppPointerType { ElementType: not CppPointerType } pointerType;
     }
-    
-    private static bool IsValidPointerTypeToProcess(CppType type)
+
+    private static bool IsValidPointerTypeToProcess(CppType type, [NotNullWhen(true)] out CppType? elementType)
     {
+        elementType = null;
         if (type is CppPointerType pointerType)
         {
-            var elementType = pointerType.ElementType;
+            elementType = pointerType.ElementType;
 
             // void* is not supported
             if (pointerType.ElementType is CppPrimitiveType primitiveType && primitiveType.Kind == CppPrimitiveKind.Void)
             {
+                elementType = null;
                 return false;
             }
             // const void* is not supported
@@ -1723,6 +1732,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 elementType = qualifiedType.ElementType;
                 if (((elementType is CppPrimitiveType anotherPrimitiveType && anotherPrimitiveType.Kind == CppPrimitiveKind.Void) || (elementType is CppPointerType)))
                 {
+                    elementType = null;
                     return false;
                 }
             }
@@ -1734,6 +1744,8 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
         return false;
     }
+
+    private static bool IsValidPointerTypeToProcess(CppType type) => IsValidPointerTypeToProcess(type, out _);
     
     private class VulkanDocDefinitions() : Dictionary<string, VulkanDocDefinition>(StringComparer.Ordinal);
 

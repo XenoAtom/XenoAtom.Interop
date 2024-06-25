@@ -522,7 +522,7 @@ namespace XenoAtom.Interop
         /// </list>
         /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
         /// </remarks>
-        public static vulkan.VkResult vkGetAndroidHardwareBufferPropertiesANDROID(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, out vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties)
+        public static vulkan.VkResult vkGetAndroidHardwareBufferPropertiesANDROID(vulkan.VkDevice device, vulkan.AHardwareBuffer buffer, ref vulkan.VkAndroidHardwareBufferPropertiesANDROID pProperties)
         {
             fixed (vulkan.VkAndroidHardwareBufferPropertiesANDROID* __pProperties_local = &pProperties)
             return vkGetAndroidHardwareBufferPropertiesANDROID(device, buffer, __pProperties_local);
