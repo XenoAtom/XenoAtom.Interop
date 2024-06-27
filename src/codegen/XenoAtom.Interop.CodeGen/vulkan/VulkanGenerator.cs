@@ -3,6 +3,7 @@
 // See license.txt file in the project root for full license information.
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Compression;
@@ -319,8 +320,20 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
         var cppFunction = (CppFunction)csFunction.CppElement!;
 
-        pfn.BaseTypes.Add(new CSharpGenericTypeReference("IvkFunctionPointer", [pfn]));
+        var extensionKind = VulkanExtensionKind.Unknown;
+        if (_vulkanElementInfos.TryGetValue(cppFunction.Name, out var elementInfo))
+        {
+            extensionKind = elementInfo.ExtensionKind;
+        }
 
+        pfn.BaseTypes.Add(new CSharpGenericTypeReference(
+            extensionKind switch
+            {
+                VulkanExtensionKind.Instance => "IvkInstanceFunctionPointer",
+                VulkanExtensionKind.Device => "IvkDeviceFunctionPointer",
+                _ => "IvkCoreFunctionPointer",
+            }, [pfn]));
+        
         var csProperty = new CSharpProperty("Name")
         {
             ReturnType = new CSharpFreeType($"ReadOnlyMemoryUtf8"),
@@ -1027,8 +1040,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     private void LoadVulkanRegistry(string registryPath)
     {
         var doc = XDocument.Load(registryPath);
-        LoadApiVersionsAndExtensions(doc);
-        LoadVulkanParametersFromRegistry(doc);
+        LoadApiVersionsAndExtensionsFromRegistry(doc);
+        LoadCommandParameterFromRegistry(doc);
+        LoadStructureTypesFromRegistry(doc);
     }
 
     private void AddVulkanVersionAndExtensionInfoToCSharpElement(CSharpElement element)
@@ -1078,7 +1092,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
     }
     
-    private void LoadApiVersionsAndExtensions(XDocument doc)
+    private void LoadApiVersionsAndExtensionsFromRegistry(XDocument doc)
     {
         var features = doc.Descendants("feature");
         foreach (var feature in features)
@@ -1093,14 +1107,14 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             foreach (var type in feature.Descendants("type"))
             {
                 var name = type.Attribute("name")!.Value!;
-                var info = GetVulkanElementInfo(name);
+                var info = GetOrCreateVulkanElementInfo(name);
                 info.ApiVersion = version;
             }
 
             foreach (var command in feature.Descendants("command"))
             {
                 var name = command.Attribute("name")!.Value!;
-                var info = GetVulkanElementInfo(name);
+                var info = GetOrCreateVulkanElementInfo(name);
                 info.ApiVersion = version;
             }
         }
@@ -1110,31 +1124,45 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         {
             foreach (var extension in extensions.Elements("extension"))
             {
+                var extensionName = extension.Attribute("name")!.Value!;
+                VulkanExtensionKind extensionKind = VulkanExtensionKind.Unknown;
+                var extensionTypeAttr = extension.Attribute("type");
+                if (extensionTypeAttr is not null)
+                {
+                    extensionKind = extensionTypeAttr.Value switch
+                    {
+                        "device" => VulkanExtensionKind.Device,
+                        "instance" => VulkanExtensionKind.Instance,
+                        _ => throw new InvalidOperationException($"The extension type {extensionTypeAttr.Value} is not supported")
+                    };
+                }
+
                 var supportedApis = extension.Attribute("supported")!.Value!;
                 if (!supportedApis.Split(",").Contains("vulkan"))
                 {
                     continue;
                 }
-
-                var extensionName = extension.Attribute("name")!.Value!;
-
+                
                 foreach (var type in extension.Descendants("type"))
                 {
                     var name = type.Attribute("name")!.Value!;
-                    var info = GetVulkanElementInfo(name);
+                    var info = GetOrCreateVulkanElementInfo(name);
+                    info.ExtensionKind = extensionKind;
                     info.Extension = extensionName;
                 }
 
                 foreach (var command in extension.Descendants("command"))
                 {
                     var name = command.Attribute("name")!.Value!;
-                    var info = GetVulkanElementInfo(name);
+                    var info = GetOrCreateVulkanElementInfo(name);
+
+                    info.ExtensionKind = extensionKind;
                     info.Extension = extensionName;
                 }
             }
         }
-        
-        VulkanElementInfo GetVulkanElementInfo(string name)
+
+        VulkanElementInfo GetOrCreateVulkanElementInfo(string name)
         {
             if (_vulkanElementInfos.TryGetValue(name, out var info))
             {
@@ -1145,8 +1173,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             return info;
         }
     }
-    
-    private void LoadVulkanParametersFromRegistry(XDocument doc)
+
+
+    private void LoadCommandParameterFromRegistry(XDocument doc)
     {
         var commands = doc.Descendants("commands").First();
 
@@ -1155,10 +1184,31 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         {
             string name;
             string? alias = xmlCommand.Attribute("alias")?.Value;
+
             if (alias != null)
             {
                 name = xmlCommand.Attribute("name")!.Value;
-                _functionRegistry.Add(name, new VulkanCommand(name) { Alias = alias });
+
+                if (!_vulkanElementInfos.TryGetValue(name, out var info))
+                {
+                    throw new InvalidOperationException($"Cannot find Vulkan element info for alias {name}");
+                }
+                // Add alias information
+                if (_vulkanElementInfos.TryGetValue(alias, out var aliasInfo))
+                {
+                    aliasInfo.ExtensionKind = info.ExtensionKind;
+                    aliasInfo.Extension = info.Extension;
+                    aliasInfo.ApiVersion = info.ApiVersion;
+                }
+                else
+                {
+                    _vulkanElementInfos.TryAdd(alias, info);
+                }
+
+                _functionRegistry.Add(name, new VulkanCommand(name)
+                {
+                    Alias = alias,
+                });
                 continue;
             }
 
@@ -1231,7 +1281,11 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             commandCount++;
         }
 
+        Console.WriteLine($"Total commands: {commandCount} processed from the registry");
+    }
 
+    private void LoadStructureTypesFromRegistry(XDocument doc)
+    {
         var types = doc.Descendants("types").FirstOrDefault();
 
         if (types != null)
@@ -1263,8 +1317,6 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 }
             }
         }
-
-        Console.WriteLine($"Total commands: {commandCount} processed from the registry");
     }
 
     [GeneratedRegex(@"^(\d+\.\d+\.\d+)")]
@@ -1844,6 +1896,15 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     {
         public string? ApiVersion { get; set; }
 
+        public VulkanExtensionKind ExtensionKind { get; set; }
+
         public string? Extension { get; set; }
+    }
+
+    private enum VulkanExtensionKind
+    {
+        Unknown,
+        Instance,
+        Device,
     }
 }

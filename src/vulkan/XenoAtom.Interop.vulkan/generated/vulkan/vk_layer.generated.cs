@@ -427,7 +427,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Version negotiation functions
         /// </summary>
-        public readonly partial struct PFN_vkNegotiateLoaderLayerInterfaceVersion : IEquatable<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>, IvkFunctionPointer<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>
+        public readonly partial struct PFN_vkNegotiateLoaderLayerInterfaceVersion : IEquatable<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>, IvkCoreFunctionPointer<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>
         {
             public PFN_vkNegotiateLoaderLayerInterfaceVersion(delegate*unmanaged[Stdcall]<vulkan.VkNegotiateLayerInterface*, vulkan.VkResult> value) => this.Value = value;
             

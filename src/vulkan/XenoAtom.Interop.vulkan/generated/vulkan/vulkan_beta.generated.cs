@@ -3333,7 +3333,7 @@ namespace XenoAtom.Interop
             public vulkan.VkMicromapEXT micromap;
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR>, IvkFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR>
+        public readonly partial struct PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR>
         {
             public PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR*, vulkan.VkVideoEncodeQualityLevelPropertiesKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3407,7 +3407,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetEncodedVideoSessionParametersKHR : IEquatable<vulkan.PFN_vkGetEncodedVideoSessionParametersKHR>, IvkFunctionPointer<vulkan.PFN_vkGetEncodedVideoSessionParametersKHR>
+        public readonly partial struct PFN_vkGetEncodedVideoSessionParametersKHR : IEquatable<vulkan.PFN_vkGetEncodedVideoSessionParametersKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetEncodedVideoSessionParametersKHR>
         {
             public PFN_vkGetEncodedVideoSessionParametersKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkVideoEncodeSessionParametersGetInfoKHR*, vulkan.VkVideoEncodeSessionParametersFeedbackInfoKHR*, nuint*, void*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3484,7 +3484,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdEncodeVideoKHR : IEquatable<vulkan.PFN_vkCmdEncodeVideoKHR>, IvkFunctionPointer<vulkan.PFN_vkCmdEncodeVideoKHR>
+        public readonly partial struct PFN_vkCmdEncodeVideoKHR : IEquatable<vulkan.PFN_vkCmdEncodeVideoKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdEncodeVideoKHR>
         {
             public PFN_vkCmdEncodeVideoKHR(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkVideoEncodeInfoKHR*, void> value) => this.Value = value;
             
@@ -3543,7 +3543,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCreateExecutionGraphPipelinesAMDX : IEquatable<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX>, IvkFunctionPointer<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX>
+        public readonly partial struct PFN_vkCreateExecutionGraphPipelinesAMDX : IEquatable<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX>
         {
             public PFN_vkCreateExecutionGraphPipelinesAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipelineCache, uint, vulkan.VkExecutionGraphPipelineCreateInfoAMDX*, vulkan.VkAllocationCallbacks*, vulkan.VkPipeline*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3624,7 +3624,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetExecutionGraphPipelineScratchSizeAMDX : IEquatable<vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>, IvkFunctionPointer<vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>
+        public readonly partial struct PFN_vkGetExecutionGraphPipelineScratchSizeAMDX : IEquatable<vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>
         {
             public PFN_vkGetExecutionGraphPipelineScratchSizeAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkExecutionGraphPipelineScratchSizeAMDX*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3697,7 +3697,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetExecutionGraphPipelineNodeIndexAMDX : IEquatable<vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>, IvkFunctionPointer<vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>
+        public readonly partial struct PFN_vkGetExecutionGraphPipelineNodeIndexAMDX : IEquatable<vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>
         {
             public PFN_vkGetExecutionGraphPipelineNodeIndexAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -3773,7 +3773,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdInitializeGraphScratchMemoryAMDX : IEquatable<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX>, IvkFunctionPointer<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX>
+        public readonly partial struct PFN_vkCmdInitializeGraphScratchMemoryAMDX : IEquatable<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX>
         {
             public PFN_vkCmdInitializeGraphScratchMemoryAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> value) => this.Value = value;
             
@@ -3818,7 +3818,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkCmdDispatchGraphAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphAMDX>, IvkFunctionPointer<vulkan.PFN_vkCmdDispatchGraphAMDX>
+        public readonly partial struct PFN_vkCmdDispatchGraphAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphAMDX>
         {
             public PFN_vkCmdDispatchGraphAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
             
@@ -3879,7 +3879,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdDispatchGraphIndirectAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX>, IvkFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX>
+        public readonly partial struct PFN_vkCmdDispatchGraphIndirectAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX>
         {
             public PFN_vkCmdDispatchGraphIndirectAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
             
@@ -3940,7 +3940,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdDispatchGraphIndirectCountAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX>, IvkFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX>
+        public readonly partial struct PFN_vkCmdDispatchGraphIndirectCountAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX>
         {
             public PFN_vkCmdDispatchGraphIndirectCountAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> value) => this.Value = value;
             

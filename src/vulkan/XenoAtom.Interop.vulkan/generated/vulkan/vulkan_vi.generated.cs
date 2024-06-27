@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkViSurfaceCreateFlagsNN left, VkViSurfaceCreateFlagsNN right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateViSurfaceNN : IEquatable<vulkan.PFN_vkCreateViSurfaceNN>, IvkFunctionPointer<vulkan.PFN_vkCreateViSurfaceNN>
+        public readonly partial struct PFN_vkCreateViSurfaceNN : IEquatable<vulkan.PFN_vkCreateViSurfaceNN>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateViSurfaceNN>
         {
             public PFN_vkCreateViSurfaceNN(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkViSurfaceCreateInfoNN*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             

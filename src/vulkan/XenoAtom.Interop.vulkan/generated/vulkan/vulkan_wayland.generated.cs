@@ -74,7 +74,7 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkWaylandSurfaceCreateFlagsKHR left, VkWaylandSurfaceCreateFlagsKHR right) => !left.Equals(right);
         }
         
-        public readonly partial struct PFN_vkCreateWaylandSurfaceKHR : IEquatable<vulkan.PFN_vkCreateWaylandSurfaceKHR>, IvkFunctionPointer<vulkan.PFN_vkCreateWaylandSurfaceKHR>
+        public readonly partial struct PFN_vkCreateWaylandSurfaceKHR : IEquatable<vulkan.PFN_vkCreateWaylandSurfaceKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateWaylandSurfaceKHR>
         {
             public PFN_vkCreateWaylandSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkWaylandSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -150,7 +150,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR>, IvkFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR>
+        public readonly partial struct PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR>
         {
             public PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.wl_display, vulkan.VkBool32> value) => this.Value = value;
             

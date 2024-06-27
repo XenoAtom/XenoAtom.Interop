@@ -230,7 +230,7 @@ namespace XenoAtom.Interop
             public vulkan.VkBool32 screenBufferImport;
         }
         
-        public readonly partial struct PFN_vkCreateScreenSurfaceQNX : IEquatable<vulkan.PFN_vkCreateScreenSurfaceQNX>, IvkFunctionPointer<vulkan.PFN_vkCreateScreenSurfaceQNX>
+        public readonly partial struct PFN_vkCreateScreenSurfaceQNX : IEquatable<vulkan.PFN_vkCreateScreenSurfaceQNX>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateScreenSurfaceQNX>
         {
             public PFN_vkCreateScreenSurfaceQNX(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkScreenSurfaceCreateInfoQNX*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -283,7 +283,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX : IEquatable<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>, IvkFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>
+        public readonly partial struct PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX : IEquatable<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>
         {
             public PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan._screen_window, vulkan.VkBool32> value) => this.Value = value;
             
@@ -329,7 +329,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetScreenBufferPropertiesQNX : IEquatable<vulkan.PFN_vkGetScreenBufferPropertiesQNX>, IvkFunctionPointer<vulkan.PFN_vkGetScreenBufferPropertiesQNX>
+        public readonly partial struct PFN_vkGetScreenBufferPropertiesQNX : IEquatable<vulkan.PFN_vkGetScreenBufferPropertiesQNX>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetScreenBufferPropertiesQNX>
         {
             public PFN_vkGetScreenBufferPropertiesQNX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan._screen_buffer, vulkan.VkScreenBufferPropertiesQNX*, vulkan.VkResult> value) => this.Value = value;
             

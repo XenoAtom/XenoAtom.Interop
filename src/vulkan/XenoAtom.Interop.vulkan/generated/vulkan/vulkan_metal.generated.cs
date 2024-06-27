@@ -629,7 +629,7 @@ namespace XenoAtom.Interop
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
         
-        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<vulkan.PFN_vkCreateMetalSurfaceEXT>, IvkFunctionPointer<vulkan.PFN_vkCreateMetalSurfaceEXT>
+        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<vulkan.PFN_vkCreateMetalSurfaceEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateMetalSurfaceEXT>
         {
             public PFN_vkCreateMetalSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -735,7 +735,7 @@ namespace XenoAtom.Interop
             public static implicit operator vulkan.VkExportMetalObjectTypeFlagsEXT (vulkan.VkExportMetalObjectTypeFlagBitsEXT from) => new vulkan.VkExportMetalObjectTypeFlagsEXT((uint)from);
         }
         
-        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<vulkan.PFN_vkExportMetalObjectsEXT>, IvkFunctionPointer<vulkan.PFN_vkExportMetalObjectsEXT>
+        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<vulkan.PFN_vkExportMetalObjectsEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkExportMetalObjectsEXT>
         {
             public PFN_vkExportMetalObjectsEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExportMetalObjectsInfoEXT*, void> value) => this.Value = value;
             
