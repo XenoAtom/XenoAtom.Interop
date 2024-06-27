@@ -102,7 +102,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateDirectFBSurfaceEXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateDirectFBSurfaceEXT> Prototype => new("vkCreateDirectFBSurfaceEXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateDirectFBSurfaceEXT"u8;
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a DirectFB surface
@@ -178,7 +178,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceDirectFBPresentationSupportEXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT> Prototype => new("vkGetPhysicalDeviceDirectFBPresentationSupportEXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetPhysicalDeviceDirectFBPresentationSupportEXT"u8;
             
             /// <summary>
             /// Query physical device for presentation with DirectFB

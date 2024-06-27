@@ -738,7 +738,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateImagePipeSurfaceFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA> Prototype => new("vkCreateImagePipeSurfaceFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateImagePipeSurfaceFUCHSIA"u8;
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a Fuchsia ImagePipe
@@ -791,7 +791,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryZirconHandleFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandleFUCHSIA> Prototype => new("vkGetMemoryZirconHandleFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetMemoryZirconHandleFUCHSIA"u8;
             
             /// <summary>
             /// Get a Zircon handle for an external memory object
@@ -843,7 +843,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryZirconHandlePropertiesFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA> Prototype => new("vkGetMemoryZirconHandlePropertiesFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetMemoryZirconHandlePropertiesFUCHSIA"u8;
             
             /// <summary>
             /// Get a Zircon handle properties for an external memory object
@@ -896,7 +896,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkImportSemaphoreZirconHandleFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkImportSemaphoreZirconHandleFUCHSIA> Prototype => new("vkImportSemaphoreZirconHandleFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkImportSemaphoreZirconHandleFUCHSIA"u8;
             
             /// <summary>
             /// Import a semaphore from a Zircon event handle
@@ -947,7 +947,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetSemaphoreZirconHandleFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetSemaphoreZirconHandleFUCHSIA> Prototype => new("vkGetSemaphoreZirconHandleFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetSemaphoreZirconHandleFUCHSIA"u8;
             
             /// <summary>
             /// Get a Zircon event handle for a semaphore
@@ -999,7 +999,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateBufferCollectionFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateBufferCollectionFUCHSIA> Prototype => new("vkCreateBufferCollectionFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateBufferCollectionFUCHSIA"u8;
             
             /// <summary>
             /// Create a new buffer collection
@@ -1052,7 +1052,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkSetBufferCollectionImageConstraintsFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionImageConstraintsFUCHSIA> Prototype => new("vkSetBufferCollectionImageConstraintsFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkSetBufferCollectionImageConstraintsFUCHSIA"u8;
             
             /// <summary>
             /// Set image-based constraints for a buffer collection
@@ -1104,7 +1104,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkSetBufferCollectionBufferConstraintsFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkSetBufferCollectionBufferConstraintsFUCHSIA> Prototype => new("vkSetBufferCollectionBufferConstraintsFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkSetBufferCollectionBufferConstraintsFUCHSIA"u8;
             
             /// <summary>
             /// Set buffer-based constraints for a buffer collection
@@ -1156,7 +1156,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkDestroyBufferCollectionFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkDestroyBufferCollectionFUCHSIA> Prototype => new("vkDestroyBufferCollectionFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkDestroyBufferCollectionFUCHSIA"u8;
             
             /// <summary>
             /// Destroy a buffer collection
@@ -1202,7 +1202,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetBufferCollectionPropertiesFUCHSIA`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetBufferCollectionPropertiesFUCHSIA> Prototype => new("vkGetBufferCollectionPropertiesFUCHSIA"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetBufferCollectionPropertiesFUCHSIA"u8;
             
             /// <summary>
             /// Retrieve properties from a buffer collection

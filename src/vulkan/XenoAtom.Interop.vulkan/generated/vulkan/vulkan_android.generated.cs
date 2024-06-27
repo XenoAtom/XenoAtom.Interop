@@ -340,7 +340,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateAndroidSurfaceKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateAndroidSurfaceKHR> Prototype => new("vkCreateAndroidSurfaceKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateAndroidSurfaceKHR"u8;
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for an Android native window
@@ -416,7 +416,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetAndroidHardwareBufferPropertiesANDROID`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID> Prototype => new("vkGetAndroidHardwareBufferPropertiesANDROID"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetAndroidHardwareBufferPropertiesANDROID"u8;
             
             /// <summary>
             /// Get Properties of External Memory Android Hardware Buffers
@@ -468,7 +468,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryAndroidHardwareBufferANDROID`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID> Prototype => new("vkGetMemoryAndroidHardwareBufferANDROID"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetMemoryAndroidHardwareBufferANDROID"u8;
             
             /// <summary>
             /// Get an Android hardware buffer for a memory object

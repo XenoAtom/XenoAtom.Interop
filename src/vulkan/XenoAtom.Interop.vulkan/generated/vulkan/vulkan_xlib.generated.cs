@@ -102,7 +102,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateXlibSurfaceKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateXlibSurfaceKHR> Prototype => new("vkCreateXlibSurfaceKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateXlibSurfaceKHR"u8;
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for an X11 window, using the Xlib client-side library
@@ -178,7 +178,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceXlibPresentationSupportKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR> Prototype => new("vkGetPhysicalDeviceXlibPresentationSupportKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetPhysicalDeviceXlibPresentationSupportKHR"u8;
             
             /// <summary>
             /// Query physical device for presentation to X11 server using Xlib

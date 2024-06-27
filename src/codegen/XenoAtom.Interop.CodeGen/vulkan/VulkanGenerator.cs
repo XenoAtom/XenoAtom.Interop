@@ -321,10 +321,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
         pfn.BaseTypes.Add(new CSharpGenericTypeReference("IvkFunctionPointer", [pfn]));
 
-        var csProperty = new CSharpProperty("Prototype")
+        var csProperty = new CSharpProperty("Name")
         {
-            ReturnType = new CSharpGenericTypeReference($"vkFunctionPointerPrototype", [pfn]),
-            GetBodyInlined = $"new(\"{csFunction.Name}\"u8)",
+            ReturnType = new CSharpFreeType($"ReadOnlyMemoryUtf8"),
+            GetBodyInlined = $"\"{csFunction.Name}\"u8",
             Visibility = CSharpVisibility.Public,
             Modifiers = CSharpModifiers.Static,
         };

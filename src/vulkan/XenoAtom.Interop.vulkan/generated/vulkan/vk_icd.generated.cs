@@ -308,7 +308,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vk_icdNegotiateLoaderICDInterfaceVersion`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion> Prototype => new("vk_icdNegotiateLoaderICDInterfaceVersion"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vk_icdNegotiateLoaderICDInterfaceVersion"u8;
             
             public vulkan.VkResult Invoke(uint* pVersion)
             {
@@ -345,7 +345,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vk_icdGetInstanceProcAddr`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdGetInstanceProcAddr> Prototype => new("vk_icdGetInstanceProcAddr"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vk_icdGetInstanceProcAddr"u8;
             
             public vulkan.PFN_vkVoidFunction Invoke(vulkan.VkInstance instance, byte* pName)
             {
@@ -382,7 +382,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vk_icdGetPhysicalDeviceProcAddr`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr> Prototype => new("vk_icdGetPhysicalDeviceProcAddr"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vk_icdGetPhysicalDeviceProcAddr"u8;
             
             public vulkan.PFN_vkVoidFunction Invoke(vulkan.VkInstance instance, byte* pName)
             {
@@ -419,7 +419,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vk_icdEnumerateAdapterPhysicalDevices`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices> Prototype => new("vk_icdEnumerateAdapterPhysicalDevices"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vk_icdEnumerateAdapterPhysicalDevices"u8;
             
             public vulkan.VkResult Invoke(vulkan.VkInstance instance, ulong adapterLUID, uint* pPhysicalDeviceCount, vulkan.VkPhysicalDevice* pPhysicalDevices)
             {

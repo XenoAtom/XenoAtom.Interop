@@ -755,7 +755,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateWin32SurfaceKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateWin32SurfaceKHR> Prototype => new("vkCreateWin32SurfaceKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateWin32SurfaceKHR"u8;
             
             /// <summary>
             /// Create a VkSurfaceKHR object for an Win32 native window
@@ -831,7 +831,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceWin32PresentationSupportKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR> Prototype => new("vkGetPhysicalDeviceWin32PresentationSupportKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetPhysicalDeviceWin32PresentationSupportKHR"u8;
             
             /// <summary>
             /// Query queue family support for presentation on a Win32 display
@@ -876,7 +876,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryWin32HandleKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryWin32HandleKHR> Prototype => new("vkGetMemoryWin32HandleKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetMemoryWin32HandleKHR"u8;
             
             /// <summary>
             /// Get a Windows HANDLE for a memory object
@@ -950,7 +950,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryWin32HandlePropertiesKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR> Prototype => new("vkGetMemoryWin32HandlePropertiesKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetMemoryWin32HandlePropertiesKHR"u8;
             
             /// <summary>
             /// Get Properties of External Memory Win32 Handles
@@ -1025,7 +1025,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkImportSemaphoreWin32HandleKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkImportSemaphoreWin32HandleKHR> Prototype => new("vkImportSemaphoreWin32HandleKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkImportSemaphoreWin32HandleKHR"u8;
             
             /// <summary>
             /// Import a semaphore from a Windows HANDLE
@@ -1096,7 +1096,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetSemaphoreWin32HandleKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetSemaphoreWin32HandleKHR> Prototype => new("vkGetSemaphoreWin32HandleKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetSemaphoreWin32HandleKHR"u8;
             
             /// <summary>
             /// Get a Windows HANDLE for a semaphore
@@ -1170,7 +1170,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkImportFenceWin32HandleKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkImportFenceWin32HandleKHR> Prototype => new("vkImportFenceWin32HandleKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkImportFenceWin32HandleKHR"u8;
             
             /// <summary>
             /// Import a fence from a Windows HANDLE
@@ -1241,7 +1241,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetFenceWin32HandleKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetFenceWin32HandleKHR> Prototype => new("vkGetFenceWin32HandleKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetFenceWin32HandleKHR"u8;
             
             /// <summary>
             /// Get a Windows HANDLE for a fence
@@ -1315,7 +1315,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryWin32HandleNV`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetMemoryWin32HandleNV> Prototype => new("vkGetMemoryWin32HandleNV"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetMemoryWin32HandleNV"u8;
             
             /// <summary>
             /// Retrieve Win32 handle to a device memory object
@@ -1390,7 +1390,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceSurfacePresentModes2EXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT> Prototype => new("vkGetPhysicalDeviceSurfacePresentModes2EXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetPhysicalDeviceSurfacePresentModes2EXT"u8;
             
             /// <summary>
             /// Query supported presentation modes
@@ -1491,7 +1491,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkAcquireFullScreenExclusiveModeEXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkAcquireFullScreenExclusiveModeEXT> Prototype => new("vkAcquireFullScreenExclusiveModeEXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkAcquireFullScreenExclusiveModeEXT"u8;
             
             /// <summary>
             /// Acquire full-screen exclusive mode for a swapchain
@@ -1542,7 +1542,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkReleaseFullScreenExclusiveModeEXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkReleaseFullScreenExclusiveModeEXT> Prototype => new("vkReleaseFullScreenExclusiveModeEXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkReleaseFullScreenExclusiveModeEXT"u8;
             
             /// <summary>
             /// Release full-screen exclusive mode from a swapchain
@@ -1593,7 +1593,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetDeviceGroupSurfacePresentModes2EXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetDeviceGroupSurfacePresentModes2EXT> Prototype => new("vkGetDeviceGroupSurfacePresentModes2EXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetDeviceGroupSurfacePresentModes2EXT"u8;
             
             /// <summary>
             /// Query device group present capabilities for a surface
@@ -1666,7 +1666,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkAcquireWinrtDisplayNV`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkAcquireWinrtDisplayNV> Prototype => new("vkAcquireWinrtDisplayNV"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkAcquireWinrtDisplayNV"u8;
             
             /// <summary>
             /// Acquire access to a VkDisplayKHR
@@ -1717,7 +1717,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetWinrtDisplayNV`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetWinrtDisplayNV> Prototype => new("vkGetWinrtDisplayNV"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetWinrtDisplayNV"u8;
             
             /// <summary>
             /// Query the VkDisplayKHR corresponding to a WinRT DisplayTarget

@@ -42,7 +42,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkAcquireXlibDisplayEXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkAcquireXlibDisplayEXT> Prototype => new("vkAcquireXlibDisplayEXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkAcquireXlibDisplayEXT"u8;
             
             /// <summary>
             /// Acquire access to a VkDisplayKHR using Xlib
@@ -94,7 +94,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetRandROutputDisplayEXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetRandROutputDisplayEXT> Prototype => new("vkGetRandROutputDisplayEXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetRandROutputDisplayEXT"u8;
             
             /// <summary>
             /// Query the VkDisplayKHR corresponding to an X11 RandR Output

@@ -39,19 +39,9 @@ unsafe partial class vulkan
         where TPFN : unmanaged, IvkFunctionPointer<TPFN>
     {
         /// <summary>
-        /// Gets the prototype of the function.
+        /// Gets the name of the function.
         /// </summary>
-        static abstract vkFunctionPointerPrototype<TPFN> Prototype { get; }
-    }
-
-    /// <summary>
-    /// Represents a prototype of a function pointer.
-    /// </summary>
-    /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
-    /// <param name="name">The name of the exported function.</param>
-    public readonly ref struct vkFunctionPointerPrototype<TPFN>(ReadOnlySpanUtf8 name) where TPFN: unmanaged, IvkFunctionPointer<TPFN>
-    {
-        public ReadOnlySpanUtf8 Name { get; } = name;
+        static abstract ReadOnlyMemoryUtf8 Name { get; }
     }
 
     /// <summary>
@@ -60,7 +50,7 @@ unsafe partial class vulkan
     /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
     public static TPFN vkGetInstanceProcAddr<TPFN>(global::XenoAtom.Interop.vulkan.VkInstance instance) where TPFN: unmanaged, IvkFunctionPointer<TPFN>
     {
-        fixed (byte* pName = TPFN.Prototype.Name.Bytes)
+        fixed (byte* pName = TPFN.Name.Bytes)
         {
             return Unsafe.BitCast<PFN_vkVoidFunction, TPFN>(vkGetInstanceProcAddr(instance, pName));
         }
@@ -72,7 +62,7 @@ unsafe partial class vulkan
     /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
     public static TPFN vkGetDeviceProcAddr<TPFN>(global::XenoAtom.Interop.vulkan.VkDevice device) where TPFN : unmanaged, IvkFunctionPointer<TPFN>
     {
-        fixed (byte* pName = TPFN.Prototype.Name.Bytes)
+        fixed (byte* pName = TPFN.Name.Bytes)
         {
             return Unsafe.BitCast<PFN_vkVoidFunction, TPFN>(vkGetDeviceProcAddr(device, pName));
         }

@@ -97,7 +97,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateViSurfaceNN`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateViSurfaceNN> Prototype => new("vkCreateViSurfaceNN"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateViSurfaceNN"u8;
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a VI layer

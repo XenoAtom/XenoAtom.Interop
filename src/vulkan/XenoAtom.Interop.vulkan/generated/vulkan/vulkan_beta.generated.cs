@@ -3358,7 +3358,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR> Prototype => new("vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetPhysicalDeviceVideoEncodeQualityLevelPropertiesKHR"u8;
             
             /// <summary>
             /// Query video encode quality level properties
@@ -3432,7 +3432,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetEncodedVideoSessionParametersKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetEncodedVideoSessionParametersKHR> Prototype => new("vkGetEncodedVideoSessionParametersKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetEncodedVideoSessionParametersKHR"u8;
             
             /// <summary>
             /// Get encoded parameter sets from a video session parameters object
@@ -3509,7 +3509,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCmdEncodeVideoKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCmdEncodeVideoKHR> Prototype => new("vkCmdEncodeVideoKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCmdEncodeVideoKHR"u8;
             
             /// <summary>
             /// Encode operation for bitstream generation
@@ -3568,7 +3568,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateExecutionGraphPipelinesAMDX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX> Prototype => new("vkCreateExecutionGraphPipelinesAMDX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateExecutionGraphPipelinesAMDX"u8;
             
             /// <summary>
             /// Creates a new execution graph pipeline object
@@ -3649,7 +3649,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetExecutionGraphPipelineScratchSizeAMDX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX> Prototype => new("vkGetExecutionGraphPipelineScratchSizeAMDX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetExecutionGraphPipelineScratchSizeAMDX"u8;
             
             /// <summary>
             /// Query scratch space required to dispatch an execution graph
@@ -3722,7 +3722,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetExecutionGraphPipelineNodeIndexAMDX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX> Prototype => new("vkGetExecutionGraphPipelineNodeIndexAMDX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetExecutionGraphPipelineNodeIndexAMDX"u8;
             
             /// <summary>
             /// Query internal id of a node in an execution graph
@@ -3798,7 +3798,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCmdInitializeGraphScratchMemoryAMDX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX> Prototype => new("vkCmdInitializeGraphScratchMemoryAMDX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCmdInitializeGraphScratchMemoryAMDX"u8;
             
             /// <summary>
             /// Initialize scratch memory for an execution graph
@@ -3843,7 +3843,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCmdDispatchGraphAMDX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCmdDispatchGraphAMDX> Prototype => new("vkCmdDispatchGraphAMDX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCmdDispatchGraphAMDX"u8;
             
             /// <summary>
             /// Dispatch an execution graph
@@ -3904,7 +3904,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCmdDispatchGraphIndirectAMDX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX> Prototype => new("vkCmdDispatchGraphIndirectAMDX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCmdDispatchGraphIndirectAMDX"u8;
             
             /// <summary>
             /// Dispatch an execution graph with node and payload parameters read on the device
@@ -3965,7 +3965,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCmdDispatchGraphIndirectCountAMDX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX> Prototype => new("vkCmdDispatchGraphIndirectCountAMDX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCmdDispatchGraphIndirectCountAMDX"u8;
             
             /// <summary>
             /// Dispatch an execution graph with all parameters read on the device

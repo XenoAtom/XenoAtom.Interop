@@ -452,7 +452,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkNegotiateLoaderLayerInterfaceVersion`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion> Prototype => new("vkNegotiateLoaderLayerInterfaceVersion"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkNegotiateLoaderLayerInterfaceVersion"u8;
             
             public vulkan.VkResult Invoke(vulkan.VkNegotiateLayerInterface* pVersionStruct)
             {

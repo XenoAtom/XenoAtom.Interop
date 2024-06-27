@@ -97,7 +97,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateMacOSSurfaceMVK`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateMacOSSurfaceMVK> Prototype => new("vkCreateMacOSSurfaceMVK"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateMacOSSurfaceMVK"u8;
             
             /// <summary>
             /// Create a VkSurfaceKHR object for a macOS NSView

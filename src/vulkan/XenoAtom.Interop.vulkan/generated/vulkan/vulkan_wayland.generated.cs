@@ -99,7 +99,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateWaylandSurfaceKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateWaylandSurfaceKHR> Prototype => new("vkCreateWaylandSurfaceKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateWaylandSurfaceKHR"u8;
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a Wayland window
@@ -175,7 +175,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceWaylandPresentationSupportKHR`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR> Prototype => new("vkGetPhysicalDeviceWaylandPresentationSupportKHR"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetPhysicalDeviceWaylandPresentationSupportKHR"u8;
             
             /// <summary>
             /// Query physical device for presentation to Wayland

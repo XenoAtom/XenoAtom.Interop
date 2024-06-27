@@ -255,7 +255,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateScreenSurfaceQNX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateScreenSurfaceQNX> Prototype => new("vkCreateScreenSurfaceQNX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateScreenSurfaceQNX"u8;
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a QNX Screen window
@@ -308,7 +308,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceScreenPresentationSupportQNX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX> Prototype => new("vkGetPhysicalDeviceScreenPresentationSupportQNX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetPhysicalDeviceScreenPresentationSupportQNX"u8;
             
             /// <summary>
             /// Query physical device for presentation to QNX Screen
@@ -354,7 +354,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkGetScreenBufferPropertiesQNX`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkGetScreenBufferPropertiesQNX> Prototype => new("vkGetScreenBufferPropertiesQNX"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkGetScreenBufferPropertiesQNX"u8;
             
             /// <summary>
             /// Get Properties of External Memory QNX Screen Buffers

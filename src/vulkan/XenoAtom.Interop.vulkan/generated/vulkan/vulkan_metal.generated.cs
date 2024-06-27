@@ -654,7 +654,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateMetalSurfaceEXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateMetalSurfaceEXT> Prototype => new("vkCreateMetalSurfaceEXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateMetalSurfaceEXT"u8;
             
             /// <summary>
             /// Create a VkSurfaceKHR object for CAMetalLayer
@@ -760,7 +760,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkExportMetalObjectsEXT`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkExportMetalObjectsEXT> Prototype => new("vkExportMetalObjectsEXT"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkExportMetalObjectsEXT"u8;
             
             /// <summary>
             /// Export Metal objects from the corresponding Vulkan objects

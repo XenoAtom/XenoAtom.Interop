@@ -121,7 +121,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Gets the prototype of the function `vkCreateStreamDescriptorSurfaceGGP`.
             /// </summary>
-            public static vkFunctionPointerPrototype<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP> Prototype => new("vkCreateStreamDescriptorSurfaceGGP"u8);
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateStreamDescriptorSurfaceGGP"u8;
             
             /// <summary>
             /// Create a <see cref="T:VkSurfaceKHR"/> object for a Google Games Platform stream
