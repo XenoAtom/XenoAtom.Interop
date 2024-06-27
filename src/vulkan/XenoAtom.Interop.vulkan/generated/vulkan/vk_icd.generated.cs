@@ -283,7 +283,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Typedefs for loader/ICD interface
         /// </summary>
-        public readonly partial struct PFN_vk_icdNegotiateLoaderICDInterfaceVersion : IEquatable<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>, IvkCoreFunctionPointer<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>
+        public readonly partial struct PFN_vk_icdNegotiateLoaderICDInterfaceVersion : IEquatable<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>, IvkFunctionPointer<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>
         {
             public PFN_vk_icdNegotiateLoaderICDInterfaceVersion(delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -320,7 +320,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vk_icdGetInstanceProcAddr : IEquatable<vulkan.PFN_vk_icdGetInstanceProcAddr>, IvkCoreFunctionPointer<vulkan.PFN_vk_icdGetInstanceProcAddr>
+        public readonly partial struct PFN_vk_icdGetInstanceProcAddr : IEquatable<vulkan.PFN_vk_icdGetInstanceProcAddr>, IvkInstanceFunctionPointer<vulkan.PFN_vk_icdGetInstanceProcAddr>
         {
             public PFN_vk_icdGetInstanceProcAddr(delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> value) => this.Value = value;
             
@@ -357,7 +357,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vk_icdGetPhysicalDeviceProcAddr : IEquatable<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>, IvkCoreFunctionPointer<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>
+        public readonly partial struct PFN_vk_icdGetPhysicalDeviceProcAddr : IEquatable<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>, IvkInstanceFunctionPointer<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>
         {
             public PFN_vk_icdGetPhysicalDeviceProcAddr(delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> value) => this.Value = value;
             
@@ -394,7 +394,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vk_icdEnumerateAdapterPhysicalDevices : IEquatable<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>, IvkCoreFunctionPointer<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>
+        public readonly partial struct PFN_vk_icdEnumerateAdapterPhysicalDevices : IEquatable<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>, IvkInstanceFunctionPointer<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>
         {
             public PFN_vk_icdEnumerateAdapterPhysicalDevices(delegate*unmanaged[Stdcall]<vulkan.VkInstance, ulong, uint*, vulkan.VkPhysicalDevice*, vulkan.VkResult> value) => this.Value = value;
             

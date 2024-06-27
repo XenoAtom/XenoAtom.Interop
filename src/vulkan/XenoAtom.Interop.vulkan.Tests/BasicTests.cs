@@ -50,4 +50,33 @@ public class BasicTests
             }
         }
     }
+
+    [TestMethod]
+    public void TestVkVersion()
+    {
+        var version = new VkVersion(VK_API_VERSION_1_0);
+        Assert.AreEqual(1, version.Major);
+        Assert.AreEqual(0, version.Minor);
+        Assert.AreEqual(0, version.Patch);
+        Assert.AreEqual("1.0.0", version.ToString());
+
+        version = new VkVersion(1, 1, 0);
+        Assert.AreEqual(1, version.Major);
+        Assert.AreEqual(1, version.Minor);
+        Assert.AreEqual(0, version.Patch);
+        Assert.AreEqual("1.1.0", version.ToString());
+
+        version = new VkVersion(1, 2, 3);
+        Assert.AreEqual(1, version.Major);
+        Assert.AreEqual(2, version.Minor);
+        Assert.AreEqual(3, version.Patch);
+        Assert.AreEqual("1.2.3", version.ToString());
+
+        version = VK_API_VERSION_1_0;
+        VkVersion version2 = VK_API_VERSION_1_0;
+        Assert.AreEqual(version, version2);
+
+        version = VK_API_VERSION_1_1;
+        Assert.AreNotEqual(version, version2);
+    }
 }

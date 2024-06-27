@@ -231,9 +231,46 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         return csCompilation;
     }
 
+    private static string GetApiVersionDefine(string apiVersion)
+    {
+        return $"VK_API_VERSION_{apiVersion.Replace(".", "_")}";
+    }
+
+    private void ApplyApiVersion(CSharpElement csElement)
+    {
+        if (csElement.CppElement is ICppMember cppMember)
+        {
+            var cppName = cppMember.Name;
+            if (_vulkanElementInfos.TryGetValue(cppName, out var elementInfo) && elementInfo.ApiVersion != null)
+            {
+                List<CSharpAttribute>? attributes = null;
+                if (csElement is CSharpEnum csEnum)
+                {
+                    attributes = csEnum.Attributes;
+                }
+                else if (csElement is CSharpStruct csStruct)
+                {
+                    attributes = csStruct.Attributes;
+                }
+                else if (csElement is CSharpMethod csMethod)
+                {
+                    attributes = csMethod.Attributes;
+                }
+
+                if (attributes != null)
+                {
+                    var apiVersion = GetApiVersionDefine(elementInfo.ApiVersion);
+                    attributes.Add(new CSharpFreeAttribute($"VkVersion({apiVersion})"));
+                }
+            }
+        }
+    }
+    
     private void ProcessStruct(CSharpStruct csStruct)
     {
         var cppName = ((ICppMember)csStruct.CppElement!).Name;
+
+        ApplyApiVersion(csStruct);
 
         if (_structsAsRecord.Contains(cppName))
         {
@@ -258,6 +295,8 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
     private void ProcessVulkanEnum(CSharpEnum csEnum)
     {
+        ApplyApiVersion(csEnum);
+
         // We only need to modify flags in this method
         if (!csEnum.Name.Contains("FlagBits", StringComparison.Ordinal))
         {
@@ -314,11 +353,33 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     [GeneratedRegex($"{CommonVkExt}")]
     private static partial Regex RegexCommandExt();
 
+
+    private VulkanExtensionKind GetFunctionExtensionKind(CSharpMethod csFunction, string name)
+    {
+        if (_vulkanElementInfos.TryGetValue(name, out var elementInfo))
+        {
+            if (elementInfo.ExtensionKind != VulkanExtensionKind.Unknown)
+            {
+                return elementInfo.ExtensionKind;
+            }
+        }
+
+        if (csFunction.Parameters.Count > 0 && csFunction.Parameters[0].ParameterType is CSharpNamedType namedType)
+        {
+            return namedType.Name == "VkInstance" || namedType.Name == "VkPhysicalDevice"
+                ? VulkanExtensionKind.Instance
+                : VulkanExtensionKind.Device;
+        }
+
+        return VulkanExtensionKind.Unknown;
+    }
+
     private void ProcessVulkanFunction(CSharpMethod csFunction)
     {
         // Apply doc to the function
         ApplyDocumentation(csFunction);
         AddVulkanVersionAndExtensionInfoToCSharpElement(csFunction);
+        ApplyApiVersion(csFunction);
 
         if (!_structFunctionPointers.TryGetValue(csFunction.Name, out var pfn))
         {
@@ -328,20 +389,22 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
         var cppFunction = (CppFunction)csFunction.CppElement!;
 
-        var extensionKind = VulkanExtensionKind.Unknown;
-        if (_vulkanElementInfos.TryGetValue(cppFunction.Name, out var elementInfo))
-        {
-            extensionKind = elementInfo.ExtensionKind;
-        }
+        var extensionKind = GetFunctionExtensionKind(csFunction, cppFunction.Name);
 
         pfn.BaseTypes.Add(new CSharpGenericTypeReference(
             extensionKind switch
             {
                 VulkanExtensionKind.Instance => "IvkInstanceFunctionPointer",
                 VulkanExtensionKind.Device => "IvkDeviceFunctionPointer",
-                _ => GlobalCommands.Contains(cppFunction.Name) ? "IvkGlobalFunctionPointer" : "IvkCoreFunctionPointer",
+                VulkanExtensionKind.Global => "IvkGlobalFunctionPointer",
+                _ => "IvkFunctionPointer",
             }, [pfn]));
-        
+
+        if (extensionKind == VulkanExtensionKind.Unknown)
+        {
+            Console.WriteLine($"Warning, cannot find extension kind for function {csFunction.Name}");
+        }
+
         var csProperty = new CSharpProperty("Name")
         {
             ReturnType = new CSharpFreeType($"ReadOnlyMemoryUtf8"),
@@ -518,6 +581,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         newMethod.Modifiers &= ~CSharpModifiers.Partial;
         // We remove all attributes as we are calling to call the interop method from the body
         newMethod.Attributes.Clear();
+        ApplyApiVersion(newMethod);
 
         // We go down from the last parameter to the first one to replace the array parameters with Span
         for (var index = paramsToProcess.Length - 1; index >= 0; index--)
@@ -1124,6 +1188,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 var name = command.Attribute("name")!.Value!;
                 var info = GetOrCreateVulkanElementInfo(name);
                 info.ApiVersion = version;
+                if (GlobalCommands.Contains(name))
+                {
+                    info.ExtensionKind = VulkanExtensionKind.Global;
+                }
             }
         }
 
@@ -1205,12 +1273,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 if (_vulkanElementInfos.TryGetValue(alias, out var aliasInfo))
                 {
                     aliasInfo.ExtensionKind = info.ExtensionKind;
-                    aliasInfo.Extension = info.Extension;
-                    aliasInfo.ApiVersion = info.ApiVersion;
-                }
-                else
-                {
-                    _vulkanElementInfos.TryAdd(alias, info);
+                    aliasInfo.Extension ??= info.Extension;
+
+                    // If the alias has no api version, we use the one from the original extension
+                    aliasInfo.ApiVersion ??= info.ApiVersion;
                 }
 
                 _functionRegistry.Add(name, new VulkanCommand(name)
@@ -1911,7 +1977,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
     private enum VulkanExtensionKind
     {
-        Unknown,
+        Unknown = 0,
         Global,
         Instance,
         Device,

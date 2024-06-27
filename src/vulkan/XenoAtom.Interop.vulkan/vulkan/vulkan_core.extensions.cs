@@ -38,10 +38,10 @@ unsafe partial class vulkan
     }
 
     /// <summary>
-    /// Base interfaces for all function pointers in the Core API 1.0.
+    /// Base interfaces for non-Global/Device/Instance function pointers.
     /// </summary>
-    public interface IvkCoreFunctionPointer<TPFN> : IvkFunctionPointer
-        where TPFN : unmanaged, IvkCoreFunctionPointer<TPFN>
+    public interface IvkFunctionPointer<TPFN> : IvkFunctionPointer
+        where TPFN : unmanaged, IvkFunctionPointer<TPFN>
     {
     }
 
@@ -75,10 +75,11 @@ unsafe partial class vulkan
     /// <summary>
     /// Gets the address of the specified exported Global function from the Vulkan library.
     /// </summary>
-    /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
+    /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkGlobalFunctionPointer{TPFN}"/>.</typeparam>
     /// <remarks>
     /// The global commands are: <see cref="vkEnumerateInstanceVersion"/>, <see cref="vkEnumerateInstanceExtensionProperties"/>, <see cref="vkEnumerateInstanceLayerProperties"/>, and <see cref="vkCreateInstance"/>. 
     /// </remarks>
+    [VkVersion(VK_API_VERSION_1_0)]
     public static TPFN vkGetGlobalProcAddr<TPFN>() where TPFN : unmanaged, IvkGlobalFunctionPointer<TPFN>
     {
         fixed (byte* pName = TPFN.Name.Bytes)
@@ -90,7 +91,8 @@ unsafe partial class vulkan
     /// <summary>
     /// Gets the address of the specified exported function from the Vulkan library.
     /// </summary>
-    /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
+    /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkInstanceFunctionPointer{TPFN}"/>.</typeparam>
+    [VkVersion(VK_API_VERSION_1_0)]
     public static TPFN vkGetInstanceProcAddr<TPFN>(global::XenoAtom.Interop.vulkan.VkInstance instance) where TPFN: unmanaged, IvkInstanceFunctionPointer<TPFN>
     {
         fixed (byte* pName = TPFN.Name.Bytes)
@@ -102,7 +104,8 @@ unsafe partial class vulkan
     /// <summary>
     /// Gets the address of the specified exported function from the Vulkan library.
     /// </summary>
-    /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
+    /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkDeviceFunctionPointer{TPFN}"/>.</typeparam>
+    [VkVersion(VK_API_VERSION_1_0)]
     public static TPFN vkGetDeviceProcAddr<TPFN>(global::XenoAtom.Interop.vulkan.VkDevice device) where TPFN : unmanaged, IvkDeviceFunctionPointer<TPFN>
     {
         fixed (byte* pName = TPFN.Name.Bytes)
