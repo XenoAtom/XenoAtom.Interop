@@ -36,6 +36,14 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     private readonly List<int> _tempOptionalParameterIndexList = new();
     private readonly Dictionary<string, Dictionary<string, string>> _mapStructToFieldsWithDefaultValue = new();
 
+    private readonly HashSet<string> GlobalCommands =
+    [
+        "vkEnumerateInstanceVersion",
+        "vkEnumerateInstanceExtensionProperties",
+        "vkEnumerateInstanceLayerProperties",
+        "vkCreateInstance"
+    ];
+
     private readonly HashSet<string> _structsAsRecord = new()
     {
         "VkOffset2D",
@@ -331,7 +339,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             {
                 VulkanExtensionKind.Instance => "IvkInstanceFunctionPointer",
                 VulkanExtensionKind.Device => "IvkDeviceFunctionPointer",
-                _ => "IvkCoreFunctionPointer",
+                _ => GlobalCommands.Contains(cppFunction.Name) ? "IvkGlobalFunctionPointer" : "IvkCoreFunctionPointer",
             }, [pfn]));
         
         var csProperty = new CSharpProperty("Name")
@@ -1904,6 +1912,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     private enum VulkanExtensionKind
     {
         Unknown,
+        Global,
         Instance,
         Device,
     }

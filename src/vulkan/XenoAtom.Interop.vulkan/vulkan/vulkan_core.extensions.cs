@@ -46,6 +46,17 @@ unsafe partial class vulkan
     }
 
     /// <summary>
+    /// Base interfaces for all Global function pointers.
+    /// </summary>
+    /// <remarks>
+    /// The global commands are: <see cref="vkEnumerateInstanceVersion"/>, <see cref="vkEnumerateInstanceExtensionProperties"/>, <see cref="vkEnumerateInstanceLayerProperties"/>, and <see cref="vkCreateInstance"/>. 
+    /// </remarks>
+    public interface IvkGlobalFunctionPointer<TPFN> : IvkFunctionPointer
+        where TPFN : unmanaged, IvkGlobalFunctionPointer<TPFN>
+    {
+    }
+
+    /// <summary>
     /// Base interfaces for all <see cref="VkInstance"/> related function pointers.
     /// </summary>
     public interface IvkInstanceFunctionPointer<TPFN> : IvkFunctionPointer
@@ -59,6 +70,21 @@ unsafe partial class vulkan
     public interface IvkDeviceFunctionPointer<TPFN> : IvkFunctionPointer
         where TPFN : unmanaged, IvkDeviceFunctionPointer<TPFN>
     {
+    }
+
+    /// <summary>
+    /// Gets the address of the specified exported Global function from the Vulkan library.
+    /// </summary>
+    /// <typeparam name="TPFN">The type of the function pointer that inherits from <see cref="IvkFunctionPointer"/>.</typeparam>
+    /// <remarks>
+    /// The global commands are: <see cref="vkEnumerateInstanceVersion"/>, <see cref="vkEnumerateInstanceExtensionProperties"/>, <see cref="vkEnumerateInstanceLayerProperties"/>, and <see cref="vkCreateInstance"/>. 
+    /// </remarks>
+    public static TPFN vkGetGlobalProcAddr<TPFN>() where TPFN : unmanaged, IvkGlobalFunctionPointer<TPFN>
+    {
+        fixed (byte* pName = TPFN.Name.Bytes)
+        {
+            return Unsafe.BitCast<PFN_vkVoidFunction, TPFN>(vkGetInstanceProcAddr(default, pName));
+        }
     }
 
     /// <summary>
