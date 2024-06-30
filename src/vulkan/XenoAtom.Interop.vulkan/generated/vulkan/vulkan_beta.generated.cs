@@ -81,22 +81,22 @@ namespace XenoAtom.Interop
         /// Video encode capability flags
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeCapabilityFlagBitsKHR : uint
+        public enum VkVideoEncodeCapabilityFlagsKHR : uint
         {
             VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR = unchecked((uint)1),
             
             VK_VIDEO_ENCODE_CAPABILITY_FLAG_BITS_MAX_ENUM_KHR = unchecked((uint)2147483647),
         }
         
-        public const vulkan.VkVideoEncodeCapabilityFlagBitsKHR VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR = VkVideoEncodeCapabilityFlagBitsKHR.VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR;
+        public const vulkan.VkVideoEncodeCapabilityFlagsKHR VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR = VkVideoEncodeCapabilityFlagsKHR.VK_VIDEO_ENCODE_CAPABILITY_PRECEDING_EXTERNALLY_ENCODED_BYTES_BIT_KHR;
         
-        public const vulkan.VkVideoEncodeCapabilityFlagBitsKHR VK_VIDEO_ENCODE_CAPABILITY_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeCapabilityFlagBitsKHR.VK_VIDEO_ENCODE_CAPABILITY_FLAG_BITS_MAX_ENUM_KHR;
+        public const vulkan.VkVideoEncodeCapabilityFlagsKHR VK_VIDEO_ENCODE_CAPABILITY_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeCapabilityFlagsKHR.VK_VIDEO_ENCODE_CAPABILITY_FLAG_BITS_MAX_ENUM_KHR;
         
         /// <summary>
         /// Video encode rate control modes
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeRateControlModeFlagBitsKHR : uint
+        public enum VkVideoEncodeRateControlModeFlagsKHR : uint
         {
             /// <summary>
             /// Specifies the use of implementation-specific rate control.
@@ -124,30 +124,30 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Specifies the use of implementation-specific rate control.
         /// </summary>
-        public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR;
+        public const vulkan.VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR = VkVideoEncodeRateControlModeFlagsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR;
         
         /// <summary>
         /// Specifies that rate control is disabled and any quality control parameters for the encoding are provided on a per-picture basis. In this mode implementations will encode pictures independently of the output bitrate of prior video encode operations. When using an H.264 encode profile, implementations will use the QP values specified in the <see cref="T:VkVideoEncodeH264RateControlInfoEXT"/> structure for the encoded picture. When using an H.265 encode profile, implementations will use the QP values specified in the <see cref="T:VkVideoEncodeH265RateControlInfoEXT"/> structure for the encoded picture.
         /// </summary>
-        public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR;
+        public const vulkan.VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR = VkVideoEncodeRateControlModeFlagsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR;
         
         /// <summary>
         /// Specifies the use of constant bitrate rate control mode.
         /// </summary>
-        public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR;
+        public const vulkan.VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR = VkVideoEncodeRateControlModeFlagsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_CBR_BIT_KHR;
         
         /// <summary>
         /// Specifies the use of variable bitrate rate control mode.
         /// </summary>
-        public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR;
+        public const vulkan.VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR = VkVideoEncodeRateControlModeFlagsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_VBR_BIT_KHR;
         
-        public const vulkan.VkVideoEncodeRateControlModeFlagBitsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeRateControlModeFlagBitsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_FLAG_BITS_MAX_ENUM_KHR;
+        public const vulkan.VkVideoEncodeRateControlModeFlagsKHR VK_VIDEO_ENCODE_RATE_CONTROL_MODE_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeRateControlModeFlagsKHR.VK_VIDEO_ENCODE_RATE_CONTROL_MODE_FLAG_BITS_MAX_ENUM_KHR;
         
         /// <summary>
         /// Bits specifying queried video encode feedback values
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeFeedbackFlagBitsKHR : uint
+        public enum VkVideoEncodeFeedbackFlagsKHR : uint
         {
             /// <summary>
             /// Specifies that queries managed by the pool will capture the byte offset of the bitstream data written by the video encode operation to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/> relative to the offset specified in <see cref="T:VkVideoEncodeInfoKHR.dstBufferOffset"/>.
@@ -170,25 +170,25 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Specifies that queries managed by the pool will capture the byte offset of the bitstream data written by the video encode operation to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/> relative to the offset specified in <see cref="T:VkVideoEncodeInfoKHR.dstBufferOffset"/>.
         /// </summary>
-        public const vulkan.VkVideoEncodeFeedbackFlagBitsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR = VkVideoEncodeFeedbackFlagBitsKHR.VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR;
+        public const vulkan.VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR = VkVideoEncodeFeedbackFlagsKHR.VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BUFFER_OFFSET_BIT_KHR;
         
         /// <summary>
         /// Specifies that queries managed by the pool will capture the number of bytes written by the video encode operation to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/>.
         /// </summary>
-        public const vulkan.VkVideoEncodeFeedbackFlagBitsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR = VkVideoEncodeFeedbackFlagBitsKHR.VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR;
+        public const vulkan.VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR = VkVideoEncodeFeedbackFlagsKHR.VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_BYTES_WRITTEN_BIT_KHR;
         
         /// <summary>
         /// Specifies that queries managed by the pool will capture a boolean value indicating that the data written to the bitstream buffer specified in <see cref="T:VkVideoEncodeInfoKHR.dstBuffer"/> contains overridden parameters.
         /// </summary>
-        public const vulkan.VkVideoEncodeFeedbackFlagBitsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR = VkVideoEncodeFeedbackFlagBitsKHR.VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR;
+        public const vulkan.VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR = VkVideoEncodeFeedbackFlagsKHR.VK_VIDEO_ENCODE_FEEDBACK_BITSTREAM_HAS_OVERRIDES_BIT_KHR;
         
-        public const vulkan.VkVideoEncodeFeedbackFlagBitsKHR VK_VIDEO_ENCODE_FEEDBACK_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeFeedbackFlagBitsKHR.VK_VIDEO_ENCODE_FEEDBACK_FLAG_BITS_MAX_ENUM_KHR;
+        public const vulkan.VkVideoEncodeFeedbackFlagsKHR VK_VIDEO_ENCODE_FEEDBACK_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeFeedbackFlagsKHR.VK_VIDEO_ENCODE_FEEDBACK_FLAG_BITS_MAX_ENUM_KHR;
         
         /// <summary>
         /// Video encode usage flags
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeUsageFlagBitsKHR : uint
+        public enum VkVideoEncodeUsageFlagsKHR : uint
         {
             VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR = unchecked((uint)0),
             
@@ -215,35 +215,35 @@ namespace XenoAtom.Interop
             VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR = unchecked((uint)2147483647),
         }
         
-        public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR;
+        public const vulkan.VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR = VkVideoEncodeUsageFlagsKHR.VK_VIDEO_ENCODE_USAGE_DEFAULT_KHR;
         
         /// <summary>
         /// Specifies that video encoding is intended to be used in conjunction with video decoding to transcode a video bitstream with the same and/or different codecs.
         /// </summary>
-        public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR;
+        public const vulkan.VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.VK_VIDEO_ENCODE_USAGE_TRANSCODING_BIT_KHR;
         
         /// <summary>
         /// Specifies that video encoding is intended to be used to produce a video bitstream that is expected to be sent as a continuous flow over network.
         /// </summary>
-        public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR;
+        public const vulkan.VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.VK_VIDEO_ENCODE_USAGE_STREAMING_BIT_KHR;
         
         /// <summary>
         /// Specifies that video encoding is intended to be used for real-time recording for offline consumption.
         /// </summary>
-        public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR;
+        public const vulkan.VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.VK_VIDEO_ENCODE_USAGE_RECORDING_BIT_KHR;
         
         /// <summary>
         /// Specifies that video encoding is intended to be used in a video conferencing scenario.
         /// </summary>
-        public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR;
+        public const vulkan.VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR = VkVideoEncodeUsageFlagsKHR.VK_VIDEO_ENCODE_USAGE_CONFERENCING_BIT_KHR;
         
-        public const vulkan.VkVideoEncodeUsageFlagBitsKHR VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeUsageFlagBitsKHR.VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR;
+        public const vulkan.VkVideoEncodeUsageFlagsKHR VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeUsageFlagsKHR.VK_VIDEO_ENCODE_USAGE_FLAG_BITS_MAX_ENUM_KHR;
         
         /// <summary>
         /// Video encode content flags
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeContentFlagBitsKHR : uint
+        public enum VkVideoEncodeContentFlagsKHR : uint
         {
             VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR = unchecked((uint)0),
             
@@ -265,30 +265,30 @@ namespace XenoAtom.Interop
             VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR = unchecked((uint)2147483647),
         }
         
-        public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR;
+        public const vulkan.VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR = VkVideoEncodeContentFlagsKHR.VK_VIDEO_ENCODE_CONTENT_DEFAULT_KHR;
         
         /// <summary>
         /// Specifies that video encoding is intended to be used to encode camera content.
         /// </summary>
-        public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR;
+        public const vulkan.VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR = VkVideoEncodeContentFlagsKHR.VK_VIDEO_ENCODE_CONTENT_CAMERA_BIT_KHR;
         
         /// <summary>
         /// Specifies that video encoding is intended to be used to encode desktop content.
         /// </summary>
-        public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR;
+        public const vulkan.VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR = VkVideoEncodeContentFlagsKHR.VK_VIDEO_ENCODE_CONTENT_DESKTOP_BIT_KHR;
         
         /// <summary>
         /// Specified that video encoding is intended to be used to encode rendered (e.g. game) content.
         /// </summary>
-        public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR;
+        public const vulkan.VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR = VkVideoEncodeContentFlagsKHR.VK_VIDEO_ENCODE_CONTENT_RENDERED_BIT_KHR;
         
-        public const vulkan.VkVideoEncodeContentFlagBitsKHR VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeContentFlagBitsKHR.VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR;
+        public const vulkan.VkVideoEncodeContentFlagsKHR VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR = VkVideoEncodeContentFlagsKHR.VK_VIDEO_ENCODE_CONTENT_FLAG_BITS_MAX_ENUM_KHR;
         
         /// <summary>
         /// Video encode H.264 capability flags
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeH264CapabilityFlagBitsEXT : uint
+        public enum VkVideoEncodeH264CapabilityFlagsEXT : uint
         {
             /// <summary>
             /// Indicates if the implementation guarantees generating a HRD compliant bitstream if <c>nal_hrd_parameters_present_flag</c> or <c>vcl_hrd_parameters_present_flag</c> are enabled in <c>StdVideoH264SpsVuiFlags</c>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT"/> indicates that when <c>weighted_pred_flag</c> is enabled or <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is used, the implementation is able to internally decide syntax for <c>pred_weight_table</c>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT"/> indicates that each slice in a frame with multiple slices may begin or finish at any offset in a macroblock row. If not supported, all slices in the frame must: begin at the start of a macroblock row (and hence each slice must: finish at the end of a macroblock row). * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT"/> indicates that when a frame is encoded with multiple slices, the implementation allows encoding each slice with a different <c>StdVideoEncodeH264SliceHeader</c>. If not supported, all slices of the frame must: be encoded with the same <c>slice_type</c> which corresponds to the picture type of the frame. For example, all slices of a P-frame would be encoded as P-slices. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT"/> indicates support for using a B frame as L0 reference. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT"/> indicates support for using a B frame as L1 reference. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT"/> indicates support for specifying different QP values in the members of <see cref="T:VkVideoEncodeH264QpEXT"/>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT"/> indicates support for specifying different constant QP values for each slice. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT"/> indicates support for generating prefix NALUs by setting <see cref="T:VkVideoEncodeH264PictureInfoEXT.generatePrefixNalu"/> to <see cref="T:VK_TRUE"/>.
@@ -317,31 +317,31 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Indicates if the implementation guarantees generating a HRD compliant bitstream if <c>nal_hrd_parameters_present_flag</c> or <c>vcl_hrd_parameters_present_flag</c> are enabled in <c>StdVideoH264SpsVuiFlags</c>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT"/> indicates that when <c>weighted_pred_flag</c> is enabled or <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is used, the implementation is able to internally decide syntax for <c>pred_weight_table</c>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT"/> indicates that each slice in a frame with multiple slices may begin or finish at any offset in a macroblock row. If not supported, all slices in the frame must: begin at the start of a macroblock row (and hence each slice must: finish at the end of a macroblock row). * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT"/> indicates that when a frame is encoded with multiple slices, the implementation allows encoding each slice with a different <c>StdVideoEncodeH264SliceHeader</c>. If not supported, all slices of the frame must: be encoded with the same <c>slice_type</c> which corresponds to the picture type of the frame. For example, all slices of a P-frame would be encoded as P-slices. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT"/> indicates support for using a B frame as L0 reference. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT"/> indicates support for using a B frame as L1 reference. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT"/> indicates support for specifying different QP values in the members of <see cref="T:VkVideoEncodeH264QpEXT"/>. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT"/> indicates support for specifying different constant QP values for each slice. * <see cref="T:VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT"/> indicates support for generating prefix NALUs by setting <see cref="T:VkVideoEncodeH264PictureInfoEXT.generatePrefixNalu"/> to <see cref="T:VK_TRUE"/>.
         /// </summary>
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_DIFFERENT_SLICE_TYPE_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_PER_SLICE_CONSTANT_QP_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_GENERATE_PREFIX_NALU_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH264CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT;
+        public const vulkan.VkVideoEncodeH264CapabilityFlagsEXT VK_VIDEO_ENCODE_H264_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH264CapabilityFlagsEXT.VK_VIDEO_ENCODE_H264_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT;
         
         /// <summary>
         /// Video encode H.264 syntax capability flags
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeH264StdFlagBitsEXT : uint
+        public enum VkVideoEncodeH264StdFlagsEXT : uint
         {
             VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT = unchecked((uint)1),
             
@@ -391,58 +391,58 @@ namespace XenoAtom.Interop
             VK_VIDEO_ENCODE_H264_STD_FLAG_BITS_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_SCALING_MATRIX_PRESENT_FLAG_SET_BIT_EXT;
         
         /// <summary>
         /// Indicates if setting non-zero <c>chroma_qp_index_offset</c> in <c>StdVideoH264PictureParameterSet</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT"/> indicates if setting non-zero <c>second_chroma_qp_index_offset</c> in <c>StdVideoH264PictureParameterSet</c> is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_CHROMA_QP_INDEX_OFFSET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_SECOND_CHROMA_QP_INDEX_OFFSET_BIT_EXT;
         
         /// <summary>
         /// Indicates if setting non-zero <c>pic_init_qp_minus26</c> in <c>StdVideoH264PictureParameterSet</c> is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_PIC_INIT_QP_MINUS26_BIT_EXT;
         
         /// <summary>
         /// Indicates if enabling <c>weighted_pred_flag</c> in <c>StdVideoH264PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_IMPLICIT</c> from <c>StdVideoH264WeightedBipredIdc</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT"/> indicates if enabling <c>transform_8x8_mode_flag</c> in <c>StdVideoH264PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT"/> indicates if disabling <c>StdVideoEncodeH264SliceHeaderFlags</c> is supported when it is present in the slice header. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT"/> indicates if CAVLC entropy coding is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT"/> indicates if CABAC entropy coding is supported. An implementation must: support at least one entropy coding mode. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT"/> indicates if disabling <c>direct_8x8_inference_flag</c> in <c>StdVideoH264SpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>constrained_intra_pred_flag</c> in <c>StdVideoH264PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED</c> from StdVideoH264DisableDeblockingFilterIdc is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED</c> from StdVideoH264DisableDeblockingFilterIdc is supported. * <see cref="T:VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT"/> indicates if using <c>STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_PARTIAL</c> from StdVideoH264DisableDeblockingFilterIdc is supported. An implementation must: support at least one deblocking filter mode.
         /// </summary>
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_EXPLICIT_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_WEIGHTED_BIPRED_IDC_IMPLICIT_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_TRANSFORM_8X8_MODE_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_DIRECT_SPATIAL_MV_PRED_FLAG_UNSET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_UNSET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_ENTROPY_CODING_MODE_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_DIRECT_8X8_INFERENCE_FLAG_UNSET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_DISABLED_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_ENABLED_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_DEBLOCKING_FILTER_PARTIAL_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264StdFlagBitsEXT VK_VIDEO_ENCODE_H264_STD_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH264StdFlagBitsEXT.VK_VIDEO_ENCODE_H264_STD_FLAG_BITS_MAX_ENUM_EXT;
+        public const vulkan.VkVideoEncodeH264StdFlagsEXT VK_VIDEO_ENCODE_H264_STD_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH264StdFlagsEXT.VK_VIDEO_ENCODE_H264_STD_FLAG_BITS_MAX_ENUM_EXT;
         
         /// <summary>
         /// H.264 encode rate control bits
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeH264RateControlFlagBitsEXT : uint
+        public enum VkVideoEncodeH264RateControlFlagsEXT : uint
         {
             VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = unchecked((uint)1),
             
@@ -460,26 +460,26 @@ namespace XenoAtom.Interop
             VK_VIDEO_ENCODE_H264_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
-        public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT;
         
         /// <summary>
         /// Specifies that the application intends to use a regular GOP structure according to the parameters specified in the <see cref="M:gopFrameCount"/>, <see cref="M:idrPeriod"/>, and <see cref="M:consecutiveBFrameCount"/> members of the <see cref="T:VkVideoEncodeH264RateControlInfoEXT"/> structure. * <see cref="T:VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT"/> specifies that the application intends to follow a flat reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic temporal layer pattern.
         /// </summary>
-        public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT;
+        public const vulkan.VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH264RateControlFlagsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_TEMPORAL_LAYER_PATTERN_DYADIC_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH264RateControlFlagBitsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH264RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT;
+        public const vulkan.VkVideoEncodeH264RateControlFlagsEXT VK_VIDEO_ENCODE_H264_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH264RateControlFlagsEXT.VK_VIDEO_ENCODE_H264_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT;
         
         /// <summary>
         /// Video encode H.265 capability flags
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeH265CapabilityFlagBitsEXT : uint
+        public enum VkVideoEncodeH265CapabilityFlagsEXT : uint
         {
             /// <summary>
             /// Indicates if the implementation guarantees generating a HRD compliant bitstream if <c>nal_hrd_parameters_present_flag</c>, <c>vcl_hrd_parameters_present_flag</c>, or <c>sub_pic_hrd_params_present_flag</c> are enabled in <c>StdVideoH265HrdFlags</c>, or <c>vui_hrd_parameters_present_flag</c> is enabled in <c>StdVideoH265SpsVuiFlags</c>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT"/> indicates that when <c>weighted_pred_flag</c> or <c>weighted_bipred_flag</c> in <c>StdVideoH265PpsFlags</c> are enabled, the implementation is able to internally decide syntax for <c>pred_weight_table</c>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT"/> indicates that each slice segment in a frame with a single or multiple tiles per slice may begin or finish at any offset in a CTB row. If not supported, all slice segments in such a frame must: begin at the start of a CTB row (and hence each slice segment must: finish at the end of a CTB row). Also indicates that each slice segment in a frame with multiple slices per tile may begin or finish at any offset within the enclosing tile's CTB row. If not supported, slice segments in such a frame must: begin at the start of the enclosing tile's CTB row (and hence each slice segment must: finish at the end of the enclosing tile's CTB row). * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT"/> indicates that when a frame is encoded with multiple slice segments, the implementation allows encoding each slice segment with a different <c>StdVideoEncodeH265SliceSegmentHeader</c>. If not supported, all slice segments of the frame must: be encoded with the same <c>slice_type</c> which corresponds to the picture type of the frame. For example, all slice segments of a P-frame would be encoded as P-slices. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT"/> indicates support for using a B frame as L0 reference. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT"/> indicates support for using a B frame as L1 reference. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT"/> indicates support for specifying different QP values in the members of <see cref="T:VkVideoEncodeH265QpEXT"/>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT"/> indicates support for specifying different constant QP values for each slice segment. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT"/> indicates if encoding multiple tiles per slice segment is supported. If not set, the implementation is only able to encode a single tile for each slice segment. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT"/> indicates if encoding multiple slice segments per tile is supported. If not set, the implementation is only able to encode a single slice segment for each tile.
@@ -510,33 +510,33 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Indicates if the implementation guarantees generating a HRD compliant bitstream if <c>nal_hrd_parameters_present_flag</c>, <c>vcl_hrd_parameters_present_flag</c>, or <c>sub_pic_hrd_params_present_flag</c> are enabled in <c>StdVideoH265HrdFlags</c>, or <c>vui_hrd_parameters_present_flag</c> is enabled in <c>StdVideoH265SpsVuiFlags</c>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT"/> indicates that when <c>weighted_pred_flag</c> or <c>weighted_bipred_flag</c> in <c>StdVideoH265PpsFlags</c> are enabled, the implementation is able to internally decide syntax for <c>pred_weight_table</c>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT"/> indicates that each slice segment in a frame with a single or multiple tiles per slice may begin or finish at any offset in a CTB row. If not supported, all slice segments in such a frame must: begin at the start of a CTB row (and hence each slice segment must: finish at the end of a CTB row). Also indicates that each slice segment in a frame with multiple slices per tile may begin or finish at any offset within the enclosing tile's CTB row. If not supported, slice segments in such a frame must: begin at the start of the enclosing tile's CTB row (and hence each slice segment must: finish at the end of the enclosing tile's CTB row). * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT"/> indicates that when a frame is encoded with multiple slice segments, the implementation allows encoding each slice segment with a different <c>StdVideoEncodeH265SliceSegmentHeader</c>. If not supported, all slice segments of the frame must: be encoded with the same <c>slice_type</c> which corresponds to the picture type of the frame. For example, all slice segments of a P-frame would be encoded as P-slices. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT"/> indicates support for using a B frame as L0 reference. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT"/> indicates support for using a B frame as L1 reference. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT"/> indicates support for specifying different QP values in the members of <see cref="T:VkVideoEncodeH265QpEXT"/>. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT"/> indicates support for specifying different constant QP values for each slice segment. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT"/> indicates if encoding multiple tiles per slice segment is supported. If not set, the implementation is only able to encode a single tile for each slice segment. * <see cref="T:VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT"/> indicates if encoding multiple slice segments per tile is supported. If not set, the implementation is only able to encode a single slice segment for each tile.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_HRD_COMPLIANCE_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_ROW_UNALIGNED_SLICE_SEGMENT_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_DIFFERENT_SLICE_SEGMENT_TYPE_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L0_LIST_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_B_FRAME_IN_L1_LIST_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_PER_PICTURE_TYPE_MIN_MAX_QP_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_PER_SLICE_SEGMENT_CONSTANT_QP_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_TILES_PER_SLICE_SEGMENT_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_MULTIPLE_SLICE_SEGMENTS_PER_TILE_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265CapabilityFlagBitsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT;
+        public const vulkan.VkVideoEncodeH265CapabilityFlagsEXT VK_VIDEO_ENCODE_H265_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265CapabilityFlagsEXT.VK_VIDEO_ENCODE_H265_CAPABILITY_FLAG_BITS_MAX_ENUM_EXT;
         
         /// <summary>
         /// Video encode H.265 syntax capability flags
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeH265StdFlagBitsEXT : uint
+        public enum VkVideoEncodeH265StdFlagsEXT : uint
         {
             VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT = unchecked((uint)1),
             
@@ -588,60 +588,60 @@ namespace XenoAtom.Interop
             VK_VIDEO_ENCODE_H265_STD_FLAG_BITS_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_SEPARATE_COLOR_PLANE_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_SAMPLE_ADAPTIVE_OFFSET_ENABLED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_SCALING_LIST_DATA_PRESENT_FLAG_SET_BIT_EXT;
         
         /// <summary>
         /// Indicates if enabling <c>pcm_enable_flag</c> in <c>StdVideoH265SpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>sps_temporal_mvp_enabled_flag</c> in <c>StdVideoH265SpsFlags</c> is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_PCM_ENABLED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_SPS_TEMPORAL_MVP_ENABLED_FLAG_SET_BIT_EXT;
         
         /// <summary>
         /// Indicates if setting non-zero <c>init_qp_minus26</c> in <c>StdVideoH265PictureParameterSet</c> is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_INIT_QP_MINUS26_BIT_EXT;
         
         /// <summary>
         /// Indicates if enabling <c>weighted_pred_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>weighted_bipred_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT"/> indicates if setting non-zero value for <c>log2_parallel_merge_level_minus2</c> in <c>StdVideoH265PictureParameterSet</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>sign_data_hiding_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>transform_skip_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT"/> indicates if disabling <c>transform_skip_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. Implementations must: report at least one of <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT"/> and <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT"/> as supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT"/> indicates if enabling <c>pps_slice_chroma_qp_offsets_present_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>transquant_bypass_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>constrained_intra_pred_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>entropy_coding_sync_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>deblocking_filter_override_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT"/> indicates if enabling <c>dependent_slice_segments_enabled_flag</c> in <c>StdVideoH265PpsFlags</c> is supported. * <see cref="T:VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT"/> indicates if enabling <c>dependent_slice_segment_flag</c> in <c>StdVideoEncodeH265SliceHeaderFlags</c> is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_WEIGHTED_PRED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_WEIGHTED_BIPRED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_LOG2_PARALLEL_MERGE_LEVEL_MINUS2_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_SIGN_DATA_HIDING_ENABLED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_TRANSFORM_SKIP_ENABLED_FLAG_UNSET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_TRANSQUANT_BYPASS_ENABLED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_CONSTRAINED_INTRA_PRED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_ENTROPY_CODING_SYNC_ENABLED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_DEBLOCKING_FILTER_OVERRIDE_ENABLED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENTS_ENABLED_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_DEPENDENT_SLICE_SEGMENT_FLAG_SET_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265StdFlagBitsEXT VK_VIDEO_ENCODE_H265_STD_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265StdFlagBitsEXT.VK_VIDEO_ENCODE_H265_STD_FLAG_BITS_MAX_ENUM_EXT;
+        public const vulkan.VkVideoEncodeH265StdFlagsEXT VK_VIDEO_ENCODE_H265_STD_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265StdFlagsEXT.VK_VIDEO_ENCODE_H265_STD_FLAG_BITS_MAX_ENUM_EXT;
         
         /// <summary>
         /// Supported CTB sizes for H.265 video encode
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeH265CtbSizeFlagBitsEXT : uint
+        public enum VkVideoEncodeH265CtbSizeFlagsEXT : uint
         {
             /// <summary>
             /// Specifies that a CTB size of 16x16 is supported.
@@ -664,25 +664,25 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Specifies that a CTB size of 16x16 is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT = VkVideoEncodeH265CtbSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CtbSizeFlagsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT = VkVideoEncodeH265CtbSizeFlagsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_EXT;
         
         /// <summary>
         /// Specifies that a CTB size of 32x32 is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT = VkVideoEncodeH265CtbSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CtbSizeFlagsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT = VkVideoEncodeH265CtbSizeFlagsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_EXT;
         
         /// <summary>
         /// Specifies that a CTB size of 64x64 is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT = VkVideoEncodeH265CtbSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265CtbSizeFlagsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT = VkVideoEncodeH265CtbSizeFlagsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_64_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265CtbSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_FLAG_BITS_MAX_ENUM_EXT;
+        public const vulkan.VkVideoEncodeH265CtbSizeFlagsEXT VK_VIDEO_ENCODE_H265_CTB_SIZE_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265CtbSizeFlagsEXT.VK_VIDEO_ENCODE_H265_CTB_SIZE_FLAG_BITS_MAX_ENUM_EXT;
         
         /// <summary>
         /// Supported transform block sizes for H.265 video encode
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeH265TransformBlockSizeFlagBitsEXT : uint
+        public enum VkVideoEncodeH265TransformBlockSizeFlagsEXT : uint
         {
             /// <summary>
             /// Specifies that a transform block size of 4x4 is supported.
@@ -710,30 +710,30 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Specifies that a transform block size of 4x4 is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_EXT;
         
         /// <summary>
         /// Specifies that a transform block size of 8x8 is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_EXT;
         
         /// <summary>
         /// Specifies that a transform block size of 16x16 is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_16_BIT_EXT;
         
         /// <summary>
         /// Specifies that a transform block size of 32x32 is supported.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT = VkVideoEncodeH265TransformBlockSizeFlagsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_32_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265TransformBlockSizeFlagBitsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_FLAG_BITS_MAX_ENUM_EXT;
+        public const vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265TransformBlockSizeFlagsEXT.VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_FLAG_BITS_MAX_ENUM_EXT;
         
         /// <summary>
         /// H.265 encode rate control bits
         /// </summary>
         [Flags]
-        public enum VkVideoEncodeH265RateControlFlagBitsEXT : uint
+        public enum VkVideoEncodeH265RateControlFlagsEXT : uint
         {
             VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = unchecked((uint)1),
             
@@ -751,20 +751,20 @@ namespace XenoAtom.Interop
             VK_VIDEO_ENCODE_H265_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT = unchecked((uint)2147483647),
         }
         
-        public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_EXT;
         
         /// <summary>
         /// Specifies that the application intends to use a regular GOP structure according to the parameters specified in the <see cref="M:gopFrameCount"/>, <see cref="M:idrPeriod"/>, and <see cref="M:consecutiveBFrameCount"/> members of the <see cref="T:VkVideoEncodeH265RateControlInfoEXT"/> structure. * <see cref="T:VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT"/> specifies that the application intends to follow a flat reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic reference pattern. * <see cref="T:VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT"/> specifies that the application intends to follow a dyadic temporal sub-layer pattern.
         /// </summary>
-        public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT;
+        public const vulkan.VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT = VkVideoEncodeH265RateControlFlagsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_TEMPORAL_SUB_LAYER_PATTERN_DYADIC_BIT_EXT;
         
-        public const vulkan.VkVideoEncodeH265RateControlFlagBitsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265RateControlFlagBitsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT;
+        public const vulkan.VkVideoEncodeH265RateControlFlagsEXT VK_VIDEO_ENCODE_H265_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT = VkVideoEncodeH265RateControlFlagsEXT.VK_VIDEO_ENCODE_H265_RATE_CONTROL_FLAG_BITS_MAX_ENUM_EXT;
         
         /// <summary>
         /// Format enum for displacement micromaps
@@ -1008,96 +1008,6 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeFeedbackFlagsKHR supportedEncodeFeedbackFlags;
         }
         
-        /// <remarks>
-        /// <para>Extension: VK_KHR_video_encode_queue</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeCapabilityFlagsKHR : IEquatable<vulkan.VkVideoEncodeCapabilityFlagsKHR>
-        {
-            public VkVideoEncodeCapabilityFlagsKHR(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeCapabilityFlagsKHR other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeCapabilityFlagsKHR other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeCapabilityFlagsKHR from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeCapabilityFlagsKHR (vulkan.VkFlags from) => new vulkan.VkVideoEncodeCapabilityFlagsKHR(from);
-            
-            public static bool operator ==(VkVideoEncodeCapabilityFlagsKHR left, VkVideoEncodeCapabilityFlagsKHR right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeCapabilityFlagsKHR left, VkVideoEncodeCapabilityFlagsKHR right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeCapabilityFlagBitsKHR (vulkan.VkVideoEncodeCapabilityFlagsKHR from) => (vulkan.VkVideoEncodeCapabilityFlagBitsKHR)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeCapabilityFlagsKHR (vulkan.VkVideoEncodeCapabilityFlagBitsKHR from) => new vulkan.VkVideoEncodeCapabilityFlagsKHR((uint)from);
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_KHR_video_encode_queue</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeRateControlModeFlagsKHR : IEquatable<vulkan.VkVideoEncodeRateControlModeFlagsKHR>
-        {
-            public VkVideoEncodeRateControlModeFlagsKHR(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeRateControlModeFlagsKHR other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeRateControlModeFlagsKHR other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeRateControlModeFlagsKHR from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeRateControlModeFlagsKHR (vulkan.VkFlags from) => new vulkan.VkVideoEncodeRateControlModeFlagsKHR(from);
-            
-            public static bool operator ==(VkVideoEncodeRateControlModeFlagsKHR left, VkVideoEncodeRateControlModeFlagsKHR right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeRateControlModeFlagsKHR left, VkVideoEncodeRateControlModeFlagsKHR right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeRateControlModeFlagBitsKHR (vulkan.VkVideoEncodeRateControlModeFlagsKHR from) => (vulkan.VkVideoEncodeRateControlModeFlagBitsKHR)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeRateControlModeFlagsKHR (vulkan.VkVideoEncodeRateControlModeFlagBitsKHR from) => new vulkan.VkVideoEncodeRateControlModeFlagsKHR((uint)from);
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_KHR_video_encode_queue</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeFeedbackFlagsKHR : IEquatable<vulkan.VkVideoEncodeFeedbackFlagsKHR>
-        {
-            public VkVideoEncodeFeedbackFlagsKHR(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeFeedbackFlagsKHR other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeFeedbackFlagsKHR other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeFeedbackFlagsKHR from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeFeedbackFlagsKHR (vulkan.VkFlags from) => new vulkan.VkVideoEncodeFeedbackFlagsKHR(from);
-            
-            public static bool operator ==(VkVideoEncodeFeedbackFlagsKHR left, VkVideoEncodeFeedbackFlagsKHR right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeFeedbackFlagsKHR left, VkVideoEncodeFeedbackFlagsKHR right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeFeedbackFlagBitsKHR (vulkan.VkVideoEncodeFeedbackFlagsKHR from) => (vulkan.VkVideoEncodeFeedbackFlagBitsKHR)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeFeedbackFlagsKHR (vulkan.VkVideoEncodeFeedbackFlagBitsKHR from) => new vulkan.VkVideoEncodeFeedbackFlagsKHR((uint)from);
-        }
-        
         /// <summary>
         /// Structure specifying enabled video encode feedback values
         /// </summary>
@@ -1154,66 +1064,6 @@ namespace XenoAtom.Interop
             /// A <see cref="T:VkVideoEncodeTuningModeKHR"/> value specifying the tuning mode to use when encoding with the video profile.
             /// </summary>
             public vulkan.VkVideoEncodeTuningModeKHR tuningMode;
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_KHR_video_encode_queue</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeUsageFlagsKHR : IEquatable<vulkan.VkVideoEncodeUsageFlagsKHR>
-        {
-            public VkVideoEncodeUsageFlagsKHR(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeUsageFlagsKHR other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeUsageFlagsKHR other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeUsageFlagsKHR from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeUsageFlagsKHR (vulkan.VkFlags from) => new vulkan.VkVideoEncodeUsageFlagsKHR(from);
-            
-            public static bool operator ==(VkVideoEncodeUsageFlagsKHR left, VkVideoEncodeUsageFlagsKHR right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeUsageFlagsKHR left, VkVideoEncodeUsageFlagsKHR right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeUsageFlagBitsKHR (vulkan.VkVideoEncodeUsageFlagsKHR from) => (vulkan.VkVideoEncodeUsageFlagBitsKHR)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeUsageFlagsKHR (vulkan.VkVideoEncodeUsageFlagBitsKHR from) => new vulkan.VkVideoEncodeUsageFlagsKHR((uint)from);
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_KHR_video_encode_queue</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeContentFlagsKHR : IEquatable<vulkan.VkVideoEncodeContentFlagsKHR>
-        {
-            public VkVideoEncodeContentFlagsKHR(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeContentFlagsKHR other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeContentFlagsKHR other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeContentFlagsKHR from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeContentFlagsKHR (vulkan.VkFlags from) => new vulkan.VkVideoEncodeContentFlagsKHR(from);
-            
-            public static bool operator ==(VkVideoEncodeContentFlagsKHR left, VkVideoEncodeContentFlagsKHR right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeContentFlagsKHR left, VkVideoEncodeContentFlagsKHR right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeContentFlagBitsKHR (vulkan.VkVideoEncodeContentFlagsKHR from) => (vulkan.VkVideoEncodeContentFlagBitsKHR)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeContentFlagsKHR (vulkan.VkVideoEncodeContentFlagBitsKHR from) => new vulkan.VkVideoEncodeContentFlagsKHR((uint)from);
         }
         
         /// <summary>
@@ -1281,7 +1131,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkVideoEncodeRateControlModeFlagBitsKHR"/> value specifying the encode stream rate control mode.
             /// </summary>
-            public vulkan.VkVideoEncodeRateControlModeFlagBitsKHR rateControlMode;
+            public vulkan.VkVideoEncodeRateControlModeFlagsKHR rateControlMode;
             
             /// <summary>
             /// Specifies the number of rate control layers in the video encode stream.
@@ -1380,7 +1230,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkVideoEncodeRateControlModeFlagBitsKHR"/> value indicating the preferred rate control mode to use with the video encode quality level.
             /// </summary>
-            public vulkan.VkVideoEncodeRateControlModeFlagBitsKHR preferredRateControlMode;
+            public vulkan.VkVideoEncodeRateControlModeFlagsKHR preferredRateControlMode;
             
             /// <summary>
             /// Indicates the preferred number of rate control layers to use with the quality level.
@@ -1544,66 +1394,6 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH264StdFlagsEXT stdSyntaxFlags;
         }
         
-        /// <remarks>
-        /// <para>Extension: VK_EXT_video_encode_h264</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeH264CapabilityFlagsEXT : IEquatable<vulkan.VkVideoEncodeH264CapabilityFlagsEXT>
-        {
-            public VkVideoEncodeH264CapabilityFlagsEXT(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeH264CapabilityFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeH264CapabilityFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeH264CapabilityFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH264CapabilityFlagsEXT (vulkan.VkFlags from) => new vulkan.VkVideoEncodeH264CapabilityFlagsEXT(from);
-            
-            public static bool operator ==(VkVideoEncodeH264CapabilityFlagsEXT left, VkVideoEncodeH264CapabilityFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeH264CapabilityFlagsEXT left, VkVideoEncodeH264CapabilityFlagsEXT right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT (vulkan.VkVideoEncodeH264CapabilityFlagsEXT from) => (vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH264CapabilityFlagsEXT (vulkan.VkVideoEncodeH264CapabilityFlagBitsEXT from) => new vulkan.VkVideoEncodeH264CapabilityFlagsEXT((uint)from);
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_EXT_video_encode_h264</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeH264StdFlagsEXT : IEquatable<vulkan.VkVideoEncodeH264StdFlagsEXT>
-        {
-            public VkVideoEncodeH264StdFlagsEXT(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeH264StdFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeH264StdFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeH264StdFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH264StdFlagsEXT (vulkan.VkFlags from) => new vulkan.VkVideoEncodeH264StdFlagsEXT(from);
-            
-            public static bool operator ==(VkVideoEncodeH264StdFlagsEXT left, VkVideoEncodeH264StdFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeH264StdFlagsEXT left, VkVideoEncodeH264StdFlagsEXT right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeH264StdFlagBitsEXT (vulkan.VkVideoEncodeH264StdFlagsEXT from) => (vulkan.VkVideoEncodeH264StdFlagBitsEXT)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH264StdFlagsEXT (vulkan.VkVideoEncodeH264StdFlagBitsEXT from) => new vulkan.VkVideoEncodeH264StdFlagsEXT((uint)from);
-        }
-        
         /// <summary>
         /// Structure describing H.264 QP values per picture type
         /// </summary>
@@ -1690,36 +1480,6 @@ namespace XenoAtom.Interop
             /// Indicates the preferred value to use for <c>entropy_coding_mode_flag</c> in <c>StdVideoH264PpsFlags</c>.
             /// </summary>
             public vulkan.VkBool32 preferredStdEntropyCodingModeFlag;
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_EXT_video_encode_h264</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeH264RateControlFlagsEXT : IEquatable<vulkan.VkVideoEncodeH264RateControlFlagsEXT>
-        {
-            public VkVideoEncodeH264RateControlFlagsEXT(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeH264RateControlFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeH264RateControlFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeH264RateControlFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH264RateControlFlagsEXT (vulkan.VkFlags from) => new vulkan.VkVideoEncodeH264RateControlFlagsEXT(from);
-            
-            public static bool operator ==(VkVideoEncodeH264RateControlFlagsEXT left, VkVideoEncodeH264RateControlFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeH264RateControlFlagsEXT left, VkVideoEncodeH264RateControlFlagsEXT right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeH264RateControlFlagBitsEXT (vulkan.VkVideoEncodeH264RateControlFlagsEXT from) => (vulkan.VkVideoEncodeH264RateControlFlagBitsEXT)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH264RateControlFlagsEXT (vulkan.VkVideoEncodeH264RateControlFlagBitsEXT from) => new vulkan.VkVideoEncodeH264RateControlFlagsEXT((uint)from);
         }
         
         /// <summary>
@@ -2263,126 +2023,6 @@ namespace XenoAtom.Interop
             public vulkan.VkVideoEncodeH265StdFlagsEXT stdSyntaxFlags;
         }
         
-        /// <remarks>
-        /// <para>Extension: VK_EXT_video_encode_h265</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeH265CapabilityFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265CapabilityFlagsEXT>
-        {
-            public VkVideoEncodeH265CapabilityFlagsEXT(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeH265CapabilityFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeH265CapabilityFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeH265CapabilityFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265CapabilityFlagsEXT (vulkan.VkFlags from) => new vulkan.VkVideoEncodeH265CapabilityFlagsEXT(from);
-            
-            public static bool operator ==(VkVideoEncodeH265CapabilityFlagsEXT left, VkVideoEncodeH265CapabilityFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeH265CapabilityFlagsEXT left, VkVideoEncodeH265CapabilityFlagsEXT right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT (vulkan.VkVideoEncodeH265CapabilityFlagsEXT from) => (vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265CapabilityFlagsEXT (vulkan.VkVideoEncodeH265CapabilityFlagBitsEXT from) => new vulkan.VkVideoEncodeH265CapabilityFlagsEXT((uint)from);
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_EXT_video_encode_h265</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeH265CtbSizeFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265CtbSizeFlagsEXT>
-        {
-            public VkVideoEncodeH265CtbSizeFlagsEXT(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeH265CtbSizeFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeH265CtbSizeFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeH265CtbSizeFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265CtbSizeFlagsEXT (vulkan.VkFlags from) => new vulkan.VkVideoEncodeH265CtbSizeFlagsEXT(from);
-            
-            public static bool operator ==(VkVideoEncodeH265CtbSizeFlagsEXT left, VkVideoEncodeH265CtbSizeFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeH265CtbSizeFlagsEXT left, VkVideoEncodeH265CtbSizeFlagsEXT right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT (vulkan.VkVideoEncodeH265CtbSizeFlagsEXT from) => (vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265CtbSizeFlagsEXT (vulkan.VkVideoEncodeH265CtbSizeFlagBitsEXT from) => new vulkan.VkVideoEncodeH265CtbSizeFlagsEXT((uint)from);
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_EXT_video_encode_h265</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeH265TransformBlockSizeFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT>
-        {
-            public VkVideoEncodeH265TransformBlockSizeFlagsEXT(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeH265TransformBlockSizeFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeH265TransformBlockSizeFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT (vulkan.VkFlags from) => new vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT(from);
-            
-            public static bool operator ==(VkVideoEncodeH265TransformBlockSizeFlagsEXT left, VkVideoEncodeH265TransformBlockSizeFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeH265TransformBlockSizeFlagsEXT left, VkVideoEncodeH265TransformBlockSizeFlagsEXT right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT (vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT from) => (vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT (vulkan.VkVideoEncodeH265TransformBlockSizeFlagBitsEXT from) => new vulkan.VkVideoEncodeH265TransformBlockSizeFlagsEXT((uint)from);
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_EXT_video_encode_h265</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeH265StdFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265StdFlagsEXT>
-        {
-            public VkVideoEncodeH265StdFlagsEXT(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeH265StdFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeH265StdFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeH265StdFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265StdFlagsEXT (vulkan.VkFlags from) => new vulkan.VkVideoEncodeH265StdFlagsEXT(from);
-            
-            public static bool operator ==(VkVideoEncodeH265StdFlagsEXT left, VkVideoEncodeH265StdFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeH265StdFlagsEXT left, VkVideoEncodeH265StdFlagsEXT right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeH265StdFlagBitsEXT (vulkan.VkVideoEncodeH265StdFlagsEXT from) => (vulkan.VkVideoEncodeH265StdFlagBitsEXT)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265StdFlagsEXT (vulkan.VkVideoEncodeH265StdFlagBitsEXT from) => new vulkan.VkVideoEncodeH265StdFlagsEXT((uint)from);
-        }
-        
         /// <summary>
         /// Structure specifies H.265 encode session parameters
         /// </summary>
@@ -2493,36 +2133,6 @@ namespace XenoAtom.Interop
             /// Indicates the preferred maximum number of reference pictures to use in the reference list L1.
             /// </summary>
             public uint preferredMaxL1ReferenceCount;
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_EXT_video_encode_h265</para>
-        /// </remarks>
-        public readonly partial struct VkVideoEncodeH265RateControlFlagsEXT : IEquatable<vulkan.VkVideoEncodeH265RateControlFlagsEXT>
-        {
-            public VkVideoEncodeH265RateControlFlagsEXT(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkVideoEncodeH265RateControlFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkVideoEncodeH265RateControlFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkVideoEncodeH265RateControlFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265RateControlFlagsEXT (vulkan.VkFlags from) => new vulkan.VkVideoEncodeH265RateControlFlagsEXT(from);
-            
-            public static bool operator ==(VkVideoEncodeH265RateControlFlagsEXT left, VkVideoEncodeH265RateControlFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkVideoEncodeH265RateControlFlagsEXT left, VkVideoEncodeH265RateControlFlagsEXT right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkVideoEncodeH265RateControlFlagBitsEXT (vulkan.VkVideoEncodeH265RateControlFlagsEXT from) => (vulkan.VkVideoEncodeH265RateControlFlagBitsEXT)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkVideoEncodeH265RateControlFlagsEXT (vulkan.VkVideoEncodeH265RateControlFlagBitsEXT from) => new vulkan.VkVideoEncodeH265RateControlFlagsEXT((uint)from);
         }
         
         /// <summary>

@@ -148,7 +148,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <see cref="M:handle"/> or <see cref="M:name"/>.
             /// </summary>
-            public vulkan.VkExternalMemoryHandleTypeFlagBits handleType;
+            public vulkan.VkExternalMemoryHandleTypeFlags handleType;
             
             /// <summary>
             /// `NULL` or the external handle to import.
@@ -245,7 +245,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of handle requested.
             /// </summary>
-            public vulkan.VkExternalMemoryHandleTypeFlagBits handleType;
+            public vulkan.VkExternalMemoryHandleTypeFlags handleType;
         }
         
         /// <summary>
@@ -333,7 +333,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalSemaphoreHandleTypeFlagBits"/> value specifying the type of <see cref="M:handle"/>.
             /// </summary>
-            public vulkan.VkExternalSemaphoreHandleTypeFlagBits handleType;
+            public vulkan.VkExternalSemaphoreHandleTypeFlags handleType;
             
             /// <summary>
             /// `NULL` or the external handle to import.
@@ -445,7 +445,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalSemaphoreHandleTypeFlagBits"/> value specifying the type of handle requested.
             /// </summary>
-            public vulkan.VkExternalSemaphoreHandleTypeFlagBits handleType;
+            public vulkan.VkExternalSemaphoreHandleTypeFlags handleType;
         }
         
         /// <summary>
@@ -479,7 +479,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalFenceHandleTypeFlagBits"/> value specifying the type of <see cref="M:handle"/>.
             /// </summary>
-            public vulkan.VkExternalFenceHandleTypeFlagBits handleType;
+            public vulkan.VkExternalFenceHandleTypeFlags handleType;
             
             /// <summary>
             /// `NULL` or the external handle to import.
@@ -552,7 +552,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalFenceHandleTypeFlagBits"/> value specifying the type of handle requested.
             /// </summary>
-            public vulkan.VkExternalFenceHandleTypeFlagBits handleType;
+            public vulkan.VkExternalFenceHandleTypeFlags handleType;
         }
         
         /// <summary>
@@ -927,9 +927,9 @@ namespace XenoAtom.Interop
         
         public readonly partial struct PFN_vkGetMemoryWin32HandlePropertiesKHR : IEquatable<vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR>
         {
-            public PFN_vkGetMemoryWin32HandlePropertiesKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> value) => this.Value = value;
+            public PFN_vkGetMemoryWin32HandlePropertiesKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> value) => this.Value = value;
             
-            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> Value { get; }
+            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> Value { get; }
             
             public override bool Equals(object obj) => obj is PFN_vkGetMemoryWin32HandlePropertiesKHR other && Equals(other);
             
@@ -939,9 +939,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> (vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR from) => from.Value;
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> (vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR from) => from.Value;
             
-            public static implicit operator vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR(from);
+            public static implicit operator vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR(from);
             
             public static bool operator ==(PFN_vkGetMemoryWin32HandlePropertiesKHR left, PFN_vkGetMemoryWin32HandlePropertiesKHR right) => left.Equals(right);
             
@@ -968,7 +968,7 @@ namespace XenoAtom.Interop
             /// </list>
             /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, vulkan.VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties)
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlags handleType, nint handle, vulkan.VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties)
             {
                 return Value(device, handleType, handle, pMemoryWin32HandleProperties);
             }
@@ -993,7 +993,7 @@ namespace XenoAtom.Interop
             /// </list>
             /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, nint handle, ref vulkan.VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties)
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlags handleType, nint handle, ref vulkan.VkMemoryWin32HandlePropertiesKHR pMemoryWin32HandleProperties)
             {
                 fixed (vulkan.VkMemoryWin32HandlePropertiesKHR* __pMemoryWin32HandleProperties_local = &pMemoryWin32HandleProperties)
                 return this.Invoke(device, handleType, handle, __pMemoryWin32HandleProperties_local);

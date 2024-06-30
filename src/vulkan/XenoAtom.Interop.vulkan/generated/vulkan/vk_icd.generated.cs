@@ -186,11 +186,11 @@ namespace XenoAtom.Interop
             
             public uint planeStackIndex;
             
-            public vulkan.VkSurfaceTransformFlagBitsKHR transform;
+            public vulkan.VkSurfaceTransformFlagsKHR transform;
             
             public float globalAlpha;
             
-            public vulkan.VkDisplayPlaneAlphaFlagBitsKHR alphaMode;
+            public vulkan.VkDisplayPlaneAlphaFlagsKHR alphaMode;
             
             public vulkan.VkExtent2D imageExtent;
         }

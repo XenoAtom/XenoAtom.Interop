@@ -21,7 +21,7 @@ namespace XenoAtom.Interop
         /// Bitmask specifying image constraints flags
         /// </summary>
         [Flags]
-        public enum VkImageConstraintsInfoFlagBitsFUCHSIA : uint
+        public enum VkImageConstraintsInfoFlagsFUCHSIA : uint
         {
             VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA = unchecked((uint)1),
             
@@ -39,20 +39,20 @@ namespace XenoAtom.Interop
             VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA = unchecked((uint)2147483647),
         }
         
-        public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA;
+        public const vulkan.VkImageConstraintsInfoFlagsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA = VkImageConstraintsInfoFlagsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA;
         
-        public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA;
+        public const vulkan.VkImageConstraintsInfoFlagsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA = VkImageConstraintsInfoFlagsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA;
         
-        public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_RARELY_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_RARELY_FUCHSIA;
+        public const vulkan.VkImageConstraintsInfoFlagsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_RARELY_FUCHSIA = VkImageConstraintsInfoFlagsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_RARELY_FUCHSIA;
         
-        public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA;
+        public const vulkan.VkImageConstraintsInfoFlagsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA = VkImageConstraintsInfoFlagsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_CPU_WRITE_OFTEN_FUCHSIA;
         
         /// <summary>
         /// Specifies that protected memory is optional for the buffer collection.
         /// </summary>
-        public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA;
+        public const vulkan.VkImageConstraintsInfoFlagsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA = VkImageConstraintsInfoFlagsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_PROTECTED_OPTIONAL_FUCHSIA;
         
-        public const vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA = VkImageConstraintsInfoFlagBitsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA;
+        public const vulkan.VkImageConstraintsInfoFlagsFUCHSIA VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA = VkImageConstraintsInfoFlagsFUCHSIA.VK_IMAGE_CONSTRAINTS_INFO_FLAG_BITS_MAX_ENUM_FUCHSIA;
         
         /// <summary>
         /// Structure specifying parameters of a newly created ImagePipe surface object
@@ -130,7 +130,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <see cref="M:handle"/>.
             /// </summary>
-            public vulkan.VkExternalMemoryHandleTypeFlagBits handleType;
+            public vulkan.VkExternalMemoryHandleTypeFlags handleType;
             
             /// <summary>
             /// A <c>zx_handle_t</c> (Zircon) handle to the external memory.
@@ -188,7 +188,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of the handle pointed to by <see cref="M:vkGetMemoryZirconHandleFUCHSIA"/>.
             /// </summary>
-            public vulkan.VkExternalMemoryHandleTypeFlagBits handleType;
+            public vulkan.VkExternalMemoryHandleTypeFlags handleType;
         }
         
         /// <summary>
@@ -222,7 +222,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalSemaphoreHandleTypeFlagBits"/> value specifying the type of <see cref="M:zirconHandle"/>.
             /// </summary>
-            public vulkan.VkExternalSemaphoreHandleTypeFlagBits handleType;
+            public vulkan.VkExternalSemaphoreHandleTypeFlags handleType;
             
             /// <summary>
             /// The external handle to import.
@@ -256,7 +256,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExternalSemaphoreHandleTypeFlagBits"/> value specifying the type of handle requested.
             /// </summary>
-            public vulkan.VkExternalSemaphoreHandleTypeFlagBits handleType;
+            public vulkan.VkExternalSemaphoreHandleTypeFlags handleType;
         }
         
         /// <summary>
@@ -683,36 +683,6 @@ namespace XenoAtom.Interop
             public vulkan.VkImageConstraintsInfoFlagsFUCHSIA flags;
         }
         
-        /// <remarks>
-        /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
-        /// </remarks>
-        public readonly partial struct VkImageConstraintsInfoFlagsFUCHSIA : IEquatable<vulkan.VkImageConstraintsInfoFlagsFUCHSIA>
-        {
-            public VkImageConstraintsInfoFlagsFUCHSIA(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkImageConstraintsInfoFlagsFUCHSIA other && Equals(other);
-            
-            public bool Equals(VkImageConstraintsInfoFlagsFUCHSIA other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkImageConstraintsInfoFlagsFUCHSIA from) => from.Value;
-            
-            public static implicit operator vulkan.VkImageConstraintsInfoFlagsFUCHSIA (vulkan.VkFlags from) => new vulkan.VkImageConstraintsInfoFlagsFUCHSIA(from);
-            
-            public static bool operator ==(VkImageConstraintsInfoFlagsFUCHSIA left, VkImageConstraintsInfoFlagsFUCHSIA right) => left.Equals(right);
-            
-            public static bool operator !=(VkImageConstraintsInfoFlagsFUCHSIA left, VkImageConstraintsInfoFlagsFUCHSIA right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA (vulkan.VkImageConstraintsInfoFlagsFUCHSIA from) => (vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkImageConstraintsInfoFlagsFUCHSIA (vulkan.VkImageConstraintsInfoFlagBitsFUCHSIA from) => new vulkan.VkImageConstraintsInfoFlagsFUCHSIA((uint)from);
-        }
-        
         public readonly partial struct PFN_vkCreateImagePipeSurfaceFUCHSIA : IEquatable<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateImagePipeSurfaceFUCHSIA>
         {
             public PFN_vkCreateImagePipeSurfaceFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkImagePipeSurfaceCreateInfoFUCHSIA*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
@@ -820,9 +790,9 @@ namespace XenoAtom.Interop
         
         public readonly partial struct PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA : IEquatable<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA>
         {
-            public PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
+            public PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> value) => this.Value = value;
             
-            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> Value { get; }
+            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> Value { get; }
             
             public override bool Equals(object obj) => obj is PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA other && Equals(other);
             
@@ -832,9 +802,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> (vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA from) => from.Value;
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> (vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA from) => from.Value;
             
-            public static implicit operator vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlagBits, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> from) => new vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA(from);
+            public static implicit operator vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, uint, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA*, vulkan.VkResult> from) => new vulkan.PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA(from);
             
             public static bool operator ==(PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA left, PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA right) => left.Equals(right);
             
@@ -861,7 +831,7 @@ namespace XenoAtom.Interop
             /// </list>
             /// <para>Extension: VK_FUCHSIA_external_memory</para>
             /// </remarks>
-            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties)
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlags handleType, uint zirconHandle, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties)
             {
                 return Value(device, handleType, zirconHandle, pMemoryZirconHandleProperties);
             }
@@ -1331,7 +1301,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkGetMemoryZirconHandlePropertiesFUCHSIA")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
-        public static partial vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties);
+        public static partial vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlags handleType, uint zirconHandle, vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties);
         
         /// <summary>
         /// Get a Zircon handle properties for an external memory object
@@ -1349,7 +1319,7 @@ namespace XenoAtom.Interop
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
-        public static vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlagBits handleType, uint zirconHandle, ref vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties)
+        public static vulkan.VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlags handleType, uint zirconHandle, ref vulkan.VkMemoryZirconHandlePropertiesFUCHSIA pMemoryZirconHandleProperties)
         {
             fixed (vulkan.VkMemoryZirconHandlePropertiesFUCHSIA* __pMemoryZirconHandleProperties_local = &pMemoryZirconHandleProperties)
             return vkGetMemoryZirconHandlePropertiesFUCHSIA(device, handleType, zirconHandle, __pMemoryZirconHandleProperties_local);

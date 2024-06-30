@@ -57,12 +57,12 @@ namespace XenoAtom.Interop
         public const vulkan.VkLayerFunction_ VK_LOADER_FEATURES = VkLayerFunction_.VK_LOADER_FEATURES;
         
         [Flags]
-        public enum VkLoaderFeatureFlagBits : uint
+        public enum VkLoaderFeatureFlags : uint
         {
             VK_LOADER_FEATURE_PHYSICAL_DEVICE_SORTING = unchecked((uint)1),
         }
         
-        public const vulkan.VkLoaderFeatureFlagBits VK_LOADER_FEATURE_PHYSICAL_DEVICE_SORTING = VkLoaderFeatureFlagBits.VK_LOADER_FEATURE_PHYSICAL_DEVICE_SORTING;
+        public const vulkan.VkLoaderFeatureFlags VK_LOADER_FEATURE_PHYSICAL_DEVICE_SORTING = VkLoaderFeatureFlags.VK_LOADER_FEATURE_PHYSICAL_DEVICE_SORTING;
         
         public enum VkChainType : uint
         {
@@ -251,33 +251,6 @@ namespace XenoAtom.Interop
             public static bool operator ==(PFN_vkSetInstanceLoaderData left, PFN_vkSetInstanceLoaderData right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkSetInstanceLoaderData left, PFN_vkSetInstanceLoaderData right) => !left.Equals(right);
-        }
-        
-        public readonly partial struct VkLoaderFeatureFlags : IEquatable<vulkan.VkLoaderFeatureFlags>
-        {
-            public VkLoaderFeatureFlags(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkLoaderFeatureFlags other && Equals(other);
-            
-            public bool Equals(VkLoaderFeatureFlags other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkLoaderFeatureFlags from) => from.Value;
-            
-            public static implicit operator vulkan.VkLoaderFeatureFlags (vulkan.VkFlags from) => new vulkan.VkLoaderFeatureFlags(from);
-            
-            public static bool operator ==(VkLoaderFeatureFlags left, VkLoaderFeatureFlags right) => left.Equals(right);
-            
-            public static bool operator !=(VkLoaderFeatureFlags left, VkLoaderFeatureFlags right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkLoaderFeatureFlagBits (vulkan.VkLoaderFeatureFlags from) => (vulkan.VkLoaderFeatureFlagBits)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkLoaderFeatureFlags (vulkan.VkLoaderFeatureFlagBits from) => new vulkan.VkLoaderFeatureFlags((uint)from);
         }
         
         /// <summary>
@@ -522,9 +495,9 @@ namespace XenoAtom.Interop
         
         public readonly partial struct VkLoaderFlagBits : IEquatable<vulkan.VkLoaderFlagBits>
         {
-            public VkLoaderFlagBits(vulkan.VkLoaderFeatureFlagBits value) => this.Value = value;
+            public VkLoaderFlagBits(vulkan.VkLoaderFeatureFlags value) => this.Value = value;
             
-            public vulkan.VkLoaderFeatureFlagBits Value { get; }
+            public vulkan.VkLoaderFeatureFlags Value { get; }
             
             public override bool Equals(object obj) => obj is VkLoaderFlagBits other && Equals(other);
             
@@ -534,9 +507,9 @@ namespace XenoAtom.Interop
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator vulkan.VkLoaderFeatureFlagBits (vulkan.VkLoaderFlagBits from) => from.Value;
+            public static implicit operator vulkan.VkLoaderFeatureFlags (vulkan.VkLoaderFlagBits from) => from.Value;
             
-            public static implicit operator vulkan.VkLoaderFlagBits (vulkan.VkLoaderFeatureFlagBits from) => new vulkan.VkLoaderFlagBits(from);
+            public static implicit operator vulkan.VkLoaderFlagBits (vulkan.VkLoaderFeatureFlags from) => new vulkan.VkLoaderFlagBits(from);
             
             public static bool operator ==(VkLoaderFlagBits left, VkLoaderFlagBits right) => left.Equals(right);
             

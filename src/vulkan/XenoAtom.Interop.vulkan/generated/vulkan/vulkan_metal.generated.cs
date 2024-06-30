@@ -21,7 +21,7 @@ namespace XenoAtom.Interop
         /// Bitmask specifying Metal object types that can be exported from a Vulkan object
         /// </summary>
         [Flags]
-        public enum VkExportMetalObjectTypeFlagBitsEXT : uint
+        public enum VkExportMetalObjectTypeFlagsEXT : uint
         {
             /// <summary>
             /// Indicates a Metal <c>MTLDevice</c> may be exported.
@@ -59,34 +59,34 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Indicates a Metal <c>MTLDevice</c> may be exported.
         /// </summary>
-        public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT;
+        public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT;
         
         /// <summary>
         /// Indicates a Metal <c>MTLCommandQueue</c> may be exported.
         /// </summary>
-        public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT;
+        public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT;
         
         /// <summary>
         /// Indicates a Metal <c>MTLBuffer</c> may be exported.
         /// </summary>
-        public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT;
+        public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT;
         
         /// <summary>
         /// Indicates a Metal <c>MTLTexture</c> may be exported.
         /// </summary>
-        public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT;
+        public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT;
         
         /// <summary>
         /// Indicates a Metal <c>IOSurface</c> may be exported.
         /// </summary>
-        public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT;
+        public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT;
         
         /// <summary>
         /// Indicates a Metal <c>MTLSharedEvent</c> may be exported.
         /// </summary>
-        public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT;
+        public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT;
         
-        public const vulkan.VkExportMetalObjectTypeFlagBitsEXT VK_EXPORT_METAL_OBJECT_TYPE_FLAG_BITS_MAX_ENUM_EXT = VkExportMetalObjectTypeFlagBitsEXT.VK_EXPORT_METAL_OBJECT_TYPE_FLAG_BITS_MAX_ENUM_EXT;
+        public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_FLAG_BITS_MAX_ENUM_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_FLAG_BITS_MAX_ENUM_EXT;
         
         /// <summary>
         /// Structure specifying parameters of a newly created Metal surface object
@@ -164,7 +164,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A <see cref="T:VkExportMetalObjectTypeFlagBitsEXT"/> indicating the type of Metal object that the application may request to be exported from the Vulkan object.
             /// </summary>
-            public vulkan.VkExportMetalObjectTypeFlagBitsEXT exportObjectType;
+            public vulkan.VkExportMetalObjectTypeFlagsEXT exportObjectType;
         }
         
         /// <summary>
@@ -406,7 +406,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Indicates the plane of a multi-planar <see cref="T:VkImage"/> or <see cref="T:VkImageView"/>.
             /// </summary>
-            public vulkan.VkImageAspectFlagBits plane;
+            public vulkan.VkImageAspectFlags plane;
             
             /// <summary>
             /// The Metal `id&lt;MTLTexture&gt;` object underlying the <see cref="T:VkImage"/>, <see cref="T:VkImageView"/>, or <see cref="T:VkBufferView"/> object in <see cref="M:image"/>, <see cref="M:imageView"/>, or <see cref="M:bufferView"/>, respectively, at the plane indicated in <see cref="M:aspectMask"/>. The implementation will return the <c>MTLTexture</c> in this member, or it will return `NULL` if no <c>MTLTexture</c> could be found underlying the <see cref="T:VkImage"/>, <see cref="T:VkImageView"/>, or <see cref="T:VkBufferView"/> object, at the plane indicated in <see cref="M:aspectMask"/>.
@@ -461,7 +461,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Indicates the plane of the <see cref="T:VkImage"/> that the `id&lt;MTLTexture&gt;` object should be attached to.
             /// </summary>
-            public vulkan.VkImageAspectFlagBits plane;
+            public vulkan.VkImageAspectFlags plane;
             
             /// <summary>
             /// A the Metal `id&lt;MTLTexture&gt;` object that is to underlie the <see cref="T:VkImage"/> plane.
@@ -703,36 +703,6 @@ namespace XenoAtom.Interop
                 fixed (vulkan.VkSurfaceKHR* __pSurface_local = &pSurface)
                 return this.Invoke(instance, __pCreateInfo_local, pAllocator, __pSurface_local);
             }
-        }
-        
-        /// <remarks>
-        /// <para>Extension: VK_EXT_metal_objects</para>
-        /// </remarks>
-        public readonly partial struct VkExportMetalObjectTypeFlagsEXT : IEquatable<vulkan.VkExportMetalObjectTypeFlagsEXT>
-        {
-            public VkExportMetalObjectTypeFlagsEXT(vulkan.VkFlags value) => this.Value = value;
-            
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkExportMetalObjectTypeFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkExportMetalObjectTypeFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkExportMetalObjectTypeFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkExportMetalObjectTypeFlagsEXT (vulkan.VkFlags from) => new vulkan.VkExportMetalObjectTypeFlagsEXT(from);
-            
-            public static bool operator ==(VkExportMetalObjectTypeFlagsEXT left, VkExportMetalObjectTypeFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkExportMetalObjectTypeFlagsEXT left, VkExportMetalObjectTypeFlagsEXT right) => !left.Equals(right);
-            
-            public static implicit operator vulkan.VkExportMetalObjectTypeFlagBitsEXT (vulkan.VkExportMetalObjectTypeFlagsEXT from) => (vulkan.VkExportMetalObjectTypeFlagBitsEXT)(uint)from.Value;
-            
-            public static implicit operator vulkan.VkExportMetalObjectTypeFlagsEXT (vulkan.VkExportMetalObjectTypeFlagBitsEXT from) => new vulkan.VkExportMetalObjectTypeFlagsEXT((uint)from);
         }
         
         public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<vulkan.PFN_vkExportMetalObjectsEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkExportMetalObjectsEXT>

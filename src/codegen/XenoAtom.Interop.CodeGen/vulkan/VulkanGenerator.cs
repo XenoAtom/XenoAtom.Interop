@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using ClangSharp.Interop;
 using CppAst;
 using CppAst.CodeGen.CSharp;
 
@@ -31,7 +32,6 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     private readonly Dictionary<string, VulkanCommand> _functionRegistry = new();
     private readonly Dictionary<VulkanDocTypeKind, VulkanDocDefinitions> _docDefinitions = new();
     private readonly Dictionary<string, CSharpStruct> _structFunctionPointers = new();
-    private readonly Dictionary<string, CSharpStruct> _structAsEnumFlags = new();
     private readonly Dictionary<string, VulkanElementInfo> _vulkanElementInfos = new();
     private readonly List<int> _tempOptionalParameterIndexList = new();
     private readonly Dictionary<string, Dictionary<string, string>> _mapStructToFieldsWithDefaultValue = new();
@@ -145,6 +145,8 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             Path.Combine(vulkanInclude, "vulkan/vk_layer.h"),
         };
 
+        csOptions.Plugins.Add(new CSharpConverterVulkanTypedefFlags());
+
         var csCompilation = CSharpConverter.Convert(files, csOptions);
 
         {
@@ -160,22 +162,11 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             }
         }
 
-        foreach (var csEnum in csCompilation.AllEnums)
-        {
-            ApplyDocumentation(csEnum);
-        }
-        
-        foreach (var csStruct in csCompilation.AllStructs)
+        foreach (var csStruct in csCompilation.AllStructs.Distinct())
         {
             ApplyDocumentation(csStruct);
             AddVulkanVersionAndExtensionInfoToCSharpElement(csStruct);
             ProcessStruct(csStruct);
-
-            // Associate Enum XXXFlagBits with Struct XXXFlags
-            if (csStruct.Name.Contains("Flags", StringComparison.Ordinal))
-            {
-                _structAsEnumFlags.Add(csStruct.Name, csStruct);
-            }
 
             // Collect PFN function pointers
             if (csStruct.Name.Contains("PFN_vk", StringComparison.Ordinal))
@@ -184,12 +175,12 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             }
         }
         
-        foreach (var csFunction in csCompilation.AllFunctions)
+        foreach (var csFunction in csCompilation.AllFunctions.Distinct())
         {
             ProcessVulkanFunction(csFunction);
         }
 
-        foreach (var csEnum in csCompilation.AllEnums)
+        foreach (var csEnum in csCompilation.AllEnums.Distinct())
         {
             ProcessVulkanEnum(csEnum);
         }
@@ -295,59 +286,8 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
     private void ProcessVulkanEnum(CSharpEnum csEnum)
     {
+        ApplyDocumentation(csEnum);
         ApplyApiVersion(csEnum);
-
-        // We only need to modify flags in this method
-        if (!csEnum.Name.Contains("FlagBits", StringComparison.Ordinal))
-        {
-            return;
-        }
-
-        csEnum.Attributes.Add(new CSharpFreeAttribute("Flags"));
-                
-        var structName = csEnum.Name.Replace("FlagBits", "Flags", StringComparison.Ordinal);
-        if (_structAsEnumFlags.TryGetValue(structName, out var csStruct))
-        {
-            // Add implicit operators between XXXFlagBits and Struct XXXFlags
-            csStruct.Members.Add(new CSharpMethod(string.Empty)
-            {
-                Kind = CSharpMethodKind.Operator,
-                ReturnType = csEnum,
-                Modifiers = CSharpModifiers.Static | CSharpModifiers.Implicit,
-                Parameters =
-                {
-                    new CSharpParameter("from") {ParameterType = csStruct},
-                },
-                BodyInline = ((writer, _) =>
-                {
-                    writer.Write("(");
-                    csEnum.DumpReferenceTo(writer);
-                    writer.Write(")(uint)from.Value");
-                }),
-                Visibility = CSharpVisibility.Public
-            });
-            csStruct.Members.Add(new CSharpMethod(string.Empty)
-            {
-                Kind = CSharpMethodKind.Operator,
-                ReturnType = csStruct,
-                Modifiers = CSharpModifiers.Static | CSharpModifiers.Implicit,
-                Parameters =
-                {
-                    new CSharpParameter("from") {ParameterType = csEnum},
-                },
-                BodyInline = (writer, element) =>
-                {
-                    writer.Write("new ");
-                    csStruct.DumpReferenceTo(writer);
-                    writer.Write("((uint)from)");
-                },
-                Visibility = CSharpVisibility.Public
-            });
-        }
-        else
-        {
-            Console.Error.WriteLine($"Cannot find struct {structName} for enum {csEnum.Name}");
-        }
     }
 
     [GeneratedRegex($"{CommonVkExt}")]
@@ -1005,9 +945,15 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 }
             }
         }
-        else if (element is CSharpEnum csEnum && element.CppElement is CppEnum cppEnum)
+        else if (element is CSharpEnum csEnum && element.CppElement is ICppMember cppEnum)
         {
-            if (_docDefinitions.TryGetValue(VulkanDocTypeKind.Enum, out var definitions) && definitions.TryGetValue(cppEnum.Name, out var definition))
+            var cppEnumName = cppEnum.Name;
+            if (csEnum.IsFlags)
+            {
+                cppEnumName = csEnum.Name.Replace("Flags", "FlagBits");
+            }
+
+            if (_docDefinitions.TryGetValue(VulkanDocTypeKind.Enum, out var definitions) && definitions.TryGetValue(cppEnumName, out var definition))
             {
                 description = definition.Description;
 
@@ -1965,6 +1911,41 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         True,
         Both,
     }
+
+    private class CSharpConverterVulkanTypedefFlags : ICSharpConverterPlugin
+    {
+        private readonly Dictionary<string, CSharpEnum> _flags = new();
+
+        public void Register(CSharpConverter converter, CSharpConverterPipeline pipeline)
+        {
+            pipeline.Converted.Add(ProcessConverted);
+            pipeline.TypedefConverters.Add(ProcessTypeDef);
+        }
+
+        private void ProcessConverted(CSharpConverter converter, CSharpElement element, CSharpElement context)
+        {
+            if (element is CSharpEnum cSharpEnum && cSharpEnum.Name.Contains("FlagBits"))
+            {
+                cSharpEnum.IsFlags = true;
+                cSharpEnum.Name = cSharpEnum.Name.Replace("FlagBits", "Flags", StringComparison.Ordinal);
+                _flags.Add(cSharpEnum.Name, cSharpEnum);
+            }
+        }
+
+        private CSharpElement? ProcessTypeDef(CSharpConverter converter, CppTypedef cpptypedef, CSharpElement context)
+        {
+            if (cpptypedef.Name.Contains("Flags"))
+            {
+                if (_flags.TryGetValue(cpptypedef.Name, out var csEnum))
+                {
+                    return csEnum;
+                }
+            }
+            return null;
+        }
+    }
+
+
 
     private record VulkanElementInfo
     {

@@ -113,13 +113,6 @@ unsafe partial class vulkan
             return Unsafe.BitCast<PFN_vkVoidFunction, TPFN>(vkGetDeviceProcAddr(device, pName));
         }
     }
-    
-    partial struct VkGeometryInstanceFlagsKHR
-    {
-        public static implicit operator uint(vulkan.VkGeometryInstanceFlagsKHR from) => from.Value;
-
-        public static implicit operator vulkan.VkGeometryInstanceFlagsKHR(uint from) => new(from);
-    }
 
     partial struct VkBool32
     {
