@@ -40,7 +40,7 @@ static unsafe class Utf8CustomMarshaller
         if (unmanaged == null)
             return null;
 
-        return UTF8EncodingRelaxed.Default.GetString(unmanaged, new ReadOnlySpan<byte>(unmanaged, int.MaxValue).IndexOf((byte)0));
+        return UTF8EncodingRelaxed.Default.GetString(MemoryMarshal.CreateReadOnlySpanFromNullTerminated(unmanaged));
     }
     
     /// <summary>Converts an unmanaged string to a managed version.</summary>

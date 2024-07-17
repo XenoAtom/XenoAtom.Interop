@@ -20,7 +20,7 @@ public readonly unsafe struct ReadOnlyMemoryUtf8(byte* buffer, int length) : IEq
     /// Initializes a new instance of <see cref="ReadOnlyMemoryUtf8"/> with a null-terminated UTF-8 string.
     /// </summary>
     /// <param name="buffer">A null terminated UTF-8 string.</param>
-    public ReadOnlyMemoryUtf8(byte* buffer) : this(buffer, buffer == null ? 0 : new ReadOnlySpan<byte>(buffer, int.MaxValue).IndexOf((byte)0))
+    public ReadOnlyMemoryUtf8(byte* buffer) : this(buffer, buffer == null ? 0 : MemoryMarshal.CreateReadOnlySpanFromNullTerminated(buffer).Length)
     {
     }
 
