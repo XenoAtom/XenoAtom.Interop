@@ -23,6 +23,29 @@ namespace XenoAtom.Interop
             
             public const int PTRACE_SINGLEBLOCK = 33;
             
+            /// <summary>
+            /// PTRACE_SYSEMU_SINGLESTEP " (since Linux 2.6.14)"
+            /// For
+            /// PTRACE_SYSEMU ,
+            /// continue and stop on entry to the next system call,
+            /// which will not be executed.
+            /// See the documentation on syscall-stops below.
+            /// For
+            /// PTRACE_SYSEMU_SINGLESTEP ,
+            /// do the same but also singlestep if not a system call.
+            /// This call is used by programs like
+            /// User Mode Linux that want to emulate all the tracee's system calls.
+            /// The
+            /// data
+            /// argument is treated as for
+            /// PTRACE_CONT .
+            /// The
+            /// addr
+            /// argument is ignored.
+            /// These operations are currently
+            /// As at 3.7
+            /// supported only on x86.
+            /// </summary>
             public const int PTRACE_SYSEMU = 31;
             
             public const int PTRACE_SYSEMU_SINGLESTEP = 32;

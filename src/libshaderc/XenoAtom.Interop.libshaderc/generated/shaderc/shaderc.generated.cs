@@ -1685,6 +1685,16 @@ namespace XenoAtom.Interop
         public static partial void shaderc_compile_options_set_hlsl_16bit_types(libshaderc.shaderc_compile_options_t options, [global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.U1)] bool enable);
         
         /// <summary>
+        /// Enables or disables relaxed Vulkan rules.
+        /// </summary>
+        /// <remarks>
+        /// This allows most OpenGL shaders to compile under Vulkan semantics.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "shaderc_compile_options_set_vulkan_rules_relaxed")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
+        public static partial void shaderc_compile_options_set_vulkan_rules_relaxed(libshaderc.shaderc_compile_options_t options, [global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.U1)] bool enable);
+        
+        /// <summary>
         /// Sets whether the compiler should invert position.Y output in vertex shader.
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "shaderc_compile_options_set_invert_y")]

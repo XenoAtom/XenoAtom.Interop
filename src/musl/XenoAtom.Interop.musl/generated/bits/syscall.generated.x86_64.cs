@@ -297,6 +297,8 @@ namespace XenoAtom.Interop
             
             public const int SYS_memfd_create = 319;
             
+            public const int SYS_memfd_secret = 447;
+            
             public const int SYS_migrate_pages = 256;
             
             public const int SYS_mincore = 27;

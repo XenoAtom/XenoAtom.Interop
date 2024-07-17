@@ -258,6 +258,7 @@ internal partial class MuslGenerator : GeneratorBase
                     e => e.MapMacroToConst("SOMAXCONN", "int"),
                     // sys/stat.h
                     e => e.Map<CppClass>("stat").Name("stat_t"),
+                    e => e.Map<CppClass>("statx").Name("statx_t"),
                     e => e.MapMacroToConst("UTIME_.*", "int"),
                     // statfs.h
                     e => e.Map<CppClass>("statfs").Name("statfs_t"),

@@ -56,5 +56,15 @@ namespace XenoAtom.Interop
         public const int SYS_landlock_add_rule = 445;
         
         public const int SYS_landlock_restrict_self = 446;
+        
+        public const int SYS_process_mrelease = 448;
+        
+        public const int SYS_futex_waitv = 449;
+        
+        public const int SYS_set_mempolicy_home_node = 450;
+        
+        public const int SYS_cachestat = 451;
+        
+        public const int SYS_fchmodat2 = 452;
     }
 }

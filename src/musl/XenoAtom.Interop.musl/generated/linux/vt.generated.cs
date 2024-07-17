@@ -165,7 +165,7 @@ namespace XenoAtom.Interop
         /// struct vt_mode {
         ///     char  mode;    /* vt mode */
         ///     char  waitv;   /* if set, hang on writes if not active */
-        ///     short relsig;  /* signal to raise on release req */
+        ///     short relsig;  /* signal to raise on release op */
         ///     short acqsig;  /* signal to raise on acquisition */
         ///     short frsig;   /* unused (set to 0) */
         /// };

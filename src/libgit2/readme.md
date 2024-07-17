@@ -47,9 +47,9 @@ The following packages were tested and are compatible with **XenoAtom.Interop.li
 
 > This package is based on the following header version:
 > 
-> - libgit2 C include headers: [`libgit2-dev`](https://pkgs.alpinelinux.org/package/v3.19/community/x86_64/libgit2-dev)
+> - libgit2 C include headers: [`libgit2-dev`](https://pkgs.alpinelinux.org/package/v3.20/community/x86_64/libgit2-dev)
 > - Version: `1.7.2-r0`
-> - Distribution: AlpineLinux `v3.19`
+> - Distribution: AlpineLinux `v3.20`
 
 The following API were automatically generated from the C/C++ code:
 

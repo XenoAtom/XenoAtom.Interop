@@ -15,7 +15,7 @@ For more information, see the official documentation at https://gitlab.freedeskt
 
 ## 📦 Compatible Native Binaries
 
-This library does not provide C native binaries but only P/Invoke .NET bindings to `libgbm` `23.3.6-r0`.
+This library does not provide C native binaries but only P/Invoke .NET bindings to `libgbm` `24.0.9-r1`.
 
 If the native library is already installed on your system, check the version installed. If you are using this library on Alpine Linux, see the compatible version in the [Supported API](#supported-api) section below.
 Other OS might require a different setup.
@@ -25,9 +25,9 @@ Other OS might require a different setup.
 
 > This package is based on the following header version:
 > 
-> - libgbm C include headers: [`mesa-dev`](https://pkgs.alpinelinux.org/package/v3.19/main/x86_64/mesa-dev)
-> - Version: `23.3.6-r0`
-> - Distribution: AlpineLinux `v3.19`
+> - libgbm C include headers: [`mesa-dev`](https://pkgs.alpinelinux.org/package/v3.20/main/x86_64/mesa-dev)
+> - Version: `24.0.9-r1`
+> - Distribution: AlpineLinux `v3.20`
 
 The following API were automatically generated from the C/C++ code:
 

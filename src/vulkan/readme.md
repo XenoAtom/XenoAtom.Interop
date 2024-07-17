@@ -25,9 +25,9 @@ Other OS might require a different setup.
 
 > This package is based on the following header version:
 > 
-> - vulkan C include headers: [`vulkan-headers`](https://pkgs.alpinelinux.org/package/v3.19/main/x86_64/vulkan-headers)
+> - vulkan C include headers: [`vulkan-headers`](https://pkgs.alpinelinux.org/package/v3.20/main/x86_64/vulkan-headers)
 > - Version: `1.3.261.1-r0`
-> - Distribution: AlpineLinux `v3.19`
+> - Distribution: AlpineLinux `v3.20`
 
 The following API were automatically generated from the C/C++ code:
 

@@ -266,6 +266,15 @@ namespace XenoAtom.Interop
         /// "const char\~*" argp
         /// 
         /// Insert the given byte in the input queue.
+        /// 
+        /// Since Linux 6.2,
+        /// commit 690c8b804ad2eafbd35da5d3c95ad325ca7d5061
+        /// commit 83efeeeb3d04b22aaed1df99bc70a48fe9d22c4d
+        /// this operation may require the
+        /// CAP_SYS_ADMIN
+        /// capability (if the
+        /// dev.tty.legacy_tiocsti
+        /// sysctl variable is set to false).
         /// </summary>
         public const int TIOCSTI = 21522;
         

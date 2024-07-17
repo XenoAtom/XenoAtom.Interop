@@ -111,7 +111,7 @@ namespace XenoAtom.Interop
         /// pathname .
         /// If the
         /// AT_REMOVEDIR
-        /// flag is specified, then
+        /// flag is specified, it
         /// performs the equivalent of
         /// rmdir (2)
         /// on
@@ -515,6 +515,10 @@ namespace XenoAtom.Interop
         
         public const int F_SETPIPE_SZ = 1031;
         
+        /// <summary>
+        /// F_SETPIPE_SZ
+        /// The pipe capacity.
+        /// </summary>
         public const int F_GETPIPE_SZ = 1032;
         
         public const int F_ADD_SEALS = 1033;

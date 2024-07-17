@@ -88,6 +88,30 @@ namespace XenoAtom.Interop
         
         public const int SHM_HUGE_1MB = 1342177280;
         
+        /// <summary>
+        /// SHM_HUGE_1GB " (since Linux 3.8)"
+        /// See https://lwn.net/Articles/533499/
+        /// Used in conjunction with
+        /// SHM_HUGETLB
+        /// to select alternative hugetlb page sizes (respectively, 2\ MB and 1\ GB)
+        /// on systems that support multiple hugetlb page sizes.
+        /// 
+        /// More generally, the desired huge page size can be configured by encoding
+        /// the base-2 logarithm of the desired page size in the six bits at the offset
+        /// SHM_HUGE_SHIFT .
+        /// Thus, the above two constants are defined as:
+        /// 
+        /// +4n
+        /// 
+        /// #define SHM_HUGE_2MB    (21 &lt;&lt; SHM_HUGE_SHIFT)
+        /// #define SHM_HUGE_1GB    (30 &lt;&lt; SHM_HUGE_SHIFT)
+        /// 
+        /// 
+        /// 
+        /// For some additional details,
+        /// see the discussion of the similarly named constants in
+        /// mmap (2).
+        /// </summary>
         public const int SHM_HUGE_2MB = 1409286144;
         
         public const int SHM_HUGE_8MB = 1543503872;

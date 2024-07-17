@@ -17,6 +17,60 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
+        public partial struct statx_timestamp
+        {
+            public long tv_sec;
+            
+            public uint tv_nsec;
+            
+            public uint __pad;
+        }
+        
+        public unsafe partial struct statx_t
+        {
+            public uint stx_mask;
+            
+            public uint stx_blksize;
+            
+            public ulong stx_attributes;
+            
+            public uint stx_nlink;
+            
+            public uint stx_uid;
+            
+            public uint stx_gid;
+            
+            public ushort stx_mode;
+            
+            public fixed ushort __pad0[1];
+            
+            public ulong stx_ino;
+            
+            public ulong stx_size;
+            
+            public ulong stx_blocks;
+            
+            public ulong stx_attributes_mask;
+            
+            public musl.statx_timestamp stx_atime;
+            
+            public musl.statx_timestamp stx_btime;
+            
+            public musl.statx_timestamp stx_ctime;
+            
+            public musl.statx_timestamp stx_mtime;
+            
+            public uint stx_rdev_major;
+            
+            public uint stx_rdev_minor;
+            
+            public uint stx_dev_major;
+            
+            public uint stx_dev_minor;
+            
+            public fixed ulong __pad1[14];
+        }
+        
         public const int S_IFMT = 61440;
         
         public const int S_IFDIR = 16384;
@@ -197,5 +251,19 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "lchmod")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int lchmod([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg0, musl.mode_t arg1);
+        
+        /// <summary>
+        /// Get file status (extended)
+        /// </summary>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "statx")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int statx(int dirfd, byte* pathname, int flags, uint mask, ref musl.statx_t statxbuf);
+        
+        /// <summary>
+        /// Get file status (extended)
+        /// </summary>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "statx")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int statx(int dirfd, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> pathname, int flags, uint mask, ref musl.statx_t statxbuf);
     }
 }

@@ -19,6 +19,16 @@ namespace XenoAtom.Interop
     {
         public const int UIO_MAXIOV = 1024;
         
+        public const int RWF_HIPRI = 1;
+        
+        public const int RWF_DSYNC = 2;
+        
+        public const int RWF_SYNC = 4;
+        
+        public const int RWF_NOWAIT = 8;
+        
+        public const int RWF_APPEND = 16;
+        
         /// <summary>
         /// readv, writev, preadv, pwritev, preadv2, pwritev2 \-
         /// </summary>
@@ -48,5 +58,13 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "process_vm_readv")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nint process_vm_readv(musl.pid_t pid, in musl.iovec local_iov, nuint liovcnt, in musl.iovec remote_iov, nuint riovcnt, nuint flags);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "preadv2")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial nint preadv2(int fd, in musl.iovec iov, int iovcnt, musl.off_t offset, int flags);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "pwritev2")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial nint pwritev2(int fd, in musl.iovec iov, int iovcnt, musl.off_t offset, int flags);
     }
 }

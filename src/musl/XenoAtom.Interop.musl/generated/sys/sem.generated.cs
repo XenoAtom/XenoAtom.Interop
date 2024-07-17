@@ -169,7 +169,7 @@ namespace XenoAtom.Interop
         /// SEM_STAT .
         /// 
         /// All other
-        /// cmd
+        /// op
         /// values return 0 on success.
         /// 
         /// On failure,

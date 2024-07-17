@@ -41,7 +41,9 @@ namespace XenoAtom.Interop
             
             public nuint f_namemax;
             
-            public fixed int __reserved[6];
+            public uint f_type;
+            
+            public fixed int __reserved[5];
         }
         
         /// <summary>

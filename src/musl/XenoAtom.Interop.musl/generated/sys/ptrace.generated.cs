@@ -99,7 +99,7 @@ namespace XenoAtom.Interop
         
         /// <summary>
         /// Indicate that this process is to be traced by its parent.
-        /// A process probably shouldn't make this request if its parent
+        /// A process probably shouldn't make this operation if its parent
         /// isn't expecting to trace it.
         /// ( pid ,
         /// addr ,
@@ -109,12 +109,12 @@ namespace XenoAtom.Interop
         /// 
         /// The
         /// PTRACE_TRACEME
-        /// request is used only by the tracee;
-        /// the remaining requests are used only by the tracer.
-        /// In the following requests,
+        /// operation is used only by the tracee;
+        /// the remaining operations are used only by the tracer.
+        /// In the following operations,
         /// pid
         /// specifies the thread ID of the tracee to be acted on.
-        /// For requests other than
+        /// For operations other than
         /// PTRACE_ATTACH ,
         /// PTRACE_SEIZE ,
         /// PTRACE_INTERRUPT ,
@@ -126,6 +126,18 @@ namespace XenoAtom.Interop
         
         public const int PT_TRACE_ME = 0;
         
+        /// <summary>
+        /// PTRACE_PEEKDATA
+        /// Read a word at the address
+        /// addr
+        /// in the tracee's memory, returning the word as the result of the
+        /// ptrace ()
+        /// call.
+        /// Linux does not have separate text and data address spaces,
+        /// so these two operations are currently equivalent.
+        /// ( data
+        /// is ignored; but see NOTES.)
+        /// </summary>
         public const int PTRACE_PEEKTEXT = 1;
         
         public const int PTRACE_PEEKDATA = 2;
@@ -150,6 +162,19 @@ namespace XenoAtom.Interop
         /// </summary>
         public const int PTRACE_PEEKUSER = 3;
         
+        /// <summary>
+        /// PTRACE_POKEDATA
+        /// Copy the word
+        /// data
+        /// to the address
+        /// addr
+        /// in the tracee's memory.
+        /// As for
+        /// PTRACE_PEEKTEXT
+        /// and
+        /// PTRACE_PEEKDATA ,
+        /// these two operations are currently equivalent.
+        /// </summary>
         public const int PTRACE_POKETEXT = 4;
         
         public const int PTRACE_POKEDATA = 5;
@@ -218,8 +243,58 @@ namespace XenoAtom.Interop
         
         public const int PTRACE_SINGLESTEP = 9;
         
+        /// <summary>
+        /// PTRACE_GETFPREGS
+        /// Copy the tracee's general-purpose or floating-point registers,
+        /// respectively, to the address
+        /// data
+        /// in the tracer.
+        /// See
+        /// &lt;sys/user.h&gt;
+        /// for information on the format of this data.
+        /// ( addr
+        /// is ignored.)
+        /// Note that SPARC systems have the meaning of
+        /// data
+        /// and
+        /// addr
+        /// reversed; that is,
+        /// data
+        /// is ignored and the registers are copied to the address
+        /// addr .
+        /// PTRACE_GETREGS
+        /// and
+        /// PTRACE_GETFPREGS
+        /// are not present on all architectures.
+        /// </summary>
         public const int PTRACE_GETREGS = 12;
         
+        /// <summary>
+        /// PTRACE_SETFPREGS
+        /// Modify the tracee's general-purpose or floating-point registers,
+        /// respectively, from the address
+        /// data
+        /// in the tracer.
+        /// As for
+        /// PTRACE_POKEUSER ,
+        /// some general-purpose register modifications may be disallowed.
+        /// FIXME . In the preceding sentence, which modifications are disallowed,
+        /// and when they are disallowed, how does user space discover that fact?
+        /// ( addr
+        /// is ignored.)
+        /// Note that SPARC systems have the meaning of
+        /// data
+        /// and
+        /// addr
+        /// reversed; that is,
+        /// data
+        /// is ignored and the registers are copied from the address
+        /// addr .
+        /// PTRACE_SETREGS
+        /// and
+        /// PTRACE_SETFPREGS
+        /// are not present on all architectures.
+        /// </summary>
         public const int PTRACE_SETREGS = 13;
         
         public const int PTRACE_GETFPREGS = 14;
@@ -277,6 +352,31 @@ namespace XenoAtom.Interop
         
         public const int PTRACE_SETFPXREGS = 19;
         
+        /// <summary>
+        /// PTRACE_SINGLESTEP
+        /// Restart the stopped tracee as for
+        /// PTRACE_CONT ,
+        /// but arrange for the tracee to be stopped at
+        /// the next entry to or exit from a system call,
+        /// or after execution of a single instruction, respectively.
+        /// (The tracee will also, as usual, be stopped upon receipt of a signal.)
+        /// From the tracer's perspective, the tracee will appear to have been
+        /// stopped by receipt of a
+        /// SIGTRAP .
+        /// So, for
+        /// PTRACE_SYSCALL ,
+        /// for example, the idea is to inspect
+        /// the arguments to the system call at the first stop,
+        /// then do another
+        /// PTRACE_SYSCALL
+        /// and inspect the return value of the system call at the second stop.
+        /// The
+        /// data
+        /// argument is treated as for
+        /// PTRACE_CONT .
+        /// ( addr
+        /// is ignored.)
+        /// </summary>
         public const int PTRACE_SYSCALL = 24;
         
         public const int PTRACE_SETOPTIONS = 16896;

@@ -205,6 +205,35 @@ namespace XenoAtom.Interop
         
         public const int MAP_HUGE_1MB = 1342177280;
         
+        /// <summary>
+        /// MAP_HUGE_1GB " (since Linux 3.8)"
+        /// See https://lwn.net/Articles/533499/
+        /// Used in conjunction with
+        /// MAP_HUGETLB
+        /// to select alternative hugetlb page sizes (respectively, 2\ MB and 1\ GB)
+        /// on systems that support multiple hugetlb page sizes.
+        /// 
+        /// More generally, the desired huge page size can be configured by encoding
+        /// the base-2 logarithm of the desired page size in the six bits at the offset
+        /// MAP_HUGE_SHIFT .
+        /// (A value of zero in this bit field provides the default huge page size;
+        /// the default huge page size can be discovered via the
+        /// Hugepagesize
+        /// field exposed by
+        /// /proc/meminfo .)
+        /// Thus, the above two constants are defined as:
+        /// 
+        /// +4n
+        /// 
+        /// #define MAP_HUGE_2MB    (21 &lt;&lt; MAP_HUGE_SHIFT)
+        /// #define MAP_HUGE_1GB    (30 &lt;&lt; MAP_HUGE_SHIFT)
+        /// 
+        /// 
+        /// 
+        /// The range of huge page sizes that are supported by the system
+        /// can be discovered by listing the subdirectories in
+        /// /sys/kernel/mm/hugepages .
+        /// </summary>
         public const int MAP_HUGE_2MB = 1409286144;
         
         public const int MAP_HUGE_8MB = 1543503872;

@@ -15,7 +15,7 @@ For more information, see the official documentation at https://gitlab.freedeskt
 
 ## 📦 Compatible Native Binaries
 
-This library does not provide C native binaries but only P/Invoke .NET bindings to `libdrm` `2.4.118-r0`.
+This library does not provide C native binaries but only P/Invoke .NET bindings to `libdrm` `2.4.120-r0`.
 
 If the native library is already installed on your system, check the version installed. If you are using this library on Alpine Linux, see the compatible version in the [Supported API](#supported-api) section below.
 Other OS might require a different setup.
@@ -25,9 +25,9 @@ Other OS might require a different setup.
 
 > This package is based on the following header version:
 > 
-> - libdrm C include headers: [`libdrm-dev`](https://pkgs.alpinelinux.org/package/v3.19/main/x86_64/libdrm-dev)
-> - Version: `2.4.118-r0`
-> - Distribution: AlpineLinux `v3.19`
+> - libdrm C include headers: [`libdrm-dev`](https://pkgs.alpinelinux.org/package/v3.20/main/x86_64/libdrm-dev)
+> - Version: `2.4.120-r0`
+> - Distribution: AlpineLinux `v3.20`
 
 The following API were automatically generated from the C/C++ code:
 

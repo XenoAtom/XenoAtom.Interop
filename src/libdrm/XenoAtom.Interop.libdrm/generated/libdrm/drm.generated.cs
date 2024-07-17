@@ -1471,6 +1471,16 @@ namespace XenoAtom.Interop
             public uint first_signaled;
             
             public uint pad;
+            
+            /// <summary>
+            /// @deadline _nsec - fence deadline hint
+            /// </summary>
+            /// <remarks>
+            /// Deadline hint, in absolute CLOCK_MONOTONIC, to set on backing
+            /// fence(s) if the DRM_SYNCOBJ_WAIT_FLAGS_WAIT_DEADLINE flag is
+            /// set.
+            /// </remarks>
+            public ulong deadline_nsec;
         }
         
         public partial struct drm_syncobj_timeline_wait
@@ -1497,6 +1507,16 @@ namespace XenoAtom.Interop
             public uint first_signaled;
             
             public uint pad;
+            
+            /// <summary>
+            /// @deadline _nsec - fence deadline hint
+            /// </summary>
+            /// <remarks>
+            /// Deadline hint, in absolute CLOCK_MONOTONIC, to set on backing
+            /// fence(s) if the DRM_SYNCOBJ_WAIT_FLAGS_WAIT_DEADLINE flag is
+            /// set.
+            /// </remarks>
+            public ulong deadline_nsec;
         }
         
         /// <summary>
@@ -1701,6 +1721,8 @@ namespace XenoAtom.Interop
         
         public const int DRM_CAP_SYNCOBJ_TIMELINE = 20;
         
+        public const int DRM_CAP_ATOMIC_ASYNC_PAGE_FLIP = 21;
+        
         public const int DRM_CLIENT_CAP_STEREO_3D = 1;
         
         public const int DRM_CLIENT_CAP_UNIVERSAL_PLANES = 2;
@@ -1710,6 +1732,8 @@ namespace XenoAtom.Interop
         public const int DRM_CLIENT_CAP_ASPECT_RATIO = 4;
         
         public const int DRM_CLIENT_CAP_WRITEBACK_CONNECTORS = 5;
+        
+        public const int DRM_CLIENT_CAP_CURSOR_PLANE_HOTSPOT = 6;
         
         public const nuint DRM_IOCTL_BASE = 100;
         
@@ -1907,7 +1931,7 @@ namespace XenoAtom.Interop
         
         public const nuint DRM_IOCTL_SYNCOBJ_FD_TO_HANDLE = 3222299842;
         
-        public const nuint DRM_IOCTL_SYNCOBJ_WAIT = 3223348419;
+        public const nuint DRM_IOCTL_SYNCOBJ_WAIT = 3223872707;
         
         public const nuint DRM_IOCTL_SYNCOBJ_RESET = 3222299844;
         
@@ -1921,7 +1945,7 @@ namespace XenoAtom.Interop
         
         public const nuint DRM_IOCTL_MODE_REVOKE_LEASE = 3221513417;
         
-        public const nuint DRM_IOCTL_SYNCOBJ_TIMELINE_WAIT = 3223872714;
+        public const nuint DRM_IOCTL_SYNCOBJ_TIMELINE_WAIT = 3224397002;
         
         public const nuint DRM_IOCTL_SYNCOBJ_QUERY = 3222824139;
         
