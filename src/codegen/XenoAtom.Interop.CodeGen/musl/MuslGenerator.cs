@@ -513,7 +513,7 @@ internal partial class MuslGenerator : GeneratorBase
                     continue;
                 }
 
-                ProcessArguments(function);
+                ProcessConstStringArguments(function);
 
                 mapArchToCompilation[arch] = csCompilation;
             }
@@ -1174,50 +1174,7 @@ internal partial class MuslGenerator : GeneratorBase
         }
     }
     
-    private void ProcessArguments(CSharpMethod csMethod)
-    {
-        // If we have a potential marshalling for return/parameter string, we will duplicate the method with string marshalling
-        CSharpMethod? newManagedMethod = null;
-        for (var i = 0; i < csMethod.Parameters.Count; i++)
-        {
-            var param = csMethod.Parameters[i];
-            var cppType = (CppType)param.ParameterType!.CppElement!;
-            if (cppType.TryGetElementTypeFromPointer(out var isConst, out var elementType) && isConst)
-            {
-                if (elementType is CppPrimitiveType { Kind: CppPrimitiveKind.Char })
-                {
-                    newManagedMethod ??= csMethod.Clone();
-                    newManagedMethod.IsManaged = true;
-                    newManagedMethod.Parameters[i].ParameterType = new CSharpTypeWithAttributes(new CSharpFreeType("ReadOnlySpan<char>"))
-                    {
-                        Attributes = { new CSharpMarshalUsingAttribute("typeof(Utf8CustomMarshaller)") }
-                    };
-                }
-            }
-        }
 
-        var returnType = ((CppType)csMethod.ReturnType!.CppElement!);
-        if (returnType.TryGetElementTypeFromPointer(out var isConstReturn, out var returnElementType))
-        {
-            if (returnElementType is CppPrimitiveType { Kind: CppPrimitiveKind.Char })
-            {
-                newManagedMethod ??= csMethod.Clone();
-                csMethod.Name = $"{csMethod.Name}_";
-                newManagedMethod.IsManaged = true;
-                newManagedMethod.ReturnType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String())
-                {
-                    Attributes = { new CSharpMarshalUsingAttribute("typeof(Utf8CustomMarshaller)") { Scope = CSharpAttributeScope.Return } }
-                };
-            }
-        }
-
-        if (newManagedMethod != null)
-        {
-            var parent = ((ICSharpContainer) csMethod.Parent!);
-            var indexOf = parent.Members.IndexOf(csMethod);
-            parent.Members.Insert(indexOf + 1, newManagedMethod);
-        }
-    }
 
     private record ManFunction(int ManSection, string BaseFunctionName, string FunctionName, string Summary);
 

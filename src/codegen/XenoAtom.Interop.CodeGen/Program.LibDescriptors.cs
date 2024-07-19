@@ -5,6 +5,7 @@ using XenoAtom.Interop.CodeGen.common;
 using XenoAtom.Interop.CodeGen.libdrm;
 using XenoAtom.Interop.CodeGen.libgbm;
 using XenoAtom.Interop.CodeGen.libgit2;
+using XenoAtom.Interop.CodeGen.libkmod;
 using XenoAtom.Interop.CodeGen.libshaderc;
 using XenoAtom.Interop.CodeGen.musl;
 using XenoAtom.Interop.CodeGen.sqlite;
@@ -223,6 +224,17 @@ partial class Program
             UrlDocumentation = "https://github.com/google/shaderc",
             Generator = desc => new LibshadercGenerator(desc),
             ApkDeps = ["shaderc-dev"],
+        },
+        new()
+        {
+            Name = "libkmod",
+            Summary = "This package provides a low-level and modern .NET P/Invoke wrapper around the libkmod API.",
+            CppDescription = "libkmod is a library for managing kernel modules.",
+            Url = "https://github.com/kmod-project/kmod/",
+            UrlDocumentation = "https://github.com/kmod-project/kmod/",
+            Generator = desc => new LibkmodGenerator(desc),
+            ApkDeps = ["kmod-dev"],
+            SupportedArchitectures = [ "linux" ]
         },
     ];
 }

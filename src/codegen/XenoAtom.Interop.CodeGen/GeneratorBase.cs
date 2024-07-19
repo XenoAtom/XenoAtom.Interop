@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -395,6 +396,80 @@ public abstract class GeneratorBase
     protected virtual IEnumerable<CppFunction> GetAdditionalExportedCppFunctions()
     {
         return Enumerable.Empty<CppFunction>();
+    }
+
+    protected static void ProcessConstStringArguments(CSharpMethod csMethod)
+    {
+        // If we have a potential marshalling for return/parameter string, we will duplicate the method with string marshalling
+        CSharpMethod? newManagedMethod = null;
+        for (var i = 0; i < csMethod.Parameters.Count; i++)
+        {
+            var param = csMethod.Parameters[i];
+            var cppType = (CppType)param.ParameterType!.CppElement!;
+            if (cppType.TryGetElementTypeFromPointer(out var isConst, out var elementType) && isConst)
+            {
+                if (elementType is CppPrimitiveType { Kind: CppPrimitiveKind.Char })
+                {
+                    newManagedMethod ??= csMethod.Clone();
+                    newManagedMethod.IsManaged = true;
+                    newManagedMethod.Parameters[i].ParameterType = new CSharpTypeWithAttributes(new CSharpFreeType("ReadOnlySpan<char>"))
+                    {
+                        Attributes = { new CSharpMarshalUsingAttribute("typeof(Utf8CustomMarshaller)") }
+                    };
+                }
+            }
+        }
+
+        var returnType = ((CppType)csMethod.ReturnType!.CppElement!);
+        if (returnType.TryGetElementTypeFromPointer(out var isConstReturn, out var returnElementType))
+        {
+            if (returnElementType is CppPrimitiveType { Kind: CppPrimitiveKind.Char })
+            {
+                newManagedMethod ??= csMethod.Clone();
+                csMethod.Name = $"{csMethod.Name}_";
+                newManagedMethod.IsManaged = true;
+                newManagedMethod.ReturnType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String())
+                {
+                    Attributes = { new CSharpMarshalUsingAttribute("typeof(Utf8CustomMarshaller)") { Scope = CSharpAttributeScope.Return } }
+                };
+            }
+        }
+
+        if (newManagedMethod != null)
+        {
+            var parent = ((ICSharpContainer)csMethod.Parent!);
+            var indexOf = parent.Members.IndexOf(csMethod);
+            parent.Members.Insert(indexOf + 1, newManagedMethod);
+        }
+    }
+    
+    protected static void ProcessBoolArgumentsFunction(CSharpMethod csMethod)
+    {
+        for (var i = 0; i < csMethod.Parameters.Count; i++)
+        {
+            var param = csMethod.Parameters[i];
+            if (param.ParameterType is CSharpPrimitiveType csPrimitiveType && csPrimitiveType.Kind == CSharpPrimitiveKind.Bool)
+            {
+                param.ParameterType = new CSharpTypeWithAttributes(param.ParameterType)
+                {
+                    Attributes = { new CSharpMarshalAsAttribute(UnmanagedType.U1) }
+                };
+            }
+        }
+
+        if (csMethod.ReturnType is CSharpPrimitiveType csPrimitiveType2 && csPrimitiveType2.Kind == CSharpPrimitiveKind.Bool)
+        {
+            csMethod.ReturnType = new CSharpTypeWithAttributes(csMethod.ReturnType)
+            {
+                Attributes =
+                {
+                    new CSharpMarshalAsAttribute(UnmanagedType.U1)
+                    {
+                        Scope = CSharpAttributeScope.Return
+                    }
+                }
+            };
+        }
     }
 
     private static IEnumerable<CSharpMethod> CollectAllFunctions(CSharpClass csClass)

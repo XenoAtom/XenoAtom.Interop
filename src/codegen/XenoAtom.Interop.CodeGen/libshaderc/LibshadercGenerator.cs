@@ -94,43 +94,11 @@ namespace XenoAtom.Interop.CodeGen.libshaderc
 
             foreach (var csFunction in csCompilation.AllFunctions)
             {
-                ProcessFunction(csFunction);
+                ProcessBoolArgumentsFunction(csFunction);
+                ProcessStringArgs(csFunction);
             }
-            
+
             return csCompilation;
-        }
-
-
-        private void ProcessFunction(CSharpMethod csMethod)
-        {
-            for (var i = 0; i < csMethod.Parameters.Count; i++)
-            {
-                var param = csMethod.Parameters[i];
-                if (param.ParameterType is CSharpPrimitiveType csPrimitiveType && csPrimitiveType.Kind == CSharpPrimitiveKind.Bool)
-                {
-                    param.ParameterType = new CSharpTypeWithAttributes(param.ParameterType)
-                    {
-                        Attributes = { new CSharpMarshalAsAttribute(UnmanagedType.U1) }
-                    };
-                }
-            }
-
-            if (csMethod.ReturnType is CSharpPrimitiveType csPrimitiveType2 && csPrimitiveType2.Kind == CSharpPrimitiveKind.Bool)
-            {
-                csMethod.ReturnType = new CSharpTypeWithAttributes(csMethod.ReturnType)
-                {
-                    Attributes =
-                    {
-                        new CSharpMarshalAsAttribute(UnmanagedType.U1)
-                        {
-                            Scope = CSharpAttributeScope.Return
-                        }
-                    }
-                };
-            }
-
-
-            ProcessStringArgs(csMethod);
         }
 
         private void ProcessStringArgs(CSharpMethod csMethod)
