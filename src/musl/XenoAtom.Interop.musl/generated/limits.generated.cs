@@ -13,8 +13,38 @@ namespace XenoAtom.Interop
 {
     public static unsafe partial class musl
     {
+        public const int NAME_MAX = 255;
+        
+        public const int PATH_MAX = 4096;
+        
+        public const int NGROUPS_MAX = 32;
+        
+        public const int ARG_MAX = 131072;
+        
+        public const int IOV_MAX = 1024;
+        
+        public const int SYMLOOP_MAX = 40;
+        
+        public const int TZNAME_MAX = 6;
+        
+        public const int TTY_NAME_MAX = 32;
+        
+        public const int HOST_NAME_MAX = 255;
+        
+        public const int PTHREAD_KEYS_MAX = 128;
+        
+        public const int PTHREAD_STACK_MIN = 2048;
+        
+        public const int PTHREAD_DESTRUCTOR_ITERATIONS = 4;
+        
         public const int SEM_VALUE_MAX = 2147483647;
         
         public const int SEM_NSEMS_MAX = 256;
+        
+        public const uint DELAYTIMER_MAX = 2147483647;
+        
+        public const int MQ_PRIO_MAX = 32768;
+        
+        public const int LOGIN_NAME_MAX = 256;
     }
 }

@@ -134,6 +134,23 @@ internal partial class MuslGenerator : GeneratorBase
                     // Discard these functions that are not supported (clone) or have more suitable equivalent (exec)
                     e => e.Map<CppFunction>("(clone|execl|execle|execlp)").Discard(),
 
+                    // limits.h (constants)
+                    e => e.MapMacroToConst("PATH_MAX", "int"),
+                    e => e.MapMacroToConst("NAME_MAX", "int"),
+                    e => e.MapMacroToConst("NGROUPS_MAX", "int"),
+                    e => e.MapMacroToConst("ARG_MAX", "int"),
+                    e => e.MapMacroToConst("IOV_MAX", "int"),
+                    e => e.MapMacroToConst("SYMLOOP_MAX", "int"),
+                    e => e.MapMacroToConst("TZNAME_MAX", "int"),
+                    e => e.MapMacroToConst("TTY_NAME_MAX", "int"),
+                    e => e.MapMacroToConst("HOST_NAME_MAX", "int"),
+                    // limits.h - Implementation choices
+                    e => e.MapMacroToConst("PTHREAD_KEYS_MAX", "int"),
+                    e => e.MapMacroToConst("PTHREAD_STACK_MIN", "int"),
+                    e => e.MapMacroToConst("PTHREAD_DESTRUCTOR_ITERATIONS", "int"),
+                    e => e.MapMacroToConst("DELAYTIMER_MAX", "unsigned int", explicitCast:true),
+                    e => e.MapMacroToConst("MQ_PRIO_MAX", "int"),
+                    e => e.MapMacroToConst("LOGIN_NAME_MAX", "int"),
                     // cachectl.h
                     e => e.MapMacroToConst("ICACHE", "int"),
                     e => e.MapMacroToConst("DCACHE", "int"),
