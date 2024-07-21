@@ -71,7 +71,8 @@ namespace XenoAtom.Interop.CodeGen.libkmod
                     e => e.Map<CppParameter>("kmod_module_probe_insert_module::flags").Type("kmod_probe"),
                     e => e.Map<CppEnum>("kmod_symbol_bind").Discard(), // Not used in public API but only internally
                     e => e.Map<CppEnumItem>("_KMOD_MODULE_PAD").Discard(),
-                    e => e.Map<CppFunction>("kmod_set_log_fn").Discard(),
+                    e => e.Map<CppParameter>("kmod_set_log_fn::log_fn").Type("intptr_t"),
+                    //e => e.Map<CppFunction>("kmod_set_log_fn").Discard(),
                     e => e.Map<CppFunction>("vsyslog").Discard(), // discard as it has a va_list
                     e => e.Map<CppTypedef>("va_list").Discard(), // discard va_list
                     e => e.Map<CppClass>("__va_list_tag").Discard(), // discard __va_list_tag

@@ -227,6 +227,10 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_ctx kmod_unref(libkmod.kmod_ctx ctx);
         
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_set_log_fn")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void kmod_set_log_fn(libkmod.kmod_ctx ctx, nint log_fn, void* data);
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_get_log_priority")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_get_log_priority(libkmod.kmod_ctx ctx);
