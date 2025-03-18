@@ -655,9 +655,11 @@ namespace XenoAtom.Interop
         /// * will be returned by the strategy.
         /// *
         /// * The xBestIndex method may optionally populate the idxFlags field with a
-        /// * mask of SQLITE_INDEX_SCAN_* flags. Currently there is only one such flag -
-        /// * SQLITE_INDEX_SCAN_UNIQUE. If the xBestIndex method sets this flag, SQLite
-        /// * assumes that the strategy may visit at most one row.
+        /// * mask of SQLITE_INDEX_SCAN_* flags. One such flag is
+        /// * [SQLITE_INDEX_SCAN_HEX], which if set causes the [EXPLAIN QUERY PLAN]
+        /// * output to show the idxNum has hex instead of as decimal.  Another flag is
+        /// * SQLITE_INDEX_SCAN_UNIQUE, which if set indicates that the query plan will
+        /// * return at most one row.
         /// *
         /// * Additionally, if xBestIndex sets the SQLITE_INDEX_SCAN_UNIQUE flag, then
         /// * SQLite also assumes that if a call to the xUpdate() method is made as
@@ -1189,8 +1191,8 @@ namespace XenoAtom.Interop
         /// * EXTENSION API FUNCTIONS
         /// *
         /// * xUserData(pFts):
-        /// *   Return a copy of the context pointer the extension function was
-        /// *   registered with.
+        /// *   Return a copy of the pUserData pointer passed to the xCreateFunction()
+        /// *   API when the extension function was registered.
         /// *
         /// * xColumnTotalSize(pFts, iCol, pnToken):
         /// *   If parameter iCol is less than zero, set output variable *pnToken
@@ -1384,6 +1386,10 @@ namespace XenoAtom.Interop
         /// *   (i.e. if it is a contentless table), then this API always iterates
         /// *   through an empty set (all calls to xPhraseFirst() set iCol to -1).
         /// *
+        /// *   In all cases, matches are visited in (column ASC, offset ASC) order.
+        /// *   i.e. all those in column 0, sorted by offset, followed by those in
+        /// *   column 1, etc.
+        /// *
         /// * xPhraseNext()
         /// *   See xPhraseFirst above.
         /// *
@@ -1448,21 +1454,59 @@ namespace XenoAtom.Interop
         /// *   value returned by xInstCount(), SQLITE_RANGE is returned.  Otherwise,
         /// *   output variable (*ppToken) is set to point to a buffer containing the
         /// *   matching document token, and (*pnToken) to the size of that buffer in
-        /// *   bytes. This API is not available if the specified token matches a
-        /// *   prefix query term. In that case both output variables are always set
-        /// *   to 0.
+        /// *   bytes.
         /// *
         /// *   The output text is not a copy of the document text that was tokenized.
         /// *   It is the output of the tokenizer module. For tokendata=1 tables, this
         /// *   includes any embedded 0x00 and trailing data.
         /// *
+        /// *   This API may be slow in some cases if the token identified by parameters
+        /// *   iIdx and iToken matched a prefix token in the query. In most cases, the
+        /// *   first call to this API for each prefix token in the query is forced
+        /// *   to scan the portion of the full-text index that matches the prefix
+        /// *   token to collect the extra data required by this API. If the prefix
+        /// *   token matches a large number of token instances in the document set,
+        /// *   this may be a performance problem.
+        /// *
+        /// *   If the user knows in advance that a query may use this API for a
+        /// *   prefix token, FTS5 may be configured to collect all required data as part
+        /// *   of the initial querying of the full-text index, avoiding the second scan
+        /// *   entirely. This also causes prefix queries that do not use this API to
+        /// *   run more slowly and use more memory. FTS5 may be configured in this way
+        /// *   either on a per-table basis using the [FTS5 insttoken | 'insttoken']
+        /// *   option, or on a per-query basis using the
+        /// *   [fts5_insttoken | fts5_insttoken()] user function.
+        /// *
         /// *   This API can be quite slow if used with an FTS5 table created with the
         /// *   "detail=none" or "detail=column" option.
+        /// *
+        /// * xColumnLocale(pFts5, iIdx, pzLocale, pnLocale)
+        /// *   If parameter iCol is less than zero, or greater than or equal to the
+        /// *   number of columns in the table, SQLITE_RANGE is returned.
+        /// *
+        /// *   Otherwise, this function attempts to retrieve the locale associated
+        /// *   with column iCol of the current row. Usually, there is no associated
+        /// *   locale, and output parameters (*pzLocale) and (*pnLocale) are set
+        /// *   to NULL and 0, respectively. However, if the fts5_locale() function
+        /// *   was used to associate a locale with the value when it was inserted
+        /// *   into the fts5 table, then (*pzLocale) is set to point to a nul-terminated
+        /// *   buffer containing the name of the locale in utf-8 encoding. (*pnLocale)
+        /// *   is set to the size in bytes of the buffer, not including the
+        /// *   nul-terminator.
+        /// *
+        /// *   If successful, SQLITE_OK is returned. Or, if an error occurs, an
+        /// *   SQLite error code is returned. The final value of the output parameters
+        /// *   is undefined in this case.
+        /// *
+        /// * xTokenize_v2:
+        /// *   Tokenize text using the tokenizer belonging to the FTS5 table. This
+        /// *   API is the same as the xTokenize() API, except that it allows a tokenizer
+        /// *   locale to be specified.
         /// </summary>
         public partial struct Fts5ExtensionApi
         {
             /// <summary>
-            /// Currently always set to 3
+            /// Currently always set to 4
             /// </summary>
             public int iVersion;
             
@@ -1510,6 +1554,13 @@ namespace XenoAtom.Interop
             public delegate*unmanaged[Cdecl]<sqlite.Fts5Context, int, int, byte**, int*, int> xQueryToken;
             
             public delegate*unmanaged[Cdecl]<sqlite.Fts5Context, int, int, byte**, int*, int> xInstToken;
+            
+            /// <summary>
+            /// Below this point are iVersion&gt;=4 only
+            /// </summary>
+            public delegate*unmanaged[Cdecl]<sqlite.Fts5Context, int, byte**, int*, int> xColumnLocale;
+            
+            public delegate*unmanaged[Cdecl]<sqlite.Fts5Context, byte*, int, byte*, int, void*, delegate*unmanaged[Cdecl]<void*, int, byte*, int, int, int, int>, int> xTokenize_v2;
         }
         
         public readonly partial struct Fts5Context : IEquatable<sqlite.Fts5Context>
@@ -1553,7 +1604,7 @@ namespace XenoAtom.Interop
         /// *   A tokenizer instance is required to actually tokenize text.
         /// *
         /// *   The first argument passed to this function is a copy of the (void*)
-        /// *   pointer provided by the application when the fts5_tokenizer object
+        /// *   pointer provided by the application when the fts5_tokenizer_v2 object
         /// *   was registered with FTS5 (the third argument to xCreateTokenizer()).
         /// *   The second and third arguments are an array of nul-terminated strings
         /// *   containing the tokenizer arguments, if any, specified following the
@@ -1577,7 +1628,7 @@ namespace XenoAtom.Interop
         /// *   argument passed to this function is a pointer to an Fts5Tokenizer object
         /// *   returned by an earlier call to xCreate().
         /// *
-        /// *   The second argument indicates the reason that FTS5 is requesting
+        /// *   The third argument indicates the reason that FTS5 is requesting
         /// *   tokenization of the supplied text. This is always one of the following
         /// *   four values:
         /// *
@@ -1600,6 +1651,13 @@ namespace XenoAtom.Interop
         /// *            function. Or an fts5_api.xColumnSize() request made by the same
         /// *            on a columnsize=0 database.
         /// *   &lt;/ul&gt;*
+        /// *   The sixth and seventh arguments passed to xTokenize() - pLocale and
+        /// *   nLocale - are a pointer to a buffer containing the locale to use for
+        /// *   tokenization (e.g. "en_US") and its size in bytes, respectively. The
+        /// *   pLocale buffer is not nul-terminated. pLocale may be passed NULL (in
+        /// *   which case nLocale is always 0) to indicate that the tokenizer should
+        /// *   use its default locale.
+        /// *
         /// *   For each token in the input string, the supplied callback xToken() must
         /// *   be invoked. The first argument to it should be a copy of the pointer
         /// *   passed as the second argument to xTokenize(). The third and fourth
@@ -1622,6 +1680,28 @@ namespace XenoAtom.Interop
         /// *   if an error occurs with the xTokenize() implementation itself, it
         /// *   may abandon the tokenization and return any error code other than
         /// *   SQLITE_OK or SQLITE_DONE.
+        /// *
+        /// *   If the tokenizer is registered using an fts5_tokenizer_v2 object,
+        /// *   then the xTokenize() method has two additional arguments - pLocale
+        /// *   and nLocale. These specify the locale that the tokenizer should use
+        /// *   for the current request. If pLocale and nLocale are both 0, then the
+        /// *   tokenizer should use its default locale. Otherwise, pLocale points to
+        /// *   an nLocale byte buffer containing the name of the locale to use as utf-8
+        /// *   text. pLocale is not nul-terminated.
+        /// *
+        /// * FTS5_TOKENIZER
+        /// *
+        /// * There is also an fts5_tokenizer object. This is an older, deprecated,
+        /// * version of fts5_tokenizer_v2. It is similar except that:
+        /// *
+        /// *  &lt;ul&gt;*    &lt;li&gt;There is no "iVersion" field, and
+        /// *    &lt;li&gt;The xTokenize() method does not take a locale argument.
+        /// *  &lt;/ul&gt;*
+        /// * Legacy fts5_tokenizer tokenizers must be registered using the
+        /// * legacy xCreateTokenizer() function, instead of xCreateTokenizer_v2().
+        /// *
+        /// * Tokenizer implementations registered using either API may be retrieved
+        /// * using both xFindTokenizer() and xFindTokenizer_v2().
         /// *
         /// * SYNONYM SUPPORT
         /// *
@@ -1764,6 +1844,20 @@ namespace XenoAtom.Interop
             public static bool operator !=(Fts5Tokenizer left, Fts5Tokenizer right) => !left.Equals(right);
         }
         
+        public partial struct fts5_tokenizer_v2
+        {
+            /// <summary>
+            /// Currently always 2
+            /// </summary>
+            public int iVersion;
+            
+            public delegate*unmanaged[Cdecl]<void*, byte**, int, sqlite.Fts5Tokenizer*, int> xCreate;
+            
+            public delegate*unmanaged[Cdecl]<sqlite.Fts5Tokenizer, void> xDelete;
+            
+            public delegate*unmanaged[Cdecl]<sqlite.Fts5Tokenizer, void*, int, byte*, int, byte*, int, delegate*unmanaged[Cdecl]<void*, int, byte*, int, int, int, int>, int> xTokenize;
+        }
+        
         public partial struct fts5_tokenizer
         {
             public delegate*unmanaged[Cdecl]<void*, byte**, int, sqlite.Fts5Tokenizer*, int> xCreate;
@@ -1776,7 +1870,7 @@ namespace XenoAtom.Interop
         public partial struct fts5_api
         {
             /// <summary>
-            /// Currently always set to 2
+            /// Currently always set to 3
             /// </summary>
             public int iVersion;
             
@@ -1794,6 +1888,16 @@ namespace XenoAtom.Interop
             /// Create a new auxiliary function
             /// </summary>
             public delegate*unmanaged[Cdecl]<sqlite.fts5_api*, byte*, void*, sqlite.fts5_extension_function, delegate*unmanaged[Cdecl]<void*, void>, int> xCreateFunction;
+            
+            /// <summary>
+            /// Create a new tokenizer
+            /// </summary>
+            public delegate*unmanaged[Cdecl]<sqlite.fts5_api*, byte*, void*, sqlite.fts5_tokenizer_v2*, delegate*unmanaged[Cdecl]<void*, void>, int> xCreateTokenizer_v2;
+            
+            /// <summary>
+            /// Find an existing tokenizer
+            /// </summary>
+            public delegate*unmanaged[Cdecl]<sqlite.fts5_api*, byte*, void**, sqlite.fts5_tokenizer_v2**, int> xFindTokenizer_v2;
         }
         
         public readonly partial struct fts5_extension_function : IEquatable<sqlite.fts5_extension_function>
@@ -1930,11 +2034,11 @@ namespace XenoAtom.Interop
             public static bool operator !=(sqlite3_rtree_dbl left, sqlite3_rtree_dbl right) => !left.Equals(right);
         }
         
-        public const string SQLITE_VERSION = "3.45.3";
+        public const string SQLITE_VERSION = "3.48.0";
         
-        public const int SQLITE_VERSION_NUMBER = 3045003;
+        public const int SQLITE_VERSION_NUMBER = 3048000;
         
-        public const string SQLITE_SOURCE_ID = "2024-04-15 13:34:05 8653b758870e6ef0c98d46b3ace27849054af85da891eb121e9aaa537f1e8355";
+        public const string SQLITE_SOURCE_ID = "2025-01-14 11:05:00 d2fe6b05f38d9d7cd78c5d252e99ac59f1aea071d669830c1ffe4e8966e84010";
         
         /// <summary>
         /// Successful result
@@ -2396,6 +2500,8 @@ namespace XenoAtom.Interop
         
         public const int SQLITE_IOCAP_BATCH_ATOMIC = 16384;
         
+        public const int SQLITE_IOCAP_SUBPAGE_READ = 32768;
+        
         /// <summary>
         /// xUnlock() only
         /// </summary>
@@ -2508,6 +2614,8 @@ namespace XenoAtom.Interop
         public const int SQLITE_FCNTL_CKSM_FILE = 41;
         
         public const int SQLITE_FCNTL_RESET_CACHE = 42;
+        
+        public const int SQLITE_FCNTL_NULL_IO = 43;
         
         public const int SQLITE_GET_LOCKPROXYFILE = 2;
         
@@ -3005,6 +3113,8 @@ namespace XenoAtom.Interop
         
         public const int SQLITE_PREPARE_NO_VTAB = 4;
         
+        public const int SQLITE_PREPARE_DONT_LOG = 16;
+        
         public const int SQLITE_INTEGER = 1;
         
         public const int SQLITE_FLOAT = 2;
@@ -3055,6 +3165,8 @@ namespace XenoAtom.Interop
         
         public const int SQLITE_RESULT_SUBTYPE = 16777216;
         
+        public const int SQLITE_SELFORDER1 = 33554432;
+        
         public const int SQLITE_WIN32_DATA_DIRECTORY_TYPE = 1;
         
         public const int SQLITE_WIN32_TEMP_DIRECTORY_TYPE = 2;
@@ -3069,6 +3181,11 @@ namespace XenoAtom.Interop
         /// Scan visits at most 1 row
         /// </summary>
         public const int SQLITE_INDEX_SCAN_UNIQUE = 1;
+        
+        /// <summary>
+        /// Display idxNum as hex
+        /// </summary>
+        public const int SQLITE_INDEX_SCAN_HEX = 2;
         
         public const int SQLITE_INDEX_CONSTRAINT_EQ = 2;
         
@@ -3216,6 +3333,8 @@ namespace XenoAtom.Interop
         /// </summary>
         public const int SQLITE_TESTCTRL_ISKEYWORD = 16;
         
+        public const int SQLITE_TESTCTRL_GETOPT = 16;
+        
         /// <summary>
         /// NOT USED
         /// </summary>
@@ -3260,6 +3379,9 @@ namespace XenoAtom.Interop
         
         public const int SQLITE_TESTCTRL_LOGEST = 33;
         
+        /// <summary>
+        /// NOT USED
+        /// </summary>
         public const int SQLITE_TESTCTRL_USELONGDOUBLE = 34;
         
         /// <summary>
@@ -3921,10 +4043,14 @@ namespace XenoAtom.Interop
         /// * deleted by the most recently completed INSERT, UPDATE or DELETE
         /// * statement on the database connection specified by the only parameter.
         /// * The two functions are identical except for the type of the return value
-        /// * and that if the number of rows modified by the most recent INSERT, UPDATE
+        /// * and that if the number of rows modified by the most recent INSERT, UPDATE,
         /// * or DELETE is greater than the maximum value supported by type "int", then
         /// * the return value of sqlite3_changes() is undefined. ^Executing any other
         /// * type of SQL statement does not modify the value returned by these functions.
+        /// * For the purposes of this interface, a CREATE TABLE AS SELECT statement
+        /// * does not count as an INSERT, UPDATE or DELETE statement and hence the rows
+        /// * added to the new table by the CREATE TABLE AS SELECT statement are not
+        /// * counted.
         /// *
         /// * ^Only changes made directly by the INSERT, UPDATE or DELETE statement are
         /// * considered - auxiliary changes caused by [CREATE TRIGGER | triggers],
@@ -4673,8 +4799,8 @@ namespace XenoAtom.Interop
         public static partial int sqlite3_set_authorizer(sqlite.sqlite3 arg0, delegate*unmanaged[Cdecl]<void*, int, byte*, byte*, byte*, byte*, int> xAuth, void* pUserData);
         
         /// <summary>
-        /// * CAPI3REF: Tracing And Profiling Functions
-        /// * METHOD: sqlite3
+        /// * CAPI3REF: Deprecated Tracing And Profiling Functions
+        /// * DEPRECATED
         /// *
         /// * These routines are deprecated. Use the [sqlite3_trace_v2()] interface
         /// * instead of the routines described here.
@@ -4870,8 +4996,8 @@ namespace XenoAtom.Interop
         /// * [sqlite3_enable_shared_cache()].)^
         /// *
         /// * [[OPEN_EXRESCODE]] ^(&lt;dt&gt;[SQLITE_OPEN_EXRESCODE]&lt;/dt&gt;* &lt;dd&gt;The database connection comes up in "extended result code mode".
-        /// * In other words, the database behaves has if
-        /// * [sqlite3_extended_result_codes(db,1)] where called on the database
+        /// * In other words, the database behaves as if
+        /// * [sqlite3_extended_result_codes(db,1)] were called on the database
         /// * connection as soon as the connection is created. In addition to setting
         /// * the extended result code mode, this flag also causes [sqlite3_open_v2()]
         /// * to return an extended result code.&lt;/dd&gt;*
@@ -5124,8 +5250,8 @@ namespace XenoAtom.Interop
         /// * [sqlite3_enable_shared_cache()].)^
         /// *
         /// * [[OPEN_EXRESCODE]] ^(&lt;dt&gt;[SQLITE_OPEN_EXRESCODE]&lt;/dt&gt;* &lt;dd&gt;The database connection comes up in "extended result code mode".
-        /// * In other words, the database behaves has if
-        /// * [sqlite3_extended_result_codes(db,1)] where called on the database
+        /// * In other words, the database behaves as if
+        /// * [sqlite3_extended_result_codes(db,1)] were called on the database
         /// * connection as soon as the connection is created. In addition to setting
         /// * the extended result code mode, this flag also causes [sqlite3_open_v2()]
         /// * to return an extended result code.&lt;/dd&gt;*
@@ -5872,12 +5998,16 @@ namespace XenoAtom.Interop
         /// * and sqlite3_prepare16_v3() use UTF-16.
         /// *
         /// * ^If the nByte argument is negative, then zSql is read up to the
-        /// * first zero terminator. ^If nByte is positive, then it is the
-        /// * number of bytes read from zSql.  ^If nByte is zero, then no prepared
+        /// * first zero terminator. ^If nByte is positive, then it is the maximum
+        /// * number of bytes read from zSql.  When nByte is positive, zSql is read
+        /// * up to the first zero terminator or until the nByte bytes have been read,
+        /// * whichever comes first.  ^If nByte is zero, then no prepared
         /// * statement is generated.
         /// * If the caller knows that the supplied string is nul-terminated, then
         /// * there is a small performance advantage to passing an nByte parameter that
         /// * is the number of bytes in the input string &lt;i&gt;including&lt;/i&gt;* the nul-terminator.
+        /// * Note that nByte measure the length of the input in bytes, not
+        /// * characters, even for the UTF-16 interfaces.
         /// *
         /// * ^If pzTail is not NULL then *pzTail is made to point to the first byte
         /// * past the end of the first SQL statement in zSql.  These routines only
@@ -5967,12 +6097,16 @@ namespace XenoAtom.Interop
         /// * and sqlite3_prepare16_v3() use UTF-16.
         /// *
         /// * ^If the nByte argument is negative, then zSql is read up to the
-        /// * first zero terminator. ^If nByte is positive, then it is the
-        /// * number of bytes read from zSql.  ^If nByte is zero, then no prepared
+        /// * first zero terminator. ^If nByte is positive, then it is the maximum
+        /// * number of bytes read from zSql.  When nByte is positive, zSql is read
+        /// * up to the first zero terminator or until the nByte bytes have been read,
+        /// * whichever comes first.  ^If nByte is zero, then no prepared
         /// * statement is generated.
         /// * If the caller knows that the supplied string is nul-terminated, then
         /// * there is a small performance advantage to passing an nByte parameter that
         /// * is the number of bytes in the input string &lt;i&gt;including&lt;/i&gt;* the nul-terminator.
+        /// * Note that nByte measure the length of the input in bytes, not
+        /// * characters, even for the UTF-16 interfaces.
         /// *
         /// * ^If pzTail is not NULL then *pzTail is made to point to the first byte
         /// * past the end of the first SQL statement in zSql.  These routines only
@@ -7897,7 +8031,7 @@ namespace XenoAtom.Interop
         /// * one SQL function to another.  Use the [sqlite3_result_subtype()]
         /// * routine to set the subtype for the return value of an SQL function.
         /// *
-        /// * Every [application-defined SQL function] that invoke this interface
+        /// * Every [application-defined SQL function] that invokes this interface
         /// * should include the [SQLITE_SUBTYPE] property in the text
         /// * encoding argument when the function is [sqlite3_create_function|registered].
         /// * If the [SQLITE_SUBTYPE] property is omitted, then sqlite3_value_subtype()
@@ -9182,6 +9316,12 @@ namespace XenoAtom.Interop
         /// * invoked when rows are deleted using the [truncate optimization].
         /// * The exceptions defined in this paragraph might change in a future
         /// * release of SQLite.
+        /// *
+        /// * Whether the update hook is invoked before or after the
+        /// * corresponding change is currently unspecified and may differ
+        /// * depending on the type of change. Do not rely on the order of the
+        /// * hook call with regards to the final result of the operation which
+        /// * triggers the hook.
         /// *
         /// * The update hook implementation must not do anything that will modify
         /// * the database connection that invoked the update hook.  Any actions
@@ -10524,7 +10664,7 @@ namespace XenoAtom.Interop
         /// * The sqlite3_keyword_count() interface returns the number of distinct
         /// * keywords understood by SQLite.
         /// *
-        /// * The sqlite3_keyword_name(N,Z,L) interface finds the N-th keyword and
+        /// * The sqlite3_keyword_name(N,Z,L) interface finds the 0-based N-th keyword and
         /// * makes *Z point to that keyword expressed as UTF8 and writes the number
         /// * of bytes in the keyword into *L.  The string that *Z points to is not
         /// * zero-terminated.  The sqlite3_keyword_name(N,Z,L) routine returns
@@ -10956,6 +11096,14 @@ namespace XenoAtom.Interop
         /// * APIs are not strictly speaking threadsafe. If they are invoked at the
         /// * same time as another thread is invoking sqlite3_backup_step() it is
         /// * possible that they return invalid values.
+        /// *
+        /// * &lt;b&gt;Alternatives To Using The Backup API&lt;/b&gt;*
+        /// * Other techniques for safely creating a consistent backup of an SQLite
+        /// * database include:
+        /// *
+        /// * &lt;ul&gt;* &lt;li&gt;The [VACUUM INTO] command.
+        /// * &lt;li&gt;The [sqlite3_rsync] utility program.
+        /// * &lt;/ul&gt;
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_backup_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -11139,6 +11287,14 @@ namespace XenoAtom.Interop
         /// * APIs are not strictly speaking threadsafe. If they are invoked at the
         /// * same time as another thread is invoking sqlite3_backup_step() it is
         /// * possible that they return invalid values.
+        /// *
+        /// * &lt;b&gt;Alternatives To Using The Backup API&lt;/b&gt;*
+        /// * Other techniques for safely creating a consistent backup of an SQLite
+        /// * database include:
+        /// *
+        /// * &lt;ul&gt;* &lt;li&gt;The [VACUUM INTO] command.
+        /// * &lt;li&gt;The [sqlite3_rsync] utility program.
+        /// * &lt;/ul&gt;
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_backup_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -11916,22 +12072,41 @@ namespace XenoAtom.Interop
         /// * is doing a GROUP BY.
         /// * &lt;li value="2"&gt;&lt;p&gt;* ^(If the sqlite3_vtab_distinct() interface returns 2, that means
         /// * that the query planner does not need the rows returned in any particular
-        /// * order, as long as rows with the same values in all "aOrderBy" columns
-        /// * are adjacent.)^  ^(Furthermore, only a single row for each particular
-        /// * combination of values in the columns identified by the "aOrderBy" field
-        /// * needs to be returned.)^  ^It is always ok for two or more rows with the same
-        /// * values in all "aOrderBy" columns to be returned, as long as all such rows
-        /// * are adjacent.  ^The virtual table may, if it chooses, omit extra rows
-        /// * that have the same value for all columns identified by "aOrderBy".
-        /// * ^However omitting the extra rows is optional.
+        /// * order, as long as rows with the same values in all columns identified
+        /// * by "aOrderBy" are adjacent.)^  ^(Furthermore, when two or more rows
+        /// * contain the same values for all columns identified by "colUsed", all but
+        /// * one such row may optionally be omitted from the result.)^
+        /// * The virtual table is not required to omit rows that are duplicates
+        /// * over the "colUsed" columns, but if the virtual table can do that without
+        /// * too much extra effort, it could potentially help the query to run faster.
         /// * This mode is used for a DISTINCT query.
-        /// * &lt;li value="3"&gt;&lt;p&gt;* ^(If the sqlite3_vtab_distinct() interface returns 3, that means
-        /// * that the query planner needs only distinct rows but it does need the
-        /// * rows to be sorted.)^ ^The virtual table implementation is free to omit
-        /// * rows that are identical in all aOrderBy columns, if it wants to, but
-        /// * it is not required to omit any rows.  This mode is used for queries
+        /// * &lt;li value="3"&gt;&lt;p&gt;* ^(If the sqlite3_vtab_distinct() interface returns 3, that means the
+        /// * virtual table must return rows in the order defined by "aOrderBy" as
+        /// * if the sqlite3_vtab_distinct() interface had returned 0.  However if
+        /// * two or more rows in the result have the same values for all columns
+        /// * identified by "colUsed", then all but one such row may optionally be
+        /// * omitted.)^  Like when the return value is 2, the virtual table
+        /// * is not required to omit rows that are duplicates over the "colUsed"
+        /// * columns, but if the virtual table can do that without
+        /// * too much extra effort, it could potentially help the query to run faster.
+        /// * This mode is used for queries
         /// * that have both DISTINCT and ORDER BY clauses.
         /// * &lt;/ol&gt;*
+        /// * &lt;p&gt;The following table summarizes the conditions under which the
+        /// * virtual table is allowed to set the "orderByConsumed" flag based on
+        /// * the value returned by sqlite3_vtab_distinct().  This table is a
+        /// * restatement of the previous four paragraphs:
+        /// *
+        /// * &lt;table border=""&gt;1 cellspacing=0 cellpadding=10 width="90%"&gt;
+        /// * &lt;tr&gt;* &lt;td valign="top"&gt;sqlite3_vtab_distinct() return value
+        /// * &lt;td valign="top"&gt;Rows are returned in aOrderBy order
+        /// * &lt;td valign="top"&gt;Rows with the same value in all aOrderBy columns are adjacent
+        /// * &lt;td valign="top"&gt;Duplicates over all colUsed columns may be omitted
+        /// * &lt;tr&gt;&lt;td&gt;0&lt;td&gt;yes&lt;td&gt;yes&lt;td&gt;no
+        /// * &lt;tr&gt;&lt;td&gt;1&lt;td&gt;no&lt;td&gt;yes&lt;td&gt;no
+        /// * &lt;tr&gt;&lt;td&gt;2&lt;td&gt;no&lt;td&gt;yes&lt;td&gt;yes
+        /// * &lt;tr&gt;&lt;td&gt;3&lt;td&gt;yes&lt;td&gt;yes&lt;td&gt;yes
+        /// * &lt;/table&gt;*
         /// * ^For the purposes of comparing virtual table output values to see if the
         /// * values are same value for sorting purposes, two NULL values are considered
         /// * to be the same.  In other words, the comparison operator is "IS"
@@ -12259,6 +12434,14 @@ namespace XenoAtom.Interop
         /// * If there is not already a read-transaction open on schema S when
         /// * this function is called, one is opened automatically.
         /// *
+        /// * If a read-transaction is opened by this function, then it is guaranteed
+        /// * that the returned snapshot object may not be invalidated by a database
+        /// * writer or checkpointer until after the read-transaction is closed. This
+        /// * is not guaranteed if a read-transaction is already open when this
+        /// * function is called. In that case, any subsequent write or checkpoint
+        /// * operation on the database may invalidate the returned snapshot handle,
+        /// * even while the read-transaction remains open.
+        /// *
         /// * The following must be true for this function to succeed. If any of
         /// * the following statements are false when sqlite3_snapshot_get() is
         /// * called, SQLITE_ERROR is returned. The final value of *P is undefined
@@ -12303,6 +12486,14 @@ namespace XenoAtom.Interop
         /// * created [sqlite3_snapshot] object into *P and returns SQLITE_OK.
         /// * If there is not already a read-transaction open on schema S when
         /// * this function is called, one is opened automatically.
+        /// *
+        /// * If a read-transaction is opened by this function, then it is guaranteed
+        /// * that the returned snapshot object may not be invalidated by a database
+        /// * writer or checkpointer until after the read-transaction is closed. This
+        /// * is not guaranteed if a read-transaction is already open when this
+        /// * function is called. In that case, any subsequent write or checkpoint
+        /// * operation on the database may invalidate the returned snapshot handle,
+        /// * even while the read-transaction remains open.
         /// *
         /// * The following must be true for this function to succeed. If any of
         /// * the following statements are false when sqlite3_snapshot_get() is

@@ -89,7 +89,7 @@ namespace XenoAtom.Interop
         /// Get the refspec's string
         /// </summary>
         /// <param name="refspec">the refspec</param>
-        /// <returns>@returns the refspec's original string</returns>
+        /// <returns>@return the refspec's original string</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_refspec_string_(libgit2.git_refspec refspec);
@@ -98,7 +98,7 @@ namespace XenoAtom.Interop
         /// Get the refspec's string
         /// </summary>
         /// <param name="refspec">the refspec</param>
-        /// <returns>@returns the refspec's original string</returns>
+        /// <returns>@return the refspec's original string</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_string")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]

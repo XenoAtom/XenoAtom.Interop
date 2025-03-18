@@ -30,7 +30,7 @@ public partial class ApkManager
 
     public ApkManager()
     {
-        Version = "v3.20";
+        Version = "v3.21";
         Repositories= ["main", "community"];
         Architectures = [DefaultArch];
         CacheRootName = "ApkCache";

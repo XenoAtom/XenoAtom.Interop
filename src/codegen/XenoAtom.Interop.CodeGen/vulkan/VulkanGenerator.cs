@@ -1058,9 +1058,10 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     private void LoadVulkanRegistry(string registryPath)
     {
         var doc = XDocument.Load(registryPath);
-        LoadApiVersionsAndExtensionsFromRegistry(doc);
-        LoadCommandParameterFromRegistry(doc);
-        LoadStructureTypesFromRegistry(doc);
+        var registry = doc.Element("registry")!;
+        LoadApiVersionsAndExtensionsFromRegistry(registry);
+        LoadCommandParameterFromRegistry(registry);
+        LoadStructureTypesFromRegistry(registry);
     }
 
     private void AddVulkanVersionAndExtensionInfoToCSharpElement(CSharpElement element)
@@ -1110,9 +1111,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         }
     }
     
-    private void LoadApiVersionsAndExtensionsFromRegistry(XDocument doc)
+    private void LoadApiVersionsAndExtensionsFromRegistry(XElement registry)
     {
-        var features = doc.Descendants("feature");
+        var features = registry.Elements("feature");
         foreach (var feature in features)
         {
             var api = feature.Attribute("api")!.Value!;
@@ -1141,7 +1142,7 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             }
         }
 
-        var extensions = doc.Descendants("extensions").FirstOrDefault();
+        var extensions = registry.Elements("extensions").FirstOrDefault();
         if (extensions != null)
         {
             foreach (var extension in extensions.Elements("extension"))
@@ -1197,9 +1198,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
     }
 
 
-    private void LoadCommandParameterFromRegistry(XDocument doc)
+    private void LoadCommandParameterFromRegistry(XElement registry)
     {
-        var commands = doc.Descendants("commands").First();
+        var commands = registry.Elements("commands").First();
 
         int commandCount = 0;
         foreach (var xmlCommand in commands.Elements("command"))
@@ -1304,9 +1305,9 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
         Console.WriteLine($"Total commands: {commandCount} processed from the registry");
     }
 
-    private void LoadStructureTypesFromRegistry(XDocument doc)
+    private void LoadStructureTypesFromRegistry(XElement registry)
     {
-        var types = doc.Descendants("types").FirstOrDefault();
+        var types = registry.Elements("types").FirstOrDefault();
 
         if (types != null)
         {

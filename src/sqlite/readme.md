@@ -31,7 +31,7 @@ if (ret != SQLITE_OK)
 ```
 ## 📦 Compatible Native Binaries
 
-This library does not provide C native binaries but only P/Invoke .NET bindings to `sqlite` `3.45.3-r1`.
+This library does not provide C native binaries but only P/Invoke .NET bindings to `sqlite` `3.48.0-r0`.
 
 If the native library is already installed on your system, check the version installed. If you are using this library on Alpine Linux, see the compatible version in the [Supported API](#supported-api) section below.
 Other OS might require a different setup.
@@ -48,9 +48,9 @@ The following packages were tested and are compatible with **XenoAtom.Interop.sq
 
 > This package is based on the following header version:
 > 
-> - sqlite C include headers: [`sqlite-dev`](https://pkgs.alpinelinux.org/package/v3.20/main/x86_64/sqlite-dev)
-> - Version: `3.45.3-r1`
-> - Distribution: AlpineLinux `v3.20`
+> - sqlite C include headers: [`sqlite-dev`](https://pkgs.alpinelinux.org/package/v3.21/main/x86_64/sqlite-dev)
+> - Version: `3.48.0-r0`
+> - Distribution: AlpineLinux `v3.21`
 
 The following API were automatically generated from the C/C++ code:
 

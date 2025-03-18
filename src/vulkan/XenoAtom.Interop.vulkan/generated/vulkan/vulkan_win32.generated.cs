@@ -758,7 +758,7 @@ namespace XenoAtom.Interop
             public static ReadOnlyMemoryUtf8 Name => "vkCreateWin32SurfaceKHR"u8;
             
             /// <summary>
-            /// Create a VkSurfaceKHR object for an Win32 native window
+            /// Create a VkSurfaceKHR object for a Win32 native window
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkWin32SurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>
@@ -783,7 +783,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
             
             /// <summary>
-            /// Create a VkSurfaceKHR object for an Win32 native window
+            /// Create a VkSurfaceKHR object for a Win32 native window
             /// </summary>
             /// <param name="instance">The instance to associate the surface with.</param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkWin32SurfaceCreateInfoKHR"/> structure containing parameters affecting the creation of the surface object.</param>

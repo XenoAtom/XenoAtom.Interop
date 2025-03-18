@@ -13,16 +13,16 @@ namespace XenoAtom.Interop
 {
     public static unsafe partial class libgit2
     {
-        public const string LIBGIT2_VERSION = "1.7.2";
+        public const string LIBGIT2_VERSION = "1.8.4";
         
         public const int LIBGIT2_VER_MAJOR = 1;
         
-        public const int LIBGIT2_VER_MINOR = 7;
+        public const int LIBGIT2_VER_MINOR = 8;
         
-        public const int LIBGIT2_VER_REVISION = 2;
+        public const int LIBGIT2_VER_REVISION = 4;
         
         public const int LIBGIT2_VER_PATCH = 0;
         
-        public const string LIBGIT2_SOVERSION = "1.7";
+        public const string LIBGIT2_SOVERSION = "1.8";
     }
 }

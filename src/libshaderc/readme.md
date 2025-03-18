@@ -15,7 +15,7 @@ For more information, see the official documentation at https://github.com/googl
 
 ## 📦 Compatible Native Binaries
 
-This library does not provide C native binaries but only P/Invoke .NET bindings to `libshaderc` `2024.0-r0`.
+This library does not provide C native binaries but only P/Invoke .NET bindings to `libshaderc` `2024.0-r2`.
 
 If the native library is already installed on your system, check the version installed. If you are using this library on Alpine Linux, see the compatible version in the [Supported API](#supported-api) section below.
 Other OS might require a different setup.
@@ -32,9 +32,9 @@ The following packages were tested and are compatible with **XenoAtom.Interop.li
 
 > This package is based on the following header version:
 > 
-> - libshaderc C include headers: [`shaderc-dev`](https://pkgs.alpinelinux.org/package/v3.20/community/x86_64/shaderc-dev)
-> - Version: `2024.0-r0`
-> - Distribution: AlpineLinux `v3.20`
+> - libshaderc C include headers: [`shaderc-dev`](https://pkgs.alpinelinux.org/package/v3.21/community/x86_64/shaderc-dev)
+> - Version: `2024.0-r2`
+> - Distribution: AlpineLinux `v3.21`
 
 The following API were automatically generated from the C/C++ code:
 

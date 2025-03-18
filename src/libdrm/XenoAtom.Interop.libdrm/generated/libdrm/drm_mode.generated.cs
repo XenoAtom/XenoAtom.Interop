@@ -893,6 +893,20 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
+        /// struct drm_plane_size_hint - Plane size hints
+        /// </summary>
+        /// <remarks>
+        /// The plane SIZE_HINTS property blob contains an
+        /// array of struct drm_plane_size_hint.
+        /// </remarks>
+        public partial struct drm_plane_size_hint
+        {
+            public ushort width;
+            
+            public ushort height;
+        }
+        
+        /// <summary>
         /// struct hdr_metadata_infoframe - HDR Metadata Infoframe Data.
         /// </summary>
         /// <remarks>

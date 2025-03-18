@@ -666,7 +666,7 @@ namespace XenoAtom.Interop
             DRM_MODE_FB_INTERLACED = unchecked((uint)1),
             
             /// <summary>
-            /// enables -&gt;modifer[]
+            /// enables -&gt;modifier[]
             /// </summary>
             DRM_MODE_FB_MODIFIERS = unchecked((uint)2),
         }
@@ -677,7 +677,7 @@ namespace XenoAtom.Interop
         public const libdrm.drm_mode_fb DRM_MODE_FB_INTERLACED = drm_mode_fb.DRM_MODE_FB_INTERLACED;
         
         /// <summary>
-        /// enables -&gt;modifer[]
+        /// enables -&gt;modifier[]
         /// </summary>
         public const libdrm.drm_mode_fb DRM_MODE_FB_MODIFIERS = drm_mode_fb.DRM_MODE_FB_MODIFIERS;
         

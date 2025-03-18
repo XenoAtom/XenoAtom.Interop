@@ -8,7 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-general", "00-general", 
 		..\.editorconfig = ..\.editorconfig
 		..\.gitattributes = ..\.gitattributes
 		..\.gitignore = ..\.gitignore
-		dotnet-releaser.toml = dotnet-releaser.toml
 		global.json = global.json
 		..\license.txt = ..\license.txt
 		..\readme.md = ..\readme.md
@@ -89,30 +88,45 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.common.Tests", "common\XenoAtom.Interop.common.Tests\XenoAtom.Interop.common.Tests.csproj", "{D546620A-658B-4243-AFAE-1406FA0FFEA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vulkan", "vulkan", "{E1CE2480-5854-437F-B715-352BD3C6F21C}"
+	ProjectSection(SolutionItems) = preProject
+		vulkan\dotnet-releaser.toml = vulkan\dotnet-releaser.toml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.vulkan", "vulkan\XenoAtom.Interop.vulkan\XenoAtom.Interop.vulkan.csproj", "{AD8EE508-E6D0-404C-B710-20C2BC61FB0C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.vulkan.Tests", "vulkan\XenoAtom.Interop.vulkan.Tests\XenoAtom.Interop.vulkan.Tests.csproj", "{75E2676A-38CE-4264-9717-082A384D29EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libdrm", "libdrm", "{17B06B80-5543-4A5F-910C-9BEB3356E056}"
+	ProjectSection(SolutionItems) = preProject
+		libdrm\dotnet-releaser.toml = libdrm\dotnet-releaser.toml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libdrm", "libdrm\XenoAtom.Interop.libdrm\XenoAtom.Interop.libdrm.csproj", "{E0A94974-C786-4B94-8600-99C8295EB739}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libdrm.Tests", "libdrm\XenoAtom.Interop.libdrm.Tests\XenoAtom.Interop.libdrm.Tests.csproj", "{533FA1BD-B624-41CA-A792-423401BFBC99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libgbm", "libgbm", "{1B295861-4E88-497C-9C6B-01D1E358F592}"
+	ProjectSection(SolutionItems) = preProject
+		libgbm\dotnet-releaser.toml = libgbm\dotnet-releaser.toml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libgbm", "libgbm\XenoAtom.Interop.libgbm\XenoAtom.Interop.libgbm.csproj", "{938E33A3-6B26-49F1-88C8-FF8E70ECCB70}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libgbm.Tests", "libgbm\XenoAtom.Interop.libgbm.Tests\XenoAtom.Interop.libgbm.Tests.csproj", "{670B3F77-DC62-43D5-B8CE-BC063724D35A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libshaderc", "libshaderc", "{0742D969-0B9F-4034-BFC4-7B0C5B2FDFB7}"
+	ProjectSection(SolutionItems) = preProject
+		libshaderc\dotnet-releaser.toml = libshaderc\dotnet-releaser.toml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libshaderc", "libshaderc\XenoAtom.Interop.libshaderc\XenoAtom.Interop.libshaderc.csproj", "{D4EA7E38-0C3F-48BA-9188-A925B4E8ABE2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libshaderc.Tests", "libshaderc\XenoAtom.Interop.libshaderc.Tests\XenoAtom.Interop.libshaderc.Tests.csproj", "{76422969-B89F-4EBE-AB76-E51917A8EA9A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libkmod", "libkmod", "{6BE6E4E3-1EC2-4DA4-B99A-B4B198C40AEE}"
+	ProjectSection(SolutionItems) = preProject
+		libkmod\dotnet-releaser.toml = libkmod\dotnet-releaser.toml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenoAtom.Interop.libkmod", "libkmod\XenoAtom.Interop.libkmod\XenoAtom.Interop.libkmod.csproj", "{B2FC2BAB-934C-4E90-8C7D-1A928184D19E}"
 EndProject

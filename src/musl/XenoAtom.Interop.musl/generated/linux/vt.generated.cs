@@ -335,19 +335,6 @@ namespace XenoAtom.Interop
         /// See
         /// resizecons (8).
         /// (Since Linux 1.3.3.)
-        /// 
-        /// The action of the following ioctls depends on the first byte in the struct
-        /// pointed to by
-        /// argp ,
-        /// referred to here as the
-        /// subcode .
-        /// These are legal only for the superuser or the owner of the current terminal.
-        /// Symbolic
-        /// subcode s
-        /// are available in
-        /// &lt;linux/tiocl.h&gt;
-        /// since
-        /// Linux 2.5.71.
         /// </summary>
         public const ushort VT_RESIZEX = 22026;
         

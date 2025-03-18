@@ -79,7 +79,7 @@ partial class Program
             CppDescription = "libgit2 is a pure C implementation of the git core methods.",
             Url = "https://libgit2.org/",
             UrlDocumentation = "https://libgit2.org/libgit2/",
-            NativeNuGets = [new("LibGit2Sharp.NativeBinaries", "2.0.322")],
+            NativeNuGets = [new("LibGit2Sharp.NativeBinaries", "2.0.323")],
             Generator = desc => new LibGit2Generator(desc),
             ApkDeps = ["libgit2-dev"],
             UsageInCSharp =

@@ -1546,6 +1546,12 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int drmGetNodeTypeFromDevId(nuint devid);
         
+        /// <summary>
+        /// Check if two drmDevice pointers represent the same DRM device.
+        /// </summary>
+        /// <remarks>
+        /// Returns 1 if the devices are equal, 0 otherwise.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmDevicesEqual")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int drmDevicesEqual(libdrm.drmDevice* a, libdrm.drmDevice* b);

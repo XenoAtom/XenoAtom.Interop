@@ -107,6 +107,33 @@ namespace XenoAtom.Interop
         public const libgit2.git_remote_create_flags GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC = git_remote_create_flags.GIT_REMOTE_CREATE_SKIP_DEFAULT_FETCHSPEC;
         
         /// <summary>
+        /// How to handle reference updates.
+        /// </summary>
+        [Flags]
+        public enum git_remote_update_flags : uint
+        {
+            /// <summary>
+            /// Write the fetch results to FETCH_HEAD.
+            /// </summary>
+            GIT_REMOTE_UPDATE_FETCHHEAD = unchecked((uint)1),
+            
+            /// <summary>
+            /// Report unchanged tips in the update_tips callback.
+            /// </summary>
+            GIT_REMOTE_UPDATE_REPORT_UNCHANGED = unchecked((uint)2),
+        }
+        
+        /// <summary>
+        /// Write the fetch results to FETCH_HEAD.
+        /// </summary>
+        public const libgit2.git_remote_update_flags GIT_REMOTE_UPDATE_FETCHHEAD = git_remote_update_flags.GIT_REMOTE_UPDATE_FETCHHEAD;
+        
+        /// <summary>
+        /// Report unchanged tips in the update_tips callback.
+        /// </summary>
+        public const libgit2.git_remote_update_flags GIT_REMOTE_UPDATE_REPORT_UNCHANGED = git_remote_update_flags.GIT_REMOTE_UPDATE_REPORT_UNCHANGED;
+        
+        /// <summary>
         /// Acceptable prune settings when fetching
         /// </summary>
         public enum git_fetch_prune_t : uint
@@ -301,10 +328,9 @@ namespace XenoAtom.Interop
             public libgit2.git_fetch_prune_t prune;
             
             /// <summary>
-            /// Whether to write the results to FETCH_HEAD. Defaults to
-            /// on. Leave this default in order to behave like git.
+            /// How to handle reference updates; see `git_remote_update_flags`.
             /// </summary>
-            public int update_fetchhead;
+            public uint update_fetchhead;
             
             /// <summary>
             /// Determines how to behave regarding tags on the remote, such
@@ -383,6 +409,11 @@ namespace XenoAtom.Interop
             /// Extra headers for this push operation
             /// </summary>
             public libgit2.git_strarray custom_headers;
+            
+            /// <summary>
+            /// "Push options" to deliver to the remote.
+            /// </summary>
+            public libgit2.git_strarray remote_push_options;
         }
         
         /// <summary>
@@ -1275,7 +1306,7 @@ namespace XenoAtom.Interop
         /// the name of the remote (or its url, for in-memory remotes). This
         /// parameter is ignored when pushing.</param>
         /// <param name="callbacks">pointer to the callback structure to use or NULL</param>
-        /// <param name="update_fetchhead">whether to write to FETCH_HEAD. Pass 1 to behave like git.</param>
+        /// <param name="update_flags">the git_remote_update_flags for these tips.</param>
         /// <param name="download_tags">what the behaviour for downloading tags is for this fetch. This is
         /// ignored for push. This must be the same value passed to `git_remote_download()`.</param>
         /// <returns>@return 0 or an error code</returns>
@@ -1285,7 +1316,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_update_tips")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_update_tips(libgit2.git_remote remote, in libgit2.git_remote_callbacks callbacks, int update_fetchhead, libgit2.git_remote_autotag_option_t download_tags, byte* reflog_message);
+        public static partial libgit2.git_result git_remote_update_tips(libgit2.git_remote remote, in libgit2.git_remote_callbacks callbacks, uint update_flags, libgit2.git_remote_autotag_option_t download_tags, byte* reflog_message);
         
         /// <summary>
         /// Update the tips to the new state.
@@ -1298,7 +1329,7 @@ namespace XenoAtom.Interop
         /// the name of the remote (or its url, for in-memory remotes). This
         /// parameter is ignored when pushing.</param>
         /// <param name="callbacks">pointer to the callback structure to use or NULL</param>
-        /// <param name="update_fetchhead">whether to write to FETCH_HEAD. Pass 1 to behave like git.</param>
+        /// <param name="update_flags">the git_remote_update_flags for these tips.</param>
         /// <param name="download_tags">what the behaviour for downloading tags is for this fetch. This is
         /// ignored for push. This must be the same value passed to `git_remote_download()`.</param>
         /// <returns>@return 0 or an error code</returns>
@@ -1308,7 +1339,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_update_tips")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_remote_update_tips(libgit2.git_remote remote, in libgit2.git_remote_callbacks callbacks, int update_fetchhead, libgit2.git_remote_autotag_option_t download_tags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> reflog_message);
+        public static partial libgit2.git_result git_remote_update_tips(libgit2.git_remote remote, in libgit2.git_remote_callbacks callbacks, uint update_flags, libgit2.git_remote_autotag_option_t download_tags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> reflog_message);
         
         /// <summary>
         /// Download new data and update tips.

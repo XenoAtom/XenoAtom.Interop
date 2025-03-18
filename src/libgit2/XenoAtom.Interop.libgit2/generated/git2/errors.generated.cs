@@ -183,6 +183,21 @@ namespace XenoAtom.Interop
             /// The operation timed out
             /// </summary>
             GIT_TIMEOUT = unchecked((int)-37),
+            
+            /// <summary>
+            /// There were no changes
+            /// </summary>
+            GIT_EUNCHANGED = unchecked((int)-38),
+            
+            /// <summary>
+            /// An option is not supported
+            /// </summary>
+            GIT_ENOTSUPPORTED = unchecked((int)-39),
+            
+            /// <summary>
+            /// The subject is read-only
+            /// </summary>
+            GIT_EREADONLY = unchecked((int)-40),
         }
         
         /// <summary>
@@ -346,6 +361,21 @@ namespace XenoAtom.Interop
         /// The operation timed out
         /// </summary>
         public const libgit2.git_error_code GIT_TIMEOUT = git_error_code.GIT_TIMEOUT;
+        
+        /// <summary>
+        /// There were no changes
+        /// </summary>
+        public const libgit2.git_error_code GIT_EUNCHANGED = git_error_code.GIT_EUNCHANGED;
+        
+        /// <summary>
+        /// An option is not supported
+        /// </summary>
+        public const libgit2.git_error_code GIT_ENOTSUPPORTED = git_error_code.GIT_ENOTSUPPORTED;
+        
+        /// <summary>
+        /// The subject is read-only
+        /// </summary>
+        public const libgit2.git_error_code GIT_EREADONLY = git_error_code.GIT_EREADONLY;
         
         /// <summary>
         /// Error classes
@@ -521,100 +551,15 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <returns>@return A git_error object.</returns>
         /// <remarks>
-        /// The default behaviour of this function is to return NULL if no previous error has occurred.
-        /// However, libgit2's error strings are not cleared aggressively, so a prior
-        /// (unrelated) error may be returned. This can be avoided by only calling
-        /// this function if the prior call to a libgit2 API returned an error.
+        /// This function will never return NULL.Callers should not rely on this to determine whether an error has
+        /// occurred. For error checking, callers should examine the return
+        /// codes of libgit2 functions.This call can only reliably report error messages when an error
+        /// has occurred. (It may contain stale information if it is called
+        /// after a different function that succeeds.)The memory for this object is managed by libgit2. It should not
+        /// be freed.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_error_last")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_error* git_error_last();
-        
-        /// <summary>
-        /// Clear the last library error that occurred for this thread.
-        /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_error_clear")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_error_clear();
-        
-        /// <summary>
-        /// Set the error message string for this thread, using `printf`-style
-        /// formatting.
-        /// </summary>
-        /// <param name="error_class">One of the `git_error_t` enum above describing the
-        /// general subsystem that is responsible for the error.</param>
-        /// <param name="fmt">The `printf`-style format string; subsequent arguments must
-        /// be the arguments for the format string.</param>
-        /// <remarks>
-        /// This function is public so that custom ODB backends and the like can
-        /// relay an error message through libgit2.  Most regular users of libgit2
-        /// will never need to call this function -- actually, calling it in most
-        /// circumstances (for example, calling from within a callback function)
-        /// will just end up having the value overwritten by libgit2 internals.This error message is stored in thread-local storage and only applies
-        /// to the particular thread that this libgit2 call is made from.
-        /// </remarks>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_error_set")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_error_set(libgit2.git_error_t error_class, byte* fmt);
-        
-        /// <summary>
-        /// Set the error message string for this thread, using `printf`-style
-        /// formatting.
-        /// </summary>
-        /// <param name="error_class">One of the `git_error_t` enum above describing the
-        /// general subsystem that is responsible for the error.</param>
-        /// <param name="fmt">The `printf`-style format string; subsequent arguments must
-        /// be the arguments for the format string.</param>
-        /// <remarks>
-        /// This function is public so that custom ODB backends and the like can
-        /// relay an error message through libgit2.  Most regular users of libgit2
-        /// will never need to call this function -- actually, calling it in most
-        /// circumstances (for example, calling from within a callback function)
-        /// will just end up having the value overwritten by libgit2 internals.This error message is stored in thread-local storage and only applies
-        /// to the particular thread that this libgit2 call is made from.
-        /// </remarks>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_error_set")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_error_set(libgit2.git_error_t error_class, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> fmt);
-        
-        /// <summary>
-        /// Set the error message string for this thread.  This function is like
-        /// `git_error_set` but takes a static string instead of a `printf`-style
-        /// format.
-        /// </summary>
-        /// <param name="error_class">One of the `git_error_t` enum above describing the
-        /// general subsystem that is responsible for the error.</param>
-        /// <param name="string">The error message to keep</param>
-        /// <returns>@return 0 on success or -1 on failure</returns>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_error_set_str")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_error_set_str(libgit2.git_error_t error_class, byte* @string);
-        
-        /// <summary>
-        /// Set the error message string for this thread.  This function is like
-        /// `git_error_set` but takes a static string instead of a `printf`-style
-        /// format.
-        /// </summary>
-        /// <param name="error_class">One of the `git_error_t` enum above describing the
-        /// general subsystem that is responsible for the error.</param>
-        /// <param name="string">The error message to keep</param>
-        /// <returns>@return 0 on success or -1 on failure</returns>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_error_set_str")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_error_set_str(libgit2.git_error_t error_class, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> @string);
-        
-        /// <summary>
-        /// Set the error message to a special value for memory allocation failure.
-        /// </summary>
-        /// <remarks>
-        /// The normal `git_error_set_str()` function attempts to `strdup()` the
-        /// string that is passed in.  This is not a good idea when the error in
-        /// question is a memory allocation failure.  That circumstance has a
-        /// special setter function that sets the error string to a known and
-        /// statically allocated internal value.
-        /// </remarks>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_error_set_oom")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_error_set_oom();
     }
 }

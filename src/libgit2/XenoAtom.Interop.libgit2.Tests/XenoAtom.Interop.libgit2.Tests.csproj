@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="$(MSBuildThisFileDirectory)../../TestsShared.props"/>
+  <Import Project="$(MSBuildThisFileDirectory)../../TestsShared.props" />
 
   <ItemGroup>
-    <PackageReference Include="LibGit2Sharp.NativeBinaries" Version="2.0.322" />
+    <PackageReference Include="LibGit2Sharp.NativeBinaries" Version="2.0.323" />
   </ItemGroup>
 
   <ItemGroup>

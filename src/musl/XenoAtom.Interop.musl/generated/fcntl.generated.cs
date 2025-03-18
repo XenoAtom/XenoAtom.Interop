@@ -231,7 +231,7 @@ namespace XenoAtom.Interop
         /// allows the file offset to be set beyond the end
         /// of the file (but this does not change the size of the file).
         /// If data is later written at this point, subsequent reads of the data
-        /// in the gap (a "hole") return null bytes (\[aq]\e0\[aq]) until
+        /// in the gap (a "hole") return null bytes (\[aq]\[rs]0\[aq]) until
         /// data is actually written into the gap.
         /// </summary>
         public const int SEEK_END = 2;

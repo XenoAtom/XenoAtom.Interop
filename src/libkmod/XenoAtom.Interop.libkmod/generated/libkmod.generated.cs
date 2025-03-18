@@ -311,6 +311,10 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_config_iter kmod_config_get_softdeps(libkmod.kmod_ctx ctx);
         
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_get_weakdeps")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial libkmod.kmod_config_iter kmod_config_get_weakdeps(libkmod.kmod_ctx ctx);
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_iter_get_key")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* kmod_config_iter_get_key_(libkmod.kmod_config_iter iter);
@@ -462,6 +466,10 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_softdeps")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_get_softdeps(libkmod.kmod_module mod, out libkmod.kmod_list pre, out libkmod.kmod_list post);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_weakdeps")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_get_weakdeps(libkmod.kmod_module mod, out libkmod.kmod_list weak);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_filtered_blacklist")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

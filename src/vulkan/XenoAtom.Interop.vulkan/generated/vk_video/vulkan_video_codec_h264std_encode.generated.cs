@@ -248,7 +248,7 @@ namespace XenoAtom.Interop
         
         public partial struct StdVideoEncodeH264RefPicMarkingEntry
         {
-            public vulkan.StdVideoH264MemMgmtControlOp operation;
+            public vulkan.StdVideoH264MemMgmtControlOp memory_management_control_operation;
             
             public ushort difference_of_pic_nums_minus1;
             
@@ -338,7 +338,9 @@ namespace XenoAtom.Interop
             
             public sbyte slice_beta_offset_div2;
             
-            public ushort reserved1;
+            public sbyte slice_qp_delta;
+            
+            public byte reserved1;
             
             public vulkan.StdVideoH264CabacInitIdc cabac_init_idc;
             

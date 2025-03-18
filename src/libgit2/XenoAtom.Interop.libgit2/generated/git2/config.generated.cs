@@ -19,11 +19,16 @@ namespace XenoAtom.Interop
     {
         /// <summary>
         /// Priority level of a config file.
-        /// These priority levels correspond to the natural escalation logic
-        /// (from higher to lower) when searching for config entries in git.git.
         /// </summary>
         /// <remarks>
-        /// git_config_open_default() and git_repository_config() honor those
+        /// These priority levels correspond to the natural escalation logic
+        /// (from higher to lower) when reading or searching for config entries
+        /// in git.git. Meaning that for the same key, the configuration in
+        /// the local configuration is preferred over the configuration in
+        /// the system configuration file.Callers can add their own custom configuration, beginning at the
+        /// `GIT_CONFIG_LEVEL_APP` level.Writes, by default, occur in the highest priority level backend
+        /// that is writable. This ordering can be overridden with
+        /// `git_config_set_writeorder`.git_config_open_default() and git_repository_config() honor those
         /// priority levels as well.
         /// </remarks>
         public enum git_config_level_t : int
@@ -56,9 +61,14 @@ namespace XenoAtom.Interop
             GIT_CONFIG_LEVEL_LOCAL = unchecked((int)5),
             
             /// <summary>
+            /// Worktree specific configuration file; $GIT_DIR/config.worktree
+            /// </summary>
+            GIT_CONFIG_LEVEL_WORKTREE = unchecked((int)6),
+            
+            /// <summary>
             /// Application specific configuration file; freely defined by applications
             /// </summary>
-            GIT_CONFIG_LEVEL_APP = unchecked((int)6),
+            GIT_CONFIG_LEVEL_APP = unchecked((int)7),
             
             /// <summary>
             /// Represents the highest level available config file (i.e. the most
@@ -93,6 +103,11 @@ namespace XenoAtom.Interop
         /// non-bare repos
         /// </summary>
         public const libgit2.git_config_level_t GIT_CONFIG_LEVEL_LOCAL = git_config_level_t.GIT_CONFIG_LEVEL_LOCAL;
+        
+        /// <summary>
+        /// Worktree specific configuration file; $GIT_DIR/config.worktree
+        /// </summary>
+        public const libgit2.git_config_level_t GIT_CONFIG_LEVEL_WORKTREE = git_config_level_t.GIT_CONFIG_LEVEL_WORKTREE;
         
         /// <summary>
         /// Application specific configuration file; freely defined by applications
@@ -133,14 +148,25 @@ namespace XenoAtom.Interop
         public partial struct git_config_entry
         {
             /// <summary>
-            /// Name of the entry (normalised)
+            /// Name of the configuration entry (normalized)
             /// </summary>
             public byte* name;
             
             /// <summary>
-            /// String value of the entry
+            /// Literal (string) value of the entry
             /// </summary>
             public byte* value;
+            
+            /// <summary>
+            /// The type of backend that this entry exists in (eg, "file")
+            /// </summary>
+            public byte* backend_type;
+            
+            /// <summary>
+            /// The path to the origin of this entry. For config files, this is
+            /// the path to the file.
+            /// </summary>
+            public byte* origin_path;
             
             /// <summary>
             /// Depth of includes where this variable was found
@@ -148,19 +174,15 @@ namespace XenoAtom.Interop
             public uint include_depth;
             
             /// <summary>
-            /// Which config file this was found in
+            /// Configuration level for the file this was found in
             /// </summary>
             public libgit2.git_config_level_t level;
             
             /// <summary>
-            /// Free function for this entry
+            /// Free function for this entry; for internal purposes. Callers
+            /// should call `git_config_entry_free` to free data.
             /// </summary>
             public delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void> free;
-            
-            /// <summary>
-            /// Opaque value for the free function. Do not read or write
-            /// </summary>
-            public void* payload;
         }
         
         /// <summary>
@@ -438,6 +460,10 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_open_global")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_open_global(out libgit2.git_config @out, libgit2.git_config config);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_writeorder")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int git_config_set_writeorder(libgit2.git_config cfg, ref libgit2.git_config_level_t levels, nuint len);
         
         /// <summary>
         /// Create a snapshot of the configuration

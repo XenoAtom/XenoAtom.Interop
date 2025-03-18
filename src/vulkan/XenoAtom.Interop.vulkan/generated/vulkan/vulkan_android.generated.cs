@@ -315,6 +315,76 @@ namespace XenoAtom.Interop
             public vulkan.VkChromaLocation suggestedYChromaOffset;
         }
         
+        /// <summary>
+        /// Structure describing whether external format resolves are supported
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_format_resolve</para>
+        /// </remarks>
+        public partial struct VkPhysicalDeviceExternalFormatResolveFeaturesANDROID()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_FEATURES_ANDROID;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure. * [[features-externalFormatResolve]] <see cref="M:externalFormatResolve"/> specifies whether external format resolves are supported.
+            /// </summary>
+            public void* pNext;
+            
+            public vulkan.VkBool32 externalFormatResolve;
+        }
+        
+        /// <summary>
+        /// Structure describing external format resolve supported by an implementation
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_format_resolve</para>
+        /// </remarks>
+        public partial struct VkPhysicalDeviceExternalFormatResolvePropertiesANDROID()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure. * [[limits-nullColorAttachmentWithExternalFormatResolve]] <see cref="M:nullColorAttachmentWithExternalFormatResolve"/> indicates that there must: be no color attachment image when performing external format resolves if it is <see cref="T:VK_TRUE"/>. * [[limits-externalFormatResolveChromaOffsetX]] <see cref="M:externalFormatResolveChromaOffsetX"/> indicates the <see cref="T:VkChromaLocation"/> that an implementation uses in the X axis for accesses to an external format image as a resolve attachment. This must: be consistent between external format resolves and load operations from external format resolve attachments to color attachments when <see cref="M:nullColorAttachmentWithExternalFormatResolve"/> is <see cref="T:VK_TRUE"/>. * [[limits-externalFormatResolveChromaOffsetY]] <see cref="M:externalFormatResolveChromaOffsetY"/> indicates the <see cref="T:VkChromaLocation"/> that an implementation uses in the Y axis for accesses to an external format image as a resolve attachment. This must: be consistent between external format resolves and load operations from external format resolve attachments to color attachments when <see cref="M:nullColorAttachmentWithExternalFormatResolve"/> is <see cref="T:VK_TRUE"/>.
+            /// </summary>
+            public void* pNext;
+            
+            public vulkan.VkBool32 nullColorAttachmentWithExternalFormatResolve;
+            
+            public vulkan.VkChromaLocation externalFormatResolveChromaOffsetX;
+            
+            public vulkan.VkChromaLocation externalFormatResolveChromaOffsetY;
+        }
+        
+        /// <summary>
+        /// Structure defining properties of resolves using an external format
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_format_resolve</para>
+        /// </remarks>
+        public partial struct VkAndroidHardwareBufferFormatResolvePropertiesANDROID()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_RESOLVE_PROPERTIES_ANDROID;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
+            public void* pNext;
+            
+            /// <summary>
+            /// Must: be a format that supports <see cref="T:VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT"/> in <see cref="T:VkFormatProperties.optimalTilingFeatures"/>.
+            /// </summary>
+            public vulkan.VkFormat colorAttachmentFormat;
+        }
+        
         public readonly partial struct PFN_vkCreateAndroidSurfaceKHR : IEquatable<vulkan.PFN_vkCreateAndroidSurfaceKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateAndroidSurfaceKHR>
         {
             public PFN_vkCreateAndroidSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkAndroidSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;

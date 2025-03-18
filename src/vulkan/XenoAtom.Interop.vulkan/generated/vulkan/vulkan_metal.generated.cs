@@ -772,7 +772,7 @@ namespace XenoAtom.Interop
         
         public const int VK_EXT_metal_objects = 1;
         
-        public const int VK_EXT_METAL_OBJECTS_SPEC_VERSION = 1;
+        public const int VK_EXT_METAL_OBJECTS_SPEC_VERSION = 2;
         
         public static ReadOnlyMemoryUtf8 VK_EXT_METAL_OBJECTS_EXTENSION_NAME => "VK_EXT_metal_objects"u8;
     }

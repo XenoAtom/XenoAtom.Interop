@@ -53,9 +53,9 @@ public static unsafe partial class libgit2
     private const string LibraryName = "git2";
 
     /// <summary>
-    /// Matching the version compatible from LibGit2Sharp.NativeBinaries
+    /// Matching the version compatible from LibGit2Sharp.NativeBinaries - 2.0.323
     /// </summary>
-    private const string AlternativeLibraryName = "git2-a418d9d";
+    private const string AlternativeLibraryName = "git2-3f4182d";
 
     /// <summary>
     /// Wrapper for the result of a libgit2 function.

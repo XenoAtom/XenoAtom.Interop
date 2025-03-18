@@ -17,6 +17,58 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class libgit2
     {
+        public partial struct git_commit_create_options
+        {
+            public uint version;
+            
+            private uint __bitfield__1;
+            
+            /// <summary>
+            /// Flags for creating the commit.
+            /// </summary>
+            /// <remarks>
+            /// If `allow_empty_commit` is specified, a commit with no changes
+            /// from the prior commit (and "empty" commit) is allowed. Otherwise,
+            /// commit creation will be stopped.
+            /// </remarks>
+            public uint allow_empty_commit
+            {
+                get
+                {
+                    return unchecked((uint)((__bitfield__1 >> 0) & 0b1));
+                }
+                set
+                {
+                    __bitfield__1 = (__bitfield__1 & unchecked((uint)0b11111111111111111111111111111110)) | ((((uint)value) & (unchecked((uint)0b1)) << 0));
+                }
+            }
+            
+            /// <summary>
+            /// The commit author, or NULL for the default.
+            /// </summary>
+            public libgit2.git_signature* author;
+            
+            /// <summary>
+            /// The committer, or NULL for the default.
+            /// </summary>
+            public libgit2.git_signature* committer;
+            
+            /// <summary>
+            /// Encoding for the commit message; leave NULL for default.
+            /// </summary>
+            public byte* message_encoding;
+        }
+        
+        /// <summary>
+        /// An array of commits returned from the library
+        /// </summary>
+        public partial struct git_commitarray
+        {
+            public libgit2.git_commit* commits;
+            
+            public nuint count;
+        }
+        
         /// <summary>
         /// Commit creation callback: used when a function is going to create
         /// commits (for example, in `git_rebase_commit`) to allow callers to
@@ -64,6 +116,8 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(git_commit_create_cb left, git_commit_create_cb right) => !left.Equals(right);
         }
+        
+        public const uint GIT_COMMIT_CREATE_OPTIONS_VERSION = 1;
         
         /// <summary>
         /// Lookup a commit object from a repository.
@@ -597,6 +651,38 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_commit_create_v(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree, nuint parent_count);
         
         /// <summary>
+        /// Commits the staged changes in the repository; this is a near analog to
+        /// `git commit -m message`.
+        /// </summary>
+        /// <param name="id">pointer to store the new commit's object id</param>
+        /// <param name="repo">repository to commit changes in</param>
+        /// <param name="message">the commit message</param>
+        /// <param name="opts">options for creating the commit</param>
+        /// <returns>@return 0 on success, GIT_EUNCHANGED if there were no changes to commit, or an error code</returns>
+        /// <remarks>
+        /// By default, empty commits are not allowed.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_create_from_stage")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int git_commit_create_from_stage(ref libgit2.git_oid id, libgit2.git_repository repo, byte* message, in libgit2.git_commit_create_options opts);
+        
+        /// <summary>
+        /// Commits the staged changes in the repository; this is a near analog to
+        /// `git commit -m message`.
+        /// </summary>
+        /// <param name="id">pointer to store the new commit's object id</param>
+        /// <param name="repo">repository to commit changes in</param>
+        /// <param name="message">the commit message</param>
+        /// <param name="opts">options for creating the commit</param>
+        /// <returns>@return 0 on success, GIT_EUNCHANGED if there were no changes to commit, or an error code</returns>
+        /// <remarks>
+        /// By default, empty commits are not allowed.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_create_from_stage")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int git_commit_create_from_stage(ref libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message, in libgit2.git_commit_create_options opts);
+        
+        /// <summary>
         /// Amend an existing commit by replacing only non-NULL values.
         /// </summary>
         /// <remarks>
@@ -744,5 +830,19 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_commit_dup(out libgit2.git_commit @out, libgit2.git_commit source);
+        
+        /// <summary>
+        /// Free the commits contained in a commit array.  This method should
+        /// be called on `git_commitarray` objects that were provided by the
+        /// library.  Not doing so will result in a memory leak.
+        /// </summary>
+        /// <param name="array">The git_commitarray that contains commits to free</param>
+        /// <remarks>
+        /// This does not free the `git_commitarray` itself, since the library
+        /// will never allocate that object directly itself.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commitarray_dispose")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void git_commitarray_dispose(ref libgit2.git_commitarray array);
     }
 }

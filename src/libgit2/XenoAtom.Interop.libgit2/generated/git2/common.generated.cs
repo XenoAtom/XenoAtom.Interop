@@ -171,6 +171,10 @@ namespace XenoAtom.Interop
             GIT_OPT_SET_SERVER_TIMEOUT = unchecked((uint)41),
             
             GIT_OPT_GET_SERVER_TIMEOUT = unchecked((uint)42),
+            
+            GIT_OPT_SET_USER_AGENT_PRODUCT = unchecked((uint)43),
+            
+            GIT_OPT_GET_USER_AGENT_PRODUCT = unchecked((uint)44),
         }
         
         public const libgit2.git_libgit2_opt_t GIT_OPT_GET_MWINDOW_SIZE = git_libgit2_opt_t.GIT_OPT_GET_MWINDOW_SIZE;
@@ -258,6 +262,10 @@ namespace XenoAtom.Interop
         public const libgit2.git_libgit2_opt_t GIT_OPT_SET_SERVER_TIMEOUT = git_libgit2_opt_t.GIT_OPT_SET_SERVER_TIMEOUT;
         
         public const libgit2.git_libgit2_opt_t GIT_OPT_GET_SERVER_TIMEOUT = git_libgit2_opt_t.GIT_OPT_GET_SERVER_TIMEOUT;
+        
+        public const libgit2.git_libgit2_opt_t GIT_OPT_SET_USER_AGENT_PRODUCT = git_libgit2_opt_t.GIT_OPT_SET_USER_AGENT_PRODUCT;
+        
+        public const libgit2.git_libgit2_opt_t GIT_OPT_GET_USER_AGENT_PRODUCT = git_libgit2_opt_t.GIT_OPT_GET_USER_AGENT_PRODUCT;
         
         /// <summary>
         /// Return the version of the libgit2 library

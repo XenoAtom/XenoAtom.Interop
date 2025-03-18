@@ -24,6 +24,18 @@ namespace XenoAtom.Interop
             public musl.timeval it_value;
         }
         
+        /// <summary>
+        /// daylight
+        /// POSIX.1-2001 (XSI), SVr4, 4.3BSD.
+        /// 
+        /// 4.3BSD had a function
+        /// "char *timezone(" zone ", " dst )
+        /// that returned the
+        /// name of the timezone corresponding to its first argument (minutes
+        /// West of UTC).
+        /// If the second argument was 0, the standard name was used,
+        /// otherwise the daylight saving time version.
+        /// </summary>
         public partial struct timezone
         {
             public int tz_minuteswest;

@@ -101,10 +101,14 @@ namespace XenoAtom.Interop
         ///                               SCHED_BATCH) */
         ///     u32 sched_priority;    /* Static priority (SCHED_FIFO,
         ///                               SCHED_RR) */
-        ///     /* Remaining fields are for SCHED_DEADLINE */
+        ///     /* For SCHED_DEADLINE */
         ///     u64 sched_runtime;
         ///     u64 sched_deadline;
         ///     u64 sched_period;
+        /// \&amp;
+        ///     /* Utilization hints */
+        ///     u32 sched_util_min;
+        ///     u32 sched_util_max;
         /// };
         /// 
         /// 

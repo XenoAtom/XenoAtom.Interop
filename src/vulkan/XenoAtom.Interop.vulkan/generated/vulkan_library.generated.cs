@@ -680,6 +680,25 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkDeferredOperationKHR_T left, VkDeferredOperationKHR_T right) => !left.Equals(right);
         }
         
+        public readonly partial struct VkPipelineBinaryKHR_T : IEquatable<vulkan.VkPipelineBinaryKHR_T>
+        {
+            public VkPipelineBinaryKHR_T(nint handle) => Handle = handle;
+            
+            public nint Handle { get; }
+            
+            public bool Equals(VkPipelineBinaryKHR_T other) => Handle.Equals(other.Handle);
+            
+            public override bool Equals(object obj) => obj is VkPipelineBinaryKHR_T other && Equals(other);
+            
+            public override int GetHashCode() => Handle.GetHashCode();
+            
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+            
+            public static bool operator ==(VkPipelineBinaryKHR_T left, VkPipelineBinaryKHR_T right) => left.Equals(right);
+            
+            public static bool operator !=(VkPipelineBinaryKHR_T left, VkPipelineBinaryKHR_T right) => !left.Equals(right);
+        }
+        
         public readonly partial struct VkDebugReportCallbackEXT_T : IEquatable<vulkan.VkDebugReportCallbackEXT_T>
         {
             public VkDebugReportCallbackEXT_T(nint handle) => Handle = handle;
@@ -832,6 +851,44 @@ namespace XenoAtom.Interop
             public static bool operator !=(VkIndirectCommandsLayoutNV_T left, VkIndirectCommandsLayoutNV_T right) => !left.Equals(right);
         }
         
+        public readonly partial struct VkCudaModuleNV_T : IEquatable<vulkan.VkCudaModuleNV_T>
+        {
+            public VkCudaModuleNV_T(nint handle) => Handle = handle;
+            
+            public nint Handle { get; }
+            
+            public bool Equals(VkCudaModuleNV_T other) => Handle.Equals(other.Handle);
+            
+            public override bool Equals(object obj) => obj is VkCudaModuleNV_T other && Equals(other);
+            
+            public override int GetHashCode() => Handle.GetHashCode();
+            
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+            
+            public static bool operator ==(VkCudaModuleNV_T left, VkCudaModuleNV_T right) => left.Equals(right);
+            
+            public static bool operator !=(VkCudaModuleNV_T left, VkCudaModuleNV_T right) => !left.Equals(right);
+        }
+        
+        public readonly partial struct VkCudaFunctionNV_T : IEquatable<vulkan.VkCudaFunctionNV_T>
+        {
+            public VkCudaFunctionNV_T(nint handle) => Handle = handle;
+            
+            public nint Handle { get; }
+            
+            public bool Equals(VkCudaFunctionNV_T other) => Handle.Equals(other.Handle);
+            
+            public override bool Equals(object obj) => obj is VkCudaFunctionNV_T other && Equals(other);
+            
+            public override int GetHashCode() => Handle.GetHashCode();
+            
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+            
+            public static bool operator ==(VkCudaFunctionNV_T left, VkCudaFunctionNV_T right) => left.Equals(right);
+            
+            public static bool operator !=(VkCudaFunctionNV_T left, VkCudaFunctionNV_T right) => !left.Equals(right);
+        }
+        
         public readonly partial struct VkAccelerationStructureKHR_T : IEquatable<vulkan.VkAccelerationStructureKHR_T>
         {
             public VkAccelerationStructureKHR_T(nint handle) => Handle = handle;
@@ -906,6 +963,44 @@ namespace XenoAtom.Interop
             public static bool operator ==(VkShaderEXT_T left, VkShaderEXT_T right) => left.Equals(right);
             
             public static bool operator !=(VkShaderEXT_T left, VkShaderEXT_T right) => !left.Equals(right);
+        }
+        
+        public readonly partial struct VkIndirectExecutionSetEXT_T : IEquatable<vulkan.VkIndirectExecutionSetEXT_T>
+        {
+            public VkIndirectExecutionSetEXT_T(nint handle) => Handle = handle;
+            
+            public nint Handle { get; }
+            
+            public bool Equals(VkIndirectExecutionSetEXT_T other) => Handle.Equals(other.Handle);
+            
+            public override bool Equals(object obj) => obj is VkIndirectExecutionSetEXT_T other && Equals(other);
+            
+            public override int GetHashCode() => Handle.GetHashCode();
+            
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+            
+            public static bool operator ==(VkIndirectExecutionSetEXT_T left, VkIndirectExecutionSetEXT_T right) => left.Equals(right);
+            
+            public static bool operator !=(VkIndirectExecutionSetEXT_T left, VkIndirectExecutionSetEXT_T right) => !left.Equals(right);
+        }
+        
+        public readonly partial struct VkIndirectCommandsLayoutEXT_T : IEquatable<vulkan.VkIndirectCommandsLayoutEXT_T>
+        {
+            public VkIndirectCommandsLayoutEXT_T(nint handle) => Handle = handle;
+            
+            public nint Handle { get; }
+            
+            public bool Equals(VkIndirectCommandsLayoutEXT_T other) => Handle.Equals(other.Handle);
+            
+            public override bool Equals(object obj) => obj is VkIndirectCommandsLayoutEXT_T other && Equals(other);
+            
+            public override int GetHashCode() => Handle.GetHashCode();
+            
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+            
+            public static bool operator ==(VkIndirectCommandsLayoutEXT_T left, VkIndirectCommandsLayoutEXT_T right) => left.Equals(right);
+            
+            public static bool operator !=(VkIndirectCommandsLayoutEXT_T left, VkIndirectCommandsLayoutEXT_T right) => !left.Equals(right);
         }
         
         /// <remarks>

@@ -72,6 +72,11 @@ namespace XenoAtom.Interop
             public int @lock;
             
             /// <summary>
+            /// allow checkout of existing branch matching worktree name
+            /// </summary>
+            public int checkout_existing;
+            
+            /// <summary>
             /// reference to use for the new worktree HEAD
             /// </summary>
             public libgit2.git_reference @ref;

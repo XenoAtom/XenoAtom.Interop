@@ -779,6 +779,8 @@ namespace XenoAtom.Interop
         
         public const int AMD_FMT_MOD_TILE_VER_GFX11 = 4;
         
+        public const int AMD_FMT_MOD_TILE_VER_GFX12 = 5;
+        
         public const int AMD_FMT_MOD_TILE_GFX9_64K_S = 9;
         
         public const int AMD_FMT_MOD_TILE_GFX9_64K_D = 10;
@@ -790,6 +792,10 @@ namespace XenoAtom.Interop
         public const int AMD_FMT_MOD_TILE_GFX9_64K_R_X = 27;
         
         public const int AMD_FMT_MOD_TILE_GFX11_256K_R_X = 31;
+        
+        public const int AMD_FMT_MOD_TILE_GFX12_64K_2D = 3;
+        
+        public const int AMD_FMT_MOD_TILE_GFX12_256K_2D = 4;
         
         public const int AMD_FMT_MOD_DCC_BLOCK_64B = 0;
         
@@ -828,6 +834,13 @@ namespace XenoAtom.Interop
         public const int AMD_FMT_MOD_DCC_MAX_COMPRESSED_BLOCK_SHIFT = 18;
         
         public const int AMD_FMT_MOD_DCC_MAX_COMPRESSED_BLOCK_MASK = 3;
+        
+        public const int AMD_FMT_MOD_GFX12_DCC_MAX_COMPRESSED_BLOCK_SHIFT = 3;
+        
+        /// <summary>
+        /// 0:64B, 1:128B, 2:256B
+        /// </summary>
+        public const int AMD_FMT_MOD_GFX12_DCC_MAX_COMPRESSED_BLOCK_MASK = 3;
         
         public const int AMD_FMT_MOD_DCC_CONSTANT_ENCODE_SHIFT = 20;
         

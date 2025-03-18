@@ -56,40 +56,8 @@ namespace XenoAtom.Interop
         
         public const int PR_SET_DUMPABLE = 4;
         
-        /// <summary>
-        /// (See
-        /// PR_SET_UNALIGN
-        /// for information on versions and architectures.)
-        /// Return unaligned access control bits, in the location pointed to by
-        /// "(unsigned int\~*) arg2" .
-        /// prctl PR_GET_AUXV
-        /// </summary>
         public const int PR_GET_UNALIGN = 5;
         
-        /// <summary>
-        /// (Only on: ia64, since Linux 2.3.48; parisc, since Linux 2.6.15;
-        /// PowerPC, since Linux 2.6.18; Alpha, since Linux 2.6.22;
-        /// sh: 94ea5e449ae834af058ef005d16a8ad44fcf13d6
-        /// tile: 2f9ac29eec71a696cb0dcc5fb82c0f8d4dac28c9
-        /// sh, since Linux 2.6.34; tile, since Linux 3.12)
-        /// Set unaligned access control bits to \fIarg2\fP.
-        /// Pass
-        /// \fBPR_UNALIGN_NOPRINT\fP to silently fix up unaligned user accesses,
-        /// or \fBPR_UNALIGN_SIGBUS\fP to generate
-        /// SIGBUS
-        /// on unaligned user access.
-        /// Alpha also supports an additional flag with the value
-        /// of 4 and no corresponding named constant,
-        /// which instructs kernel to not fix up
-        /// unaligned accesses (it is analogous to providing the
-        /// UAC_NOFIX
-        /// flag in
-        /// SSI_NVPAIRS
-        /// operation of the
-        /// setsysinfo ()
-        /// system call on Tru64).
-        /// prctl PR_GET_UNALIGN
-        /// </summary>
         public const int PR_SET_UNALIGN = 6;
         
         public const int PR_UNALIGN_NOPRINT = 1;
@@ -246,90 +214,6 @@ namespace XenoAtom.Interop
         
         public const int PR_GET_THP_DISABLE = 42;
         
-        /// <summary>
-        /// PR_MPX_DISABLE_MANAGEMENT " (since Linux 3.19, removed in Linux 5.4; only on x86)"
-        /// commit fe3d197f84319d3bce379a9c0dc17b1f48ad358c
-        /// See also http://lwn.net/Articles/582712/
-        /// See also https://gcc.gnu.org/wiki/Intel%20MPX%20support%20in%20the%20GCC%20compiler
-        /// Enable or disable kernel management of Memory Protection eXtensions (MPX)
-        /// bounds tables.
-        /// The
-        /// arg2 ,
-        /// arg3 ,
-        /// arg4 ,
-        /// and
-        /// arg5
-        /// commit e9d1b4f3c60997fe197bf0243cb4a41a44387a88
-        /// arguments must be zero.
-        /// 
-        /// MPX is a hardware-assisted mechanism for performing bounds checking on
-        /// pointers.
-        /// It consists of a set of registers storing bounds information
-        /// and a set of special instruction prefixes that tell the CPU on which
-        /// instructions it should do bounds enforcement.
-        /// There is a limited number of these registers and
-        /// when there are more pointers than registers,
-        /// their contents must be "spilled" into a set of tables.
-        /// These tables are called "bounds tables" and the MPX
-        /// prctl ()
-        /// operations control
-        /// whether the kernel manages their allocation and freeing.
-        /// 
-        /// When management is enabled, the kernel will take over allocation
-        /// and freeing of the bounds tables.
-        /// It does this by trapping the #BR exceptions that result
-        /// at first use of missing bounds tables and
-        /// instead of delivering the exception to user space,
-        /// it allocates the table and populates the bounds directory
-        /// with the location of the new table.
-        /// For freeing, the kernel checks to see if bounds tables are
-        /// present for memory which is not allocated, and frees them if so.
-        /// 
-        /// Before enabling MPX management using
-        /// PR_MPX_ENABLE_MANAGEMENT ,
-        /// the application must first have allocated a user-space buffer for
-        /// the bounds directory and placed the location of that directory in the
-        /// bndcfgu
-        /// register.
-        /// 
-        /// These calls fail if the CPU or kernel does not support MPX.
-        /// Kernel support for MPX is enabled via the
-        /// CONFIG_X86_INTEL_MPX
-        /// configuration option.
-        /// You can check whether the CPU supports MPX by looking for the
-        /// mpx
-        /// CPUID bit, like with the following command:
-        /// 
-        /// +4n
-        /// 
-        /// cat /proc/cpuinfo | grep \[aq] mpx \[aq]
-        /// 
-        /// 
-        /// 
-        /// A thread may not switch in or out of long (64-bit) mode while MPX is
-        /// enabled.
-        /// 
-        /// All threads in a process are affected by these calls.
-        /// 
-        /// The child of a
-        /// fork (2)
-        /// inherits the state of MPX management.
-        /// During
-        /// execve (2),
-        /// MPX management is reset to a state as if
-        /// PR_MPX_DISABLE_MANAGEMENT
-        /// had been called.
-        /// 
-        /// For further information on Intel MPX, see the kernel source file
-        /// Documentation/x86/intel_mpx.txt .
-        /// 
-        /// commit f240652b6032b48ad7fa35c5e701cc4c8d697c0b
-        /// See also https://lkml.kernel.org/r/20190705175321.DB42F0AD@viggo.jf.intel.com
-        /// Due to a lack of toolchain support,
-        /// PR_MPX_ENABLE_MANAGEMENT " and " PR_MPX_DISABLE_MANAGEMENT
-        /// are not supported in Linux 5.4 and later.
-        /// prctl PR_SET_NAME
-        /// </summary>
         public const int PR_MPX_ENABLE_MANAGEMENT = 43;
         
         public const int PR_MPX_DISABLE_MANAGEMENT = 44;
@@ -342,6 +226,125 @@ namespace XenoAtom.Interop
         
         public const int PR_FP_MODE_FRE = 2;
         
+        /// <summary>
+        /// PR_CAPBSET_READ
+        /// 
+        /// PR_CAPBSET_DROP
+        /// 
+        /// PR_SET_CHILD_SUBREAPER
+        /// 
+        /// PR_GET_CHILD_SUBREAPER
+        /// 
+        /// PR_SET_DUMPABLE
+        /// 
+        /// PR_GET_DUMPABLE
+        /// 
+        /// PR_SET_ENDIAN
+        /// 
+        /// PR_GET_ENDIAN
+        /// 
+        /// PR_SET_FP_MODE
+        /// 
+        /// PR_GET_FP_MODE
+        /// 
+        /// PR_SET_FPEMU
+        /// 
+        /// PR_GET_FPEMU
+        /// 
+        /// PR_SET_FPEXC
+        /// 
+        /// PR_GET_FPEXC
+        /// 
+        /// PR_SET_IO_FLUSHER
+        /// 
+        /// PR_GET_IO_FLUSHER
+        /// 
+        /// PR_SET_KEEPCAPS
+        /// 
+        /// PR_GET_KEEPCAPS
+        /// 
+        /// PR_MCE_KILL
+        /// 
+        /// PR_MCE_KILL_GET
+        /// 
+        /// PR_SET_MM
+        /// 
+        /// PR_SET_VMA
+        /// 
+        /// PR_MPX_ENABLE_MANAGEMENT
+        /// 
+        /// PR_MPX_DISABLE_MANAGEMENT
+        /// 
+        /// PR_SET_NAME
+        /// 
+        /// PR_GET_NAME
+        /// 
+        /// PR_SET_NO_NEW_PRIVS
+        /// 
+        /// PR_GET_NO_NEW_PRIVS
+        /// 
+        /// PR_PAC_RESET_KEYS
+        /// 
+        /// PR_SET_PDEATHSIG
+        /// 
+        /// PR_GET_PDEATHSIG
+        /// 
+        /// PR_SET_PTRACER
+        /// 
+        /// PR_SET_SECCOMP
+        /// 
+        /// PR_GET_SECCOMP
+        /// 
+        /// PR_SET_SECUREBITS
+        /// 
+        /// PR_GET_SECUREBITS
+        /// 
+        /// PR_GET_SPECULATION_CTRL
+        /// 
+        /// PR_SET_SPECULATION_CTRL
+        /// 
+        /// PR_SVE_SET_VL
+        /// 
+        /// PR_SVE_GET_VL
+        /// 
+        /// PR_SET_SYSCALL_USER_DISPATCH
+        /// 
+        /// PR_SET_TAGGED_ADDR_CTRL
+        /// 
+        /// PR_GET_TAGGED_ADDR_CTRL
+        /// 
+        /// PR_TASK_PERF_EVENTS_DISABLE
+        /// 
+        /// PR_TASK_PERF_EVENTS_ENABLE
+        /// 
+        /// PR_SET_THP_DISABLE
+        /// 
+        /// PR_GET_THP_DISABLE
+        /// 
+        /// PR_GET_TID_ADDRESS
+        /// 
+        /// PR_SET_TIMERSLACK
+        /// 
+        /// PR_GET_TIMERSLACK
+        /// 
+        /// PR_SET_TIMING
+        /// 
+        /// PR_GET_TIMING
+        /// 
+        /// PR_SET_TSC
+        /// 
+        /// PR_GET_TSC
+        /// 
+        /// PR_SET_UNALIGN
+        /// 
+        /// PR_GET_UNALIGN
+        /// 
+        /// PR_GET_AUXV
+        /// 
+        /// PR_SET_MDWE
+        /// 
+        /// PR_GET_MDWE
+        /// </summary>
         public const int PR_CAP_AMBIENT = 47;
         
         public const int PR_CAP_AMBIENT_IS_SET = 1;
@@ -433,7 +436,7 @@ namespace XenoAtom.Interop
         public const int PR_PAC_GET_ENABLED_KEYS = 61;
         
         /// <summary>
-        /// Operations on a process or thread
+        /// prctl
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "prctl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

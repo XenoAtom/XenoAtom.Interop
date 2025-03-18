@@ -98,6 +98,71 @@ namespace XenoAtom.Interop
             /// with pixel data.
             /// </summary>
             GBM_BO_USE_FRONT_RENDERING = unchecked((uint)64),
+            
+            /// <summary>
+            /// Allow the driver to select fixed-rate compression parameters.
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_DEFAULT = unchecked((uint)128),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 1bpc, less than 2bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_1BPC = unchecked((uint)256),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 2bpc, less than 3bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_2BPC = unchecked((uint)384),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 3bpc, less than 4bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_3BPC = unchecked((uint)512),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 4bpc, less than 5bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_4BPC = unchecked((uint)640),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 5bpc, less than 6bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_5BPC = unchecked((uint)768),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 6bpc, less than 7bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_6BPC = unchecked((uint)896),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 7bpc, less than 8bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_7BPC = unchecked((uint)1024),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 8bpc, less than 9bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_8BPC = unchecked((uint)1152),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 9bpc, less than 10bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_9BPC = unchecked((uint)1280),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 10bpc, less than 11bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_10BPC = unchecked((uint)1408),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 11bpc, less than 12bpc
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_11BPC = unchecked((uint)1536),
+            
+            /// <summary>
+            /// Fixed-rate compression: at least 12bpc, no maximum rate
+            /// </summary>
+            GBM_BO_FIXED_COMPRESSION_12BPC = unchecked((uint)1664),
         }
         
         /// <summary>
@@ -146,6 +211,71 @@ namespace XenoAtom.Interop
         /// with pixel data.
         /// </summary>
         public const libgbm.gbm_bo_flags GBM_BO_USE_FRONT_RENDERING = gbm_bo_flags.GBM_BO_USE_FRONT_RENDERING;
+        
+        /// <summary>
+        /// Allow the driver to select fixed-rate compression parameters.
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_DEFAULT = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_DEFAULT;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 1bpc, less than 2bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_1BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_1BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 2bpc, less than 3bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_2BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_2BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 3bpc, less than 4bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_3BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_3BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 4bpc, less than 5bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_4BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_4BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 5bpc, less than 6bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_5BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_5BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 6bpc, less than 7bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_6BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_6BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 7bpc, less than 8bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_7BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_7BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 8bpc, less than 9bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_8BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_8BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 9bpc, less than 10bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_9BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_9BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 10bpc, less than 11bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_10BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_10BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 11bpc, less than 12bpc
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_11BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_11BPC;
+        
+        /// <summary>
+        /// Fixed-rate compression: at least 12bpc, no maximum rate
+        /// </summary>
+        public const libgbm.gbm_bo_flags GBM_BO_FIXED_COMPRESSION_12BPC = gbm_bo_flags.GBM_BO_FIXED_COMPRESSION_12BPC;
         
         /// <summary>
         /// Flags to indicate the type of mapping for the buffer - these are
@@ -593,6 +723,8 @@ namespace XenoAtom.Interop
         /// non-subsampled Cr (1) and Cb (2) planes
         /// </summary>
         public const uint GBM_FORMAT_YVU444 = 875714137;
+        
+        public const uint GBM_BO_FIXED_COMPRESSION_MASK = 1920;
         
         public const uint GBM_BO_IMPORT_WL_BUFFER = 21761;
         

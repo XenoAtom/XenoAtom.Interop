@@ -210,7 +210,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public unsafe partial struct StdVideoEncodeH265SliceSegmentHeader
+        public partial struct StdVideoEncodeH265SliceSegmentHeader
         {
             public vulkan.StdVideoEncodeH265SliceSegmentHeaderFlags flags;
             
@@ -236,7 +236,9 @@ namespace XenoAtom.Interop
             
             public sbyte slice_act_cr_qp_offset;
             
-            public fixed byte reserved1[3];
+            public sbyte slice_qp_delta;
+            
+            public ushort reserved1;
             
             public vulkan.StdVideoEncodeH265WeightTable* pWeightTable;
         }
@@ -424,7 +426,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public unsafe partial struct StdVideoEncodeH265SliceSegmentLongTermRefPics
+        public unsafe partial struct StdVideoEncodeH265LongTermRefPics
         {
             public byte num_long_term_sps;
             
@@ -465,7 +467,7 @@ namespace XenoAtom.Interop
             
             public vulkan.StdVideoH265ShortTermRefPicSet* pShortTermRefPicSet;
             
-            public vulkan.StdVideoEncodeH265SliceSegmentLongTermRefPics* pLongTermRefPics;
+            public vulkan.StdVideoEncodeH265LongTermRefPics* pLongTermRefPics;
         }
         
         public partial struct StdVideoEncodeH265ReferenceInfoFlags

@@ -299,7 +299,9 @@ namespace XenoAtom.Interop
             
             GIT_REPOSITORY_ITEM_WORKTREES = unchecked((uint)13),
             
-            GIT_REPOSITORY_ITEM__LAST = unchecked((uint)14),
+            GIT_REPOSITORY_ITEM_WORKTREE_CONFIG = unchecked((uint)14),
+            
+            GIT_REPOSITORY_ITEM__LAST = unchecked((uint)15),
         }
         
         public const libgit2.git_repository_item_t GIT_REPOSITORY_ITEM_GITDIR = git_repository_item_t.GIT_REPOSITORY_ITEM_GITDIR;
@@ -329,6 +331,8 @@ namespace XenoAtom.Interop
         public const libgit2.git_repository_item_t GIT_REPOSITORY_ITEM_MODULES = git_repository_item_t.GIT_REPOSITORY_ITEM_MODULES;
         
         public const libgit2.git_repository_item_t GIT_REPOSITORY_ITEM_WORKTREES = git_repository_item_t.GIT_REPOSITORY_ITEM_WORKTREES;
+        
+        public const libgit2.git_repository_item_t GIT_REPOSITORY_ITEM_WORKTREE_CONFIG = git_repository_item_t.GIT_REPOSITORY_ITEM_WORKTREE_CONFIG;
         
         public const libgit2.git_repository_item_t GIT_REPOSITORY_ITEM__LAST = git_repository_item_t.GIT_REPOSITORY_ITEM__LAST;
         
@@ -1466,5 +1470,17 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_oid_type")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid_t git_repository_oid_type(libgit2.git_repository repo);
+        
+        /// <summary>
+        /// Gets the parents of the next commit, given the current repository state.
+        /// Generally, this is the HEAD commit, except when performing a merge, in
+        /// which case it is two or more commits.
+        /// </summary>
+        /// <param name="commits">a `git_commitarray` that will contain the commit parents</param>
+        /// <param name="repo">the repository</param>
+        /// <returns>@return 0 or an error code</returns>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_commit_parents")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int git_repository_commit_parents(ref libgit2.git_commitarray commits, libgit2.git_repository repo);
     }
 }
