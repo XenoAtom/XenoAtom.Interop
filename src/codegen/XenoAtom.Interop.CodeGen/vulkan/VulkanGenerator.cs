@@ -296,19 +296,19 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
     private VulkanExtensionKind GetFunctionExtensionKind(CSharpMethod csFunction, string name)
     {
+        if (csFunction.Parameters.Count > 0 && csFunction.Parameters[0].ParameterType is CSharpNamedType namedType)
+        {
+            return namedType.Name == "VkInstance" || namedType.Name == "VkPhysicalDevice"
+                ? VulkanExtensionKind.Instance
+                : VulkanExtensionKind.Device;
+        }
+
         if (_vulkanElementInfos.TryGetValue(name, out var elementInfo))
         {
             if (elementInfo.ExtensionKind != VulkanExtensionKind.Unknown)
             {
                 return elementInfo.ExtensionKind;
             }
-        }
-
-        if (csFunction.Parameters.Count > 0 && csFunction.Parameters[0].ParameterType is CSharpNamedType namedType)
-        {
-            return namedType.Name == "VkInstance" || namedType.Name == "VkPhysicalDevice"
-                ? VulkanExtensionKind.Instance
-                : VulkanExtensionKind.Device;
         }
 
         return VulkanExtensionKind.Unknown;

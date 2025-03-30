@@ -1365,7 +1365,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT : IEquatable<vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>
+        public readonly partial struct PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT : IEquatable<vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>
         {
             public PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, uint*, vulkan.VkPresentModeKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1641,7 +1641,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkAcquireWinrtDisplayNV : IEquatable<vulkan.PFN_vkAcquireWinrtDisplayNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkAcquireWinrtDisplayNV>
+        public readonly partial struct PFN_vkAcquireWinrtDisplayNV : IEquatable<vulkan.PFN_vkAcquireWinrtDisplayNV>, IvkInstanceFunctionPointer<vulkan.PFN_vkAcquireWinrtDisplayNV>
         {
             public PFN_vkAcquireWinrtDisplayNV(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkDisplayKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -1692,7 +1692,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetWinrtDisplayNV : IEquatable<vulkan.PFN_vkGetWinrtDisplayNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetWinrtDisplayNV>
+        public readonly partial struct PFN_vkGetWinrtDisplayNV : IEquatable<vulkan.PFN_vkGetWinrtDisplayNV>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetWinrtDisplayNV>
         {
             public PFN_vkGetWinrtDisplayNV(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkDisplayKHR*, vulkan.VkResult> value) => this.Value = value;
             
