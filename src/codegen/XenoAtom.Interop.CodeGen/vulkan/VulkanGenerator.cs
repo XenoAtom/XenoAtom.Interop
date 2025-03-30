@@ -296,22 +296,34 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
 
     private VulkanExtensionKind GetFunctionExtensionKind(CSharpMethod csFunction, string name)
     {
-        if (csFunction.Parameters.Count > 0 && csFunction.Parameters[0].ParameterType is CSharpNamedType namedType)
-        {
-            return namedType.Name == "VkInstance" || namedType.Name == "VkPhysicalDevice"
-                ? VulkanExtensionKind.Instance
-                : VulkanExtensionKind.Device;
-        }
-
+        var extensionKind = VulkanExtensionKind.Unknown;
         if (_vulkanElementInfos.TryGetValue(name, out var elementInfo))
         {
             if (elementInfo.ExtensionKind != VulkanExtensionKind.Unknown)
             {
-                return elementInfo.ExtensionKind;
+                extensionKind = elementInfo.ExtensionKind;
             }
         }
 
-        return VulkanExtensionKind.Unknown;
+        if (csFunction.Parameters.Count > 0 && csFunction.Parameters[0].ParameterType is CSharpNamedType namedType)
+        {
+            var newExtensionKind = namedType.Name == "VkInstance" || namedType.Name == "VkPhysicalDevice"
+                ? VulkanExtensionKind.Instance
+                : VulkanExtensionKind.Device;
+
+            // Weird case, some extensions/functions are not properly tagged in the registry
+            if (newExtensionKind != extensionKind && extensionKind == VulkanExtensionKind.Instance)
+            {
+                // Keep it as instance (e.g. vkSetDebugUtilsObjectNameEXT)
+                extensionKind = VulkanExtensionKind.Instance;
+            }
+            else
+            {
+                extensionKind = newExtensionKind;
+            }
+        }
+
+        return extensionKind;
     }
 
     private void ProcessVulkanFunction(CSharpMethod csFunction)
