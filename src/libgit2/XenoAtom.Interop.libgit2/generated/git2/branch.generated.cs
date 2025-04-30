@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -117,7 +117,7 @@ namespace XenoAtom.Interop
         /// Delete an existing branch reference.
         /// </summary>
         /// <param name="branch">A valid reference representing a branch</param>
-        /// <returns>@return 0 on success, or an error code.</returns>
+        /// <returns>0 on success, or an error code.</returns>
         /// <remarks>
         /// Note that if the deletion succeeds, the reference object will not
         /// be valid anymore, and should be freed immediately by the user using
@@ -135,7 +135,7 @@ namespace XenoAtom.Interop
         /// <param name="list_flags">Filtering flags for the branch
         /// listing. Valid values are GIT_BRANCH_LOCAL, GIT_BRANCH_REMOTE
         /// or GIT_BRANCH_ALL.</param>
-        /// <returns>@return 0 on success  or an error code</returns>
+        /// <returns>0 on success  or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_branch_iterator_new(out libgit2.git_branch_iterator @out, libgit2.git_repository repo, libgit2.git_branch_t list_flags);
@@ -146,7 +146,7 @@ namespace XenoAtom.Interop
         /// <param name="out">the reference</param>
         /// <param name="out_type">the type of branch (local or remote-tracking)</param>
         /// <param name="iter">the branch iterator</param>
-        /// <returns>@return 0 on success, GIT_ITEROVER if there are no more branches or an error code.</returns>
+        /// <returns>0 on success, GIT_ITEROVER if there are no more branches or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_branch_next(out libgit2.git_reference @out, out libgit2.git_branch_t out_type, libgit2.git_branch_iterator iter);
@@ -167,7 +167,7 @@ namespace XenoAtom.Interop
         /// <param name="new_branch_name">Target name of the branch once the move
         /// is performed; this name is validated for consistency.</param>
         /// <param name="force">Overwrite existing branch.</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC or an error code.</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC or an error code.</returns>
         /// <remarks>
         /// The new branch name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.Note that if the move succeeds, the old reference object will not
@@ -186,7 +186,7 @@ namespace XenoAtom.Interop
         /// <param name="new_branch_name">Target name of the branch once the move
         /// is performed; this name is validated for consistency.</param>
         /// <param name="force">Overwrite existing branch.</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC or an error code.</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC or an error code.</returns>
         /// <remarks>
         /// The new branch name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.Note that if the move succeeds, the old reference object will not
@@ -356,7 +356,7 @@ namespace XenoAtom.Interop
         /// Determine if any HEAD points to the current branch
         /// </summary>
         /// <param name="branch">A reference to a local branch.</param>
-        /// <returns>@return 1 if branch is checked out, 0 if it isn't, an error code otherwise.</returns>
+        /// <returns>1 if branch is checked out, 0 if it isn't, an error code otherwise.</returns>
         /// <remarks>
         /// This will iterate over all known linked repositories (usually in the form of
         /// worktrees) and report whether any HEAD is pointing at the current branch.
@@ -409,7 +409,7 @@ namespace XenoAtom.Interop
         /// <param name="buf">the buffer into which to write the name</param>
         /// <param name="repo">the repository in which to look</param>
         /// <param name="refname">the full name of the branch</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This will return the currently configured "branch.*.remote" for a given
         /// branch. This branch must be local.
@@ -424,7 +424,7 @@ namespace XenoAtom.Interop
         /// <param name="buf">the buffer into which to write the name</param>
         /// <param name="repo">the repository in which to look</param>
         /// <param name="refname">the full name of the branch</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This will return the currently configured "branch.*.remote" for a given
         /// branch. This branch must be local.
@@ -439,7 +439,7 @@ namespace XenoAtom.Interop
         /// <param name="buf">the buffer into which to write the name</param>
         /// <param name="repo">the repository in which to look</param>
         /// <param name="refname">the full name of the branch</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This will return the currently configured "branch.*.merge" for a given
         /// branch. This branch must be local.
@@ -454,7 +454,7 @@ namespace XenoAtom.Interop
         /// <param name="buf">the buffer into which to write the name</param>
         /// <param name="repo">the repository in which to look</param>
         /// <param name="refname">the full name of the branch</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This will return the currently configured "branch.*.merge" for a given
         /// branch. This branch must be local.
@@ -471,7 +471,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="valid">output pointer to set with validity of given branch name</param>
         /// <param name="name">a branch name to test</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_name_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_branch_name_is_valid(out int valid, byte* name);
@@ -484,7 +484,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="valid">output pointer to set with validity of given branch name</param>
         /// <param name="name">a branch name to test</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_name_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_branch_name_is_valid(out int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);

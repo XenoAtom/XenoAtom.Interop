@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -282,7 +282,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_blame_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_BLAME_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_blame_options` with default values. Equivalent to creating
         /// an instance with GIT_BLAME_OPTIONS_INIT.
@@ -295,7 +295,7 @@ namespace XenoAtom.Interop
         /// Gets the number of hunks that exist in the blame structure.
         /// </summary>
         /// <param name="blame">The blame structure to query.</param>
-        /// <returns>@return The number of hunks.</returns>
+        /// <returns>The number of hunks.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_get_hunk_count")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial uint git_blame_get_hunk_count(libgit2.git_blame blame);
@@ -305,7 +305,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="blame">the blame structure to query</param>
         /// <param name="index">index of the hunk to retrieve</param>
-        /// <returns>@return the hunk at the given index, or NULL on error</returns>
+        /// <returns>the hunk at the given index, or NULL on error</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_get_hunk_byindex")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_blame_hunk* git_blame_get_hunk_byindex(libgit2.git_blame blame, uint index);
@@ -315,7 +315,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="blame">the blame structure to query</param>
         /// <param name="lineno">the (1-based) line number to find a hunk for</param>
-        /// <returns>@return the hunk that contains the given line, or NULL on error</returns>
+        /// <returns>the hunk that contains the given line, or NULL on error</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_get_hunk_byline")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_blame_hunk* git_blame_get_hunk_byline(libgit2.git_blame blame, nuint lineno);

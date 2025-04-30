@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -47,7 +47,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_cherrypick_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_CHERRYPICK_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_cherrypick_options` with default values. Equivalent to creating
         /// an instance with GIT_CHERRYPICK_OPTIONS_INIT.
@@ -66,7 +66,7 @@ namespace XenoAtom.Interop
         /// <param name="our_commit">the commit to cherry-pick against (eg, HEAD)</param>
         /// <param name="mainline">the parent of the `cherrypick_commit`, if it is a merge</param>
         /// <param name="merge_options">the merge options (or null for defaults)</param>
-        /// <returns>@return zero on success, -1 on failure.</returns>
+        /// <returns>zero on success, -1 on failure.</returns>
         /// <remarks>
         /// The returned index must be freed explicitly with `git_index_free`.
         /// </remarks>
@@ -80,7 +80,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to cherry-pick</param>
         /// <param name="commit">the commit to cherry-pick</param>
         /// <param name="cherrypick_options">the cherry-pick options (or null for defaults)</param>
-        /// <returns>@return zero on success, -1 on failure.</returns>
+        /// <returns>zero on success, -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_cherrypick")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_cherrypick(libgit2.git_repository repo, libgit2.git_commit commit, in libgit2.git_cherrypick_options cherrypick_options);

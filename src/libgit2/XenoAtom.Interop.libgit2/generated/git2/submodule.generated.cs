@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -144,7 +144,7 @@ namespace XenoAtom.Interop
         /// <param name="sm">git_submodule currently being visited</param>
         /// <param name="name">name of the submodule</param>
         /// <param name="payload">value you passed to the foreach function as payload</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         public readonly partial struct git_submodule_cb : IEquatable<libgit2.git_submodule_cb>
         {
             public git_submodule_cb(delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> value) => this.Value = value;
@@ -175,7 +175,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_submodule_update_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_SUBMODULE_UPDATE_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_submodule_update_options` with default values. Equivalent to
         /// creating an instance with `GIT_SUBMODULE_UPDATE_OPTIONS_INIT`.
@@ -261,7 +261,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the copy of the submodule.</param>
         /// <param name="source">Original submodule to copy.</param>
-        /// <returns>@return 0</returns>
+        /// <returns>0</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_submodule_dup(out libgit2.git_submodule @out, libgit2.git_submodule source);
@@ -281,7 +281,7 @@ namespace XenoAtom.Interop
         /// <param name="callback">Function to be called with the name of each submodule.
         /// Return a non-zero value to terminate the iteration.</param>
         /// <param name="payload">Extra data to pass to callback</param>
-        /// <returns>@return 0 on success, -1 on error, or non-zero return value of callback</returns>
+        /// <returns>0 on success, -1 on error, or non-zero return value of callback</returns>
         /// <remarks>
         /// See the note on `git_submodule` above.  This iterates over the tracked
         /// submodules as described therein.If you are concerned about items in the working directory that look like
@@ -352,7 +352,7 @@ namespace XenoAtom.Interop
         /// <param name="out">The newly created repository object. Optional.</param>
         /// <param name="submodule">The submodule currently waiting for its clone.</param>
         /// <param name="opts">The options to use.</param>
-        /// <returns>@return 0 on success, -1 on other errors (see git_clone).</returns>
+        /// <returns>0 on success, -1 on other errors (see git_clone).</returns>
         /// <remarks>
         /// This performs the necessary `git_clone` to setup a newly-created submodule.
         /// </remarks>
@@ -364,7 +364,7 @@ namespace XenoAtom.Interop
         /// Resolve the setup of a new git submodule.
         /// </summary>
         /// <param name="submodule">The submodule to finish adding.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// This should be called on a submodule once you have called add setup
         /// and done the clone of the submodule.  This adds the .gitmodules file
@@ -394,7 +394,7 @@ namespace XenoAtom.Interop
         /// Get the containing repository for a submodule.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to `git_repository`</returns>
+        /// <returns>Pointer to `git_repository`</returns>
         /// <remarks>
         /// This returns a pointer to the repository that contains the submodule.
         /// This is a just a reference to the repository that was passed to the
@@ -409,7 +409,7 @@ namespace XenoAtom.Interop
         /// Get the name of submodule.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to the submodule name</returns>
+        /// <returns>Pointer to the submodule name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_submodule_name_(libgit2.git_submodule submodule);
@@ -418,7 +418,7 @@ namespace XenoAtom.Interop
         /// Get the name of submodule.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to the submodule name</returns>
+        /// <returns>Pointer to the submodule name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -428,7 +428,7 @@ namespace XenoAtom.Interop
         /// Get the path to the submodule.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to the submodule path</returns>
+        /// <returns>Pointer to the submodule path</returns>
         /// <remarks>
         /// The path is almost always the same as the submodule name, but the
         /// two are actually not required to match.
@@ -441,7 +441,7 @@ namespace XenoAtom.Interop
         /// Get the path to the submodule.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to the submodule path</returns>
+        /// <returns>Pointer to the submodule path</returns>
         /// <remarks>
         /// The path is almost always the same as the submodule name, but the
         /// two are actually not required to match.
@@ -455,7 +455,7 @@ namespace XenoAtom.Interop
         /// Get the URL for the submodule.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to the submodule url</returns>
+        /// <returns>Pointer to the submodule url</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_submodule_url_(libgit2.git_submodule submodule);
@@ -464,7 +464,7 @@ namespace XenoAtom.Interop
         /// Get the URL for the submodule.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to the submodule url</returns>
+        /// <returns>Pointer to the submodule url</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -476,7 +476,7 @@ namespace XenoAtom.Interop
         /// <param name="out">buffer to store the absolute submodule url in</param>
         /// <param name="repo">Pointer to repository object</param>
         /// <param name="url">Relative url</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_resolve_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_submodule_resolve_url(out libgit2.git_buf @out, libgit2.git_repository repo, byte* url);
@@ -487,7 +487,7 @@ namespace XenoAtom.Interop
         /// <param name="out">buffer to store the absolute submodule url in</param>
         /// <param name="repo">Pointer to repository object</param>
         /// <param name="url">Relative url</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_resolve_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_submodule_resolve_url(out libgit2.git_buf @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
@@ -496,7 +496,7 @@ namespace XenoAtom.Interop
         /// Get the branch for the submodule.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to the submodule branch</returns>
+        /// <returns>Pointer to the submodule branch</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_branch")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_submodule_branch_(libgit2.git_submodule submodule);
@@ -505,7 +505,7 @@ namespace XenoAtom.Interop
         /// Get the branch for the submodule.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to the submodule branch</returns>
+        /// <returns>Pointer to the submodule branch</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_branch")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -583,7 +583,7 @@ namespace XenoAtom.Interop
         /// Get the OID for the submodule in the index.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to git_oid or NULL if submodule is not in index.</returns>
+        /// <returns>Pointer to git_oid or NULL if submodule is not in index.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_index_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_submodule_index_id(libgit2.git_submodule submodule);
@@ -592,7 +592,7 @@ namespace XenoAtom.Interop
         /// Get the OID for the submodule in the current HEAD tree.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to git_oid or NULL if submodule is not in the HEAD.</returns>
+        /// <returns>Pointer to git_oid or NULL if submodule is not in the HEAD.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_submodule_head_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_submodule_head_id(libgit2.git_submodule submodule);
@@ -601,7 +601,7 @@ namespace XenoAtom.Interop
         /// Get the OID for the submodule in the current working directory.
         /// </summary>
         /// <param name="submodule">Pointer to submodule object</param>
-        /// <returns>@return Pointer to git_oid or NULL if submodule is not checked out.</returns>
+        /// <returns>Pointer to git_oid or NULL if submodule is not checked out.</returns>
         /// <remarks>
         /// This returns the OID that corresponds to looking up 'HEAD' in the checked
         /// out submodule.  If there are pending changes in the index or anything
@@ -643,7 +643,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to affect</param>
         /// <param name="name">the name of the submdule</param>
         /// <param name="ignore">The new value for the ignore rule</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This does not affect any currently-loaded instances.
         /// </remarks>
@@ -657,7 +657,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to affect</param>
         /// <param name="name">the name of the submdule</param>
         /// <param name="ignore">The new value for the ignore rule</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This does not affect any currently-loaded instances.
         /// </remarks>
@@ -685,7 +685,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to affect</param>
         /// <param name="name">the name of the submodule to configure</param>
         /// <param name="update">The new value to use</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This setting won't affect any existing instances.
         /// </remarks>
@@ -699,7 +699,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to affect</param>
         /// <param name="name">the name of the submodule to configure</param>
         /// <param name="update">The new value to use</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This setting won't affect any existing instances.
         /// </remarks>
@@ -710,7 +710,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Read the fetchRecurseSubmodules rule for a submodule.
         /// </summary>
-        /// <returns>@return 0 if fetchRecurseSubmodules is false, 1 if true</returns>
+        /// <returns>0 if fetchRecurseSubmodules is false, 1 if true</returns>
         /// <remarks>
         /// This accesses the submodule.
         /// &lt;name
@@ -728,7 +728,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to affect</param>
         /// <param name="name">the submodule to configure</param>
         /// <param name="fetch_recurse_submodules">Boolean value</param>
-        /// <returns>@return old value for fetchRecurseSubmodules</returns>
+        /// <returns>old value for fetchRecurseSubmodules</returns>
         /// <remarks>
         /// This setting won't affect any existing instances.
         /// </remarks>
@@ -742,7 +742,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to affect</param>
         /// <param name="name">the submodule to configure</param>
         /// <param name="fetch_recurse_submodules">Boolean value</param>
-        /// <returns>@return old value for fetchRecurseSubmodules</returns>
+        /// <returns>old value for fetchRecurseSubmodules</returns>
         /// <remarks>
         /// This setting won't affect any existing instances.
         /// </remarks>
@@ -792,7 +792,7 @@ namespace XenoAtom.Interop
         /// Copy submodule remote info into submodule repo.
         /// </summary>
         /// <param name="submodule">The submodule to copy.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// This copies the information about the submodules URL into the checked out
         /// submodule config, acting like "git submodule sync".  This is useful if

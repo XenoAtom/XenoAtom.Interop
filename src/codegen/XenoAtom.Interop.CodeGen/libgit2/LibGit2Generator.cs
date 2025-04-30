@@ -65,7 +65,10 @@ internal partial class LibGit2Generator : GeneratorBase
             TargetSystem = "gnu",
             Defines =
             {
-                "GIT_DEPRECATE_HARD"
+                "GIT_DEPRECATE_HARD",
+                // Defines for musl to override _Addr, _Int64, _Reg in bits/alltypes.h
+                // See ApkIncludeHelper.ExtractFiles
+                "XENO_ATOM_INTEROP",
             },
             PreHeaderText = @"
 // A result integer from a git function. 0 if successful, < 0 if an error.
@@ -75,6 +78,7 @@ typedef int git_result;
             DispatchOutputPerInclude = true,
             DisableRuntimeMarshalling = true,
             AllowMarshalForString = false,
+            MapCLongToIntPtr = true,
 
             MappingRules =
             {

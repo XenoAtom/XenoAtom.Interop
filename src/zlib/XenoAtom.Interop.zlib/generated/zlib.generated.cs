@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -187,7 +187,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// for initializing zalloc, zfree, opaque
         /// </summary>
-        public const nint Z_NULL = 0;
+        public const int Z_NULL = 0;
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "zlibVersion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

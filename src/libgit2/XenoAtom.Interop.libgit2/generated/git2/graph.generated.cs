@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -25,7 +25,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="local">the commit for local</param>
         /// <param name="upstream">the commit for upstream</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// There is no need for branches containing the commits to have any
         /// upstream relationship, but it helps to think of one as a branch and

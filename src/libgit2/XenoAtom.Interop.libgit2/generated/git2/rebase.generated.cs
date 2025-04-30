@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -203,7 +203,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_rebase_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_REBASE_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_rebase_options` with default values. Equivalent to
         /// creating an instance with `GIT_REBASE_OPTIONS_INIT`.
@@ -227,7 +227,7 @@ namespace XenoAtom.Interop
         /// <param name="onto">The branch to rebase onto, or NULL to rebase onto the given
         /// upstream</param>
         /// <param name="opts">Options to specify how rebase is performed, or NULL</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_rebase_init(out libgit2.git_rebase @out, libgit2.git_repository repo, libgit2.git_annotated_commit branch, libgit2.git_annotated_commit upstream, libgit2.git_annotated_commit onto, in libgit2.git_rebase_options opts);
@@ -239,7 +239,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer to store the rebase object</param>
         /// <param name="repo">The repository that has a rebase in-progress</param>
         /// <param name="opts">Options to specify how rebase is performed</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_rebase_open(out libgit2.git_rebase @out, libgit2.git_repository repo, in libgit2.git_rebase_options opts);
@@ -248,7 +248,7 @@ namespace XenoAtom.Interop
         /// Gets the original `HEAD` ref name for merge rebases.
         /// </summary>
         /// <param name="rebase">The in-progress rebase.</param>
-        /// <returns>@return The original `HEAD` ref name</returns>
+        /// <returns>The original `HEAD` ref name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_orig_head_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_rebase_orig_head_name_(libgit2.git_rebase rebase);
@@ -257,7 +257,7 @@ namespace XenoAtom.Interop
         /// Gets the original `HEAD` ref name for merge rebases.
         /// </summary>
         /// <param name="rebase">The in-progress rebase.</param>
-        /// <returns>@return The original `HEAD` ref name</returns>
+        /// <returns>The original `HEAD` ref name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_orig_head_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -267,7 +267,7 @@ namespace XenoAtom.Interop
         /// Gets the original `HEAD` id for merge rebases.
         /// </summary>
         /// <param name="rebase">The in-progress rebase.</param>
-        /// <returns>@return The original `HEAD` id</returns>
+        /// <returns>The original `HEAD` id</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_orig_head_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_rebase_orig_head_id(libgit2.git_rebase rebase);
@@ -276,7 +276,7 @@ namespace XenoAtom.Interop
         /// Gets the `onto` ref name for merge rebases.
         /// </summary>
         /// <param name="rebase">The in-progress rebase.</param>
-        /// <returns>@return The `onto` ref name</returns>
+        /// <returns>The `onto` ref name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_onto_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_rebase_onto_name_(libgit2.git_rebase rebase);
@@ -285,7 +285,7 @@ namespace XenoAtom.Interop
         /// Gets the `onto` ref name for merge rebases.
         /// </summary>
         /// <param name="rebase">The in-progress rebase.</param>
-        /// <returns>@return The `onto` ref name</returns>
+        /// <returns>The `onto` ref name</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_onto_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -295,7 +295,7 @@ namespace XenoAtom.Interop
         /// Gets the `onto` id for merge rebases.
         /// </summary>
         /// <param name="rebase">The in-progress rebase.</param>
-        /// <returns>@return The `onto` id</returns>
+        /// <returns>The `onto` id</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_onto_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_rebase_onto_id(libgit2.git_rebase rebase);
@@ -304,7 +304,7 @@ namespace XenoAtom.Interop
         /// Gets the count of rebase operations that are to be applied.
         /// </summary>
         /// <param name="rebase">The in-progress rebase</param>
-        /// <returns>@return The number of rebase operations in total</returns>
+        /// <returns>The number of rebase operations in total</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_operation_entrycount")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_rebase_operation_entrycount(libgit2.git_rebase rebase);
@@ -316,7 +316,7 @@ namespace XenoAtom.Interop
         /// `GIT_REBASE_NO_OPERATION`.
         /// </summary>
         /// <param name="rebase">The in-progress rebase</param>
-        /// <returns>@return The index of the rebase operation currently being applied.</returns>
+        /// <returns>The index of the rebase operation currently being applied.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_operation_current")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_rebase_operation_current(libgit2.git_rebase rebase);
@@ -326,7 +326,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="rebase">The in-progress rebase</param>
         /// <param name="idx">The index of the rebase operation to retrieve</param>
-        /// <returns>@return The rebase operation or NULL if `idx` was out of bounds</returns>
+        /// <returns>The rebase operation or NULL if `idx` was out of bounds</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_operation_byindex")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_rebase_operation* git_rebase_operation_byindex(libgit2.git_rebase rebase, nuint idx);
@@ -340,7 +340,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="operation">Pointer to store the rebase operation that is to be performed next</param>
         /// <param name="rebase">The rebase in progress</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_rebase_next(out libgit2.git_rebase_operation* operation, libgit2.git_rebase rebase);
@@ -354,7 +354,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">The result index of the last operation.</param>
         /// <param name="rebase">The in-progress rebase.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This is only applicable for in-memory rebases; for rebases within
         /// a working directory, the changes were applied to the repository's
@@ -431,7 +431,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="rebase">The rebase that is in-progress</param>
         /// <param name="signature">The identity that is finishing the rebase (optional)</param>
-        /// <returns>@return Zero on success; -1 on error</returns>
+        /// <returns>Zero on success; -1 on error</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_rebase_finish")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_rebase_finish(libgit2.git_rebase rebase, in libgit2.git_signature signature);

@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -23,7 +23,7 @@ namespace XenoAtom.Interop
         /// <param name="name">The tag name</param>
         /// <param name="oid">The tag's OID</param>
         /// <param name="payload">Payload passed to git_tag_foreach</param>
-        /// <returns>@return non-zero to terminate the iteration</returns>
+        /// <returns>non-zero to terminate the iteration</returns>
         /// <seealso cref="git_tag_foreach"/>
         public readonly partial struct git_tag_foreach_cb : IEquatable<libgit2.git_tag_foreach_cb>
         {
@@ -54,7 +54,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the looked up tag</param>
         /// <param name="repo">the repo to use when locating the tag.</param>
         /// <param name="id">identity of the tag to locate.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_tag_lookup(out libgit2.git_tag @out, libgit2.git_repository repo, in libgit2.git_oid id);
@@ -67,7 +67,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repo to use when locating the tag.</param>
         /// <param name="id">identity of the tag to locate.</param>
         /// <param name="len">the length of the short identifier</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <seealso cref="git_object_lookup_prefix"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_lookup_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -89,7 +89,7 @@ namespace XenoAtom.Interop
         /// Get the id of a tag.
         /// </summary>
         /// <param name="tag">a previously loaded tag.</param>
-        /// <returns>@return object identity for the tag.</returns>
+        /// <returns>object identity for the tag.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_tag_id(libgit2.git_tag tag);
@@ -98,7 +98,7 @@ namespace XenoAtom.Interop
         /// Get the repository that contains the tag.
         /// </summary>
         /// <param name="tag">A previously loaded tag.</param>
-        /// <returns>@return Repository that contains this tag.</returns>
+        /// <returns>Repository that contains this tag.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_owner")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_repository git_tag_owner(libgit2.git_tag tag);
@@ -108,7 +108,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="target_out">pointer where to store the target</param>
         /// <param name="tag">a previously loaded tag.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This method performs a repository lookup for the
         /// given object and returns it
@@ -121,7 +121,7 @@ namespace XenoAtom.Interop
         /// Get the OID of the tagged object of a tag
         /// </summary>
         /// <param name="tag">a previously loaded tag.</param>
-        /// <returns>@return pointer to the OID</returns>
+        /// <returns>pointer to the OID</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_target_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_tag_target_id(libgit2.git_tag tag);
@@ -130,7 +130,7 @@ namespace XenoAtom.Interop
         /// Get the type of a tag's tagged object
         /// </summary>
         /// <param name="tag">a previously loaded tag.</param>
-        /// <returns>@return type of the tagged object</returns>
+        /// <returns>type of the tagged object</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_target_type")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_object_t git_tag_target_type(libgit2.git_tag tag);
@@ -139,7 +139,7 @@ namespace XenoAtom.Interop
         /// Get the name of a tag
         /// </summary>
         /// <param name="tag">a previously loaded tag.</param>
-        /// <returns>@return name of the tag</returns>
+        /// <returns>name of the tag</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_tag_name_(libgit2.git_tag tag);
@@ -148,7 +148,7 @@ namespace XenoAtom.Interop
         /// Get the name of a tag
         /// </summary>
         /// <param name="tag">a previously loaded tag.</param>
-        /// <returns>@return name of the tag</returns>
+        /// <returns>name of the tag</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -158,7 +158,7 @@ namespace XenoAtom.Interop
         /// Get the tagger (author) of a tag
         /// </summary>
         /// <param name="tag">a previously loaded tag.</param>
-        /// <returns>@return reference to the tag's author or NULL when unspecified</returns>
+        /// <returns>reference to the tag's author or NULL when unspecified</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_tagger")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_signature* git_tag_tagger(libgit2.git_tag tag);
@@ -167,7 +167,7 @@ namespace XenoAtom.Interop
         /// Get the message of a tag
         /// </summary>
         /// <param name="tag">a previously loaded tag.</param>
-        /// <returns>@return message of the tag or NULL when unspecified</returns>
+        /// <returns>message of the tag or NULL when unspecified</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_tag_message_(libgit2.git_tag tag);
@@ -176,7 +176,7 @@ namespace XenoAtom.Interop
         /// Get the message of a tag
         /// </summary>
         /// <param name="tag">a previously loaded tag.</param>
-        /// <returns>@return message of the tag or NULL when unspecified</returns>
+        /// <returns>message of the tag or NULL when unspecified</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -262,7 +262,7 @@ namespace XenoAtom.Interop
         /// <param name="tagger">Signature of the tagger for this tag, and
         /// of the tagging time</param>
         /// <param name="message">Full message for this tag</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         /// <remarks>
         /// The message will not be cleaned up. This can be achieved
         /// through `git_message_prettify()`.
@@ -283,7 +283,7 @@ namespace XenoAtom.Interop
         /// <param name="tagger">Signature of the tagger for this tag, and
         /// of the tagging time</param>
         /// <param name="message">Full message for this tag</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         /// <remarks>
         /// The message will not be cleaned up. This can be achieved
         /// through `git_message_prettify()`.
@@ -299,7 +299,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">Repository where to store the tag</param>
         /// <param name="buffer">Raw tag data</param>
         /// <param name="force">Overwrite existing tags</param>
-        /// <returns>@return 0 on success; error code otherwise</returns>
+        /// <returns>0 on success; error code otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_create_from_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_tag_create_from_buffer(out libgit2.git_oid oid, libgit2.git_repository repo, byte* buffer, int force);
@@ -311,7 +311,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">Repository where to store the tag</param>
         /// <param name="buffer">Raw tag data</param>
         /// <param name="force">Overwrite existing tags</param>
-        /// <returns>@return 0 on success; error code otherwise</returns>
+        /// <returns>0 on success; error code otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_create_from_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_tag_create_from_buffer(out libgit2.git_oid oid, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> buffer, int force);
@@ -376,7 +376,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">Repository where lives the tag</param>
         /// <param name="tag_name">Name of the tag to be deleted;
         /// this name is validated for consistency.</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// The tag name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
@@ -391,7 +391,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">Repository where lives the tag</param>
         /// <param name="tag_name">Name of the tag to be deleted;
         /// this name is validated for consistency.</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// The tag name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
@@ -406,7 +406,7 @@ namespace XenoAtom.Interop
         /// <param name="tag_names">Pointer to a git_strarray structure where
         /// the tag names will be stored</param>
         /// <param name="repo">Repository where to find the tags</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The string array will be filled with the names of the
         /// matching tags; these values are owned by the user and
@@ -425,7 +425,7 @@ namespace XenoAtom.Interop
         /// the tag names will be stored</param>
         /// <param name="pattern">Standard fnmatch pattern</param>
         /// <param name="repo">Repository where to find the tags</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If an empty pattern is provided, all the tags
         /// will be returned.The string array will be filled with the names of the
@@ -445,7 +445,7 @@ namespace XenoAtom.Interop
         /// the tag names will be stored</param>
         /// <param name="pattern">Standard fnmatch pattern</param>
         /// <param name="repo">Repository where to find the tags</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If an empty pattern is provided, all the tags
         /// will be returned.The string array will be filled with the names of the
@@ -472,7 +472,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tag_target_out">Pointer to the peeled git_object</param>
         /// <param name="tag">The tag to be processed</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The retrieved `tag_target` object is owned by the repository
         /// and should be closed with the `git_object_free` method.
@@ -487,7 +487,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the copy of the tag</param>
         /// <param name="source">Original tag to copy</param>
-        /// <returns>@return 0</returns>
+        /// <returns>0</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_tag_dup(out libgit2.git_tag @out, libgit2.git_tag source);
@@ -500,7 +500,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="valid">output pointer to set with validity of given tag name</param>
         /// <param name="name">a tag name to test</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_name_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_tag_name_is_valid(out int valid, byte* name);
@@ -513,7 +513,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="valid">output pointer to set with validity of given tag name</param>
         /// <param name="name">a tag name to test</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_name_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_tag_name_is_valid(out int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);

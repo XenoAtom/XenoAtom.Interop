@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -462,7 +462,7 @@ namespace XenoAtom.Interop
         /// <param name="oid">The reference target OID</param>
         /// <param name="is_merge">Was the reference the result of a merge</param>
         /// <param name="payload">Payload passed to git_repository_fetchhead_foreach</param>
-        /// <returns>@return non-zero to terminate the iteration</returns>
+        /// <returns>non-zero to terminate the iteration</returns>
         /// <seealso cref="git_repository_fetchhead_foreach"/>
         public readonly partial struct git_repository_fetchhead_foreach_cb : IEquatable<libgit2.git_repository_fetchhead_foreach_cb>
         {
@@ -492,7 +492,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="oid">The merge OID</param>
         /// <param name="payload">Payload passed to git_repository_mergehead_foreach</param>
-        /// <returns>@return non-zero to terminate the iteration</returns>
+        /// <returns>non-zero to terminate the iteration</returns>
         /// <seealso cref="git_repository_mergehead_foreach"/>
         public readonly partial struct git_repository_mergehead_foreach_cb : IEquatable<libgit2.git_repository_mergehead_foreach_cb>
         {
@@ -524,7 +524,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to the repo which will be opened</param>
         /// <param name="path">the path to the repository</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The 'path' argument must point to either a git repository
         /// folder, or an existing work dir.The method will automatically detect if 'path' is a normal
@@ -539,7 +539,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to the repo which will be opened</param>
         /// <param name="path">the path to the repository</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The 'path' argument must point to either a git repository
         /// folder, or an existing work dir.The method will automatically detect if 'path' is a normal
@@ -554,7 +554,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Output pointer containing opened repository</param>
         /// <param name="wt">Working tree to open</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Open the working directory of the working tree as a normal
         /// repository that can then be worked on.
@@ -584,7 +584,7 @@ namespace XenoAtom.Interop
         /// of this paths is reached. Note that the lookup always performs on
         /// start_path no matter start_path appears in ceiling_dirs ceiling_dirs
         /// might be NULL (which is equivalent to an empty string)</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The method will automatically detect if the repository is bare
         /// (if there is a repository).
@@ -610,7 +610,7 @@ namespace XenoAtom.Interop
         /// of this paths is reached. Note that the lookup always performs on
         /// start_path no matter start_path appears in ceiling_dirs ceiling_dirs
         /// might be NULL (which is equivalent to an empty string)</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The method will automatically detect if the repository is bare
         /// (if there is a repository).
@@ -666,7 +666,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to the repo which will be opened.</param>
         /// <param name="bare_path">Direct path to the bare repository</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// This is a fast open for bare repositories that will come in handy
         /// if you're e.g. hosting git repositories and need to access them
@@ -681,7 +681,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to the repo which will be opened.</param>
         /// <param name="bare_path">Direct path to the bare repository</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// This is a fast open for bare repositories that will come in handy
         /// if you're e.g. hosting git repositories and need to access them
@@ -715,7 +715,7 @@ namespace XenoAtom.Interop
         /// created at the pointed path. If false, provided path will be
         /// considered as the working directory into which the .git directory
         /// will be created.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// TODO:
         /// - Reinit the repository
@@ -733,7 +733,7 @@ namespace XenoAtom.Interop
         /// created at the pointed path. If false, provided path will be
         /// considered as the working directory into which the .git directory
         /// will be created.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// TODO:
         /// - Reinit the repository
@@ -747,7 +747,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_repository_init_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_REPOSITORY_INIT_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_repository_init_options` with default values. Equivalent to
         /// creating an instance with `GIT_REPOSITORY_INIT_OPTIONS_INIT`.
@@ -762,7 +762,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer to the repo which will be created or reinitialized.</param>
         /// <param name="repo_path">The path to the repository.</param>
         /// <param name="opts">Pointer to git_repository_init_options struct.</param>
-        /// <returns>@return 0 or an error code on failure.</returns>
+        /// <returns>0 or an error code on failure.</returns>
         /// <remarks>
         /// This will initialize a new git repository (creating the repo_path
         /// if requested by flags) and working directory as needed.  It will
@@ -779,7 +779,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer to the repo which will be created or reinitialized.</param>
         /// <param name="repo_path">The path to the repository.</param>
         /// <param name="opts">Pointer to git_repository_init_options struct.</param>
-        /// <returns>@return 0 or an error code on failure.</returns>
+        /// <returns>0 or an error code on failure.</returns>
         /// <remarks>
         /// This will initialize a new git repository (creating the repo_path
         /// if requested by flags) and working directory as needed.  It will
@@ -812,7 +812,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the reference which will be retrieved</param>
         /// <param name="repo">a repository object</param>
         /// <param name="name">name of the worktree to retrieve HEAD for</param>
-        /// <returns>@return 0 when successful, error-code otherwise</returns>
+        /// <returns>0 when successful, error-code otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_head_for_worktree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_repository_head_for_worktree(out libgit2.git_reference @out, libgit2.git_repository repo, byte* name);
@@ -823,7 +823,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the reference which will be retrieved</param>
         /// <param name="repo">a repository object</param>
         /// <param name="name">name of the worktree to retrieve HEAD for</param>
-        /// <returns>@return 0 when successful, error-code otherwise</returns>
+        /// <returns>0 when successful, error-code otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_head_for_worktree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_repository_head_for_worktree(out libgit2.git_reference @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
@@ -908,7 +908,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Buffer to store the path at</param>
         /// <param name="repo">Repository to get path for</param>
         /// <param name="item">The repository item for which to retrieve the path</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if the path cannot exist or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if the path cannot exist or an error code</returns>
         /// <remarks>
         /// This function will retrieve the path of a specific repository
         /// item. It will thereby honor things like the repository's
@@ -924,7 +924,7 @@ namespace XenoAtom.Interop
         /// Get the path of this repository
         /// </summary>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return the path to the repository</returns>
+        /// <returns>the path to the repository</returns>
         /// <remarks>
         /// This is the path of the `.git` folder for normal repositories,
         /// or of the repository itself for bare repositories.
@@ -937,7 +937,7 @@ namespace XenoAtom.Interop
         /// Get the path of this repository
         /// </summary>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return the path to the repository</returns>
+        /// <returns>the path to the repository</returns>
         /// <remarks>
         /// This is the path of the `.git` folder for normal repositories,
         /// or of the repository itself for bare repositories.
@@ -951,7 +951,7 @@ namespace XenoAtom.Interop
         /// Get the path of the working directory for this repository
         /// </summary>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return the path to the working dir, if it exists</returns>
+        /// <returns>the path to the working dir, if it exists</returns>
         /// <remarks>
         /// If the repository is bare, this function will always return
         /// NULL.
@@ -964,7 +964,7 @@ namespace XenoAtom.Interop
         /// Get the path of the working directory for this repository
         /// </summary>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return the path to the working dir, if it exists</returns>
+        /// <returns>the path to the working dir, if it exists</returns>
         /// <remarks>
         /// If the repository is bare, this function will always return
         /// NULL.
@@ -978,7 +978,7 @@ namespace XenoAtom.Interop
         /// Get the path of the shared common directory for this repository.
         /// </summary>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return the path to the common dir</returns>
+        /// <returns>the path to the common dir</returns>
         /// <remarks>
         /// If the repository is bare, it is the root directory for the repository.
         /// If the repository is a worktree, it is the parent repo's gitdir.
@@ -992,7 +992,7 @@ namespace XenoAtom.Interop
         /// Get the path of the shared common directory for this repository.
         /// </summary>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return the path to the common dir</returns>
+        /// <returns>the path to the common dir</returns>
         /// <remarks>
         /// If the repository is bare, it is the root directory for the repository.
         /// If the repository is a worktree, it is the parent repo's gitdir.
@@ -1010,7 +1010,7 @@ namespace XenoAtom.Interop
         /// <param name="workdir">The path to a working directory</param>
         /// <param name="update_gitlink">Create/update gitlink in workdir and set config
         /// "core.worktree" (if workdir is not the parent of the .git directory)</param>
-        /// <returns>@return 0, or an error code</returns>
+        /// <returns>0, or an error code</returns>
         /// <remarks>
         /// The working directory doesn't need to be the same one
         /// that contains the `.git` folder for this repository.If this repository is bare, setting its working directory
@@ -1029,7 +1029,7 @@ namespace XenoAtom.Interop
         /// <param name="workdir">The path to a working directory</param>
         /// <param name="update_gitlink">Create/update gitlink in workdir and set config
         /// "core.worktree" (if workdir is not the parent of the .git directory)</param>
-        /// <returns>@return 0, or an error code</returns>
+        /// <returns>0, or an error code</returns>
         /// <remarks>
         /// The working directory doesn't need to be the same one
         /// that contains the `.git` folder for this repository.If this repository is bare, setting its working directory
@@ -1045,7 +1045,7 @@ namespace XenoAtom.Interop
         /// Check if a repository is bare
         /// </summary>
         /// <param name="repo">Repo to test</param>
-        /// <returns>@return 1 if the repository is bare, 0 otherwise.</returns>
+        /// <returns>1 if the repository is bare, 0 otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_is_bare")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_repository_is_bare(libgit2.git_repository repo);
@@ -1054,7 +1054,7 @@ namespace XenoAtom.Interop
         /// Check if a repository is a linked work tree
         /// </summary>
         /// <param name="repo">Repo to test</param>
-        /// <returns>@return 1 if the repository is a linked work tree, 0 otherwise.</returns>
+        /// <returns>1 if the repository is a linked work tree, 0 otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_is_worktree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_repository_is_worktree(libgit2.git_repository repo);
@@ -1064,7 +1064,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the loaded configuration</param>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return 0, or an error code</returns>
+        /// <returns>0, or an error code</returns>
         /// <remarks>
         /// If a configuration file has not been set, the default
         /// config set for the repository will be returned, including
@@ -1080,7 +1080,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the loaded configuration</param>
         /// <param name="repo">the repository</param>
-        /// <returns>@return 0, or an error code</returns>
+        /// <returns>0, or an error code</returns>
         /// <remarks>
         /// Convenience function to take a snapshot from the repository's
         /// configuration.  The contents of this snapshot will not change,
@@ -1096,7 +1096,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the loaded ODB</param>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return 0, or an error code</returns>
+        /// <returns>0, or an error code</returns>
         /// <remarks>
         /// If a custom ODB has not been set, the default
         /// database for the repository will be returned (the one
@@ -1112,7 +1112,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the loaded refdb</param>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return 0, or an error code</returns>
+        /// <returns>0, or an error code</returns>
         /// <remarks>
         /// If a custom refsdb has not been set, the default database for
         /// the repository will be returned (the one that manipulates loose
@@ -1128,7 +1128,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the loaded index</param>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return 0, or an error code</returns>
+        /// <returns>0, or an error code</returns>
         /// <remarks>
         /// If a custom index has not been set, the default
         /// index for the repository will be returned (the one
@@ -1144,7 +1144,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">git_buf to write data into</param>
         /// <param name="repo">Repository to read prepared message from</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if no message exists or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if no message exists or an error code</returns>
         /// <remarks>
         /// Operations such as git revert/cherry-pick/merge with the -n option
         /// stop just short of creating a commit with the changes and save
@@ -1161,7 +1161,7 @@ namespace XenoAtom.Interop
         /// Remove git's prepared message.
         /// </summary>
         /// <param name="repo">Repository to remove prepared message from.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Remove the message that `git_repository_message` retrieves.
         /// </remarks>
@@ -1174,7 +1174,7 @@ namespace XenoAtom.Interop
         /// revert, cherry-pick, etc.  For example: MERGE_HEAD, MERGE_MSG, etc.
         /// </summary>
         /// <param name="repo">A repository object</param>
-        /// <returns>@return 0 on success, or error</returns>
+        /// <returns>0 on success, or error</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_state_cleanup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_repository_state_cleanup(libgit2.git_repository repo);
@@ -1224,7 +1224,7 @@ namespace XenoAtom.Interop
         /// calculating the hash. If this is `NULL` and the `path`
         /// parameter is a file within the repository's working
         /// directory, then the `path` will be used.</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// If you simply want to calculate the hash of a file on disk with no filters,
         /// you can just use the `git_odb_hashfile()` API.  However, if you want to
@@ -1251,7 +1251,7 @@ namespace XenoAtom.Interop
         /// calculating the hash. If this is `NULL` and the `path`
         /// parameter is a file within the repository's working
         /// directory, then the `path` will be used.</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// If you simply want to calculate the hash of a file on disk with no filters,
         /// you can just use the `git_odb_hashfile()` API.  However, if you want to
@@ -1269,7 +1269,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">Repository pointer</param>
         /// <param name="refname">Canonical name of the reference the HEAD should point at</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// If the provided reference points to a Tree or a Blob, the HEAD is
         /// unaltered and -1 is returned.If the provided reference points to a branch, the HEAD will point
@@ -1287,7 +1287,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">Repository pointer</param>
         /// <param name="refname">Canonical name of the reference the HEAD should point at</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// If the provided reference points to a Tree or a Blob, the HEAD is
         /// unaltered and -1 is returned.If the provided reference points to a branch, the HEAD will point
@@ -1305,7 +1305,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">Repository pointer</param>
         /// <param name="committish">Object id of the Commit the HEAD should point to</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// If the provided committish cannot be found in the repository, the HEAD
         /// is unaltered and GIT_ENOTFOUND is returned.If the provided committish cannot be peeled into a commit, the HEAD
@@ -1350,7 +1350,7 @@ namespace XenoAtom.Interop
         /// (merge, cherry-pick, etc) is in progress.
         /// </summary>
         /// <param name="repo">Repository pointer</param>
-        /// <returns>@return The state of the repository</returns>
+        /// <returns>The state of the repository</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_state")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_repository_state(libgit2.git_repository repo);
@@ -1362,7 +1362,7 @@ namespace XenoAtom.Interop
         /// <param name="nmspace">The namespace. This should not include the refs
         /// folder, e.g. to namespace all references under `refs/namespaces/foo/`,
         /// use `foo` as the namespace.</param>
-        /// <returns>@return 0 on success, -1 on error</returns>
+        /// <returns>0 on success, -1 on error</returns>
         /// <remarks>
         /// This namespace affects all reference operations for the repo.
         /// See `man gitnamespaces`
@@ -1378,7 +1378,7 @@ namespace XenoAtom.Interop
         /// <param name="nmspace">The namespace. This should not include the refs
         /// folder, e.g. to namespace all references under `refs/namespaces/foo/`,
         /// use `foo` as the namespace.</param>
-        /// <returns>@return 0 on success, -1 on error</returns>
+        /// <returns>0 on success, -1 on error</returns>
         /// <remarks>
         /// This namespace affects all reference operations for the repo.
         /// See `man gitnamespaces`
@@ -1391,7 +1391,7 @@ namespace XenoAtom.Interop
         /// Get the currently active namespace for this repository
         /// </summary>
         /// <param name="repo">The repo</param>
-        /// <returns>@return the active namespace, or NULL if there isn't one</returns>
+        /// <returns>the active namespace, or NULL if there isn't one</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_get_namespace")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_repository_get_namespace_(libgit2.git_repository repo);
@@ -1400,7 +1400,7 @@ namespace XenoAtom.Interop
         /// Get the currently active namespace for this repository
         /// </summary>
         /// <param name="repo">The repo</param>
-        /// <returns>@return the active namespace, or NULL if there isn't one</returns>
+        /// <returns>the active namespace, or NULL if there isn't one</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_get_namespace")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -1410,7 +1410,7 @@ namespace XenoAtom.Interop
         /// Determine if the repository was a shallow clone
         /// </summary>
         /// <param name="repo">The repository</param>
-        /// <returns>@return 1 if shallow, zero if not</returns>
+        /// <returns>1 if shallow, zero if not</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_is_shallow")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_repository_is_shallow(libgit2.git_repository repo);
@@ -1421,7 +1421,7 @@ namespace XenoAtom.Interop
         /// <param name="name">where to store the pointer to the name</param>
         /// <param name="email">where to store the pointer to the email</param>
         /// <param name="repo">the repository</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The memory is owned by the repository and must not be freed by the
         /// user.
@@ -1436,7 +1436,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to configure</param>
         /// <param name="name">the name to use for the reflog entries</param>
         /// <param name="email">the email to use for the reflog entries</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// If both are set, this name and email will be used to write to the
         /// reflog. Pass NULL to unset. When unset, the identity will be taken
@@ -1452,7 +1452,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to configure</param>
         /// <param name="name">the name to use for the reflog entries</param>
         /// <param name="email">the email to use for the reflog entries</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// If both are set, this name and email will be used to write to the
         /// reflog. Pass NULL to unset. When unset, the identity will be taken
@@ -1466,7 +1466,7 @@ namespace XenoAtom.Interop
         /// Gets the object type used by this repository.
         /// </summary>
         /// <param name="repo">the repository</param>
-        /// <returns>@return the object id type</returns>
+        /// <returns>the object id type</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_oid_type")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid_t git_repository_oid_type(libgit2.git_repository repo);
@@ -1478,7 +1478,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="commits">a `git_commitarray` that will contain the commit parents</param>
         /// <param name="repo">the repository</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_commit_parents")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_repository_commit_parents(ref libgit2.git_commitarray commits, libgit2.git_repository repo);

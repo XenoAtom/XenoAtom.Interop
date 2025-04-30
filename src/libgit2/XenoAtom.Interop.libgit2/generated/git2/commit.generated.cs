@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -126,7 +126,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repo to use when locating the commit.</param>
         /// <param name="id">identity of the commit to locate. If the object is
         /// an annotated tag it will be peeled back to the commit.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The returned object should be released with `git_commit_free` when no
         /// longer needed.
@@ -144,7 +144,7 @@ namespace XenoAtom.Interop
         /// <param name="id">identity of the commit to locate. If the object is
         /// an annotated tag it will be peeled back to the commit.</param>
         /// <param name="len">the length of the short identifier</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The returned object should be released with `git_commit_free` when no
         /// longer needed.
@@ -171,7 +171,7 @@ namespace XenoAtom.Interop
         /// Get the id of a commit.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return object identity for the commit.</returns>
+        /// <returns>object identity for the commit.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_commit_id(libgit2.git_commit commit);
@@ -180,7 +180,7 @@ namespace XenoAtom.Interop
         /// Get the repository that contains the commit.
         /// </summary>
         /// <param name="commit">A previously loaded commit.</param>
-        /// <returns>@return Repository that contains this commit.</returns>
+        /// <returns>Repository that contains this commit.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_owner")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_repository git_commit_owner(libgit2.git_commit commit);
@@ -190,7 +190,7 @@ namespace XenoAtom.Interop
         /// as a string representing a standard encoding name.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return NULL, or the encoding</returns>
+        /// <returns>NULL, or the encoding</returns>
         /// <remarks>
         /// The encoding may be NULL if the `encoding` header
         /// in the commit is missing; in that case UTF-8 is assumed.
@@ -204,7 +204,7 @@ namespace XenoAtom.Interop
         /// as a string representing a standard encoding name.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return NULL, or the encoding</returns>
+        /// <returns>NULL, or the encoding</returns>
         /// <remarks>
         /// The encoding may be NULL if the `encoding` header
         /// in the commit is missing; in that case UTF-8 is assumed.
@@ -218,7 +218,7 @@ namespace XenoAtom.Interop
         /// Get the full message of a commit.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the message of a commit</returns>
+        /// <returns>the message of a commit</returns>
         /// <remarks>
         /// The returned message will be slightly prettified by removing any
         /// potential leading newlines.
@@ -231,7 +231,7 @@ namespace XenoAtom.Interop
         /// Get the full message of a commit.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the message of a commit</returns>
+        /// <returns>the message of a commit</returns>
         /// <remarks>
         /// The returned message will be slightly prettified by removing any
         /// potential leading newlines.
@@ -245,7 +245,7 @@ namespace XenoAtom.Interop
         /// Get the full raw message of a commit.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the raw message of a commit</returns>
+        /// <returns>the raw message of a commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message_raw")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_commit_message_raw_(libgit2.git_commit commit);
@@ -254,7 +254,7 @@ namespace XenoAtom.Interop
         /// Get the full raw message of a commit.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the raw message of a commit</returns>
+        /// <returns>the raw message of a commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_message_raw")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -264,7 +264,7 @@ namespace XenoAtom.Interop
         /// Get the short "summary" of the git commit message.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the summary of a commit or NULL on error</returns>
+        /// <returns>the summary of a commit or NULL on error</returns>
         /// <remarks>
         /// The returned message is the summary of the commit, comprising the
         /// first paragraph of the message with whitespace trimmed and squashed.
@@ -277,7 +277,7 @@ namespace XenoAtom.Interop
         /// Get the short "summary" of the git commit message.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the summary of a commit or NULL on error</returns>
+        /// <returns>the summary of a commit or NULL on error</returns>
         /// <remarks>
         /// The returned message is the summary of the commit, comprising the
         /// first paragraph of the message with whitespace trimmed and squashed.
@@ -322,7 +322,7 @@ namespace XenoAtom.Interop
         /// Get the commit time (i.e. committer time) of a commit.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the time of a commit</returns>
+        /// <returns>the time of a commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_time")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_time_t git_commit_time(libgit2.git_commit commit);
@@ -331,7 +331,7 @@ namespace XenoAtom.Interop
         /// Get the commit timezone offset (i.e. committer's preferred timezone) of a commit.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return positive or negative timezone offset, in minutes from UTC</returns>
+        /// <returns>positive or negative timezone offset, in minutes from UTC</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_time_offset")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_commit_time_offset(libgit2.git_commit commit);
@@ -340,7 +340,7 @@ namespace XenoAtom.Interop
         /// Get the committer of a commit.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the committer of a commit</returns>
+        /// <returns>the committer of a commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_committer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_signature* git_commit_committer(libgit2.git_commit commit);
@@ -349,7 +349,7 @@ namespace XenoAtom.Interop
         /// Get the author of a commit.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the author of a commit</returns>
+        /// <returns>the author of a commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_author")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_signature* git_commit_author(libgit2.git_commit commit);
@@ -361,7 +361,7 @@ namespace XenoAtom.Interop
         /// <param name="out">a pointer to store the resolved signature.</param>
         /// <param name="commit">a previously loaded commit.</param>
         /// <param name="mailmap">the mailmap to resolve with. (may be NULL)</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_signature_free` to free the signature.
         /// </remarks>
@@ -376,7 +376,7 @@ namespace XenoAtom.Interop
         /// <param name="out">a pointer to store the resolved signature.</param>
         /// <param name="commit">a previously loaded commit.</param>
         /// <param name="mailmap">the mailmap to resolve with. (may be NULL)</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_signature_free` to free the signature.
         /// </remarks>
@@ -388,7 +388,7 @@ namespace XenoAtom.Interop
         /// Get the full raw text of the commit header.
         /// </summary>
         /// <param name="commit">a previously loaded commit</param>
-        /// <returns>@return the header text of the commit</returns>
+        /// <returns>the header text of the commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_raw_header")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_commit_raw_header_(libgit2.git_commit commit);
@@ -397,7 +397,7 @@ namespace XenoAtom.Interop
         /// Get the full raw text of the commit header.
         /// </summary>
         /// <param name="commit">a previously loaded commit</param>
-        /// <returns>@return the header text of the commit</returns>
+        /// <returns>the header text of the commit</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_raw_header")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -408,7 +408,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tree_out">pointer where to store the tree object</param>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_tree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_commit_tree(out libgit2.git_tree tree_out, libgit2.git_commit commit);
@@ -419,7 +419,7 @@ namespace XenoAtom.Interop
         /// from the ODB.
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return the id of tree pointed to by commit.</returns>
+        /// <returns>the id of tree pointed to by commit.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_tree_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_commit_tree_id(libgit2.git_commit commit);
@@ -428,7 +428,7 @@ namespace XenoAtom.Interop
         /// Get the number of parents of this commit
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
-        /// <returns>@return integer of count of parents</returns>
+        /// <returns>integer of count of parents</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_parentcount")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial uint git_commit_parentcount(libgit2.git_commit commit);
@@ -439,7 +439,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer where to store the parent commit</param>
         /// <param name="commit">a previously loaded commit.</param>
         /// <param name="n">the position of the parent (from 0 to `parentcount`)</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_parent")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_commit_parent(out libgit2.git_commit @out, libgit2.git_commit commit, uint n);
@@ -451,7 +451,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="commit">a previously loaded commit.</param>
         /// <param name="n">the position of the parent (from 0 to `parentcount`)</param>
-        /// <returns>@return the id of the parent, NULL on error.</returns>
+        /// <returns>the id of the parent, NULL on error.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_parent_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_commit_parent_id(libgit2.git_commit commit, uint n);
@@ -658,7 +658,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">repository to commit changes in</param>
         /// <param name="message">the commit message</param>
         /// <param name="opts">options for creating the commit</param>
-        /// <returns>@return 0 on success, GIT_EUNCHANGED if there were no changes to commit, or an error code</returns>
+        /// <returns>0 on success, GIT_EUNCHANGED if there were no changes to commit, or an error code</returns>
         /// <remarks>
         /// By default, empty commits are not allowed.
         /// </remarks>
@@ -674,7 +674,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">repository to commit changes in</param>
         /// <param name="message">the commit message</param>
         /// <param name="opts">options for creating the commit</param>
-        /// <returns>@return 0 on success, GIT_EUNCHANGED if there were no changes to commit, or an error code</returns>
+        /// <returns>0 on success, GIT_EUNCHANGED if there were no changes to commit, or an error code</returns>
         /// <remarks>
         /// By default, empty commits are not allowed.
         /// </remarks>
@@ -740,7 +740,7 @@ namespace XenoAtom.Interop
         /// objects that will be used as the parents for this commit. This
         /// array may be NULL if `parent_count` is 0 (root commit). All the
         /// given commits must be owned by the `repo`.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Create a commit as with `git_commit_create()` but instead of
         /// writing it to the objectdb, write the contents of the object into a
@@ -770,7 +770,7 @@ namespace XenoAtom.Interop
         /// objects that will be used as the parents for this commit. This
         /// array may be NULL if `parent_count` is 0 (root commit). All the
         /// given commits must be owned by the `repo`.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Create a commit as with `git_commit_create()` but instead of
         /// writing it to the objectdb, write the contents of the object into a
@@ -790,7 +790,7 @@ namespace XenoAtom.Interop
         /// to create a commit without adding a signature field.</param>
         /// <param name="signature_field">which header field should contain this
         /// signature. Leave `NULL` for the default of "gpgsig"</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Given the unsigned commit object's contents, its signature and the
         /// header field in which to store the signature, attach the signature
@@ -810,7 +810,7 @@ namespace XenoAtom.Interop
         /// to create a commit without adding a signature field.</param>
         /// <param name="signature_field">which header field should contain this
         /// signature. Leave `NULL` for the default of "gpgsig"</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Given the unsigned commit object's contents, its signature and the
         /// header field in which to store the signature, attach the signature
@@ -826,7 +826,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the copy of the commit</param>
         /// <param name="source">Original commit to copy</param>
-        /// <returns>@return 0</returns>
+        /// <returns>0</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_commit_dup(out libgit2.git_commit @out, libgit2.git_commit source);

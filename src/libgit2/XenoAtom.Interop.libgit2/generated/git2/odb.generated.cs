@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -126,7 +126,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="odb">database to add the backend to</param>
         /// <param name="path">path to the objects folder for the alternate</param>
-        /// <returns>@return 0 on success, error code otherwise</returns>
+        /// <returns>0 on success, error code otherwise</returns>
         /// <remarks>
         /// Note that the added path must point to an `objects`, not
         /// to a full repository, to use it as an alternate store.Alternate backends are always checked for objects *after*
@@ -141,7 +141,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="odb">database to add the backend to</param>
         /// <param name="path">path to the objects folder for the alternate</param>
-        /// <returns>@return 0 on success, error code otherwise</returns>
+        /// <returns>0 on success, error code otherwise</returns>
         /// <remarks>
         /// Note that the added path must point to an `objects`, not
         /// to a full repository, to use it as an alternate store.Alternate backends are always checked for objects *after*
@@ -229,7 +229,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="db">database to be searched for the given object.</param>
         /// <param name="id">the object to search for.</param>
-        /// <returns>@return 1 if the object was found, 0 otherwise</returns>
+        /// <returns>1 if the object was found, 0 otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_exists")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_odb_exists(libgit2.git_odb db, in libgit2.git_oid id);
@@ -241,7 +241,7 @@ namespace XenoAtom.Interop
         /// <param name="db">database to be searched for the given object.</param>
         /// <param name="id">the object to search for.</param>
         /// <param name="flags">flags affecting the lookup (see `git_odb_lookup_flags_t`)</param>
-        /// <returns>@return 1 if the object was found, 0 otherwise</returns>
+        /// <returns>1 if the object was found, 0 otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_exists_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_odb_exists_ext(libgit2.git_odb db, in libgit2.git_oid id, libgit2.git_odb_lookup_flags_t flags);
@@ -269,7 +269,7 @@ namespace XenoAtom.Interop
         /// <param name="db">The database to be searched for the given objects.</param>
         /// <param name="ids">An array of short object IDs to search for</param>
         /// <param name="count">The length of the `ids` array</param>
-        /// <returns>@return 0 on success or an error code on failure</returns>
+        /// <returns>0 on success or an error code on failure</returns>
         /// <remarks>
         /// The given array will be updated in place: for each abbreviated ID that is
         /// unique in the database, and of the given type (if specified),
@@ -287,7 +287,7 @@ namespace XenoAtom.Interop
         /// Refresh the object database to load newly added files.
         /// </summary>
         /// <param name="db">database to refresh</param>
-        /// <returns>@return 0 on success, error code otherwise</returns>
+        /// <returns>0 on success, error code otherwise</returns>
         /// <remarks>
         /// If the object databases have changed on disk while the library
         /// is running, this function will force a reload of the underlying
@@ -307,7 +307,7 @@ namespace XenoAtom.Interop
         /// <param name="db">database to use</param>
         /// <param name="cb">the callback to call for each object</param>
         /// <param name="payload">data to pass to the callback</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// The callback will be called for each object available in the
         /// database. Note that the objects are likely to be returned in the index
@@ -326,7 +326,7 @@ namespace XenoAtom.Interop
         /// <param name="data">buffer with the data to store</param>
         /// <param name="len">size of the buffer</param>
         /// <param name="type">type of the data to store</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This method writes a full object straight into the ODB.
         /// For most cases, it is preferred to write objects through a write
@@ -345,7 +345,7 @@ namespace XenoAtom.Interop
         /// <param name="db">object database where the stream will write</param>
         /// <param name="size">final size of the object that will be written</param>
         /// <param name="type">type of the object that will be written</param>
-        /// <returns>@return 0 if the stream was created; error code otherwise</returns>
+        /// <returns>0 if the stream was created; error code otherwise</returns>
         /// <remarks>
         /// The type and final length of the object must be specified
         /// when opening the stream.The returned stream will be of type `GIT_STREAM_WRONLY`, and it
@@ -364,7 +364,7 @@ namespace XenoAtom.Interop
         /// <param name="stream">the stream</param>
         /// <param name="buffer">the data to write</param>
         /// <param name="len">the buffer's length</param>
-        /// <returns>@return 0 if the write succeeded, error code otherwise</returns>
+        /// <returns>0 if the write succeeded, error code otherwise</returns>
         /// <remarks>
         /// This method will fail if the total number of received bytes exceeds the
         /// size declared with `git_odb_open_wstream()`
@@ -378,7 +378,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to store the resulting object's id</param>
         /// <param name="stream">the stream</param>
-        /// <returns>@return 0 on success, an error code otherwise</returns>
+        /// <returns>0 on success, an error code otherwise</returns>
         /// <remarks>
         /// The object will take its final name and will be available to the
         /// odb.This method will fail if the total number of received bytes
@@ -394,7 +394,7 @@ namespace XenoAtom.Interop
         /// <param name="stream">the stream</param>
         /// <param name="buffer">a user-allocated buffer to store the data in.</param>
         /// <param name="len">the buffer's length</param>
-        /// <returns>@return 0 if the read succeeded, error code otherwise</returns>
+        /// <returns>0 if the read succeeded, error code otherwise</returns>
         /// <remarks>
         /// Most backends don't implement streaming reads
         /// </remarks>
@@ -418,7 +418,7 @@ namespace XenoAtom.Interop
         /// <param name="type">pointer where to store the type of the object</param>
         /// <param name="db">object database where the stream will read from</param>
         /// <param name="oid">oid of the object the stream will read from</param>
-        /// <returns>@return 0 if the stream was created, error code otherwise</returns>
+        /// <returns>0 if the stream was created, error code otherwise</returns>
         /// <remarks>
         /// Note that most backends do *not* support streaming reads
         /// because they store their objects as compressed/delta'ed blobs.It's recommended to use `git_odb_read` instead, which is
@@ -440,7 +440,7 @@ namespace XenoAtom.Interop
         /// Be aware that this is called inline with network and indexing operations,
         /// so performance may be affected.</param>
         /// <param name="progress_payload">payload for the progress callback</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// If the ODB layer understands pack files, then the given
         /// packfile will likely be streamed directly to disk (and a
@@ -457,7 +457,7 @@ namespace XenoAtom.Interop
         /// Write a `multi-pack-index` file from all the `.pack` files in the ODB.
         /// </summary>
         /// <param name="db">object database where the `multi-pack-index` file will be written.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// If the ODB layer understands pack files, then this will create a file called
         /// `multi-pack-index` next to the `.pack` and `.idx` files, which will contain
@@ -486,7 +486,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="dest">pointer where to store the copy</param>
         /// <param name="source">object to copy</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The returned copy must be manually freed with `git_odb_object_free`.
         /// Note that because of an implementation detail, the returned copy will be
@@ -513,7 +513,7 @@ namespace XenoAtom.Interop
         /// Return the OID of an ODB object
         /// </summary>
         /// <param name="object">the object</param>
-        /// <returns>@return a pointer to the OID</returns>
+        /// <returns>a pointer to the OID</returns>
         /// <remarks>
         /// This is the OID from which the object was read from
         /// </remarks>
@@ -525,7 +525,7 @@ namespace XenoAtom.Interop
         /// Return the data of an ODB object
         /// </summary>
         /// <param name="object">the object</param>
-        /// <returns>@return a pointer to the data</returns>
+        /// <returns>a pointer to the data</returns>
         /// <remarks>
         /// This is the uncompressed, raw data as read from the ODB,
         /// without the leading header.This pointer is owned by the object and shall not be free'd.
@@ -538,7 +538,7 @@ namespace XenoAtom.Interop
         /// Return the size of an ODB object
         /// </summary>
         /// <param name="object">the object</param>
-        /// <returns>@return the size</returns>
+        /// <returns>the size</returns>
         /// <remarks>
         /// This is the real size of the `data` buffer, not the
         /// actual size of the object.
@@ -551,7 +551,7 @@ namespace XenoAtom.Interop
         /// Return the type of an ODB object
         /// </summary>
         /// <param name="object">the object</param>
-        /// <returns>@return the type</returns>
+        /// <returns>the type</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_object_type")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_object_t git_odb_object_type(libgit2.git_odb_object @object);
@@ -562,7 +562,7 @@ namespace XenoAtom.Interop
         /// <param name="odb">database to add the backend to</param>
         /// <param name="backend">pointer to a git_odb_backend instance</param>
         /// <param name="priority">Value for ordering the backends queue</param>
-        /// <returns>@return 0 on success, error code otherwise</returns>
+        /// <returns>0 on success, error code otherwise</returns>
         /// <remarks>
         /// The backends are checked in relative ordering, based on the
         /// value of the `priority` parameter.Read 
@@ -580,7 +580,7 @@ namespace XenoAtom.Interop
         /// <param name="odb">database to add the backend to</param>
         /// <param name="backend">pointer to a git_odb_backend instance</param>
         /// <param name="priority">Value for ordering the backends queue</param>
-        /// <returns>@return 0 on success, error code otherwise</returns>
+        /// <returns>0 on success, error code otherwise</returns>
         /// <remarks>
         /// Alternate backends are always checked for objects *after*
         /// all the main backends have been exhausted.The backends are checked in relative ordering, based on the
@@ -596,7 +596,7 @@ namespace XenoAtom.Interop
         /// Get the number of ODB backend objects
         /// </summary>
         /// <param name="odb">object database</param>
-        /// <returns>@return number of backends in the ODB</returns>
+        /// <returns>number of backends in the ODB</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_num_backends")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_odb_num_backends(libgit2.git_odb odb);
@@ -619,7 +619,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="odb">object database</param>
         /// <param name="cgraph">the git commit-graph</param>
-        /// <returns>@return 0 on success; error code otherwise</returns>
+        /// <returns>0 on success; error code otherwise</returns>
         /// <remarks>
         /// After a successful call, the ownership of the cgraph parameter will be
         /// transferred to libgit2, and the caller should not free it.The commit-graph can also be unset by explicitly passing NULL as the cgraph

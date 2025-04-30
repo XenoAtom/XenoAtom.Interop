@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -113,7 +113,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to the array of working tree names</param>
         /// <param name="repo">the repo to use when listing working trees</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The returned list should be released with `git_strarray_free`
         /// when no longer needed.
@@ -128,7 +128,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Output pointer to looked up worktree or `NULL`</param>
         /// <param name="repo">The repository containing worktrees</param>
         /// <param name="name">Name of the working tree to look up</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_worktree_lookup(out libgit2.git_worktree @out, libgit2.git_repository repo, byte* name);
@@ -139,7 +139,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Output pointer to looked up worktree or `NULL`</param>
         /// <param name="repo">The repository containing worktrees</param>
         /// <param name="name">Name of the working tree to look up</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_worktree_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_worktree_lookup(out libgit2.git_worktree @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
@@ -149,7 +149,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Out-pointer for the newly allocated worktree</param>
         /// <param name="repo">Repository to look up worktree for</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If a repository is not the main tree but a worktree, this
         /// function will look up the worktree inside the parent
@@ -171,7 +171,7 @@ namespace XenoAtom.Interop
         /// Check if worktree is valid
         /// </summary>
         /// <param name="wt">Worktree to check</param>
-        /// <returns>@return 0 when worktree is valid, error-code otherwise</returns>
+        /// <returns>0 when worktree is valid, error-code otherwise</returns>
         /// <remarks>
         /// A valid worktree requires both the git data structures inside
         /// the linked parent repository and the linked working copy to be
@@ -186,7 +186,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_worktree_add_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_WORKTREE_ADD_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_worktree_add_options` with default values. Equivalent to
         /// creating an instance with `GIT_WORKTREE_ADD_OPTIONS_INIT`.
@@ -203,7 +203,7 @@ namespace XenoAtom.Interop
         /// <param name="name">Name of the working tree</param>
         /// <param name="path">Path to create working tree at</param>
         /// <param name="opts">Options to modify default behavior. May be NULL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Add a new working tree for the repository, that is create the
         /// required data structures inside the repository and check out
@@ -221,7 +221,7 @@ namespace XenoAtom.Interop
         /// <param name="name">Name of the working tree</param>
         /// <param name="path">Path to create working tree at</param>
         /// <param name="opts">Options to modify default behavior. May be NULL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Add a new working tree for the repository, that is create the
         /// required data structures inside the repository and check out
@@ -236,7 +236,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="wt">Worktree to lock</param>
         /// <param name="reason">Reason why the working tree is being locked</param>
-        /// <returns>@return 0 on success, non-zero otherwise</returns>
+        /// <returns>0 on success, non-zero otherwise</returns>
         /// <remarks>
         /// Lock a worktree, optionally specifying a reason why the linked
         /// working tree is being locked.
@@ -250,7 +250,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="wt">Worktree to lock</param>
         /// <param name="reason">Reason why the working tree is being locked</param>
-        /// <returns>@return 0 on success, non-zero otherwise</returns>
+        /// <returns>0 on success, non-zero otherwise</returns>
         /// <remarks>
         /// Lock a worktree, optionally specifying a reason why the linked
         /// working tree is being locked.
@@ -332,7 +332,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_worktree_prune_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_WORKTREE_PRUNE_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_worktree_prune_options` with default values. Equivalent to
         /// creating an instance with `GIT_WORKTREE_PRUNE_OPTIONS_INIT`.
@@ -346,7 +346,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="wt">Worktree to check.</param>
         /// <param name="opts">The prunable options.</param>
-        /// <returns>@return 1 if the worktree is prunable, 0 otherwise, or an error code.</returns>
+        /// <returns>1 if the worktree is prunable, 0 otherwise, or an error code.</returns>
         /// <remarks>
         /// A worktree is not prunable in the following scenarios:- the worktree is linking to a valid on-disk worktree. The
         /// `valid` member will cause this check to be ignored.
@@ -367,7 +367,7 @@ namespace XenoAtom.Interop
         /// <param name="wt">Worktree to prune</param>
         /// <param name="opts">Specifies which checks to override. See
         /// `git_worktree_is_prunable`. May be NULL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Prune the working tree, that is remove the git data
         /// structures on disk. The repository will only be pruned of

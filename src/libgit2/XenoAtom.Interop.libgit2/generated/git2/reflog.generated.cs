@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -23,7 +23,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to reflog</param>
         /// <param name="repo">the repository</param>
         /// <param name="name">reference to look up</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If there is no reflog file for the given
         /// reference yet, an empty reflog object will
@@ -40,7 +40,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to reflog</param>
         /// <param name="repo">the repository</param>
         /// <param name="name">reference to look up</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If there is no reflog file for the given
         /// reference yet, an empty reflog object will
@@ -56,7 +56,7 @@ namespace XenoAtom.Interop
         /// using an atomic file lock.
         /// </summary>
         /// <param name="reflog">an existing reflog object</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_write")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_reflog_write(libgit2.git_reflog reflog);
@@ -68,7 +68,7 @@ namespace XenoAtom.Interop
         /// <param name="id">the OID the reference is now pointing to</param>
         /// <param name="committer">the signature of the committer</param>
         /// <param name="msg">the reflog message</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// `msg` is optional and can be NULL.
         /// </remarks>
@@ -83,7 +83,7 @@ namespace XenoAtom.Interop
         /// <param name="id">the OID the reference is now pointing to</param>
         /// <param name="committer">the signature of the committer</param>
         /// <param name="msg">the reflog message</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// `msg` is optional and can be NULL.
         /// </remarks>
@@ -97,7 +97,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository</param>
         /// <param name="old_name">the old name of the reference</param>
         /// <param name="name">the new name of the reference</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// The reflog to be renamed is expected to already existThe new name will be checked for validity.
         /// See `git_reference_create_symbolic()` for rules about valid names.
@@ -112,7 +112,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository</param>
         /// <param name="old_name">the old name of the reference</param>
         /// <param name="name">the new name of the reference</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// The reflog to be renamed is expected to already existThe new name will be checked for validity.
         /// See `git_reference_create_symbolic()` for rules about valid names.
@@ -126,7 +126,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">the repository</param>
         /// <param name="name">the reflog to delete</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_delete")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_reflog_delete(libgit2.git_repository repo, byte* name);
@@ -136,7 +136,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">the repository</param>
         /// <param name="name">the reflog to delete</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_delete")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_reflog_delete(libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
@@ -145,7 +145,7 @@ namespace XenoAtom.Interop
         /// Get the number of log entries in a reflog
         /// </summary>
         /// <param name="reflog">the previously loaded reflog</param>
-        /// <returns>@return the number of log entries</returns>
+        /// <returns>the number of log entries</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_entrycount")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_reflog_entrycount(libgit2.git_reflog reflog);
@@ -156,7 +156,7 @@ namespace XenoAtom.Interop
         /// <param name="reflog">a previously loaded reflog</param>
         /// <param name="idx">the position of the entry to lookup. Should be greater than or
         /// equal to 0 (zero) and less than `git_reflog_entrycount()`.</param>
-        /// <returns>@return the entry; NULL if not found</returns>
+        /// <returns>the entry; NULL if not found</returns>
         /// <remarks>
         /// Requesting the reflog entry with an index of 0 (zero) will
         /// return the most recently created entry.
@@ -187,7 +187,7 @@ namespace XenoAtom.Interop
         /// Get the old oid
         /// </summary>
         /// <param name="entry">a reflog entry</param>
-        /// <returns>@return the old oid</returns>
+        /// <returns>the old oid</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_entry_id_old")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_reflog_entry_id_old(libgit2.git_reflog_entry entry);
@@ -196,7 +196,7 @@ namespace XenoAtom.Interop
         /// Get the new oid
         /// </summary>
         /// <param name="entry">a reflog entry</param>
-        /// <returns>@return the new oid at this time</returns>
+        /// <returns>the new oid at this time</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_entry_id_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_reflog_entry_id_new(libgit2.git_reflog_entry entry);
@@ -205,7 +205,7 @@ namespace XenoAtom.Interop
         /// Get the committer of this entry
         /// </summary>
         /// <param name="entry">a reflog entry</param>
-        /// <returns>@return the committer</returns>
+        /// <returns>the committer</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_entry_committer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_signature* git_reflog_entry_committer(libgit2.git_reflog_entry entry);
@@ -214,7 +214,7 @@ namespace XenoAtom.Interop
         /// Get the log message
         /// </summary>
         /// <param name="entry">a reflog entry</param>
-        /// <returns>@return the log msg</returns>
+        /// <returns>the log msg</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_entry_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_reflog_entry_message_(libgit2.git_reflog_entry entry);
@@ -223,7 +223,7 @@ namespace XenoAtom.Interop
         /// Get the log message
         /// </summary>
         /// <param name="entry">a reflog entry</param>
-        /// <returns>@return the log msg</returns>
+        /// <returns>the log msg</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reflog_entry_message")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]

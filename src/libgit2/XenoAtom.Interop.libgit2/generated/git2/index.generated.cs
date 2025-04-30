@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -279,7 +279,7 @@ namespace XenoAtom.Interop
         /// Get the repository this index relates to
         /// </summary>
         /// <param name="index">The index</param>
-        /// <returns>@return A pointer to the repository</returns>
+        /// <returns>A pointer to the repository</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_owner")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_repository git_index_owner(libgit2.git_index index);
@@ -288,7 +288,7 @@ namespace XenoAtom.Interop
         /// Read index capabilities flags.
         /// </summary>
         /// <param name="index">An existing index object</param>
-        /// <returns>@return A combination of GIT_INDEX_CAPABILITY values</returns>
+        /// <returns>A combination of GIT_INDEX_CAPABILITY values</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_caps")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_index_capability_t git_index_caps(libgit2.git_index index);
@@ -298,7 +298,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">An existing index object</param>
         /// <param name="caps">A combination of GIT_INDEX_CAPABILITY values</param>
-        /// <returns>@return 0 on success, -1 on failure</returns>
+        /// <returns>0 on success, -1 on failure</returns>
         /// <remarks>
         /// If you pass `GIT_INDEX_CAPABILITY_FROM_OWNER` for the caps, then
         /// capabilities will be read from the config of the owner object,
@@ -312,7 +312,7 @@ namespace XenoAtom.Interop
         /// Get index on-disk version.
         /// </summary>
         /// <param name="index">An existing index object</param>
-        /// <returns>@return the index version</returns>
+        /// <returns>the index version</returns>
         /// <remarks>
         /// Valid return values are 2, 3, or 4.  If 3 is returned, an index
         /// with version 2 may be written instead, if the extension data in
@@ -327,7 +327,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">An existing index object</param>
         /// <param name="version">The new version number</param>
-        /// <returns>@return 0 on success, -1 on failure</returns>
+        /// <returns>0 on success, -1 on failure</returns>
         /// <remarks>
         /// Valid values are 2, 3, or 4.  If 2 is given, git_index_write may
         /// write an index with version 3 instead, if necessary to accurately
@@ -343,7 +343,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="force">if true, always reload, vs. only read if file has changed</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If `force` is true, this performs a "hard" read that discards in-memory
         /// changes and always reloads the on-disk index data.  If there is no
@@ -361,7 +361,7 @@ namespace XenoAtom.Interop
         /// using an atomic file lock.
         /// </summary>
         /// <param name="index">an existing index object</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_write")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_write(libgit2.git_index index);
@@ -370,7 +370,7 @@ namespace XenoAtom.Interop
         /// Get the full path to the index file on disk.
         /// </summary>
         /// <param name="index">an existing index object</param>
-        /// <returns>@return path to index file or NULL for in-memory index</returns>
+        /// <returns>path to index file or NULL for in-memory index</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_index_path_(libgit2.git_index index);
@@ -379,7 +379,7 @@ namespace XenoAtom.Interop
         /// Get the full path to the index file on disk.
         /// </summary>
         /// <param name="index">an existing index object</param>
-        /// <returns>@return path to index file or NULL for in-memory index</returns>
+        /// <returns>path to index file or NULL for in-memory index</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -390,7 +390,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="tree">tree to read</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The current index contents will be replaced by the specified tree.
         /// </remarks>
@@ -438,7 +438,7 @@ namespace XenoAtom.Interop
         /// Get the count of entries currently in the index
         /// </summary>
         /// <param name="index">an existing index object</param>
-        /// <returns>@return integer of count of current entries</returns>
+        /// <returns>integer of count of current entries</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_entrycount")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_index_entrycount(libgit2.git_index index);
@@ -463,7 +463,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="n">the position of the entry</param>
-        /// <returns>@return a pointer to the entry; NULL if out of bounds</returns>
+        /// <returns>a pointer to the entry; NULL if out of bounds</returns>
         /// <remarks>
         /// The entry is not modifiable and should not be freed.  Because the
         /// `git_index_entry` struct is a publicly defined struct, you should
@@ -479,7 +479,7 @@ namespace XenoAtom.Interop
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to search</param>
         /// <param name="stage">stage to search</param>
-        /// <returns>@return a pointer to the entry; NULL if it was not found</returns>
+        /// <returns>a pointer to the entry; NULL if it was not found</returns>
         /// <remarks>
         /// The entry is not modifiable and should not be freed.  Because the
         /// `git_index_entry` struct is a publicly defined struct, you should
@@ -495,7 +495,7 @@ namespace XenoAtom.Interop
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to search</param>
         /// <param name="stage">stage to search</param>
-        /// <returns>@return a pointer to the entry; NULL if it was not found</returns>
+        /// <returns>a pointer to the entry; NULL if it was not found</returns>
         /// <remarks>
         /// The entry is not modifiable and should not be freed.  Because the
         /// `git_index_entry` struct is a publicly defined struct, you should
@@ -511,7 +511,7 @@ namespace XenoAtom.Interop
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to search</param>
         /// <param name="stage">stage to search</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_remove(libgit2.git_index index, byte* path, int stage);
@@ -522,7 +522,7 @@ namespace XenoAtom.Interop
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to search</param>
         /// <param name="stage">stage to search</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_remove(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, int stage);
@@ -533,7 +533,7 @@ namespace XenoAtom.Interop
         /// <param name="index">an existing index object</param>
         /// <param name="dir">container directory path</param>
         /// <param name="stage">stage to search</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_remove_directory")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_remove_directory(libgit2.git_index index, byte* dir, int stage);
@@ -544,7 +544,7 @@ namespace XenoAtom.Interop
         /// <param name="index">an existing index object</param>
         /// <param name="dir">container directory path</param>
         /// <param name="stage">stage to search</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_remove_directory")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_remove_directory(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> dir, int stage);
@@ -554,7 +554,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="source_entry">new entry object</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If a previous index entry exists that has the same path and stage
         /// as the given 'source_entry', it will be replaced.  Otherwise, the
@@ -569,7 +569,7 @@ namespace XenoAtom.Interop
         /// Return the stage number from a git index entry
         /// </summary>
         /// <param name="entry">The entry</param>
-        /// <returns>@return the stage number</returns>
+        /// <returns>the stage number</returns>
         /// <remarks>
         /// This entry is calculated from the entry's flag attribute like this:(entry-&gt;flags 
         /// &amp;
@@ -584,7 +584,7 @@ namespace XenoAtom.Interop
         /// entry).  This is simply shorthand for `git_index_entry_stage &gt; 0`.
         /// </summary>
         /// <param name="entry">The entry</param>
-        /// <returns>@return 1 if the entry is a conflict entry, 0 otherwise</returns>
+        /// <returns>1 if the entry is a conflict entry, 0 otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_entry_is_conflict")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_index_entry_is_conflict(in libgit2.git_index_entry entry);
@@ -598,7 +598,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="iterator_out">The newly created iterator</param>
         /// <param name="index">The index to iterate</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_iterator_new(out libgit2.git_index_iterator iterator_out, libgit2.git_index index);
@@ -608,7 +608,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the index entry in</param>
         /// <param name="iterator">The iterator</param>
-        /// <returns>@return 0, GIT_ITEROVER on iteration completion or an error code</returns>
+        /// <returns>0, GIT_ITEROVER on iteration completion or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_iterator_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_iterator_next(out libgit2.git_index_entry* @out, libgit2.git_index_iterator iterator);
@@ -626,7 +626,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="path">filename to add</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The file `path` must be relative to the repository's
         /// working folder and must be readable.This method will fail in bare index instances.This forces the file to be added to the index, not looking
@@ -644,7 +644,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="path">filename to add</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The file `path` must be relative to the repository's
         /// working folder and must be readable.This method will fail in bare index instances.This forces the file to be added to the index, not looking
@@ -664,7 +664,7 @@ namespace XenoAtom.Interop
         /// <param name="entry">filename to add</param>
         /// <param name="buffer">data to be written into the blob</param>
         /// <param name="len">length of the data</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This method will create a blob in the repository that owns the
         /// index and then add the index entry to the index.  The `path` of the
@@ -686,7 +686,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="path">filename to remove</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The file `path` must be relative to the repository's
         /// working folder.  It may exist.If this file currently is the result of a merge conflict, this
@@ -702,7 +702,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="path">filename to remove</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The file `path` must be relative to the repository's
         /// working folder.  It may exist.If this file currently is the result of a merge conflict, this
@@ -725,7 +725,7 @@ namespace XenoAtom.Interop
         /// &lt;
         /// 0 to abort scan.</param>
         /// <param name="payload">payload passed through to callback function</param>
-        /// <returns>@return 0 on success, negative callback return value, or error code</returns>
+        /// <returns>0 on success, negative callback return value, or error code</returns>
         /// <remarks>
         /// This method will fail in bare index instances.The `pathspec` is a list of file names or shell glob patterns that will
         /// be matched against files in the repository's working directory.  Each
@@ -764,7 +764,7 @@ namespace XenoAtom.Interop
         /// &lt;
         /// 0 to abort scan.</param>
         /// <param name="payload">payload passed through to callback function</param>
-        /// <returns>@return 0 on success, negative callback return value, or error code</returns>
+        /// <returns>0 on success, negative callback return value, or error code</returns>
         /// <remarks>
         /// If you provide a callback function, it will be invoked on each matching
         /// item in the index immediately *before* it is removed.  Return 0 to
@@ -787,7 +787,7 @@ namespace XenoAtom.Interop
         /// &lt;
         /// 0 to abort scan.</param>
         /// <param name="payload">payload passed through to callback function</param>
-        /// <returns>@return 0 on success, negative callback return value, or error code</returns>
+        /// <returns>0 on success, negative callback return value, or error code</returns>
         /// <remarks>
         /// This method will fail in bare index instances.This scans the existing index entries and synchronizes them with the
         /// working directory, deleting them if the corresponding working directory
@@ -810,7 +810,7 @@ namespace XenoAtom.Interop
         /// <param name="at_pos">the address to which the position of the index entry is written (optional)</param>
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to search</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_find(out nuint at_pos, libgit2.git_index index, byte* path);
@@ -822,7 +822,7 @@ namespace XenoAtom.Interop
         /// <param name="at_pos">the address to which the position of the index entry is written (optional)</param>
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to search</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_find(out nuint at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
@@ -834,7 +834,7 @@ namespace XenoAtom.Interop
         /// <param name="at_pos">the address to which the position of the index entry is written (optional)</param>
         /// <param name="index">an existing index object</param>
         /// <param name="prefix">the prefix to search for</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_find_prefix(out nuint at_pos, libgit2.git_index index, byte* prefix);
@@ -846,7 +846,7 @@ namespace XenoAtom.Interop
         /// <param name="at_pos">the address to which the position of the index entry is written (optional)</param>
         /// <param name="index">an existing index object</param>
         /// <param name="prefix">the prefix to search for</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_find_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_find_prefix(out nuint at_pos, libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> prefix);
@@ -859,7 +859,7 @@ namespace XenoAtom.Interop
         /// <param name="ancestor_entry">the entry data for the ancestor of the conflict</param>
         /// <param name="our_entry">the entry data for our side of the merge conflict</param>
         /// <param name="their_entry">the entry data for their side of the merge conflict</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The entries are the entries from the tree included in the merge.  Any
         /// entry may be null to indicate that that file was not present in the
@@ -878,7 +878,7 @@ namespace XenoAtom.Interop
         /// <param name="their_out">Pointer to store the their entry</param>
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to search</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The entries are not modifiable and should not be freed.  Because the
         /// `git_index_entry` struct is a publicly defined struct, you should
@@ -896,7 +896,7 @@ namespace XenoAtom.Interop
         /// <param name="their_out">Pointer to store the their entry</param>
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to search</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The entries are not modifiable and should not be freed.  Because the
         /// `git_index_entry` struct is a publicly defined struct, you should
@@ -911,7 +911,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to remove conflicts for</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_conflict_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_conflict_remove(libgit2.git_index index, byte* path);
@@ -921,7 +921,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to remove conflicts for</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_conflict_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_conflict_remove(libgit2.git_index index, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
@@ -930,7 +930,7 @@ namespace XenoAtom.Interop
         /// Remove all conflicts in the index (entries with a stage greater than 0).
         /// </summary>
         /// <param name="index">an existing index object</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_conflict_cleanup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_index_conflict_cleanup(libgit2.git_index index);
@@ -939,7 +939,7 @@ namespace XenoAtom.Interop
         /// Determine if the index contains entries representing file conflicts.
         /// </summary>
         /// <param name="index">An existing index object.</param>
-        /// <returns>@return 1 if at least one conflict is found, 0 otherwise.</returns>
+        /// <returns>1 if at least one conflict is found, 0 otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_has_conflicts")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_index_has_conflicts(libgit2.git_index index);
@@ -949,7 +949,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="iterator_out">The newly created conflict iterator</param>
         /// <param name="index">The index to scan</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The index must not be modified while iterating; the results are undefined.
         /// </remarks>

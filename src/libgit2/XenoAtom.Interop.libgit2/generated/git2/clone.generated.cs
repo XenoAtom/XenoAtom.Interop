@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -152,7 +152,7 @@ namespace XenoAtom.Interop
         /// <param name="path">path in which to create the repository</param>
         /// <param name="bare">whether the repository is bare. This is the value from the clone options</param>
         /// <param name="payload">payload specified by the options</param>
-        /// <returns>@return 0, or a negative value to indicate error</returns>
+        /// <returns>0, or a negative value to indicate error</returns>
         /// <remarks>
         /// Callers of git_clone my provide a function matching this signature
         /// to override the repository creation and customization process
@@ -190,7 +190,7 @@ namespace XenoAtom.Interop
         /// <param name="name">the remote's name</param>
         /// <param name="url">the remote's url</param>
         /// <param name="payload">an opaque payload</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         /// <remarks>
         /// Callers of git_clone may provide a function matching this signature to override
         /// the remote creation and customization process during a clone operation.
@@ -225,7 +225,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_clone_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_CLONE_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_clone_options` with default values. Equivalent to creating
         /// an instance with GIT_CLONE_OPTIONS_INIT.

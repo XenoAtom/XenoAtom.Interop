@@ -33,7 +33,9 @@ internal partial class ZlibGenerator(LibDescriptor descriptor) : GeneratorBase(d
             TargetSystem = "gnu",
             Defines =
             {
-
+                // Defines for musl to override _Addr, _Int64, _Reg in bits/alltypes.h
+                // See ApkIncludeHelper.ExtractFiles
+                "XENO_ATOM_INTEROP",
             },
             PreHeaderText = @"",
             TypedefCodeGenKind = CppTypedefCodeGenKind.NoWrap,
@@ -41,6 +43,7 @@ internal partial class ZlibGenerator(LibDescriptor descriptor) : GeneratorBase(d
             DispatchOutputPerInclude = true,
             DisableRuntimeMarshalling = true,
             AllowMarshalForString = false,
+            //MapCLongToIntPtr = true,
 
             MappingRules =
             {
@@ -56,7 +59,7 @@ internal partial class ZlibGenerator(LibDescriptor descriptor) : GeneratorBase(d
                 e => e.MapMacroToConst("Z_BEST_COMPRESSION", "int"),
                 e => e.MapMacroToConst("Z_DEFAULT_COMPRESSION", "int"),
                 
-                e => e.MapMacroToConst("Z_NULL", "ssize_t"),
+                e => e.MapMacroToConst("Z_NULL", "int"),
                 e => e.MapMacroToConst("ZLIB_VERSION", "char*"),
                 e => e.MapMacroToConst("ZLIB_VER[N_].*", "int"),
 

@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -127,7 +127,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="level">Level to set tracing to</param>
         /// <param name="cb">Function to call with trace data</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_trace_set")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_trace_set(libgit2.git_trace_level_t level, libgit2.git_trace_cb cb);

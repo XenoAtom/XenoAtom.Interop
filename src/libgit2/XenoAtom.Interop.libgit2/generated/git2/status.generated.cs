@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -468,7 +468,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_status_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_STATUS_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_status_options` with default values. Equivalent to
         /// creating an instance with `GIT_STATUS_OPTIONS_INIT`.
@@ -483,7 +483,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">A repository object</param>
         /// <param name="callback">The function to call on each file</param>
         /// <param name="payload">Pointer to pass through to callback function</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// The callback is passed the path of the file, the status (a combination of
         /// the `git_status_t` values above) and the `payload` data pointer passed
@@ -501,7 +501,7 @@ namespace XenoAtom.Interop
         /// <param name="opts">Status options structure</param>
         /// <param name="callback">The function to call on each file</param>
         /// <param name="payload">Pointer to pass through to callback function</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// This is an extended version of the `git_status_foreach()` API that
         /// allows for more granular control over which paths will be processed and
@@ -573,7 +573,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer to store the status results in</param>
         /// <param name="repo">Repository object</param>
         /// <param name="opts">Status options structure</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         /// <remarks>
         /// Note that if a `pathspec` is given in the `git_status_options` to filter
         /// the status, then the results from rename detection (if you enable it) may
@@ -588,7 +588,7 @@ namespace XenoAtom.Interop
         /// Gets the count of status entries in this list.
         /// </summary>
         /// <param name="statuslist">Existing status list object</param>
-        /// <returns>@return the number of status entries</returns>
+        /// <returns>the number of status entries</returns>
         /// <remarks>
         /// If there are no changes in status (at least according the options given
         /// when the status list was created), this can return 0.
@@ -602,7 +602,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="statuslist">Existing status list object</param>
         /// <param name="idx">Position of the entry</param>
-        /// <returns>@return Pointer to the entry; NULL if out of bounds</returns>
+        /// <returns>Pointer to the entry; NULL if out of bounds</returns>
         /// <remarks>
         /// The entry is not modifiable and should not be freed.
         /// </remarks>

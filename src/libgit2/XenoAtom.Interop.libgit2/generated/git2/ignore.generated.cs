@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -24,7 +24,7 @@ namespace XenoAtom.Interop
         /// <param name="rules">Text of rules, the contents to add on a .gitignore file.
         /// It is okay to have multiple rules in the text; if so,
         /// each rule should be terminated with a newline.</param>
-        /// <returns>@return 0 on success</returns>
+        /// <returns>0 on success</returns>
         /// <remarks>
         /// Excludesfile rules (i.e. .gitignore rules) are generally read from
         /// .gitignore files in the repository tree or from a shared system file
@@ -44,7 +44,7 @@ namespace XenoAtom.Interop
         /// <param name="rules">Text of rules, the contents to add on a .gitignore file.
         /// It is okay to have multiple rules in the text; if so,
         /// each rule should be terminated with a newline.</param>
-        /// <returns>@return 0 on success</returns>
+        /// <returns>0 on success</returns>
         /// <remarks>
         /// Excludesfile rules (i.e. .gitignore rules) are generally read from
         /// .gitignore files in the repository tree or from a shared system file
@@ -61,7 +61,7 @@ namespace XenoAtom.Interop
         /// Clear ignore rules that were explicitly added.
         /// </summary>
         /// <param name="repo">The repository to remove ignore rules from.</param>
-        /// <returns>@return 0 on success</returns>
+        /// <returns>0 on success</returns>
         /// <remarks>
         /// Resets to the default internal ignore rules.  This will not turn off
         /// rules in .gitignore files that actually exist in the filesystem.The default internal ignores ignore ".", ".." and ".git" entries.

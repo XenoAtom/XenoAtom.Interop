@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -139,7 +139,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_describe_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_DESCRIBE_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_describe_options` with default values. Equivalent to creating
         /// an instance with GIT_DESCRIBE_OPTIONS_INIT.
@@ -153,7 +153,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_describe_format_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_DESCRIBE_FORMAT_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_describe_format_options` with default values. Equivalent to creating
         /// an instance with GIT_DESCRIBE_FORMAT_OPTIONS_INIT.
@@ -169,7 +169,7 @@ namespace XenoAtom.Interop
         /// you're done with it.</param>
         /// <param name="committish">a committish to describe</param>
         /// <param name="opts">the lookup options (or NULL for defaults)</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Perform the describe operation on the given committish object.
         /// </remarks>
@@ -184,7 +184,7 @@ namespace XenoAtom.Interop
         /// you're done with it.</param>
         /// <param name="repo">the repository in which to perform the describe</param>
         /// <param name="opts">the lookup options (or NULL for defaults)</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Perform the describe operation on the current commit and the
         /// worktree. After performing describe on HEAD, a status is run and the
@@ -201,7 +201,7 @@ namespace XenoAtom.Interop
         /// <param name="result">the result from `git_describe_commit()` or
         /// `git_describe_workdir()`.</param>
         /// <param name="opts">the formatting options (or NULL for defaults)</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_describe_format")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_describe_format(out libgit2.git_buf @out, libgit2.git_describe_result result, in libgit2.git_describe_format_options opts);

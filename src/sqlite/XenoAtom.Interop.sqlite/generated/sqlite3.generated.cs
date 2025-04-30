@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -227,9 +227,9 @@ namespace XenoAtom.Interop
             /// * The methods above are in versions 1 and 2 of the sqlite_vfs object.
             /// * Those below are for version 3 and greater.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<sqlite.sqlite3_vfs*, byte*, delegate*unmanaged[Cdecl]<void>, int> xSetSystemCall;
+            public delegate*unmanaged[Cdecl]<sqlite.sqlite3_vfs*, byte*, sqlite.sqlite3_syscall_ptr, int> xSetSystemCall;
             
-            public delegate*unmanaged[Cdecl]<sqlite.sqlite3_vfs*, byte*, delegate*unmanaged[Cdecl]<void>> xGetSystemCall;
+            public delegate*unmanaged[Cdecl]<sqlite.sqlite3_vfs*, byte*, sqlite.sqlite3_syscall_ptr> xGetSystemCall;
             
             public delegate*unmanaged[Cdecl]<sqlite.sqlite3_vfs*, byte*, byte*> xNextSystemCall;
         }
@@ -272,6 +272,29 @@ namespace XenoAtom.Interop
             public static bool operator ==(sqlite3_filename left, sqlite3_filename right) => left.Equals(right);
             
             public static bool operator !=(sqlite3_filename left, sqlite3_filename right) => !left.Equals(right);
+        }
+        
+        public readonly partial struct sqlite3_syscall_ptr : IEquatable<sqlite.sqlite3_syscall_ptr>
+        {
+            public sqlite3_syscall_ptr(delegate*unmanaged[Cdecl]<void> value) => this.Value = value;
+            
+            public delegate*unmanaged[Cdecl]<void> Value { get; }
+            
+            public override bool Equals(object obj) => obj is sqlite3_syscall_ptr other && Equals(other);
+            
+            public bool Equals(sqlite3_syscall_ptr other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<void> (sqlite.sqlite3_syscall_ptr from) => from.Value;
+            
+            public static implicit operator sqlite.sqlite3_syscall_ptr (delegate*unmanaged[Cdecl]<void> from) => new sqlite.sqlite3_syscall_ptr(from);
+            
+            public static bool operator ==(sqlite3_syscall_ptr left, sqlite3_syscall_ptr right) => left.Equals(right);
+            
+            public static bool operator !=(sqlite3_syscall_ptr left, sqlite3_syscall_ptr right) => !left.Equals(right);
         }
         
         public partial struct sqlite3_mem_methods
@@ -1082,7 +1105,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Parameters passed to SQL geom function
             /// </summary>
-            public double* aParam;
+            public sqlite.sqlite3_rtree_dbl* aParam;
             
             /// <summary>
             /// Callback implementation user data
@@ -1093,6 +1116,29 @@ namespace XenoAtom.Interop
             /// Called by SQLite to clean up pUser
             /// </summary>
             public delegate*unmanaged[Cdecl]<void*, void> xDelUser;
+        }
+        
+        public readonly partial struct sqlite3_rtree_dbl : IEquatable<sqlite.sqlite3_rtree_dbl>
+        {
+            public sqlite3_rtree_dbl(double value) => this.Value = value;
+            
+            public double Value { get; }
+            
+            public override bool Equals(object obj) => obj is sqlite3_rtree_dbl other && Equals(other);
+            
+            public bool Equals(sqlite3_rtree_dbl other) => Value.Equals(other.Value);
+            
+            public override int GetHashCode() => Value.GetHashCode();
+            
+            public override string ToString() => Value.ToString();
+            
+            public static implicit operator double (sqlite.sqlite3_rtree_dbl from) => from.Value;
+            
+            public static implicit operator sqlite.sqlite3_rtree_dbl (double from) => new sqlite.sqlite3_rtree_dbl(from);
+            
+            public static bool operator ==(sqlite3_rtree_dbl left, sqlite3_rtree_dbl right) => left.Equals(right);
+            
+            public static bool operator !=(sqlite3_rtree_dbl left, sqlite3_rtree_dbl right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -1119,7 +1165,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// value of function parameters
             /// </summary>
-            public double* aParam;
+            public sqlite.sqlite3_rtree_dbl* aParam;
             
             /// <summary>
             /// callback can use this, if desired
@@ -1134,7 +1180,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Coordinates of node or entry to check
             /// </summary>
-            public double* aCoord;
+            public sqlite.sqlite3_rtree_dbl* aCoord;
             
             /// <summary>
             /// Number of pending entries in the queue
@@ -1164,7 +1210,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Score of parent node
             /// </summary>
-            public double rParentScore;
+            public sqlite.sqlite3_rtree_dbl rParentScore;
             
             /// <summary>
             /// Visibility of parent node
@@ -1179,7 +1225,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// OUT: Write the score here
             /// </summary>
-            public double rScore;
+            public sqlite.sqlite3_rtree_dbl rScore;
             
             /// <summary>
             /// Original SQL values of parameters
@@ -1951,29 +1997,6 @@ namespace XenoAtom.Interop
             public static bool operator !=(sqlite3_callback left, sqlite3_callback right) => !left.Equals(right);
         }
         
-        public readonly partial struct sqlite3_syscall_ptr : IEquatable<sqlite.sqlite3_syscall_ptr>
-        {
-            public sqlite3_syscall_ptr(delegate*unmanaged[Cdecl]<void> value) => this.Value = value;
-            
-            public delegate*unmanaged[Cdecl]<void> Value { get; }
-            
-            public override bool Equals(object obj) => obj is sqlite3_syscall_ptr other && Equals(other);
-            
-            public bool Equals(sqlite3_syscall_ptr other) => Value == other.Value;
-            
-            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
-            
-            public override string ToString() => ((nint)(void*)Value).ToString();
-            
-            public static implicit operator delegate*unmanaged[Cdecl]<void> (sqlite.sqlite3_syscall_ptr from) => from.Value;
-            
-            public static implicit operator sqlite.sqlite3_syscall_ptr (delegate*unmanaged[Cdecl]<void> from) => new sqlite.sqlite3_syscall_ptr(from);
-            
-            public static bool operator ==(sqlite3_syscall_ptr left, sqlite3_syscall_ptr right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_syscall_ptr left, sqlite3_syscall_ptr right) => !left.Equals(right);
-        }
-        
         /// <summary>
         /// * CAPI3REF: Constants Defining Special Destructor Behavior
         /// *
@@ -2009,29 +2032,6 @@ namespace XenoAtom.Interop
             public static bool operator ==(sqlite3_destructor_type left, sqlite3_destructor_type right) => left.Equals(right);
             
             public static bool operator !=(sqlite3_destructor_type left, sqlite3_destructor_type right) => !left.Equals(right);
-        }
-        
-        public readonly partial struct sqlite3_rtree_dbl : IEquatable<sqlite.sqlite3_rtree_dbl>
-        {
-            public sqlite3_rtree_dbl(double value) => this.Value = value;
-            
-            public double Value { get; }
-            
-            public override bool Equals(object obj) => obj is sqlite3_rtree_dbl other && Equals(other);
-            
-            public bool Equals(sqlite3_rtree_dbl other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator double (sqlite.sqlite3_rtree_dbl from) => from.Value;
-            
-            public static implicit operator sqlite.sqlite3_rtree_dbl (double from) => new sqlite.sqlite3_rtree_dbl(from);
-            
-            public static bool operator ==(sqlite3_rtree_dbl left, sqlite3_rtree_dbl right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_rtree_dbl left, sqlite3_rtree_dbl right) => !left.Equals(right);
         }
         
         public const string SQLITE_VERSION = "3.48.0";

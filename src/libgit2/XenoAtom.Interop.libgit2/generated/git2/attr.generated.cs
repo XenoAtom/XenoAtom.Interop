@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -128,7 +128,7 @@ namespace XenoAtom.Interop
         /// Return the value type for a given attribute.
         /// </summary>
         /// <param name="attr">The attribute</param>
-        /// <returns>@return the value type for the attribute</returns>
+        /// <returns>the value type for the attribute</returns>
         /// <remarks>
         /// This can be either `TRUE`, `FALSE`, `UNSPECIFIED` (if the attribute
         /// was not set at all), or `VALUE`, if the attribute was set to an
@@ -143,7 +143,7 @@ namespace XenoAtom.Interop
         /// Return the value type for a given attribute.
         /// </summary>
         /// <param name="attr">The attribute</param>
-        /// <returns>@return the value type for the attribute</returns>
+        /// <returns>the value type for the attribute</returns>
         /// <remarks>
         /// This can be either `TRUE`, `FALSE`, `UNSPECIFIED` (if the attribute
         /// was not set at all), or `VALUE`, if the attribute was set to an
@@ -168,7 +168,7 @@ namespace XenoAtom.Interop
         /// not have to exist, but if it does not, then it will be
         /// treated as a plain file (not a directory).</param>
         /// <param name="name">The name of the attribute to look up.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_get(ref byte* value_out, libgit2.git_repository repo, uint flags, byte* path, byte* name);
@@ -187,7 +187,7 @@ namespace XenoAtom.Interop
         /// not have to exist, but if it does not, then it will be
         /// treated as a plain file (not a directory).</param>
         /// <param name="name">The name of the attribute to look up.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_get(ref byte* value_out, libgit2.git_repository repo, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
@@ -206,7 +206,7 @@ namespace XenoAtom.Interop
         /// not have to exist, but if it does not, then it will be
         /// treated as a plain file (not a directory).</param>
         /// <param name="name">The name of the attribute to look up.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_get_ext(ref byte* value_out, libgit2.git_repository repo, ref libgit2.git_attr_options opts, byte* path, byte* name);
@@ -225,7 +225,7 @@ namespace XenoAtom.Interop
         /// not have to exist, but if it does not, then it will be
         /// treated as a plain file (not a directory).</param>
         /// <param name="name">The name of the attribute to look up.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_get_ext(ref byte* value_out, libgit2.git_repository repo, ref libgit2.git_attr_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
@@ -245,7 +245,7 @@ namespace XenoAtom.Interop
         /// it will be treated as a plain file (i.e. not a directory).</param>
         /// <param name="num_attr">The number of attributes being looked up</param>
         /// <param name="names">An array of num_attr strings containing attribute names.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Use this if you have a known list of attributes that you want to
         /// look up in a single call.  This is somewhat more efficient than
@@ -273,7 +273,7 @@ namespace XenoAtom.Interop
         /// it will be treated as a plain file (i.e. not a directory).</param>
         /// <param name="num_attr">The number of attributes being looked up</param>
         /// <param name="names">An array of num_attr strings containing attribute names.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Use this if you have a known list of attributes that you want to
         /// look up in a single call.  This is somewhat more efficient than
@@ -301,7 +301,7 @@ namespace XenoAtom.Interop
         /// it will be treated as a plain file (i.e. not a directory).</param>
         /// <param name="num_attr">The number of attributes being looked up</param>
         /// <param name="names">An array of num_attr strings containing attribute names.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get_many_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_get_many_ext(ref byte* values_out, libgit2.git_repository repo, ref libgit2.git_attr_options opts, byte* path, nuint num_attr, ref byte* names);
@@ -321,7 +321,7 @@ namespace XenoAtom.Interop
         /// it will be treated as a plain file (i.e. not a directory).</param>
         /// <param name="num_attr">The number of attributes being looked up</param>
         /// <param name="names">An array of num_attr strings containing attribute names.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_get_many_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_get_many_ext(ref byte* values_out, libgit2.git_repository repo, ref libgit2.git_attr_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, nuint num_attr, ref byte* names);
@@ -337,7 +337,7 @@ namespace XenoAtom.Interop
         /// <param name="callback">Function to invoke on each attribute name and value.
         /// See git_attr_foreach_cb.</param>
         /// <param name="payload">Passed on as extra parameter to callback function.</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_foreach")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_foreach(libgit2.git_repository repo, uint flags, byte* path, libgit2.git_attr_foreach_cb callback, void* payload);
@@ -353,7 +353,7 @@ namespace XenoAtom.Interop
         /// <param name="callback">Function to invoke on each attribute name and value.
         /// See git_attr_foreach_cb.</param>
         /// <param name="payload">Passed on as extra parameter to callback function.</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_foreach")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_foreach(libgit2.git_repository repo, uint flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_attr_foreach_cb callback, void* payload);
@@ -369,7 +369,7 @@ namespace XenoAtom.Interop
         /// <param name="callback">Function to invoke on each attribute name and value.
         /// See git_attr_foreach_cb.</param>
         /// <param name="payload">Passed on as extra parameter to callback function.</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_foreach_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_foreach_ext(libgit2.git_repository repo, ref libgit2.git_attr_options opts, byte* path, libgit2.git_attr_foreach_cb callback, void* payload);
@@ -385,7 +385,7 @@ namespace XenoAtom.Interop
         /// <param name="callback">Function to invoke on each attribute name and value.
         /// See git_attr_foreach_cb.</param>
         /// <param name="payload">Passed on as extra parameter to callback function.</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_attr_foreach_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_attr_foreach_ext(libgit2.git_repository repo, ref libgit2.git_attr_options opts, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_attr_foreach_cb callback, void* payload);
@@ -394,7 +394,7 @@ namespace XenoAtom.Interop
         /// Flush the gitattributes cache.
         /// </summary>
         /// <param name="repo">The repository containing the gitattributes cache</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// Call this if you have reason to believe that the attributes files on
         /// disk no longer match the cached contents of memory.  This will cause
@@ -411,7 +411,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">The repository to add the macro in.</param>
         /// <param name="name">The name of the macro.</param>
         /// <param name="values">The value for the macro.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Macros will automatically be loaded from the top level `.gitattributes`
         /// file of the repository (plus the built-in "binary" macro).  This
@@ -428,7 +428,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">The repository to add the macro in.</param>
         /// <param name="name">The name of the macro.</param>
         /// <param name="values">The value for the macro.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Macros will automatically be loaded from the top level `.gitattributes`
         /// file of the repository (plus the built-in "binary" macro).  This

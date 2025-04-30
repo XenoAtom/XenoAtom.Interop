@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -21,7 +21,7 @@ namespace XenoAtom.Interop
         /// Allocate a new mailmap object.
         /// </summary>
         /// <param name="out">pointer to store the new mailmap</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// This object is empty, so you'll have to add a mailmap file before you can do
         /// anything with it. The mailmap must be freed with 'git_mailmap_free'.
@@ -47,7 +47,7 @@ namespace XenoAtom.Interop
         /// <param name="real_email">the real email to use, or NULL</param>
         /// <param name="replace_name">the name to replace, or NULL</param>
         /// <param name="replace_email">the email to replace</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_mailmap_add_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_mailmap_add_entry(libgit2.git_mailmap mm, byte* real_name, byte* real_email, byte* replace_name, byte* replace_email);
@@ -61,7 +61,7 @@ namespace XenoAtom.Interop
         /// <param name="real_email">the real email to use, or NULL</param>
         /// <param name="replace_name">the name to replace, or NULL</param>
         /// <param name="replace_email">the email to replace</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_mailmap_add_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_mailmap_add_entry(libgit2.git_mailmap mm, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> real_name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> real_email, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> replace_name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> replace_email);
@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to store the new mailmap</param>
         /// <param name="buf">buffer to parse the mailmap from</param>
         /// <param name="len">the length of the input buffer</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_mailmap_from_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_mailmap_from_buffer(out libgit2.git_mailmap @out, byte* buf, nuint len);
@@ -83,7 +83,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to store the new mailmap</param>
         /// <param name="repo">repository to load mailmap information from</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// Mailmaps are loaded in the following order:
         /// 1. '.mailmap' in the root of the repository's working directory, if present.
@@ -103,7 +103,7 @@ namespace XenoAtom.Interop
         /// <param name="mm">the mailmap to perform a lookup with (may be NULL)</param>
         /// <param name="name">the name to look up</param>
         /// <param name="email">the email to look up</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// The lifetime of the strings are tied to `mm`, `name`, and `email` parameters.
         /// </remarks>
@@ -119,7 +119,7 @@ namespace XenoAtom.Interop
         /// <param name="mm">the mailmap to perform a lookup with (may be NULL)</param>
         /// <param name="name">the name to look up</param>
         /// <param name="email">the email to look up</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// The lifetime of the strings are tied to `mm`, `name`, and `email` parameters.
         /// </remarks>
@@ -133,7 +133,7 @@ namespace XenoAtom.Interop
         /// <param name="out">new signature</param>
         /// <param name="mm">mailmap to resolve with</param>
         /// <param name="sig">signature to resolve</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_signature_free()` to free the data.
         /// </remarks>

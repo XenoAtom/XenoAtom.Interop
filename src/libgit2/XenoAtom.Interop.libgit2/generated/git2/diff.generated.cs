@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -1359,7 +1359,7 @@ namespace XenoAtom.Interop
         /// <param name="diff_so_far">The diff being generated.</param>
         /// <param name="old_path">The path to the old file or NULL.</param>
         /// <param name="new_path">The path to the new file or NULL.</param>
-        /// <returns>@return Non-zero to abort the diff.</returns>
+        /// <returns>Non-zero to abort the diff.</returns>
         /// <remarks>
         /// Called before each file comparison.
         /// </remarks>
@@ -1791,7 +1791,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_diff_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_DIFF_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_diff_options` with default values. Equivalent to creating
         /// an instance with GIT_DIFF_OPTIONS_INIT.
@@ -1805,7 +1805,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_diff_find_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_DIFF_FIND_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_diff_find_options` with default values. Equivalent to creating
         /// an instance with GIT_DIFF_FIND_OPTIONS_INIT.
@@ -1830,7 +1830,7 @@ namespace XenoAtom.Interop
         /// <param name="old_tree">A git_tree object to diff from, or NULL for empty tree.</param>
         /// <param name="new_tree">A git_tree object to diff to, or NULL for empty tree.</param>
         /// <param name="opts">Structure with options to influence diff or NULL for defaults.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// This is equivalent to `git diff 
         /// &lt;old
@@ -1853,7 +1853,7 @@ namespace XenoAtom.Interop
         /// <param name="old_tree">A git_tree object to diff from, or NULL for empty tree.</param>
         /// <param name="index">The index to diff with; repo index used if NULL.</param>
         /// <param name="opts">Structure with options to influence diff or NULL for defaults.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// This is equivalent to `git diff --cached 
         /// &lt;treeish
@@ -1874,7 +1874,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">The repository.</param>
         /// <param name="index">The index to diff from; repo index used if NULL.</param>
         /// <param name="opts">Structure with options to influence diff or NULL for defaults.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// This matches the `git diff` command.  See the note below on
         /// `git_diff_tree_to_workdir` for a discussion of the difference between
@@ -1897,7 +1897,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">The repository containing the tree.</param>
         /// <param name="old_tree">A git_tree object to diff from, or NULL for empty tree.</param>
         /// <param name="opts">Structure with options to influence diff or NULL for defaults.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The tree you provide will be used for the "old_file" side of the delta,
         /// and the working directory will be used for the "new_file" side.This is not the same as `git diff 
@@ -1925,7 +1925,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">The repository containing the tree.</param>
         /// <param name="old_tree">A git_tree object to diff from, or NULL for empty tree.</param>
         /// <param name="opts">Structure with options to influence diff or NULL for defaults.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// This emulates `git diff 
         /// &lt;tree
@@ -1945,7 +1945,7 @@ namespace XenoAtom.Interop
         /// <param name="old_index">A git_index object to diff from.</param>
         /// <param name="new_index">A git_index object to diff to.</param>
         /// <param name="opts">Structure with options to influence diff or NULL for defaults.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The first index will be used for the "old_file" side of the delta and the
         /// second index will be used for the "new_file" side of the delta.
@@ -1959,7 +1959,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="onto">Diff to merge into.</param>
         /// <param name="from">Diff to merge.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// This merges items from the "from" list into the "onto" list.  The
         /// resulting diff will have all items that appear in either list.
@@ -1977,7 +1977,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="diff">diff to run detection algorithms on</param>
         /// <param name="options">Control how detection should be run, NULL for defaults</param>
-        /// <returns>@return 0 on success, -1 on failure</returns>
+        /// <returns>0 on success, -1 on failure</returns>
         /// <remarks>
         /// This modifies a diff in place, replacing old entries that look
         /// like renames or copies with new entries reflecting those changes.
@@ -1992,7 +1992,7 @@ namespace XenoAtom.Interop
         /// Query how many diff records are there in a diff.
         /// </summary>
         /// <param name="diff">A git_diff generated by one of the above functions</param>
-        /// <returns>@return Count of number of deltas in the list</returns>
+        /// <returns>Count of number of deltas in the list</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_num_deltas")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_diff_num_deltas(libgit2.git_diff diff);
@@ -2002,7 +2002,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="diff">A git_diff generated by one of the above functions</param>
         /// <param name="type">A git_delta_t value to filter the count</param>
-        /// <returns>@return Count of number of deltas matching delta_t type</returns>
+        /// <returns>Count of number of deltas matching delta_t type</returns>
         /// <remarks>
         /// This works just like `git_diff_num_deltas()` with an extra parameter
         /// that is a `git_delta_t` and returns just the count of how many deltas
@@ -2017,7 +2017,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="diff">Diff list object</param>
         /// <param name="idx">Index into diff list</param>
-        /// <returns>@return Pointer to git_diff_delta (or NULL if `idx` out of range)</returns>
+        /// <returns>Pointer to git_diff_delta (or NULL if `idx` out of range)</returns>
         /// <remarks>
         /// The `git_diff_delta` pointer points to internal data and you do not
         /// have to release it when you are done with it.  It will go away when
@@ -2035,7 +2035,7 @@ namespace XenoAtom.Interop
         /// Check if deltas are sorted case sensitively or insensitively.
         /// </summary>
         /// <param name="diff">diff to check</param>
-        /// <returns>@return 0 if case sensitive, 1 if case is ignored</returns>
+        /// <returns>0 if case sensitive, 1 if case is ignored</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_is_sorted_icase")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_diff_is_sorted_icase(libgit2.git_diff diff);
@@ -2053,7 +2053,7 @@ namespace XenoAtom.Interop
         /// same callback will be made for context lines, added, and
         /// removed lines, and even for a deleted trailing newline.</param>
         /// <param name="payload">Reference pointer that will be passed to your callbacks.</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// This will iterate through all of the files described in a diff.  You
         /// should provide a file callback to learn about each file.The "hunk" and "line" callbacks are optional, and the text diff of the
@@ -2070,7 +2070,7 @@ namespace XenoAtom.Interop
         /// Look up the single character abbreviation for a delta status code.
         /// </summary>
         /// <param name="status">The git_delta_t value to look up</param>
-        /// <returns>@return The single character label for that code</returns>
+        /// <returns>The single character label for that code</returns>
         /// <remarks>
         /// When you run `git diff --name-status` it uses single letter codes in
         /// the output such as 'A' for added, 'D' for deleted, 'M' for modified,
@@ -2088,7 +2088,7 @@ namespace XenoAtom.Interop
         /// <param name="format">A git_diff_format_t value to pick the text format.</param>
         /// <param name="print_cb">Callback to make per line of diff text.</param>
         /// <param name="payload">Reference pointer that will be passed to your callback.</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// Returning a non-zero value from the callbacks will terminate the
         /// iteration and return the non-zero value to the caller.
@@ -2105,7 +2105,7 @@ namespace XenoAtom.Interop
         /// contain the diff text</param>
         /// <param name="diff">A git_diff generated by one of the above functions.</param>
         /// <param name="format">A git_diff_format_t value to pick the text format.</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_to_buf")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_diff_to_buf(out libgit2.git_buf @out, libgit2.git_diff diff, libgit2.git_diff_format_t format);
@@ -2123,7 +2123,7 @@ namespace XenoAtom.Interop
         /// <param name="hunk_cb">Callback for each hunk in diff; can be NULL</param>
         /// <param name="line_cb">Callback for each line in diff; can be NULL</param>
         /// <param name="payload">Payload passed to each callback function</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// Compared to a file, a blob lacks some contextual information. As such,
         /// the `git_diff_file` given to the callback will have some fake data; i.e.
@@ -2151,7 +2151,7 @@ namespace XenoAtom.Interop
         /// <param name="hunk_cb">Callback for each hunk in diff; can be NULL</param>
         /// <param name="line_cb">Callback for each line in diff; can be NULL</param>
         /// <param name="payload">Payload passed to each callback function</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// Compared to a file, a blob lacks some contextual information. As such,
         /// the `git_diff_file` given to the callback will have some fake data; i.e.
@@ -2180,7 +2180,7 @@ namespace XenoAtom.Interop
         /// <param name="hunk_cb">Callback for each hunk in diff; can be NULL</param>
         /// <param name="line_cb">Callback for each line in diff; can be NULL</param>
         /// <param name="payload">Payload passed to each callback function</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// As with `git_diff_blobs`, comparing a blob and buffer lacks some context,
         /// so the `git_diff_file` parameters to the callbacks will be faked a la the
@@ -2207,7 +2207,7 @@ namespace XenoAtom.Interop
         /// <param name="hunk_cb">Callback for each hunk in diff; can be NULL</param>
         /// <param name="line_cb">Callback for each line in diff; can be NULL</param>
         /// <param name="payload">Payload passed to each callback function</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// As with `git_diff_blobs`, comparing a blob and buffer lacks some context,
         /// so the `git_diff_file` parameters to the callbacks will be faked a la the
@@ -2235,7 +2235,7 @@ namespace XenoAtom.Interop
         /// <param name="hunk_cb">Callback for each hunk in diff; can be NULL</param>
         /// <param name="line_cb">Callback for each line in diff; can be NULL</param>
         /// <param name="payload">Payload passed to each callback function</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// Even more than with `git_diff_blobs`, comparing two buffer lacks
         /// context, so the `git_diff_file` parameters to the callbacks will be
@@ -2260,7 +2260,7 @@ namespace XenoAtom.Interop
         /// <param name="hunk_cb">Callback for each hunk in diff; can be NULL</param>
         /// <param name="line_cb">Callback for each line in diff; can be NULL</param>
         /// <param name="payload">Payload passed to each callback function</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// Even more than with `git_diff_blobs`, comparing two buffer lacks
         /// context, so the `git_diff_file` parameters to the callbacks will be
@@ -2276,7 +2276,7 @@ namespace XenoAtom.Interop
         /// <param name="out">A pointer to a git_diff pointer that will be allocated.</param>
         /// <param name="content">The contents of a patch file</param>
         /// <param name="content_len">The length of the patch file contents</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The diff object produced is similar to the one that would be
         /// produced if you actually produced it computationally by comparing
@@ -2296,7 +2296,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Structure containing the diff statistics.</param>
         /// <param name="diff">A git_diff generated by one of the above functions.</param>
-        /// <returns>@return 0 on success; non-zero on error</returns>
+        /// <returns>0 on success; non-zero on error</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_get_stats")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_diff_get_stats(out libgit2.git_diff_stats @out, libgit2.git_diff diff);
@@ -2305,7 +2305,7 @@ namespace XenoAtom.Interop
         /// Get the total number of files changed in a diff
         /// </summary>
         /// <param name="stats">A `git_diff_stats` generated by one of the above functions.</param>
-        /// <returns>@return total number of files changed in the diff</returns>
+        /// <returns>total number of files changed in the diff</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_stats_files_changed")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_diff_stats_files_changed(libgit2.git_diff_stats stats);
@@ -2314,7 +2314,7 @@ namespace XenoAtom.Interop
         /// Get the total number of insertions in a diff
         /// </summary>
         /// <param name="stats">A `git_diff_stats` generated by one of the above functions.</param>
-        /// <returns>@return total number of insertions in the diff</returns>
+        /// <returns>total number of insertions in the diff</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_stats_insertions")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_diff_stats_insertions(libgit2.git_diff_stats stats);
@@ -2323,7 +2323,7 @@ namespace XenoAtom.Interop
         /// Get the total number of deletions in a diff
         /// </summary>
         /// <param name="stats">A `git_diff_stats` generated by one of the above functions.</param>
-        /// <returns>@return total number of deletions in the diff</returns>
+        /// <returns>total number of deletions in the diff</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_stats_deletions")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_diff_stats_deletions(libgit2.git_diff_stats stats);
@@ -2335,7 +2335,7 @@ namespace XenoAtom.Interop
         /// <param name="stats">A `git_diff_stats` generated by one of the above functions.</param>
         /// <param name="format">Formatting option.</param>
         /// <param name="width">Target width for output (only affects GIT_DIFF_STATS_FULL)</param>
-        /// <returns>@return 0 on success; non-zero on error</returns>
+        /// <returns>0 on success; non-zero on error</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_diff_stats_to_buf")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_diff_stats_to_buf(out libgit2.git_buf @out, libgit2.git_diff_stats stats, libgit2.git_diff_stats_format_t format, nuint width);
@@ -2354,7 +2354,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_diff_patchid_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_DIFF_PATCHID_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_diff_patchid_options` with default values. Equivalent to
         /// creating an instance with `GIT_DIFF_PATCHID_OPTIONS_INIT`.
@@ -2371,7 +2371,7 @@ namespace XenoAtom.Interop
         /// <param name="opts">Options for how to calculate the patch ID. This is
         /// intended for future changes, as currently no options are
         /// available.</param>
-        /// <returns>@return 0 on success, an error code otherwise.</returns>
+        /// <returns>0 on success, an error code otherwise.</returns>
         /// <remarks>
         /// Calculate a stable patch ID for the given patch by summing the
         /// hash of the file diffs, ignoring whitespace and line numbers.

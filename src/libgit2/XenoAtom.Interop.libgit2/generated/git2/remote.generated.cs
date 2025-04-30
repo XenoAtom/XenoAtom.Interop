@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -17,25 +17,6 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class libgit2
     {
-        /// <summary>
-        /// Argument to the completion callback which tells it which operation
-        /// finished.
-        /// </summary>
-        public enum git_remote_completion_t : uint
-        {
-            GIT_REMOTE_COMPLETION_DOWNLOAD = unchecked((uint)0),
-            
-            GIT_REMOTE_COMPLETION_INDEXING = unchecked((uint)1),
-            
-            GIT_REMOTE_COMPLETION_ERROR = unchecked((uint)2),
-        }
-        
-        public const libgit2.git_remote_completion_t GIT_REMOTE_COMPLETION_DOWNLOAD = git_remote_completion_t.GIT_REMOTE_COMPLETION_DOWNLOAD;
-        
-        public const libgit2.git_remote_completion_t GIT_REMOTE_COMPLETION_INDEXING = git_remote_completion_t.GIT_REMOTE_COMPLETION_INDEXING;
-        
-        public const libgit2.git_remote_completion_t GIT_REMOTE_COMPLETION_ERROR = git_remote_completion_t.GIT_REMOTE_COMPLETION_ERROR;
-        
         /// <summary>
         /// Remote redirection settings; whether redirects to another host
         /// are permitted.  By default, git will follow a redirect on the
@@ -132,6 +113,25 @@ namespace XenoAtom.Interop
         /// Report unchanged tips in the update_tips callback.
         /// </summary>
         public const libgit2.git_remote_update_flags GIT_REMOTE_UPDATE_REPORT_UNCHANGED = git_remote_update_flags.GIT_REMOTE_UPDATE_REPORT_UNCHANGED;
+        
+        /// <summary>
+        /// Argument to the completion callback which tells it which operation
+        /// finished.
+        /// </summary>
+        public enum git_remote_completion_t : uint
+        {
+            GIT_REMOTE_COMPLETION_DOWNLOAD = unchecked((uint)0),
+            
+            GIT_REMOTE_COMPLETION_INDEXING = unchecked((uint)1),
+            
+            GIT_REMOTE_COMPLETION_ERROR = unchecked((uint)2),
+        }
+        
+        public const libgit2.git_remote_completion_t GIT_REMOTE_COMPLETION_DOWNLOAD = git_remote_completion_t.GIT_REMOTE_COMPLETION_DOWNLOAD;
+        
+        public const libgit2.git_remote_completion_t GIT_REMOTE_COMPLETION_INDEXING = git_remote_completion_t.GIT_REMOTE_COMPLETION_INDEXING;
+        
+        public const libgit2.git_remote_completion_t GIT_REMOTE_COMPLETION_ERROR = git_remote_completion_t.GIT_REMOTE_COMPLETION_ERROR;
         
         /// <summary>
         /// Acceptable prune settings when fetching
@@ -247,6 +247,155 @@ namespace XenoAtom.Interop
         public const libgit2.git_fetch_depth_t GIT_FETCH_DEPTH_UNSHALLOW = git_fetch_depth_t.GIT_FETCH_DEPTH_UNSHALLOW;
         
         /// <summary>
+        /// Push network progress notification function
+        /// </summary>
+        public readonly partial struct git_push_transfer_progress_cb : IEquatable<libgit2.git_push_transfer_progress_cb>
+        {
+            public git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> value) => this.Value = value;
+            
+            public delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> Value { get; }
+            
+            public override bool Equals(object obj) => obj is git_push_transfer_progress_cb other && Equals(other);
+            
+            public bool Equals(git_push_transfer_progress_cb other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> (libgit2.git_push_transfer_progress_cb from) => from.Value;
+            
+            public static implicit operator libgit2.git_push_transfer_progress_cb (delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> from) => new libgit2.git_push_transfer_progress_cb(from);
+            
+            public static bool operator ==(git_push_transfer_progress_cb left, git_push_transfer_progress_cb right) => left.Equals(right);
+            
+            public static bool operator !=(git_push_transfer_progress_cb left, git_push_transfer_progress_cb right) => !left.Equals(right);
+        }
+        
+        /// <summary>
+        /// Callback used to inform of the update status from the remote.
+        /// </summary>
+        /// <param name="refname">refname specifying to the remote ref</param>
+        /// <param name="status">status message sent from the remote</param>
+        /// <param name="data">data provided by the caller</param>
+        /// <returns>0 on success, otherwise an error</returns>
+        /// <remarks>
+        /// Called for each updated reference on push. If `status` is
+        /// not `NULL`, the update was rejected by the remote server
+        /// and `status` contains the reason given.
+        /// </remarks>
+        public readonly partial struct git_push_update_reference_cb : IEquatable<libgit2.git_push_update_reference_cb>
+        {
+            public git_push_update_reference_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
+            
+            public delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> Value { get; }
+            
+            public override bool Equals(object obj) => obj is git_push_update_reference_cb other && Equals(other);
+            
+            public bool Equals(git_push_update_reference_cb other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (libgit2.git_push_update_reference_cb from) => from.Value;
+            
+            public static implicit operator libgit2.git_push_update_reference_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new libgit2.git_push_update_reference_cb(from);
+            
+            public static bool operator ==(git_push_update_reference_cb left, git_push_update_reference_cb right) => left.Equals(right);
+            
+            public static bool operator !=(git_push_update_reference_cb left, git_push_update_reference_cb right) => !left.Equals(right);
+        }
+        
+        /// <summary>
+        /// Represents an update which will be performed on the remote during push
+        /// </summary>
+        public partial struct git_push_update
+        {
+            /// <summary>
+            /// The source name of the reference
+            /// </summary>
+            public byte* src_refname;
+            
+            /// <summary>
+            /// The name of the reference to update on the server
+            /// </summary>
+            public byte* dst_refname;
+            
+            /// <summary>
+            /// The current target of the reference
+            /// </summary>
+            public libgit2.git_oid src;
+            
+            /// <summary>
+            /// The new target for the reference
+            /// </summary>
+            public libgit2.git_oid dst;
+        }
+        
+        /// <summary>
+        /// Callback used to inform of upcoming updates.
+        /// </summary>
+        /// <param name="updates">an array containing the updates which will be sent
+        /// as commands to the destination.</param>
+        /// <param name="len">number of elements in `updates`</param>
+        /// <param name="payload">Payload provided by the caller</param>
+        public readonly partial struct git_push_negotiation : IEquatable<libgit2.git_push_negotiation>
+        {
+            public git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> value) => this.Value = value;
+            
+            public delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> Value { get; }
+            
+            public override bool Equals(object obj) => obj is git_push_negotiation other && Equals(other);
+            
+            public bool Equals(git_push_negotiation other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> (libgit2.git_push_negotiation from) => from.Value;
+            
+            public static implicit operator libgit2.git_push_negotiation (delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> from) => new libgit2.git_push_negotiation(from);
+            
+            public static bool operator ==(git_push_negotiation left, git_push_negotiation right) => left.Equals(right);
+            
+            public static bool operator !=(git_push_negotiation left, git_push_negotiation right) => !left.Equals(right);
+        }
+        
+        /// <summary>
+        /// Callback invoked immediately before we attempt to connect to the
+        /// given url.  Callers may change the URL before the connection by
+        /// calling `git_remote_set_instance_url` in the callback.
+        /// </summary>
+        /// <param name="remote">The remote to be connected</param>
+        /// <param name="direction">GIT_DIRECTION_FETCH or GIT_DIRECTION_PUSH</param>
+        /// <param name="payload">Payload provided by the caller</param>
+        /// <returns>0 on success, or an error</returns>
+        public readonly partial struct git_remote_ready_cb : IEquatable<libgit2.git_remote_ready_cb>
+        {
+            public git_remote_ready_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> value) => this.Value = value;
+            
+            public delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> Value { get; }
+            
+            public override bool Equals(object obj) => obj is git_remote_ready_cb other && Equals(other);
+            
+            public bool Equals(git_remote_ready_cb other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> (libgit2.git_remote_ready_cb from) => from.Value;
+            
+            public static implicit operator libgit2.git_remote_ready_cb (delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> from) => new libgit2.git_remote_ready_cb(from);
+            
+            public static bool operator ==(git_remote_ready_cb left, git_remote_ready_cb right) => left.Equals(right);
+            
+            public static bool operator !=(git_remote_ready_cb left, git_remote_ready_cb right) => !left.Equals(right);
+        }
+        
+        /// <summary>
         /// Remote creation options structure
         /// </summary>
         /// <remarks>
@@ -278,32 +427,6 @@ namespace XenoAtom.Interop
             /// Additional flags for the remote. See git_remote_create_flags.
             /// </summary>
             public libgit2.git_remote_create_flags flags;
-        }
-        
-        /// <summary>
-        /// Represents an update which will be performed on the remote during push
-        /// </summary>
-        public partial struct git_push_update
-        {
-            /// <summary>
-            /// The source name of the reference
-            /// </summary>
-            public byte* src_refname;
-            
-            /// <summary>
-            /// The name of the reference to update on the server
-            /// </summary>
-            public byte* dst_refname;
-            
-            /// <summary>
-            /// The current target of the reference
-            /// </summary>
-            public libgit2.git_oid src;
-            
-            /// <summary>
-            /// The new target for the reference
-            /// </summary>
-            public libgit2.git_oid dst;
         }
         
         /// <summary>
@@ -450,129 +573,6 @@ namespace XenoAtom.Interop
             public libgit2.git_strarray custom_headers;
         }
         
-        /// <summary>
-        /// Push network progress notification function
-        /// </summary>
-        public readonly partial struct git_push_transfer_progress_cb : IEquatable<libgit2.git_push_transfer_progress_cb>
-        {
-            public git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> value) => this.Value = value;
-            
-            public delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_push_transfer_progress_cb other && Equals(other);
-            
-            public bool Equals(git_push_transfer_progress_cb other) => Value == other.Value;
-            
-            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
-            
-            public override string ToString() => ((nint)(void*)Value).ToString();
-            
-            public static implicit operator delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> (libgit2.git_push_transfer_progress_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_push_transfer_progress_cb (delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> from) => new libgit2.git_push_transfer_progress_cb(from);
-            
-            public static bool operator ==(git_push_transfer_progress_cb left, git_push_transfer_progress_cb right) => left.Equals(right);
-            
-            public static bool operator !=(git_push_transfer_progress_cb left, git_push_transfer_progress_cb right) => !left.Equals(right);
-        }
-        
-        /// <summary>
-        /// Callback used to inform of upcoming updates.
-        /// </summary>
-        /// <param name="updates">an array containing the updates which will be sent
-        /// as commands to the destination.</param>
-        /// <param name="len">number of elements in `updates`</param>
-        /// <param name="payload">Payload provided by the caller</param>
-        public readonly partial struct git_push_negotiation : IEquatable<libgit2.git_push_negotiation>
-        {
-            public git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> value) => this.Value = value;
-            
-            public delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_push_negotiation other && Equals(other);
-            
-            public bool Equals(git_push_negotiation other) => Value == other.Value;
-            
-            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
-            
-            public override string ToString() => ((nint)(void*)Value).ToString();
-            
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> (libgit2.git_push_negotiation from) => from.Value;
-            
-            public static implicit operator libgit2.git_push_negotiation (delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> from) => new libgit2.git_push_negotiation(from);
-            
-            public static bool operator ==(git_push_negotiation left, git_push_negotiation right) => left.Equals(right);
-            
-            public static bool operator !=(git_push_negotiation left, git_push_negotiation right) => !left.Equals(right);
-        }
-        
-        /// <summary>
-        /// Callback used to inform of the update status from the remote.
-        /// </summary>
-        /// <param name="refname">refname specifying to the remote ref</param>
-        /// <param name="status">status message sent from the remote</param>
-        /// <param name="data">data provided by the caller</param>
-        /// <returns>@return 0 on success, otherwise an error</returns>
-        /// <remarks>
-        /// Called for each updated reference on push. If `status` is
-        /// not `NULL`, the update was rejected by the remote server
-        /// and `status` contains the reason given.
-        /// </remarks>
-        public readonly partial struct git_push_update_reference_cb : IEquatable<libgit2.git_push_update_reference_cb>
-        {
-            public git_push_update_reference_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
-            
-            public delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_push_update_reference_cb other && Equals(other);
-            
-            public bool Equals(git_push_update_reference_cb other) => Value == other.Value;
-            
-            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
-            
-            public override string ToString() => ((nint)(void*)Value).ToString();
-            
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (libgit2.git_push_update_reference_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_push_update_reference_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new libgit2.git_push_update_reference_cb(from);
-            
-            public static bool operator ==(git_push_update_reference_cb left, git_push_update_reference_cb right) => left.Equals(right);
-            
-            public static bool operator !=(git_push_update_reference_cb left, git_push_update_reference_cb right) => !left.Equals(right);
-        }
-        
-        /// <summary>
-        /// Callback invoked immediately before we attempt to connect to the
-        /// given url.  Callers may change the URL before the connection by
-        /// calling `git_remote_set_instance_url` in the callback.
-        /// </summary>
-        /// <param name="remote">The remote to be connected</param>
-        /// <param name="direction">GIT_DIRECTION_FETCH or GIT_DIRECTION_PUSH</param>
-        /// <param name="payload">Payload provided by the caller</param>
-        /// <returns>@return 0 on success, or an error</returns>
-        public readonly partial struct git_remote_ready_cb : IEquatable<libgit2.git_remote_ready_cb>
-        {
-            public git_remote_ready_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> value) => this.Value = value;
-            
-            public delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_remote_ready_cb other && Equals(other);
-            
-            public bool Equals(git_remote_ready_cb other) => Value == other.Value;
-            
-            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
-            
-            public override string ToString() => ((nint)(void*)Value).ToString();
-            
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> (libgit2.git_remote_ready_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_remote_ready_cb (delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> from) => new libgit2.git_remote_ready_cb(from);
-            
-            public static bool operator ==(git_remote_ready_cb left, git_remote_ready_cb right) => left.Equals(right);
-            
-            public static bool operator !=(git_remote_ready_cb left, git_remote_ready_cb right) => !left.Equals(right);
-        }
-        
         public const uint GIT_REMOTE_CREATE_OPTIONS_VERSION = 1;
         
         public const uint GIT_REMOTE_CALLBACKS_VERSION = 1;
@@ -590,7 +590,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to create the remote</param>
         /// <param name="name">the remote's name</param>
         /// <param name="url">the remote's url</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_create(out libgit2.git_remote @out, libgit2.git_repository repo, byte* name, byte* url);
@@ -602,7 +602,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to create the remote</param>
         /// <param name="name">the remote's name</param>
         /// <param name="url">the remote's url</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_create(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
@@ -612,7 +612,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_remote_create_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_REMOTE_CREATE_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_remote_create_options` with default values. Equivalent to
         /// creating an instance with `GIT_REMOTE_CREATE_OPTIONS_INIT`.
@@ -627,7 +627,7 @@ namespace XenoAtom.Interop
         /// <param name="out">the resulting remote</param>
         /// <param name="url">the remote's url</param>
         /// <param name="opts">the remote creation options</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         /// <remarks>
         /// This function allows more fine-grained control over the remote creation.Passing NULL as the opts argument will result in a detached remote.
         /// </remarks>
@@ -641,7 +641,7 @@ namespace XenoAtom.Interop
         /// <param name="out">the resulting remote</param>
         /// <param name="url">the remote's url</param>
         /// <param name="opts">the remote creation options</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         /// <remarks>
         /// This function allows more fine-grained control over the remote creation.Passing NULL as the opts argument will result in a detached remote.
         /// </remarks>
@@ -658,7 +658,7 @@ namespace XenoAtom.Interop
         /// <param name="name">the remote's name</param>
         /// <param name="url">the remote's url</param>
         /// <param name="fetch">the remote fetch value</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create_with_fetchspec")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_create_with_fetchspec(out libgit2.git_remote @out, libgit2.git_repository repo, byte* name, byte* url, byte* fetch);
@@ -672,7 +672,7 @@ namespace XenoAtom.Interop
         /// <param name="name">the remote's name</param>
         /// <param name="url">the remote's url</param>
         /// <param name="fetch">the remote fetch value</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_create_with_fetchspec")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_create_with_fetchspec(out libgit2.git_remote @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> fetch);
@@ -683,7 +683,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the new remote objects</param>
         /// <param name="repo">the associated repository</param>
         /// <param name="url">the remote repository's URL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Create a remote with the given url in-memory. You can use this when
         /// you have a URL instead of a remote's name.
@@ -698,7 +698,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the new remote objects</param>
         /// <param name="repo">the associated repository</param>
         /// <param name="url">the remote repository's URL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Create a remote with the given url in-memory. You can use this when
         /// you have a URL instead of a remote's name.
@@ -712,7 +712,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to the new remote objects</param>
         /// <param name="url">the remote repository's URL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Create a remote with the given url in-memory. You can use this when
         /// you have a URL instead of a remote's name.Contrasted with git_remote_create_anonymous, a detached remote
@@ -728,7 +728,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to the new remote objects</param>
         /// <param name="url">the remote repository's URL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Create a remote with the given url in-memory. You can use this when
         /// you have a URL instead of a remote's name.Contrasted with git_remote_create_anonymous, a detached remote
@@ -745,7 +745,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the new remote object</param>
         /// <param name="repo">the associated repository</param>
         /// <param name="name">the remote's name</param>
-        /// <returns>@return 0, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// The name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
@@ -760,7 +760,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the new remote object</param>
         /// <param name="repo">the associated repository</param>
         /// <param name="name">the remote's name</param>
-        /// <returns>@return 0, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// The name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
@@ -775,7 +775,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="dest">pointer where to store the copy</param>
         /// <param name="source">object to copy</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_remote_free` to free the data.
         /// </remarks>
@@ -787,7 +787,7 @@ namespace XenoAtom.Interop
         /// Get the remote's repository
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return a pointer to the repository</returns>
+        /// <returns>a pointer to the repository</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_owner")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_repository git_remote_owner(libgit2.git_remote remote);
@@ -796,7 +796,7 @@ namespace XenoAtom.Interop
         /// Get the remote's name
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return a pointer to the name or NULL for in-memory remotes</returns>
+        /// <returns>a pointer to the name or NULL for in-memory remotes</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_remote_name_(libgit2.git_remote remote);
@@ -805,7 +805,7 @@ namespace XenoAtom.Interop
         /// Get the remote's name
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return a pointer to the name or NULL for in-memory remotes</returns>
+        /// <returns>a pointer to the name or NULL for in-memory remotes</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -815,7 +815,7 @@ namespace XenoAtom.Interop
         /// Get the remote's url
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return a pointer to the url</returns>
+        /// <returns>a pointer to the url</returns>
         /// <remarks>
         /// If url.*.insteadOf has been configured for this URL, it will
         /// return the modified URL.  If `git_remote_set_instance_pushurl`
@@ -829,7 +829,7 @@ namespace XenoAtom.Interop
         /// Get the remote's url
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return a pointer to the url</returns>
+        /// <returns>a pointer to the url</returns>
         /// <remarks>
         /// If url.*.insteadOf has been configured for this URL, it will
         /// return the modified URL.  If `git_remote_set_instance_pushurl`
@@ -844,7 +844,7 @@ namespace XenoAtom.Interop
         /// Get the remote's url for pushing.
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return a pointer to the url or NULL if no special url for pushing is set</returns>
+        /// <returns>a pointer to the url or NULL if no special url for pushing is set</returns>
         /// <remarks>
         /// If url.*.pushInsteadOf has been configured for this URL, it
         /// will return the modified URL.  If `git_remote_set_instance_pushurl`
@@ -858,7 +858,7 @@ namespace XenoAtom.Interop
         /// Get the remote's url for pushing.
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return a pointer to the url or NULL if no special url for pushing is set</returns>
+        /// <returns>a pointer to the url or NULL if no special url for pushing is set</returns>
         /// <remarks>
         /// If url.*.pushInsteadOf has been configured for this URL, it
         /// will return the modified URL.  If `git_remote_set_instance_pushurl`
@@ -875,7 +875,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to perform the change</param>
         /// <param name="remote">the remote's name</param>
         /// <param name="url">the url to set</param>
-        /// <returns>@return 0 or an error value</returns>
+        /// <returns>0 or an error value</returns>
         /// <remarks>
         /// Remote objects already in memory will not be affected. This assumes
         /// the common case of a single-url remote and will otherwise return an error.
@@ -890,7 +890,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to perform the change</param>
         /// <param name="remote">the remote's name</param>
         /// <param name="url">the url to set</param>
-        /// <returns>@return 0 or an error value</returns>
+        /// <returns>0 or an error value</returns>
         /// <remarks>
         /// Remote objects already in memory will not be affected. This assumes
         /// the common case of a single-url remote and will otherwise return an error.
@@ -905,7 +905,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to perform the change</param>
         /// <param name="remote">the remote's name</param>
         /// <param name="url">the url to set</param>
-        /// <returns>@return 0, or an error code</returns>
+        /// <returns>0, or an error code</returns>
         /// <remarks>
         /// Remote objects already in memory will not be affected. This assumes
         /// the common case of a single-url remote and will otherwise return an error.
@@ -920,7 +920,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to perform the change</param>
         /// <param name="remote">the remote's name</param>
         /// <param name="url">the url to set</param>
-        /// <returns>@return 0, or an error code</returns>
+        /// <returns>0, or an error code</returns>
         /// <remarks>
         /// Remote objects already in memory will not be affected. This assumes
         /// the common case of a single-url remote and will otherwise return an error.
@@ -935,7 +935,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="remote">the remote's name</param>
         /// <param name="url">the url to set</param>
-        /// <returns>@return 0 or an error value</returns>
+        /// <returns>0 or an error value</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_set_instance_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_set_instance_url(libgit2.git_remote remote, byte* url);
@@ -946,7 +946,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="remote">the remote's name</param>
         /// <param name="url">the url to set</param>
-        /// <returns>@return 0 or an error value</returns>
+        /// <returns>0 or an error value</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_set_instance_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_set_instance_url(libgit2.git_remote remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
@@ -957,7 +957,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="remote">the remote's name</param>
         /// <param name="url">the url to set</param>
-        /// <returns>@return 0 or an error value</returns>
+        /// <returns>0 or an error value</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_set_instance_pushurl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_set_instance_pushurl(libgit2.git_remote remote, byte* url);
@@ -968,7 +968,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="remote">the remote's name</param>
         /// <param name="url">the url to set</param>
-        /// <returns>@return 0 or an error value</returns>
+        /// <returns>0 or an error value</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_set_instance_pushurl")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_set_instance_pushurl(libgit2.git_remote remote, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url);
@@ -979,7 +979,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to change the configuration</param>
         /// <param name="remote">the name of the remote to change</param>
         /// <param name="refspec">the new fetch refspec</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC if refspec is invalid or an error value</returns>
+        /// <returns>0, GIT_EINVALIDSPEC if refspec is invalid or an error value</returns>
         /// <remarks>
         /// Add the given refspec to the fetch list in the configuration. No
         /// loaded remote instances will be affected.
@@ -994,7 +994,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to change the configuration</param>
         /// <param name="remote">the name of the remote to change</param>
         /// <param name="refspec">the new fetch refspec</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC if refspec is invalid or an error value</returns>
+        /// <returns>0, GIT_EINVALIDSPEC if refspec is invalid or an error value</returns>
         /// <remarks>
         /// Add the given refspec to the fetch list in the configuration. No
         /// loaded remote instances will be affected.
@@ -1008,7 +1008,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="array">pointer to the array in which to store the strings</param>
         /// <param name="remote">the remote to query</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The memory is owned by the user and should be freed with
         /// `git_strarray_free`.
@@ -1023,7 +1023,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to change the configuration</param>
         /// <param name="remote">the name of the remote to change</param>
         /// <param name="refspec">the new push refspec</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC if refspec is invalid or an error value</returns>
+        /// <returns>0, GIT_EINVALIDSPEC if refspec is invalid or an error value</returns>
         /// <remarks>
         /// Add the given refspec to the push list in the configuration. No
         /// loaded remote instances will be affected.
@@ -1038,7 +1038,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to change the configuration</param>
         /// <param name="remote">the name of the remote to change</param>
         /// <param name="refspec">the new push refspec</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC if refspec is invalid or an error value</returns>
+        /// <returns>0, GIT_EINVALIDSPEC if refspec is invalid or an error value</returns>
         /// <remarks>
         /// Add the given refspec to the push list in the configuration. No
         /// loaded remote instances will be affected.
@@ -1052,7 +1052,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="array">pointer to the array in which to store the strings</param>
         /// <param name="remote">the remote to query</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The memory is owned by the user and should be freed with
         /// `git_strarray_free`.
@@ -1065,7 +1065,7 @@ namespace XenoAtom.Interop
         /// Get the number of refspecs for a remote
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return the amount of refspecs configured in this remote</returns>
+        /// <returns>the amount of refspecs configured in this remote</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_refspec_count")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_remote_refspec_count(libgit2.git_remote remote);
@@ -1075,7 +1075,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="remote">the remote to query</param>
         /// <param name="n">the refspec to get</param>
-        /// <returns>@return the nth refspec</returns>
+        /// <returns>the nth refspec</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_get_refspec")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_refspec git_remote_get_refspec(libgit2.git_remote remote, nuint n);
@@ -1086,7 +1086,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the array</param>
         /// <param name="size">the number of remote heads</param>
         /// <param name="remote">the remote</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// Get the list of references with which the server responds to a new
         /// connection.The remote (or more exactly its transport) must have connected to
@@ -1104,7 +1104,7 @@ namespace XenoAtom.Interop
         /// Check whether the remote is connected
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return 1 if it's connected, 0 otherwise.</returns>
+        /// <returns>1 if it's connected, 0 otherwise.</returns>
         /// <remarks>
         /// Check whether the remote's underlying transport is connected to the
         /// remote host.
@@ -1117,7 +1117,7 @@ namespace XenoAtom.Interop
         /// Cancel the operation
         /// </summary>
         /// <param name="remote">the remote</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// At certain points in its operation, the network code checks whether
         /// the operation has been cancelled and if so stops the operation.
@@ -1130,7 +1130,7 @@ namespace XenoAtom.Interop
         /// Disconnect from the remote
         /// </summary>
         /// <param name="remote">the remote to disconnect from</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// Close the connection to the remote.
         /// </remarks>
@@ -1155,7 +1155,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">a string array which receives the names of the remotes</param>
         /// <param name="repo">the repository to query</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The string array must be freed by the user.
         /// </remarks>
@@ -1169,7 +1169,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">the `git_remote_callbacks` struct to initialize</param>
         /// <param name="version">Version of struct; pass `GIT_REMOTE_CALLBACKS_VERSION`</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_init_callbacks")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_init_callbacks(out libgit2.git_remote_callbacks opts, uint version);
@@ -1179,7 +1179,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_fetch_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_FETCH_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_fetch_options` with default values. Equivalent to
         /// creating an instance with `GIT_FETCH_OPTIONS_INIT`.
@@ -1193,7 +1193,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_push_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_PUSH_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_push_options` with default values. Equivalent to
         /// creating an instance with `GIT_PUSH_OPTIONS_INIT`.
@@ -1207,7 +1207,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_remote_connect_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_REMOTE_CONNECT_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_remote_connect_options` with default values.
         /// Equivalent to creating an instance with
@@ -1226,7 +1226,7 @@ namespace XenoAtom.Interop
         /// <param name="callbacks">the callbacks to use for this connection</param>
         /// <param name="proxy_opts">proxy settings</param>
         /// <param name="custom_headers">extra HTTP headers to use in this connection</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The transport is selected based on the URL; the direction argument
         /// is due to a limitation of the git protocol which starts up a
@@ -1243,7 +1243,7 @@ namespace XenoAtom.Interop
         /// <param name="direction">GIT_DIRECTION_FETCH if you want to fetch or
         /// GIT_DIRECTION_PUSH if you want to push</param>
         /// <param name="opts">the remote connection options</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The transport is selected based on the URL; the direction argument
         /// is due to a limitation of the git protocol which starts up a
@@ -1263,7 +1263,7 @@ namespace XenoAtom.Interop
         /// <param name="refspecs">the refspecs to use for this negotiation and
         /// download. Use NULL or an empty array to use the base refspecs</param>
         /// <param name="opts">the options to use for this fetch or NULL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Connect to the remote if it hasn't been done yet, negotiate with
         /// the remote git which objects are missing, download and index the
@@ -1283,7 +1283,7 @@ namespace XenoAtom.Interop
         /// <param name="refspecs">the refspecs to use for this negotiation and
         /// upload. Use NULL or an empty array to use the base refspecs</param>
         /// <param name="opts">the options to use for this push</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Connect to the remote if it hasn't been done yet, negotiate with
         /// the remote git which objects are missing, create a packfile with
@@ -1309,7 +1309,7 @@ namespace XenoAtom.Interop
         /// <param name="update_flags">the git_remote_update_flags for these tips.</param>
         /// <param name="download_tags">what the behaviour for downloading tags is for this fetch. This is
         /// ignored for push. This must be the same value passed to `git_remote_download()`.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If callbacks are not specified then the callbacks specified to
         /// `git_remote_connect` will be used (if it was called).
@@ -1332,7 +1332,7 @@ namespace XenoAtom.Interop
         /// <param name="update_flags">the git_remote_update_flags for these tips.</param>
         /// <param name="download_tags">what the behaviour for downloading tags is for this fetch. This is
         /// ignored for push. This must be the same value passed to `git_remote_download()`.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If callbacks are not specified then the callbacks specified to
         /// `git_remote_connect` will be used (if it was called).
@@ -1350,7 +1350,7 @@ namespace XenoAtom.Interop
         /// <param name="opts">options to use for this fetch or NULL</param>
         /// <param name="reflog_message">The message to insert into the reflogs. If NULL, the
         /// default is "fetch"</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Convenience function to connect to a remote, download the data,
         /// disconnect and update the remote-tracking branches.If options are specified and this remote is already connected then
@@ -1370,7 +1370,7 @@ namespace XenoAtom.Interop
         /// <param name="opts">options to use for this fetch or NULL</param>
         /// <param name="reflog_message">The message to insert into the reflogs. If NULL, the
         /// default is "fetch"</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Convenience function to connect to a remote, download the data,
         /// disconnect and update the remote-tracking branches.If options are specified and this remote is already connected then
@@ -1386,7 +1386,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="remote">the remote to prune</param>
         /// <param name="callbacks">callbacks to use for this prune</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If callbacks are not specified then the callbacks specified to
         /// `git_remote_connect` will be used (if it was called).
@@ -1402,7 +1402,7 @@ namespace XenoAtom.Interop
         /// <param name="refspecs">the refspecs to use for pushing. If NULL or an empty
         /// array, the configured refspecs will be used</param>
         /// <param name="opts">options to use for this push</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// If options are specified and this remote is already connected then
         /// the existing remote connection options will be discarded and the
@@ -1423,7 +1423,7 @@ namespace XenoAtom.Interop
         /// Retrieve the tag auto-follow setting
         /// </summary>
         /// <param name="remote">the remote to query</param>
-        /// <returns>@return the auto-follow setting</returns>
+        /// <returns>the auto-follow setting</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_autotag")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_remote_autotag_option_t git_remote_autotag(libgit2.git_remote remote);
@@ -1434,7 +1434,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to make the change</param>
         /// <param name="remote">the name of the remote</param>
         /// <param name="value">the new value to take.</param>
-        /// <returns>@return 0, or an error code.</returns>
+        /// <returns>0, or an error code.</returns>
         /// <remarks>
         /// The change will be made in the configuration. No loaded remotes
         /// will be affected.
@@ -1449,7 +1449,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to make the change</param>
         /// <param name="remote">the name of the remote</param>
         /// <param name="value">the new value to take.</param>
-        /// <returns>@return 0, or an error code.</returns>
+        /// <returns>0, or an error code.</returns>
         /// <remarks>
         /// The change will be made in the configuration. No loaded remotes
         /// will be affected.
@@ -1462,7 +1462,7 @@ namespace XenoAtom.Interop
         /// Retrieve the ref-prune setting
         /// </summary>
         /// <param name="remote">the remote to query</param>
-        /// <returns>@return the ref-prune setting</returns>
+        /// <returns>the ref-prune setting</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_prune_refs")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_remote_prune_refs(libgit2.git_remote remote);
@@ -1476,7 +1476,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to rename</param>
         /// <param name="name">the current name of the remote</param>
         /// <param name="new_name">the new name the remote should bear</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         /// <remarks>
         /// All remote-tracking branches and configuration settings
         /// for the remote are updated.The new name will be checked for validity.
@@ -1496,7 +1496,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to rename</param>
         /// <param name="name">the current name of the remote</param>
         /// <param name="new_name">the new name the remote should bear</param>
-        /// <returns>@return 0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         /// <remarks>
         /// All remote-tracking branches and configuration settings
         /// for the remote are updated.The new name will be checked for validity.
@@ -1512,7 +1512,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="valid">output pointer to set with validity of given remote name</param>
         /// <param name="remote_name">name to be checked.</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_name_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_name_is_valid(ref int valid, byte* remote_name);
@@ -1522,7 +1522,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="valid">output pointer to set with validity of given remote name</param>
         /// <param name="remote_name">name to be checked.</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_name_is_valid")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_remote_name_is_valid(ref int valid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> remote_name);
@@ -1532,7 +1532,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">the repository in which to act</param>
         /// <param name="name">the name of the remote to delete</param>
-        /// <returns>@return 0 on success, or an error code.</returns>
+        /// <returns>0 on success, or an error code.</returns>
         /// <remarks>
         /// All remote-tracking branches and configuration settings
         /// for the remote will be removed.
@@ -1546,7 +1546,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">the repository in which to act</param>
         /// <param name="name">the name of the remote to delete</param>
-        /// <returns>@return 0 on success, or an error code.</returns>
+        /// <returns>0 on success, or an error code.</returns>
         /// <remarks>
         /// All remote-tracking branches and configuration settings
         /// for the remote will be removed.

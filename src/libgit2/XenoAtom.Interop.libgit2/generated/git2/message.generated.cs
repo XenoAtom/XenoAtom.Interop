@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -55,7 +55,7 @@ namespace XenoAtom.Interop
         /// <param name="strip_comments">Non-zero to remove comment lines, 0 to leave them in.</param>
         /// <param name="comment_char">Comment character. Lines starting with this character
         /// are considered to be comments and removed if `strip_comments` is non-zero.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Optionally, it can remove lines which start with the comment character.
         /// </remarks>
@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
         /// <param name="strip_comments">Non-zero to remove comment lines, 0 to leave them in.</param>
         /// <param name="comment_char">Comment character. Lines starting with this character
         /// are considered to be comments and removed if `strip_comments` is non-zero.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Optionally, it can remove lines which start with the comment character.
         /// </remarks>
@@ -86,7 +86,7 @@ namespace XenoAtom.Interop
         /// <param name="arr">A pre-allocated git_message_trailer_array struct to be filled in
         /// with any trailers found during parsing.</param>
         /// <param name="message">The message to be parsed</param>
-        /// <returns>@return 0 on success, or non-zero on error.</returns>
+        /// <returns>0 on success, or non-zero on error.</returns>
         /// <remarks>
         /// Trailers are key/value pairs in the last paragraph of a message, not
         /// including any patches or conflicts that may be present.
@@ -101,7 +101,7 @@ namespace XenoAtom.Interop
         /// <param name="arr">A pre-allocated git_message_trailer_array struct to be filled in
         /// with any trailers found during parsing.</param>
         /// <param name="message">The message to be parsed</param>
-        /// <returns>@return 0 on success, or non-zero on error.</returns>
+        /// <returns>0 on success, or non-zero on error.</returns>
         /// <remarks>
         /// Trailers are key/value pairs in the last paragraph of a message, not
         /// including any patches or conflicts that may be present.

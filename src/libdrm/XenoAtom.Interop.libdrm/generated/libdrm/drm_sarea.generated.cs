@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class libdrm
@@ -50,7 +50,7 @@ namespace XenoAtom.Interop
             public libdrm.drm_hw_lock @lock;
             
             /// <todo>
-            /// @todo Use readers/writer lock for drm_sarea::drawable_lock
+            /// Use readers/writer lock for drm_sarea::drawable_lock
             /// </todo>
             public libdrm.drm_hw_lock drawable_lock;
             

@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -85,7 +85,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="commit_id">oid of Commit</param>
         /// <param name="payload">User-specified pointer to data to be passed as data payload</param>
-        /// <returns>@return non-zero to hide the commmit and it parent.</returns>
+        /// <returns>non-zero to hide the commmit and it parent.</returns>
         public readonly partial struct git_revwalk_hide_cb : IEquatable<libgit2.git_revwalk_hide_cb>
         {
             public git_revwalk_hide_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> value) => this.Value = value;
@@ -114,7 +114,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to the new revision walker</param>
         /// <param name="repo">the repo to walk through</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This revision walker uses a custom memory pool and an internal
         /// commit cache, so it is relatively expensive to allocate.For maximum performance, this revision walker should be
@@ -131,7 +131,7 @@ namespace XenoAtom.Interop
         /// Reset the revision walker for reuse.
         /// </summary>
         /// <param name="walker">handle to reset.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This will clear all the pushed and hidden commits, and
         /// leave the walker in a blank state (just like at
@@ -148,7 +148,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal.</param>
         /// <param name="id">the oid of the commit to start from.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The pushed commit will be marked as one of the roots from which to
         /// start the walk. This commit may not be walked if it or a child is
@@ -165,7 +165,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="glob">the glob pattern references should match</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The OIDs pointed to by the references that match the given glob
         /// pattern will be pushed to the revision walker.A leading 'refs/' is implied if not present as well as a trailing
@@ -185,7 +185,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="glob">the glob pattern references should match</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The OIDs pointed to by the references that match the given glob
         /// pattern will be pushed to the revision walker.A leading 'refs/' is implied if not present as well as a trailing
@@ -204,7 +204,7 @@ namespace XenoAtom.Interop
         /// Push the repository's HEAD
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_push_head")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_revwalk_push_head(libgit2.git_revwalk walk);
@@ -214,7 +214,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal.</param>
         /// <param name="commit_id">the oid of commit that will be ignored during the traversal</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The given id must belong to a committish on the walked
         /// repository.The resolved commit and all its parents will be hidden from the
@@ -229,7 +229,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="glob">the glob pattern references should match</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The OIDs pointed to by the references that match the given glob
         /// pattern and their ancestors will be hidden from the output on the
@@ -250,7 +250,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="glob">the glob pattern references should match</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The OIDs pointed to by the references that match the given glob
         /// pattern and their ancestors will be hidden from the output on the
@@ -270,7 +270,7 @@ namespace XenoAtom.Interop
         /// Hide the repository's HEAD
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_hide_head")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_revwalk_hide_head(libgit2.git_revwalk walk);
@@ -280,7 +280,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="refname">the reference to push</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The reference must point to a committish.
         /// </remarks>
@@ -293,7 +293,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="refname">the reference to push</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The reference must point to a committish.
         /// </remarks>
@@ -306,7 +306,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="refname">the reference to hide</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The reference must point to a committish.
         /// </remarks>
@@ -319,7 +319,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="refname">the reference to hide</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The reference must point to a committish.
         /// </remarks>
@@ -351,7 +351,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal.</param>
         /// <param name="sort_mode">combination of GIT_SORT_XXX flags</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Changing the sorting mode resets the walker.
         /// </remarks>
@@ -364,7 +364,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="range">the range</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The range should be of the form
         /// &lt;commit
@@ -385,7 +385,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="walk">the walker being used for the traversal</param>
         /// <param name="range">the range</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The range should be of the form
         /// &lt;commit
@@ -405,7 +405,7 @@ namespace XenoAtom.Interop
         /// Simplify the history by first-parent
         /// </summary>
         /// <param name="walk">The revision walker.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// No parents other than the first for each commit will be enqueued.
         /// </remarks>
@@ -426,7 +426,7 @@ namespace XenoAtom.Interop
         /// is operating.
         /// </summary>
         /// <param name="walk">the revision walker</param>
-        /// <returns>@return the repository being walked</returns>
+        /// <returns>the repository being walked</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_repository")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_repository git_revwalk_repository(libgit2.git_revwalk walk);
@@ -437,7 +437,7 @@ namespace XenoAtom.Interop
         /// <param name="walk">the revision walker</param>
         /// <param name="hide_cb">callback function to hide a commit and its parents</param>
         /// <param name="payload">data payload to be passed to callback function</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_revwalk_add_hide_cb")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_revwalk_add_hide_cb(libgit2.git_revwalk walk, libgit2.git_revwalk_hide_cb hide_cb, void* payload);

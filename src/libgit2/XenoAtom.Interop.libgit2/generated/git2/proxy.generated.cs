@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -114,7 +114,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_proxy_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_PROXY_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_proxy_options` with default values. Equivalent to
         /// creating an instance with `GIT_PROXY_OPTIONS_INIT`.

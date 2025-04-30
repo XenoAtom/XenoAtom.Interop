@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -22,7 +22,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">the resulting transaction</param>
         /// <param name="repo">the repository in which to lock</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This does not lock anything, but sets up the transaction object to
         /// know from which repository to lock.
@@ -36,7 +36,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tx">the transaction</param>
         /// <param name="refname">the reference to lock</param>
-        /// <returns>@return 0 or an error message</returns>
+        /// <returns>0 or an error message</returns>
         /// <remarks>
         /// Lock the specified reference. This is the first step to updating a
         /// reference.
@@ -50,7 +50,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tx">the transaction</param>
         /// <param name="refname">the reference to lock</param>
-        /// <returns>@return 0 or an error message</returns>
+        /// <returns>0 or an error message</returns>
         /// <remarks>
         /// Lock the specified reference. This is the first step to updating a
         /// reference.
@@ -67,7 +67,7 @@ namespace XenoAtom.Interop
         /// <param name="target">target to set the reference to</param>
         /// <param name="sig">signature to use in the reflog; pass NULL to read the identity from the config</param>
         /// <param name="msg">message to use in the reflog</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
         /// <remarks>
         /// Set the target of the specified reference. This reference must be
         /// locked.
@@ -84,7 +84,7 @@ namespace XenoAtom.Interop
         /// <param name="target">target to set the reference to</param>
         /// <param name="sig">signature to use in the reflog; pass NULL to read the identity from the config</param>
         /// <param name="msg">message to use in the reflog</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
         /// <remarks>
         /// Set the target of the specified reference. This reference must be
         /// locked.
@@ -101,7 +101,7 @@ namespace XenoAtom.Interop
         /// <param name="target">target to set the reference to</param>
         /// <param name="sig">signature to use in the reflog; pass NULL to read the identity from the config</param>
         /// <param name="msg">message to use in the reflog</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
         /// <remarks>
         /// Set the target of the specified reference. This reference must be
         /// locked.
@@ -118,7 +118,7 @@ namespace XenoAtom.Interop
         /// <param name="target">target to set the reference to</param>
         /// <param name="sig">signature to use in the reflog; pass NULL to read the identity from the config</param>
         /// <param name="msg">message to use in the reflog</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
         /// <remarks>
         /// Set the target of the specified reference. This reference must be
         /// locked.
@@ -133,7 +133,7 @@ namespace XenoAtom.Interop
         /// <param name="tx">the transaction</param>
         /// <param name="refname">the reference whose reflog to set</param>
         /// <param name="reflog">the reflog as it should be written out</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
         /// <remarks>
         /// Set the specified reference's reflog. If this is combined with
         /// setting the target, that update won't be written to the reflog.
@@ -148,7 +148,7 @@ namespace XenoAtom.Interop
         /// <param name="tx">the transaction</param>
         /// <param name="refname">the reference whose reflog to set</param>
         /// <param name="reflog">the reflog as it should be written out</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
         /// <remarks>
         /// Set the specified reference's reflog. If this is combined with
         /// setting the target, that update won't be written to the reflog.
@@ -162,7 +162,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tx">the transaction</param>
         /// <param name="refname">the reference to remove</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_transaction_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_transaction_remove(libgit2.git_transaction tx, byte* refname);
@@ -172,7 +172,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tx">the transaction</param>
         /// <param name="refname">the reference to remove</param>
-        /// <returns>@return 0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
+        /// <returns>0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_transaction_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_transaction_remove(libgit2.git_transaction tx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname);
@@ -181,7 +181,7 @@ namespace XenoAtom.Interop
         /// Commit the changes from the transaction
         /// </summary>
         /// <param name="tx">the transaction</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Perform the changes that have been queued. The updates will be made
         /// one by one, and the first failure will stop the processing.

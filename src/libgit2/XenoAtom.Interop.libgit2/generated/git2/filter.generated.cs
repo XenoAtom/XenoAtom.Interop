@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -271,7 +271,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="filters">A loaded git_filter_list (or NULL)</param>
         /// <param name="name">The name of the filter to query</param>
-        /// <returns>@return 1 if the filter is in the list, 0 otherwise</returns>
+        /// <returns>1 if the filter is in the list, 0 otherwise</returns>
         /// <remarks>
         /// This will return 0 if the given filter is not in the list, or 1 if
         /// the filter will be applied.
@@ -287,7 +287,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="filters">A loaded git_filter_list (or NULL)</param>
         /// <param name="name">The name of the filter to query</param>
-        /// <returns>@return 1 if the filter is in the list, 0 otherwise</returns>
+        /// <returns>1 if the filter is in the list, 0 otherwise</returns>
         /// <remarks>
         /// This will return 0 if the given filter is not in the list, or 1 if
         /// the filter will be applied.
@@ -303,7 +303,7 @@ namespace XenoAtom.Interop
         /// <param name="filters">A loaded git_filter_list (or NULL)</param>
         /// <param name="in">Buffer containing the data to filter</param>
         /// <param name="in_len">The length of the input buffer</param>
-        /// <returns>@return 0 on success, an error code otherwise</returns>
+        /// <returns>0 on success, an error code otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_apply_to_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_apply_to_buffer(out libgit2.git_buf @out, libgit2.git_filter_list filters, byte* @in, nuint in_len);
@@ -316,7 +316,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to perform the filtering</param>
         /// <param name="path">the path of the file to filter, a relative path will be
         /// taken as relative to the workdir</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_apply_to_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_apply_to_file(out libgit2.git_buf @out, libgit2.git_filter_list filters, libgit2.git_repository repo, byte* path);
@@ -329,7 +329,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository in which to perform the filtering</param>
         /// <param name="path">the path of the file to filter, a relative path will be
         /// taken as relative to the workdir</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_apply_to_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_apply_to_file(out libgit2.git_buf @out, libgit2.git_filter_list filters, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
@@ -340,7 +340,7 @@ namespace XenoAtom.Interop
         /// <param name="out">buffer into which to store the filtered file</param>
         /// <param name="filters">the list of filters to apply</param>
         /// <param name="blob">the blob to filter</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_apply_to_blob")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_apply_to_blob(out libgit2.git_buf @out, libgit2.git_filter_list filters, libgit2.git_blob blob);
@@ -352,7 +352,7 @@ namespace XenoAtom.Interop
         /// <param name="buffer">the buffer to filter</param>
         /// <param name="len">the size of the buffer</param>
         /// <param name="target">the stream into which the data will be written</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_stream_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_stream_buffer(libgit2.git_filter_list filters, byte* buffer, nuint len, ref libgit2.git_writestream target);
@@ -365,7 +365,7 @@ namespace XenoAtom.Interop
         /// <param name="path">the path of the file to filter, a relative path will be
         /// taken as relative to the workdir</param>
         /// <param name="target">the stream into which the data will be written</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_stream_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_stream_file(libgit2.git_filter_list filters, libgit2.git_repository repo, byte* path, ref libgit2.git_writestream target);
@@ -378,7 +378,7 @@ namespace XenoAtom.Interop
         /// <param name="path">the path of the file to filter, a relative path will be
         /// taken as relative to the workdir</param>
         /// <param name="target">the stream into which the data will be written</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_stream_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_stream_file(libgit2.git_filter_list filters, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, ref libgit2.git_writestream target);
@@ -389,7 +389,7 @@ namespace XenoAtom.Interop
         /// <param name="filters">the list of filters to apply</param>
         /// <param name="blob">the blob to filter</param>
         /// <param name="target">the stream into which the data will be written</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_filter_list_stream_blob")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_filter_list_stream_blob(libgit2.git_filter_list filters, libgit2.git_blob blob, ref libgit2.git_writestream target);

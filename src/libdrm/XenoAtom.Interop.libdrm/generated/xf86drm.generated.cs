@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -161,7 +161,7 @@ namespace XenoAtom.Interop
         public const libdrm.drmMapFlags DRM_REMOVABLE = drmMapFlags.DRM_REMOVABLE;
         
         /// <warning>
-        /// @warning These values *MUST* match drm.h
+        /// These values *MUST* match drm.h
         /// </warning>
         public enum drmDMAFlags : uint
         {

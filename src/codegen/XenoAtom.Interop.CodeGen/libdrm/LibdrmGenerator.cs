@@ -41,6 +41,9 @@ internal partial class LibdrmGenerator(LibDescriptor descriptor) : GeneratorBase
             Defines =
             {
                 "__linux__",
+                // Defines for musl to override _Addr, _Int64, _Reg in bits/alltypes.h
+                // See ApkIncludeHelper.ExtractFiles
+                "XENO_ATOM_INTEROP",
             },
             AdditionalArguments =
             {

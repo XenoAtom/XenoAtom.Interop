@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -575,7 +575,7 @@ namespace XenoAtom.Interop
         /// <param name="opts">the `git_merge_file_input` instance to initialize.</param>
         /// <param name="version">the version of the struct; you should pass
         /// `GIT_MERGE_FILE_INPUT_VERSION` here.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_file_input_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_file_input_init(out libgit2.git_merge_file_input opts, uint version);
@@ -585,7 +585,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_merge_file_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_MERGE_FILE_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_merge_file_options` with default values. Equivalent to
         /// creating an instance with `GIT_MERGE_FILE_OPTIONS_INIT`.
@@ -599,7 +599,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_merge_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_MERGE_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_merge_options` with default values. Equivalent to
         /// creating an instance with `GIT_MERGE_OPTIONS_INIT`.
@@ -617,7 +617,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to merge</param>
         /// <param name="their_heads">the heads to merge into</param>
         /// <param name="their_heads_len">the number of heads to merge</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_analysis")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_analysis(out libgit2.git_merge_analysis_t analysis_out, out libgit2.git_merge_preference_t preference_out, libgit2.git_repository repo, libgit2.git_annotated_commit* their_heads, nuint their_heads_len);
@@ -632,7 +632,7 @@ namespace XenoAtom.Interop
         /// <param name="our_ref">the reference to perform the analysis from</param>
         /// <param name="their_heads">the heads to merge into</param>
         /// <param name="their_heads_len">the number of heads to merge</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_analysis_for_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_analysis_for_ref(out libgit2.git_merge_analysis_t analysis_out, out libgit2.git_merge_preference_t preference_out, libgit2.git_repository repo, libgit2.git_reference our_ref, libgit2.git_annotated_commit* their_heads, nuint their_heads_len);
@@ -644,7 +644,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="one">one of the commits</param>
         /// <param name="two">the other commit</param>
-        /// <returns>@return 0 on success, GIT_ENOTFOUND if not found or error code</returns>
+        /// <returns>0 on success, GIT_ENOTFOUND if not found or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_base")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_base(out libgit2.git_oid @out, libgit2.git_repository repo, in libgit2.git_oid one, in libgit2.git_oid two);
@@ -656,7 +656,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="one">one of the commits</param>
         /// <param name="two">the other commit</param>
-        /// <returns>@return 0 on success, GIT_ENOTFOUND if not found or error code</returns>
+        /// <returns>0 on success, GIT_ENOTFOUND if not found or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_bases")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_bases(out libgit2.git_oidarray @out, libgit2.git_repository repo, in libgit2.git_oid one, in libgit2.git_oid two);
@@ -668,7 +668,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="length">The number of commits in the provided `input_array`</param>
         /// <param name="input_array">oids of the commits</param>
-        /// <returns>@return Zero on success; GIT_ENOTFOUND or -1 on failure.</returns>
+        /// <returns>Zero on success; GIT_ENOTFOUND or -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_base_many")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_base_many(out libgit2.git_oid @out, libgit2.git_repository repo, nuint length, libgit2.git_oid* input_array);
@@ -680,7 +680,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="length">The number of commits in the provided `input_array`</param>
         /// <param name="input_array">oids of the commits</param>
-        /// <returns>@return Zero on success; GIT_ENOTFOUND or -1 on failure.</returns>
+        /// <returns>Zero on success; GIT_ENOTFOUND or -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_bases_many")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_bases_many(out libgit2.git_oidarray @out, libgit2.git_repository repo, nuint length, libgit2.git_oid* input_array);
@@ -692,7 +692,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="length">The number of commits in the provided `input_array`</param>
         /// <param name="input_array">oids of the commits</param>
-        /// <returns>@return Zero on success; GIT_ENOTFOUND or -1 on failure.</returns>
+        /// <returns>Zero on success; GIT_ENOTFOUND or -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_base_octopus")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_base_octopus(out libgit2.git_oid @out, libgit2.git_repository repo, nuint length, libgit2.git_oid* input_array);
@@ -708,7 +708,7 @@ namespace XenoAtom.Interop
         /// <param name="ours">The contents of the file in "our" side</param>
         /// <param name="theirs">The contents of the file in "their" side</param>
         /// <param name="opts">The merge file options or `NULL` for defaults</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         /// <remarks>
         /// Note that this function does not reference a repository and any
         /// configuration must be passed as `git_merge_file_options`.
@@ -729,7 +729,7 @@ namespace XenoAtom.Interop
         /// <param name="ours">The index entry for our file (stage level 2)</param>
         /// <param name="theirs">The index entry for their file (stage level 3)</param>
         /// <param name="opts">The merge file options or NULL</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_file_from_index")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_file_from_index(out libgit2.git_merge_file_result @out, libgit2.git_repository repo, in libgit2.git_index_entry ancestor, in libgit2.git_index_entry ours, in libgit2.git_index_entry theirs, in libgit2.git_merge_file_options opts);
@@ -754,7 +754,7 @@ namespace XenoAtom.Interop
         /// <param name="our_tree">the tree that reflects the destination tree</param>
         /// <param name="their_tree">the tree to merge in to `our_tree`</param>
         /// <param name="opts">the merge tree options (or null for defaults)</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         /// <remarks>
         /// The returned index must be freed explicitly with `git_index_free`.
         /// </remarks>
@@ -773,7 +773,7 @@ namespace XenoAtom.Interop
         /// <param name="our_commit">the commit that reflects the destination tree</param>
         /// <param name="their_commit">the commit to merge in to `our_commit`</param>
         /// <param name="opts">the merge tree options (or null for defaults)</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         /// <remarks>
         /// The returned index must be freed explicitly with `git_index_free`.
         /// </remarks>
@@ -792,7 +792,7 @@ namespace XenoAtom.Interop
         /// <param name="their_heads_len">the number of heads to merge</param>
         /// <param name="merge_opts">merge options</param>
         /// <param name="checkout_opts">checkout options</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         /// <remarks>
         /// For compatibility with git, the repository is put into a merging
         /// state. Once the commit is done (or if the user wishes to abort),

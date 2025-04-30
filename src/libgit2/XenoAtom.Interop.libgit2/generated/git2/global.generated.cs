@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -20,7 +20,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Init the global state
         /// </summary>
-        /// <returns>@return the number of initializations of the library, or an error code.</returns>
+        /// <returns>the number of initializations of the library, or an error code.</returns>
         /// <remarks>
         /// This function must be called before any other libgit2 function in
         /// order to set up global state and threading.This function may be called multiple times - it will return the number

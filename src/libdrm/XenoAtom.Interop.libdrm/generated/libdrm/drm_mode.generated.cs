@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -330,12 +330,12 @@ namespace XenoAtom.Interop
             public uint plane_id;
             
             /// <summary>
-            /// @crtc _id: Object ID of the current CRTC.
+            /// _id: Object ID of the current CRTC.
             /// </summary>
             public uint crtc_id;
             
             /// <summary>
-            /// @fb _id: Object ID of the current fb.
+            /// _id: Object ID of the current fb.
             /// </summary>
             public uint fb_id;
             
@@ -350,12 +350,12 @@ namespace XenoAtom.Interop
             public uint possible_crtcs;
             
             /// <summary>
-            /// @gamma _size: Never used.
+            /// _size: Never used.
             /// </summary>
             public uint gamma_size;
             
             /// <summary>
-            /// @count _format_types: Number of formats.
+            /// _format_types: Number of formats.
             /// </summary>
             public uint count_format_types;
             
@@ -414,52 +414,52 @@ namespace XenoAtom.Interop
         public partial struct drm_mode_get_connector
         {
             /// <summary>
-            /// @encoders _ptr: Pointer to ``__u32`` array of object IDs.
+            /// _ptr: Pointer to ``__u32`` array of object IDs.
             /// </summary>
             public ulong encoders_ptr;
             
             /// <summary>
-            /// @modes _ptr: Pointer to struct drm_mode_modeinfo array.
+            /// _ptr: Pointer to struct drm_mode_modeinfo array.
             /// </summary>
             public ulong modes_ptr;
             
             /// <summary>
-            /// @props _ptr: Pointer to ``__u32`` array of property IDs.
+            /// _ptr: Pointer to ``__u32`` array of property IDs.
             /// </summary>
             public ulong props_ptr;
             
             /// <summary>
-            /// @prop _values_ptr: Pointer to ``__u64`` array of property values.
+            /// _values_ptr: Pointer to ``__u64`` array of property values.
             /// </summary>
             public ulong prop_values_ptr;
             
             /// <summary>
-            /// @count _modes: Number of modes.
+            /// _modes: Number of modes.
             /// </summary>
             public uint count_modes;
             
             /// <summary>
-            /// @count _props: Number of properties.
+            /// _props: Number of properties.
             /// </summary>
             public uint count_props;
             
             /// <summary>
-            /// @count _encoders: Number of encoders.
+            /// _encoders: Number of encoders.
             /// </summary>
             public uint count_encoders;
             
             /// <summary>
-            /// @encoder _id: Object ID of the current encoder.
+            /// _id: Object ID of the current encoder.
             /// </summary>
             public uint encoder_id;
             
             /// <summary>
-            /// @connector _id: Object ID of the connector.
+            /// _id: Object ID of the connector.
             /// </summary>
             public uint connector_id;
             
             /// <summary>
-            /// @connector _type: Type of the connector.
+            /// _type: Type of the connector.
             /// </summary>
             /// <remarks>
             /// See DRM_MODE_CONNECTOR_* defines.
@@ -467,7 +467,7 @@ namespace XenoAtom.Interop
             public uint connector_type;
             
             /// <summary>
-            /// @connector _type_id: Type-specific connector number.
+            /// _type_id: Type-specific connector number.
             /// </summary>
             /// <remarks>
             /// This is not an object ID. This is a per-type connector number. Each
@@ -478,7 +478,7 @@ namespace XenoAtom.Interop
             public uint connector_type_id;
             
             /// <summary>
-            /// @connection : Status of the connector.
+            /// : Status of the connector.
             /// </summary>
             /// <remarks>
             /// See enum drm_connector_status.
@@ -486,17 +486,17 @@ namespace XenoAtom.Interop
             public uint connection;
             
             /// <summary>
-            /// @em _width: Width of the connected sink in millimeters.
+            /// _width: Width of the connected sink in millimeters.
             /// </summary>
             public uint mm_width;
             
             /// <summary>
-            /// @em _height: Height of the connected sink in millimeters.
+            /// _height: Height of the connected sink in millimeters.
             /// </summary>
             public uint mm_height;
             
             /// <summary>
-            /// @subpixel : Subpixel order of the connected sink.
+            /// : Subpixel order of the connected sink.
             /// </summary>
             /// <remarks>
             /// See enum subpixel_order.
@@ -504,7 +504,7 @@ namespace XenoAtom.Interop
             public uint subpixel;
             
             /// <par>
-            /// @par : Padding, must be zero.
+            /// : Padding, must be zero.
             /// </par>
             public uint pad;
         }
@@ -559,7 +559,7 @@ namespace XenoAtom.Interop
         public unsafe partial struct drm_mode_get_property
         {
             /// <summary>
-            /// @values _ptr: Pointer to a ``__u64`` array.
+            /// _ptr: Pointer to a ``__u64`` array.
             /// </summary>
             public ulong values_ptr;
             
@@ -588,12 +588,12 @@ namespace XenoAtom.Interop
             public fixed byte name[32];
             
             /// <summary>
-            /// @count _values: Number of elements in @values _ptr.
+            /// _values: Number of elements in @values _ptr.
             /// </summary>
             public uint count_values;
             
             /// <summary>
-            /// @count _enum_blobs: Number of elements in
+            /// _enum_blobs: Number of elements in
             /// </summary>
             /// <remarks>
             /// _blob_ptr.
@@ -695,17 +695,17 @@ namespace XenoAtom.Interop
         public unsafe partial struct drm_mode_fb_cmd2
         {
             /// <summary>
-            /// @fb _id: Object ID of the frame-buffer.
+            /// _id: Object ID of the frame-buffer.
             /// </summary>
             public uint fb_id;
             
             /// <summary>
-            /// @width : Width of the frame-buffer.
+            /// : Width of the frame-buffer.
             /// </summary>
             public uint width;
             
             /// <summary>
-            /// @height : Height of the frame-buffer.
+            /// : Height of the frame-buffer.
             /// </summary>
             public uint height;
             
@@ -731,12 +731,12 @@ namespace XenoAtom.Interop
             public fixed uint handles[4];
             
             /// <summary>
-            /// @pitches : Pitch (aka. stride) in bytes, one per plane.
+            /// : Pitch (aka. stride) in bytes, one per plane.
             /// </summary>
             public fixed uint pitches[4];
             
             /// <summary>
-            /// @offsets : Offset into the buffer in bytes, one per plane.
+            /// : Offset into the buffer in bytes, one per plane.
             /// </summary>
             public fixed uint offsets[4];
             
@@ -937,7 +937,7 @@ namespace XenoAtom.Interop
             public byte eotf;
             
             /// <summary>
-            /// @metadata _type: Static_Metadata_Descriptor_ID.
+            /// _type: Static_Metadata_Descriptor_ID.
             /// </summary>
             public byte metadata_type;
             
@@ -991,12 +991,12 @@ namespace XenoAtom.Interop
             }
             
             /// <summary>
-            /// @metadata _type: Static_Metadata_Descriptor_ID.
+            /// _type: Static_Metadata_Descriptor_ID.
             /// </summary>
             public uint metadata_type;
             
             /// <summary>
-            /// @hdmi _metadata_type1: HDR Metadata Infoframe.
+            /// _metadata_type1: HDR Metadata Infoframe.
             /// </summary>
             public libdrm.hdr_output_metadata.hdr_output_metadata__union_0 hdr_output_metadata__field_1;
         }
@@ -1212,17 +1212,17 @@ namespace XenoAtom.Interop
         public partial struct drm_mode_create_blob
         {
             /// <date>
-            /// @date : Pointer to data to copy.
+            /// : Pointer to data to copy.
             /// </date>
             public ulong data;
             
             /// <summary>
-            /// @length : Length of data to copy.
+            /// : Length of data to copy.
             /// </summary>
             public uint length;
             
             /// <summary>
-            /// @blob _id: Return: new property ID.
+            /// _id: Return: new property ID.
             /// </summary>
             public uint blob_id;
         }
@@ -1256,27 +1256,27 @@ namespace XenoAtom.Interop
         public partial struct drm_mode_create_lease
         {
             /// <summary>
-            /// @object _ids: Pointer to array of object ids (__u32)
+            /// _ids: Pointer to array of object ids (__u32)
             /// </summary>
             public ulong object_ids;
             
             /// <summary>
-            /// @object _count: Number of object ids
+            /// _count: Number of object ids
             /// </summary>
             public uint object_count;
             
             /// <summary>
-            /// @flags : flags for new FD (O_CLOEXEC, etc)
+            /// : flags for new FD (O_CLOEXEC, etc)
             /// </summary>
             public uint flags;
             
             /// <summary>
-            /// @lessee _id: Return: unique identifier for lessee.
+            /// _id: Return: unique identifier for lessee.
             /// </summary>
             public uint lessee_id;
             
             /// <summary>
-            /// @fd : Return: file descriptor to new drm_master file
+            /// : Return: file descriptor to new drm_master file
             /// </summary>
             public uint fd;
         }
@@ -1290,7 +1290,7 @@ namespace XenoAtom.Interop
         public partial struct drm_mode_list_lessees
         {
             /// <summary>
-            /// @count _lessees: Number of lessees.
+            /// _lessees: Number of lessees.
             /// </summary>
             /// <remarks>
             /// On input, provides length of the array.
@@ -1302,12 +1302,12 @@ namespace XenoAtom.Interop
             public uint count_lessees;
             
             /// <par>
-            /// @par : Padding.
+            /// : Padding.
             /// </par>
             public uint pad;
             
             /// <summary>
-            /// @lessees _ptr: Pointer to lessees.
+            /// _ptr: Pointer to lessees.
             /// </summary>
             /// <remarks>
             /// Pointer to __u64 array of lessee ids
@@ -1324,7 +1324,7 @@ namespace XenoAtom.Interop
         public partial struct drm_mode_get_lease
         {
             /// <summary>
-            /// @count _objects: Number of leased objects.
+            /// _objects: Number of leased objects.
             /// </summary>
             /// <remarks>
             /// On input, provides length of the array.
@@ -1336,12 +1336,12 @@ namespace XenoAtom.Interop
             public uint count_objects;
             
             /// <par>
-            /// @par : Padding.
+            /// : Padding.
             /// </par>
             public uint pad;
             
             /// <summary>
-            /// @objects _ptr: Pointer to objects.
+            /// _ptr: Pointer to objects.
             /// </summary>
             /// <remarks>
             /// Pointer to __u32 array of object ids.
@@ -1355,7 +1355,7 @@ namespace XenoAtom.Interop
         public partial struct drm_mode_revoke_lease
         {
             /// <summary>
-            /// @lessee _id: Unique ID of lessee
+            /// _id: Unique ID of lessee
             /// </summary>
             public uint lessee_id;
         }
@@ -1387,7 +1387,7 @@ namespace XenoAtom.Interop
         /// @fb _id: Framebuffer ID.
         /// </summary>
         /// <par>
-        /// @par : Must be zero.
+        /// : Must be zero.
         /// </par>
         public partial struct drm_mode_closefb
         {

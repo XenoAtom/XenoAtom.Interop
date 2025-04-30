@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -23,7 +23,7 @@ namespace XenoAtom.Interop
         /// <param name="out">location to store the database pointer, if opened.
         /// Set to NULL if the open failed.</param>
         /// <param name="repo">the repository</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Before the Ref DB can be used for read/writing, a custom database
         /// backend must be manually set using `git_refdb_set_backend()`
@@ -39,7 +39,7 @@ namespace XenoAtom.Interop
         /// <param name="out">location to store the database pointer, if opened.
         /// Set to NULL if the open failed.</param>
         /// <param name="repo">the repository</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// - git_refdb_dir: read and write loose and packed refs
         /// from disk, assuming the repository dir as the folder
@@ -54,7 +54,7 @@ namespace XenoAtom.Interop
         /// databases, for example, this may pack all loose references.
         /// </summary>
         /// <param name="refdb">The reference database to optimize.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refdb_compress")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_refdb_compress(libgit2.git_refdb refdb);

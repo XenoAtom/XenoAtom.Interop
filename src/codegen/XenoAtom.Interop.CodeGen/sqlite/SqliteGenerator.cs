@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using CppAst;
@@ -213,7 +214,8 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
     public class CustomTypeConverter : ICSharpConverterPlugin
     {
         private ConvertTypedefDelegate _defaultTypeDefConverter;
-        
+        private DefaultTypeConverter? _defaultTypeConverter;
+
         /// <inheritdoc />
         public void Register(CSharpConverter converter, CSharpConverterPipeline pipeline)
         {
@@ -221,6 +223,7 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
             _defaultTypeDefConverter = pipeline.TypedefConverters[0];
             pipeline.TypedefConverters.Clear();
             pipeline.TypedefConverters.Add(GetTypeDef);
+            _defaultTypeConverter = pipeline.RegisteredPlugins.OfType<DefaultTypeConverter>().First();
         }
 
         private CSharpElement? GetTypeDef(CSharpConverter converter, CppTypedef cpptypedef, CSharpElement context)
@@ -235,7 +238,7 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
             return _defaultTypeDefConverter(converter, cpptypedef, context);
         }
 
-        public static CSharpType? GetType(CSharpConverter converter, CppType cppType, CSharpElement context, bool nested)
+        public CSharpType? GetType(CSharpConverter converter, CppType cppType, CSharpElement context, bool nested)
         {
             if (cppType is CppTypedef typedef)
             {
@@ -245,7 +248,7 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
                 if (typedef.Name == "sqlite_uint64") return CSharpPrimitiveType.ULong();
             }
 
-            return DefaultTypeConverter.GetCSharpType(converter, cppType, context, nested);
+            return _defaultTypeConverter!.GetCSharpType(converter, cppType, context, nested);
         }
     }
 }

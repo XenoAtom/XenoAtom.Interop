@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -549,7 +549,7 @@ namespace XenoAtom.Interop
         /// Return the last `git_error` object that was generated for the
         /// current thread.
         /// </summary>
-        /// <returns>@return A git_error object.</returns>
+        /// <returns>A git_error object.</returns>
         /// <remarks>
         /// This function will never return NULL.Callers should not rely on this to determine whether an error has
         /// occurred. For error checking, callers should examine the return

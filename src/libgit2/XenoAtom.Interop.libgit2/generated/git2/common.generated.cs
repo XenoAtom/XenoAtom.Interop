@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -274,7 +274,7 @@ namespace XenoAtom.Interop
         /// <param name="major">Store the major version number</param>
         /// <param name="minor">Store the minor version number</param>
         /// <param name="rev">Store the revision (patch) number</param>
-        /// <returns>@return 0 on success or an error code on failure</returns>
+        /// <returns>0 on success or an error code on failure</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_version")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_libgit2_version(out int major, out int minor, out int rev);
@@ -286,7 +286,7 @@ namespace XenoAtom.Interop
         /// "rc2", etc) prerelease.  For a final release, this function returns
         /// NULL.
         /// </summary>
-        /// <returns>@return the name of the prerelease state or NULL</returns>
+        /// <returns>the name of the prerelease state or NULL</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_prerelease")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_libgit2_prerelease_();
@@ -298,7 +298,7 @@ namespace XenoAtom.Interop
         /// "rc2", etc) prerelease.  For a final release, this function returns
         /// NULL.
         /// </summary>
-        /// <returns>@return the name of the prerelease state or NULL</returns>
+        /// <returns>the name of the prerelease state or NULL</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_prerelease")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -307,7 +307,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Query compile time options for libgit2.
         /// </summary>
-        /// <returns>@return A combination of GIT_FEATURE_* values.</returns>
+        /// <returns>A combination of GIT_FEATURE_* values.</returns>
         /// <remarks>
         /// - GIT_FEATURE_THREADS
         /// Libgit2 was compiled with thread support. Note that thread support is

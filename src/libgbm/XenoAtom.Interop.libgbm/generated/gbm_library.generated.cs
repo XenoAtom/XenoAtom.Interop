@@ -7,14 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class libgbm
     {
         /// <summary>
-        /// @brief Generic Buffer Manager
+        /// Generic Buffer Manager
         /// </summary>
         /// <remarks>
         ///  gbm.h

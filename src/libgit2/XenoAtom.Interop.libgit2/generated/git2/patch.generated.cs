@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -47,7 +47,7 @@ namespace XenoAtom.Interop
         /// Get the repository associated with this patch. May be NULL.
         /// </summary>
         /// <param name="patch">the patch</param>
-        /// <returns>@return a pointer to the repository</returns>
+        /// <returns>a pointer to the repository</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_owner")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_repository git_patch_owner(libgit2.git_patch patch);
@@ -225,7 +225,7 @@ namespace XenoAtom.Interop
         /// data and you do not have to release it when you are done with it.
         /// </summary>
         /// <param name="patch">The patch in which to get the delta.</param>
-        /// <returns>@return The delta associated with the patch.</returns>
+        /// <returns>The delta associated with the patch.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_get_delta")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_diff_delta* git_patch_get_delta(libgit2.git_patch patch);
@@ -234,7 +234,7 @@ namespace XenoAtom.Interop
         /// Get the number of hunks in a patch
         /// </summary>
         /// <param name="patch">The patch in which to get the number of hunks.</param>
-        /// <returns>@return The number of hunks of the patch.</returns>
+        /// <returns>The number of hunks of the patch.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_num_hunks")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_patch_num_hunks(libgit2.git_patch patch);
@@ -283,7 +283,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="patch">The git_patch object</param>
         /// <param name="hunk_idx">Index of the hunk</param>
-        /// <returns>@return Number of lines in hunk or GIT_ENOTFOUND if invalid hunk index</returns>
+        /// <returns>Number of lines in hunk or GIT_ENOTFOUND if invalid hunk index</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_patch_num_lines_in_hunk")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_patch_num_lines_in_hunk(libgit2.git_patch patch, nuint hunk_idx);
@@ -315,7 +315,7 @@ namespace XenoAtom.Interop
         /// <param name="include_context">Include context lines in size if non-zero</param>
         /// <param name="include_hunk_headers">Include hunk header lines if non-zero</param>
         /// <param name="include_file_headers">Include file header lines if non-zero</param>
-        /// <returns>@return The number of bytes of data</returns>
+        /// <returns>The number of bytes of data</returns>
         /// <remarks>
         /// This returns the raw size of the patch data.  This only includes the
         /// actual data from the lines of the diff, not the file or hunk headers.If you pass `include_context` as true (non-zero), this will be the size
@@ -333,7 +333,7 @@ namespace XenoAtom.Interop
         /// <param name="print_cb">Callback function to output lines of the patch.  Will be
         /// called for file headers, hunk headers, and diff lines.</param>
         /// <param name="payload">Reference pointer that will be passed to your callbacks.</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// Returning a non-zero value from the callback will terminate the iteration
         /// and return that value to the caller.

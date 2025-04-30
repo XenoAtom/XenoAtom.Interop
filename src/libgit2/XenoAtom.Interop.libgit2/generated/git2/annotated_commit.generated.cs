@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -25,7 +25,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to store the git_annotated_commit result in</param>
         /// <param name="repo">repository that contains the given reference</param>
         /// <param name="ref">reference to use to lookup the git_annotated_commit</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_from_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_annotated_commit_from_ref(out libgit2.git_annotated_commit @out, libgit2.git_repository repo, libgit2.git_reference @ref);
@@ -40,7 +40,7 @@ namespace XenoAtom.Interop
         /// <param name="branch_name">name of the (remote) branch</param>
         /// <param name="remote_url">url of the remote</param>
         /// <param name="id">the commit object id of the remote branch</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_from_fetchhead")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_annotated_commit_from_fetchhead(out libgit2.git_annotated_commit @out, libgit2.git_repository repo, byte* branch_name, byte* remote_url, in libgit2.git_oid id);
@@ -55,7 +55,7 @@ namespace XenoAtom.Interop
         /// <param name="branch_name">name of the (remote) branch</param>
         /// <param name="remote_url">url of the remote</param>
         /// <param name="id">the commit object id of the remote branch</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_from_fetchhead")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_annotated_commit_from_fetchhead(out libgit2.git_annotated_commit @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> branch_name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> remote_url, in libgit2.git_oid id);
@@ -68,7 +68,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to store the git_annotated_commit result in</param>
         /// <param name="repo">repository that contains the given commit</param>
         /// <param name="id">the commit object id to lookup</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         /// <remarks>
         /// An annotated commit contains information about how it was
         /// looked up, which may be useful for functions like merge or
@@ -88,7 +88,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to store the git_annotated_commit result in</param>
         /// <param name="repo">repository that contains the given commit</param>
         /// <param name="revspec">the extended sha syntax string to use to lookup the commit</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         /// <remarks>
         /// See `man gitrevisions`, or
         /// http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions for
@@ -104,7 +104,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to store the git_annotated_commit result in</param>
         /// <param name="repo">repository that contains the given commit</param>
         /// <param name="revspec">the extended sha syntax string to use to lookup the commit</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         /// <remarks>
         /// See `man gitrevisions`, or
         /// http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions for
@@ -118,7 +118,7 @@ namespace XenoAtom.Interop
         /// Gets the commit ID that the given `git_annotated_commit` refers to.
         /// </summary>
         /// <param name="commit">the given annotated commit</param>
-        /// <returns>@return commit id</returns>
+        /// <returns>commit id</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_annotated_commit_id(libgit2.git_annotated_commit commit);
@@ -127,7 +127,7 @@ namespace XenoAtom.Interop
         /// Get the refname that the given `git_annotated_commit` refers to.
         /// </summary>
         /// <param name="commit">the given annotated commit</param>
-        /// <returns>@return ref name.</returns>
+        /// <returns>ref name.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_annotated_commit_ref_(libgit2.git_annotated_commit commit);
@@ -136,7 +136,7 @@ namespace XenoAtom.Interop
         /// Get the refname that the given `git_annotated_commit` refers to.
         /// </summary>
         /// <param name="commit">the given annotated commit</param>
-        /// <returns>@return ref name.</returns>
+        /// <returns>ref name.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_annotated_commit_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]

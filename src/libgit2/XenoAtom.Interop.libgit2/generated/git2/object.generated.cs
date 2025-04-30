@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -24,7 +24,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repository to look up the object</param>
         /// <param name="id">the unique identifier for the object</param>
         /// <param name="type">the type of the object</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The generated reference is owned by the repository and
         /// should be closed with the `git_object_free` method
@@ -46,7 +46,7 @@ namespace XenoAtom.Interop
         /// <param name="id">a short identifier for the object</param>
         /// <param name="len">the length of the short identifier</param>
         /// <param name="type">the type of the object</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The object obtained will be so that its identifier
         /// matches the first 'len' hexadecimal characters
@@ -72,7 +72,7 @@ namespace XenoAtom.Interop
         /// <param name="treeish">root object that can be peeled to a tree</param>
         /// <param name="path">relative path from the root object to the desired object</param>
         /// <param name="type">type of object desired</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_lookup_bypath")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_object_lookup_bypath(out libgit2.git_object @out, libgit2.git_object treeish, byte* path, libgit2.git_object_t type);
@@ -85,7 +85,7 @@ namespace XenoAtom.Interop
         /// <param name="treeish">root object that can be peeled to a tree</param>
         /// <param name="path">relative path from the root object to the desired object</param>
         /// <param name="type">type of object desired</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_lookup_bypath")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_object_lookup_bypath(out libgit2.git_object @out, libgit2.git_object treeish, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_object_t type);
@@ -94,7 +94,7 @@ namespace XenoAtom.Interop
         /// Get the id (SHA1) of a repository object
         /// </summary>
         /// <param name="obj">the repository object</param>
-        /// <returns>@return the SHA1 id</returns>
+        /// <returns>the SHA1 id</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_object_id(libgit2.git_object obj);
@@ -121,7 +121,7 @@ namespace XenoAtom.Interop
         /// Get the object type of an object
         /// </summary>
         /// <param name="obj">the repository object</param>
-        /// <returns>@return the object's type</returns>
+        /// <returns>the object's type</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_type")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_object_t git_object_type(libgit2.git_object obj);
@@ -130,7 +130,7 @@ namespace XenoAtom.Interop
         /// Get the repository that owns this object
         /// </summary>
         /// <param name="obj">the object</param>
-        /// <returns>@return the repository who owns this object</returns>
+        /// <returns>the repository who owns this object</returns>
         /// <remarks>
         /// Freeing or calling `git_repository_close` on the
         /// returned pointer will invalidate the actual object.Any other operation may be run on the repository without
@@ -161,7 +161,7 @@ namespace XenoAtom.Interop
         /// Convert an object type to its string representation.
         /// </summary>
         /// <param name="type">object type to convert.</param>
-        /// <returns>@return the corresponding string representation.</returns>
+        /// <returns>the corresponding string representation.</returns>
         /// <remarks>
         /// The result is a pointer to a string in static memory and
         /// should not be free()'ed.
@@ -174,7 +174,7 @@ namespace XenoAtom.Interop
         /// Convert an object type to its string representation.
         /// </summary>
         /// <param name="type">object type to convert.</param>
-        /// <returns>@return the corresponding string representation.</returns>
+        /// <returns>the corresponding string representation.</returns>
         /// <remarks>
         /// The result is a pointer to a string in static memory and
         /// should not be free()'ed.
@@ -188,7 +188,7 @@ namespace XenoAtom.Interop
         /// Convert a string object type representation to it's git_object_t.
         /// </summary>
         /// <param name="str">the string to convert.</param>
-        /// <returns>@return the corresponding git_object_t.</returns>
+        /// <returns>the corresponding git_object_t.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_string2type")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_object_t git_object_string2type(byte* str);
@@ -197,7 +197,7 @@ namespace XenoAtom.Interop
         /// Convert a string object type representation to it's git_object_t.
         /// </summary>
         /// <param name="str">the string to convert.</param>
-        /// <returns>@return the corresponding git_object_t.</returns>
+        /// <returns>the corresponding git_object_t.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_string2type")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_object_t git_object_string2type([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str);
@@ -218,7 +218,7 @@ namespace XenoAtom.Interop
         /// <param name="peeled">Pointer to the peeled git_object</param>
         /// <param name="object">The object to be processed</param>
         /// <param name="target_type">The type of the requested object (a GIT_OBJECT_ value)</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC, GIT_EPEEL, or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC, GIT_EPEEL, or an error code</returns>
         /// <remarks>
         /// If the query cannot be satisfied due to the object model,
         /// GIT_EINVALIDSPEC will be returned (e.g. trying to peel a blob to a
@@ -239,7 +239,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="dest">Pointer to store the copy of the object</param>
         /// <param name="source">Original object to copy</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_object_dup(out libgit2.git_object dest, libgit2.git_object source);
@@ -255,7 +255,7 @@ namespace XenoAtom.Interop
         /// <param name="buf">The contents to validate</param>
         /// <param name="len">The length of the buffer</param>
         /// <param name="object_type">The type of the object in the buffer</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         /// <warning>
         /// @warning This function is experimental and its signature may change in
         /// the future.

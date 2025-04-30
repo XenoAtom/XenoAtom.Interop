@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -1353,7 +1353,7 @@ namespace XenoAtom.Interop
             /// progress side-band will be passed to this function (this is
             /// the 'counting objects' output).
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int> sideband_progress;
+            public libgit2.git_transport_message_cb sideband_progress;
             
             /// <summary>
             /// Completion is called when different parts of the download
@@ -1369,7 +1369,7 @@ namespace XenoAtom.Interop
             /// Returning GIT_PASSTHROUGH will make libgit2 behave as
             /// though this field isn't set.
             /// </remarks>
-            public delegate*unmanaged[Cdecl]<int> credentials;
+            public libgit2.git_credential_acquire_cb credentials;
             
             /// <summary>
             /// If cert verification fails, this will be called to let the
@@ -1377,14 +1377,14 @@ namespace XenoAtom.Interop
             /// connection to proceed. Returns 0 to allow the connection
             /// or a negative value to indicate an error.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int> certificate_check;
+            public libgit2.git_transport_certificate_check_cb certificate_check;
             
             /// <summary>
             /// During the download of new data, this will be regularly
             /// called with the current count of progress done by the
             /// indexer.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int> transfer_progress;
+            public libgit2.git_indexer_progress_cb transfer_progress;
             
             /// <summary>
             /// Each time a reference is updated locally, this function
@@ -1397,7 +1397,7 @@ namespace XenoAtom.Interop
             /// building. Be aware that this is called inline with pack
             /// building operations, so performance may be affected.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int> pack_progress;
+            public libgit2.git_packbuilder_progress pack_progress;
             
             /// <summary>
             /// Function to call with progress information during the
@@ -1405,29 +1405,29 @@ namespace XenoAtom.Interop
             /// inline with pack building operations, so performance may be
             /// affected.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int> push_transfer_progress;
+            public libgit2.git_push_transfer_progress_cb push_transfer_progress;
             
             /// <summary>
             /// See documentation of git_push_update_reference_cb
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int> push_update_reference;
+            public libgit2.git_push_update_reference_cb push_update_reference;
             
             /// <summary>
             /// Called once between the negotiation step and the upload. It
             /// provides information about what updates will be performed.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int> push_negotiation;
+            public libgit2.git_push_negotiation push_negotiation;
             
             /// <summary>
             /// Create the transport to use for this operation. Leave NULL
             /// to auto-detect.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int> transport;
+            public libgit2.git_transport_cb transport;
             
             /// <summary>
             /// Callback when the remote is ready to connect.
             /// </summary>
-            public delegate*unmanaged[Cdecl]<int> remote_ready;
+            public libgit2.git_remote_ready_cb remote_ready;
             
             /// <summary>
             /// This will be passed to each of the callbacks in this struct

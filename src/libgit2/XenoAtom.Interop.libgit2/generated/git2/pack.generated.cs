@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -30,37 +30,6 @@ namespace XenoAtom.Interop
         public const libgit2.git_packbuilder_stage_t GIT_PACKBUILDER_ADDING_OBJECTS = git_packbuilder_stage_t.GIT_PACKBUILDER_ADDING_OBJECTS;
         
         public const libgit2.git_packbuilder_stage_t GIT_PACKBUILDER_DELTAFICATION = git_packbuilder_stage_t.GIT_PACKBUILDER_DELTAFICATION;
-        
-        /// <summary>
-        /// Callback used to iterate over packed objects
-        /// </summary>
-        /// <param name="buf">A pointer to the object's data</param>
-        /// <param name="size">The size of the underlying object</param>
-        /// <param name="payload">Payload passed to git_packbuilder_foreach</param>
-        /// <returns>@return non-zero to terminate the iteration</returns>
-        /// <seealso cref="git_packbuilder_foreach"/>
-        public readonly partial struct git_packbuilder_foreach_cb : IEquatable<libgit2.git_packbuilder_foreach_cb>
-        {
-            public git_packbuilder_foreach_cb(delegate*unmanaged[Cdecl]<void*, nuint, void*, int> value) => this.Value = value;
-            
-            public delegate*unmanaged[Cdecl]<void*, nuint, void*, int> Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_packbuilder_foreach_cb other && Equals(other);
-            
-            public bool Equals(git_packbuilder_foreach_cb other) => Value == other.Value;
-            
-            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
-            
-            public override string ToString() => ((nint)(void*)Value).ToString();
-            
-            public static implicit operator delegate*unmanaged[Cdecl]<void*, nuint, void*, int> (libgit2.git_packbuilder_foreach_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_packbuilder_foreach_cb (delegate*unmanaged[Cdecl]<void*, nuint, void*, int> from) => new libgit2.git_packbuilder_foreach_cb(from);
-            
-            public static bool operator ==(git_packbuilder_foreach_cb left, git_packbuilder_foreach_cb right) => left.Equals(right);
-            
-            public static bool operator !=(git_packbuilder_foreach_cb left, git_packbuilder_foreach_cb right) => !left.Equals(right);
-        }
         
         /// <summary>
         /// Packbuilder progress notification function
@@ -89,11 +58,42 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
+        /// Callback used to iterate over packed objects
+        /// </summary>
+        /// <param name="buf">A pointer to the object's data</param>
+        /// <param name="size">The size of the underlying object</param>
+        /// <param name="payload">Payload passed to git_packbuilder_foreach</param>
+        /// <returns>non-zero to terminate the iteration</returns>
+        /// <seealso cref="git_packbuilder_foreach"/>
+        public readonly partial struct git_packbuilder_foreach_cb : IEquatable<libgit2.git_packbuilder_foreach_cb>
+        {
+            public git_packbuilder_foreach_cb(delegate*unmanaged[Cdecl]<void*, nuint, void*, int> value) => this.Value = value;
+            
+            public delegate*unmanaged[Cdecl]<void*, nuint, void*, int> Value { get; }
+            
+            public override bool Equals(object obj) => obj is git_packbuilder_foreach_cb other && Equals(other);
+            
+            public bool Equals(git_packbuilder_foreach_cb other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<void*, nuint, void*, int> (libgit2.git_packbuilder_foreach_cb from) => from.Value;
+            
+            public static implicit operator libgit2.git_packbuilder_foreach_cb (delegate*unmanaged[Cdecl]<void*, nuint, void*, int> from) => new libgit2.git_packbuilder_foreach_cb(from);
+            
+            public static bool operator ==(git_packbuilder_foreach_cb left, git_packbuilder_foreach_cb right) => left.Equals(right);
+            
+            public static bool operator !=(git_packbuilder_foreach_cb left, git_packbuilder_foreach_cb right) => !left.Equals(right);
+        }
+        
+        /// <summary>
         /// Initialize a new packbuilder
         /// </summary>
         /// <param name="out">The new packbuilder object</param>
         /// <param name="repo">The repository</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_packbuilder_new(out libgit2.git_packbuilder @out, libgit2.git_repository repo);
@@ -103,7 +103,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="pb">The packbuilder</param>
         /// <param name="n">Number of threads to spawn</param>
-        /// <returns>@return number of actual threads to be used</returns>
+        /// <returns>number of actual threads to be used</returns>
         /// <remarks>
         /// By default, libgit2 won't spawn any threads at all;
         /// when set to 0, libgit2 will autodetect the number of
@@ -119,7 +119,7 @@ namespace XenoAtom.Interop
         /// <param name="pb">The packbuilder</param>
         /// <param name="id">The oid of the commit</param>
         /// <param name="name">The name; might be NULL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// For an optimal pack it's mandatory to insert objects in recency order,
         /// commits followed by trees and blobs.
@@ -134,7 +134,7 @@ namespace XenoAtom.Interop
         /// <param name="pb">The packbuilder</param>
         /// <param name="id">The oid of the commit</param>
         /// <param name="name">The name; might be NULL</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// For an optimal pack it's mandatory to insert objects in recency order,
         /// commits followed by trees and blobs.
@@ -148,7 +148,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="pb">The packbuilder</param>
         /// <param name="id">The oid of the root tree</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This will add the tree as well as all referenced trees and blobs.
         /// </remarks>
@@ -161,7 +161,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="pb">The packbuilder</param>
         /// <param name="id">The oid of the commit</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This will add a commit as well as the completed referenced tree.
         /// </remarks>
@@ -174,7 +174,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="pb">the packbuilder</param>
         /// <param name="walk">the revwalk to use to fill the packbuilder</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Those commits and all objects they reference will be inserted into
         /// the packbuilder.
@@ -189,7 +189,7 @@ namespace XenoAtom.Interop
         /// <param name="pb">the packbuilder</param>
         /// <param name="id">the id of the root object to insert</param>
         /// <param name="name">optional name for the object</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Insert the object as well as any object it references.
         /// </remarks>
@@ -203,7 +203,7 @@ namespace XenoAtom.Interop
         /// <param name="pb">the packbuilder</param>
         /// <param name="id">the id of the root object to insert</param>
         /// <param name="name">optional name for the object</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Insert the object as well as any object it references.
         /// </remarks>
@@ -216,7 +216,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="buf">Buffer where to write the packfile</param>
         /// <param name="pb">The packbuilder</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The contents of the buffer will become a valid packfile, even though there
         /// will be no attached index
@@ -233,7 +233,7 @@ namespace XenoAtom.Interop
         /// <param name="mode">permissions to use creating a packfile or 0 for defaults</param>
         /// <param name="progress_cb">function to call with progress information from the indexer (optional)</param>
         /// <param name="progress_cb_payload">payload for the progress callback (optional)</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_write")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_packbuilder_write(libgit2.git_packbuilder pb, byte* path, uint mode, libgit2.git_indexer_progress_cb progress_cb, void* progress_cb_payload);
@@ -246,7 +246,7 @@ namespace XenoAtom.Interop
         /// <param name="mode">permissions to use creating a packfile or 0 for defaults</param>
         /// <param name="progress_cb">function to call with progress information from the indexer (optional)</param>
         /// <param name="progress_cb_payload">payload for the progress callback (optional)</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_write")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_packbuilder_write(libgit2.git_packbuilder pb, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, uint mode, libgit2.git_indexer_progress_cb progress_cb, void* progress_cb_payload);
@@ -255,7 +255,7 @@ namespace XenoAtom.Interop
         /// Get the unique name for the resulting packfile.
         /// </summary>
         /// <param name="pb">the packbuilder instance</param>
-        /// <returns>@return a NUL terminated string for the packfile name</returns>
+        /// <returns>a NUL terminated string for the packfile name</returns>
         /// <remarks>
         /// The packfile's name is derived from the packfile's content.
         /// This is only correct after the packfile has been written.
@@ -268,7 +268,7 @@ namespace XenoAtom.Interop
         /// Get the unique name for the resulting packfile.
         /// </summary>
         /// <param name="pb">the packbuilder instance</param>
-        /// <returns>@return a NUL terminated string for the packfile name</returns>
+        /// <returns>a NUL terminated string for the packfile name</returns>
         /// <remarks>
         /// The packfile's name is derived from the packfile's content.
         /// This is only correct after the packfile has been written.
@@ -284,7 +284,7 @@ namespace XenoAtom.Interop
         /// <param name="pb">the packbuilder</param>
         /// <param name="cb">the callback to call with each packed object's buffer</param>
         /// <param name="payload">the callback's data</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_foreach")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_packbuilder_foreach(libgit2.git_packbuilder pb, libgit2.git_packbuilder_foreach_cb cb, void* payload);
@@ -293,7 +293,7 @@ namespace XenoAtom.Interop
         /// Get the total number of objects the packbuilder will write out
         /// </summary>
         /// <param name="pb">the packbuilder</param>
-        /// <returns>@return the number of objects in the packfile</returns>
+        /// <returns>the number of objects in the packfile</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_object_count")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_packbuilder_object_count(libgit2.git_packbuilder pb);
@@ -302,7 +302,7 @@ namespace XenoAtom.Interop
         /// Get the number of objects the packbuilder has already written out
         /// </summary>
         /// <param name="pb">the packbuilder</param>
-        /// <returns>@return the number of objects which have already been written</returns>
+        /// <returns>the number of objects which have already been written</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_written")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_packbuilder_written(libgit2.git_packbuilder pb);
@@ -315,7 +315,7 @@ namespace XenoAtom.Interop
         /// pack building. Be aware that this is called inline with pack building
         /// operations, so performance may be affected.</param>
         /// <param name="progress_cb_payload">Payload for progress callback.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_set_callbacks")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_packbuilder_set_callbacks(libgit2.git_packbuilder pb, libgit2.git_packbuilder_progress progress_cb, void* progress_cb_payload);

@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -62,6 +62,35 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
+        /// Type for progress callbacks during indexing.  Return a value less
+        /// than zero to cancel the indexing or download.
+        /// </summary>
+        /// <param name="payload">Payload provided by caller</param>
+        /// <param name="stats">Structure containing information about the state of the transfer</param>
+        public readonly partial struct git_indexer_progress_cb : IEquatable<libgit2.git_indexer_progress_cb>
+        {
+            public git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> value) => this.Value = value;
+            
+            public delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> Value { get; }
+            
+            public override bool Equals(object obj) => obj is git_indexer_progress_cb other && Equals(other);
+            
+            public bool Equals(git_indexer_progress_cb other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> (libgit2.git_indexer_progress_cb from) => from.Value;
+            
+            public static implicit operator libgit2.git_indexer_progress_cb (delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> from) => new libgit2.git_indexer_progress_cb(from);
+            
+            public static bool operator ==(git_indexer_progress_cb left, git_indexer_progress_cb right) => left.Equals(right);
+            
+            public static bool operator !=(git_indexer_progress_cb left, git_indexer_progress_cb right) => !left.Equals(right);
+        }
+        
+        /// <summary>
         /// A git indexer object
         /// </summary>
         public readonly partial struct git_indexer : IEquatable<libgit2.git_indexer>
@@ -106,35 +135,6 @@ namespace XenoAtom.Interop
             public byte verify;
         }
         
-        /// <summary>
-        /// Type for progress callbacks during indexing.  Return a value less
-        /// than zero to cancel the indexing or download.
-        /// </summary>
-        /// <param name="payload">Payload provided by caller</param>
-        /// <param name="stats">Structure containing information about the state of the transfer</param>
-        public readonly partial struct git_indexer_progress_cb : IEquatable<libgit2.git_indexer_progress_cb>
-        {
-            public git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> value) => this.Value = value;
-            
-            public delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_indexer_progress_cb other && Equals(other);
-            
-            public bool Equals(git_indexer_progress_cb other) => Value == other.Value;
-            
-            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
-            
-            public override string ToString() => ((nint)(void*)Value).ToString();
-            
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> (libgit2.git_indexer_progress_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_indexer_progress_cb (delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> from) => new libgit2.git_indexer_progress_cb(from);
-            
-            public static bool operator ==(git_indexer_progress_cb left, git_indexer_progress_cb right) => left.Equals(right);
-            
-            public static bool operator !=(git_indexer_progress_cb left, git_indexer_progress_cb right) => !left.Equals(right);
-        }
-        
         public const uint GIT_INDEXER_OPTIONS_VERSION = 1;
         
         /// <summary>
@@ -143,7 +143,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">the `git_indexer_options` struct to initialize.</param>
         /// <param name="version">Version of struct; pass `GIT_INDEXER_OPTIONS_VERSION`</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_options_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_indexer_options_init(out libgit2.git_indexer_options opts, uint version);
@@ -159,7 +159,7 @@ namespace XenoAtom.Interop
         /// will be returned if there are bases missing)</param>
         /// <param name="opts">Optional structure containing additional options. See
         /// `git_indexer_options` above.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_indexer_new(out libgit2.git_indexer @out, byte* path, uint mode, libgit2.git_odb odb, in libgit2.git_indexer_options opts);
@@ -175,7 +175,7 @@ namespace XenoAtom.Interop
         /// will be returned if there are bases missing)</param>
         /// <param name="opts">Optional structure containing additional options. See
         /// `git_indexer_options` above.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_indexer_new(out libgit2.git_indexer @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, uint mode, libgit2.git_odb odb, in libgit2.git_indexer_options opts);
@@ -187,7 +187,7 @@ namespace XenoAtom.Interop
         /// <param name="data">the data to add</param>
         /// <param name="size">the size of the data in bytes</param>
         /// <param name="stats">stat storage</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_indexer_append")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_indexer_append(libgit2.git_indexer idx, void* data, nuint size, out libgit2.git_indexer_progress stats);
@@ -197,7 +197,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="idx">the indexer</param>
         /// <param name="stats">Stat storage.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Resolve any pending deltas and write out the index file
         /// </remarks>
@@ -209,7 +209,7 @@ namespace XenoAtom.Interop
         /// Get the unique name for the resulting packfile.
         /// </summary>
         /// <param name="idx">the indexer instance</param>
-        /// <returns>@return a NUL terminated string for the packfile name</returns>
+        /// <returns>a NUL terminated string for the packfile name</returns>
         /// <remarks>
         /// The packfile's name is derived from the packfile's content.
         /// This is only correct after the index has been finalized.
@@ -222,7 +222,7 @@ namespace XenoAtom.Interop
         /// Get the unique name for the resulting packfile.
         /// </summary>
         /// <param name="idx">the indexer instance</param>
-        /// <returns>@return a NUL terminated string for the packfile name</returns>
+        /// <returns>a NUL terminated string for the packfile name</returns>
         /// <remarks>
         /// The packfile's name is derived from the packfile's content.
         /// This is only correct after the index has been finalized.

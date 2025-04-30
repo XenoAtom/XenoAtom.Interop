@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -349,7 +349,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <seealso cref="drm_dma."/>
         /// <warning>
-        /// @warning These values @e must match xf86drm.h.
+        /// These values @e must match xf86drm.h.
         /// </warning>
         public enum drm_dma_flags : uint
         {
@@ -1473,7 +1473,7 @@ namespace XenoAtom.Interop
             public uint pad;
             
             /// <summary>
-            /// @deadline _nsec - fence deadline hint
+            /// _nsec - fence deadline hint
             /// </summary>
             /// <remarks>
             /// Deadline hint, in absolute CLOCK_MONOTONIC, to set on backing
@@ -1509,7 +1509,7 @@ namespace XenoAtom.Interop
             public uint pad;
             
             /// <summary>
-            /// @deadline _nsec - fence deadline hint
+            /// _nsec - fence deadline hint
             /// </summary>
             /// <remarks>
             /// Deadline hint, in absolute CLOCK_MONOTONIC, to set on backing
@@ -1534,7 +1534,7 @@ namespace XenoAtom.Interop
         /// be incremented by one.
         /// </remarks>
         /// <par>
-        /// @par : Must be zero.
+        /// : Must be zero.
         /// </par>
         public partial struct drm_syncobj_eventfd
         {

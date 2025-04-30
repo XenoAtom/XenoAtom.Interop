@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -25,7 +25,7 @@ namespace XenoAtom.Interop
         /// <param name="email">email of the person</param>
         /// <param name="time">time (in seconds from epoch) when the action happened</param>
         /// <param name="offset">timezone offset (in minutes) for the time</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_signature_free()` to free the data.Note: angle brackets ('
         /// &lt;
@@ -44,7 +44,7 @@ namespace XenoAtom.Interop
         /// <param name="email">email of the person</param>
         /// <param name="time">time (in seconds from epoch) when the action happened</param>
         /// <param name="offset">timezone offset (in minutes) for the time</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_signature_free()` to free the data.Note: angle brackets ('
         /// &lt;
@@ -61,7 +61,7 @@ namespace XenoAtom.Interop
         /// <param name="out">new signature, in case of error NULL</param>
         /// <param name="name">name of the person</param>
         /// <param name="email">email of the person</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_signature_free()` to free the data.
         /// </remarks>
@@ -75,7 +75,7 @@ namespace XenoAtom.Interop
         /// <param name="out">new signature, in case of error NULL</param>
         /// <param name="name">name of the person</param>
         /// <param name="email">email of the person</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_signature_free()` to free the data.
         /// </remarks>
@@ -88,7 +88,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">new signature</param>
         /// <param name="repo">repository pointer</param>
-        /// <returns>@return 0 on success, GIT_ENOTFOUND if config is missing, or error code</returns>
+        /// <returns>0 on success, GIT_ENOTFOUND if config is missing, or error code</returns>
         /// <remarks>
         /// This looks up the user.name and user.email from the configuration and
         /// uses the current time as the timestamp, and creates a new signature
@@ -108,7 +108,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">new signature</param>
         /// <param name="buf">signature string</param>
-        /// <returns>@return 0 on success, GIT_EINVALID if the signature is not parseable, or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALID if the signature is not parseable, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_signature_from_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_signature_from_buffer(out libgit2.git_signature* @out, byte* buf);
@@ -122,7 +122,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">new signature</param>
         /// <param name="buf">signature string</param>
-        /// <returns>@return 0 on success, GIT_EINVALID if the signature is not parseable, or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALID if the signature is not parseable, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_signature_from_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_signature_from_buffer(out libgit2.git_signature* @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> buf);
@@ -133,7 +133,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="dest">pointer where to store the copy</param>
         /// <param name="sig">signature to duplicate</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_signature_free()` to free the data.
         /// </remarks>

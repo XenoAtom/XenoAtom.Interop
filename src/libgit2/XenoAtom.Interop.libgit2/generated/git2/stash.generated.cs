@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -281,7 +281,7 @@ namespace XenoAtom.Interop
         /// <param name="message">The stash message.</param>
         /// <param name="stash_id">The commit oid of the stashed state.</param>
         /// <param name="payload">Extra parameter to callback function.</param>
-        /// <returns>@return 0 to continue iterating or non-zero to stop.</returns>
+        /// <returns>0 to continue iterating or non-zero to stop.</returns>
         public readonly partial struct git_stash_cb : IEquatable<libgit2.git_stash_cb>
         {
             public git_stash_cb(delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> value) => this.Value = value;
@@ -344,7 +344,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_stash_save_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_STASH_SAVE_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_stash_save_options` with default values. Equivalent to
         /// creating an instance with `GIT_STASH_SAVE_OPTIONS_INIT`.
@@ -371,7 +371,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_stash_apply_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_STASH_APPLY_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_stash_apply_options` with default values. Equivalent to
         /// creating an instance with `GIT_STASH_APPLY_OPTIONS_INIT`.
@@ -412,7 +412,7 @@ namespace XenoAtom.Interop
         /// <param name="callback">Callback to invoke per found stashed state. The most
         /// recent stash state will be enumerated first.</param>
         /// <param name="payload">Extra parameter to callback function.</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code.</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code.</returns>
         /// <remarks>
         /// If the callback returns a non-zero value, this will stop looping.
         /// </remarks>

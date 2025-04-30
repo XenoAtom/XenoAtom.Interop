@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -103,7 +103,7 @@ namespace XenoAtom.Interop
         /// <param name="blob">pointer to the looked up blob</param>
         /// <param name="repo">the repo to use when locating the blob.</param>
         /// <param name="id">identity of the blob to locate.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_blob_lookup(out libgit2.git_blob blob, libgit2.git_repository repo, in libgit2.git_oid id);
@@ -116,7 +116,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repo to use when locating the blob.</param>
         /// <param name="id">identity of the blob to locate.</param>
         /// <param name="len">the length of the short identifier</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <seealso cref="git_object_lookup_prefix"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_lookup_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -139,7 +139,7 @@ namespace XenoAtom.Interop
         /// Get the id of a blob.
         /// </summary>
         /// <param name="blob">a previously loaded blob.</param>
-        /// <returns>@return SHA1 hash for this blob.</returns>
+        /// <returns>SHA1 hash for this blob.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_blob_id(libgit2.git_blob blob);
@@ -148,7 +148,7 @@ namespace XenoAtom.Interop
         /// Get the repository that contains the blob.
         /// </summary>
         /// <param name="blob">A previously loaded blob.</param>
-        /// <returns>@return Repository that contains this blob.</returns>
+        /// <returns>Repository that contains this blob.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_owner")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_repository git_blob_owner(libgit2.git_blob blob);
@@ -157,7 +157,7 @@ namespace XenoAtom.Interop
         /// Get a read-only buffer with the raw content of a blob.
         /// </summary>
         /// <param name="blob">pointer to the blob</param>
-        /// <returns>@return the pointer, or NULL on error</returns>
+        /// <returns>the pointer, or NULL on error</returns>
         /// <remarks>
         /// A pointer to the raw content of a blob is returned;
         /// this pointer is owned internally by the object and shall
@@ -172,7 +172,7 @@ namespace XenoAtom.Interop
         /// Get the size in bytes of the contents of a blob
         /// </summary>
         /// <param name="blob">pointer to the blob</param>
-        /// <returns>@return size on bytes</returns>
+        /// <returns>size on bytes</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_rawsize")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_object_size_t git_blob_rawsize(libgit2.git_blob blob);
@@ -182,7 +182,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_blob_filter_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_BLOB_FILTER_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_blob_filter_options` with default values. Equivalent
         /// to creating an instance with `GIT_BLOB_FILTER_OPTIONS_INIT`.
@@ -198,7 +198,7 @@ namespace XenoAtom.Interop
         /// <param name="blob">Pointer to the blob</param>
         /// <param name="as_path">Path used for file attribute lookups, etc.</param>
         /// <param name="opts">Options to use for filtering the blob</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         /// <remarks>
         /// This applies filters as if the blob was being checked out to the
         /// working directory under the specified filename.  This may apply
@@ -220,7 +220,7 @@ namespace XenoAtom.Interop
         /// <param name="blob">Pointer to the blob</param>
         /// <param name="as_path">Path used for file attribute lookups, etc.</param>
         /// <param name="opts">Options to use for filtering the blob</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         /// <remarks>
         /// This applies filters as if the blob was being checked out to the
         /// working directory under the specified filename.  This may apply
@@ -244,7 +244,7 @@ namespace XenoAtom.Interop
         /// this repository cannot be bare</param>
         /// <param name="relative_path">file from which the blob will be created,
         /// relative to the repository's working dir</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_create_from_workdir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_blob_create_from_workdir(out libgit2.git_oid id, libgit2.git_repository repo, byte* relative_path);
@@ -258,7 +258,7 @@ namespace XenoAtom.Interop
         /// this repository cannot be bare</param>
         /// <param name="relative_path">file from which the blob will be created,
         /// relative to the repository's working dir</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_create_from_workdir")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_blob_create_from_workdir(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> relative_path);
@@ -271,7 +271,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">repository where the blob will be written.
         /// this repository can be bare or not</param>
         /// <param name="path">file from which the blob will be created</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_create_from_disk")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_blob_create_from_disk(out libgit2.git_oid id, libgit2.git_repository repo, byte* path);
@@ -284,7 +284,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">repository where the blob will be written.
         /// this repository can be bare or not</param>
         /// <param name="path">file from which the blob will be created</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_create_from_disk")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_blob_create_from_disk(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
@@ -297,7 +297,7 @@ namespace XenoAtom.Interop
         /// This repository can be bare or not.</param>
         /// <param name="hintpath">If not NULL, will be used to select data filters
         /// to apply onto the content of the blob to be created.</param>
-        /// <returns>@return 0 or error code</returns>
+        /// <returns>0 or error code</returns>
         /// <remarks>
         /// This function may need to buffer the data on disk and will in
         /// general not be the right choice if you know the size of the data
@@ -322,7 +322,7 @@ namespace XenoAtom.Interop
         /// This repository can be bare or not.</param>
         /// <param name="hintpath">If not NULL, will be used to select data filters
         /// to apply onto the content of the blob to be created.</param>
-        /// <returns>@return 0 or error code</returns>
+        /// <returns>0 or error code</returns>
         /// <remarks>
         /// This function may need to buffer the data on disk and will in
         /// general not be the right choice if you know the size of the data
@@ -344,7 +344,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">the id of the new blob</param>
         /// <param name="stream">the stream to close</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The stream will be closed and freed.
         /// </remarks>
@@ -359,7 +359,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">repository where the blob will be written</param>
         /// <param name="buffer">data to be written into the blob</param>
         /// <param name="len">length of the data</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_create_from_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_blob_create_from_buffer(out libgit2.git_oid id, libgit2.git_repository repo, void* buffer, nuint len);
@@ -398,7 +398,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the copy of the object</param>
         /// <param name="source">Original object to copy</param>
-        /// <returns>@return 0.</returns>
+        /// <returns>0.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_blob_dup(out libgit2.git_blob @out, libgit2.git_blob source);

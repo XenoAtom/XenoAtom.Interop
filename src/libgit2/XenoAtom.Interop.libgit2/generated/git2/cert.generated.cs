@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class libgit2
@@ -192,6 +192,42 @@ namespace XenoAtom.Interop
         public const libgit2.git_cert_ssh_raw_type_t GIT_CERT_SSH_RAW_TYPE_KEY_ED25519 = git_cert_ssh_raw_type_t.GIT_CERT_SSH_RAW_TYPE_KEY_ED25519;
         
         /// <summary>
+        /// Callback for the user's custom certificate checks.
+        /// </summary>
+        /// <param name="cert">The host certificate</param>
+        /// <param name="valid">Whether the libgit2 checks (OpenSSL or WinHTTP) think
+        /// this certificate is valid</param>
+        /// <param name="host">Hostname of the host libgit2 connected to</param>
+        /// <param name="payload">Payload provided by the caller</param>
+        /// <returns>@return 0 to proceed with the connection, 
+        /// &lt;
+        /// 0 to fail the connection
+        /// or &gt; 0 to indicate that the callback refused to act and that
+        /// the existing validity determination should be honored</returns>
+        public readonly partial struct git_transport_certificate_check_cb : IEquatable<libgit2.git_transport_certificate_check_cb>
+        {
+            public git_transport_certificate_check_cb(delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> value) => this.Value = value;
+            
+            public delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> Value { get; }
+            
+            public override bool Equals(object obj) => obj is git_transport_certificate_check_cb other && Equals(other);
+            
+            public bool Equals(git_transport_certificate_check_cb other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> (libgit2.git_transport_certificate_check_cb from) => from.Value;
+            
+            public static implicit operator libgit2.git_transport_certificate_check_cb (delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> from) => new libgit2.git_transport_certificate_check_cb(from);
+            
+            public static bool operator ==(git_transport_certificate_check_cb left, git_transport_certificate_check_cb right) => left.Equals(right);
+            
+            public static bool operator !=(git_transport_certificate_check_cb left, git_transport_certificate_check_cb right) => !left.Equals(right);
+        }
+        
+        /// <summary>
         /// Hostkey information taken from libssh2
         /// </summary>
         public unsafe partial struct git_cert_hostkey
@@ -262,42 +298,6 @@ namespace XenoAtom.Interop
             /// Length of the memory block pointed to by `data`.
             /// </summary>
             public nuint len;
-        }
-        
-        /// <summary>
-        /// Callback for the user's custom certificate checks.
-        /// </summary>
-        /// <param name="cert">The host certificate</param>
-        /// <param name="valid">Whether the libgit2 checks (OpenSSL or WinHTTP) think
-        /// this certificate is valid</param>
-        /// <param name="host">Hostname of the host libgit2 connected to</param>
-        /// <param name="payload">Payload provided by the caller</param>
-        /// <returns>@return 0 to proceed with the connection, 
-        /// &lt;
-        /// 0 to fail the connection
-        /// or &gt; 0 to indicate that the callback refused to act and that
-        /// the existing validity determination should be honored</returns>
-        public readonly partial struct git_transport_certificate_check_cb : IEquatable<libgit2.git_transport_certificate_check_cb>
-        {
-            public git_transport_certificate_check_cb(delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> value) => this.Value = value;
-            
-            public delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_transport_certificate_check_cb other && Equals(other);
-            
-            public bool Equals(git_transport_certificate_check_cb other) => Value == other.Value;
-            
-            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
-            
-            public override string ToString() => ((nint)(void*)Value).ToString();
-            
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> (libgit2.git_transport_certificate_check_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_transport_certificate_check_cb (delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> from) => new libgit2.git_transport_certificate_check_cb(from);
-            
-            public static bool operator ==(git_transport_certificate_check_cb left, git_transport_certificate_check_cb right) => left.Equals(right);
-            
-            public static bool operator !=(git_transport_certificate_check_cb left, git_transport_certificate_check_cb right) => !left.Equals(right);
         }
     }
 }

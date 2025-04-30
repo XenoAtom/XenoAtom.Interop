@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -158,7 +158,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer to the looked up tree</param>
         /// <param name="repo">The repo to use when locating the tree.</param>
         /// <param name="id">Identity of the tree to locate.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_tree_lookup(out libgit2.git_tree @out, libgit2.git_repository repo, in libgit2.git_oid id);
@@ -171,7 +171,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">the repo to use when locating the tree.</param>
         /// <param name="id">identity of the tree to locate.</param>
         /// <param name="len">the length of the short identifier</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <seealso cref="git_object_lookup_prefix"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_lookup_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -193,7 +193,7 @@ namespace XenoAtom.Interop
         /// Get the id of a tree.
         /// </summary>
         /// <param name="tree">a previously loaded tree.</param>
-        /// <returns>@return object identity for the tree.</returns>
+        /// <returns>object identity for the tree.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_tree_id(libgit2.git_tree tree);
@@ -202,7 +202,7 @@ namespace XenoAtom.Interop
         /// Get the repository that contains the tree.
         /// </summary>
         /// <param name="tree">A previously loaded tree.</param>
-        /// <returns>@return Repository that contains this tree.</returns>
+        /// <returns>Repository that contains this tree.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_owner")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_repository git_tree_owner(libgit2.git_tree tree);
@@ -211,7 +211,7 @@ namespace XenoAtom.Interop
         /// Get the number of entries listed in a tree
         /// </summary>
         /// <param name="tree">a previously loaded tree.</param>
-        /// <returns>@return the number of entries in the tree</returns>
+        /// <returns>the number of entries in the tree</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entrycount")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_tree_entrycount(libgit2.git_tree tree);
@@ -221,7 +221,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tree">a previously loaded tree.</param>
         /// <param name="filename">the filename of the desired entry</param>
-        /// <returns>@return the tree entry; NULL if not found</returns>
+        /// <returns>the tree entry; NULL if not found</returns>
         /// <remarks>
         /// This returns a git_tree_entry that is owned by the git_tree.  You don't
         /// have to free it, but you must not use it after the git_tree is released.
@@ -235,7 +235,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tree">a previously loaded tree.</param>
         /// <param name="filename">the filename of the desired entry</param>
-        /// <returns>@return the tree entry; NULL if not found</returns>
+        /// <returns>the tree entry; NULL if not found</returns>
         /// <remarks>
         /// This returns a git_tree_entry that is owned by the git_tree.  You don't
         /// have to free it, but you must not use it after the git_tree is released.
@@ -249,7 +249,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tree">a previously loaded tree.</param>
         /// <param name="idx">the position in the entry list</param>
-        /// <returns>@return the tree entry; NULL if not found</returns>
+        /// <returns>the tree entry; NULL if not found</returns>
         /// <remarks>
         /// This returns a git_tree_entry that is owned by the git_tree.  You don't
         /// have to free it, but you must not use it after the git_tree is released.
@@ -263,7 +263,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="tree">a previously loaded tree.</param>
         /// <param name="id">the sha being looked for</param>
-        /// <returns>@return the tree entry; NULL if not found</returns>
+        /// <returns>the tree entry; NULL if not found</returns>
         /// <remarks>
         /// This returns a git_tree_entry that is owned by the git_tree.  You don't
         /// have to free it, but you must not use it after the git_tree is released.Warning: this must examine every entry in the tree, so it is not fast.
@@ -279,7 +279,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer where to store the tree entry</param>
         /// <param name="root">Previously loaded tree which is the root of the relative path</param>
         /// <param name="path">Path to the contained entry</param>
-        /// <returns>@return 0 on success; GIT_ENOTFOUND if the path does not exist</returns>
+        /// <returns>0 on success; GIT_ENOTFOUND if the path does not exist</returns>
         /// <remarks>
         /// Unlike the other lookup functions, the returned tree entry is owned by
         /// the user and must be freed explicitly with `git_tree_entry_free()`.
@@ -295,7 +295,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer where to store the tree entry</param>
         /// <param name="root">Previously loaded tree which is the root of the relative path</param>
         /// <param name="path">Path to the contained entry</param>
-        /// <returns>@return 0 on success; GIT_ENOTFOUND if the path does not exist</returns>
+        /// <returns>0 on success; GIT_ENOTFOUND if the path does not exist</returns>
         /// <remarks>
         /// Unlike the other lookup functions, the returned tree entry is owned by
         /// the user and must be freed explicitly with `git_tree_entry_free()`.
@@ -309,7 +309,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="dest">pointer where to store the copy</param>
         /// <param name="source">tree entry to duplicate</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Create a copy of a tree entry. The returned copy is owned by the user,
         /// and must be freed explicitly with `git_tree_entry_free()`.
@@ -335,7 +335,7 @@ namespace XenoAtom.Interop
         /// Get the filename of a tree entry
         /// </summary>
         /// <param name="entry">a tree entry</param>
-        /// <returns>@return the name of the file</returns>
+        /// <returns>the name of the file</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* git_tree_entry_name_(libgit2.git_tree_entry entry);
@@ -344,7 +344,7 @@ namespace XenoAtom.Interop
         /// Get the filename of a tree entry
         /// </summary>
         /// <param name="entry">a tree entry</param>
-        /// <returns>@return the name of the file</returns>
+        /// <returns>the name of the file</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
@@ -354,7 +354,7 @@ namespace XenoAtom.Interop
         /// Get the id of the object pointed by the entry
         /// </summary>
         /// <param name="entry">a tree entry</param>
-        /// <returns>@return the oid of the object</returns>
+        /// <returns>the oid of the object</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_id")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_oid* git_tree_entry_id(libgit2.git_tree_entry entry);
@@ -363,7 +363,7 @@ namespace XenoAtom.Interop
         /// Get the type of the object pointed by the entry
         /// </summary>
         /// <param name="entry">a tree entry</param>
-        /// <returns>@return the type of the pointed object</returns>
+        /// <returns>the type of the pointed object</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_type")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_object_t git_tree_entry_type(libgit2.git_tree_entry entry);
@@ -372,7 +372,7 @@ namespace XenoAtom.Interop
         /// Get the UNIX file attributes of a tree entry
         /// </summary>
         /// <param name="entry">a tree entry</param>
-        /// <returns>@return filemode as an integer</returns>
+        /// <returns>filemode as an integer</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_entry_filemode")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_filemode_t git_tree_entry_filemode(libgit2.git_tree_entry entry);
@@ -381,7 +381,7 @@ namespace XenoAtom.Interop
         /// Get the raw UNIX file attributes of a tree entry
         /// </summary>
         /// <param name="entry">a tree entry</param>
-        /// <returns>@return filemode as an integer</returns>
+        /// <returns>filemode as an integer</returns>
         /// <remarks>
         /// This function does not perform any normalization and is only useful
         /// if you need to be able to recreate the original tree object.
@@ -407,7 +407,7 @@ namespace XenoAtom.Interop
         /// <param name="object_out">pointer to the converted object</param>
         /// <param name="repo">repository where to lookup the pointed object</param>
         /// <param name="entry">a tree entry</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// You must call `git_object_free()` on the object when you are done with it.
         /// </remarks>
@@ -421,7 +421,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer where to store the tree builder</param>
         /// <param name="repo">Repository in which to store the object</param>
         /// <param name="source">Source tree to initialize the builder (optional)</param>
-        /// <returns>@return 0 on success; error code otherwise</returns>
+        /// <returns>0 on success; error code otherwise</returns>
         /// <remarks>
         /// The tree builder can be used to create or modify trees in memory and
         /// write them as tree objects to the database.If the `source` parameter is not NULL, the tree builder will be
@@ -436,7 +436,7 @@ namespace XenoAtom.Interop
         /// Clear all the entries in the builder
         /// </summary>
         /// <param name="bld">Builder to clear</param>
-        /// <returns>@return 0 on success; error code otherwise</returns>
+        /// <returns>0 on success; error code otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_clear")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_treebuilder_clear(libgit2.git_treebuilder bld);
@@ -445,7 +445,7 @@ namespace XenoAtom.Interop
         /// Get the number of entries listed in a treebuilder
         /// </summary>
         /// <param name="bld">a previously loaded treebuilder.</param>
-        /// <returns>@return the number of entries in the treebuilder</returns>
+        /// <returns>the number of entries in the treebuilder</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_entrycount")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial nuint git_treebuilder_entrycount(libgit2.git_treebuilder bld);
@@ -468,7 +468,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="bld">Tree builder</param>
         /// <param name="filename">Name of the entry</param>
-        /// <returns>@return pointer to the entry; NULL if not found</returns>
+        /// <returns>pointer to the entry; NULL if not found</returns>
         /// <remarks>
         /// The returned entry is owned by the builder and should
         /// not be freed manually.
@@ -482,7 +482,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="bld">Tree builder</param>
         /// <param name="filename">Name of the entry</param>
-        /// <returns>@return pointer to the entry; NULL if not found</returns>
+        /// <returns>pointer to the entry; NULL if not found</returns>
         /// <remarks>
         /// The returned entry is owned by the builder and should
         /// not be freed manually.
@@ -501,7 +501,7 @@ namespace XenoAtom.Interop
         /// <param name="filemode">Folder attributes of the entry. This parameter must
         /// be valued with one of the following entries: 0040000, 0100644,
         /// 0100755, 0120000 or 0160000.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Insert a new entry for `filename` in the builder with the
         /// given attributes.If an entry named `filename` already exists, its attributes
@@ -527,7 +527,7 @@ namespace XenoAtom.Interop
         /// <param name="filemode">Folder attributes of the entry. This parameter must
         /// be valued with one of the following entries: 0040000, 0100644,
         /// 0100755, 0120000 or 0160000.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Insert a new entry for `filename` in the builder with the
         /// given attributes.If an entry named `filename` already exists, its attributes
@@ -548,7 +548,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="bld">Tree builder</param>
         /// <param name="filename">Filename of the entry to remove</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_treebuilder_remove(libgit2.git_treebuilder bld, byte* filename);
@@ -558,7 +558,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="bld">Tree builder</param>
         /// <param name="filename">Filename of the entry to remove</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_treebuilder_remove")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_treebuilder_remove(libgit2.git_treebuilder bld, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> filename);
@@ -569,7 +569,7 @@ namespace XenoAtom.Interop
         /// <param name="bld">Tree builder</param>
         /// <param name="filter">Callback to filter entries</param>
         /// <param name="payload">Extra data to pass to filter callback</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// The `filter` callback will be called for each entry in the tree with a
         /// pointer to the entry and the provided `payload`; if the callback returns
@@ -584,7 +584,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="id">Pointer to store the OID of the newly written tree</param>
         /// <param name="bld">Tree builder to write</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The tree builder will be written to the given `repo`, and its
         /// identifying SHA1 hash will be stored in the `id` pointer.
@@ -600,7 +600,7 @@ namespace XenoAtom.Interop
         /// <param name="mode">Traversal mode (pre or post-order)</param>
         /// <param name="callback">Function to call on each tree entry</param>
         /// <param name="payload">Opaque pointer to be passed on each callback</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The entries will be traversed in the specified order, children subtrees
         /// will be automatically loaded as required, and the `callback` will be
@@ -618,7 +618,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to store the copy of the tree</param>
         /// <param name="source">Original tree to copy</param>
-        /// <returns>@return 0</returns>
+        /// <returns>0</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tree_dup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_tree_dup(out libgit2.git_tree @out, libgit2.git_tree source);
@@ -632,7 +632,7 @@ namespace XenoAtom.Interop
         /// <param name="baseline">the tree to base these changes on</param>
         /// <param name="nupdates">the number of elements in the update list</param>
         /// <param name="updates">the list of updates to perform</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Given the `baseline` perform the changes described in the list of
         /// `updates` and create a new tree.This function is optimized for common file/directory addition, removal and

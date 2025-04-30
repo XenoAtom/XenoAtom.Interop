@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -99,7 +99,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="reference">The reference object</param>
         /// <param name="payload">Payload passed to git_reference_foreach</param>
-        /// <returns>@return non-zero to terminate the iteration</returns>
+        /// <returns>non-zero to terminate the iteration</returns>
         /// <seealso cref="git_reference_foreach"/>
         public readonly partial struct git_reference_foreach_cb : IEquatable<libgit2.git_reference_foreach_cb>
         {
@@ -129,7 +129,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="name">The reference name</param>
         /// <param name="payload">Payload passed to git_reference_foreach_name</param>
-        /// <returns>@return non-zero to terminate the iteration</returns>
+        /// <returns>non-zero to terminate the iteration</returns>
         /// <seealso cref="git_reference_foreach_name"/>
         public readonly partial struct git_reference_foreach_name_cb : IEquatable<libgit2.git_reference_foreach_name_cb>
         {
@@ -160,7 +160,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the looked-up reference</param>
         /// <param name="repo">the repository to look up the reference</param>
         /// <param name="name">the long name for the reference (e.g. HEAD, refs/heads/master, refs/tags/v0.1.0, ...)</param>
-        /// <returns>@return 0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
+        /// <returns>0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
         /// <remarks>
         /// The returned reference must be freed by the user.The name will be checked for validity.
         /// See `git_reference_symbolic_create()` for rules about valid names.
@@ -175,7 +175,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the looked-up reference</param>
         /// <param name="repo">the repository to look up the reference</param>
         /// <param name="name">the long name for the reference (e.g. HEAD, refs/heads/master, refs/tags/v0.1.0, ...)</param>
-        /// <returns>@return 0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
+        /// <returns>0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
         /// <remarks>
         /// The returned reference must be freed by the user.The name will be checked for validity.
         /// See `git_reference_symbolic_create()` for rules about valid names.
@@ -190,7 +190,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer to oid to be filled in</param>
         /// <param name="repo">The repository in which to look up the reference</param>
         /// <param name="name">The long name for the reference (e.g. HEAD, refs/heads/master, refs/tags/v0.1.0, ...)</param>
-        /// <returns>@return 0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
+        /// <returns>0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
         /// <remarks>
         /// This function provides a quick way to resolve a reference name straight
         /// through to the object id that it refers to.  This avoids having to
@@ -207,7 +207,7 @@ namespace XenoAtom.Interop
         /// <param name="out">Pointer to oid to be filled in</param>
         /// <param name="repo">The repository in which to look up the reference</param>
         /// <param name="name">The long name for the reference (e.g. HEAD, refs/heads/master, refs/tags/v0.1.0, ...)</param>
-        /// <returns>@return 0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
+        /// <returns>0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
         /// <remarks>
         /// This function provides a quick way to resolve a reference name straight
         /// through to the object id that it refers to.  This avoids having to
@@ -224,7 +224,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer in which to store the reference</param>
         /// <param name="repo">the repository in which to look</param>
         /// <param name="shorthand">the short name for the reference</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Apply the git precedence rules to the given shorthand to determine
         /// which reference the user is referring to.
@@ -239,7 +239,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer in which to store the reference</param>
         /// <param name="repo">the repository in which to look</param>
         /// <param name="shorthand">the short name for the reference</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Apply the git precedence rules to the given shorthand to determine
         /// which reference the user is referring to.
@@ -258,7 +258,7 @@ namespace XenoAtom.Interop
         /// <param name="force">Overwrite existing references</param>
         /// <param name="current_value">The expected value of the reference when updating</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC, GIT_EMODIFIED or an error code</returns>
+        /// <returns>0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC, GIT_EMODIFIED or an error code</returns>
         /// <remarks>
         /// A symbolic reference is a reference name that refers to another
         /// reference name.  If the other name moves, the symbolic name will move,
@@ -292,7 +292,7 @@ namespace XenoAtom.Interop
         /// <param name="force">Overwrite existing references</param>
         /// <param name="current_value">The expected value of the reference when updating</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC, GIT_EMODIFIED or an error code</returns>
+        /// <returns>0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC, GIT_EMODIFIED or an error code</returns>
         /// <remarks>
         /// A symbolic reference is a reference name that refers to another
         /// reference name.  If the other name moves, the symbolic name will move,
@@ -325,7 +325,7 @@ namespace XenoAtom.Interop
         /// <param name="target">The target of the reference</param>
         /// <param name="force">Overwrite existing references</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// A symbolic reference is a reference name that refers to another
         /// reference name.  If the other name moves, the symbolic name will move,
@@ -355,7 +355,7 @@ namespace XenoAtom.Interop
         /// <param name="target">The target of the reference</param>
         /// <param name="force">Overwrite existing references</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// A symbolic reference is a reference name that refers to another
         /// reference name.  If the other name moves, the symbolic name will move,
@@ -385,7 +385,7 @@ namespace XenoAtom.Interop
         /// <param name="id">The object id pointed to by the reference.</param>
         /// <param name="force">Overwrite existing references</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// A direct reference (also called an object id reference) refers directly
         /// to a specific object id (a.k.a. OID or SHA) in the repository.  The id
@@ -416,7 +416,7 @@ namespace XenoAtom.Interop
         /// <param name="id">The object id pointed to by the reference.</param>
         /// <param name="force">Overwrite existing references</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EEXISTS, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// A direct reference (also called an object id reference) refers directly
         /// to a specific object id (a.k.a. OID or SHA) in the repository.  The id
@@ -512,7 +512,7 @@ namespace XenoAtom.Interop
         /// Get the OID pointed to by a direct reference.
         /// </summary>
         /// <param name="ref">The reference</param>
-        /// <returns>@return a pointer to the oid if available, NULL otherwise</returns>
+        /// <returns>a pointer to the oid if available, NULL otherwise</returns>
         /// <remarks>
         /// Only available if the reference is direct (i.e. an object id reference,
         /// not a symbolic one).To find the OID of a symbolic ref, call `git_reference_resolve()` and
@@ -527,7 +527,7 @@ namespace XenoAtom.Interop
         /// Return the peeled OID target of this reference.
         /// </summary>
         /// <param name="ref">The reference</param>
-        /// <returns>@return a pointer to the oid if available, NULL otherwise</returns>
+        /// <returns>a pointer to the oid if available, NULL otherwise</returns>
         /// <remarks>
         /// This peeled OID only applies to direct references that point to
         /// a hard Tag object: it is the result of peeling such Tag.
@@ -540,7 +540,7 @@ namespace XenoAtom.Interop
         /// Get full name to the reference pointed to by a symbolic reference.
         /// </summary>
         /// <param name="ref">The reference</param>
-        /// <returns>@return a pointer to the name if available, NULL otherwise</returns>
+        /// <returns>a pointer to the name if available, NULL otherwise</returns>
         /// <remarks>
         /// Only available if the reference is symbolic.
         /// </remarks>
@@ -552,7 +552,7 @@ namespace XenoAtom.Interop
         /// Get full name to the reference pointed to by a symbolic reference.
         /// </summary>
         /// <param name="ref">The reference</param>
-        /// <returns>@return a pointer to the name if available, NULL otherwise</returns>
+        /// <returns>a pointer to the name if available, NULL otherwise</returns>
         /// <remarks>
         /// Only available if the reference is symbolic.
         /// </remarks>
@@ -565,7 +565,7 @@ namespace XenoAtom.Interop
         /// Get the type of a reference.
         /// </summary>
         /// <param name="ref">The reference</param>
-        /// <returns>@return the type</returns>
+        /// <returns>the type</returns>
         /// <remarks>
         /// Either direct (GIT_REFERENCE_DIRECT) or symbolic (GIT_REFERENCE_SYMBOLIC)
         /// </remarks>
@@ -577,7 +577,7 @@ namespace XenoAtom.Interop
         /// Get the full name of a reference.
         /// </summary>
         /// <param name="ref">The reference</param>
-        /// <returns>@return the full name for the ref</returns>
+        /// <returns>the full name for the ref</returns>
         /// <remarks>
         /// See `git_reference_symbolic_create()` for rules about valid names.
         /// </remarks>
@@ -589,7 +589,7 @@ namespace XenoAtom.Interop
         /// Get the full name of a reference.
         /// </summary>
         /// <param name="ref">The reference</param>
-        /// <returns>@return the full name for the ref</returns>
+        /// <returns>the full name for the ref</returns>
         /// <remarks>
         /// See `git_reference_symbolic_create()` for rules about valid names.
         /// </remarks>
@@ -603,7 +603,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">Pointer to the peeled reference</param>
         /// <param name="ref">The reference</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This method iteratively peels a symbolic reference until it resolves to
         /// a direct reference to an OID.The peeled reference is returned in the `resolved_ref` argument, and
@@ -618,7 +618,7 @@ namespace XenoAtom.Interop
         /// Get the repository where a reference resides.
         /// </summary>
         /// <param name="ref">The reference</param>
-        /// <returns>@return a pointer to the repo</returns>
+        /// <returns>a pointer to the repo</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_owner")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_repository git_reference_owner(libgit2.git_reference @ref);
@@ -632,7 +632,7 @@ namespace XenoAtom.Interop
         /// <param name="ref">The reference</param>
         /// <param name="target">The new target for the reference</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// The new reference will be written to disk, overwriting the given reference.The target name will be checked for validity.
         /// See `git_reference_symbolic_create()` for rules about valid names.The message for the reflog will be ignored if the reference does
@@ -652,7 +652,7 @@ namespace XenoAtom.Interop
         /// <param name="ref">The reference</param>
         /// <param name="target">The new target for the reference</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// The new reference will be written to disk, overwriting the given reference.The target name will be checked for validity.
         /// See `git_reference_symbolic_create()` for rules about valid names.The message for the reflog will be ignored if the reference does
@@ -706,7 +706,7 @@ namespace XenoAtom.Interop
         /// <param name="new_name">The new name for the reference</param>
         /// <param name="force">Overwrite an existing reference</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         /// <remarks>
         /// This method works for both direct and symbolic references.The new name will be checked for validity.
         /// See `git_reference_symbolic_create()` for rules about valid names.If the `force` flag is not enabled, and there's already
@@ -726,7 +726,7 @@ namespace XenoAtom.Interop
         /// <param name="new_name">The new name for the reference</param>
         /// <param name="force">Overwrite an existing reference</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
-        /// <returns>@return 0 on success, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
+        /// <returns>0 on success, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
         /// <remarks>
         /// This method works for both direct and symbolic references.The new name will be checked for validity.
         /// See `git_reference_symbolic_create()` for rules about valid names.If the `force` flag is not enabled, and there's already
@@ -743,7 +743,7 @@ namespace XenoAtom.Interop
         /// Delete an existing reference.
         /// </summary>
         /// <param name="ref">The reference to remove</param>
-        /// <returns>@return 0, GIT_EMODIFIED or an error code</returns>
+        /// <returns>0, GIT_EMODIFIED or an error code</returns>
         /// <remarks>
         /// This method works for both direct and symbolic references.  The reference
         /// will be immediately removed on disk but the memory will not be freed.
@@ -758,7 +758,7 @@ namespace XenoAtom.Interop
         /// Delete an existing reference by name
         /// </summary>
         /// <param name="name">The reference to remove</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This method removes the named reference from the repository without
         /// looking at its old value.
@@ -771,7 +771,7 @@ namespace XenoAtom.Interop
         /// Delete an existing reference by name
         /// </summary>
         /// <param name="name">The reference to remove</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This method removes the named reference from the repository without
         /// looking at its old value.
@@ -786,7 +786,7 @@ namespace XenoAtom.Interop
         /// <param name="array">Pointer to a git_strarray structure where
         /// the reference names will be stored</param>
         /// <param name="repo">Repository where to find the refs</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The string array will be filled with the names of all references; these
         /// values are owned by the user and should be free'd manually when no
@@ -802,7 +802,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">Repository where to find the refs</param>
         /// <param name="callback">Function which will be called for every listed ref</param>
         /// <param name="payload">Additional data to pass to the callback</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// The `callback` function will be called for each reference in the
         /// repository, receiving the reference object and the `payload` value
@@ -820,7 +820,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">Repository where to find the refs</param>
         /// <param name="callback">Function which will be called for every listed ref name</param>
         /// <param name="payload">Additional data to pass to the callback</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// The `callback` function will be called for each reference in the
         /// repository, receiving the name of the reference and the `payload` value
@@ -836,7 +836,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="dest">pointer where to store the copy</param>
         /// <param name="source">object to copy</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Call `git_reference_free` to free the data.
         /// </remarks>
@@ -857,7 +857,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="ref1">The first git_reference</param>
         /// <param name="ref2">The second git_reference</param>
-        /// <returns>@return 0 if the same, else a stable but meaningless ordering.</returns>
+        /// <returns>0 if the same, else a stable but meaningless ordering.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_cmp")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_reference_cmp(libgit2.git_reference ref1, libgit2.git_reference ref2);
@@ -867,7 +867,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer in which to store the iterator</param>
         /// <param name="repo">the repository</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_reference_iterator_new(out libgit2.git_reference_iterator @out, libgit2.git_repository repo);
@@ -879,7 +879,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer in which to store the iterator</param>
         /// <param name="repo">the repository</param>
         /// <param name="glob">the glob to match against the reference names</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_iterator_glob_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_reference_iterator_glob_new(out libgit2.git_reference_iterator @out, libgit2.git_repository repo, byte* glob);
@@ -891,7 +891,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer in which to store the iterator</param>
         /// <param name="repo">the repository</param>
         /// <param name="glob">the glob to match against the reference names</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_iterator_glob_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_reference_iterator_glob_new(out libgit2.git_reference_iterator @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> glob);
@@ -901,7 +901,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer in which to store the reference</param>
         /// <param name="iter">the iterator</param>
-        /// <returns>@return 0, GIT_ITEROVER if there are no more; or an error code</returns>
+        /// <returns>0, GIT_ITEROVER if there are no more; or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reference_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_reference_next(out libgit2.git_reference @out, libgit2.git_reference_iterator iter);
@@ -911,7 +911,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer in which to store the string</param>
         /// <param name="iter">the iterator</param>
-        /// <returns>@return 0, GIT_ITEROVER if there are no more; or an error code</returns>
+        /// <returns>0, GIT_ITEROVER if there are no more; or an error code</returns>
         /// <remarks>
         /// This function is provided for convenience in case only the names
         /// are interesting as it avoids the allocation of the `git_reference`
@@ -937,7 +937,7 @@ namespace XenoAtom.Interop
         /// <param name="glob">Pattern to match (fnmatch-style) against reference name.</param>
         /// <param name="callback">Function which will be called for every listed ref</param>
         /// <param name="payload">Additional data to pass to the callback</param>
-        /// <returns>@return 0 on success, GIT_EUSER on non-zero callback, or error code</returns>
+        /// <returns>0 on success, GIT_EUSER on non-zero callback, or error code</returns>
         /// <remarks>
         /// This function acts like `git_reference_foreach()` with an additional
         /// pattern match being applied to the reference name before issuing the
@@ -957,7 +957,7 @@ namespace XenoAtom.Interop
         /// <param name="glob">Pattern to match (fnmatch-style) against reference name.</param>
         /// <param name="callback">Function which will be called for every listed ref</param>
         /// <param name="payload">Additional data to pass to the callback</param>
-        /// <returns>@return 0 on success, GIT_EUSER on non-zero callback, or error code</returns>
+        /// <returns>0 on success, GIT_EUSER on non-zero callback, or error code</returns>
         /// <remarks>
         /// This function acts like `git_reference_foreach()` with an additional
         /// pattern match being applied to the reference name before issuing the
@@ -996,7 +996,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">the repository</param>
         /// <param name="refname">the reference's name</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Make sure that successive updates to the reference will append to
         /// its log.
@@ -1010,7 +1010,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">the repository</param>
         /// <param name="refname">the reference's name</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Make sure that successive updates to the reference will append to
         /// its log.
@@ -1106,7 +1106,7 @@ namespace XenoAtom.Interop
         /// <param name="ref">The reference to be processed</param>
         /// <param name="type">The type of the requested object (GIT_OBJECT_COMMIT,
         /// GIT_OBJECT_TAG, GIT_OBJECT_TREE, GIT_OBJECT_BLOB or GIT_OBJECT_ANY).</param>
-        /// <returns>@return 0 on success, GIT_EAMBIGUOUS, GIT_ENOTFOUND or an error code</returns>
+        /// <returns>0 on success, GIT_EAMBIGUOUS, GIT_ENOTFOUND or an error code</returns>
         /// <remarks>
         /// The retrieved `peeled` object is owned by the repository
         /// and should be closed with the `git_object_free` method.If you pass `GIT_OBJECT_ANY` as the target type, then the object
@@ -1121,7 +1121,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="valid">output pointer to set with validity of given reference name</param>
         /// <param name="refname">name to be checked.</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         /// <remarks>
         /// Valid reference names must follow one of two patterns:1. Top-level names must contain only capital letters and underscores,
         /// and must begin and end with a letter. (e.g. "HEAD", "ORIG_HEAD").
@@ -1140,7 +1140,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="valid">output pointer to set with validity of given reference name</param>
         /// <param name="refname">name to be checked.</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         /// <remarks>
         /// Valid reference names must follow one of two patterns:1. Top-level names must contain only capital letters and underscores,
         /// and must begin and end with a letter. (e.g. "HEAD", "ORIG_HEAD").
@@ -1158,7 +1158,7 @@ namespace XenoAtom.Interop
         /// Get the reference's short name
         /// </summary>
         /// <param name="ref">a reference</param>
-        /// <returns>@return the human-readable version of the name</returns>
+        /// <returns>the human-readable version of the name</returns>
         /// <remarks>
         /// This will transform the reference name into a name "human-readable"
         /// version. If no shortname is appropriate, it will return the full
@@ -1172,7 +1172,7 @@ namespace XenoAtom.Interop
         /// Get the reference's short name
         /// </summary>
         /// <param name="ref">a reference</param>
-        /// <returns>@return the human-readable version of the name</returns>
+        /// <returns>the human-readable version of the name</returns>
         /// <remarks>
         /// This will transform the reference name into a name "human-readable"
         /// version. If no shortname is appropriate, it will return the full

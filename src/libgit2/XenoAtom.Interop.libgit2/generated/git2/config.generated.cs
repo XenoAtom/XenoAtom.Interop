@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -224,7 +224,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="entry">the entry currently being enumerated</param>
         /// <param name="payload">a user-specified pointer</param>
-        /// <returns>@return non-zero to terminate the iteration.</returns>
+        /// <returns>non-zero to terminate the iteration.</returns>
         public readonly partial struct git_config_foreach_cb : IEquatable<libgit2.git_config_foreach_cb>
         {
             public git_config_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> value) => this.Value = value;
@@ -260,7 +260,7 @@ namespace XenoAtom.Interop
         /// Locate the path to the global configuration file
         /// </summary>
         /// <param name="out">Pointer to a user-allocated git_buf in which to store the path</param>
-        /// <returns>@return 0 if a global configuration file has been found. Its path will be stored in `out`.</returns>
+        /// <returns>0 if a global configuration file has been found. Its path will be stored in `out`.</returns>
         /// <remarks>
         /// The user or global configuration file is usually
         /// located in `$HOME/.gitconfig`.This method will try to guess the full path to that
@@ -321,7 +321,7 @@ namespace XenoAtom.Interop
         /// Open the global, XDG and system configuration files
         /// </summary>
         /// <param name="out">Pointer to store the config instance</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Utility wrapper that finds the global, XDG and system configuration files
         /// and opens them into a single prioritized config object that can be
@@ -335,7 +335,7 @@ namespace XenoAtom.Interop
         /// Allocate a new configuration object
         /// </summary>
         /// <param name="out">pointer to the new configuration</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This object is empty, so you have to add a file to it before you
         /// can do anything with it.
@@ -399,7 +399,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">The configuration instance to create</param>
         /// <param name="path">Path to the on-disk file to open</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// This method is a simple utility wrapper for the following sequence
         /// of calls:
@@ -415,7 +415,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">The configuration instance to create</param>
         /// <param name="path">Path to the on-disk file to open</param>
-        /// <returns>@return 0 on success, or an error code</returns>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// This method is a simple utility wrapper for the following sequence
         /// of calls:
@@ -449,7 +449,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer in which to store the config object</param>
         /// <param name="config">the config object in which to look</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Git allows you to store your global configuration at
         /// `$HOME/.gitconfig` or `$XDG_CONFIG_HOME/git/config`. For backwards
@@ -470,7 +470,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer in which to store the snapshot config object</param>
         /// <param name="config">configuration to snapshot</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Create a snapshot of the current state of a configuration, which
         /// allows you to look into a consistent view of the configuration for
@@ -495,7 +495,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the variable git_config_entry</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Free the git_config_entry after use with `git_config_entry_free()`.
         /// </remarks>
@@ -509,7 +509,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the variable git_config_entry</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Free the git_config_entry after use with `git_config_entry_free()`.
         /// </remarks>
@@ -523,7 +523,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the variable where the value should be stored</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// All config files will be looked into, in the order of their
         /// defined level. A higher level means a higher priority. The
@@ -539,7 +539,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the variable where the value should be stored</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// All config files will be looked into, in the order of their
         /// defined level. A higher level means a higher priority. The
@@ -555,7 +555,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the variable where the value should be stored</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// All config files will be looked into, in the order of their
         /// defined level. A higher level means a higher priority. The
@@ -571,7 +571,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the variable where the value should be stored</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// All config files will be looked into, in the order of their
         /// defined level. A higher level means a higher priority. The
@@ -587,7 +587,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the variable where the value should be stored</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This function uses the usual C convention of 0 being false and
         /// anything else true.All config files will be looked into, in the order of their
@@ -604,7 +604,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the variable where the value should be stored</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This function uses the usual C convention of 0 being false and
         /// anything else true.All config files will be looked into, in the order of their
@@ -621,7 +621,7 @@ namespace XenoAtom.Interop
         /// <param name="out">the buffer in which to store the result</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// A leading '~' will be expanded to the global search path (which
         /// defaults to the user's home directory but can be overridden via
@@ -639,7 +639,7 @@ namespace XenoAtom.Interop
         /// <param name="out">the buffer in which to store the result</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// A leading '~' will be expanded to the global search path (which
         /// defaults to the user's home directory but can be overridden via
@@ -657,7 +657,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the string</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This function can only be used on snapshot config objects. The
         /// string is owned by the config and should not be freed by the
@@ -675,7 +675,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to the string</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This function can only be used on snapshot config objects. The
         /// string is owned by the config and should not be freed by the
@@ -693,7 +693,7 @@ namespace XenoAtom.Interop
         /// <param name="out">buffer in which to store the string</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The value of the config will be copied into the buffer.All config files will be looked into, in the order of their
         /// defined level. A higher level means a higher priority. The
@@ -709,7 +709,7 @@ namespace XenoAtom.Interop
         /// <param name="out">buffer in which to store the string</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The value of the config will be copied into the buffer.All config files will be looked into, in the order of their
         /// defined level. A higher level means a higher priority. The
@@ -728,7 +728,7 @@ namespace XenoAtom.Interop
         /// interested in. Use NULL to indicate all</param>
         /// <param name="callback">the function to be called on each value of the variable</param>
         /// <param name="payload">opaque pointer to pass to the callback</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The callback will be called on each variable foundThe regular expression is applied case-sensitively on the normalized form of
         /// the variable name: the section and variable parts are lower-cased. The
@@ -747,7 +747,7 @@ namespace XenoAtom.Interop
         /// interested in. Use NULL to indicate all</param>
         /// <param name="callback">the function to be called on each value of the variable</param>
         /// <param name="payload">opaque pointer to pass to the callback</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The callback will be called on each variable foundThe regular expression is applied case-sensitively on the normalized form of
         /// the variable name: the section and variable parts are lower-cased. The
@@ -765,7 +765,7 @@ namespace XenoAtom.Interop
         /// <param name="name">the variable's name</param>
         /// <param name="regexp">regular expression to filter which variables we're
         /// interested in. Use NULL to indicate all</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The regular expression is applied case-sensitively on the normalized form of
         /// the variable name: the section and variable parts are lower-cased. The
@@ -783,7 +783,7 @@ namespace XenoAtom.Interop
         /// <param name="name">the variable's name</param>
         /// <param name="regexp">regular expression to filter which variables we're
         /// interested in. Use NULL to indicate all</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The regular expression is applied case-sensitively on the normalized form of
         /// the variable name: the section and variable parts are lower-cased. The
@@ -798,7 +798,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="entry">pointer to store the entry</param>
         /// <param name="iter">the iterator</param>
-        /// <returns>@return 0 or an error code. GIT_ITEROVER if the iteration has completed</returns>
+        /// <returns>0 or an error code. GIT_ITEROVER if the iteration has completed</returns>
         /// <remarks>
         /// The pointers returned by this function are valid until the next call
         /// to `git_config_next` or until the iterator is freed.
@@ -822,7 +822,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <param name="value">Integer value for the variable</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_int32")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_set_int32(libgit2.git_config cfg, byte* name, int value);
@@ -834,7 +834,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <param name="value">Integer value for the variable</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_int32")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_set_int32(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, int value);
@@ -846,7 +846,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <param name="value">Long integer value for the variable</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_set_int64(libgit2.git_config cfg, byte* name, long value);
@@ -858,7 +858,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <param name="value">Long integer value for the variable</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_int64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_set_int64(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, long value);
@@ -870,7 +870,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <param name="value">the value to store</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_bool")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_set_bool(libgit2.git_config cfg, byte* name, int value);
@@ -882,7 +882,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <param name="value">the value to store</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_bool")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_set_bool(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, int value);
@@ -894,7 +894,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <param name="value">the string to store.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// A copy of the string is made and the user is free to use it
         /// afterwards.
@@ -910,7 +910,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <param name="value">the string to store.</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// A copy of the string is made and the user is free to use it
         /// afterwards.
@@ -926,7 +926,7 @@ namespace XenoAtom.Interop
         /// <param name="name">the variable's name</param>
         /// <param name="regexp">a regular expression to indicate which values to replace</param>
         /// <param name="value">the new value.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The regular expression is applied case-sensitively on the value.
         /// </remarks>
@@ -941,7 +941,7 @@ namespace XenoAtom.Interop
         /// <param name="name">the variable's name</param>
         /// <param name="regexp">a regular expression to indicate which values to replace</param>
         /// <param name="value">the new value.</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// The regular expression is applied case-sensitively on the value.
         /// </remarks>
@@ -955,7 +955,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="cfg">the configuration</param>
         /// <param name="name">the variable to delete</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_delete_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_delete_entry(libgit2.git_config cfg, byte* name);
@@ -966,7 +966,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="cfg">the configuration</param>
         /// <param name="name">the variable to delete</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_delete_entry")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_delete_entry(libgit2.git_config cfg, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name);
@@ -977,7 +977,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variables</param>
         /// <param name="name">the variable's name</param>
         /// <param name="regexp">a regular expression to indicate which values to delete</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The regular expression is applied case-sensitively on the value.
         /// </remarks>
@@ -991,7 +991,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to look for the variables</param>
         /// <param name="name">the variable's name</param>
         /// <param name="regexp">a regular expression to indicate which values to delete</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The regular expression is applied case-sensitively on the value.
         /// </remarks>
@@ -1005,7 +1005,7 @@ namespace XenoAtom.Interop
         /// <param name="cfg">where to get the variables from</param>
         /// <param name="callback">the function to call on each variable</param>
         /// <param name="payload">the data to pass to the callback</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// The callback receives the normalized name and value of each variable
         /// in the config backend, and the data pointer passed to this function.
@@ -1022,7 +1022,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to store the iterator</param>
         /// <param name="cfg">where to get the variables from</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Use `git_config_next` to advance the iteration and
         /// `git_config_iterator_free` when done.
@@ -1037,7 +1037,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to store the iterator</param>
         /// <param name="cfg">where to ge the variables from</param>
         /// <param name="regexp">regular expression to match the names</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Use `git_config_next` to advance the iteration and
         /// `git_config_iterator_free` when done.The regular expression is applied case-sensitively on the normalized form of
@@ -1054,7 +1054,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to store the iterator</param>
         /// <param name="cfg">where to ge the variables from</param>
         /// <param name="regexp">regular expression to match the names</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Use `git_config_next` to advance the iteration and
         /// `git_config_iterator_free` when done.The regular expression is applied case-sensitively on the normalized form of
@@ -1072,7 +1072,7 @@ namespace XenoAtom.Interop
         /// <param name="regexp">regular expression to match against config names</param>
         /// <param name="callback">the function to call on each variable</param>
         /// <param name="payload">the data to pass to the callback</param>
-        /// <returns>@return 0 or the return value of the callback which didn't return 0</returns>
+        /// <returns>0 or the return value of the callback which didn't return 0</returns>
         /// <remarks>
         /// This behaves like `git_config_foreach` with an additional filter of a
         /// regular expression that filters which config keys are passed to the
@@ -1092,7 +1092,7 @@ namespace XenoAtom.Interop
         /// <param name="regexp">regular expression to match against config names</param>
         /// <param name="callback">the function to call on each variable</param>
         /// <param name="payload">the data to pass to the callback</param>
-        /// <returns>@return 0 or the return value of the callback which didn't return 0</returns>
+        /// <returns>0 or the return value of the callback which didn't return 0</returns>
         /// <remarks>
         /// This behaves like `git_config_foreach` with an additional filter of a
         /// regular expression that filters which config keys are passed to the
@@ -1114,7 +1114,7 @@ namespace XenoAtom.Interop
         /// <param name="name">name of the config variable to lookup</param>
         /// <param name="maps">array of `git_configmap` objects specifying the possible mappings</param>
         /// <param name="map_n">number of mapping objects in `maps`</param>
-        /// <returns>@return 0 on success, error code otherwise</returns>
+        /// <returns>0 on success, error code otherwise</returns>
         /// <remarks>
         /// This is a helper method to easily map different possible values
         /// to a variable to integer constants that easily identify them.A mapping array looks as follows:git_configmap autocrlf_mapping[] = {
@@ -1140,7 +1140,7 @@ namespace XenoAtom.Interop
         /// <param name="name">name of the config variable to lookup</param>
         /// <param name="maps">array of `git_configmap` objects specifying the possible mappings</param>
         /// <param name="map_n">number of mapping objects in `maps`</param>
-        /// <returns>@return 0 on success, error code otherwise</returns>
+        /// <returns>0 on success, error code otherwise</returns>
         /// <remarks>
         /// This is a helper method to easily map different possible values
         /// to a variable to integer constants that easily identify them.A mapping array looks as follows:git_configmap autocrlf_mapping[] = {
@@ -1164,7 +1164,7 @@ namespace XenoAtom.Interop
         /// <param name="maps">array of `git_configmap` objects specifying the possible mappings</param>
         /// <param name="map_n">number of mapping objects in `maps`</param>
         /// <param name="value">value to parse</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_lookup_map_value")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_lookup_map_value(out int @out, libgit2.git_configmap* maps, nuint map_n, byte* value);
@@ -1176,7 +1176,7 @@ namespace XenoAtom.Interop
         /// <param name="maps">array of `git_configmap` objects specifying the possible mappings</param>
         /// <param name="map_n">number of mapping objects in `maps`</param>
         /// <param name="value">value to parse</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_lookup_map_value")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_lookup_map_value(out int @out, libgit2.git_configmap* maps, nuint map_n, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> value);
@@ -1186,7 +1186,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">place to store the result of the parsing</param>
         /// <param name="value">value to parse</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Valid values for true are: 'true', 'yes', 'on', 1 or any
         /// number different from 0
@@ -1201,7 +1201,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">place to store the result of the parsing</param>
         /// <param name="value">value to parse</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// Valid values for true are: 'true', 'yes', 'on', 1 or any
         /// number different from 0
@@ -1216,7 +1216,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">place to store the result of the parsing</param>
         /// <param name="value">value to parse</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// An optional value suffix of 'k', 'm', or 'g' will
         /// cause the value to be multiplied by 1024, 1048576,
@@ -1231,7 +1231,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">place to store the result of the parsing</param>
         /// <param name="value">value to parse</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// An optional value suffix of 'k', 'm', or 'g' will
         /// cause the value to be multiplied by 1024, 1048576,
@@ -1246,7 +1246,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">place to store the result of the parsing</param>
         /// <param name="value">value to parse</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// An optional value suffix of 'k', 'm', or 'g' will
         /// cause the value to be multiplied by 1024, 1048576,
@@ -1261,7 +1261,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">place to store the result of the parsing</param>
         /// <param name="value">value to parse</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// An optional value suffix of 'k', 'm', or 'g' will
         /// cause the value to be multiplied by 1024, 1048576,
@@ -1276,7 +1276,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">placae to store the result of parsing</param>
         /// <param name="value">the path to evaluate</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// A leading '~' will be expanded to the global search path (which
         /// defaults to the user's home directory but can be overridden via
@@ -1292,7 +1292,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">placae to store the result of parsing</param>
         /// <param name="value">the path to evaluate</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// A leading '~' will be expanded to the global search path (which
         /// defaults to the user's home directory but can be overridden via
@@ -1311,7 +1311,7 @@ namespace XenoAtom.Interop
         /// <param name="regexp">regular expression to match against config names (can be NULL)</param>
         /// <param name="callback">the function to call on each variable</param>
         /// <param name="payload">the data to pass to the callback</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// This behaves like `git_config_foreach_match` except that only config
         /// entries from the given backend entry are enumerated.The regular expression is applied case-sensitively on the normalized form of
@@ -1330,7 +1330,7 @@ namespace XenoAtom.Interop
         /// <param name="regexp">regular expression to match against config names (can be NULL)</param>
         /// <param name="callback">the function to call on each variable</param>
         /// <param name="payload">the data to pass to the callback</param>
-        /// <returns>@return 0 or an error code.</returns>
+        /// <returns>0 or an error code.</returns>
         /// <remarks>
         /// This behaves like `git_config_foreach_match` except that only config
         /// entries from the given backend entry are enumerated.The regular expression is applied case-sensitively on the normalized form of
@@ -1347,7 +1347,7 @@ namespace XenoAtom.Interop
         /// <param name="tx">the resulting transaction, use this to commit or undo the
         /// changes</param>
         /// <param name="cfg">the configuration in which to lock</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Locking disallows anybody else from writing to that backend. Any
         /// updates made after locking will not be visible to a reader until

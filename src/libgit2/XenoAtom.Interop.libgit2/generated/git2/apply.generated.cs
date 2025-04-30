@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -205,7 +205,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_apply_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_APPLY_OPTIONS_VERSION`</param>
-        /// <returns>@return 0 on success or -1 on failure.</returns>
+        /// <returns>0 on success or -1 on failure.</returns>
         /// <remarks>
         /// Initialize a `git_apply_options` with default values. Equivalent to creating
         /// an instance with GIT_APPLY_OPTIONS_INIT.
@@ -223,7 +223,7 @@ namespace XenoAtom.Interop
         /// <param name="preimage">the tree to apply the diff to</param>
         /// <param name="diff">the diff to apply</param>
         /// <param name="options">the options for the apply (or null for defaults)</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_apply_to_tree")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_apply_to_tree(out libgit2.git_index @out, libgit2.git_repository repo, libgit2.git_tree preimage, libgit2.git_diff diff, in libgit2.git_apply_options options);
@@ -236,7 +236,7 @@ namespace XenoAtom.Interop
         /// <param name="diff">the diff to apply</param>
         /// <param name="location">the location to apply (workdir, index or both)</param>
         /// <param name="options">the options for the apply (or null for defaults)</param>
-        /// <returns>@return 0 or an error code</returns>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_apply")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_apply(libgit2.git_repository repo, libgit2.git_diff diff, libgit2.git_apply_location_t location, in libgit2.git_apply_options options);

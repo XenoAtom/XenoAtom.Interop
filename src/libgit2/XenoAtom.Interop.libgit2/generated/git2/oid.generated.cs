@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -106,7 +106,7 @@ namespace XenoAtom.Interop
         /// 0' terminator must be added by the caller if it is
         /// required.</param>
         /// <param name="id">oid structure to format.</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fmt")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_oid_fmt(byte* @out, in libgit2.git_oid id);
@@ -121,7 +121,7 @@ namespace XenoAtom.Interop
         /// 0' terminator is NOT added.</param>
         /// <param name="n">number of characters to write into out string</param>
         /// <param name="id">oid structure to format.</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_nfmt")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_oid_nfmt(byte* @out, nuint n, in libgit2.git_oid id);
@@ -138,7 +138,7 @@ namespace XenoAtom.Interop
         /// 0' terminator must be added by the caller if it
         /// is required.</param>
         /// <param name="id">oid structure to format.</param>
-        /// <returns>@return 0 on success, non-zero callback return value, or error code</returns>
+        /// <returns>0 on success, non-zero callback return value, or error code</returns>
         /// <remarks>
         /// The resulting string is "aa/...", where "aa" is the first two
         /// hex digits of the oid and "..." is the remaining 38 digits.
@@ -151,7 +151,7 @@ namespace XenoAtom.Interop
         /// Format a git_oid into a statically allocated c-string.
         /// </summary>
         /// <param name="oid">The oid structure to format</param>
-        /// <returns>@return the c-string or NULL on failure</returns>
+        /// <returns>the c-string or NULL on failure</returns>
         /// <remarks>
         /// The c-string is owned by the library and should not be freed
         /// by the user. If libgit2 is built with thread support, the string
@@ -188,7 +188,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">oid structure the result is written into.</param>
         /// <param name="src">oid structure to copy from.</param>
-        /// <returns>@return 0 on success or error code</returns>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_cpy")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_oid_cpy(out libgit2.git_oid @out, in libgit2.git_oid src);
@@ -211,7 +211,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="a">first oid structure.</param>
         /// <param name="b">second oid structure.</param>
-        /// <returns>@return true if equal, false otherwise</returns>
+        /// <returns>true if equal, false otherwise</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_equal")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_equal(in libgit2.git_oid a, in libgit2.git_oid b);
@@ -223,7 +223,7 @@ namespace XenoAtom.Interop
         /// <param name="a">first oid structure.</param>
         /// <param name="b">second oid structure.</param>
         /// <param name="len">the number of hex chars to compare</param>
-        /// <returns>@return 0 in case of a match</returns>
+        /// <returns>0 in case of a match</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_ncmp")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_ncmp(in libgit2.git_oid a, in libgit2.git_oid b, nuint len);
@@ -233,7 +233,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="id">oid structure.</param>
         /// <param name="str">input hex string of an object id.</param>
-        /// <returns>@return 0 in case of a match, -1 otherwise.</returns>
+        /// <returns>0 in case of a match, -1 otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_streq")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_streq(in libgit2.git_oid id, byte* str);
@@ -243,7 +243,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="id">oid structure.</param>
         /// <param name="str">input hex string of an object id.</param>
-        /// <returns>@return 0 in case of a match, -1 otherwise.</returns>
+        /// <returns>0 in case of a match, -1 otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_streq")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_streq(in libgit2.git_oid id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str);
@@ -277,7 +277,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Check is an oid is all zeros.
         /// </summary>
-        /// <returns>@return 1 if all zeros, 0 otherwise.</returns>
+        /// <returns>1 if all zeros, 0 otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_is_zero")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_is_zero(in libgit2.git_oid id);
@@ -288,7 +288,7 @@ namespace XenoAtom.Interop
         /// <param name="min_length">The minimal length for all identifiers,
         /// which will be used even if shorter OIDs would still
         /// be unique.</param>
-        /// <returns>@return a `git_oid_shorten` instance, NULL if OOM</returns>
+        /// <returns>a `git_oid_shorten` instance, NULL if OOM</returns>
         /// <remarks>
         /// The OID shortener is used to process a list of OIDs
         /// in text form and return the shortest length that would

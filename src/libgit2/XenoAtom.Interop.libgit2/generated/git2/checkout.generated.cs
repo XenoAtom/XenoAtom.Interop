@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -631,7 +631,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="opts">The `git_checkout_options` struct to initialize.</param>
         /// <param name="version">The struct version; pass `GIT_CHECKOUT_OPTIONS_VERSION`.</param>
-        /// <returns>@return Zero on success; -1 on failure.</returns>
+        /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_checkout_options` with default values. Equivalent to creating
         /// an instance with GIT_CHECKOUT_OPTIONS_INIT.

@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -82,7 +82,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to output object</param>
         /// <param name="repo">the repository to search in</param>
         /// <param name="spec">the textual specification for an object</param>
-        /// <returns>@return 0 on success, GIT_ENOTFOUND, GIT_EAMBIGUOUS, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_ENOTFOUND, GIT_EAMBIGUOUS, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// See `man gitrevisions`, or
         /// http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions for
@@ -99,7 +99,7 @@ namespace XenoAtom.Interop
         /// <param name="out">pointer to output object</param>
         /// <param name="repo">the repository to search in</param>
         /// <param name="spec">the textual specification for an object</param>
-        /// <returns>@return 0 on success, GIT_ENOTFOUND, GIT_EAMBIGUOUS, GIT_EINVALIDSPEC or an error code</returns>
+        /// <returns>0 on success, GIT_ENOTFOUND, GIT_EAMBIGUOUS, GIT_EINVALIDSPEC or an error code</returns>
         /// <remarks>
         /// See `man gitrevisions`, or
         /// http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions for
@@ -175,7 +175,7 @@ namespace XenoAtom.Interop
         /// the result of the rev-parse will be stored</param>
         /// <param name="repo">the repository to search in</param>
         /// <param name="spec">the rev-parse spec to parse</param>
-        /// <returns>@return 0 on success, GIT_INVALIDSPEC, GIT_ENOTFOUND, GIT_EAMBIGUOUS or an error code</returns>
+        /// <returns>0 on success, GIT_INVALIDSPEC, GIT_ENOTFOUND, GIT_EAMBIGUOUS or an error code</returns>
         /// <remarks>
         /// See `man gitrevisions` or
         /// http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions for
@@ -192,7 +192,7 @@ namespace XenoAtom.Interop
         /// the result of the rev-parse will be stored</param>
         /// <param name="repo">the repository to search in</param>
         /// <param name="spec">the rev-parse spec to parse</param>
-        /// <returns>@return 0 on success, GIT_INVALIDSPEC, GIT_ENOTFOUND, GIT_EAMBIGUOUS or an error code</returns>
+        /// <returns>0 on success, GIT_INVALIDSPEC, GIT_ENOTFOUND, GIT_EAMBIGUOUS or an error code</returns>
         /// <remarks>
         /// See `man gitrevisions` or
         /// http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions for

@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 
+using System;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -66,7 +66,7 @@ namespace XenoAtom.Interop
         /// <param name="checkout_opts">Optional checkout options to be used for a HARD reset.
         /// The checkout_strategy field will be overridden (based on reset_type).
         /// This parameter can be used to propagate notify and progress callbacks.</param>
-        /// <returns>@return 0 on success or an error code</returns>
+        /// <returns>0 on success or an error code</returns>
         /// <remarks>
         /// SOFT reset means the Head will be moved to the commit.MIXED reset will trigger a SOFT reset, plus the index will be replaced
         /// with the content of the commit tree.HARD reset will trigger a MIXED reset and the working directory will be
