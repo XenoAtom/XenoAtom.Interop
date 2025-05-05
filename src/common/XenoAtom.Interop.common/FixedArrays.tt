@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 
 namespace XenoAtom.Interop;
 
-<# for (int i = 1; i <= 256; i++) { #>
+<# foreach (var i in Enumerable.Range(1, 256).Concat([512, 1024, 2048, 4096])) { #>
 
 /// <summary>Fixed size array of <typeparamref name="T"/> with <#= i #> elements.</summary>
 /// <typeparam name="T">Type of the elements.</typeparam>

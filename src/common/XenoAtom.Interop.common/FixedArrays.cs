@@ -2054,3 +2054,35 @@ public struct FixedArray256<T>
 {
     private T _element;
 }
+
+/// <summary>Fixed size array of <typeparamref name="T"/> with 512 elements.</summary>
+/// <typeparam name="T">Type of the elements.</typeparam>
+[InlineArray(512)]
+public struct FixedArray512<T>
+{
+    private T _element;
+}
+
+/// <summary>Fixed size array of <typeparamref name="T"/> with 1024 elements.</summary>
+/// <typeparam name="T">Type of the elements.</typeparam>
+[InlineArray(1024)]
+public struct FixedArray1024<T>
+{
+    private T _element;
+}
+
+/// <summary>Fixed size array of <typeparamref name="T"/> with 2048 elements.</summary>
+/// <typeparam name="T">Type of the elements.</typeparam>
+[InlineArray(2048)]
+public struct FixedArray2048<T>
+{
+    private T _element;
+}
+
+/// <summary>Fixed size array of <typeparamref name="T"/> with 4096 elements.</summary>
+/// <typeparam name="T">Type of the elements.</typeparam>
+[InlineArray(4096)]
+public struct FixedArray4096<T>
+{
+    private T _element;
+}
