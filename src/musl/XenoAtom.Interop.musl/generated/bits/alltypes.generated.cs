@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -22,27 +23,16 @@ namespace XenoAtom.Interop
             public nint tv_nsec;
         }
         
-        public readonly partial struct time_t : IEquatable<musl.time_t>
+        public readonly partial record struct time_t(long Value)
         {
-            public time_t(long value) => this.Value = value;
+            public static implicit operator long (time_t from) => from.Value;
             
-            public long Value { get; }
-            
-            public override bool Equals(object obj) => obj is time_t other && Equals(other);
-            
-            public bool Equals(time_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator long (musl.time_t from) => from.Value;
-            
-            public static implicit operator musl.time_t (long from) => new musl.time_t(from);
-            
-            public static bool operator ==(time_t left, time_t right) => left.Equals(right);
-            
-            public static bool operator !=(time_t left, time_t right) => !left.Equals(right);
+            public static implicit operator time_t (long from) => new (from);
+        }
+        
+        public readonly partial record struct __locale_struct(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
         }
         
         public partial struct pthread_attr_t
@@ -63,27 +53,11 @@ namespace XenoAtom.Interop
             public musl.pthread_attr_t.pthread_attr_t__union_0 __u;
         }
         
-        public readonly partial struct pid_t : IEquatable<musl.pid_t>
+        public readonly partial record struct pid_t(int Value)
         {
-            public pid_t(int value) => this.Value = value;
+            public static implicit operator int (pid_t from) => from.Value;
             
-            public int Value { get; }
-            
-            public override bool Equals(object obj) => obj is pid_t other && Equals(other);
-            
-            public bool Equals(pid_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator int (musl.pid_t from) => from.Value;
-            
-            public static implicit operator musl.pid_t (int from) => new musl.pid_t(from);
-            
-            public static bool operator ==(pid_t left, pid_t right) => left.Equals(right);
-            
-            public static bool operator !=(pid_t left, pid_t right) => !left.Equals(right);
+            public static implicit operator pid_t (int from) => new (from);
         }
         
         public partial struct pthread_mutexattr_t
@@ -185,27 +159,11 @@ namespace XenoAtom.Interop
             public musl.suseconds_t tv_usec;
         }
         
-        public readonly partial struct suseconds_t : IEquatable<musl.suseconds_t>
+        public readonly partial record struct suseconds_t(long Value)
         {
-            public suseconds_t(long value) => this.Value = value;
+            public static implicit operator long (suseconds_t from) => from.Value;
             
-            public long Value { get; }
-            
-            public override bool Equals(object obj) => obj is suseconds_t other && Equals(other);
-            
-            public bool Equals(suseconds_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator long (musl.suseconds_t from) => from.Value;
-            
-            public static implicit operator musl.suseconds_t (long from) => new musl.suseconds_t(from);
-            
-            public static bool operator ==(suseconds_t left, suseconds_t right) => left.Equals(right);
-            
-            public static bool operator !=(suseconds_t left, suseconds_t right) => !left.Equals(right);
+            public static implicit operator suseconds_t (long from) => new (from);
         }
         
         public partial struct __sigset_t
@@ -220,73 +178,25 @@ namespace XenoAtom.Interop
             public nuint iov_len;
         }
         
-        public readonly partial struct off_t : IEquatable<musl.off_t>
+        public readonly partial record struct off_t(long Value)
         {
-            public off_t(long value) => this.Value = value;
+            public static implicit operator long (off_t from) => from.Value;
             
-            public long Value { get; }
-            
-            public override bool Equals(object obj) => obj is off_t other && Equals(other);
-            
-            public bool Equals(off_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator long (musl.off_t from) => from.Value;
-            
-            public static implicit operator musl.off_t (long from) => new musl.off_t(from);
-            
-            public static bool operator ==(off_t left, off_t right) => left.Equals(right);
-            
-            public static bool operator !=(off_t left, off_t right) => !left.Equals(right);
+            public static implicit operator off_t (long from) => new (from);
         }
         
-        public readonly partial struct fsblkcnt_t : IEquatable<musl.fsblkcnt_t>
+        public readonly partial record struct fsblkcnt_t(ulong Value)
         {
-            public fsblkcnt_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (fsblkcnt_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is fsblkcnt_t other && Equals(other);
-            
-            public bool Equals(fsblkcnt_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (musl.fsblkcnt_t from) => from.Value;
-            
-            public static implicit operator musl.fsblkcnt_t (ulong from) => new musl.fsblkcnt_t(from);
-            
-            public static bool operator ==(fsblkcnt_t left, fsblkcnt_t right) => left.Equals(right);
-            
-            public static bool operator !=(fsblkcnt_t left, fsblkcnt_t right) => !left.Equals(right);
+            public static implicit operator fsblkcnt_t (ulong from) => new (from);
         }
         
-        public readonly partial struct fsfilcnt_t : IEquatable<musl.fsfilcnt_t>
+        public readonly partial record struct fsfilcnt_t(ulong Value)
         {
-            public fsfilcnt_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (fsfilcnt_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is fsfilcnt_t other && Equals(other);
-            
-            public bool Equals(fsfilcnt_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (musl.fsfilcnt_t from) => from.Value;
-            
-            public static implicit operator musl.fsfilcnt_t (ulong from) => new musl.fsfilcnt_t(from);
-            
-            public static bool operator ==(fsfilcnt_t left, fsfilcnt_t right) => left.Equals(right);
-            
-            public static bool operator !=(fsfilcnt_t left, fsfilcnt_t right) => !left.Equals(right);
+            public static implicit operator fsfilcnt_t (ulong from) => new (from);
         }
         
         public partial struct winsize
@@ -300,329 +210,105 @@ namespace XenoAtom.Interop
             public ushort ws_ypixel;
         }
         
-        public readonly partial struct key_t : IEquatable<musl.key_t>
+        public readonly partial record struct key_t(int Value)
         {
-            public key_t(int value) => this.Value = value;
+            public static implicit operator int (key_t from) => from.Value;
             
-            public int Value { get; }
-            
-            public override bool Equals(object obj) => obj is key_t other && Equals(other);
-            
-            public bool Equals(key_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator int (musl.key_t from) => from.Value;
-            
-            public static implicit operator musl.key_t (int from) => new musl.key_t(from);
-            
-            public static bool operator ==(key_t left, key_t right) => left.Equals(right);
-            
-            public static bool operator !=(key_t left, key_t right) => !left.Equals(right);
+            public static implicit operator key_t (int from) => new (from);
         }
         
-        public readonly partial struct uid_t : IEquatable<musl.uid_t>
+        public readonly partial record struct uid_t(uint Value)
         {
-            public uid_t(uint value) => this.Value = value;
+            public static implicit operator uint (uid_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is uid_t other && Equals(other);
-            
-            public bool Equals(uid_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.uid_t from) => from.Value;
-            
-            public static implicit operator musl.uid_t (uint from) => new musl.uid_t(from);
-            
-            public static bool operator ==(uid_t left, uid_t right) => left.Equals(right);
-            
-            public static bool operator !=(uid_t left, uid_t right) => !left.Equals(right);
+            public static implicit operator uid_t (uint from) => new (from);
         }
         
-        public readonly partial struct gid_t : IEquatable<musl.gid_t>
+        public readonly partial record struct gid_t(uint Value)
         {
-            public gid_t(uint value) => this.Value = value;
+            public static implicit operator uint (gid_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is gid_t other && Equals(other);
-            
-            public bool Equals(gid_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.gid_t from) => from.Value;
-            
-            public static implicit operator musl.gid_t (uint from) => new musl.gid_t(from);
-            
-            public static bool operator ==(gid_t left, gid_t right) => left.Equals(right);
-            
-            public static bool operator !=(gid_t left, gid_t right) => !left.Equals(right);
+            public static implicit operator gid_t (uint from) => new (from);
         }
         
-        public readonly partial struct mode_t : IEquatable<musl.mode_t>
+        public readonly partial record struct mode_t(uint Value)
         {
-            public mode_t(uint value) => this.Value = value;
+            public static implicit operator uint (mode_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is mode_t other && Equals(other);
-            
-            public bool Equals(mode_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.mode_t from) => from.Value;
-            
-            public static implicit operator musl.mode_t (uint from) => new musl.mode_t(from);
-            
-            public static bool operator ==(mode_t left, mode_t right) => left.Equals(right);
-            
-            public static bool operator !=(mode_t left, mode_t right) => !left.Equals(right);
+            public static implicit operator mode_t (uint from) => new (from);
         }
         
-        public readonly partial struct sigset_t : IEquatable<musl.sigset_t>
+        public readonly partial record struct sigset_t(musl.__sigset_t Value)
         {
-            public sigset_t(musl.__sigset_t value) => this.Value = value;
+            public static implicit operator musl.__sigset_t (sigset_t from) => from.Value;
             
-            public musl.__sigset_t Value { get; }
-            
-            public override bool Equals(object obj) => obj is sigset_t other && Equals(other);
-            
-            public bool Equals(sigset_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator musl.__sigset_t (musl.sigset_t from) => from.Value;
-            
-            public static implicit operator musl.sigset_t (musl.__sigset_t from) => new musl.sigset_t(from);
-            
-            public static bool operator ==(sigset_t left, sigset_t right) => left.Equals(right);
-            
-            public static bool operator !=(sigset_t left, sigset_t right) => !left.Equals(right);
+            public static implicit operator sigset_t (musl.__sigset_t from) => new (from);
         }
         
-        public readonly partial struct clock_t : IEquatable<musl.clock_t>
+        public readonly partial record struct clock_t(nint Value)
         {
-            public clock_t(nint value) => this.Value = value;
+            public static implicit operator nint (clock_t from) => from.Value;
             
-            public nint Value { get; }
-            
-            public override bool Equals(object obj) => obj is clock_t other && Equals(other);
-            
-            public bool Equals(clock_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator nint (musl.clock_t from) => from.Value;
-            
-            public static implicit operator musl.clock_t (nint from) => new musl.clock_t(from);
-            
-            public static bool operator ==(clock_t left, clock_t right) => left.Equals(right);
-            
-            public static bool operator !=(clock_t left, clock_t right) => !left.Equals(right);
+            public static implicit operator clock_t (nint from) => new (from);
         }
         
-        public readonly partial struct socklen_t : IEquatable<musl.socklen_t>
+        public readonly partial record struct socklen_t(uint Value)
         {
-            public socklen_t(uint value) => this.Value = value;
+            public static implicit operator uint (socklen_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is socklen_t other && Equals(other);
-            
-            public bool Equals(socklen_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.socklen_t from) => from.Value;
-            
-            public static implicit operator musl.socklen_t (uint from) => new musl.socklen_t(from);
-            
-            public static bool operator ==(socklen_t left, socklen_t right) => left.Equals(right);
-            
-            public static bool operator !=(socklen_t left, socklen_t right) => !left.Equals(right);
+            public static implicit operator socklen_t (uint from) => new (from);
         }
         
-        public readonly partial struct sa_family_t : IEquatable<musl.sa_family_t>
+        public readonly partial record struct sa_family_t(ushort Value)
         {
-            public sa_family_t(ushort value) => this.Value = value;
+            public static implicit operator ushort (sa_family_t from) => from.Value;
             
-            public ushort Value { get; }
-            
-            public override bool Equals(object obj) => obj is sa_family_t other && Equals(other);
-            
-            public bool Equals(sa_family_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ushort (musl.sa_family_t from) => from.Value;
-            
-            public static implicit operator musl.sa_family_t (ushort from) => new musl.sa_family_t(from);
-            
-            public static bool operator ==(sa_family_t left, sa_family_t right) => left.Equals(right);
-            
-            public static bool operator !=(sa_family_t left, sa_family_t right) => !left.Equals(right);
+            public static implicit operator sa_family_t (ushort from) => new (from);
         }
         
-        public readonly partial struct dev_t : IEquatable<musl.dev_t>
+        public readonly partial record struct dev_t(ulong Value)
         {
-            public dev_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (dev_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is dev_t other && Equals(other);
-            
-            public bool Equals(dev_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (musl.dev_t from) => from.Value;
-            
-            public static implicit operator musl.dev_t (ulong from) => new musl.dev_t(from);
-            
-            public static bool operator ==(dev_t left, dev_t right) => left.Equals(right);
-            
-            public static bool operator !=(dev_t left, dev_t right) => !left.Equals(right);
+            public static implicit operator dev_t (ulong from) => new (from);
         }
         
-        public readonly partial struct ino_t : IEquatable<musl.ino_t>
+        public readonly partial record struct ino_t(ulong Value)
         {
-            public ino_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (ino_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is ino_t other && Equals(other);
-            
-            public bool Equals(ino_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (musl.ino_t from) => from.Value;
-            
-            public static implicit operator musl.ino_t (ulong from) => new musl.ino_t(from);
-            
-            public static bool operator ==(ino_t left, ino_t right) => left.Equals(right);
-            
-            public static bool operator !=(ino_t left, ino_t right) => !left.Equals(right);
+            public static implicit operator ino_t (ulong from) => new (from);
         }
         
-        public readonly partial struct nlink_t : IEquatable<musl.nlink_t>
+        public readonly partial record struct nlink_t(nuint Value)
         {
-            public nlink_t(nuint value) => this.Value = value;
+            public static implicit operator nuint (nlink_t from) => from.Value;
             
-            public nuint Value { get; }
-            
-            public override bool Equals(object obj) => obj is nlink_t other && Equals(other);
-            
-            public bool Equals(nlink_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator nuint (musl.nlink_t from) => from.Value;
-            
-            public static implicit operator musl.nlink_t (nuint from) => new musl.nlink_t(from);
-            
-            public static bool operator ==(nlink_t left, nlink_t right) => left.Equals(right);
-            
-            public static bool operator !=(nlink_t left, nlink_t right) => !left.Equals(right);
+            public static implicit operator nlink_t (nuint from) => new (from);
         }
         
-        public readonly partial struct blksize_t : IEquatable<musl.blksize_t>
+        public readonly partial record struct blksize_t(nint Value)
         {
-            public blksize_t(nint value) => this.Value = value;
+            public static implicit operator nint (blksize_t from) => from.Value;
             
-            public nint Value { get; }
-            
-            public override bool Equals(object obj) => obj is blksize_t other && Equals(other);
-            
-            public bool Equals(blksize_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator nint (musl.blksize_t from) => from.Value;
-            
-            public static implicit operator musl.blksize_t (nint from) => new musl.blksize_t(from);
-            
-            public static bool operator ==(blksize_t left, blksize_t right) => left.Equals(right);
-            
-            public static bool operator !=(blksize_t left, blksize_t right) => !left.Equals(right);
+            public static implicit operator blksize_t (nint from) => new (from);
         }
         
-        public readonly partial struct blkcnt_t : IEquatable<musl.blkcnt_t>
+        public readonly partial record struct blkcnt_t(long Value)
         {
-            public blkcnt_t(long value) => this.Value = value;
+            public static implicit operator long (blkcnt_t from) => from.Value;
             
-            public long Value { get; }
-            
-            public override bool Equals(object obj) => obj is blkcnt_t other && Equals(other);
-            
-            public bool Equals(blkcnt_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator long (musl.blkcnt_t from) => from.Value;
-            
-            public static implicit operator musl.blkcnt_t (long from) => new musl.blkcnt_t(from);
-            
-            public static bool operator ==(blkcnt_t left, blkcnt_t right) => left.Equals(right);
-            
-            public static bool operator !=(blkcnt_t left, blkcnt_t right) => !left.Equals(right);
+            public static implicit operator blkcnt_t (long from) => new (from);
         }
         
-        public readonly partial struct useconds_t : IEquatable<musl.useconds_t>
+        public readonly partial record struct useconds_t(uint Value)
         {
-            public useconds_t(uint value) => this.Value = value;
+            public static implicit operator uint (useconds_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is useconds_t other && Equals(other);
-            
-            public bool Equals(useconds_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.useconds_t from) => from.Value;
-            
-            public static implicit operator musl.useconds_t (uint from) => new musl.useconds_t(from);
-            
-            public static bool operator ==(useconds_t left, useconds_t right) => left.Equals(right);
-            
-            public static bool operator !=(useconds_t left, useconds_t right) => !left.Equals(right);
+            public static implicit operator useconds_t (uint from) => new (from);
         }
         
-        public readonly partial struct timer_t : IEquatable<musl.timer_t>
+        public readonly partial struct timer_t : IEquatable<timer_t>
         {
             public timer_t(void* value) => this.Value = value;
             
@@ -636,39 +322,23 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator void* (musl.timer_t from) => from.Value;
-            
-            public static implicit operator musl.timer_t (void* from) => new musl.timer_t(from);
-            
             public static bool operator ==(timer_t left, timer_t right) => left.Equals(right);
             
             public static bool operator !=(timer_t left, timer_t right) => !left.Equals(right);
+            
+            public static implicit operator void* (timer_t from) => from.Value;
+            
+            public static implicit operator timer_t (void* from) => new (from);
         }
         
-        public readonly partial struct clockid_t : IEquatable<musl.clockid_t>
+        public readonly partial record struct clockid_t(int Value)
         {
-            public clockid_t(int value) => this.Value = value;
+            public static implicit operator int (clockid_t from) => from.Value;
             
-            public int Value { get; }
-            
-            public override bool Equals(object obj) => obj is clockid_t other && Equals(other);
-            
-            public bool Equals(clockid_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator int (musl.clockid_t from) => from.Value;
-            
-            public static implicit operator musl.clockid_t (int from) => new musl.clockid_t(from);
-            
-            public static bool operator ==(clockid_t left, clockid_t right) => left.Equals(right);
-            
-            public static bool operator !=(clockid_t left, clockid_t right) => !left.Equals(right);
+            public static implicit operator clockid_t (int from) => new (from);
         }
         
-        public readonly partial struct locale_t : IEquatable<musl.locale_t>
+        public readonly partial struct locale_t : IEquatable<locale_t>
         {
             public locale_t(musl.__locale_struct value) => this.Value = value;
             
@@ -682,220 +352,76 @@ namespace XenoAtom.Interop
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator musl.__locale_struct (musl.locale_t from) => from.Value;
-            
-            public static implicit operator musl.locale_t (musl.__locale_struct from) => new musl.locale_t(from);
-            
             public static bool operator ==(locale_t left, locale_t right) => left.Equals(right);
             
             public static bool operator !=(locale_t left, locale_t right) => !left.Equals(right);
+            
+            public static implicit operator musl.__locale_struct (locale_t from) => from.Value;
+            
+            public static implicit operator locale_t (musl.__locale_struct from) => new (from);
         }
         
-        public readonly partial struct intmax_t : IEquatable<musl.intmax_t>
+        public readonly partial record struct intmax_t(long Value)
         {
-            public intmax_t(long value) => this.Value = value;
+            public static implicit operator long (intmax_t from) => from.Value;
             
-            public long Value { get; }
-            
-            public override bool Equals(object obj) => obj is intmax_t other && Equals(other);
-            
-            public bool Equals(intmax_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator long (musl.intmax_t from) => from.Value;
-            
-            public static implicit operator musl.intmax_t (long from) => new musl.intmax_t(from);
-            
-            public static bool operator ==(intmax_t left, intmax_t right) => left.Equals(right);
-            
-            public static bool operator !=(intmax_t left, intmax_t right) => !left.Equals(right);
+            public static implicit operator intmax_t (long from) => new (from);
         }
         
-        public readonly partial struct uintmax_t : IEquatable<musl.uintmax_t>
+        public readonly partial record struct uintmax_t(ulong Value)
         {
-            public uintmax_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (uintmax_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is uintmax_t other && Equals(other);
-            
-            public bool Equals(uintmax_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (musl.uintmax_t from) => from.Value;
-            
-            public static implicit operator musl.uintmax_t (ulong from) => new musl.uintmax_t(from);
-            
-            public static bool operator ==(uintmax_t left, uintmax_t right) => left.Equals(right);
-            
-            public static bool operator !=(uintmax_t left, uintmax_t right) => !left.Equals(right);
+            public static implicit operator uintmax_t (ulong from) => new (from);
         }
         
-        public readonly partial struct register_t : IEquatable<musl.register_t>
+        public readonly partial record struct register_t(nint Value)
         {
-            public register_t(nint value) => this.Value = value;
+            public static implicit operator nint (register_t from) => from.Value;
             
-            public nint Value { get; }
-            
-            public override bool Equals(object obj) => obj is register_t other && Equals(other);
-            
-            public bool Equals(register_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator nint (musl.register_t from) => from.Value;
-            
-            public static implicit operator musl.register_t (nint from) => new musl.register_t(from);
-            
-            public static bool operator ==(register_t left, register_t right) => left.Equals(right);
-            
-            public static bool operator !=(register_t left, register_t right) => !left.Equals(right);
+            public static implicit operator register_t (nint from) => new (from);
         }
         
-        public readonly partial struct u_int64_t : IEquatable<musl.u_int64_t>
+        public readonly partial record struct u_int64_t(ulong Value)
         {
-            public u_int64_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (u_int64_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is u_int64_t other && Equals(other);
-            
-            public bool Equals(u_int64_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (musl.u_int64_t from) => from.Value;
-            
-            public static implicit operator musl.u_int64_t (ulong from) => new musl.u_int64_t(from);
-            
-            public static bool operator ==(u_int64_t left, u_int64_t right) => left.Equals(right);
-            
-            public static bool operator !=(u_int64_t left, u_int64_t right) => !left.Equals(right);
+            public static implicit operator u_int64_t (ulong from) => new (from);
         }
         
-        public readonly partial struct id_t : IEquatable<musl.id_t>
+        public readonly partial record struct id_t(uint Value)
         {
-            public id_t(uint value) => this.Value = value;
+            public static implicit operator uint (id_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is id_t other && Equals(other);
-            
-            public bool Equals(id_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.id_t from) => from.Value;
-            
-            public static implicit operator musl.id_t (uint from) => new musl.id_t(from);
-            
-            public static bool operator ==(id_t left, id_t right) => left.Equals(right);
-            
-            public static bool operator !=(id_t left, id_t right) => !left.Equals(right);
+            public static implicit operator id_t (uint from) => new (from);
         }
         
-        public readonly partial struct pthread_t : IEquatable<musl.pthread_t>
+        public readonly partial record struct pthread_t(nuint Value)
         {
-            public pthread_t(nuint value) => this.Value = value;
+            public static implicit operator nuint (pthread_t from) => from.Value;
             
-            public nuint Value { get; }
-            
-            public override bool Equals(object obj) => obj is pthread_t other && Equals(other);
-            
-            public bool Equals(pthread_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator nuint (musl.pthread_t from) => from.Value;
-            
-            public static implicit operator musl.pthread_t (nuint from) => new musl.pthread_t(from);
-            
-            public static bool operator ==(pthread_t left, pthread_t right) => left.Equals(right);
-            
-            public static bool operator !=(pthread_t left, pthread_t right) => !left.Equals(right);
+            public static implicit operator pthread_t (nuint from) => new (from);
         }
         
-        public readonly partial struct pthread_once_t : IEquatable<musl.pthread_once_t>
+        public readonly partial record struct pthread_once_t(int Value)
         {
-            public pthread_once_t(int value) => this.Value = value;
+            public static implicit operator int (pthread_once_t from) => from.Value;
             
-            public int Value { get; }
-            
-            public override bool Equals(object obj) => obj is pthread_once_t other && Equals(other);
-            
-            public bool Equals(pthread_once_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator int (musl.pthread_once_t from) => from.Value;
-            
-            public static implicit operator musl.pthread_once_t (int from) => new musl.pthread_once_t(from);
-            
-            public static bool operator ==(pthread_once_t left, pthread_once_t right) => left.Equals(right);
-            
-            public static bool operator !=(pthread_once_t left, pthread_once_t right) => !left.Equals(right);
+            public static implicit operator pthread_once_t (int from) => new (from);
         }
         
-        public readonly partial struct pthread_key_t : IEquatable<musl.pthread_key_t>
+        public readonly partial record struct pthread_key_t(uint Value)
         {
-            public pthread_key_t(uint value) => this.Value = value;
+            public static implicit operator uint (pthread_key_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is pthread_key_t other && Equals(other);
-            
-            public bool Equals(pthread_key_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.pthread_key_t from) => from.Value;
-            
-            public static implicit operator musl.pthread_key_t (uint from) => new musl.pthread_key_t(from);
-            
-            public static bool operator ==(pthread_key_t left, pthread_key_t right) => left.Equals(right);
-            
-            public static bool operator !=(pthread_key_t left, pthread_key_t right) => !left.Equals(right);
+            public static implicit operator pthread_key_t (uint from) => new (from);
         }
         
-        public readonly partial struct pthread_spinlock_t : IEquatable<musl.pthread_spinlock_t>
+        public readonly partial record struct pthread_spinlock_t(int Value)
         {
-            public pthread_spinlock_t(int value) => this.Value = value;
+            public static implicit operator int (pthread_spinlock_t from) => from.Value;
             
-            public int Value { get; }
-            
-            public override bool Equals(object obj) => obj is pthread_spinlock_t other && Equals(other);
-            
-            public bool Equals(pthread_spinlock_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator int (musl.pthread_spinlock_t from) => from.Value;
-            
-            public static implicit operator musl.pthread_spinlock_t (int from) => new musl.pthread_spinlock_t(from);
-            
-            public static bool operator ==(pthread_spinlock_t left, pthread_spinlock_t right) => left.Equals(right);
-            
-            public static bool operator !=(pthread_spinlock_t left, pthread_spinlock_t right) => !left.Equals(right);
+            public static implicit operator pthread_spinlock_t (int from) => new (from);
         }
     }
 }

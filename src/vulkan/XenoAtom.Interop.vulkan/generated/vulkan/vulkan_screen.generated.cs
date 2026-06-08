@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -51,27 +52,21 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_QNX_screen_surface</para>
         /// </remarks>
-        public readonly partial struct VkScreenSurfaceCreateFlagsQNX : IEquatable<vulkan.VkScreenSurfaceCreateFlagsQNX>
+        public readonly partial record struct VkScreenSurfaceCreateFlagsQNX(vulkan.VkFlags Value)
         {
-            public VkScreenSurfaceCreateFlagsQNX(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkScreenSurfaceCreateFlagsQNX from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkScreenSurfaceCreateFlagsQNX other && Equals(other);
-            
-            public bool Equals(VkScreenSurfaceCreateFlagsQNX other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkScreenSurfaceCreateFlagsQNX from) => from.Value;
-            
-            public static implicit operator vulkan.VkScreenSurfaceCreateFlagsQNX (vulkan.VkFlags from) => new vulkan.VkScreenSurfaceCreateFlagsQNX(from);
-            
-            public static bool operator ==(VkScreenSurfaceCreateFlagsQNX left, VkScreenSurfaceCreateFlagsQNX right) => left.Equals(right);
-            
-            public static bool operator !=(VkScreenSurfaceCreateFlagsQNX left, VkScreenSurfaceCreateFlagsQNX right) => !left.Equals(right);
+            public static implicit operator VkScreenSurfaceCreateFlagsQNX (vulkan.VkFlags from) => new (from);
+        }
+        
+        public readonly partial record struct _screen_context(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
+        public readonly partial record struct _screen_window(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
         }
         
         /// <summary>
@@ -129,12 +124,12 @@ namespace XenoAtom.Interop
             /// <summary>
             /// An implementation-defined external format identifier for use with <see cref="T:VkExternalFormatQNX"/>. It must: not be zero.
             /// </summary>
-            public ulong externalFormat;
+            public nuint externalFormat;
             
             /// <summary>
             /// An implementation-defined external usage identifier for the QNX Screen buffer.
             /// </summary>
-            public ulong screenUsage;
+            public nuint screenUsage;
             
             /// <summary>
             /// Describes the capabilities of this external format when used with an image bound to memory imported from <see cref="M:buffer"/>.
@@ -191,6 +186,11 @@ namespace XenoAtom.Interop
             public vulkan._screen_buffer buffer;
         }
         
+        public readonly partial record struct _screen_buffer(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
         /// <summary>
         /// Structure containing a QNX Screen buffer external format
         /// </summary>
@@ -212,7 +212,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// An implementation-defined identifier for the external format
             /// </summary>
-            public ulong externalFormat;
+            public nuint externalFormat;
         }
         
         /// <summary>
@@ -230,7 +230,7 @@ namespace XenoAtom.Interop
             public vulkan.VkBool32 screenBufferImport;
         }
         
-        public readonly partial struct PFN_vkCreateScreenSurfaceQNX : IEquatable<vulkan.PFN_vkCreateScreenSurfaceQNX>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateScreenSurfaceQNX>
+        public readonly partial struct PFN_vkCreateScreenSurfaceQNX : IEquatable<PFN_vkCreateScreenSurfaceQNX>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateScreenSurfaceQNX>
         {
             public PFN_vkCreateScreenSurfaceQNX(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkScreenSurfaceCreateInfoQNX*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -244,13 +244,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkScreenSurfaceCreateInfoQNX*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateScreenSurfaceQNX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateScreenSurfaceQNX (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkScreenSurfaceCreateInfoQNX*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateScreenSurfaceQNX(from);
-            
             public static bool operator ==(PFN_vkCreateScreenSurfaceQNX left, PFN_vkCreateScreenSurfaceQNX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateScreenSurfaceQNX left, PFN_vkCreateScreenSurfaceQNX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkScreenSurfaceCreateInfoQNX*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateScreenSurfaceQNX from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateScreenSurfaceQNX (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkScreenSurfaceCreateInfoQNX*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateScreenSurfaceQNX`.
@@ -283,7 +283,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX : IEquatable<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>
+        public readonly partial struct PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX : IEquatable<PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX>
         {
             public PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan._screen_window, vulkan.VkBool32> value) => this.Value = value;
             
@@ -297,13 +297,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan._screen_window, vulkan.VkBool32> (vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan._screen_window, vulkan.VkBool32> from) => new vulkan.PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX(from);
-            
             public static bool operator ==(PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX left, PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX left, PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan._screen_window, vulkan.VkBool32> (PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX from) => from.Value;
+            
+            public static implicit operator PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan._screen_window, vulkan.VkBool32> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceScreenPresentationSupportQNX`.
@@ -329,7 +329,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetScreenBufferPropertiesQNX : IEquatable<vulkan.PFN_vkGetScreenBufferPropertiesQNX>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetScreenBufferPropertiesQNX>
+        public readonly partial struct PFN_vkGetScreenBufferPropertiesQNX : IEquatable<PFN_vkGetScreenBufferPropertiesQNX>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetScreenBufferPropertiesQNX>
         {
             public PFN_vkGetScreenBufferPropertiesQNX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan._screen_buffer, vulkan.VkScreenBufferPropertiesQNX*, vulkan.VkResult> value) => this.Value = value;
             
@@ -343,13 +343,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan._screen_buffer, vulkan.VkScreenBufferPropertiesQNX*, vulkan.VkResult> (vulkan.PFN_vkGetScreenBufferPropertiesQNX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetScreenBufferPropertiesQNX (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan._screen_buffer, vulkan.VkScreenBufferPropertiesQNX*, vulkan.VkResult> from) => new vulkan.PFN_vkGetScreenBufferPropertiesQNX(from);
-            
             public static bool operator ==(PFN_vkGetScreenBufferPropertiesQNX left, PFN_vkGetScreenBufferPropertiesQNX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetScreenBufferPropertiesQNX left, PFN_vkGetScreenBufferPropertiesQNX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan._screen_buffer, vulkan.VkScreenBufferPropertiesQNX*, vulkan.VkResult> (PFN_vkGetScreenBufferPropertiesQNX from) => from.Value;
+            
+            public static implicit operator PFN_vkGetScreenBufferPropertiesQNX (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan._screen_buffer, vulkan.VkScreenBufferPropertiesQNX*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetScreenBufferPropertiesQNX`.

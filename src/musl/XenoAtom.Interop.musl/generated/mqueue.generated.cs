@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -30,27 +31,11 @@ namespace XenoAtom.Interop
             public FixedArray4<nint> __unused;
         }
         
-        public readonly partial struct mqd_t : IEquatable<musl.mqd_t>
+        public readonly partial record struct mqd_t(int Value)
         {
-            public mqd_t(int value) => this.Value = value;
+            public static implicit operator int (mqd_t from) => from.Value;
             
-            public int Value { get; }
-            
-            public override bool Equals(object obj) => obj is mqd_t other && Equals(other);
-            
-            public bool Equals(mqd_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator int (musl.mqd_t from) => from.Value;
-            
-            public static implicit operator musl.mqd_t (int from) => new musl.mqd_t(from);
-            
-            public static bool operator ==(mqd_t left, mqd_t right) => left.Equals(right);
-            
-            public static bool operator !=(mqd_t left, mqd_t right) => !left.Equals(right);
+            public static implicit operator mqd_t (int from) => new (from);
         }
         
         /// <summary>

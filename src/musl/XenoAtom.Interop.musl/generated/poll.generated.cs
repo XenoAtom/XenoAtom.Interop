@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -26,27 +27,11 @@ namespace XenoAtom.Interop
             public short revents;
         }
         
-        public readonly partial struct nfds_t : IEquatable<musl.nfds_t>
+        public readonly partial record struct nfds_t(nuint Value)
         {
-            public nfds_t(nuint value) => this.Value = value;
+            public static implicit operator nuint (nfds_t from) => from.Value;
             
-            public nuint Value { get; }
-            
-            public override bool Equals(object obj) => obj is nfds_t other && Equals(other);
-            
-            public bool Equals(nfds_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator nuint (musl.nfds_t from) => from.Value;
-            
-            public static implicit operator musl.nfds_t (nuint from) => new musl.nfds_t(from);
-            
-            public static bool operator ==(nfds_t left, nfds_t right) => left.Equals(right);
-            
-            public static bool operator !=(nfds_t left, nfds_t right) => !left.Equals(right);
+            public static implicit operator nfds_t (nuint from) => new (from);
         }
         
         /// <summary>

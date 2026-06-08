@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -549,7 +550,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Checkout notification callback function
         /// </summary>
-        public readonly partial struct git_checkout_notify_cb : IEquatable<libgit2.git_checkout_notify_cb>
+        public readonly partial struct git_checkout_notify_cb : IEquatable<git_checkout_notify_cb>
         {
             public git_checkout_notify_cb(delegate*unmanaged[Cdecl]<libgit2.git_checkout_notify_t, byte*, libgit2.git_diff_file*, libgit2.git_diff_file*, libgit2.git_diff_file*, void*, int> value) => this.Value = value;
             
@@ -563,19 +564,19 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_checkout_notify_t, byte*, libgit2.git_diff_file*, libgit2.git_diff_file*, libgit2.git_diff_file*, void*, int> (libgit2.git_checkout_notify_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_checkout_notify_cb (delegate*unmanaged[Cdecl]<libgit2.git_checkout_notify_t, byte*, libgit2.git_diff_file*, libgit2.git_diff_file*, libgit2.git_diff_file*, void*, int> from) => new libgit2.git_checkout_notify_cb(from);
-            
             public static bool operator ==(git_checkout_notify_cb left, git_checkout_notify_cb right) => left.Equals(right);
             
             public static bool operator !=(git_checkout_notify_cb left, git_checkout_notify_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_checkout_notify_t, byte*, libgit2.git_diff_file*, libgit2.git_diff_file*, libgit2.git_diff_file*, void*, int> (git_checkout_notify_cb from) => from.Value;
+            
+            public static implicit operator git_checkout_notify_cb (delegate*unmanaged[Cdecl]<libgit2.git_checkout_notify_t, byte*, libgit2.git_diff_file*, libgit2.git_diff_file*, libgit2.git_diff_file*, void*, int> from) => new (from);
         }
         
         /// <summary>
         /// Checkout progress notification function
         /// </summary>
-        public readonly partial struct git_checkout_progress_cb : IEquatable<libgit2.git_checkout_progress_cb>
+        public readonly partial struct git_checkout_progress_cb : IEquatable<git_checkout_progress_cb>
         {
             public git_checkout_progress_cb(delegate*unmanaged[Cdecl]<byte*, nuint, nuint, void*, void> value) => this.Value = value;
             
@@ -589,19 +590,19 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, nuint, nuint, void*, void> (libgit2.git_checkout_progress_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_checkout_progress_cb (delegate*unmanaged[Cdecl]<byte*, nuint, nuint, void*, void> from) => new libgit2.git_checkout_progress_cb(from);
-            
             public static bool operator ==(git_checkout_progress_cb left, git_checkout_progress_cb right) => left.Equals(right);
             
             public static bool operator !=(git_checkout_progress_cb left, git_checkout_progress_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, nuint, nuint, void*, void> (git_checkout_progress_cb from) => from.Value;
+            
+            public static implicit operator git_checkout_progress_cb (delegate*unmanaged[Cdecl]<byte*, nuint, nuint, void*, void> from) => new (from);
         }
         
         /// <summary>
         /// Checkout perfdata notification function
         /// </summary>
-        public readonly partial struct git_checkout_perfdata_cb : IEquatable<libgit2.git_checkout_perfdata_cb>
+        public readonly partial struct git_checkout_perfdata_cb : IEquatable<git_checkout_perfdata_cb>
         {
             public git_checkout_perfdata_cb(delegate*unmanaged[Cdecl]<libgit2.git_checkout_perfdata*, void*, void> value) => this.Value = value;
             
@@ -615,13 +616,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_checkout_perfdata*, void*, void> (libgit2.git_checkout_perfdata_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_checkout_perfdata_cb (delegate*unmanaged[Cdecl]<libgit2.git_checkout_perfdata*, void*, void> from) => new libgit2.git_checkout_perfdata_cb(from);
-            
             public static bool operator ==(git_checkout_perfdata_cb left, git_checkout_perfdata_cb right) => left.Equals(right);
             
             public static bool operator !=(git_checkout_perfdata_cb left, git_checkout_perfdata_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_checkout_perfdata*, void*, void> (git_checkout_perfdata_cb from) => from.Value;
+            
+            public static implicit operator git_checkout_perfdata_cb (delegate*unmanaged[Cdecl]<libgit2.git_checkout_perfdata*, void*, void> from) => new (from);
         }
         
         public const uint GIT_CHECKOUT_OPTIONS_VERSION = 1;

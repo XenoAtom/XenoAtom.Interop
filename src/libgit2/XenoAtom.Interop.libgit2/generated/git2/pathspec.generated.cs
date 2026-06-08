@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -113,45 +114,17 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Compiled pathspec
         /// </summary>
-        public readonly partial struct git_pathspec : IEquatable<libgit2.git_pathspec>
+        public readonly partial record struct git_pathspec(nint Handle)
         {
-            public git_pathspec(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_pathspec other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_pathspec other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_pathspec left, git_pathspec right) => left.Equals(right);
-            
-            public static bool operator !=(git_pathspec left, git_pathspec right) => !left.Equals(right);
         }
         
         /// <summary>
         /// List of filenames matching a pathspec
         /// </summary>
-        public readonly partial struct git_pathspec_match_list : IEquatable<libgit2.git_pathspec_match_list>
+        public readonly partial record struct git_pathspec_match_list(nint Handle)
         {
-            public git_pathspec_match_list(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_pathspec_match_list other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_pathspec_match_list other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_pathspec_match_list left, git_pathspec_match_list right) => left.Equals(right);
-            
-            public static bool operator !=(git_pathspec_match_list left, git_pathspec_match_list right) => !left.Equals(right);
         }
         
         /// <summary>

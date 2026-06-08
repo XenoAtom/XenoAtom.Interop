@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -49,27 +50,11 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_GGP_stream_descriptor_surface</para>
         /// </remarks>
-        public readonly partial struct VkStreamDescriptorSurfaceCreateFlagsGGP : IEquatable<vulkan.VkStreamDescriptorSurfaceCreateFlagsGGP>
+        public readonly partial record struct VkStreamDescriptorSurfaceCreateFlagsGGP(vulkan.VkFlags Value)
         {
-            public VkStreamDescriptorSurfaceCreateFlagsGGP(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkStreamDescriptorSurfaceCreateFlagsGGP from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkStreamDescriptorSurfaceCreateFlagsGGP other && Equals(other);
-            
-            public bool Equals(VkStreamDescriptorSurfaceCreateFlagsGGP other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkStreamDescriptorSurfaceCreateFlagsGGP from) => from.Value;
-            
-            public static implicit operator vulkan.VkStreamDescriptorSurfaceCreateFlagsGGP (vulkan.VkFlags from) => new vulkan.VkStreamDescriptorSurfaceCreateFlagsGGP(from);
-            
-            public static bool operator ==(VkStreamDescriptorSurfaceCreateFlagsGGP left, VkStreamDescriptorSurfaceCreateFlagsGGP right) => left.Equals(right);
-            
-            public static bool operator !=(VkStreamDescriptorSurfaceCreateFlagsGGP left, VkStreamDescriptorSurfaceCreateFlagsGGP right) => !left.Equals(right);
+            public static implicit operator VkStreamDescriptorSurfaceCreateFlagsGGP (vulkan.VkFlags from) => new (from);
         }
         
         /// <summary>
@@ -96,7 +81,7 @@ namespace XenoAtom.Interop
             public uint frameToken;
         }
         
-        public readonly partial struct PFN_vkCreateStreamDescriptorSurfaceGGP : IEquatable<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP>
+        public readonly partial struct PFN_vkCreateStreamDescriptorSurfaceGGP : IEquatable<PFN_vkCreateStreamDescriptorSurfaceGGP>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP>
         {
             public PFN_vkCreateStreamDescriptorSurfaceGGP(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkStreamDescriptorSurfaceCreateInfoGGP*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -110,13 +95,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkStreamDescriptorSurfaceCreateInfoGGP*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkStreamDescriptorSurfaceCreateInfoGGP*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateStreamDescriptorSurfaceGGP(from);
-            
             public static bool operator ==(PFN_vkCreateStreamDescriptorSurfaceGGP left, PFN_vkCreateStreamDescriptorSurfaceGGP right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateStreamDescriptorSurfaceGGP left, PFN_vkCreateStreamDescriptorSurfaceGGP right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkStreamDescriptorSurfaceCreateInfoGGP*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateStreamDescriptorSurfaceGGP from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateStreamDescriptorSurfaceGGP (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkStreamDescriptorSurfaceCreateInfoGGP*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateStreamDescriptorSurfaceGGP`.

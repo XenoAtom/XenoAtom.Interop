@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -34,7 +35,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Packbuilder progress notification function
         /// </summary>
-        public readonly partial struct git_packbuilder_progress : IEquatable<libgit2.git_packbuilder_progress>
+        public readonly partial struct git_packbuilder_progress : IEquatable<git_packbuilder_progress>
         {
             public git_packbuilder_progress(delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> value) => this.Value = value;
             
@@ -48,13 +49,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> (libgit2.git_packbuilder_progress from) => from.Value;
-            
-            public static implicit operator libgit2.git_packbuilder_progress (delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> from) => new libgit2.git_packbuilder_progress(from);
-            
             public static bool operator ==(git_packbuilder_progress left, git_packbuilder_progress right) => left.Equals(right);
             
             public static bool operator !=(git_packbuilder_progress left, git_packbuilder_progress right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> (git_packbuilder_progress from) => from.Value;
+            
+            public static implicit operator git_packbuilder_progress (delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> from) => new (from);
         }
         
         /// <summary>
@@ -65,7 +66,7 @@ namespace XenoAtom.Interop
         /// <param name="payload">Payload passed to git_packbuilder_foreach</param>
         /// <returns>non-zero to terminate the iteration</returns>
         /// <seealso cref="git_packbuilder_foreach"/>
-        public readonly partial struct git_packbuilder_foreach_cb : IEquatable<libgit2.git_packbuilder_foreach_cb>
+        public readonly partial struct git_packbuilder_foreach_cb : IEquatable<git_packbuilder_foreach_cb>
         {
             public git_packbuilder_foreach_cb(delegate*unmanaged[Cdecl]<void*, nuint, void*, int> value) => this.Value = value;
             
@@ -79,13 +80,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<void*, nuint, void*, int> (libgit2.git_packbuilder_foreach_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_packbuilder_foreach_cb (delegate*unmanaged[Cdecl]<void*, nuint, void*, int> from) => new libgit2.git_packbuilder_foreach_cb(from);
-            
             public static bool operator ==(git_packbuilder_foreach_cb left, git_packbuilder_foreach_cb right) => left.Equals(right);
             
             public static bool operator !=(git_packbuilder_foreach_cb left, git_packbuilder_foreach_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<void*, nuint, void*, int> (git_packbuilder_foreach_cb from) => from.Value;
+            
+            public static implicit operator git_packbuilder_foreach_cb (delegate*unmanaged[Cdecl]<void*, nuint, void*, int> from) => new (from);
         }
         
         /// <summary>

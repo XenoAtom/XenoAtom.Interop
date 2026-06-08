@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class libgit2
@@ -22,7 +23,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// Return a negative value to cancel the network operation.
         /// </remarks>
-        public readonly partial struct git_transport_message_cb : IEquatable<libgit2.git_transport_message_cb>
+        public readonly partial struct git_transport_message_cb : IEquatable<git_transport_message_cb>
         {
             public git_transport_message_cb(delegate*unmanaged[Cdecl]<byte*, int, void*, int> value) => this.Value = value;
             
@@ -36,19 +37,19 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, int, void*, int> (libgit2.git_transport_message_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_transport_message_cb (delegate*unmanaged[Cdecl]<byte*, int, void*, int> from) => new libgit2.git_transport_message_cb(from);
-            
             public static bool operator ==(git_transport_message_cb left, git_transport_message_cb right) => left.Equals(right);
             
             public static bool operator !=(git_transport_message_cb left, git_transport_message_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, int, void*, int> (git_transport_message_cb from) => from.Value;
+            
+            public static implicit operator git_transport_message_cb (delegate*unmanaged[Cdecl]<byte*, int, void*, int> from) => new (from);
         }
         
         /// <summary>
         /// Signature of a function which creates a transport
         /// </summary>
-        public readonly partial struct git_transport_cb : IEquatable<libgit2.git_transport_cb>
+        public readonly partial struct git_transport_cb : IEquatable<git_transport_cb>
         {
             public git_transport_cb(delegate*unmanaged[Cdecl]<libgit2.git_transport*, libgit2.git_remote, void*, int> value) => this.Value = value;
             
@@ -62,13 +63,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_transport*, libgit2.git_remote, void*, int> (libgit2.git_transport_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_transport_cb (delegate*unmanaged[Cdecl]<libgit2.git_transport*, libgit2.git_remote, void*, int> from) => new libgit2.git_transport_cb(from);
-            
             public static bool operator ==(git_transport_cb left, git_transport_cb right) => left.Equals(right);
             
             public static bool operator !=(git_transport_cb left, git_transport_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_transport*, libgit2.git_remote, void*, int> (git_transport_cb from) => from.Value;
+            
+            public static implicit operator git_transport_cb (delegate*unmanaged[Cdecl]<libgit2.git_transport*, libgit2.git_remote, void*, int> from) => new (from);
         }
     }
 }

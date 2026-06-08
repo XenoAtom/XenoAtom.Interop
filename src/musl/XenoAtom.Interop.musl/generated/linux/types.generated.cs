@@ -9,31 +9,16 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class musl
     {
-        public readonly partial struct __poll_t : IEquatable<musl.__poll_t>
+        public readonly partial record struct __poll_t(uint Value)
         {
-            public __poll_t(uint value) => this.Value = value;
+            public static implicit operator uint (__poll_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is __poll_t other && Equals(other);
-            
-            public bool Equals(__poll_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.__poll_t from) => from.Value;
-            
-            public static implicit operator musl.__poll_t (uint from) => new musl.__poll_t(from);
-            
-            public static bool operator ==(__poll_t left, __poll_t right) => left.Equals(right);
-            
-            public static bool operator !=(__poll_t left, __poll_t right) => !left.Equals(right);
+            public static implicit operator __poll_t (uint from) => new (from);
         }
     }
 }

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -120,27 +121,16 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_surface</para>
         /// </remarks>
-        public readonly partial struct VkMetalSurfaceCreateFlagsEXT : IEquatable<vulkan.VkMetalSurfaceCreateFlagsEXT>
+        public readonly partial record struct VkMetalSurfaceCreateFlagsEXT(vulkan.VkFlags Value)
         {
-            public VkMetalSurfaceCreateFlagsEXT(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkMetalSurfaceCreateFlagsEXT from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkMetalSurfaceCreateFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkMetalSurfaceCreateFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkMetalSurfaceCreateFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkMetalSurfaceCreateFlagsEXT (vulkan.VkFlags from) => new vulkan.VkMetalSurfaceCreateFlagsEXT(from);
-            
-            public static bool operator ==(VkMetalSurfaceCreateFlagsEXT left, VkMetalSurfaceCreateFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkMetalSurfaceCreateFlagsEXT left, VkMetalSurfaceCreateFlagsEXT right) => !left.Equals(right);
+            public static implicit operator VkMetalSurfaceCreateFlagsEXT (vulkan.VkFlags from) => new (from);
+        }
+        
+        public readonly partial record struct __IOSurface(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
         }
         
         /// <summary>
@@ -213,7 +203,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLDevice_id : IEquatable<vulkan.MTLDevice_id>
+        public readonly partial struct MTLDevice_id : IEquatable<MTLDevice_id>
         {
             public MTLDevice_id(void* value) => this.Value = value;
             
@@ -227,13 +217,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator void* (vulkan.MTLDevice_id from) => from.Value;
-            
-            public static implicit operator vulkan.MTLDevice_id (void* from) => new vulkan.MTLDevice_id(from);
-            
             public static bool operator ==(MTLDevice_id left, MTLDevice_id right) => left.Equals(right);
             
             public static bool operator !=(MTLDevice_id left, MTLDevice_id right) => !left.Equals(right);
+            
+            public static implicit operator void* (MTLDevice_id from) => from.Value;
+            
+            public static implicit operator MTLDevice_id (void* from) => new (from);
         }
         
         /// <summary>
@@ -268,7 +258,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLCommandQueue_id : IEquatable<vulkan.MTLCommandQueue_id>
+        public readonly partial struct MTLCommandQueue_id : IEquatable<MTLCommandQueue_id>
         {
             public MTLCommandQueue_id(void* value) => this.Value = value;
             
@@ -282,13 +272,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator void* (vulkan.MTLCommandQueue_id from) => from.Value;
-            
-            public static implicit operator vulkan.MTLCommandQueue_id (void* from) => new vulkan.MTLCommandQueue_id(from);
-            
             public static bool operator ==(MTLCommandQueue_id left, MTLCommandQueue_id right) => left.Equals(right);
             
             public static bool operator !=(MTLCommandQueue_id left, MTLCommandQueue_id right) => !left.Equals(right);
+            
+            public static implicit operator void* (MTLCommandQueue_id from) => from.Value;
+            
+            public static implicit operator MTLCommandQueue_id (void* from) => new (from);
         }
         
         /// <summary>
@@ -323,7 +313,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLBuffer_id : IEquatable<vulkan.MTLBuffer_id>
+        public readonly partial struct MTLBuffer_id : IEquatable<MTLBuffer_id>
         {
             public MTLBuffer_id(void* value) => this.Value = value;
             
@@ -337,13 +327,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator void* (vulkan.MTLBuffer_id from) => from.Value;
-            
-            public static implicit operator vulkan.MTLBuffer_id (void* from) => new vulkan.MTLBuffer_id(from);
-            
             public static bool operator ==(MTLBuffer_id left, MTLBuffer_id right) => left.Equals(right);
             
             public static bool operator !=(MTLBuffer_id left, MTLBuffer_id right) => !left.Equals(right);
+            
+            public static implicit operator void* (MTLBuffer_id from) => from.Value;
+            
+            public static implicit operator MTLBuffer_id (void* from) => new (from);
         }
         
         /// <summary>
@@ -417,7 +407,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLTexture_id : IEquatable<vulkan.MTLTexture_id>
+        public readonly partial struct MTLTexture_id : IEquatable<MTLTexture_id>
         {
             public MTLTexture_id(void* value) => this.Value = value;
             
@@ -431,13 +421,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator void* (vulkan.MTLTexture_id from) => from.Value;
-            
-            public static implicit operator vulkan.MTLTexture_id (void* from) => new vulkan.MTLTexture_id(from);
-            
             public static bool operator ==(MTLTexture_id left, MTLTexture_id right) => left.Equals(right);
             
             public static bool operator !=(MTLTexture_id left, MTLTexture_id right) => !left.Equals(right);
+            
+            public static implicit operator void* (MTLTexture_id from) => from.Value;
+            
+            public static implicit operator MTLTexture_id (void* from) => new (from);
         }
         
         /// <summary>
@@ -501,7 +491,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct IOSurfaceRef : IEquatable<vulkan.IOSurfaceRef>
+        public readonly partial struct IOSurfaceRef : IEquatable<IOSurfaceRef>
         {
             public IOSurfaceRef(vulkan.__IOSurface value) => this.Value = value;
             
@@ -515,13 +505,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator vulkan.__IOSurface (vulkan.IOSurfaceRef from) => from.Value;
-            
-            public static implicit operator vulkan.IOSurfaceRef (vulkan.__IOSurface from) => new vulkan.IOSurfaceRef(from);
-            
             public static bool operator ==(IOSurfaceRef left, IOSurfaceRef right) => left.Equals(right);
             
             public static bool operator !=(IOSurfaceRef left, IOSurfaceRef right) => !left.Equals(right);
+            
+            public static implicit operator vulkan.__IOSurface (IOSurfaceRef from) => from.Value;
+            
+            public static implicit operator IOSurfaceRef (vulkan.__IOSurface from) => new (from);
         }
         
         /// <summary>
@@ -582,7 +572,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_metal_objects</para>
         /// </remarks>
-        public readonly partial struct MTLSharedEvent_id : IEquatable<vulkan.MTLSharedEvent_id>
+        public readonly partial struct MTLSharedEvent_id : IEquatable<MTLSharedEvent_id>
         {
             public MTLSharedEvent_id(void* value) => this.Value = value;
             
@@ -596,13 +586,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator void* (vulkan.MTLSharedEvent_id from) => from.Value;
-            
-            public static implicit operator vulkan.MTLSharedEvent_id (void* from) => new vulkan.MTLSharedEvent_id(from);
-            
             public static bool operator ==(MTLSharedEvent_id left, MTLSharedEvent_id right) => left.Equals(right);
             
             public static bool operator !=(MTLSharedEvent_id left, MTLSharedEvent_id right) => !left.Equals(right);
+            
+            public static implicit operator void* (MTLSharedEvent_id from) => from.Value;
+            
+            public static implicit operator MTLSharedEvent_id (void* from) => new (from);
         }
         
         /// <summary>
@@ -629,7 +619,7 @@ namespace XenoAtom.Interop
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
         
-        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<vulkan.PFN_vkCreateMetalSurfaceEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateMetalSurfaceEXT>
+        public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<PFN_vkCreateMetalSurfaceEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateMetalSurfaceEXT>
         {
             public PFN_vkCreateMetalSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -643,13 +633,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateMetalSurfaceEXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateMetalSurfaceEXT (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateMetalSurfaceEXT(from);
-            
             public static bool operator ==(PFN_vkCreateMetalSurfaceEXT left, PFN_vkCreateMetalSurfaceEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateMetalSurfaceEXT left, PFN_vkCreateMetalSurfaceEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateMetalSurfaceEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateMetalSurfaceEXT (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateMetalSurfaceEXT`.
@@ -705,7 +695,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<vulkan.PFN_vkExportMetalObjectsEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkExportMetalObjectsEXT>
+        public readonly partial struct PFN_vkExportMetalObjectsEXT : IEquatable<PFN_vkExportMetalObjectsEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkExportMetalObjectsEXT>
         {
             public PFN_vkExportMetalObjectsEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExportMetalObjectsInfoEXT*, void> value) => this.Value = value;
             
@@ -719,13 +709,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExportMetalObjectsInfoEXT*, void> (vulkan.PFN_vkExportMetalObjectsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkExportMetalObjectsEXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExportMetalObjectsInfoEXT*, void> from) => new vulkan.PFN_vkExportMetalObjectsEXT(from);
-            
             public static bool operator ==(PFN_vkExportMetalObjectsEXT left, PFN_vkExportMetalObjectsEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkExportMetalObjectsEXT left, PFN_vkExportMetalObjectsEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExportMetalObjectsInfoEXT*, void> (PFN_vkExportMetalObjectsEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkExportMetalObjectsEXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExportMetalObjectsInfoEXT*, void> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkExportMetalObjectsEXT`.

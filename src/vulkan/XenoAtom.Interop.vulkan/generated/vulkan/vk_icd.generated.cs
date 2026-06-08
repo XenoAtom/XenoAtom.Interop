@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -231,7 +232,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Typedef for use in the interfaces below
         /// </summary>
-        public readonly partial struct PFN_GetPhysicalDeviceProcAddr : IEquatable<vulkan.PFN_GetPhysicalDeviceProcAddr>
+        public readonly partial struct PFN_GetPhysicalDeviceProcAddr : IEquatable<PFN_GetPhysicalDeviceProcAddr>
         {
             public PFN_GetPhysicalDeviceProcAddr(delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> value) => this.Value = value;
             
@@ -245,19 +246,19 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> (vulkan.PFN_GetPhysicalDeviceProcAddr from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_GetPhysicalDeviceProcAddr (delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> from) => new vulkan.PFN_GetPhysicalDeviceProcAddr(from);
-            
             public static bool operator ==(PFN_GetPhysicalDeviceProcAddr left, PFN_GetPhysicalDeviceProcAddr right) => left.Equals(right);
             
             public static bool operator !=(PFN_GetPhysicalDeviceProcAddr left, PFN_GetPhysicalDeviceProcAddr right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> (PFN_GetPhysicalDeviceProcAddr from) => from.Value;
+            
+            public static implicit operator PFN_GetPhysicalDeviceProcAddr (delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> from) => new (from);
         }
         
         /// <summary>
         /// Old typedefs that don't follow a proper naming convention but are preserved for compatibility
         /// </summary>
-        public readonly partial struct PFN_vkNegotiateLoaderICDInterfaceVersion : IEquatable<vulkan.PFN_vkNegotiateLoaderICDInterfaceVersion>
+        public readonly partial struct PFN_vkNegotiateLoaderICDInterfaceVersion : IEquatable<PFN_vkNegotiateLoaderICDInterfaceVersion>
         {
             public PFN_vkNegotiateLoaderICDInterfaceVersion(delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -271,19 +272,19 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> (vulkan.PFN_vkNegotiateLoaderICDInterfaceVersion from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkNegotiateLoaderICDInterfaceVersion (delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> from) => new vulkan.PFN_vkNegotiateLoaderICDInterfaceVersion(from);
-            
             public static bool operator ==(PFN_vkNegotiateLoaderICDInterfaceVersion left, PFN_vkNegotiateLoaderICDInterfaceVersion right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkNegotiateLoaderICDInterfaceVersion left, PFN_vkNegotiateLoaderICDInterfaceVersion right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> (PFN_vkNegotiateLoaderICDInterfaceVersion from) => from.Value;
+            
+            public static implicit operator PFN_vkNegotiateLoaderICDInterfaceVersion (delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> from) => new (from);
         }
         
         /// <summary>
         /// Typedefs for loader/ICD interface
         /// </summary>
-        public readonly partial struct PFN_vk_icdNegotiateLoaderICDInterfaceVersion : IEquatable<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>, IvkFunctionPointer<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>
+        public readonly partial struct PFN_vk_icdNegotiateLoaderICDInterfaceVersion : IEquatable<PFN_vk_icdNegotiateLoaderICDInterfaceVersion>, IvkFunctionPointer<vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion>
         {
             public PFN_vk_icdNegotiateLoaderICDInterfaceVersion(delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -297,13 +298,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> (vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion (delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> from) => new vulkan.PFN_vk_icdNegotiateLoaderICDInterfaceVersion(from);
-            
             public static bool operator ==(PFN_vk_icdNegotiateLoaderICDInterfaceVersion left, PFN_vk_icdNegotiateLoaderICDInterfaceVersion right) => left.Equals(right);
             
             public static bool operator !=(PFN_vk_icdNegotiateLoaderICDInterfaceVersion left, PFN_vk_icdNegotiateLoaderICDInterfaceVersion right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> (PFN_vk_icdNegotiateLoaderICDInterfaceVersion from) => from.Value;
+            
+            public static implicit operator PFN_vk_icdNegotiateLoaderICDInterfaceVersion (delegate*unmanaged[Stdcall]<uint*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vk_icdNegotiateLoaderICDInterfaceVersion`.
@@ -320,7 +321,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vk_icdGetInstanceProcAddr : IEquatable<vulkan.PFN_vk_icdGetInstanceProcAddr>, IvkInstanceFunctionPointer<vulkan.PFN_vk_icdGetInstanceProcAddr>
+        public readonly partial struct PFN_vk_icdGetInstanceProcAddr : IEquatable<PFN_vk_icdGetInstanceProcAddr>, IvkInstanceFunctionPointer<vulkan.PFN_vk_icdGetInstanceProcAddr>
         {
             public PFN_vk_icdGetInstanceProcAddr(delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> value) => this.Value = value;
             
@@ -334,13 +335,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> (vulkan.PFN_vk_icdGetInstanceProcAddr from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vk_icdGetInstanceProcAddr (delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> from) => new vulkan.PFN_vk_icdGetInstanceProcAddr(from);
-            
             public static bool operator ==(PFN_vk_icdGetInstanceProcAddr left, PFN_vk_icdGetInstanceProcAddr right) => left.Equals(right);
             
             public static bool operator !=(PFN_vk_icdGetInstanceProcAddr left, PFN_vk_icdGetInstanceProcAddr right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> (PFN_vk_icdGetInstanceProcAddr from) => from.Value;
+            
+            public static implicit operator PFN_vk_icdGetInstanceProcAddr (delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vk_icdGetInstanceProcAddr`.
@@ -357,7 +358,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vk_icdGetPhysicalDeviceProcAddr : IEquatable<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>, IvkInstanceFunctionPointer<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>
+        public readonly partial struct PFN_vk_icdGetPhysicalDeviceProcAddr : IEquatable<PFN_vk_icdGetPhysicalDeviceProcAddr>, IvkInstanceFunctionPointer<vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr>
         {
             public PFN_vk_icdGetPhysicalDeviceProcAddr(delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> value) => this.Value = value;
             
@@ -371,13 +372,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> (vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr (delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> from) => new vulkan.PFN_vk_icdGetPhysicalDeviceProcAddr(from);
-            
             public static bool operator ==(PFN_vk_icdGetPhysicalDeviceProcAddr left, PFN_vk_icdGetPhysicalDeviceProcAddr right) => left.Equals(right);
             
             public static bool operator !=(PFN_vk_icdGetPhysicalDeviceProcAddr left, PFN_vk_icdGetPhysicalDeviceProcAddr right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> (PFN_vk_icdGetPhysicalDeviceProcAddr from) => from.Value;
+            
+            public static implicit operator PFN_vk_icdGetPhysicalDeviceProcAddr (delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vk_icdGetPhysicalDeviceProcAddr`.
@@ -394,7 +395,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vk_icdEnumerateAdapterPhysicalDevices : IEquatable<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>, IvkInstanceFunctionPointer<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>
+        public readonly partial struct PFN_vk_icdEnumerateAdapterPhysicalDevices : IEquatable<PFN_vk_icdEnumerateAdapterPhysicalDevices>, IvkInstanceFunctionPointer<vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices>
         {
             public PFN_vk_icdEnumerateAdapterPhysicalDevices(delegate*unmanaged[Stdcall]<vulkan.VkInstance, ulong, uint*, vulkan.VkPhysicalDevice*, vulkan.VkResult> value) => this.Value = value;
             
@@ -408,13 +409,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, ulong, uint*, vulkan.VkPhysicalDevice*, vulkan.VkResult> (vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices (delegate*unmanaged[Stdcall]<vulkan.VkInstance, ulong, uint*, vulkan.VkPhysicalDevice*, vulkan.VkResult> from) => new vulkan.PFN_vk_icdEnumerateAdapterPhysicalDevices(from);
-            
             public static bool operator ==(PFN_vk_icdEnumerateAdapterPhysicalDevices left, PFN_vk_icdEnumerateAdapterPhysicalDevices right) => left.Equals(right);
             
             public static bool operator !=(PFN_vk_icdEnumerateAdapterPhysicalDevices left, PFN_vk_icdEnumerateAdapterPhysicalDevices right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, ulong, uint*, vulkan.VkPhysicalDevice*, vulkan.VkResult> (PFN_vk_icdEnumerateAdapterPhysicalDevices from) => from.Value;
+            
+            public static implicit operator PFN_vk_icdEnumerateAdapterPhysicalDevices (delegate*unmanaged[Stdcall]<vulkan.VkInstance, ulong, uint*, vulkan.VkPhysicalDevice*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vk_icdEnumerateAdapterPhysicalDevices`.

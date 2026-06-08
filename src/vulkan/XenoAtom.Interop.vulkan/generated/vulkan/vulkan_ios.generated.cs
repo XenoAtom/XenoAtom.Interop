@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -49,30 +50,14 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_MVK_ios_surface</para>
         /// </remarks>
-        public readonly partial struct VkIOSSurfaceCreateFlagsMVK : IEquatable<vulkan.VkIOSSurfaceCreateFlagsMVK>
+        public readonly partial record struct VkIOSSurfaceCreateFlagsMVK(vulkan.VkFlags Value)
         {
-            public VkIOSSurfaceCreateFlagsMVK(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkIOSSurfaceCreateFlagsMVK from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkIOSSurfaceCreateFlagsMVK other && Equals(other);
-            
-            public bool Equals(VkIOSSurfaceCreateFlagsMVK other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkIOSSurfaceCreateFlagsMVK from) => from.Value;
-            
-            public static implicit operator vulkan.VkIOSSurfaceCreateFlagsMVK (vulkan.VkFlags from) => new vulkan.VkIOSSurfaceCreateFlagsMVK(from);
-            
-            public static bool operator ==(VkIOSSurfaceCreateFlagsMVK left, VkIOSSurfaceCreateFlagsMVK right) => left.Equals(right);
-            
-            public static bool operator !=(VkIOSSurfaceCreateFlagsMVK left, VkIOSSurfaceCreateFlagsMVK right) => !left.Equals(right);
+            public static implicit operator VkIOSSurfaceCreateFlagsMVK (vulkan.VkFlags from) => new (from);
         }
         
-        public readonly partial struct PFN_vkCreateIOSSurfaceMVK : IEquatable<vulkan.PFN_vkCreateIOSSurfaceMVK>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateIOSSurfaceMVK>
+        public readonly partial struct PFN_vkCreateIOSSurfaceMVK : IEquatable<PFN_vkCreateIOSSurfaceMVK>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateIOSSurfaceMVK>
         {
             public PFN_vkCreateIOSSurfaceMVK(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkIOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -86,13 +71,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkIOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateIOSSurfaceMVK from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateIOSSurfaceMVK (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkIOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateIOSSurfaceMVK(from);
-            
             public static bool operator ==(PFN_vkCreateIOSSurfaceMVK left, PFN_vkCreateIOSSurfaceMVK right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateIOSSurfaceMVK left, PFN_vkCreateIOSSurfaceMVK right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkIOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateIOSSurfaceMVK from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateIOSSurfaceMVK (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkIOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateIOSSurfaceMVK`.

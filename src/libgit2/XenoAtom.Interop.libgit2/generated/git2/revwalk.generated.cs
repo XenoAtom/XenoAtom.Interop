@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -86,7 +87,7 @@ namespace XenoAtom.Interop
         /// <param name="commit_id">oid of Commit</param>
         /// <param name="payload">User-specified pointer to data to be passed as data payload</param>
         /// <returns>non-zero to hide the commmit and it parent.</returns>
-        public readonly partial struct git_revwalk_hide_cb : IEquatable<libgit2.git_revwalk_hide_cb>
+        public readonly partial struct git_revwalk_hide_cb : IEquatable<git_revwalk_hide_cb>
         {
             public git_revwalk_hide_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> value) => this.Value = value;
             
@@ -100,13 +101,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> (libgit2.git_revwalk_hide_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_revwalk_hide_cb (delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> from) => new libgit2.git_revwalk_hide_cb(from);
-            
             public static bool operator ==(git_revwalk_hide_cb left, git_revwalk_hide_cb right) => left.Equals(right);
             
             public static bool operator !=(git_revwalk_hide_cb left, git_revwalk_hide_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> (git_revwalk_hide_cb from) => from.Value;
+            
+            public static implicit operator git_revwalk_hide_cb (delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> from) => new (from);
         }
         
         /// <summary>

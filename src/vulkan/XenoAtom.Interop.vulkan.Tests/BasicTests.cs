@@ -28,7 +28,7 @@ public class BasicTests
         result.VkCheck(); // Should not throw
 
         result = VkResult.VK_ERROR_DEVICE_LOST;
-        Assert.ThrowsException<VulkanException>(() => result.VkCheck());
+        Assert.Throws<VulkanException>(() => result.VkCheck());
 
         // Destroy the instance
         vkDestroyInstance(instance, default);

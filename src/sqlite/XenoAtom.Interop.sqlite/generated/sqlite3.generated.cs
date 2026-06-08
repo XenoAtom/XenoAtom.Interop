@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -31,23 +32,9 @@ namespace XenoAtom.Interop
         /// * [sqlite3_busy_timeout()] to name but three) that are methods on an
         /// * sqlite3 object.
         /// </summary>
-        public readonly partial struct sqlite3 : IEquatable<sqlite.sqlite3>
+        public readonly partial record struct sqlite3(nint Handle)
         {
-            public sqlite3(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3 other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3 other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3 left, sqlite3 right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3 left, sqlite3 right) => !left.Equals(right);
         }
         
         public partial struct sqlite3_file
@@ -115,23 +102,9 @@ namespace XenoAtom.Interop
         /// *
         /// * Mutexes are created using [sqlite3_mutex_alloc()].
         /// </summary>
-        public readonly partial struct sqlite3_mutex : IEquatable<sqlite.sqlite3_mutex>
+        public readonly partial record struct sqlite3_mutex(nint Handle)
         {
-            public sqlite3_mutex(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3_mutex other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3_mutex other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3_mutex left, sqlite3_mutex right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_mutex left, sqlite3_mutex right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -142,23 +115,9 @@ namespace XenoAtom.Interop
         /// * structure must be typedefed in order to work around compiler warnings
         /// * on some platforms.
         /// </summary>
-        public readonly partial struct sqlite3_api_routines : IEquatable<sqlite.sqlite3_api_routines>
+        public readonly partial record struct sqlite3_api_routines(nint Handle)
         {
-            public sqlite3_api_routines(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3_api_routines other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3_api_routines other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3_api_routines left, sqlite3_api_routines right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_api_routines left, sqlite3_api_routines right) => !left.Equals(right);
         }
         
         public partial struct sqlite3_vfs
@@ -251,7 +210,7 @@ namespace XenoAtom.Interop
         /// * &lt;li&gt;sqlite3_uri_key()
         /// * &lt;/ul&gt;
         /// </summary>
-        public readonly partial struct sqlite3_filename : IEquatable<sqlite.sqlite3_filename>
+        public readonly partial struct sqlite3_filename : IEquatable<sqlite3_filename>
         {
             public sqlite3_filename(byte* value) => this.Value = value;
             
@@ -265,16 +224,16 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator byte* (sqlite.sqlite3_filename from) => from.Value;
-            
-            public static implicit operator sqlite.sqlite3_filename (byte* from) => new sqlite.sqlite3_filename(from);
-            
             public static bool operator ==(sqlite3_filename left, sqlite3_filename right) => left.Equals(right);
             
             public static bool operator !=(sqlite3_filename left, sqlite3_filename right) => !left.Equals(right);
+            
+            public static implicit operator byte* (sqlite3_filename from) => from.Value;
+            
+            public static implicit operator sqlite3_filename (byte* from) => new (from);
         }
         
-        public readonly partial struct sqlite3_syscall_ptr : IEquatable<sqlite.sqlite3_syscall_ptr>
+        public readonly partial struct sqlite3_syscall_ptr : IEquatable<sqlite3_syscall_ptr>
         {
             public sqlite3_syscall_ptr(delegate*unmanaged[Cdecl]<void> value) => this.Value = value;
             
@@ -288,13 +247,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<void> (sqlite.sqlite3_syscall_ptr from) => from.Value;
-            
-            public static implicit operator sqlite.sqlite3_syscall_ptr (delegate*unmanaged[Cdecl]<void> from) => new sqlite.sqlite3_syscall_ptr(from);
-            
             public static bool operator ==(sqlite3_syscall_ptr left, sqlite3_syscall_ptr right) => left.Equals(right);
             
             public static bool operator !=(sqlite3_syscall_ptr left, sqlite3_syscall_ptr right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<void> (sqlite3_syscall_ptr from) => from.Value;
+            
+            public static implicit operator sqlite3_syscall_ptr (delegate*unmanaged[Cdecl]<void> from) => new (from);
         }
         
         public partial struct sqlite3_mem_methods
@@ -363,23 +322,9 @@ namespace XenoAtom.Interop
         /// * &lt;li&gt;Destroy the object using [sqlite3_finalize()].
         /// * &lt;/ol&gt;
         /// </summary>
-        public readonly partial struct sqlite3_stmt : IEquatable<sqlite.sqlite3_stmt>
+        public readonly partial record struct sqlite3_stmt(nint Handle)
         {
-            public sqlite3_stmt(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3_stmt other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3_stmt other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3_stmt left, sqlite3_stmt right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_stmt left, sqlite3_stmt right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -424,23 +369,9 @@ namespace XenoAtom.Interop
         /// * The [sqlite3_value_blob | sqlite3_value_type()] family of
         /// * interfaces require protected sqlite3_value objects.
         /// </summary>
-        public readonly partial struct sqlite3_value : IEquatable<sqlite.sqlite3_value>
+        public readonly partial record struct sqlite3_value(nint Handle)
         {
-            public sqlite3_value(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3_value other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3_value other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3_value left, sqlite3_value right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_value left, sqlite3_value right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -455,23 +386,9 @@ namespace XenoAtom.Interop
         /// * [sqlite3_context_db_handle()], [sqlite3_get_auxdata()],
         /// * and/or [sqlite3_set_auxdata()].
         /// </summary>
-        public readonly partial struct sqlite3_context : IEquatable<sqlite.sqlite3_context>
+        public readonly partial record struct sqlite3_context(nint Handle)
         {
-            public sqlite3_context(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3_context other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3_context other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3_context left, sqlite3_context right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_context left, sqlite3_context right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -861,23 +778,9 @@ namespace XenoAtom.Interop
         /// * can be used to read or write small subsections of the BLOB.
         /// * ^The [sqlite3_blob_bytes()] interface returns the size of the BLOB in bytes.
         /// </summary>
-        public readonly partial struct sqlite3_blob : IEquatable<sqlite.sqlite3_blob>
+        public readonly partial record struct sqlite3_blob(nint Handle)
         {
-            public sqlite3_blob(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3_blob other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3_blob other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3_blob left, sqlite3_blob right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_blob left, sqlite3_blob right) => !left.Equals(right);
         }
         
         public partial struct sqlite3_mutex_methods
@@ -916,23 +819,9 @@ namespace XenoAtom.Interop
         /// * is returned using the [sqlite3_str_finish()] interface.
         /// * &lt;/ol&gt;
         /// </summary>
-        public readonly partial struct sqlite3_str : IEquatable<sqlite.sqlite3_str>
+        public readonly partial record struct sqlite3_str(nint Handle)
         {
-            public sqlite3_str(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3_str other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3_str other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3_str left, sqlite3_str right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_str left, sqlite3_str right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -946,23 +835,9 @@ namespace XenoAtom.Interop
         /// *
         /// * See [sqlite3_pcache_methods2] for additional information.
         /// </summary>
-        public readonly partial struct sqlite3_pcache : IEquatable<sqlite.sqlite3_pcache>
+        public readonly partial record struct sqlite3_pcache(nint Handle)
         {
-            public sqlite3_pcache(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3_pcache other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3_pcache other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3_pcache left, sqlite3_pcache right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_pcache left, sqlite3_pcache right) => !left.Equals(right);
         }
         
         public partial struct sqlite3_pcache_page
@@ -1042,23 +917,9 @@ namespace XenoAtom.Interop
         /// *
         /// * See Also: [Using the SQLite Online Backup API]
         /// </summary>
-        public readonly partial struct sqlite3_backup : IEquatable<sqlite.sqlite3_backup>
+        public readonly partial record struct sqlite3_backup(nint Handle)
         {
-            public sqlite3_backup(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(sqlite3_backup other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is sqlite3_backup other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(sqlite3_backup left, sqlite3_backup right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_backup left, sqlite3_backup right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -1118,27 +979,11 @@ namespace XenoAtom.Interop
             public delegate*unmanaged[Cdecl]<void*, void> xDelUser;
         }
         
-        public readonly partial struct sqlite3_rtree_dbl : IEquatable<sqlite.sqlite3_rtree_dbl>
+        public readonly partial record struct sqlite3_rtree_dbl(double Value)
         {
-            public sqlite3_rtree_dbl(double value) => this.Value = value;
+            public static implicit operator double (sqlite3_rtree_dbl from) => from.Value;
             
-            public double Value { get; }
-            
-            public override bool Equals(object obj) => obj is sqlite3_rtree_dbl other && Equals(other);
-            
-            public bool Equals(sqlite3_rtree_dbl other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator double (sqlite.sqlite3_rtree_dbl from) => from.Value;
-            
-            public static implicit operator sqlite.sqlite3_rtree_dbl (double from) => new sqlite.sqlite3_rtree_dbl(from);
-            
-            public static bool operator ==(sqlite3_rtree_dbl left, sqlite3_rtree_dbl right) => left.Equals(right);
-            
-            public static bool operator !=(sqlite3_rtree_dbl left, sqlite3_rtree_dbl right) => !left.Equals(right);
+            public static implicit operator sqlite3_rtree_dbl (double from) => new (from);
         }
         
         /// <summary>
@@ -1609,23 +1454,9 @@ namespace XenoAtom.Interop
             public delegate*unmanaged[Cdecl]<sqlite.Fts5Context, byte*, int, byte*, int, void*, delegate*unmanaged[Cdecl]<void*, int, byte*, int, int, int, int>, int> xTokenize_v2;
         }
         
-        public readonly partial struct Fts5Context : IEquatable<sqlite.Fts5Context>
+        public readonly partial record struct Fts5Context(nint Handle)
         {
-            public Fts5Context(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(Fts5Context other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is Fts5Context other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(Fts5Context left, Fts5Context right) => left.Equals(right);
-            
-            public static bool operator !=(Fts5Context left, Fts5Context right) => !left.Equals(right);
         }
         
         public partial struct Fts5PhraseIter
@@ -1871,23 +1702,9 @@ namespace XenoAtom.Interop
         /// *   text (method (2)), not both. Doing so will not cause any errors, but is
         /// *   inefficient.
         /// </summary>
-        public readonly partial struct Fts5Tokenizer : IEquatable<sqlite.Fts5Tokenizer>
+        public readonly partial record struct Fts5Tokenizer(nint Handle)
         {
-            public Fts5Tokenizer(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(Fts5Tokenizer other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is Fts5Tokenizer other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(Fts5Tokenizer left, Fts5Tokenizer right) => left.Equals(right);
-            
-            public static bool operator !=(Fts5Tokenizer left, Fts5Tokenizer right) => !left.Equals(right);
         }
         
         public partial struct fts5_tokenizer_v2
@@ -1946,7 +1763,7 @@ namespace XenoAtom.Interop
             public delegate*unmanaged[Cdecl]<sqlite.fts5_api*, byte*, void**, sqlite.fts5_tokenizer_v2**, int> xFindTokenizer_v2;
         }
         
-        public readonly partial struct fts5_extension_function : IEquatable<sqlite.fts5_extension_function>
+        public readonly partial struct fts5_extension_function : IEquatable<fts5_extension_function>
         {
             public fts5_extension_function(delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> value) => this.Value = value;
             
@@ -1960,13 +1777,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> (sqlite.fts5_extension_function from) => from.Value;
-            
-            public static implicit operator sqlite.fts5_extension_function (delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> from) => new sqlite.fts5_extension_function(from);
-            
             public static bool operator ==(fts5_extension_function left, fts5_extension_function right) => left.Equals(right);
             
             public static bool operator !=(fts5_extension_function left, fts5_extension_function right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> (fts5_extension_function from) => from.Value;
+            
+            public static implicit operator fts5_extension_function (delegate*unmanaged[Cdecl]<sqlite.Fts5ExtensionApi*, sqlite.Fts5Context, sqlite.sqlite3_context, int, sqlite.sqlite3_value*, void> from) => new (from);
         }
         
         /// <summary>
@@ -1974,7 +1791,7 @@ namespace XenoAtom.Interop
         /// * This is legacy and deprecated.  It is included for historical
         /// * compatibility and is not documented.
         /// </summary>
-        public readonly partial struct sqlite3_callback : IEquatable<sqlite.sqlite3_callback>
+        public readonly partial struct sqlite3_callback : IEquatable<sqlite3_callback>
         {
             public sqlite3_callback(delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> value) => this.Value = value;
             
@@ -1988,13 +1805,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> (sqlite.sqlite3_callback from) => from.Value;
-            
-            public static implicit operator sqlite.sqlite3_callback (delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> from) => new sqlite.sqlite3_callback(from);
-            
             public static bool operator ==(sqlite3_callback left, sqlite3_callback right) => left.Equals(right);
             
             public static bool operator !=(sqlite3_callback left, sqlite3_callback right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> (sqlite3_callback from) => from.Value;
+            
+            public static implicit operator sqlite3_callback (delegate*unmanaged[Cdecl]<void*, int, byte**, byte**, int> from) => new (from);
         }
         
         /// <summary>
@@ -2011,7 +1828,7 @@ namespace XenoAtom.Interop
         /// * The typedef is necessary to work around problems in certain
         /// * C++ compilers.
         /// </summary>
-        public readonly partial struct sqlite3_destructor_type : IEquatable<sqlite.sqlite3_destructor_type>
+        public readonly partial struct sqlite3_destructor_type : IEquatable<sqlite3_destructor_type>
         {
             public sqlite3_destructor_type(delegate*unmanaged[Cdecl]<void*, void> value) => this.Value = value;
             
@@ -2025,13 +1842,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<void*, void> (sqlite.sqlite3_destructor_type from) => from.Value;
-            
-            public static implicit operator sqlite.sqlite3_destructor_type (delegate*unmanaged[Cdecl]<void*, void> from) => new sqlite.sqlite3_destructor_type(from);
-            
             public static bool operator ==(sqlite3_destructor_type left, sqlite3_destructor_type right) => left.Equals(right);
             
             public static bool operator !=(sqlite3_destructor_type left, sqlite3_destructor_type right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<void*, void> (sqlite3_destructor_type from) => from.Value;
+            
+            public static implicit operator sqlite3_destructor_type (delegate*unmanaged[Cdecl]<void*, void> from) => new (from);
         }
         
         public const string SQLITE_VERSION = "3.48.0";

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -438,7 +439,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// `path` is the relative path to the file from the root of the repository.`status_flags` is a combination of `git_status_t` values that apply.`payload` is the value you passed to the foreach function as payload.
         /// </remarks>
-        public readonly partial struct git_status_cb : IEquatable<libgit2.git_status_cb>
+        public readonly partial struct git_status_cb : IEquatable<git_status_cb>
         {
             public git_status_cb(delegate*unmanaged[Cdecl]<byte*, uint, void*, int> value) => this.Value = value;
             
@@ -452,13 +453,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, uint, void*, int> (libgit2.git_status_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_status_cb (delegate*unmanaged[Cdecl]<byte*, uint, void*, int> from) => new libgit2.git_status_cb(from);
-            
             public static bool operator ==(git_status_cb left, git_status_cb right) => left.Equals(right);
             
             public static bool operator !=(git_status_cb left, git_status_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, uint, void*, int> (git_status_cb from) => from.Value;
+            
+            public static implicit operator git_status_cb (delegate*unmanaged[Cdecl]<byte*, uint, void*, int> from) => new (from);
         }
         
         public const uint GIT_STATUS_OPTIONS_VERSION = 1;

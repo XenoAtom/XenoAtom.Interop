@@ -31,7 +31,7 @@ public abstract class GeneratorBase
         RepositoryRootFolder = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $@"..", "..", "..", "..", "..", "..", ".."));
         // This is a protection to make sure that we are in the right folder
         var srcFolder = Path.Combine(RepositoryRootFolder, "src");
-        if (!Directory.Exists(srcFolder) || !File.Exists(Path.Combine(srcFolder, "XenoAtom.Interop.sln")))
+        if (!Directory.Exists(srcFolder) || !File.Exists(Path.Combine(srcFolder, "XenoAtom.Interop.slnx")))
         {
             throw new DirectoryNotFoundException($"The source folder `{srcFolder}` doesn't exist");
         }

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -25,27 +26,11 @@ namespace XenoAtom.Interop
             public fixed int fds_bits[32];
         }
         
-        public readonly partial struct fd_mask : IEquatable<musl.fd_mask>
+        public readonly partial record struct fd_mask(nuint Value)
         {
-            public fd_mask(nuint value) => this.Value = value;
+            public static implicit operator nuint (fd_mask from) => from.Value;
             
-            public nuint Value { get; }
-            
-            public override bool Equals(object obj) => obj is fd_mask other && Equals(other);
-            
-            public bool Equals(fd_mask other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator nuint (musl.fd_mask from) => from.Value;
-            
-            public static implicit operator musl.fd_mask (nuint from) => new musl.fd_mask(from);
-            
-            public static bool operator ==(fd_mask left, fd_mask right) => left.Equals(right);
-            
-            public static bool operator !=(fd_mask left, fd_mask right) => !left.Equals(right);
+            public static implicit operator fd_mask (nuint from) => new (from);
         }
         
         public const int FD_SETSIZE = 1024;

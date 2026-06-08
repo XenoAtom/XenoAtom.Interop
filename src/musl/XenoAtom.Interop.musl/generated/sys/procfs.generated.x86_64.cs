@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class musl
@@ -47,73 +48,25 @@ namespace XenoAtom.Interop
                 public int pr_fpvalid;
             }
             
-            public readonly partial struct prfpregset_t : IEquatable<musl.x86_64.prfpregset_t>
+            public readonly partial record struct prfpregset_t(musl.x86_64.elf_fpregset_t Value)
             {
-                public prfpregset_t(musl.x86_64.elf_fpregset_t value) => this.Value = value;
+                public static implicit operator musl.x86_64.elf_fpregset_t (prfpregset_t from) => from.Value;
                 
-                public musl.x86_64.elf_fpregset_t Value { get; }
-                
-                public override bool Equals(object obj) => obj is prfpregset_t other && Equals(other);
-                
-                public bool Equals(prfpregset_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator musl.x86_64.elf_fpregset_t (musl.x86_64.prfpregset_t from) => from.Value;
-                
-                public static implicit operator musl.x86_64.prfpregset_t (musl.x86_64.elf_fpregset_t from) => new musl.x86_64.prfpregset_t(from);
-                
-                public static bool operator ==(prfpregset_t left, prfpregset_t right) => left.Equals(right);
-                
-                public static bool operator !=(prfpregset_t left, prfpregset_t right) => !left.Equals(right);
+                public static implicit operator prfpregset_t (musl.x86_64.elf_fpregset_t from) => new (from);
             }
             
-            public readonly partial struct prgregset_t : IEquatable<musl.x86_64.prgregset_t>
+            public readonly partial record struct prgregset_t(musl.x86_64.elf_gregset_t Value)
             {
-                public prgregset_t(musl.x86_64.elf_gregset_t value) => this.Value = value;
+                public static implicit operator musl.x86_64.elf_gregset_t (prgregset_t from) => from.Value;
                 
-                public musl.x86_64.elf_gregset_t Value { get; }
-                
-                public override bool Equals(object obj) => obj is prgregset_t other && Equals(other);
-                
-                public bool Equals(prgregset_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator musl.x86_64.elf_gregset_t (musl.x86_64.prgregset_t from) => from.Value;
-                
-                public static implicit operator musl.x86_64.prgregset_t (musl.x86_64.elf_gregset_t from) => new musl.x86_64.prgregset_t(from);
-                
-                public static bool operator ==(prgregset_t left, prgregset_t right) => left.Equals(right);
-                
-                public static bool operator !=(prgregset_t left, prgregset_t right) => !left.Equals(right);
+                public static implicit operator prgregset_t (musl.x86_64.elf_gregset_t from) => new (from);
             }
             
-            public readonly partial struct prstatus_t : IEquatable<musl.x86_64.prstatus_t>
+            public readonly partial record struct prstatus_t(musl.x86_64.elf_prstatus Value)
             {
-                public prstatus_t(musl.x86_64.elf_prstatus value) => this.Value = value;
+                public static implicit operator musl.x86_64.elf_prstatus (prstatus_t from) => from.Value;
                 
-                public musl.x86_64.elf_prstatus Value { get; }
-                
-                public override bool Equals(object obj) => obj is prstatus_t other && Equals(other);
-                
-                public bool Equals(prstatus_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator musl.x86_64.elf_prstatus (musl.x86_64.prstatus_t from) => from.Value;
-                
-                public static implicit operator musl.x86_64.prstatus_t (musl.x86_64.elf_prstatus from) => new musl.x86_64.prstatus_t(from);
-                
-                public static bool operator ==(prstatus_t left, prstatus_t right) => left.Equals(right);
-                
-                public static bool operator !=(prstatus_t left, prstatus_t right) => !left.Equals(right);
+                public static implicit operator prstatus_t (musl.x86_64.elf_prstatus from) => new (from);
             }
         }
     }

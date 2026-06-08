@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -40,27 +41,11 @@ namespace XenoAtom.Interop
             public musl.epoll_data_t data;
         }
         
-        public readonly partial struct epoll_data_t : IEquatable<musl.epoll_data_t>
+        public readonly partial record struct epoll_data_t(musl.epoll_data Value)
         {
-            public epoll_data_t(musl.epoll_data value) => this.Value = value;
+            public static implicit operator musl.epoll_data (epoll_data_t from) => from.Value;
             
-            public musl.epoll_data Value { get; }
-            
-            public override bool Equals(object obj) => obj is epoll_data_t other && Equals(other);
-            
-            public bool Equals(epoll_data_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator musl.epoll_data (musl.epoll_data_t from) => from.Value;
-            
-            public static implicit operator musl.epoll_data_t (musl.epoll_data from) => new musl.epoll_data_t(from);
-            
-            public static bool operator ==(epoll_data_t left, epoll_data_t right) => left.Equals(right);
-            
-            public static bool operator !=(epoll_data_t left, epoll_data_t right) => !left.Equals(right);
+            public static implicit operator epoll_data_t (musl.epoll_data from) => new (from);
         }
         
         /// <summary>

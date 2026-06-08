@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -24,23 +25,9 @@ namespace XenoAtom.Interop
         /// You can easily loop over the content of patches and get information about
         /// them.
         /// </remarks>
-        public readonly partial struct git_patch : IEquatable<libgit2.git_patch>
+        public readonly partial record struct git_patch(nint Handle)
         {
-            public git_patch(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_patch other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_patch other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_patch left, git_patch right) => left.Equals(right);
-            
-            public static bool operator !=(git_patch left, git_patch right) => !left.Equals(right);
         }
         
         /// <summary>

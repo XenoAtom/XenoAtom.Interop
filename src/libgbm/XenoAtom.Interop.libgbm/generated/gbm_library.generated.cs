@@ -9,71 +9,8 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
-    public static unsafe partial class libgbm
-    {
-        /// <summary>
-        /// Generic Buffer Manager
-        /// </summary>
-        /// <remarks>
-        ///  gbm.h
-        /// </remarks>
-        public readonly partial struct gbm_device : IEquatable<libgbm.gbm_device>
-        {
-            public gbm_device(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(gbm_device other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is gbm_device other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
-            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(gbm_device left, gbm_device right) => left.Equals(right);
-            
-            public static bool operator !=(gbm_device left, gbm_device right) => !left.Equals(right);
-        }
-        
-        public readonly partial struct gbm_bo : IEquatable<libgbm.gbm_bo>
-        {
-            public gbm_bo(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(gbm_bo other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is gbm_bo other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
-            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(gbm_bo left, gbm_bo right) => left.Equals(right);
-            
-            public static bool operator !=(gbm_bo left, gbm_bo right) => !left.Equals(right);
-        }
-        
-        public readonly partial struct gbm_surface : IEquatable<libgbm.gbm_surface>
-        {
-            public gbm_surface(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(gbm_surface other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is gbm_surface other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
-            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(gbm_surface left, gbm_surface right) => left.Equals(right);
-            
-            public static bool operator !=(gbm_surface left, gbm_surface right) => !left.Equals(right);
-        }
-    }
+    public static unsafe partial class libgbm;
 }

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -371,6 +372,11 @@ namespace XenoAtom.Interop
             public uint* planes;
         }
         
+        public readonly partial record struct drmModeAtomicReq(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
         public unsafe partial struct drmModeLesseeList
         {
             public uint count;
@@ -396,30 +402,14 @@ namespace XenoAtom.Interop
         /// @warning : If you change this structure, make sure you change
         /// XF86DRIClipRectRec in the server as well
         /// </warning>
-        public readonly partial struct drmModeClip : IEquatable<libdrm.drmModeClip>
+        public readonly partial record struct drmModeClip(libdrm.drm_clip_rect Value)
         {
-            public drmModeClip(libdrm.drm_clip_rect value) => this.Value = value;
+            public static implicit operator libdrm.drm_clip_rect (drmModeClip from) => from.Value;
             
-            public libdrm.drm_clip_rect Value { get; }
-            
-            public override bool Equals(object obj) => obj is drmModeClip other && Equals(other);
-            
-            public bool Equals(drmModeClip other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator libdrm.drm_clip_rect (libdrm.drmModeClip from) => from.Value;
-            
-            public static implicit operator libdrm.drmModeClip (libdrm.drm_clip_rect from) => new libdrm.drmModeClip(from);
-            
-            public static bool operator ==(drmModeClip left, drmModeClip right) => left.Equals(right);
-            
-            public static bool operator !=(drmModeClip left, drmModeClip right) => !left.Equals(right);
+            public static implicit operator drmModeClip (libdrm.drm_clip_rect from) => new (from);
         }
         
-        public readonly partial struct drmModeAtomicReqPtr : IEquatable<libdrm.drmModeAtomicReqPtr>
+        public readonly partial struct drmModeAtomicReqPtr : IEquatable<drmModeAtomicReqPtr>
         {
             public drmModeAtomicReqPtr(libdrm.drmModeAtomicReq value) => this.Value = value;
             
@@ -433,59 +423,27 @@ namespace XenoAtom.Interop
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator libdrm.drmModeAtomicReq (libdrm.drmModeAtomicReqPtr from) => from.Value;
-            
-            public static implicit operator libdrm.drmModeAtomicReqPtr (libdrm.drmModeAtomicReq from) => new libdrm.drmModeAtomicReqPtr(from);
-            
             public static bool operator ==(drmModeAtomicReqPtr left, drmModeAtomicReqPtr right) => left.Equals(right);
             
             public static bool operator !=(drmModeAtomicReqPtr left, drmModeAtomicReqPtr right) => !left.Equals(right);
+            
+            public static implicit operator libdrm.drmModeAtomicReq (drmModeAtomicReqPtr from) => from.Value;
+            
+            public static implicit operator drmModeAtomicReqPtr (libdrm.drmModeAtomicReq from) => new (from);
         }
         
-        public readonly partial struct drmModeLesseeListRes : IEquatable<libdrm.drmModeLesseeListRes>
+        public readonly partial record struct drmModeLesseeListRes(libdrm.drmModeLesseeList Value)
         {
-            public drmModeLesseeListRes(libdrm.drmModeLesseeList value) => this.Value = value;
+            public static implicit operator libdrm.drmModeLesseeList (drmModeLesseeListRes from) => from.Value;
             
-            public libdrm.drmModeLesseeList Value { get; }
-            
-            public override bool Equals(object obj) => obj is drmModeLesseeListRes other && Equals(other);
-            
-            public bool Equals(drmModeLesseeListRes other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator libdrm.drmModeLesseeList (libdrm.drmModeLesseeListRes from) => from.Value;
-            
-            public static implicit operator libdrm.drmModeLesseeListRes (libdrm.drmModeLesseeList from) => new libdrm.drmModeLesseeListRes(from);
-            
-            public static bool operator ==(drmModeLesseeListRes left, drmModeLesseeListRes right) => left.Equals(right);
-            
-            public static bool operator !=(drmModeLesseeListRes left, drmModeLesseeListRes right) => !left.Equals(right);
+            public static implicit operator drmModeLesseeListRes (libdrm.drmModeLesseeList from) => new (from);
         }
         
-        public readonly partial struct drmModeObjectListRes : IEquatable<libdrm.drmModeObjectListRes>
+        public readonly partial record struct drmModeObjectListRes(libdrm.drmModeObjectList Value)
         {
-            public drmModeObjectListRes(libdrm.drmModeObjectList value) => this.Value = value;
+            public static implicit operator libdrm.drmModeObjectList (drmModeObjectListRes from) => from.Value;
             
-            public libdrm.drmModeObjectList Value { get; }
-            
-            public override bool Equals(object obj) => obj is drmModeObjectListRes other && Equals(other);
-            
-            public bool Equals(drmModeObjectListRes other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator libdrm.drmModeObjectList (libdrm.drmModeObjectListRes from) => from.Value;
-            
-            public static implicit operator libdrm.drmModeObjectListRes (libdrm.drmModeObjectList from) => new libdrm.drmModeObjectListRes(from);
-            
-            public static bool operator ==(drmModeObjectListRes left, drmModeObjectListRes right) => left.Equals(right);
-            
-            public static bool operator !=(drmModeObjectListRes left, drmModeObjectListRes right) => !left.Equals(right);
+            public static implicit operator drmModeObjectListRes (libdrm.drmModeObjectList from) => new (from);
         }
         
         public const int DRM_MODE_FEATURE_KMS = 1;

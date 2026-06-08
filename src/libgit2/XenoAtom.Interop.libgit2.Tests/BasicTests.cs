@@ -53,7 +53,7 @@ public class BasicTests : TestBase
     [TestMethod]
     public void TestGitError()
     {
-        var ex = Assert.ThrowsException<LibGit2Exception>(() => git_repository_head(out var head, default).Check());
+        var ex = Assert.Throws<LibGit2Exception>(() => git_repository_head(out var head, default).Check());
         Assert.AreEqual(git_error_code.GIT_ERROR, ex.ErrorCode);
     }
 

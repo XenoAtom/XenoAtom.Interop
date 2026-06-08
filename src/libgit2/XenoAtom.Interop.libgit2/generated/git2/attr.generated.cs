@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -99,7 +100,7 @@ namespace XenoAtom.Interop
         /// used.
         /// </remarks>
         /// <seealso cref="git_attr_foreach."/>
-        public readonly partial struct git_attr_foreach_cb : IEquatable<libgit2.git_attr_foreach_cb>
+        public readonly partial struct git_attr_foreach_cb : IEquatable<git_attr_foreach_cb>
         {
             public git_attr_foreach_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
             
@@ -113,13 +114,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (libgit2.git_attr_foreach_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_attr_foreach_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new libgit2.git_attr_foreach_cb(from);
-            
             public static bool operator ==(git_attr_foreach_cb left, git_attr_foreach_cb right) => left.Equals(right);
             
             public static bool operator !=(git_attr_foreach_cb left, git_attr_foreach_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (git_attr_foreach_cb from) => from.Value;
+            
+            public static implicit operator git_attr_foreach_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new (from);
         }
         
         public const uint GIT_ATTR_OPTIONS_VERSION = 1;

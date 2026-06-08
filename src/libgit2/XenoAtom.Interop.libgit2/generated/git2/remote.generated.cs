@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -247,9 +248,113 @@ namespace XenoAtom.Interop
         public const libgit2.git_fetch_depth_t GIT_FETCH_DEPTH_UNSHALLOW = git_fetch_depth_t.GIT_FETCH_DEPTH_UNSHALLOW;
         
         /// <summary>
+        /// The callback settings structure
+        /// </summary>
+        /// <remarks>
+        /// Set the callbacks to be called by the remote when informing the user
+        /// about the progress of the network operations.
+        /// </remarks>
+        public partial struct git_remote_callbacks
+        {
+            /// <summary>
+            /// The version
+            /// </summary>
+            public uint version;
+            
+            /// <summary>
+            /// Textual progress from the remote. Text send over the
+            /// progress side-band will be passed to this function (this is
+            /// the 'counting objects' output).
+            /// </summary>
+            public libgit2.git_transport_message_cb sideband_progress;
+            
+            /// <summary>
+            /// Completion is called when different parts of the download
+            /// process are done (currently unused).
+            /// </summary>
+            public delegate*unmanaged[Cdecl]<libgit2.git_remote_completion_t, void*, int> completion;
+            
+            /// <summary>
+            /// This will be called if the remote host requires
+            /// authentication in order to connect to it.
+            /// </summary>
+            /// <remarks>
+            /// Returning GIT_PASSTHROUGH will make libgit2 behave as
+            /// though this field isn't set.
+            /// </remarks>
+            public libgit2.git_credential_acquire_cb credentials;
+            
+            /// <summary>
+            /// If cert verification fails, this will be called to let the
+            /// user make the final decision of whether to allow the
+            /// connection to proceed. Returns 0 to allow the connection
+            /// or a negative value to indicate an error.
+            /// </summary>
+            public libgit2.git_transport_certificate_check_cb certificate_check;
+            
+            /// <summary>
+            /// During the download of new data, this will be regularly
+            /// called with the current count of progress done by the
+            /// indexer.
+            /// </summary>
+            public libgit2.git_indexer_progress_cb transfer_progress;
+            
+            /// <summary>
+            /// Each time a reference is updated locally, this function
+            /// will be called with information about it.
+            /// </summary>
+            public delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, libgit2.git_oid*, void*, int> update_tips;
+            
+            /// <summary>
+            /// Function to call with progress information during pack
+            /// building. Be aware that this is called inline with pack
+            /// building operations, so performance may be affected.
+            /// </summary>
+            public libgit2.git_packbuilder_progress pack_progress;
+            
+            /// <summary>
+            /// Function to call with progress information during the
+            /// upload portion of a push. Be aware that this is called
+            /// inline with pack building operations, so performance may be
+            /// affected.
+            /// </summary>
+            public libgit2.git_push_transfer_progress_cb push_transfer_progress;
+            
+            /// <summary>
+            /// See documentation of git_push_update_reference_cb
+            /// </summary>
+            public libgit2.git_push_update_reference_cb push_update_reference;
+            
+            /// <summary>
+            /// Called once between the negotiation step and the upload. It
+            /// provides information about what updates will be performed.
+            /// </summary>
+            public libgit2.git_push_negotiation push_negotiation;
+            
+            /// <summary>
+            /// Create the transport to use for this operation. Leave NULL
+            /// to auto-detect.
+            /// </summary>
+            public libgit2.git_transport_cb transport;
+            
+            /// <summary>
+            /// Callback when the remote is ready to connect.
+            /// </summary>
+            public libgit2.git_remote_ready_cb remote_ready;
+            
+            /// <summary>
+            /// This will be passed to each of the callbacks in this struct
+            /// as the last parameter.
+            /// </summary>
+            public void* payload;
+            
+            public void* reserved;
+        }
+        
+        /// <summary>
         /// Push network progress notification function
         /// </summary>
-        public readonly partial struct git_push_transfer_progress_cb : IEquatable<libgit2.git_push_transfer_progress_cb>
+        public readonly partial struct git_push_transfer_progress_cb : IEquatable<git_push_transfer_progress_cb>
         {
             public git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> value) => this.Value = value;
             
@@ -263,13 +368,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> (libgit2.git_push_transfer_progress_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_push_transfer_progress_cb (delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> from) => new libgit2.git_push_transfer_progress_cb(from);
-            
             public static bool operator ==(git_push_transfer_progress_cb left, git_push_transfer_progress_cb right) => left.Equals(right);
             
             public static bool operator !=(git_push_transfer_progress_cb left, git_push_transfer_progress_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> (git_push_transfer_progress_cb from) => from.Value;
+            
+            public static implicit operator git_push_transfer_progress_cb (delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> from) => new (from);
         }
         
         /// <summary>
@@ -284,7 +389,7 @@ namespace XenoAtom.Interop
         /// not `NULL`, the update was rejected by the remote server
         /// and `status` contains the reason given.
         /// </remarks>
-        public readonly partial struct git_push_update_reference_cb : IEquatable<libgit2.git_push_update_reference_cb>
+        public readonly partial struct git_push_update_reference_cb : IEquatable<git_push_update_reference_cb>
         {
             public git_push_update_reference_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
             
@@ -298,13 +403,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (libgit2.git_push_update_reference_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_push_update_reference_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new libgit2.git_push_update_reference_cb(from);
-            
             public static bool operator ==(git_push_update_reference_cb left, git_push_update_reference_cb right) => left.Equals(right);
             
             public static bool operator !=(git_push_update_reference_cb left, git_push_update_reference_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (git_push_update_reference_cb from) => from.Value;
+            
+            public static implicit operator git_push_update_reference_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new (from);
         }
         
         /// <summary>
@@ -340,7 +445,7 @@ namespace XenoAtom.Interop
         /// as commands to the destination.</param>
         /// <param name="len">number of elements in `updates`</param>
         /// <param name="payload">Payload provided by the caller</param>
-        public readonly partial struct git_push_negotiation : IEquatable<libgit2.git_push_negotiation>
+        public readonly partial struct git_push_negotiation : IEquatable<git_push_negotiation>
         {
             public git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> value) => this.Value = value;
             
@@ -354,13 +459,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> (libgit2.git_push_negotiation from) => from.Value;
-            
-            public static implicit operator libgit2.git_push_negotiation (delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> from) => new libgit2.git_push_negotiation(from);
-            
             public static bool operator ==(git_push_negotiation left, git_push_negotiation right) => left.Equals(right);
             
             public static bool operator !=(git_push_negotiation left, git_push_negotiation right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> (git_push_negotiation from) => from.Value;
+            
+            public static implicit operator git_push_negotiation (delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> from) => new (from);
         }
         
         /// <summary>
@@ -372,7 +477,7 @@ namespace XenoAtom.Interop
         /// <param name="direction">GIT_DIRECTION_FETCH or GIT_DIRECTION_PUSH</param>
         /// <param name="payload">Payload provided by the caller</param>
         /// <returns>0 on success, or an error</returns>
-        public readonly partial struct git_remote_ready_cb : IEquatable<libgit2.git_remote_ready_cb>
+        public readonly partial struct git_remote_ready_cb : IEquatable<git_remote_ready_cb>
         {
             public git_remote_ready_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> value) => this.Value = value;
             
@@ -386,13 +491,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> (libgit2.git_remote_ready_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_remote_ready_cb (delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> from) => new libgit2.git_remote_ready_cb(from);
-            
             public static bool operator ==(git_remote_ready_cb left, git_remote_ready_cb right) => left.Equals(right);
             
             public static bool operator !=(git_remote_ready_cb left, git_remote_ready_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> (git_remote_ready_cb from) => from.Value;
+            
+            public static implicit operator git_remote_ready_cb (delegate*unmanaged[Cdecl]<libgit2.git_remote, int, void*, int> from) => new (from);
         }
         
         /// <summary>

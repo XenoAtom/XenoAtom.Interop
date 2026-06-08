@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -612,7 +613,7 @@ namespace XenoAtom.Interop
             public libdrm.drmAddress address;
         }
         
-        public readonly partial struct drmAddress : IEquatable<libdrm.drmAddress>
+        public readonly partial struct drmAddress : IEquatable<drmAddress>
         {
             public drmAddress(void* value) => this.Value = value;
             
@@ -626,13 +627,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator void* (libdrm.drmAddress from) => from.Value;
-            
-            public static implicit operator libdrm.drmAddress (void* from) => new libdrm.drmAddress(from);
-            
             public static bool operator ==(drmAddress left, drmAddress right) => left.Equals(right);
             
             public static bool operator !=(drmAddress left, drmAddress right) => !left.Equals(right);
+            
+            public static implicit operator void* (drmAddress from) => from.Value;
+            
+            public static implicit operator drmAddress (void* from) => new (from);
         }
         
         /// <summary>
@@ -730,27 +731,11 @@ namespace XenoAtom.Interop
             public libdrm.drmAddress map;
         }
         
-        public readonly partial struct drmSize : IEquatable<libdrm.drmSize>
+        public readonly partial record struct drmSize(uint Value)
         {
-            public drmSize(uint value) => this.Value = value;
+            public static implicit operator uint (drmSize from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is drmSize other && Equals(other);
-            
-            public bool Equals(drmSize other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (libdrm.drmSize from) => from.Value;
-            
-            public static implicit operator libdrm.drmSize (uint from) => new libdrm.drmSize(from);
-            
-            public static bool operator ==(drmSize left, drmSize right) => left.Equals(right);
-            
-            public static bool operator !=(drmSize left, drmSize right) => !left.Equals(right);
+            public static implicit operator drmSize (uint from) => new (from);
         }
         
         public partial struct drmTextureRegion
@@ -1534,7 +1519,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetDeviceFromDevId")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int drmGetDeviceFromDevId(nuint dev_id, uint flags, libdrm.drmDevice** device);
+        public static partial int drmGetDeviceFromDevId(ulong dev_id, uint flags, libdrm.drmDevice** device);
         
         /// <summary>
         /// Get the node type (DRM_NODE_PRIMARY or DRM_NODE_RENDER) from a device ID.
@@ -1544,7 +1529,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "drmGetNodeTypeFromDevId")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int drmGetNodeTypeFromDevId(nuint devid);
+        public static partial int drmGetNodeTypeFromDevId(ulong devid);
         
         /// <summary>
         /// Check if two drmDevice pointers represent the same DRM device.

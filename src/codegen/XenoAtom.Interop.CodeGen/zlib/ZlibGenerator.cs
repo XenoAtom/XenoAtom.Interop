@@ -83,6 +83,8 @@ internal partial class ZlibGenerator(LibDescriptor descriptor) : GeneratorBase(d
                 e => e.Map<CppFunction>("^gz.*").Discard(),
                 e => e.Map<CppClass>("gzFile_s").Discard(),
                 e => e.Map<CppFunction>("(zError|inflateSyncPoint|get_crc_table|inflateUndermine|inflateValidate|inflateCodesUsed|inflateResetKeep|deflateResetKeep)").Discard(),
+
+                e => e.Map<CppClass>("__va_list_tag").Discard(), // discard __va_list_tag
             },
         };
 

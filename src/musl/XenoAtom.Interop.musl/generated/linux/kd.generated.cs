@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class musl
@@ -199,27 +200,11 @@ namespace XenoAtom.Interop
             public byte* data;
         }
         
-        public readonly partial struct scrnmap_t : IEquatable<musl.scrnmap_t>
+        public readonly partial record struct scrnmap_t(byte Value)
         {
-            public scrnmap_t(byte value) => this.Value = value;
+            public static implicit operator byte (scrnmap_t from) => from.Value;
             
-            public byte Value { get; }
-            
-            public override bool Equals(object obj) => obj is scrnmap_t other && Equals(other);
-            
-            public bool Equals(scrnmap_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator byte (musl.scrnmap_t from) => from.Value;
-            
-            public static implicit operator musl.scrnmap_t (byte from) => new musl.scrnmap_t(from);
-            
-            public static bool operator ==(scrnmap_t left, scrnmap_t right) => left.Equals(right);
-            
-            public static bool operator !=(scrnmap_t left, scrnmap_t right) => !left.Equals(right);
+            public static implicit operator scrnmap_t (byte from) => new (from);
         }
     }
 }

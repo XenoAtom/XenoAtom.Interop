@@ -1,6 +1,6 @@
 # configuration file for dotnet-releaser
 [msbuild]
-project = "XenoAtom.Interop.libgit2.sln"
+project = "XenoAtom.Interop.libgit2.slnx"
 [changelog]
 publish = false # Disable changelog for now
 [github]

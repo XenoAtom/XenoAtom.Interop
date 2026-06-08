@@ -60,7 +60,7 @@ public static unsafe partial class libgit2
     /// <summary>
     /// Wrapper for the result of a libgit2 function.
     /// </summary>
-    public readonly partial struct git_result
+    public readonly partial record struct git_result
     {
         /// <summary>
         /// Gets a value indicating whether the result is a success.

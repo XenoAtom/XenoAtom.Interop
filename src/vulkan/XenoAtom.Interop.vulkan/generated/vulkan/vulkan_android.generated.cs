@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -17,6 +18,14 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
+        /// <remarks>
+        /// <para>Extension: VK_KHR_android_surface</para>
+        /// </remarks>
+        public readonly partial record struct ANativeWindow(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
         /// <summary>
         /// Structure specifying parameters of a newly created Android surface object
         /// </summary>
@@ -49,27 +58,19 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_android_surface</para>
         /// </remarks>
-        public readonly partial struct VkAndroidSurfaceCreateFlagsKHR : IEquatable<vulkan.VkAndroidSurfaceCreateFlagsKHR>
+        public readonly partial record struct VkAndroidSurfaceCreateFlagsKHR(vulkan.VkFlags Value)
         {
-            public VkAndroidSurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkAndroidSurfaceCreateFlagsKHR from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkAndroidSurfaceCreateFlagsKHR other && Equals(other);
-            
-            public bool Equals(VkAndroidSurfaceCreateFlagsKHR other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkAndroidSurfaceCreateFlagsKHR from) => from.Value;
-            
-            public static implicit operator vulkan.VkAndroidSurfaceCreateFlagsKHR (vulkan.VkFlags from) => new vulkan.VkAndroidSurfaceCreateFlagsKHR(from);
-            
-            public static bool operator ==(VkAndroidSurfaceCreateFlagsKHR left, VkAndroidSurfaceCreateFlagsKHR right) => left.Equals(right);
-            
-            public static bool operator !=(VkAndroidSurfaceCreateFlagsKHR left, VkAndroidSurfaceCreateFlagsKHR right) => !left.Equals(right);
+            public static implicit operator VkAndroidSurfaceCreateFlagsKHR (vulkan.VkFlags from) => new (from);
+        }
+        
+        /// <remarks>
+        /// <para>Extension: VK_ANDROID_external_memory_android_hardware_buffer</para>
+        /// </remarks>
+        public readonly partial record struct AHardwareBuffer(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
         }
         
         /// <summary>
@@ -93,7 +94,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Returns the Android hardware buffer usage flags.
             /// </summary>
-            public ulong androidHardwareBufferUsage;
+            public nuint androidHardwareBufferUsage;
         }
         
         /// <summary>
@@ -151,7 +152,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// An implementation-defined external format identifier for use with <see cref="T:VkExternalFormatANDROID"/>. It must: not be zero.
             /// </summary>
-            public ulong externalFormat;
+            public nuint externalFormat;
             
             /// <summary>
             /// Describes the capabilities of this external format when used with an image bound to memory imported from <see cref="M:buffer"/>.
@@ -253,7 +254,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// An implementation-defined identifier for the external format
             /// </summary>
-            public ulong externalFormat;
+            public nuint externalFormat;
         }
         
         /// <summary>
@@ -282,7 +283,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// An implementation-defined external format identifier for use with <see cref="T:VkExternalFormatANDROID"/>. It must: not be zero.
             /// </summary>
-            public ulong externalFormat;
+            public nuint externalFormat;
             
             /// <summary>
             /// Describes the capabilities of this external format when used with an image bound to memory imported from <see cref="M:buffer"/>.
@@ -385,7 +386,7 @@ namespace XenoAtom.Interop
             public vulkan.VkFormat colorAttachmentFormat;
         }
         
-        public readonly partial struct PFN_vkCreateAndroidSurfaceKHR : IEquatable<vulkan.PFN_vkCreateAndroidSurfaceKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateAndroidSurfaceKHR>
+        public readonly partial struct PFN_vkCreateAndroidSurfaceKHR : IEquatable<PFN_vkCreateAndroidSurfaceKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateAndroidSurfaceKHR>
         {
             public PFN_vkCreateAndroidSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkAndroidSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -399,13 +400,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkAndroidSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateAndroidSurfaceKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateAndroidSurfaceKHR (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkAndroidSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateAndroidSurfaceKHR(from);
-            
             public static bool operator ==(PFN_vkCreateAndroidSurfaceKHR left, PFN_vkCreateAndroidSurfaceKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateAndroidSurfaceKHR left, PFN_vkCreateAndroidSurfaceKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkAndroidSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateAndroidSurfaceKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateAndroidSurfaceKHR (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkAndroidSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateAndroidSurfaceKHR`.
@@ -461,7 +462,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetAndroidHardwareBufferPropertiesANDROID : IEquatable<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID>
+        public readonly partial struct PFN_vkGetAndroidHardwareBufferPropertiesANDROID : IEquatable<PFN_vkGetAndroidHardwareBufferPropertiesANDROID>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID>
         {
             public PFN_vkGetAndroidHardwareBufferPropertiesANDROID(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.AHardwareBuffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID*, vulkan.VkResult> value) => this.Value = value;
             
@@ -475,13 +476,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.AHardwareBuffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID*, vulkan.VkResult> (vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.AHardwareBuffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID*, vulkan.VkResult> from) => new vulkan.PFN_vkGetAndroidHardwareBufferPropertiesANDROID(from);
-            
             public static bool operator ==(PFN_vkGetAndroidHardwareBufferPropertiesANDROID left, PFN_vkGetAndroidHardwareBufferPropertiesANDROID right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetAndroidHardwareBufferPropertiesANDROID left, PFN_vkGetAndroidHardwareBufferPropertiesANDROID right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.AHardwareBuffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID*, vulkan.VkResult> (PFN_vkGetAndroidHardwareBufferPropertiesANDROID from) => from.Value;
+            
+            public static implicit operator PFN_vkGetAndroidHardwareBufferPropertiesANDROID (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.AHardwareBuffer, vulkan.VkAndroidHardwareBufferPropertiesANDROID*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetAndroidHardwareBufferPropertiesANDROID`.
@@ -513,7 +514,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryAndroidHardwareBufferANDROID : IEquatable<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID>
+        public readonly partial struct PFN_vkGetMemoryAndroidHardwareBufferANDROID : IEquatable<PFN_vkGetMemoryAndroidHardwareBufferANDROID>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID>
         {
             public PFN_vkGetMemoryAndroidHardwareBufferANDROID(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID*, vulkan.AHardwareBuffer*, vulkan.VkResult> value) => this.Value = value;
             
@@ -527,13 +528,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID*, vulkan.AHardwareBuffer*, vulkan.VkResult> (vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID*, vulkan.AHardwareBuffer*, vulkan.VkResult> from) => new vulkan.PFN_vkGetMemoryAndroidHardwareBufferANDROID(from);
-            
             public static bool operator ==(PFN_vkGetMemoryAndroidHardwareBufferANDROID left, PFN_vkGetMemoryAndroidHardwareBufferANDROID right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetMemoryAndroidHardwareBufferANDROID left, PFN_vkGetMemoryAndroidHardwareBufferANDROID right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID*, vulkan.AHardwareBuffer*, vulkan.VkResult> (PFN_vkGetMemoryAndroidHardwareBufferANDROID from) => from.Value;
+            
+            public static implicit operator PFN_vkGetMemoryAndroidHardwareBufferANDROID (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetAndroidHardwareBufferInfoANDROID*, vulkan.AHardwareBuffer*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryAndroidHardwareBufferANDROID`.

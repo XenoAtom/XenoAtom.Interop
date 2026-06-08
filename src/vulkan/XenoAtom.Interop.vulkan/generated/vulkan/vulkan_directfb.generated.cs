@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -54,30 +55,14 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_EXT_directfb_surface</para>
         /// </remarks>
-        public readonly partial struct VkDirectFBSurfaceCreateFlagsEXT : IEquatable<vulkan.VkDirectFBSurfaceCreateFlagsEXT>
+        public readonly partial record struct VkDirectFBSurfaceCreateFlagsEXT(vulkan.VkFlags Value)
         {
-            public VkDirectFBSurfaceCreateFlagsEXT(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkDirectFBSurfaceCreateFlagsEXT from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkDirectFBSurfaceCreateFlagsEXT other && Equals(other);
-            
-            public bool Equals(VkDirectFBSurfaceCreateFlagsEXT other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkDirectFBSurfaceCreateFlagsEXT from) => from.Value;
-            
-            public static implicit operator vulkan.VkDirectFBSurfaceCreateFlagsEXT (vulkan.VkFlags from) => new vulkan.VkDirectFBSurfaceCreateFlagsEXT(from);
-            
-            public static bool operator ==(VkDirectFBSurfaceCreateFlagsEXT left, VkDirectFBSurfaceCreateFlagsEXT right) => left.Equals(right);
-            
-            public static bool operator !=(VkDirectFBSurfaceCreateFlagsEXT left, VkDirectFBSurfaceCreateFlagsEXT right) => !left.Equals(right);
+            public static implicit operator VkDirectFBSurfaceCreateFlagsEXT (vulkan.VkFlags from) => new (from);
         }
         
-        public readonly partial struct PFN_vkCreateDirectFBSurfaceEXT : IEquatable<vulkan.PFN_vkCreateDirectFBSurfaceEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateDirectFBSurfaceEXT>
+        public readonly partial struct PFN_vkCreateDirectFBSurfaceEXT : IEquatable<PFN_vkCreateDirectFBSurfaceEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateDirectFBSurfaceEXT>
         {
             public PFN_vkCreateDirectFBSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkDirectFBSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -91,13 +76,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkDirectFBSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateDirectFBSurfaceEXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateDirectFBSurfaceEXT (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkDirectFBSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateDirectFBSurfaceEXT(from);
-            
             public static bool operator ==(PFN_vkCreateDirectFBSurfaceEXT left, PFN_vkCreateDirectFBSurfaceEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateDirectFBSurfaceEXT left, PFN_vkCreateDirectFBSurfaceEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkDirectFBSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateDirectFBSurfaceEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateDirectFBSurfaceEXT (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkDirectFBSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateDirectFBSurfaceEXT`.
@@ -153,7 +138,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT : IEquatable<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>
+        public readonly partial struct PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT : IEquatable<PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT>
         {
             public PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, vulkan.VkBool32> value) => this.Value = value;
             
@@ -167,13 +152,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, vulkan.VkBool32> (vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, vulkan.VkBool32> from) => new vulkan.PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT(from);
-            
             public static bool operator ==(PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT left, PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT left, PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, vulkan.VkBool32> (PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, vulkan.VkBool32> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceDirectFBPresentationSupportEXT`.

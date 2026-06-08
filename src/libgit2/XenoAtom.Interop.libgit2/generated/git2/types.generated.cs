@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -335,690 +336,228 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An open object database handle.
         /// </summary>
-        public readonly partial struct git_odb : IEquatable<libgit2.git_odb>
+        public readonly partial record struct git_odb(nint Handle)
         {
-            public git_odb(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_odb other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_odb other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_odb left, git_odb right) => left.Equals(right);
-            
-            public static bool operator !=(git_odb left, git_odb right) => !left.Equals(right);
         }
         
         /// <summary>
         /// A custom backend in an ODB
         /// </summary>
-        public readonly partial struct git_odb_backend : IEquatable<libgit2.git_odb_backend>
+        public readonly partial record struct git_odb_backend(nint Handle)
         {
-            public git_odb_backend(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_odb_backend other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_odb_backend other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_odb_backend left, git_odb_backend right) => left.Equals(right);
-            
-            public static bool operator !=(git_odb_backend left, git_odb_backend right) => !left.Equals(right);
         }
         
         /// <summary>
         /// An object read from the ODB
         /// </summary>
-        public readonly partial struct git_odb_object : IEquatable<libgit2.git_odb_object>
+        public readonly partial record struct git_odb_object(nint Handle)
         {
-            public git_odb_object(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_odb_object other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_odb_object other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_odb_object left, git_odb_object right) => left.Equals(right);
-            
-            public static bool operator !=(git_odb_object left, git_odb_object right) => !left.Equals(right);
-        }
-        
-        /// <summary>
-        /// A stream to read/write from a backend.
-        /// </summary>
-        /// <remarks>
-        /// This represents a stream of data being written to or read from a
-        /// backend. When writing, the frontend functions take care of
-        /// calculating the object's id and all `finalize_write` needs to do is
-        /// store the object with the id it is passed.
-        /// </remarks>
-        public partial struct git_odb_stream
-        {
-            public libgit2.git_odb_backend backend;
-            
-            public uint mode;
-            
-            public void* hash_ctx;
-            
-            public libgit2.git_object_size_t declared_size;
-            
-            public libgit2.git_object_size_t received_bytes;
-            
-            /// <summary>
-            /// Write at most `len` bytes into `buffer` and advance the stream.
-            /// </summary>
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, byte*, nuint, int> read;
-            
-            /// <summary>
-            /// Write `len` bytes from `buffer` into the stream.
-            /// </summary>
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, byte*, nuint, int> write;
-            
-            /// <summary>
-            /// Store the contents of the stream as an object with the id
-            /// specified in `oid`.
-            /// </summary>
-            /// <remarks>
-            /// This method might not be invoked if:
-            /// - an error occurs earlier with the `write` callback,
-            /// - the object referred to by `oid` already exists in any backend, or
-            /// - the final number of received bytes differs from the size declared
-            /// with `git_odb_open_wstream()`
-            /// </remarks>
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, libgit2.git_oid*, int> finalize_write;
-            
-            /// <summary>
-            /// Free the stream's memory.
-            /// </summary>
-            /// <remarks>
-            /// This method might be called without a call to `finalize_write` if
-            /// an error occurs or if the object is already present in the ODB.
-            /// </remarks>
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, void> free;
         }
         
         /// <summary>
         /// The maximum size of an object
         /// </summary>
-        public readonly partial struct git_object_size_t : IEquatable<libgit2.git_object_size_t>
+        public readonly partial record struct git_object_size_t(ulong Value)
         {
-            public git_object_size_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (git_object_size_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_object_size_t other && Equals(other);
-            
-            public bool Equals(git_object_size_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (libgit2.git_object_size_t from) => from.Value;
-            
-            public static implicit operator libgit2.git_object_size_t (ulong from) => new libgit2.git_object_size_t(from);
-            
-            public static bool operator ==(git_object_size_t left, git_object_size_t right) => left.Equals(right);
-            
-            public static bool operator !=(git_object_size_t left, git_object_size_t right) => !left.Equals(right);
-        }
-        
-        /// <summary>
-        /// A stream to write a pack file to the ODB
-        /// </summary>
-        public partial struct git_odb_writepack
-        {
-            public libgit2.git_odb_backend backend;
-            
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, void*, nuint, libgit2.git_indexer_progress*, int> append;
-            
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, libgit2.git_indexer_progress*, int> commit;
-            
-            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, void> free;
+            public static implicit operator git_object_size_t (ulong from) => new (from);
         }
         
         /// <summary>
         /// a writer for multi-pack-index files.
         /// </summary>
-        public readonly partial struct git_midx_writer : IEquatable<libgit2.git_midx_writer>
+        public readonly partial record struct git_midx_writer(nint Handle)
         {
-            public git_midx_writer(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_midx_writer other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_midx_writer other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_midx_writer left, git_midx_writer right) => left.Equals(right);
-            
-            public static bool operator !=(git_midx_writer left, git_midx_writer right) => !left.Equals(right);
         }
         
         /// <summary>
         /// An open refs database handle.
         /// </summary>
-        public readonly partial struct git_refdb : IEquatable<libgit2.git_refdb>
+        public readonly partial record struct git_refdb(nint Handle)
         {
-            public git_refdb(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_refdb other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_refdb other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_refdb left, git_refdb right) => left.Equals(right);
-            
-            public static bool operator !=(git_refdb left, git_refdb right) => !left.Equals(right);
         }
         
         /// <summary>
         /// A custom backend for refs
         /// </summary>
-        public readonly partial struct git_refdb_backend : IEquatable<libgit2.git_refdb_backend>
+        public readonly partial record struct git_refdb_backend(nint Handle)
         {
-            public git_refdb_backend(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_refdb_backend other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_refdb_backend other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_refdb_backend left, git_refdb_backend right) => left.Equals(right);
-            
-            public static bool operator !=(git_refdb_backend left, git_refdb_backend right) => !left.Equals(right);
         }
         
         /// <summary>
         /// A git commit-graph
         /// </summary>
-        public readonly partial struct git_commit_graph : IEquatable<libgit2.git_commit_graph>
+        public readonly partial record struct git_commit_graph(nint Handle)
         {
-            public git_commit_graph(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_commit_graph other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_commit_graph other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_commit_graph left, git_commit_graph right) => left.Equals(right);
-            
-            public static bool operator !=(git_commit_graph left, git_commit_graph right) => !left.Equals(right);
         }
         
         /// <summary>
         /// a writer for commit-graph files.
         /// </summary>
-        public readonly partial struct git_commit_graph_writer : IEquatable<libgit2.git_commit_graph_writer>
+        public readonly partial record struct git_commit_graph_writer(nint Handle)
         {
-            public git_commit_graph_writer(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_commit_graph_writer other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_commit_graph_writer other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_commit_graph_writer left, git_commit_graph_writer right) => left.Equals(right);
-            
-            public static bool operator !=(git_commit_graph_writer left, git_commit_graph_writer right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of an existing git repository,
         /// including all its object contents
         /// </summary>
-        public readonly partial struct git_repository : IEquatable<libgit2.git_repository>
+        public readonly partial record struct git_repository(nint Handle)
         {
-            public git_repository(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_repository other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_repository other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_repository left, git_repository right) => left.Equals(right);
-            
-            public static bool operator !=(git_repository left, git_repository right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of a working tree
         /// </summary>
-        public readonly partial struct git_worktree : IEquatable<libgit2.git_worktree>
+        public readonly partial record struct git_worktree(nint Handle)
         {
-            public git_worktree(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_worktree other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_worktree other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_worktree left, git_worktree right) => left.Equals(right);
-            
-            public static bool operator !=(git_worktree left, git_worktree right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of a generic object in a repository
         /// </summary>
-        public readonly partial struct git_object : IEquatable<libgit2.git_object>
+        public readonly partial record struct git_object(nint Handle)
         {
-            public git_object(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_object other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_object other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_object left, git_object right) => left.Equals(right);
-            
-            public static bool operator !=(git_object left, git_object right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of an in-progress walk through the commits in a repo
         /// </summary>
-        public readonly partial struct git_revwalk : IEquatable<libgit2.git_revwalk>
+        public readonly partial record struct git_revwalk(nint Handle)
         {
-            public git_revwalk(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_revwalk other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_revwalk other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_revwalk left, git_revwalk right) => left.Equals(right);
-            
-            public static bool operator !=(git_revwalk left, git_revwalk right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Parsed representation of a tag object.
         /// </summary>
-        public readonly partial struct git_tag : IEquatable<libgit2.git_tag>
+        public readonly partial record struct git_tag(nint Handle)
         {
-            public git_tag(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_tag other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_tag other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_tag left, git_tag right) => left.Equals(right);
-            
-            public static bool operator !=(git_tag left, git_tag right) => !left.Equals(right);
         }
         
         /// <summary>
         /// In-memory representation of a blob object.
         /// </summary>
-        public readonly partial struct git_blob : IEquatable<libgit2.git_blob>
+        public readonly partial record struct git_blob(nint Handle)
         {
-            public git_blob(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_blob other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_blob other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_blob left, git_blob right) => left.Equals(right);
-            
-            public static bool operator !=(git_blob left, git_blob right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Parsed representation of a commit object.
         /// </summary>
-        public readonly partial struct git_commit : IEquatable<libgit2.git_commit>
+        public readonly partial record struct git_commit(nint Handle)
         {
-            public git_commit(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_commit other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_commit other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_commit left, git_commit right) => left.Equals(right);
-            
-            public static bool operator !=(git_commit left, git_commit right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of each one of the entries in a tree object.
         /// </summary>
-        public readonly partial struct git_tree_entry : IEquatable<libgit2.git_tree_entry>
+        public readonly partial record struct git_tree_entry(nint Handle)
         {
-            public git_tree_entry(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_tree_entry other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_tree_entry other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_tree_entry left, git_tree_entry right) => left.Equals(right);
-            
-            public static bool operator !=(git_tree_entry left, git_tree_entry right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of a tree object.
         /// </summary>
-        public readonly partial struct git_tree : IEquatable<libgit2.git_tree>
+        public readonly partial record struct git_tree(nint Handle)
         {
-            public git_tree(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_tree other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_tree other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_tree left, git_tree right) => left.Equals(right);
-            
-            public static bool operator !=(git_tree left, git_tree right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Constructor for in-memory trees
         /// </summary>
-        public readonly partial struct git_treebuilder : IEquatable<libgit2.git_treebuilder>
+        public readonly partial record struct git_treebuilder(nint Handle)
         {
-            public git_treebuilder(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_treebuilder other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_treebuilder other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_treebuilder left, git_treebuilder right) => left.Equals(right);
-            
-            public static bool operator !=(git_treebuilder left, git_treebuilder right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Memory representation of an index file.
         /// </summary>
-        public readonly partial struct git_index : IEquatable<libgit2.git_index>
+        public readonly partial record struct git_index(nint Handle)
         {
-            public git_index(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_index other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_index other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_index left, git_index right) => left.Equals(right);
-            
-            public static bool operator !=(git_index left, git_index right) => !left.Equals(right);
         }
         
         /// <summary>
         /// An iterator for entries in the index.
         /// </summary>
-        public readonly partial struct git_index_iterator : IEquatable<libgit2.git_index_iterator>
+        public readonly partial record struct git_index_iterator(nint Handle)
         {
-            public git_index_iterator(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_index_iterator other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_index_iterator other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_index_iterator left, git_index_iterator right) => left.Equals(right);
-            
-            public static bool operator !=(git_index_iterator left, git_index_iterator right) => !left.Equals(right);
         }
         
         /// <summary>
         /// An iterator for conflicts in the index.
         /// </summary>
-        public readonly partial struct git_index_conflict_iterator : IEquatable<libgit2.git_index_conflict_iterator>
+        public readonly partial record struct git_index_conflict_iterator(nint Handle)
         {
-            public git_index_conflict_iterator(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_index_conflict_iterator other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_index_conflict_iterator other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_index_conflict_iterator left, git_index_conflict_iterator right) => left.Equals(right);
-            
-            public static bool operator !=(git_index_conflict_iterator left, git_index_conflict_iterator right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Memory representation of a set of config files
         /// </summary>
-        public readonly partial struct git_config : IEquatable<libgit2.git_config>
+        public readonly partial record struct git_config(nint Handle)
         {
-            public git_config(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_config other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_config other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_config left, git_config right) => left.Equals(right);
-            
-            public static bool operator !=(git_config left, git_config right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Interface to access a configuration file
         /// </summary>
-        public readonly partial struct git_config_backend : IEquatable<libgit2.git_config_backend>
+        public readonly partial record struct git_config_backend(nint Handle)
         {
-            public git_config_backend(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_config_backend other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_config_backend other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_config_backend left, git_config_backend right) => left.Equals(right);
-            
-            public static bool operator !=(git_config_backend left, git_config_backend right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of a reference log entry
         /// </summary>
-        public readonly partial struct git_reflog_entry : IEquatable<libgit2.git_reflog_entry>
+        public readonly partial record struct git_reflog_entry(nint Handle)
         {
-            public git_reflog_entry(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_reflog_entry other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_reflog_entry other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_reflog_entry left, git_reflog_entry right) => left.Equals(right);
-            
-            public static bool operator !=(git_reflog_entry left, git_reflog_entry right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of a reference log
         /// </summary>
-        public readonly partial struct git_reflog : IEquatable<libgit2.git_reflog>
+        public readonly partial record struct git_reflog(nint Handle)
         {
-            public git_reflog(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_reflog other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_reflog other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_reflog left, git_reflog right) => left.Equals(right);
-            
-            public static bool operator !=(git_reflog left, git_reflog right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of a git note
         /// </summary>
-        public readonly partial struct git_note : IEquatable<libgit2.git_note>
+        public readonly partial record struct git_note(nint Handle)
         {
-            public git_note(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_note other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_note other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_note left, git_note right) => left.Equals(right);
-            
-            public static bool operator !=(git_note left, git_note right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of a git packbuilder
         /// </summary>
-        public readonly partial struct git_packbuilder : IEquatable<libgit2.git_packbuilder>
+        public readonly partial record struct git_packbuilder(nint Handle)
         {
-            public git_packbuilder(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_packbuilder other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_packbuilder other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_packbuilder left, git_packbuilder right) => left.Equals(right);
-            
-            public static bool operator !=(git_packbuilder left, git_packbuilder right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -1042,27 +581,11 @@ namespace XenoAtom.Interop
             public byte sign;
         }
         
-        public readonly partial struct git_time_t : IEquatable<libgit2.git_time_t>
+        public readonly partial record struct git_time_t(long Value)
         {
-            public git_time_t(long value) => this.Value = value;
+            public static implicit operator long (git_time_t from) => from.Value;
             
-            public long Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_time_t other && Equals(other);
-            
-            public bool Equals(git_time_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator long (libgit2.git_time_t from) => from.Value;
-            
-            public static implicit operator libgit2.git_time_t (long from) => new libgit2.git_time_t(from);
-            
-            public static bool operator ==(git_time_t left, git_time_t right) => left.Equals(right);
-            
-            public static bool operator !=(git_time_t left, git_time_t right) => !left.Equals(right);
+            public static implicit operator git_time_t (long from) => new (from);
         }
         
         /// <summary>
@@ -1089,386 +612,93 @@ namespace XenoAtom.Interop
         /// <summary>
         /// In-memory representation of a reference.
         /// </summary>
-        public readonly partial struct git_reference : IEquatable<libgit2.git_reference>
+        public readonly partial record struct git_reference(nint Handle)
         {
-            public git_reference(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_reference other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_reference other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_reference left, git_reference right) => left.Equals(right);
-            
-            public static bool operator !=(git_reference left, git_reference right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Iterator for references
         /// </summary>
-        public readonly partial struct git_reference_iterator : IEquatable<libgit2.git_reference_iterator>
+        public readonly partial record struct git_reference_iterator(nint Handle)
         {
-            public git_reference_iterator(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_reference_iterator other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_reference_iterator other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_reference_iterator left, git_reference_iterator right) => left.Equals(right);
-            
-            public static bool operator !=(git_reference_iterator left, git_reference_iterator right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Transactional interface to references
         /// </summary>
-        public readonly partial struct git_transaction : IEquatable<libgit2.git_transaction>
+        public readonly partial record struct git_transaction(nint Handle)
         {
-            public git_transaction(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_transaction other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_transaction other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_transaction left, git_transaction right) => left.Equals(right);
-            
-            public static bool operator !=(git_transaction left, git_transaction right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Annotated commits, the input to merge and rebase.
         /// </summary>
-        public readonly partial struct git_annotated_commit : IEquatable<libgit2.git_annotated_commit>
+        public readonly partial record struct git_annotated_commit(nint Handle)
         {
-            public git_annotated_commit(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_annotated_commit other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_annotated_commit other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_annotated_commit left, git_annotated_commit right) => left.Equals(right);
-            
-            public static bool operator !=(git_annotated_commit left, git_annotated_commit right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of a status collection
         /// </summary>
-        public readonly partial struct git_status_list : IEquatable<libgit2.git_status_list>
+        public readonly partial record struct git_status_list(nint Handle)
         {
-            public git_status_list(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_status_list other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_status_list other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_status_list left, git_status_list right) => left.Equals(right);
-            
-            public static bool operator !=(git_status_list left, git_status_list right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Representation of a rebase
         /// </summary>
-        public readonly partial struct git_rebase : IEquatable<libgit2.git_rebase>
+        public readonly partial record struct git_rebase(nint Handle)
         {
-            public git_rebase(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_rebase other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_rebase other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_rebase left, git_rebase right) => left.Equals(right);
-            
-            public static bool operator !=(git_rebase left, git_rebase right) => !left.Equals(right);
         }
         
         /// <summary>
         /// A refspec specifies the mapping between remote and local reference
         /// names when fetch or pushing.
         /// </summary>
-        public readonly partial struct git_refspec : IEquatable<libgit2.git_refspec>
+        public readonly partial record struct git_refspec(nint Handle)
         {
-            public git_refspec(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_refspec other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_refspec other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_refspec left, git_refspec right) => left.Equals(right);
-            
-            public static bool operator !=(git_refspec left, git_refspec right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Git's idea of a remote repository. A remote can be anonymous (in
         /// which case it does not have backing configuration entries).
         /// </summary>
-        public readonly partial struct git_remote : IEquatable<libgit2.git_remote>
+        public readonly partial record struct git_remote(nint Handle)
         {
-            public git_remote(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_remote other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_remote other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_remote left, git_remote right) => left.Equals(right);
-            
-            public static bool operator !=(git_remote left, git_remote right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Interface which represents a transport to communicate with a
         /// remote.
         /// </summary>
-        public readonly partial struct git_transport : IEquatable<libgit2.git_transport>
+        public readonly partial record struct git_transport(nint Handle)
         {
-            public git_transport(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_transport other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_transport other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_transport left, git_transport right) => left.Equals(right);
-            
-            public static bool operator !=(git_transport left, git_transport right) => !left.Equals(right);
         }
         
         /// <summary>
         /// Preparation for a push operation. Can be used to configure what to
         /// push and the level of parallelism of the packfile builder.
         /// </summary>
-        public readonly partial struct git_push : IEquatable<libgit2.git_push>
+        public readonly partial record struct git_push(nint Handle)
         {
-            public git_push(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_push other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_push other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_push left, git_push right) => left.Equals(right);
-            
-            public static bool operator !=(git_push left, git_push right) => !left.Equals(right);
-        }
-        
-        /// <summary>
-        /// Description of a reference advertised by a remote server, given out
-        /// on `ls` calls.
-        /// </summary>
-        public partial struct git_remote_head
-        {
-            /// <summary>
-            /// available locally
-            /// </summary>
-            public int local;
-            
-            public libgit2.git_oid oid;
-            
-            public libgit2.git_oid loid;
-            
-            public byte* name;
-            
-            /// <summary>
-            /// If the server send a symref mapping for this ref, this will
-            /// point to the target.
-            /// </summary>
-            public byte* symref_target;
-        }
-        
-        /// <summary>
-        /// The callback settings structure
-        /// </summary>
-        /// <remarks>
-        /// Set the callbacks to be called by the remote when informing the user
-        /// about the progress of the network operations.
-        /// </remarks>
-        public partial struct git_remote_callbacks
-        {
-            /// <summary>
-            /// The version
-            /// </summary>
-            public uint version;
-            
-            /// <summary>
-            /// Textual progress from the remote. Text send over the
-            /// progress side-band will be passed to this function (this is
-            /// the 'counting objects' output).
-            /// </summary>
-            public libgit2.git_transport_message_cb sideband_progress;
-            
-            /// <summary>
-            /// Completion is called when different parts of the download
-            /// process are done (currently unused).
-            /// </summary>
-            public delegate*unmanaged[Cdecl]<libgit2.git_remote_completion_t, void*, int> completion;
-            
-            /// <summary>
-            /// This will be called if the remote host requires
-            /// authentication in order to connect to it.
-            /// </summary>
-            /// <remarks>
-            /// Returning GIT_PASSTHROUGH will make libgit2 behave as
-            /// though this field isn't set.
-            /// </remarks>
-            public libgit2.git_credential_acquire_cb credentials;
-            
-            /// <summary>
-            /// If cert verification fails, this will be called to let the
-            /// user make the final decision of whether to allow the
-            /// connection to proceed. Returns 0 to allow the connection
-            /// or a negative value to indicate an error.
-            /// </summary>
-            public libgit2.git_transport_certificate_check_cb certificate_check;
-            
-            /// <summary>
-            /// During the download of new data, this will be regularly
-            /// called with the current count of progress done by the
-            /// indexer.
-            /// </summary>
-            public libgit2.git_indexer_progress_cb transfer_progress;
-            
-            /// <summary>
-            /// Each time a reference is updated locally, this function
-            /// will be called with information about it.
-            /// </summary>
-            public delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, libgit2.git_oid*, void*, int> update_tips;
-            
-            /// <summary>
-            /// Function to call with progress information during pack
-            /// building. Be aware that this is called inline with pack
-            /// building operations, so performance may be affected.
-            /// </summary>
-            public libgit2.git_packbuilder_progress pack_progress;
-            
-            /// <summary>
-            /// Function to call with progress information during the
-            /// upload portion of a push. Be aware that this is called
-            /// inline with pack building operations, so performance may be
-            /// affected.
-            /// </summary>
-            public libgit2.git_push_transfer_progress_cb push_transfer_progress;
-            
-            /// <summary>
-            /// See documentation of git_push_update_reference_cb
-            /// </summary>
-            public libgit2.git_push_update_reference_cb push_update_reference;
-            
-            /// <summary>
-            /// Called once between the negotiation step and the upload. It
-            /// provides information about what updates will be performed.
-            /// </summary>
-            public libgit2.git_push_negotiation push_negotiation;
-            
-            /// <summary>
-            /// Create the transport to use for this operation. Leave NULL
-            /// to auto-detect.
-            /// </summary>
-            public libgit2.git_transport_cb transport;
-            
-            /// <summary>
-            /// Callback when the remote is ready to connect.
-            /// </summary>
-            public libgit2.git_remote_ready_cb remote_ready;
-            
-            /// <summary>
-            /// This will be passed to each of the callbacks in this struct
-            /// as the last parameter.
-            /// </summary>
-            public void* payload;
-            
-            public void* reserved;
-        }
-        
-        /// <summary>
-        /// Parent type for `git_cert_hostkey` and `git_cert_x509`.
-        /// </summary>
-        public partial struct git_cert
-        {
-            /// <summary>
-            /// Type of certificate. A `GIT_CERT_` value.
-            /// </summary>
-            public libgit2.git_cert_t cert_type;
         }
         
         /// <summary>
         /// Opaque structure representing a submodule.
         /// </summary>
-        public readonly partial struct git_submodule : IEquatable<libgit2.git_submodule>
+        public readonly partial record struct git_submodule(nint Handle)
         {
-            public git_submodule(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_submodule other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_submodule other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_submodule left, git_submodule right) => left.Equals(right);
-            
-            public static bool operator !=(git_submodule left, git_submodule right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -1486,23 +716,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Representation of .mailmap file state.
         /// </summary>
-        public readonly partial struct git_mailmap : IEquatable<libgit2.git_mailmap>
+        public readonly partial record struct git_mailmap(nint Handle)
         {
-            public git_mailmap(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_mailmap other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_mailmap other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_mailmap left, git_mailmap right) => left.Equals(right);
-            
-            public static bool operator !=(git_mailmap left, git_mailmap right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -1512,27 +728,11 @@ namespace XenoAtom.Interop
         /// before us (directly or indirectly), they'll get 32 bit off_t in their client
         /// app, even though /we/ define _FILE_OFFSET_BITS=64.
         /// </summary>
-        public readonly partial struct git_off_t : IEquatable<libgit2.git_off_t>
+        public readonly partial record struct git_off_t(long Value)
         {
-            public git_off_t(long value) => this.Value = value;
+            public static implicit operator long (git_off_t from) => from.Value;
             
-            public long Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_off_t other && Equals(other);
-            
-            public bool Equals(git_off_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator long (libgit2.git_off_t from) => from.Value;
-            
-            public static implicit operator libgit2.git_off_t (long from) => new libgit2.git_off_t(from);
-            
-            public static bool operator ==(git_off_t left, git_off_t right) => left.Equals(right);
-            
-            public static bool operator !=(git_off_t left, git_off_t right) => !left.Equals(right);
+            public static implicit operator git_off_t (long from) => new (from);
         }
     }
 }

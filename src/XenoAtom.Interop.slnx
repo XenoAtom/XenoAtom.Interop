@@ -1,0 +1,85 @@
+<Solution>
+  <Folder Name="/00-general/">
+    <File Path="../.editorconfig" />
+    <File Path="../.gitattributes" />
+    <File Path="../.gitignore" />
+    <File Path="../license.txt" />
+    <File Path="../readme.md" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+  </Folder>
+  <Folder Name="/01-ci/">
+    <File Path="../.github/workflows/ci_build_codegen.yml" />
+    <File Path="../.github/workflows/ci_build_common.yml" />
+    <File Path="../.github/workflows/ci_build_libgit2.yml" />
+    <File Path="../.github/workflows/ci_build_libshaderc.yml" />
+    <File Path="../.github/workflows/ci_build_musl.yml" />
+    <File Path="../.github/workflows/ci_build_sqlite.yml" />
+    <File Path="../.github/workflows/ci_build_vulkan.yml" />
+    <File Path="../.github/workflows/ci_build_zlib.yml" />
+    <File Path="../.github/workflows/ci_publish_common.yml" />
+    <File Path="../.github/workflows/ci_publish_libgit2.yml" />
+    <File Path="../.github/workflows/ci_publish_libshaderc.yml" />
+    <File Path="../.github/workflows/ci_publish_musl.yml" />
+    <File Path="../.github/workflows/ci_publish_sqlite.yml" />
+    <File Path="../.github/workflows/ci_publish_vulkan.yml" />
+    <File Path="../.github/workflows/ci_publish_zlib.yml" />
+  </Folder>
+  <Folder Name="/10-codegen/">
+    <Project Path="codegen/XenoAtom.Interop.CodeGen/XenoAtom.Interop.CodeGen.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/">
+    <File Path="LibraryShared.props" />
+    <File Path="TestsShared.props" />
+  </Folder>
+  <Folder Name="/20-libraries/common/">
+    <File Path="common/dotnet-releaser.toml" />
+    <Project Path="common/XenoAtom.Interop.common.Tests/XenoAtom.Interop.common.Tests.csproj" />
+    <Project Path="common/XenoAtom.Interop.common/XenoAtom.Interop.common.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/libdrm/">
+    <File Path="libdrm/dotnet-releaser.toml" />
+    <Project Path="libdrm/XenoAtom.Interop.libdrm.Tests/XenoAtom.Interop.libdrm.Tests.csproj" />
+    <Project Path="libdrm/XenoAtom.Interop.libdrm/XenoAtom.Interop.libdrm.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/libgbm/">
+    <File Path="libgbm/dotnet-releaser.toml" />
+    <Project Path="libgbm/XenoAtom.Interop.libgbm.Tests/XenoAtom.Interop.libgbm.Tests.csproj" />
+    <Project Path="libgbm/XenoAtom.Interop.libgbm/XenoAtom.Interop.libgbm.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/libgit2/">
+    <File Path="libgit2/dotnet-releaser.toml" />
+    <Project Path="libgit2/XenoAtom.Interop.libgit2.Tests/XenoAtom.Interop.libgit2.Tests.csproj" />
+    <Project Path="libgit2/XenoAtom.Interop.libgit2/XenoAtom.Interop.libgit2.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/libkmod/">
+    <File Path="libkmod/dotnet-releaser.toml" />
+    <Project Path="libkmod/XenoAtom.Interop.libkmod.Tests/XenoAtom.Interop.libkmod.Tests.csproj" />
+    <Project Path="libkmod/XenoAtom.Interop.libkmod/XenoAtom.Interop.libkmod.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/libshaderc/">
+    <File Path="libshaderc/dotnet-releaser.toml" />
+    <Project Path="libshaderc/XenoAtom.Interop.libshaderc.Tests/XenoAtom.Interop.libshaderc.Tests.csproj" />
+    <Project Path="libshaderc/XenoAtom.Interop.libshaderc/XenoAtom.Interop.libshaderc.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/musl/">
+    <File Path="musl/dotnet-releaser.toml" />
+    <Project Path="musl/XenoAtom.Interop.musl.Tests/XenoAtom.Interop.musl.Tests.csproj" />
+    <Project Path="musl/XenoAtom.Interop.musl/XenoAtom.Interop.musl.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/sqlite/">
+    <File Path="sqlite/dotnet-releaser.toml" />
+    <Project Path="sqlite/XenoAtom.Interop.sqlite.Tests/XenoAtom.Interop.sqlite.Tests.csproj" />
+    <Project Path="sqlite/XenoAtom.Interop.sqlite/XenoAtom.Interop.sqlite.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/vulkan/">
+    <File Path="vulkan/dotnet-releaser.toml" />
+    <Project Path="vulkan/XenoAtom.Interop.vulkan.Tests/XenoAtom.Interop.vulkan.Tests.csproj" />
+    <Project Path="vulkan/XenoAtom.Interop.vulkan/XenoAtom.Interop.vulkan.csproj" />
+  </Folder>
+  <Folder Name="/20-libraries/zlib/">
+    <File Path="zlib/dotnet-releaser.toml" />
+    <Project Path="zlib/XenoAtom.Interop.zlib.Tests/XenoAtom.Interop.zlib.Tests.csproj" />
+    <Project Path="zlib/XenoAtom.Interop.zlib/XenoAtom.Interop.zlib.csproj" />
+  </Folder>
+</Solution>

@@ -37,7 +37,7 @@ if (ret != Z_OK)
 ```
 ## 📦 Compatible Native Binaries
 
-This library does not provide C native binaries but only P/Invoke .NET bindings to `zlib` `1.3.1-r2`.
+This library does not provide C native binaries but only P/Invoke .NET bindings to `zlib` `1.3.2-r0`.
 
 If the native library is already installed on your system, check the version installed. If you are using this library on Alpine Linux, see the compatible version in the [Supported API](#supported-api) section below.
 Other OS might require a different setup.
@@ -57,12 +57,12 @@ The following packages were tested and are compatible with **XenoAtom.Interop.zl
 > This package is based on the following header version:
 > 
 > - zlib C include headers: [`zlib-dev`](https://pkgs.alpinelinux.org/package/v3.21/main/x86_64/zlib-dev)
-> - Version: `1.3.1-r2`
+> - Version: `1.3.2-r0`
 > - Distribution: AlpineLinux `v3.21`
 
 The following API were automatically generated from the C/C++ code:
 
-- zlib.h: `adler32`, `adler32_combine`, `adler32_z`, `compress`, `compress2`, `compressBound`, `crc32`, `crc32_combine`, `crc32_combine_gen`, `crc32_combine_op`, `crc32_z`, `deflate`, `deflateBound`, `deflateCopy`, `deflateEnd`, `deflateGetDictionary`, `deflateInit2_`, `deflateInit_`, `deflateParams`, `deflatePending`, `deflatePrime`, `deflateReset`, `deflateSetDictionary`, `deflateSetHeader`, `deflateTune`, `inflate`, `inflateBack`, `inflateBackEnd`, `inflateBackInit_`, `inflateCopy`, `inflateEnd`, `inflateGetDictionary`, `inflateGetHeader`, `inflateInit2_`, `inflateInit_`, `inflateMark`, `inflatePrime`, `inflateReset`, `inflateReset2`, `inflateSetDictionary`, `inflateSync`, `uncompress`, `uncompress2`, `zlibCompileFlags`, `zlibVersion`
+- zlib.h: `adler32`, `adler32_combine`, `adler32_z`, `compress`, `compress2`, `compress2_z`, `compressBound`, `compressBound_z`, `compress_z`, `crc32`, `crc32_combine`, `crc32_combine_gen`, `crc32_combine_op`, `crc32_z`, `deflate`, `deflateBound`, `deflateBound_z`, `deflateCopy`, `deflateEnd`, `deflateGetDictionary`, `deflateInit2_`, `deflateInit_`, `deflateParams`, `deflatePending`, `deflatePrime`, `deflateReset`, `deflateSetDictionary`, `deflateSetHeader`, `deflateTune`, `deflateUsed`, `inflate`, `inflateBack`, `inflateBackEnd`, `inflateBackInit_`, `inflateCopy`, `inflateEnd`, `inflateGetDictionary`, `inflateGetHeader`, `inflateInit2_`, `inflateInit_`, `inflateMark`, `inflatePrime`, `inflateReset`, `inflateReset2`, `inflateSetDictionary`, `inflateSync`, `uncompress`, `uncompress2`, `uncompress2_z`, `uncompress_z`, `zlibCompileFlags`, `zlibVersion`
 
 
 ## 🪪 License

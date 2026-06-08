@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -17,27 +18,11 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        public readonly partial struct shmatt_t : IEquatable<musl.shmatt_t>
+        public readonly partial record struct shmatt_t(nuint Value)
         {
-            public shmatt_t(nuint value) => this.Value = value;
+            public static implicit operator nuint (shmatt_t from) => from.Value;
             
-            public nuint Value { get; }
-            
-            public override bool Equals(object obj) => obj is shmatt_t other && Equals(other);
-            
-            public bool Equals(shmatt_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator nuint (musl.shmatt_t from) => from.Value;
-            
-            public static implicit operator musl.shmatt_t (nuint from) => new musl.shmatt_t(from);
-            
-            public static bool operator ==(shmatt_t left, shmatt_t right) => left.Equals(right);
-            
-            public static bool operator !=(shmatt_t left, shmatt_t right) => !left.Equals(right);
+            public static implicit operator shmatt_t (nuint from) => new (from);
         }
         
         public const int SHM_R = 256;

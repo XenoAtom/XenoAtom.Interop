@@ -9,11 +9,10 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
     
-    public static unsafe partial class sqlite
-    {
-    }
+    public static unsafe partial class sqlite;
 }

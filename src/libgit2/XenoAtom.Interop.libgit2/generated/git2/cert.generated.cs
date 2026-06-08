@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class libgit2
@@ -192,6 +193,17 @@ namespace XenoAtom.Interop
         public const libgit2.git_cert_ssh_raw_type_t GIT_CERT_SSH_RAW_TYPE_KEY_ED25519 = git_cert_ssh_raw_type_t.GIT_CERT_SSH_RAW_TYPE_KEY_ED25519;
         
         /// <summary>
+        /// Parent type for `git_cert_hostkey` and `git_cert_x509`.
+        /// </summary>
+        public partial struct git_cert
+        {
+            /// <summary>
+            /// Type of certificate. A `GIT_CERT_` value.
+            /// </summary>
+            public libgit2.git_cert_t cert_type;
+        }
+        
+        /// <summary>
         /// Callback for the user's custom certificate checks.
         /// </summary>
         /// <param name="cert">The host certificate</param>
@@ -204,7 +216,7 @@ namespace XenoAtom.Interop
         /// 0 to fail the connection
         /// or &gt; 0 to indicate that the callback refused to act and that
         /// the existing validity determination should be honored</returns>
-        public readonly partial struct git_transport_certificate_check_cb : IEquatable<libgit2.git_transport_certificate_check_cb>
+        public readonly partial struct git_transport_certificate_check_cb : IEquatable<git_transport_certificate_check_cb>
         {
             public git_transport_certificate_check_cb(delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> value) => this.Value = value;
             
@@ -218,13 +230,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> (libgit2.git_transport_certificate_check_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_transport_certificate_check_cb (delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> from) => new libgit2.git_transport_certificate_check_cb(from);
-            
             public static bool operator ==(git_transport_certificate_check_cb left, git_transport_certificate_check_cb right) => left.Equals(right);
             
             public static bool operator !=(git_transport_certificate_check_cb left, git_transport_certificate_check_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> (git_transport_certificate_check_cb from) => from.Value;
+            
+            public static implicit operator git_transport_certificate_check_cb (delegate*unmanaged[Cdecl]<libgit2.git_cert*, int, byte*, void*, int> from) => new (from);
         }
         
         /// <summary>

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -25,7 +26,7 @@ namespace XenoAtom.Interop
         /// <param name="payload">Payload passed to git_tag_foreach</param>
         /// <returns>non-zero to terminate the iteration</returns>
         /// <seealso cref="git_tag_foreach"/>
-        public readonly partial struct git_tag_foreach_cb : IEquatable<libgit2.git_tag_foreach_cb>
+        public readonly partial struct git_tag_foreach_cb : IEquatable<git_tag_foreach_cb>
         {
             public git_tag_foreach_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> value) => this.Value = value;
             
@@ -39,13 +40,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> (libgit2.git_tag_foreach_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_tag_foreach_cb (delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> from) => new libgit2.git_tag_foreach_cb(from);
-            
             public static bool operator ==(git_tag_foreach_cb left, git_tag_foreach_cb right) => left.Equals(right);
             
             public static bool operator !=(git_tag_foreach_cb left, git_tag_foreach_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> (git_tag_foreach_cb from) => from.Value;
+            
+            public static implicit operator git_tag_foreach_cb (delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, void*, int> from) => new (from);
         }
         
         /// <summary>

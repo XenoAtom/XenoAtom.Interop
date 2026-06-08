@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -20,23 +21,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Iterator type for branches
         /// </summary>
-        public readonly partial struct git_branch_iterator : IEquatable<libgit2.git_branch_iterator>
+        public readonly partial record struct git_branch_iterator(nint Handle)
         {
-            public git_branch_iterator(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_branch_iterator other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_branch_iterator other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_branch_iterator left, git_branch_iterator right) => left.Equals(right);
-            
-            public static bool operator !=(git_branch_iterator left, git_branch_iterator right) => !left.Equals(right);
         }
         
         /// <summary>

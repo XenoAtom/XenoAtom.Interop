@@ -130,6 +130,8 @@ internal partial class LibdrmGenerator(LibDescriptor descriptor) : GeneratorBase
                 e => e.Map<CppTypedef>("drmServerInfo.*").Discard(),
                 e => e.Map<CppClass>("_drmServerInfo").Discard(),
                 e => e.Map<CppFunction>("drmSetServerInfo").Discard(),
+
+                e => e.Map<CppClass>("__va_list_tag").Discard(), // discard __va_list_tag
             }
         };
 

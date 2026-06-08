@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -17,50 +18,18 @@ namespace XenoAtom.Interop
     {
         public static unsafe partial class aarch64
         {
-            public readonly partial struct blksize_t : IEquatable<musl.aarch64.blksize_t>
+            public readonly partial record struct blksize_t(int Value)
             {
-                public blksize_t(int value) => this.Value = value;
+                public static implicit operator int (blksize_t from) => from.Value;
                 
-                public int Value { get; }
-                
-                public override bool Equals(object obj) => obj is blksize_t other && Equals(other);
-                
-                public bool Equals(blksize_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator int (musl.aarch64.blksize_t from) => from.Value;
-                
-                public static implicit operator musl.aarch64.blksize_t (int from) => new musl.aarch64.blksize_t(from);
-                
-                public static bool operator ==(blksize_t left, blksize_t right) => left.Equals(right);
-                
-                public static bool operator !=(blksize_t left, blksize_t right) => !left.Equals(right);
+                public static implicit operator blksize_t (int from) => new (from);
             }
             
-            public readonly partial struct nlink_t : IEquatable<musl.aarch64.nlink_t>
+            public readonly partial record struct nlink_t(uint Value)
             {
-                public nlink_t(uint value) => this.Value = value;
+                public static implicit operator uint (nlink_t from) => from.Value;
                 
-                public uint Value { get; }
-                
-                public override bool Equals(object obj) => obj is nlink_t other && Equals(other);
-                
-                public bool Equals(nlink_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator uint (musl.aarch64.nlink_t from) => from.Value;
-                
-                public static implicit operator musl.aarch64.nlink_t (uint from) => new musl.aarch64.nlink_t(from);
-                
-                public static bool operator ==(nlink_t left, nlink_t right) => left.Equals(right);
-                
-                public static bool operator !=(nlink_t left, nlink_t right) => !left.Equals(right);
+                public static implicit operator nlink_t (uint from) => new (from);
             }
         }
     }

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class vulkan
@@ -30,23 +31,23 @@ namespace XenoAtom.Interop
             
             public byte luma_log2_weight_denom;
             
-            public sbyte delta_chroma_log2_weight_denom;
+            public byte delta_chroma_log2_weight_denom;
             
             public fixed byte delta_luma_weight_l0[15];
             
             public fixed byte luma_offset_l0[15];
             
-            public FixedArray15<FixedArray2<sbyte>> delta_chroma_weight_l0;
+            public FixedArray15<FixedArray2<byte>> delta_chroma_weight_l0;
             
-            public FixedArray15<FixedArray2<sbyte>> delta_chroma_offset_l0;
+            public FixedArray15<FixedArray2<byte>> delta_chroma_offset_l0;
             
             public fixed byte delta_luma_weight_l1[15];
             
             public fixed byte luma_offset_l1[15];
             
-            public FixedArray15<FixedArray2<sbyte>> delta_chroma_weight_l1;
+            public FixedArray15<FixedArray2<byte>> delta_chroma_weight_l1;
             
-            public FixedArray15<FixedArray2<sbyte>> delta_chroma_offset_l1;
+            public FixedArray15<FixedArray2<byte>> delta_chroma_offset_l1;
         }
         
         public partial struct StdVideoEncodeH265SliceSegmentHeaderFlags
@@ -222,21 +223,21 @@ namespace XenoAtom.Interop
             
             public byte MaxNumMergeCand;
             
-            public sbyte slice_cb_qp_offset;
+            public byte slice_cb_qp_offset;
             
-            public sbyte slice_cr_qp_offset;
+            public byte slice_cr_qp_offset;
             
-            public sbyte slice_beta_offset_div2;
+            public byte slice_beta_offset_div2;
             
-            public sbyte slice_tc_offset_div2;
+            public byte slice_tc_offset_div2;
             
-            public sbyte slice_act_y_qp_offset;
+            public byte slice_act_y_qp_offset;
             
-            public sbyte slice_act_cb_qp_offset;
+            public byte slice_act_cb_qp_offset;
             
-            public sbyte slice_act_cr_qp_offset;
+            public byte slice_act_cr_qp_offset;
             
-            public sbyte slice_qp_delta;
+            public byte slice_qp_delta;
             
             public ushort reserved1;
             

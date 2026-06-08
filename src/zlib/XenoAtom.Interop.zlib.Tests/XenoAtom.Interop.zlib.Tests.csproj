@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(MSBuildThisFileDirectory)../../TestsShared.props"/>
+  <Import Project="$(MSBuildThisFileDirectory)../../TestsShared.props" />
 
   <ItemGroup>
-    <PackageReference Include="elskom.zlib.redist.win" Version="1.2.13" />
-    <PackageReference Include="elskom.zlib.redist.linux" Version="1.2.13" />
-    <PackageReference Include="elskom.zlib.redist.osx" Version="1.2.13" />
+    <PackageReference Include="elskom.zlib.redist.win" />
+    <PackageReference Include="elskom.zlib.redist.linux" />
+    <PackageReference Include="elskom.zlib.redist.osx" />
   </ItemGroup>
 
   <ItemGroup>

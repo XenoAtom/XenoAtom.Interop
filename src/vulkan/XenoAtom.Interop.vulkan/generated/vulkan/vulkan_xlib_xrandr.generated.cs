@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -17,7 +18,7 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class vulkan
     {
-        public readonly partial struct PFN_vkAcquireXlibDisplayEXT : IEquatable<vulkan.PFN_vkAcquireXlibDisplayEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkAcquireXlibDisplayEXT>
+        public readonly partial struct PFN_vkAcquireXlibDisplayEXT : IEquatable<PFN_vkAcquireXlibDisplayEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkAcquireXlibDisplayEXT>
         {
             public PFN_vkAcquireXlibDisplayEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, vulkan.VkDisplayKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -31,13 +32,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, vulkan.VkDisplayKHR, vulkan.VkResult> (vulkan.PFN_vkAcquireXlibDisplayEXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkAcquireXlibDisplayEXT (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, vulkan.VkDisplayKHR, vulkan.VkResult> from) => new vulkan.PFN_vkAcquireXlibDisplayEXT(from);
-            
             public static bool operator ==(PFN_vkAcquireXlibDisplayEXT left, PFN_vkAcquireXlibDisplayEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkAcquireXlibDisplayEXT left, PFN_vkAcquireXlibDisplayEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, vulkan.VkDisplayKHR, vulkan.VkResult> (PFN_vkAcquireXlibDisplayEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkAcquireXlibDisplayEXT (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, vulkan.VkDisplayKHR, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkAcquireXlibDisplayEXT`.
@@ -69,7 +70,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetRandROutputDisplayEXT : IEquatable<vulkan.PFN_vkGetRandROutputDisplayEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetRandROutputDisplayEXT>
+        public readonly partial struct PFN_vkGetRandROutputDisplayEXT : IEquatable<PFN_vkGetRandROutputDisplayEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetRandROutputDisplayEXT>
         {
             public PFN_vkGetRandROutputDisplayEXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, nuint, vulkan.VkDisplayKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -83,13 +84,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, nuint, vulkan.VkDisplayKHR*, vulkan.VkResult> (vulkan.PFN_vkGetRandROutputDisplayEXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetRandROutputDisplayEXT (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, nuint, vulkan.VkDisplayKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkGetRandROutputDisplayEXT(from);
-            
             public static bool operator ==(PFN_vkGetRandROutputDisplayEXT left, PFN_vkGetRandROutputDisplayEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetRandROutputDisplayEXT left, PFN_vkGetRandROutputDisplayEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, nuint, vulkan.VkDisplayKHR*, vulkan.VkResult> (PFN_vkGetRandROutputDisplayEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkGetRandROutputDisplayEXT (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, void*, nuint, vulkan.VkDisplayKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetRandROutputDisplayEXT`.

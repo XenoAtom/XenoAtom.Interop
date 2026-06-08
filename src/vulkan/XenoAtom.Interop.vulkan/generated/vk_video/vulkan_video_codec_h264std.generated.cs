@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class vulkan
@@ -1069,13 +1070,13 @@ namespace XenoAtom.Interop
             
             public vulkan.StdVideoH264WeightedBipredIdc weighted_bipred_idc;
             
-            public sbyte pic_init_qp_minus26;
+            public byte pic_init_qp_minus26;
             
-            public sbyte pic_init_qs_minus26;
+            public byte pic_init_qs_minus26;
             
-            public sbyte chroma_qp_index_offset;
+            public byte chroma_qp_index_offset;
             
-            public sbyte second_chroma_qp_index_offset;
+            public byte second_chroma_qp_index_offset;
             
             public vulkan.StdVideoH264ScalingLists* pScalingLists;
         }

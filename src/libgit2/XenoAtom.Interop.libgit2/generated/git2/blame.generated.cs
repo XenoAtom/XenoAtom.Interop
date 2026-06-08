@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -256,23 +257,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Opaque structure to hold blame results
         /// </summary>
-        public readonly partial struct git_blame : IEquatable<libgit2.git_blame>
+        public readonly partial record struct git_blame(nint Handle)
         {
-            public git_blame(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_blame other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_blame other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_blame left, git_blame right) => left.Equals(right);
-            
-            public static bool operator !=(git_blame left, git_blame right) => !left.Equals(right);
         }
         
         public const uint GIT_BLAME_OPTIONS_VERSION = 1;

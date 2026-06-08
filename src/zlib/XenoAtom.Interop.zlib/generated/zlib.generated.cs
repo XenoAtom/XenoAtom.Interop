@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -17,6 +18,11 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class zlib
     {
+        public readonly partial record struct internal_state(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
         public partial struct z_stream
         {
             /// <summary>
@@ -164,15 +170,15 @@ namespace XenoAtom.Interop
             public int done;
         }
         
-        public const string ZLIB_VERSION = "1.3.1";
+        public const string ZLIB_VERSION = "1.3.2";
         
-        public const int ZLIB_VERNUM = 4880;
+        public const int ZLIB_VERNUM = 4896;
         
         public const int ZLIB_VER_MAJOR = 1;
         
         public const int ZLIB_VER_MINOR = 3;
         
-        public const int ZLIB_VER_REVISION = 1;
+        public const int ZLIB_VER_REVISION = 2;
         
         public const int ZLIB_VER_SUBREVISION = 0;
         
@@ -242,9 +248,17 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial global::System.Runtime.InteropServices.CULong deflateBound(ref zlib.z_stream strm, global::System.Runtime.InteropServices.CULong sourceLen);
         
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "deflateBound_z")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial global::System.Runtime.InteropServices.CULong deflateBound_z(ref zlib.z_stream strm, global::System.Runtime.InteropServices.CULong sourceLen);
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "deflatePending")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial zlib.z_result_t deflatePending(ref zlib.z_stream strm, ref uint pending, ref int bits);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "deflateUsed")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int deflateUsed(ref zlib.z_stream strm, ref int bits);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "deflatePrime")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -306,21 +320,41 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial zlib.z_result_t compress(byte* dest, global::System.Runtime.InteropServices.CULong* destLen, byte* source, global::System.Runtime.InteropServices.CULong sourceLen);
         
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "compress_z")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int compress_z(byte* dest, global::System.Runtime.InteropServices.CULong* destLen, byte* source, global::System.Runtime.InteropServices.CULong sourceLen);
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "compress2")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial zlib.z_result_t compress2(byte* dest, global::System.Runtime.InteropServices.CULong* destLen, byte* source, global::System.Runtime.InteropServices.CULong sourceLen, int level);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "compress2_z")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int compress2_z(byte* dest, global::System.Runtime.InteropServices.CULong* destLen, byte* source, global::System.Runtime.InteropServices.CULong sourceLen, int level);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "compressBound")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial uint compressBound(uint sourceLen);
         
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "compressBound_z")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial global::System.Runtime.InteropServices.CULong compressBound_z(global::System.Runtime.InteropServices.CULong sourceLen);
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "uncompress")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial zlib.z_result_t uncompress(byte* dest, global::System.Runtime.InteropServices.CULong* destLen, byte* source, global::System.Runtime.InteropServices.CULong sourceLen);
         
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "uncompress_z")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int uncompress_z(byte* dest, global::System.Runtime.InteropServices.CULong* destLen, byte* source, global::System.Runtime.InteropServices.CULong sourceLen);
+        
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "uncompress2")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial zlib.z_result_t uncompress2(byte* dest, global::System.Runtime.InteropServices.CULong* destLen, byte* source, global::System.Runtime.InteropServices.CULong* sourceLen);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "uncompress2_z")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int uncompress2_z(byte* dest, global::System.Runtime.InteropServices.CULong* destLen, byte* source, global::System.Runtime.InteropServices.CULong* sourceLen);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "adler32")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -328,7 +362,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "adler32_z")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial uint adler32_z(uint adler, byte* buf, nuint len);
+        public static partial uint adler32_z(uint adler, byte* buf, global::System.Runtime.InteropServices.CULong len);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "crc32")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -336,7 +370,7 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "crc32_z")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial uint crc32_z(uint crc, byte* buf, nuint len);
+        public static partial uint crc32_z(uint crc, byte* buf, global::System.Runtime.InteropServices.CULong len);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "crc32_combine_op")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

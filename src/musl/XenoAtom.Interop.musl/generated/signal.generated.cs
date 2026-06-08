@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -58,27 +59,11 @@ namespace XenoAtom.Interop
             public void* sival_ptr;
         }
         
-        public readonly partial struct stack_t : IEquatable<musl.stack_t>
+        public readonly partial record struct stack_t(musl.sigaltstack_t Value)
         {
-            public stack_t(musl.sigaltstack_t value) => this.Value = value;
+            public static implicit operator musl.sigaltstack_t (stack_t from) => from.Value;
             
-            public musl.sigaltstack_t Value { get; }
-            
-            public override bool Equals(object obj) => obj is stack_t other && Equals(other);
-            
-            public bool Equals(stack_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator musl.sigaltstack_t (musl.stack_t from) => from.Value;
-            
-            public static implicit operator musl.stack_t (musl.sigaltstack_t from) => new musl.stack_t(from);
-            
-            public static bool operator ==(stack_t left, stack_t right) => left.Equals(right);
-            
-            public static bool operator !=(stack_t left, stack_t right) => !left.Equals(right);
+            public static implicit operator stack_t (musl.sigaltstack_t from) => new (from);
         }
         
         public partial struct siginfo_t
@@ -224,7 +209,7 @@ namespace XenoAtom.Interop
             public delegate*unmanaged[Cdecl]<void> sa_restorer;
         }
         
-        public readonly partial struct sig_t : IEquatable<musl.sig_t>
+        public readonly partial struct sig_t : IEquatable<sig_t>
         {
             public sig_t(delegate*unmanaged[Cdecl]<int, void> value) => this.Value = value;
             
@@ -238,13 +223,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<int, void> (musl.sig_t from) => from.Value;
-            
-            public static implicit operator musl.sig_t (delegate*unmanaged[Cdecl]<int, void> from) => new musl.sig_t(from);
-            
             public static bool operator ==(sig_t left, sig_t right) => left.Equals(right);
             
             public static bool operator !=(sig_t left, sig_t right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<int, void> (sig_t from) => from.Value;
+            
+            public static implicit operator sig_t (delegate*unmanaged[Cdecl]<int, void> from) => new (from);
         }
         
         /// <summary>
@@ -252,7 +237,7 @@ namespace XenoAtom.Interop
         /// POSIX.1 uses the same type but without a
         /// typedef .
         /// </summary>
-        public readonly partial struct sighandler_t : IEquatable<musl.sighandler_t>
+        public readonly partial struct sighandler_t : IEquatable<sighandler_t>
         {
             public sighandler_t(delegate*unmanaged[Cdecl]<int, void> value) => this.Value = value;
             
@@ -266,36 +251,20 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<int, void> (musl.sighandler_t from) => from.Value;
-            
-            public static implicit operator musl.sighandler_t (delegate*unmanaged[Cdecl]<int, void> from) => new musl.sighandler_t(from);
-            
             public static bool operator ==(sighandler_t left, sighandler_t right) => left.Equals(right);
             
             public static bool operator !=(sighandler_t left, sighandler_t right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<int, void> (sighandler_t from) => from.Value;
+            
+            public static implicit operator sighandler_t (delegate*unmanaged[Cdecl]<int, void> from) => new (from);
         }
         
-        public readonly partial struct sig_atomic_t : IEquatable<musl.sig_atomic_t>
+        public readonly partial record struct sig_atomic_t(int Value)
         {
-            public sig_atomic_t(int value) => this.Value = value;
+            public static implicit operator int (sig_atomic_t from) => from.Value;
             
-            public int Value { get; }
-            
-            public override bool Equals(object obj) => obj is sig_atomic_t other && Equals(other);
-            
-            public bool Equals(sig_atomic_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator int (musl.sig_atomic_t from) => from.Value;
-            
-            public static implicit operator musl.sig_atomic_t (int from) => new musl.sig_atomic_t(from);
-            
-            public static bool operator ==(sig_atomic_t left, sig_atomic_t right) => left.Equals(right);
-            
-            public static bool operator !=(sig_atomic_t left, sig_atomic_t right) => !left.Equals(right);
+            public static implicit operator sig_atomic_t (int from) => new (from);
         }
         
         public const int POLL_IN = 1;

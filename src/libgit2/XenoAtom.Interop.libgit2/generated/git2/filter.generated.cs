@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -129,23 +130,9 @@ namespace XenoAtom.Interop
         /// * "ident" which replaces "$Id$" in a blob with "$Id: &lt;blob OID&gt;$" upon
         /// checkout and replaced "$Id: &lt;anything&gt;$" with "$Id$" on checkin.
         /// </remarks>
-        public readonly partial struct git_filter : IEquatable<libgit2.git_filter>
+        public readonly partial record struct git_filter(nint Handle)
         {
-            public git_filter(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_filter other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_filter other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_filter left, git_filter right) => left.Equals(right);
-            
-            public static bool operator !=(git_filter left, git_filter right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -159,23 +146,9 @@ namespace XenoAtom.Interop
         /// handle conversions for you, but it can be convenient to be able to
         /// build and apply the list sometimes.
         /// </remarks>
-        public readonly partial struct git_filter_list : IEquatable<libgit2.git_filter_list>
+        public readonly partial record struct git_filter_list(nint Handle)
         {
-            public git_filter_list(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_filter_list other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_filter_list other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_filter_list left, git_filter_list right) => left.Equals(right);
-            
-            public static bool operator !=(git_filter_list left, git_filter_list right) => !left.Equals(right);
         }
         
         public const uint GIT_FILTER_OPTIONS_VERSION = 1;

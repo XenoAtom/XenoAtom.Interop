@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -17,27 +18,11 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        public readonly partial struct eventfd_t : IEquatable<musl.eventfd_t>
+        public readonly partial record struct eventfd_t(ulong Value)
         {
-            public eventfd_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (eventfd_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is eventfd_t other && Equals(other);
-            
-            public bool Equals(eventfd_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (musl.eventfd_t from) => from.Value;
-            
-            public static implicit operator musl.eventfd_t (ulong from) => new musl.eventfd_t(from);
-            
-            public static bool operator ==(eventfd_t left, eventfd_t right) => left.Equals(right);
-            
-            public static bool operator !=(eventfd_t left, eventfd_t right) => !left.Equals(right);
+            public static implicit operator eventfd_t (ulong from) => new (from);
         }
         
         public const int EFD_SEMAPHORE = 1;

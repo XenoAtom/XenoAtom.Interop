@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -1207,6 +1208,16 @@ namespace XenoAtom.Interop
         /// </summary>
         public const libshaderc.shaderc_include_type shaderc_include_type_standard = shaderc_include_type.shaderc_include_type_standard;
         
+        public readonly partial record struct shaderc_compiler(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
+        public readonly partial record struct shaderc_compile_options(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
         /// <summary>
         /// An include result.
         /// </summary>
@@ -1237,10 +1248,15 @@ namespace XenoAtom.Interop
             public void* user_data;
         }
         
+        public readonly partial record struct shaderc_compilation_result(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
         /// <summary>
         /// An opaque handle to an object that manages all compiler state.
         /// </summary>
-        public readonly partial struct shaderc_compiler_t : IEquatable<libshaderc.shaderc_compiler_t>
+        public readonly partial struct shaderc_compiler_t : IEquatable<shaderc_compiler_t>
         {
             public shaderc_compiler_t(libshaderc.shaderc_compiler value) => this.Value = value;
             
@@ -1254,20 +1270,20 @@ namespace XenoAtom.Interop
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator libshaderc.shaderc_compiler (libshaderc.shaderc_compiler_t from) => from.Value;
-            
-            public static implicit operator libshaderc.shaderc_compiler_t (libshaderc.shaderc_compiler from) => new libshaderc.shaderc_compiler_t(from);
-            
             public static bool operator ==(shaderc_compiler_t left, shaderc_compiler_t right) => left.Equals(right);
             
             public static bool operator !=(shaderc_compiler_t left, shaderc_compiler_t right) => !left.Equals(right);
+            
+            public static implicit operator libshaderc.shaderc_compiler (shaderc_compiler_t from) => from.Value;
+            
+            public static implicit operator shaderc_compiler_t (libshaderc.shaderc_compiler from) => new (from);
         }
         
         /// <summary>
         /// An opaque handle to an object that manages options to a single compilation
         /// result.
         /// </summary>
-        public readonly partial struct shaderc_compile_options_t : IEquatable<libshaderc.shaderc_compile_options_t>
+        public readonly partial struct shaderc_compile_options_t : IEquatable<shaderc_compile_options_t>
         {
             public shaderc_compile_options_t(libshaderc.shaderc_compile_options value) => this.Value = value;
             
@@ -1281,13 +1297,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator libshaderc.shaderc_compile_options (libshaderc.shaderc_compile_options_t from) => from.Value;
-            
-            public static implicit operator libshaderc.shaderc_compile_options_t (libshaderc.shaderc_compile_options from) => new libshaderc.shaderc_compile_options_t(from);
-            
             public static bool operator ==(shaderc_compile_options_t left, shaderc_compile_options_t right) => left.Equals(right);
             
             public static bool operator !=(shaderc_compile_options_t left, shaderc_compile_options_t right) => !left.Equals(right);
+            
+            public static implicit operator libshaderc.shaderc_compile_options (shaderc_compile_options_t from) => from.Value;
+            
+            public static implicit operator shaderc_compile_options_t (libshaderc.shaderc_compile_options from) => new (from);
         }
         
         /// <summary>
@@ -1300,7 +1316,7 @@ namespace XenoAtom.Interop
         /// and both must remain valid until the release callback is called on the result
         /// object.
         /// </summary>
-        public readonly partial struct shaderc_include_resolve_fn : IEquatable<libshaderc.shaderc_include_resolve_fn>
+        public readonly partial struct shaderc_include_resolve_fn : IEquatable<shaderc_include_resolve_fn>
         {
             public shaderc_include_resolve_fn(delegate*unmanaged[Stdcall]<void*, byte*, int, byte*, nuint, libshaderc.shaderc_include_result*> value) => this.Value = value;
             
@@ -1314,19 +1330,19 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<void*, byte*, int, byte*, nuint, libshaderc.shaderc_include_result*> (libshaderc.shaderc_include_resolve_fn from) => from.Value;
-            
-            public static implicit operator libshaderc.shaderc_include_resolve_fn (delegate*unmanaged[Stdcall]<void*, byte*, int, byte*, nuint, libshaderc.shaderc_include_result*> from) => new libshaderc.shaderc_include_resolve_fn(from);
-            
             public static bool operator ==(shaderc_include_resolve_fn left, shaderc_include_resolve_fn right) => left.Equals(right);
             
             public static bool operator !=(shaderc_include_resolve_fn left, shaderc_include_resolve_fn right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<void*, byte*, int, byte*, nuint, libshaderc.shaderc_include_result*> (shaderc_include_resolve_fn from) => from.Value;
+            
+            public static implicit operator shaderc_include_resolve_fn (delegate*unmanaged[Stdcall]<void*, byte*, int, byte*, nuint, libshaderc.shaderc_include_result*> from) => new (from);
         }
         
         /// <summary>
         /// An includer callback type for destroying an include result.
         /// </summary>
-        public readonly partial struct shaderc_include_result_release_fn : IEquatable<libshaderc.shaderc_include_result_release_fn>
+        public readonly partial struct shaderc_include_result_release_fn : IEquatable<shaderc_include_result_release_fn>
         {
             public shaderc_include_result_release_fn(delegate*unmanaged[Stdcall]<void*, libshaderc.shaderc_include_result*, void> value) => this.Value = value;
             
@@ -1340,20 +1356,20 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<void*, libshaderc.shaderc_include_result*, void> (libshaderc.shaderc_include_result_release_fn from) => from.Value;
-            
-            public static implicit operator libshaderc.shaderc_include_result_release_fn (delegate*unmanaged[Stdcall]<void*, libshaderc.shaderc_include_result*, void> from) => new libshaderc.shaderc_include_result_release_fn(from);
-            
             public static bool operator ==(shaderc_include_result_release_fn left, shaderc_include_result_release_fn right) => left.Equals(right);
             
             public static bool operator !=(shaderc_include_result_release_fn left, shaderc_include_result_release_fn right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<void*, libshaderc.shaderc_include_result*, void> (shaderc_include_result_release_fn from) => from.Value;
+            
+            public static implicit operator shaderc_include_result_release_fn (delegate*unmanaged[Stdcall]<void*, libshaderc.shaderc_include_result*, void> from) => new (from);
         }
         
         /// <summary>
         /// An opaque handle to the results of a call to any shaderc_compile_into_*()
         /// function.
         /// </summary>
-        public readonly partial struct shaderc_compilation_result_t : IEquatable<libshaderc.shaderc_compilation_result_t>
+        public readonly partial struct shaderc_compilation_result_t : IEquatable<shaderc_compilation_result_t>
         {
             public shaderc_compilation_result_t(libshaderc.shaderc_compilation_result value) => this.Value = value;
             
@@ -1367,13 +1383,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => Value.ToString();
             
-            public static implicit operator libshaderc.shaderc_compilation_result (libshaderc.shaderc_compilation_result_t from) => from.Value;
-            
-            public static implicit operator libshaderc.shaderc_compilation_result_t (libshaderc.shaderc_compilation_result from) => new libshaderc.shaderc_compilation_result_t(from);
-            
             public static bool operator ==(shaderc_compilation_result_t left, shaderc_compilation_result_t right) => left.Equals(right);
             
             public static bool operator !=(shaderc_compilation_result_t left, shaderc_compilation_result_t right) => !left.Equals(right);
+            
+            public static implicit operator libshaderc.shaderc_compilation_result (shaderc_compilation_result_t from) => from.Value;
+            
+            public static implicit operator shaderc_compilation_result_t (libshaderc.shaderc_compilation_result from) => new (from);
         }
         
         /// <summary>

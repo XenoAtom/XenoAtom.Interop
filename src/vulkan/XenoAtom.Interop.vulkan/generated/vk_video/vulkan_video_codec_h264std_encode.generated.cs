@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class vulkan
@@ -36,17 +37,17 @@ namespace XenoAtom.Interop
             
             public fixed byte luma_offset_l0[32];
             
-            public FixedArray32<FixedArray2<sbyte>> chroma_weight_l0;
+            public FixedArray32<FixedArray2<byte>> chroma_weight_l0;
             
-            public FixedArray32<FixedArray2<sbyte>> chroma_offset_l0;
+            public FixedArray32<FixedArray2<byte>> chroma_offset_l0;
             
             public fixed byte luma_weight_l1[32];
             
             public fixed byte luma_offset_l1[32];
             
-            public FixedArray32<FixedArray2<sbyte>> chroma_weight_l1;
+            public FixedArray32<FixedArray2<byte>> chroma_weight_l1;
             
-            public FixedArray32<FixedArray2<sbyte>> chroma_offset_l1;
+            public FixedArray32<FixedArray2<byte>> chroma_offset_l1;
         }
         
         public partial struct StdVideoEncodeH264SliceHeaderFlags
@@ -334,11 +335,11 @@ namespace XenoAtom.Interop
             
             public vulkan.StdVideoH264SliceType slice_type;
             
-            public sbyte slice_alpha_c0_offset_div2;
+            public byte slice_alpha_c0_offset_div2;
             
-            public sbyte slice_beta_offset_div2;
+            public byte slice_beta_offset_div2;
             
-            public sbyte slice_qp_delta;
+            public byte slice_qp_delta;
             
             public byte reserved1;
             

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class musl
@@ -60,30 +61,14 @@ namespace XenoAtom.Interop
                 public FixedArray32<global::System.UInt128> vregs;
             }
             
-            public readonly partial struct greg_t : IEquatable<musl.aarch64.greg_t>
+            public readonly partial record struct greg_t(nuint Value)
             {
-                public greg_t(nuint value) => this.Value = value;
+                public static implicit operator nuint (greg_t from) => from.Value;
                 
-                public nuint Value { get; }
-                
-                public override bool Equals(object obj) => obj is greg_t other && Equals(other);
-                
-                public bool Equals(greg_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator nuint (musl.aarch64.greg_t from) => from.Value;
-                
-                public static implicit operator musl.aarch64.greg_t (nuint from) => new musl.aarch64.greg_t(from);
-                
-                public static bool operator ==(greg_t left, greg_t right) => left.Equals(right);
-                
-                public static bool operator !=(greg_t left, greg_t right) => !left.Equals(right);
+                public static implicit operator greg_t (nuint from) => new (from);
             }
             
-            public readonly partial struct gregset_t : IEquatable<musl.aarch64.gregset_t>
+            public readonly partial struct gregset_t : IEquatable<gregset_t>
             {
                 public gregset_t(FixedArray34<nuint> value) => this.Value = value;
                 
@@ -97,36 +82,20 @@ namespace XenoAtom.Interop
                 
                 public override string ToString() => Value.ToString();
                 
-                public static implicit operator FixedArray34<nuint> (musl.aarch64.gregset_t from) => from.Value;
-                
-                public static implicit operator musl.aarch64.gregset_t (FixedArray34<nuint> from) => new musl.aarch64.gregset_t(from);
-                
                 public static bool operator ==(gregset_t left, gregset_t right) => left.Equals(right);
                 
                 public static bool operator !=(gregset_t left, gregset_t right) => !left.Equals(right);
+                
+                public static implicit operator FixedArray34<nuint> (gregset_t from) => from.Value;
+                
+                public static implicit operator gregset_t (FixedArray34<nuint> from) => new (from);
             }
             
-            public readonly partial struct mcontext_t : IEquatable<musl.aarch64.mcontext_t>
+            public readonly partial record struct mcontext_t(musl.aarch64.sigcontext Value)
             {
-                public mcontext_t(musl.aarch64.sigcontext value) => this.Value = value;
+                public static implicit operator musl.aarch64.sigcontext (mcontext_t from) => from.Value;
                 
-                public musl.aarch64.sigcontext Value { get; }
-                
-                public override bool Equals(object obj) => obj is mcontext_t other && Equals(other);
-                
-                public bool Equals(mcontext_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator musl.aarch64.sigcontext (musl.aarch64.mcontext_t from) => from.Value;
-                
-                public static implicit operator musl.aarch64.mcontext_t (musl.aarch64.sigcontext from) => new musl.aarch64.mcontext_t(from);
-                
-                public static bool operator ==(mcontext_t left, mcontext_t right) => left.Equals(right);
-                
-                public static bool operator !=(mcontext_t left, mcontext_t right) => !left.Equals(right);
+                public static implicit operator mcontext_t (musl.aarch64.sigcontext from) => new (from);
             }
             
             public unsafe partial struct sigcontext
@@ -430,27 +399,11 @@ namespace XenoAtom.Interop
                 public musl.aarch64.mcontext_t uc_mcontext;
             }
             
-            public readonly partial struct ucontext_t : IEquatable<musl.aarch64.ucontext_t>
+            public readonly partial record struct ucontext_t(musl.aarch64.ucontext Value)
             {
-                public ucontext_t(musl.aarch64.ucontext value) => this.Value = value;
+                public static implicit operator musl.aarch64.ucontext (ucontext_t from) => from.Value;
                 
-                public musl.aarch64.ucontext Value { get; }
-                
-                public override bool Equals(object obj) => obj is ucontext_t other && Equals(other);
-                
-                public bool Equals(ucontext_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator musl.aarch64.ucontext (musl.aarch64.ucontext_t from) => from.Value;
-                
-                public static implicit operator musl.aarch64.ucontext_t (musl.aarch64.ucontext from) => new musl.aarch64.ucontext_t(from);
-                
-                public static bool operator ==(ucontext_t left, ucontext_t right) => left.Equals(right);
-                
-                public static bool operator !=(ucontext_t left, ucontext_t right) => !left.Equals(right);
+                public static implicit operator ucontext_t (musl.aarch64.ucontext from) => new (from);
             }
         }
     }

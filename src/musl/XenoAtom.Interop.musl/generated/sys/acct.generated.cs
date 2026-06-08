@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -54,27 +55,11 @@ namespace XenoAtom.Interop
             public fixed byte ac_pad[10];
         }
         
-        public readonly partial struct comp_t : IEquatable<musl.comp_t>
+        public readonly partial record struct comp_t(ushort Value)
         {
-            public comp_t(ushort value) => this.Value = value;
+            public static implicit operator ushort (comp_t from) => from.Value;
             
-            public ushort Value { get; }
-            
-            public override bool Equals(object obj) => obj is comp_t other && Equals(other);
-            
-            public bool Equals(comp_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ushort (musl.comp_t from) => from.Value;
-            
-            public static implicit operator musl.comp_t (ushort from) => new musl.comp_t(from);
-            
-            public static bool operator ==(comp_t left, comp_t right) => left.Equals(right);
-            
-            public static bool operator !=(comp_t left, comp_t right) => !left.Equals(right);
+            public static implicit operator comp_t (ushort from) => new (from);
         }
         
         public unsafe partial struct acct_v3

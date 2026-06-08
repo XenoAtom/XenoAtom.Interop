@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -145,7 +146,7 @@ namespace XenoAtom.Interop
         /// <param name="name">name of the submodule</param>
         /// <param name="payload">value you passed to the foreach function as payload</param>
         /// <returns>0 on success or error code</returns>
-        public readonly partial struct git_submodule_cb : IEquatable<libgit2.git_submodule_cb>
+        public readonly partial struct git_submodule_cb : IEquatable<git_submodule_cb>
         {
             public git_submodule_cb(delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> value) => this.Value = value;
             
@@ -159,13 +160,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> (libgit2.git_submodule_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_submodule_cb (delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> from) => new libgit2.git_submodule_cb(from);
-            
             public static bool operator ==(git_submodule_cb left, git_submodule_cb right) => left.Equals(right);
             
             public static bool operator !=(git_submodule_cb left, git_submodule_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> (git_submodule_cb from) => from.Value;
+            
+            public static implicit operator git_submodule_cb (delegate*unmanaged[Cdecl]<libgit2.git_submodule, byte*, void*, int> from) => new (from);
         }
         
         public const uint GIT_SUBMODULE_UPDATE_OPTIONS_VERSION = 1;

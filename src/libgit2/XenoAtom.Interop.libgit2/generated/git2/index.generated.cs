@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -232,7 +233,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Callback for APIs that add/remove/update files matching pathspec
         /// </summary>
-        public readonly partial struct git_index_matched_path_cb : IEquatable<libgit2.git_index_matched_path_cb>
+        public readonly partial struct git_index_matched_path_cb : IEquatable<git_index_matched_path_cb>
         {
             public git_index_matched_path_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
             
@@ -246,13 +247,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (libgit2.git_index_matched_path_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_index_matched_path_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new libgit2.git_index_matched_path_cb(from);
-            
             public static bool operator ==(git_index_matched_path_cb left, git_index_matched_path_cb right) => left.Equals(right);
             
             public static bool operator !=(git_index_matched_path_cb left, git_index_matched_path_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> (git_index_matched_path_cb from) => from.Value;
+            
+            public static implicit operator git_index_matched_path_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new (from);
         }
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_open")]

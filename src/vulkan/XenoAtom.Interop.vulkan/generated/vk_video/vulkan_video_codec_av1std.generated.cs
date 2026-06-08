@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class vulkan
@@ -769,15 +770,15 @@ namespace XenoAtom.Interop
             
             public byte base_q_idx;
             
-            public sbyte DeltaQYDc;
+            public byte DeltaQYDc;
             
-            public sbyte DeltaQUDc;
+            public byte DeltaQUDc;
             
-            public sbyte DeltaQUAc;
+            public byte DeltaQUAc;
             
-            public sbyte DeltaQVDc;
+            public byte DeltaQVDc;
             
-            public sbyte DeltaQVAc;
+            public byte DeltaQVAc;
             
             public byte qm_y;
             

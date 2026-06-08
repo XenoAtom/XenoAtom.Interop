@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/00-general/">
+    <File Path="dotnet-releaser.toml" />
+  </Folder>
+  <Project Path="XenoAtom.Interop.common.Tests/XenoAtom.Interop.common.Tests.csproj" />
+  <Project Path="XenoAtom.Interop.common/XenoAtom.Interop.common.csproj" />
+</Solution>

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -49,30 +50,14 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_MVK_macos_surface</para>
         /// </remarks>
-        public readonly partial struct VkMacOSSurfaceCreateFlagsMVK : IEquatable<vulkan.VkMacOSSurfaceCreateFlagsMVK>
+        public readonly partial record struct VkMacOSSurfaceCreateFlagsMVK(vulkan.VkFlags Value)
         {
-            public VkMacOSSurfaceCreateFlagsMVK(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkMacOSSurfaceCreateFlagsMVK from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkMacOSSurfaceCreateFlagsMVK other && Equals(other);
-            
-            public bool Equals(VkMacOSSurfaceCreateFlagsMVK other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkMacOSSurfaceCreateFlagsMVK from) => from.Value;
-            
-            public static implicit operator vulkan.VkMacOSSurfaceCreateFlagsMVK (vulkan.VkFlags from) => new vulkan.VkMacOSSurfaceCreateFlagsMVK(from);
-            
-            public static bool operator ==(VkMacOSSurfaceCreateFlagsMVK left, VkMacOSSurfaceCreateFlagsMVK right) => left.Equals(right);
-            
-            public static bool operator !=(VkMacOSSurfaceCreateFlagsMVK left, VkMacOSSurfaceCreateFlagsMVK right) => !left.Equals(right);
+            public static implicit operator VkMacOSSurfaceCreateFlagsMVK (vulkan.VkFlags from) => new (from);
         }
         
-        public readonly partial struct PFN_vkCreateMacOSSurfaceMVK : IEquatable<vulkan.PFN_vkCreateMacOSSurfaceMVK>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateMacOSSurfaceMVK>
+        public readonly partial struct PFN_vkCreateMacOSSurfaceMVK : IEquatable<PFN_vkCreateMacOSSurfaceMVK>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateMacOSSurfaceMVK>
         {
             public PFN_vkCreateMacOSSurfaceMVK(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMacOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -86,13 +71,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMacOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateMacOSSurfaceMVK from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateMacOSSurfaceMVK (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMacOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateMacOSSurfaceMVK(from);
-            
             public static bool operator ==(PFN_vkCreateMacOSSurfaceMVK left, PFN_vkCreateMacOSSurfaceMVK right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateMacOSSurfaceMVK left, PFN_vkCreateMacOSSurfaceMVK right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMacOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateMacOSSurfaceMVK from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateMacOSSurfaceMVK (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMacOSSurfaceCreateInfoMVK*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateMacOSSurfaceMVK`.

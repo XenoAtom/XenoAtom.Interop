@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -136,24 +137,5 @@ namespace XenoAtom.Interop
         public const zlib.z_datatype_t Z_UNKNOWN = z_datatype_t.Z_UNKNOWN;
         
         public const zlib.z_datatype_t Z_DEFLATED = z_datatype_t.Z_DEFLATED;
-        
-        public readonly partial struct internal_state : IEquatable<zlib.internal_state>
-        {
-            public internal_state(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(internal_state other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is internal_state other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
-            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(internal_state left, internal_state right) => left.Equals(right);
-            
-            public static bool operator !=(internal_state left, internal_state right) => !left.Equals(right);
-        }
     }
 }

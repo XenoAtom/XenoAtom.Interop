@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -43,6 +44,74 @@ namespace XenoAtom.Interop
         public const libgit2.git_odb_stream_t GIT_STREAM_WRONLY = git_odb_stream_t.GIT_STREAM_WRONLY;
         
         public const libgit2.git_odb_stream_t GIT_STREAM_RW = git_odb_stream_t.GIT_STREAM_RW;
+        
+        /// <summary>
+        /// A stream to read/write from a backend.
+        /// </summary>
+        /// <remarks>
+        /// This represents a stream of data being written to or read from a
+        /// backend. When writing, the frontend functions take care of
+        /// calculating the object's id and all `finalize_write` needs to do is
+        /// store the object with the id it is passed.
+        /// </remarks>
+        public partial struct git_odb_stream
+        {
+            public libgit2.git_odb_backend backend;
+            
+            public uint mode;
+            
+            public void* hash_ctx;
+            
+            public libgit2.git_object_size_t declared_size;
+            
+            public libgit2.git_object_size_t received_bytes;
+            
+            /// <summary>
+            /// Write at most `len` bytes into `buffer` and advance the stream.
+            /// </summary>
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, byte*, nuint, int> read;
+            
+            /// <summary>
+            /// Write `len` bytes from `buffer` into the stream.
+            /// </summary>
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, byte*, nuint, int> write;
+            
+            /// <summary>
+            /// Store the contents of the stream as an object with the id
+            /// specified in `oid`.
+            /// </summary>
+            /// <remarks>
+            /// This method might not be invoked if:
+            /// - an error occurs earlier with the `write` callback,
+            /// - the object referred to by `oid` already exists in any backend, or
+            /// - the final number of received bytes differs from the size declared
+            /// with `git_odb_open_wstream()`
+            /// </remarks>
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, libgit2.git_oid*, int> finalize_write;
+            
+            /// <summary>
+            /// Free the stream's memory.
+            /// </summary>
+            /// <remarks>
+            /// This method might be called without a call to `finalize_write` if
+            /// an error occurs or if the object is already present in the ODB.
+            /// </remarks>
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_stream*, void> free;
+        }
+        
+        /// <summary>
+        /// A stream to write a pack file to the ODB
+        /// </summary>
+        public partial struct git_odb_writepack
+        {
+            public libgit2.git_odb_backend backend;
+            
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, void*, nuint, libgit2.git_indexer_progress*, int> append;
+            
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, libgit2.git_indexer_progress*, int> commit;
+            
+            public delegate*unmanaged[Cdecl]<libgit2.git_odb_writepack*, void> free;
+        }
         
         /// <summary>
         /// Options for configuring a packfile object backend.

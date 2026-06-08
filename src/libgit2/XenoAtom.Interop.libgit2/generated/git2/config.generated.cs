@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -188,23 +189,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An opaque structure for a configuration iterator
         /// </summary>
-        public readonly partial struct git_config_iterator : IEquatable<libgit2.git_config_iterator>
+        public readonly partial record struct git_config_iterator(nint Handle)
         {
-            public git_config_iterator(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_config_iterator other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_config_iterator other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_config_iterator left, git_config_iterator right) => left.Equals(right);
-            
-            public static bool operator !=(git_config_iterator left, git_config_iterator right) => !left.Equals(right);
         }
         
         /// <summary>
@@ -225,7 +212,7 @@ namespace XenoAtom.Interop
         /// <param name="entry">the entry currently being enumerated</param>
         /// <param name="payload">a user-specified pointer</param>
         /// <returns>non-zero to terminate the iteration.</returns>
-        public readonly partial struct git_config_foreach_cb : IEquatable<libgit2.git_config_foreach_cb>
+        public readonly partial struct git_config_foreach_cb : IEquatable<git_config_foreach_cb>
         {
             public git_config_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> value) => this.Value = value;
             
@@ -239,13 +226,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> (libgit2.git_config_foreach_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_config_foreach_cb (delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> from) => new libgit2.git_config_foreach_cb(from);
-            
             public static bool operator ==(git_config_foreach_cb left, git_config_foreach_cb right) => left.Equals(right);
             
             public static bool operator !=(git_config_foreach_cb left, git_config_foreach_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> (git_config_foreach_cb from) => from.Value;
+            
+            public static implicit operator git_config_foreach_cb (delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void*, int> from) => new (from);
         }
         
         /// <summary>

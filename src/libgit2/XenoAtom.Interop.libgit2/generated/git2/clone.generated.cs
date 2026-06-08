@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -158,7 +159,7 @@ namespace XenoAtom.Interop
         /// to override the repository creation and customization process
         /// during a clone operation.
         /// </remarks>
-        public readonly partial struct git_repository_create_cb : IEquatable<libgit2.git_repository_create_cb>
+        public readonly partial struct git_repository_create_cb : IEquatable<git_repository_create_cb>
         {
             public git_repository_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> value) => this.Value = value;
             
@@ -172,13 +173,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> (libgit2.git_repository_create_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_repository_create_cb (delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> from) => new libgit2.git_repository_create_cb(from);
-            
             public static bool operator ==(git_repository_create_cb left, git_repository_create_cb right) => left.Equals(right);
             
             public static bool operator !=(git_repository_create_cb left, git_repository_create_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> (git_repository_create_cb from) => from.Value;
+            
+            public static implicit operator git_repository_create_cb (delegate*unmanaged[Cdecl]<libgit2.git_repository*, byte*, int, void*, int> from) => new (from);
         }
         
         /// <summary>
@@ -195,7 +196,7 @@ namespace XenoAtom.Interop
         /// Callers of git_clone may provide a function matching this signature to override
         /// the remote creation and customization process during a clone operation.
         /// </remarks>
-        public readonly partial struct git_remote_create_cb : IEquatable<libgit2.git_remote_create_cb>
+        public readonly partial struct git_remote_create_cb : IEquatable<git_remote_create_cb>
         {
             public git_remote_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> value) => this.Value = value;
             
@@ -209,13 +210,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> (libgit2.git_remote_create_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_remote_create_cb (delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> from) => new libgit2.git_remote_create_cb(from);
-            
             public static bool operator ==(git_remote_create_cb left, git_remote_create_cb right) => left.Equals(right);
             
             public static bool operator !=(git_remote_create_cb left, git_remote_create_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> (git_remote_create_cb from) => from.Value;
+            
+            public static implicit operator git_remote_create_cb (delegate*unmanaged[Cdecl]<libgit2.git_remote*, libgit2.git_repository, byte*, byte*, void*, int> from) => new (from);
         }
         
         public const uint GIT_CLONE_OPTIONS_VERSION = 1;

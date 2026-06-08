@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -17,6 +18,11 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class libgit2
     {
+        public readonly partial record struct git_note_iterator(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
         /// <summary>
         /// Callback for git_note_foreach.
         /// </summary>
@@ -26,7 +32,7 @@ namespace XenoAtom.Interop
         /// - annotated_object_id: Oid of the git object being annotated
         /// - payload: Payload data passed to `git_note_foreach`
         /// </remarks>
-        public readonly partial struct git_note_foreach_cb : IEquatable<libgit2.git_note_foreach_cb>
+        public readonly partial struct git_note_foreach_cb : IEquatable<git_note_foreach_cb>
         {
             public git_note_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> value) => this.Value = value;
             
@@ -40,13 +46,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> (libgit2.git_note_foreach_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_note_foreach_cb (delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> from) => new libgit2.git_note_foreach_cb(from);
-            
             public static bool operator ==(git_note_foreach_cb left, git_note_foreach_cb right) => left.Equals(right);
             
             public static bool operator !=(git_note_foreach_cb left, git_note_foreach_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> (git_note_foreach_cb from) => from.Value;
+            
+            public static implicit operator git_note_foreach_cb (delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> from) => new (from);
         }
         
         /// <summary>
@@ -62,7 +68,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_iterator_new(out libgit2.git_iterator @out, libgit2.git_repository repo, byte* notes_ref);
+        public static partial libgit2.git_result git_note_iterator_new(out libgit2.git_note_iterator @out, libgit2.git_repository repo, byte* notes_ref);
         
         /// <summary>
         /// Creates a new iterator for notes
@@ -77,7 +83,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_iterator_new(out libgit2.git_iterator @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> notes_ref);
+        public static partial libgit2.git_result git_note_iterator_new(out libgit2.git_note_iterator @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> notes_ref);
         
         /// <summary>
         /// Creates a new iterator for notes from a commit
@@ -90,7 +96,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_commit_iterator_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_commit_iterator_new(out libgit2.git_iterator @out, libgit2.git_commit notes_commit);
+        public static partial libgit2.git_result git_note_commit_iterator_new(out libgit2.git_note_iterator @out, libgit2.git_commit notes_commit);
         
         /// <summary>
         /// Frees an git_note_iterator
@@ -98,7 +104,7 @@ namespace XenoAtom.Interop
         /// <param name="it">pointer to the iterator</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_iterator_free")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void git_note_iterator_free(libgit2.git_iterator it);
+        public static partial void git_note_iterator_free(libgit2.git_note_iterator it);
         
         /// <summary>
         /// Return the current item (note_id and annotated_id) and advance the iterator
@@ -111,7 +117,7 @@ namespace XenoAtom.Interop
         /// (negative value)</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_note_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_note_next(out libgit2.git_oid note_id, out libgit2.git_oid annotated_id, libgit2.git_iterator it);
+        public static partial libgit2.git_result git_note_next(out libgit2.git_oid note_id, out libgit2.git_oid annotated_id, libgit2.git_note_iterator it);
         
         /// <summary>
         /// Read the note for an object

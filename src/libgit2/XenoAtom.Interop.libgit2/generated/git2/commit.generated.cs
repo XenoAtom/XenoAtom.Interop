@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -94,7 +95,7 @@ namespace XenoAtom.Interop
         /// commit and wants the calling function to create the commit as
         /// if no callback had been specified, any other value to stop
         /// and return a failure</returns>
-        public readonly partial struct git_commit_create_cb : IEquatable<libgit2.git_commit_create_cb>
+        public readonly partial struct git_commit_create_cb : IEquatable<git_commit_create_cb>
         {
             public git_commit_create_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> value) => this.Value = value;
             
@@ -108,13 +109,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> (libgit2.git_commit_create_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_commit_create_cb (delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> from) => new libgit2.git_commit_create_cb(from);
-            
             public static bool operator ==(git_commit_create_cb left, git_commit_create_cb right) => left.Equals(right);
             
             public static bool operator !=(git_commit_create_cb left, git_commit_create_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> (git_commit_create_cb from) => from.Value;
+            
+            public static implicit operator git_commit_create_cb (delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_signature*, libgit2.git_signature*, byte*, byte*, libgit2.git_tree, nuint, libgit2.git_commit*, void*, int> from) => new (from);
         }
         
         public const uint GIT_COMMIT_CREATE_OPTIONS_VERSION = 1;

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -285,7 +286,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// The byte stride between successive payloads in <see cref="M:payloads"/>
             /// </summary>
-            public ulong payloadStride;
+            public nuint payloadStride;
         }
         
         /// <summary>
@@ -309,7 +310,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// The byte stride between successive <see cref="T:VkDispatchGraphInfoAMDX"/> structures in <see cref="M:infos"/>
             /// </summary>
-            public ulong stride;
+            public nuint stride;
         }
         
         /// <summary>
@@ -485,7 +486,7 @@ namespace XenoAtom.Interop
             public vulkan.VkMicromapEXT micromap;
         }
         
-        public readonly partial struct PFN_vkCreateExecutionGraphPipelinesAMDX : IEquatable<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX>
+        public readonly partial struct PFN_vkCreateExecutionGraphPipelinesAMDX : IEquatable<PFN_vkCreateExecutionGraphPipelinesAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX>
         {
             public PFN_vkCreateExecutionGraphPipelinesAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipelineCache, uint, vulkan.VkExecutionGraphPipelineCreateInfoAMDX*, vulkan.VkAllocationCallbacks*, vulkan.VkPipeline*, vulkan.VkResult> value) => this.Value = value;
             
@@ -499,13 +500,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipelineCache, uint, vulkan.VkExecutionGraphPipelineCreateInfoAMDX*, vulkan.VkAllocationCallbacks*, vulkan.VkPipeline*, vulkan.VkResult> (vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipelineCache, uint, vulkan.VkExecutionGraphPipelineCreateInfoAMDX*, vulkan.VkAllocationCallbacks*, vulkan.VkPipeline*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX(from);
-            
             public static bool operator ==(PFN_vkCreateExecutionGraphPipelinesAMDX left, PFN_vkCreateExecutionGraphPipelinesAMDX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateExecutionGraphPipelinesAMDX left, PFN_vkCreateExecutionGraphPipelinesAMDX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipelineCache, uint, vulkan.VkExecutionGraphPipelineCreateInfoAMDX*, vulkan.VkAllocationCallbacks*, vulkan.VkPipeline*, vulkan.VkResult> (PFN_vkCreateExecutionGraphPipelinesAMDX from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateExecutionGraphPipelinesAMDX (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipelineCache, uint, vulkan.VkExecutionGraphPipelineCreateInfoAMDX*, vulkan.VkAllocationCallbacks*, vulkan.VkPipeline*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateExecutionGraphPipelinesAMDX`.
@@ -566,7 +567,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetExecutionGraphPipelineScratchSizeAMDX : IEquatable<vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>
+        public readonly partial struct PFN_vkGetExecutionGraphPipelineScratchSizeAMDX : IEquatable<PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX>
         {
             public PFN_vkGetExecutionGraphPipelineScratchSizeAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkExecutionGraphPipelineScratchSizeAMDX*, vulkan.VkResult> value) => this.Value = value;
             
@@ -580,13 +581,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkExecutionGraphPipelineScratchSizeAMDX*, vulkan.VkResult> (vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkExecutionGraphPipelineScratchSizeAMDX*, vulkan.VkResult> from) => new vulkan.PFN_vkGetExecutionGraphPipelineScratchSizeAMDX(from);
-            
             public static bool operator ==(PFN_vkGetExecutionGraphPipelineScratchSizeAMDX left, PFN_vkGetExecutionGraphPipelineScratchSizeAMDX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetExecutionGraphPipelineScratchSizeAMDX left, PFN_vkGetExecutionGraphPipelineScratchSizeAMDX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkExecutionGraphPipelineScratchSizeAMDX*, vulkan.VkResult> (PFN_vkGetExecutionGraphPipelineScratchSizeAMDX from) => from.Value;
+            
+            public static implicit operator PFN_vkGetExecutionGraphPipelineScratchSizeAMDX (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkExecutionGraphPipelineScratchSizeAMDX*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetExecutionGraphPipelineScratchSizeAMDX`.
@@ -639,7 +640,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetExecutionGraphPipelineNodeIndexAMDX : IEquatable<vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>
+        public readonly partial struct PFN_vkGetExecutionGraphPipelineNodeIndexAMDX : IEquatable<PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX>
         {
             public PFN_vkGetExecutionGraphPipelineNodeIndexAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -653,13 +654,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, vulkan.VkResult> (vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, vulkan.VkResult> from) => new vulkan.PFN_vkGetExecutionGraphPipelineNodeIndexAMDX(from);
-            
             public static bool operator ==(PFN_vkGetExecutionGraphPipelineNodeIndexAMDX left, PFN_vkGetExecutionGraphPipelineNodeIndexAMDX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetExecutionGraphPipelineNodeIndexAMDX left, PFN_vkGetExecutionGraphPipelineNodeIndexAMDX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, vulkan.VkResult> (PFN_vkGetExecutionGraphPipelineNodeIndexAMDX from) => from.Value;
+            
+            public static implicit operator PFN_vkGetExecutionGraphPipelineNodeIndexAMDX (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipeline, vulkan.VkPipelineShaderStageNodeCreateInfoAMDX*, uint*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetExecutionGraphPipelineNodeIndexAMDX`.
@@ -715,7 +716,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdInitializeGraphScratchMemoryAMDX : IEquatable<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX>
+        public readonly partial struct PFN_vkCmdInitializeGraphScratchMemoryAMDX : IEquatable<PFN_vkCmdInitializeGraphScratchMemoryAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX>
         {
             public PFN_vkCmdInitializeGraphScratchMemoryAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> value) => this.Value = value;
             
@@ -729,13 +730,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> (vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> from) => new vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX(from);
-            
             public static bool operator ==(PFN_vkCmdInitializeGraphScratchMemoryAMDX left, PFN_vkCmdInitializeGraphScratchMemoryAMDX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCmdInitializeGraphScratchMemoryAMDX left, PFN_vkCmdInitializeGraphScratchMemoryAMDX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> (PFN_vkCmdInitializeGraphScratchMemoryAMDX from) => from.Value;
+            
+            public static implicit operator PFN_vkCmdInitializeGraphScratchMemoryAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCmdInitializeGraphScratchMemoryAMDX`.
@@ -760,7 +761,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkCmdDispatchGraphAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphAMDX>
+        public readonly partial struct PFN_vkCmdDispatchGraphAMDX : IEquatable<PFN_vkCmdDispatchGraphAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphAMDX>
         {
             public PFN_vkCmdDispatchGraphAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
             
@@ -774,13 +775,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> (vulkan.PFN_vkCmdDispatchGraphAMDX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCmdDispatchGraphAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> from) => new vulkan.PFN_vkCmdDispatchGraphAMDX(from);
-            
             public static bool operator ==(PFN_vkCmdDispatchGraphAMDX left, PFN_vkCmdDispatchGraphAMDX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCmdDispatchGraphAMDX left, PFN_vkCmdDispatchGraphAMDX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> (PFN_vkCmdDispatchGraphAMDX from) => from.Value;
+            
+            public static implicit operator PFN_vkCmdDispatchGraphAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCmdDispatchGraphAMDX`.
@@ -821,7 +822,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdDispatchGraphIndirectAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX>
+        public readonly partial struct PFN_vkCmdDispatchGraphIndirectAMDX : IEquatable<PFN_vkCmdDispatchGraphIndirectAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX>
         {
             public PFN_vkCmdDispatchGraphIndirectAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
             
@@ -835,13 +836,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> (vulkan.PFN_vkCmdDispatchGraphIndirectAMDX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCmdDispatchGraphIndirectAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> from) => new vulkan.PFN_vkCmdDispatchGraphIndirectAMDX(from);
-            
             public static bool operator ==(PFN_vkCmdDispatchGraphIndirectAMDX left, PFN_vkCmdDispatchGraphIndirectAMDX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCmdDispatchGraphIndirectAMDX left, PFN_vkCmdDispatchGraphIndirectAMDX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> (PFN_vkCmdDispatchGraphIndirectAMDX from) => from.Value;
+            
+            public static implicit operator PFN_vkCmdDispatchGraphIndirectAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCmdDispatchGraphIndirectAMDX`.
@@ -882,7 +883,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkCmdDispatchGraphIndirectCountAMDX : IEquatable<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX>
+        public readonly partial struct PFN_vkCmdDispatchGraphIndirectCountAMDX : IEquatable<PFN_vkCmdDispatchGraphIndirectCountAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX>
         {
             public PFN_vkCmdDispatchGraphIndirectCountAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> value) => this.Value = value;
             
@@ -896,13 +897,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> (vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> from) => new vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX(from);
-            
             public static bool operator ==(PFN_vkCmdDispatchGraphIndirectCountAMDX left, PFN_vkCmdDispatchGraphIndirectCountAMDX right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCmdDispatchGraphIndirectCountAMDX left, PFN_vkCmdDispatchGraphIndirectCountAMDX right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> (PFN_vkCmdDispatchGraphIndirectCountAMDX from) => from.Value;
+            
+            public static implicit operator PFN_vkCmdDispatchGraphIndirectCountAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCmdDispatchGraphIndirectCountAMDX`.

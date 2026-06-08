@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -97,7 +98,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// An instance for a tracing function
         /// </summary>
-        public readonly partial struct git_trace_cb : IEquatable<libgit2.git_trace_cb>
+        public readonly partial struct git_trace_cb : IEquatable<git_trace_cb>
         {
             public git_trace_cb(delegate*unmanaged[Cdecl]<libgit2.git_trace_level_t, byte*, void> value) => this.Value = value;
             
@@ -111,13 +112,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_trace_level_t, byte*, void> (libgit2.git_trace_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_trace_cb (delegate*unmanaged[Cdecl]<libgit2.git_trace_level_t, byte*, void> from) => new libgit2.git_trace_cb(from);
-            
             public static bool operator ==(git_trace_cb left, git_trace_cb right) => left.Equals(right);
             
             public static bool operator !=(git_trace_cb left, git_trace_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_trace_level_t, byte*, void> (git_trace_cb from) => from.Value;
+            
+            public static implicit operator git_trace_cb (delegate*unmanaged[Cdecl]<libgit2.git_trace_level_t, byte*, void> from) => new (from);
         }
         
         /// <summary>

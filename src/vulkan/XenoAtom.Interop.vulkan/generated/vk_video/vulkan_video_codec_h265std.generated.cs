@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class vulkan
@@ -1767,17 +1768,17 @@ namespace XenoAtom.Interop
             
             public byte num_ref_idx_l1_default_active_minus1;
             
-            public sbyte init_qp_minus26;
+            public byte init_qp_minus26;
             
             public byte diff_cu_qp_delta_depth;
             
-            public sbyte pps_cb_qp_offset;
+            public byte pps_cb_qp_offset;
             
-            public sbyte pps_cr_qp_offset;
+            public byte pps_cr_qp_offset;
             
-            public sbyte pps_beta_offset_div2;
+            public byte pps_beta_offset_div2;
             
-            public sbyte pps_tc_offset_div2;
+            public byte pps_tc_offset_div2;
             
             public byte log2_parallel_merge_level_minus2;
             
@@ -1795,11 +1796,11 @@ namespace XenoAtom.Interop
             
             public byte log2_sao_offset_scale_chroma;
             
-            public sbyte pps_act_y_qp_offset_plus5;
+            public byte pps_act_y_qp_offset_plus5;
             
-            public sbyte pps_act_cb_qp_offset_plus5;
+            public byte pps_act_cb_qp_offset_plus5;
             
-            public sbyte pps_act_cr_qp_offset_plus3;
+            public byte pps_act_cr_qp_offset_plus3;
             
             public byte pps_num_palette_predictor_initializers;
             

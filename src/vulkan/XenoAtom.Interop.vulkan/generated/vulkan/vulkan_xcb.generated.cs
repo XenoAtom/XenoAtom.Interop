@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -54,30 +55,14 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_xcb_surface</para>
         /// </remarks>
-        public readonly partial struct VkXcbSurfaceCreateFlagsKHR : IEquatable<vulkan.VkXcbSurfaceCreateFlagsKHR>
+        public readonly partial record struct VkXcbSurfaceCreateFlagsKHR(vulkan.VkFlags Value)
         {
-            public VkXcbSurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkXcbSurfaceCreateFlagsKHR from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkXcbSurfaceCreateFlagsKHR other && Equals(other);
-            
-            public bool Equals(VkXcbSurfaceCreateFlagsKHR other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkXcbSurfaceCreateFlagsKHR from) => from.Value;
-            
-            public static implicit operator vulkan.VkXcbSurfaceCreateFlagsKHR (vulkan.VkFlags from) => new vulkan.VkXcbSurfaceCreateFlagsKHR(from);
-            
-            public static bool operator ==(VkXcbSurfaceCreateFlagsKHR left, VkXcbSurfaceCreateFlagsKHR right) => left.Equals(right);
-            
-            public static bool operator !=(VkXcbSurfaceCreateFlagsKHR left, VkXcbSurfaceCreateFlagsKHR right) => !left.Equals(right);
+            public static implicit operator VkXcbSurfaceCreateFlagsKHR (vulkan.VkFlags from) => new (from);
         }
         
-        public readonly partial struct PFN_vkCreateXcbSurfaceKHR : IEquatable<vulkan.PFN_vkCreateXcbSurfaceKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateXcbSurfaceKHR>
+        public readonly partial struct PFN_vkCreateXcbSurfaceKHR : IEquatable<PFN_vkCreateXcbSurfaceKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateXcbSurfaceKHR>
         {
             public PFN_vkCreateXcbSurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkXcbSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -91,13 +76,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkXcbSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateXcbSurfaceKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateXcbSurfaceKHR (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkXcbSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateXcbSurfaceKHR(from);
-            
             public static bool operator ==(PFN_vkCreateXcbSurfaceKHR left, PFN_vkCreateXcbSurfaceKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateXcbSurfaceKHR left, PFN_vkCreateXcbSurfaceKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkXcbSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateXcbSurfaceKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateXcbSurfaceKHR (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkXcbSurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateXcbSurfaceKHR`.
@@ -153,7 +138,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR>
+        public readonly partial struct PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR : IEquatable<PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR>
         {
             public PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, uint, vulkan.VkBool32> value) => this.Value = value;
             
@@ -167,13 +152,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, uint, vulkan.VkBool32> (vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, uint, vulkan.VkBool32> from) => new vulkan.PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR(from);
-            
             public static bool operator ==(PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR left, PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR left, PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, uint, vulkan.VkBool32> (PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, void*, uint, vulkan.VkBool32> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceXcbPresentationSupportKHR`.

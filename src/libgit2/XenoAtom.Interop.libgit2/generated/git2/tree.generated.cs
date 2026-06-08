@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -103,7 +104,7 @@ namespace XenoAtom.Interop
         /// entry should be left alone and any non-zero value meaning that the
         /// entry should be removed from the treebuilder list (i.e. filtered out).
         /// </remarks>
-        public readonly partial struct git_treebuilder_filter_cb : IEquatable<libgit2.git_treebuilder_filter_cb>
+        public readonly partial struct git_treebuilder_filter_cb : IEquatable<git_treebuilder_filter_cb>
         {
             public git_treebuilder_filter_cb(delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> value) => this.Value = value;
             
@@ -117,19 +118,19 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> (libgit2.git_treebuilder_filter_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_treebuilder_filter_cb (delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> from) => new libgit2.git_treebuilder_filter_cb(from);
-            
             public static bool operator ==(git_treebuilder_filter_cb left, git_treebuilder_filter_cb right) => left.Equals(right);
             
             public static bool operator !=(git_treebuilder_filter_cb left, git_treebuilder_filter_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> (git_treebuilder_filter_cb from) => from.Value;
+            
+            public static implicit operator git_treebuilder_filter_cb (delegate*unmanaged[Cdecl]<libgit2.git_tree_entry, void*, int> from) => new (from);
         }
         
         /// <summary>
         /// Callback for the tree traversal method
         /// </summary>
-        public readonly partial struct git_treewalk_cb : IEquatable<libgit2.git_treewalk_cb>
+        public readonly partial struct git_treewalk_cb : IEquatable<git_treewalk_cb>
         {
             public git_treewalk_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> value) => this.Value = value;
             
@@ -143,13 +144,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> (libgit2.git_treewalk_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_treewalk_cb (delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> from) => new libgit2.git_treewalk_cb(from);
-            
             public static bool operator ==(git_treewalk_cb left, git_treewalk_cb right) => left.Equals(right);
             
             public static bool operator !=(git_treewalk_cb left, git_treewalk_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> (git_treewalk_cb from) => from.Value;
+            
+            public static implicit operator git_treewalk_cb (delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> from) => new (from);
         }
         
         /// <summary>

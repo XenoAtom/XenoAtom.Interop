@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -161,7 +162,7 @@ namespace XenoAtom.Interop
             public vulkan.VkLayerInstanceCreateInfo.VkLayerInstanceCreateInfo__union_0 u;
         }
         
-        public readonly partial struct PFN_vkLayerCreateDevice : IEquatable<vulkan.PFN_vkLayerCreateDevice>
+        public readonly partial struct PFN_vkLayerCreateDevice : IEquatable<PFN_vkLayerCreateDevice>
         {
             public PFN_vkLayerCreateDevice(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkPhysicalDevice, vulkan.VkDeviceCreateInfo*, vulkan.VkAllocationCallbacks*, vulkan.VkDevice*, vulkan.PFN_vkGetInstanceProcAddr, vulkan.PFN_vkGetDeviceProcAddr*, vulkan.VkResult> value) => this.Value = value;
             
@@ -175,16 +176,16 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkPhysicalDevice, vulkan.VkDeviceCreateInfo*, vulkan.VkAllocationCallbacks*, vulkan.VkDevice*, vulkan.PFN_vkGetInstanceProcAddr, vulkan.PFN_vkGetDeviceProcAddr*, vulkan.VkResult> (vulkan.PFN_vkLayerCreateDevice from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkLayerCreateDevice (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkPhysicalDevice, vulkan.VkDeviceCreateInfo*, vulkan.VkAllocationCallbacks*, vulkan.VkDevice*, vulkan.PFN_vkGetInstanceProcAddr, vulkan.PFN_vkGetDeviceProcAddr*, vulkan.VkResult> from) => new vulkan.PFN_vkLayerCreateDevice(from);
-            
             public static bool operator ==(PFN_vkLayerCreateDevice left, PFN_vkLayerCreateDevice right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkLayerCreateDevice left, PFN_vkLayerCreateDevice right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkPhysicalDevice, vulkan.VkDeviceCreateInfo*, vulkan.VkAllocationCallbacks*, vulkan.VkDevice*, vulkan.PFN_vkGetInstanceProcAddr, vulkan.PFN_vkGetDeviceProcAddr*, vulkan.VkResult> (PFN_vkLayerCreateDevice from) => from.Value;
+            
+            public static implicit operator PFN_vkLayerCreateDevice (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkPhysicalDevice, vulkan.VkDeviceCreateInfo*, vulkan.VkAllocationCallbacks*, vulkan.VkDevice*, vulkan.PFN_vkGetInstanceProcAddr, vulkan.PFN_vkGetDeviceProcAddr*, vulkan.VkResult> from) => new (from);
         }
         
-        public readonly partial struct PFN_vkLayerDestroyDevice : IEquatable<vulkan.PFN_vkLayerDestroyDevice>
+        public readonly partial struct PFN_vkLayerDestroyDevice : IEquatable<PFN_vkLayerDestroyDevice>
         {
             public PFN_vkLayerDestroyDevice(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkAllocationCallbacks*, vulkan.PFN_vkDestroyDevice, void> value) => this.Value = value;
             
@@ -198,39 +199,23 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkAllocationCallbacks*, vulkan.PFN_vkDestroyDevice, void> (vulkan.PFN_vkLayerDestroyDevice from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkLayerDestroyDevice (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkAllocationCallbacks*, vulkan.PFN_vkDestroyDevice, void> from) => new vulkan.PFN_vkLayerDestroyDevice(from);
-            
             public static bool operator ==(PFN_vkLayerDestroyDevice left, PFN_vkLayerDestroyDevice right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkLayerDestroyDevice left, PFN_vkLayerDestroyDevice right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkAllocationCallbacks*, vulkan.PFN_vkDestroyDevice, void> (PFN_vkLayerDestroyDevice from) => from.Value;
+            
+            public static implicit operator PFN_vkLayerDestroyDevice (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkAllocationCallbacks*, vulkan.PFN_vkDestroyDevice, void> from) => new (from);
         }
         
-        public readonly partial struct VkLayerInstanceLink : IEquatable<vulkan.VkLayerInstanceLink>
+        public readonly partial record struct VkLayerInstanceLink(vulkan.VkLayerInstanceLink_ Value)
         {
-            public VkLayerInstanceLink(vulkan.VkLayerInstanceLink_ value) => this.Value = value;
+            public static implicit operator vulkan.VkLayerInstanceLink_ (VkLayerInstanceLink from) => from.Value;
             
-            public vulkan.VkLayerInstanceLink_ Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkLayerInstanceLink other && Equals(other);
-            
-            public bool Equals(VkLayerInstanceLink other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkLayerInstanceLink_ (vulkan.VkLayerInstanceLink from) => from.Value;
-            
-            public static implicit operator vulkan.VkLayerInstanceLink (vulkan.VkLayerInstanceLink_ from) => new vulkan.VkLayerInstanceLink(from);
-            
-            public static bool operator ==(VkLayerInstanceLink left, VkLayerInstanceLink right) => left.Equals(right);
-            
-            public static bool operator !=(VkLayerInstanceLink left, VkLayerInstanceLink right) => !left.Equals(right);
+            public static implicit operator VkLayerInstanceLink (vulkan.VkLayerInstanceLink_ from) => new (from);
         }
         
-        public readonly partial struct PFN_vkSetInstanceLoaderData : IEquatable<vulkan.PFN_vkSetInstanceLoaderData>
+        public readonly partial struct PFN_vkSetInstanceLoaderData : IEquatable<PFN_vkSetInstanceLoaderData>
         {
             public PFN_vkSetInstanceLoaderData(delegate*unmanaged[Stdcall]<vulkan.VkInstance, void*, vulkan.VkResult> value) => this.Value = value;
             
@@ -244,13 +229,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, void*, vulkan.VkResult> (vulkan.PFN_vkSetInstanceLoaderData from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkSetInstanceLoaderData (delegate*unmanaged[Stdcall]<vulkan.VkInstance, void*, vulkan.VkResult> from) => new vulkan.PFN_vkSetInstanceLoaderData(from);
-            
             public static bool operator ==(PFN_vkSetInstanceLoaderData left, PFN_vkSetInstanceLoaderData right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkSetInstanceLoaderData left, PFN_vkSetInstanceLoaderData right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, void*, vulkan.VkResult> (PFN_vkSetInstanceLoaderData from) => from.Value;
+            
+            public static implicit operator PFN_vkSetInstanceLoaderData (delegate*unmanaged[Stdcall]<vulkan.VkInstance, void*, vulkan.VkResult> from) => new (from);
         }
         
         /// <summary>
@@ -259,27 +244,11 @@ namespace XenoAtom.Interop
         /// or sType == VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO
         /// then VkLayerFunction indicates struct type pointed to by pNext
         /// </summary>
-        public readonly partial struct VkLayerFunction : IEquatable<vulkan.VkLayerFunction>
+        public readonly partial record struct VkLayerFunction(vulkan.VkLayerFunction_ Value)
         {
-            public VkLayerFunction(vulkan.VkLayerFunction_ value) => this.Value = value;
+            public static implicit operator vulkan.VkLayerFunction_ (VkLayerFunction from) => from.Value;
             
-            public vulkan.VkLayerFunction_ Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkLayerFunction other && Equals(other);
-            
-            public bool Equals(VkLayerFunction other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkLayerFunction_ (vulkan.VkLayerFunction from) => from.Value;
-            
-            public static implicit operator vulkan.VkLayerFunction (vulkan.VkLayerFunction_ from) => new vulkan.VkLayerFunction(from);
-            
-            public static bool operator ==(VkLayerFunction left, VkLayerFunction right) => left.Equals(right);
-            
-            public static bool operator !=(VkLayerFunction left, VkLayerFunction right) => !left.Equals(right);
+            public static implicit operator VkLayerFunction (vulkan.VkLayerFunction_ from) => new (from);
         }
         
         public partial struct VkLayerDeviceLink_
@@ -315,30 +284,14 @@ namespace XenoAtom.Interop
             public vulkan.VkLayerDeviceCreateInfo.VkLayerDeviceCreateInfo__union_0 u;
         }
         
-        public readonly partial struct VkLayerDeviceLink : IEquatable<vulkan.VkLayerDeviceLink>
+        public readonly partial record struct VkLayerDeviceLink(vulkan.VkLayerDeviceLink_ Value)
         {
-            public VkLayerDeviceLink(vulkan.VkLayerDeviceLink_ value) => this.Value = value;
+            public static implicit operator vulkan.VkLayerDeviceLink_ (VkLayerDeviceLink from) => from.Value;
             
-            public vulkan.VkLayerDeviceLink_ Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkLayerDeviceLink other && Equals(other);
-            
-            public bool Equals(VkLayerDeviceLink other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkLayerDeviceLink_ (vulkan.VkLayerDeviceLink from) => from.Value;
-            
-            public static implicit operator vulkan.VkLayerDeviceLink (vulkan.VkLayerDeviceLink_ from) => new vulkan.VkLayerDeviceLink(from);
-            
-            public static bool operator ==(VkLayerDeviceLink left, VkLayerDeviceLink right) => left.Equals(right);
-            
-            public static bool operator !=(VkLayerDeviceLink left, VkLayerDeviceLink right) => !left.Equals(right);
+            public static implicit operator VkLayerDeviceLink (vulkan.VkLayerDeviceLink_ from) => new (from);
         }
         
-        public readonly partial struct PFN_vkSetDeviceLoaderData : IEquatable<vulkan.PFN_vkSetDeviceLoaderData>
+        public readonly partial struct PFN_vkSetDeviceLoaderData : IEquatable<PFN_vkSetDeviceLoaderData>
         {
             public PFN_vkSetDeviceLoaderData(delegate*unmanaged[Stdcall]<vulkan.VkDevice, void*, vulkan.VkResult> value) => this.Value = value;
             
@@ -352,13 +305,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, void*, vulkan.VkResult> (vulkan.PFN_vkSetDeviceLoaderData from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkSetDeviceLoaderData (delegate*unmanaged[Stdcall]<vulkan.VkDevice, void*, vulkan.VkResult> from) => new vulkan.PFN_vkSetDeviceLoaderData(from);
-            
             public static bool operator ==(PFN_vkSetDeviceLoaderData left, PFN_vkSetDeviceLoaderData right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkSetDeviceLoaderData left, PFN_vkSetDeviceLoaderData right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, void*, vulkan.VkResult> (PFN_vkSetDeviceLoaderData from) => from.Value;
+            
+            public static implicit operator PFN_vkSetDeviceLoaderData (delegate*unmanaged[Stdcall]<vulkan.VkDevice, void*, vulkan.VkResult> from) => new (from);
         }
         
         public partial struct VkChainHeader
@@ -400,7 +353,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Version negotiation functions
         /// </summary>
-        public readonly partial struct PFN_vkNegotiateLoaderLayerInterfaceVersion : IEquatable<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>, IvkFunctionPointer<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>
+        public readonly partial struct PFN_vkNegotiateLoaderLayerInterfaceVersion : IEquatable<PFN_vkNegotiateLoaderLayerInterfaceVersion>, IvkFunctionPointer<vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion>
         {
             public PFN_vkNegotiateLoaderLayerInterfaceVersion(delegate*unmanaged[Stdcall]<vulkan.VkNegotiateLayerInterface*, vulkan.VkResult> value) => this.Value = value;
             
@@ -414,13 +367,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkNegotiateLayerInterface*, vulkan.VkResult> (vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion (delegate*unmanaged[Stdcall]<vulkan.VkNegotiateLayerInterface*, vulkan.VkResult> from) => new vulkan.PFN_vkNegotiateLoaderLayerInterfaceVersion(from);
-            
             public static bool operator ==(PFN_vkNegotiateLoaderLayerInterfaceVersion left, PFN_vkNegotiateLoaderLayerInterfaceVersion right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkNegotiateLoaderLayerInterfaceVersion left, PFN_vkNegotiateLoaderLayerInterfaceVersion right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkNegotiateLayerInterface*, vulkan.VkResult> (PFN_vkNegotiateLoaderLayerInterfaceVersion from) => from.Value;
+            
+            public static implicit operator PFN_vkNegotiateLoaderLayerInterfaceVersion (delegate*unmanaged[Stdcall]<vulkan.VkNegotiateLayerInterface*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkNegotiateLoaderLayerInterfaceVersion`.
@@ -440,7 +393,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Function prototype for unknown physical device extension command
         /// </summary>
-        public readonly partial struct PFN_PhysDevExt : IEquatable<vulkan.PFN_PhysDevExt>
+        public readonly partial struct PFN_PhysDevExt : IEquatable<PFN_PhysDevExt>
         {
             public PFN_PhysDevExt(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkResult> value) => this.Value = value;
             
@@ -454,13 +407,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkResult> (vulkan.PFN_PhysDevExt from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_PhysDevExt (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkResult> from) => new vulkan.PFN_PhysDevExt(from);
-            
             public static bool operator ==(PFN_PhysDevExt left, PFN_PhysDevExt right) => left.Equals(right);
             
             public static bool operator !=(PFN_PhysDevExt left, PFN_PhysDevExt right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkResult> (PFN_PhysDevExt from) => from.Value;
+            
+            public static implicit operator PFN_PhysDevExt (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkResult> from) => new (from);
         }
         
         /// <summary>
@@ -470,50 +423,18 @@ namespace XenoAtom.Interop
         /// VkLayerDeviceInfo avoids issues with finding the
         /// exact instance being used.
         /// </summary>
-        public readonly partial struct VkLayerDeviceInfo : IEquatable<vulkan.VkLayerDeviceInfo>
+        public readonly partial record struct VkLayerDeviceInfo(vulkan.VkLayerDeviceInfo_ Value)
         {
-            public VkLayerDeviceInfo(vulkan.VkLayerDeviceInfo_ value) => this.Value = value;
+            public static implicit operator vulkan.VkLayerDeviceInfo_ (VkLayerDeviceInfo from) => from.Value;
             
-            public vulkan.VkLayerDeviceInfo_ Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkLayerDeviceInfo other && Equals(other);
-            
-            public bool Equals(VkLayerDeviceInfo other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkLayerDeviceInfo_ (vulkan.VkLayerDeviceInfo from) => from.Value;
-            
-            public static implicit operator vulkan.VkLayerDeviceInfo (vulkan.VkLayerDeviceInfo_ from) => new vulkan.VkLayerDeviceInfo(from);
-            
-            public static bool operator ==(VkLayerDeviceInfo left, VkLayerDeviceInfo right) => left.Equals(right);
-            
-            public static bool operator !=(VkLayerDeviceInfo left, VkLayerDeviceInfo right) => !left.Equals(right);
+            public static implicit operator VkLayerDeviceInfo (vulkan.VkLayerDeviceInfo_ from) => new (from);
         }
         
-        public readonly partial struct VkLoaderFlagBits : IEquatable<vulkan.VkLoaderFlagBits>
+        public readonly partial record struct VkLoaderFlagBits(vulkan.VkLoaderFeatureFlags Value)
         {
-            public VkLoaderFlagBits(vulkan.VkLoaderFeatureFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkLoaderFeatureFlags (VkLoaderFlagBits from) => from.Value;
             
-            public vulkan.VkLoaderFeatureFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkLoaderFlagBits other && Equals(other);
-            
-            public bool Equals(VkLoaderFlagBits other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkLoaderFeatureFlags (vulkan.VkLoaderFlagBits from) => from.Value;
-            
-            public static implicit operator vulkan.VkLoaderFlagBits (vulkan.VkLoaderFeatureFlags from) => new vulkan.VkLoaderFlagBits(from);
-            
-            public static bool operator ==(VkLoaderFlagBits left, VkLoaderFlagBits right) => left.Equals(right);
-            
-            public static bool operator !=(VkLoaderFlagBits left, VkLoaderFlagBits right) => !left.Equals(right);
+            public static implicit operator VkLoaderFlagBits (vulkan.VkLoaderFeatureFlags from) => new (from);
         }
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "vkNegotiateLoaderLayerInterfaceVersion")]

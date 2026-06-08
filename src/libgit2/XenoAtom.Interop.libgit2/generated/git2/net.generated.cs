@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class libgit2
@@ -31,5 +32,29 @@ namespace XenoAtom.Interop
         public const libgit2.git_direction GIT_DIRECTION_FETCH = git_direction.GIT_DIRECTION_FETCH;
         
         public const libgit2.git_direction GIT_DIRECTION_PUSH = git_direction.GIT_DIRECTION_PUSH;
+        
+        /// <summary>
+        /// Description of a reference advertised by a remote server, given out
+        /// on `ls` calls.
+        /// </summary>
+        public partial struct git_remote_head
+        {
+            /// <summary>
+            /// available locally
+            /// </summary>
+            public int local;
+            
+            public libgit2.git_oid oid;
+            
+            public libgit2.git_oid loid;
+            
+            public byte* name;
+            
+            /// <summary>
+            /// If the server send a symref mapping for this ref, this will
+            /// point to the target.
+            /// </summary>
+            public byte* symref_target;
+        }
     }
 }

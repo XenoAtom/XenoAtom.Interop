@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -42,7 +43,7 @@ namespace XenoAtom.Interop
         /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_userpass")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_userpass(out libgit2.git_credential @out, byte* url, byte* user_from_url, uint allowed_types, void* payload);
+        public static partial libgit2.git_result git_credential_userpass(out libgit2.git_credential_default @out, byte* url, byte* user_from_url, uint allowed_types, void* payload);
         
         /// <summary>
         /// Stock callback usable as a git_credential_acquire_cb.  This calls
@@ -59,6 +60,6 @@ namespace XenoAtom.Interop
         /// <returns>0 or an error code.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_credential_userpass")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_credential_userpass(out libgit2.git_credential @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> user_from_url, uint allowed_types, void* payload);
+        public static partial libgit2.git_result git_credential_userpass(out libgit2.git_credential_default @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> url, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> user_from_url, uint allowed_types, void* payload);
     }
 }

@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -24,27 +25,11 @@ namespace XenoAtom.Interop
             public musl.rlim_t rlim_max;
         }
         
-        public readonly partial struct rlim_t : IEquatable<musl.rlim_t>
+        public readonly partial record struct rlim_t(ulong Value)
         {
-            public rlim_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (rlim_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is rlim_t other && Equals(other);
-            
-            public bool Equals(rlim_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (musl.rlim_t from) => from.Value;
-            
-            public static implicit operator musl.rlim_t (ulong from) => new musl.rlim_t(from);
-            
-            public static bool operator ==(rlim_t left, rlim_t right) => left.Equals(right);
-            
-            public static bool operator !=(rlim_t left, rlim_t right) => !left.Equals(right);
+            public static implicit operator rlim_t (ulong from) => new (from);
         }
         
         public partial struct rusage

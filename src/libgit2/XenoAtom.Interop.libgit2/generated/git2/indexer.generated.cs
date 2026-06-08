@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -67,7 +68,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="payload">Payload provided by caller</param>
         /// <param name="stats">Structure containing information about the state of the transfer</param>
-        public readonly partial struct git_indexer_progress_cb : IEquatable<libgit2.git_indexer_progress_cb>
+        public readonly partial struct git_indexer_progress_cb : IEquatable<git_indexer_progress_cb>
         {
             public git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> value) => this.Value = value;
             
@@ -81,35 +82,21 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> (libgit2.git_indexer_progress_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_indexer_progress_cb (delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> from) => new libgit2.git_indexer_progress_cb(from);
-            
             public static bool operator ==(git_indexer_progress_cb left, git_indexer_progress_cb right) => left.Equals(right);
             
             public static bool operator !=(git_indexer_progress_cb left, git_indexer_progress_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> (git_indexer_progress_cb from) => from.Value;
+            
+            public static implicit operator git_indexer_progress_cb (delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> from) => new (from);
         }
         
         /// <summary>
         /// A git indexer object
         /// </summary>
-        public readonly partial struct git_indexer : IEquatable<libgit2.git_indexer>
+        public readonly partial record struct git_indexer(nint Handle)
         {
-            public git_indexer(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_indexer other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_indexer other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_indexer left, git_indexer right) => left.Equals(right);
-            
-            public static bool operator !=(git_indexer left, git_indexer right) => !left.Equals(right);
         }
         
         /// <summary>

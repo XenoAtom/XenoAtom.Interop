@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -323,6 +324,27 @@ namespace XenoAtom.Interop
         /// Read/modify/write
         /// </summary>
         public const libgbm.gbm_bo_transfer_flags GBM_BO_TRANSFER_READ_WRITE = gbm_bo_transfer_flags.GBM_BO_TRANSFER_READ_WRITE;
+        
+        /// <summary>
+        /// Generic Buffer Manager
+        /// </summary>
+        /// <remarks>
+        ///  gbm.h
+        /// </remarks>
+        public readonly partial record struct gbm_device(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
+        public readonly partial record struct gbm_bo(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
+        public readonly partial record struct gbm_surface(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
         
         /// <summary>
         /// Abstraction representing the handle to a buffer allocated by the

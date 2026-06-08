@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -17,73 +18,25 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        public readonly partial struct tcflag_t : IEquatable<musl.tcflag_t>
+        public readonly partial record struct tcflag_t(uint Value)
         {
-            public tcflag_t(uint value) => this.Value = value;
+            public static implicit operator uint (tcflag_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is tcflag_t other && Equals(other);
-            
-            public bool Equals(tcflag_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.tcflag_t from) => from.Value;
-            
-            public static implicit operator musl.tcflag_t (uint from) => new musl.tcflag_t(from);
-            
-            public static bool operator ==(tcflag_t left, tcflag_t right) => left.Equals(right);
-            
-            public static bool operator !=(tcflag_t left, tcflag_t right) => !left.Equals(right);
+            public static implicit operator tcflag_t (uint from) => new (from);
         }
         
-        public readonly partial struct cc_t : IEquatable<musl.cc_t>
+        public readonly partial record struct cc_t(byte Value)
         {
-            public cc_t(byte value) => this.Value = value;
+            public static implicit operator byte (cc_t from) => from.Value;
             
-            public byte Value { get; }
-            
-            public override bool Equals(object obj) => obj is cc_t other && Equals(other);
-            
-            public bool Equals(cc_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator byte (musl.cc_t from) => from.Value;
-            
-            public static implicit operator musl.cc_t (byte from) => new musl.cc_t(from);
-            
-            public static bool operator ==(cc_t left, cc_t right) => left.Equals(right);
-            
-            public static bool operator !=(cc_t left, cc_t right) => !left.Equals(right);
+            public static implicit operator cc_t (byte from) => new (from);
         }
         
-        public readonly partial struct speed_t : IEquatable<musl.speed_t>
+        public readonly partial record struct speed_t(uint Value)
         {
-            public speed_t(uint value) => this.Value = value;
+            public static implicit operator uint (speed_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is speed_t other && Equals(other);
-            
-            public bool Equals(speed_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (musl.speed_t from) => from.Value;
-            
-            public static implicit operator musl.speed_t (uint from) => new musl.speed_t(from);
-            
-            public static bool operator ==(speed_t left, speed_t right) => left.Equals(right);
-            
-            public static bool operator !=(speed_t left, speed_t right) => !left.Equals(right);
+            public static implicit operator speed_t (uint from) => new (from);
         }
         
         public const int NCCS = 32;

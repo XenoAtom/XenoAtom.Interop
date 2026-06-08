@@ -114,7 +114,7 @@ unsafe partial class vulkan
         }
     }
 
-    partial struct VkBool32
+    partial record struct VkBool32
     {
         public static implicit operator bool(vulkan.VkBool32 from) => from.Value != 0;
 

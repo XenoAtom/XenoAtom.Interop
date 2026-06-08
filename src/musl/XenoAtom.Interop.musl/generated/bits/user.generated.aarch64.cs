@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class musl
@@ -17,53 +18,21 @@ namespace XenoAtom.Interop
         {
             public const int ELF_NREG = 34;
             
-            public readonly partial struct elf_fpregset_t : IEquatable<musl.aarch64.elf_fpregset_t>
+            public readonly partial record struct elf_fpregset_t(musl.aarch64.user_fpsimd_struct Value)
             {
-                public elf_fpregset_t(musl.aarch64.user_fpsimd_struct value) => this.Value = value;
+                public static implicit operator musl.aarch64.user_fpsimd_struct (elf_fpregset_t from) => from.Value;
                 
-                public musl.aarch64.user_fpsimd_struct Value { get; }
-                
-                public override bool Equals(object obj) => obj is elf_fpregset_t other && Equals(other);
-                
-                public bool Equals(elf_fpregset_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator musl.aarch64.user_fpsimd_struct (musl.aarch64.elf_fpregset_t from) => from.Value;
-                
-                public static implicit operator musl.aarch64.elf_fpregset_t (musl.aarch64.user_fpsimd_struct from) => new musl.aarch64.elf_fpregset_t(from);
-                
-                public static bool operator ==(elf_fpregset_t left, elf_fpregset_t right) => left.Equals(right);
-                
-                public static bool operator !=(elf_fpregset_t left, elf_fpregset_t right) => !left.Equals(right);
+                public static implicit operator elf_fpregset_t (musl.aarch64.user_fpsimd_struct from) => new (from);
             }
             
-            public readonly partial struct elf_greg_t : IEquatable<musl.aarch64.elf_greg_t>
+            public readonly partial record struct elf_greg_t(nuint Value)
             {
-                public elf_greg_t(nuint value) => this.Value = value;
+                public static implicit operator nuint (elf_greg_t from) => from.Value;
                 
-                public nuint Value { get; }
-                
-                public override bool Equals(object obj) => obj is elf_greg_t other && Equals(other);
-                
-                public bool Equals(elf_greg_t other) => Value.Equals(other.Value);
-                
-                public override int GetHashCode() => Value.GetHashCode();
-                
-                public override string ToString() => Value.ToString();
-                
-                public static implicit operator nuint (musl.aarch64.elf_greg_t from) => from.Value;
-                
-                public static implicit operator musl.aarch64.elf_greg_t (nuint from) => new musl.aarch64.elf_greg_t(from);
-                
-                public static bool operator ==(elf_greg_t left, elf_greg_t right) => left.Equals(right);
-                
-                public static bool operator !=(elf_greg_t left, elf_greg_t right) => !left.Equals(right);
+                public static implicit operator elf_greg_t (nuint from) => new (from);
             }
             
-            public readonly partial struct elf_gregset_t : IEquatable<musl.aarch64.elf_gregset_t>
+            public readonly partial struct elf_gregset_t : IEquatable<elf_gregset_t>
             {
                 public elf_gregset_t(FixedArray34<nuint> value) => this.Value = value;
                 
@@ -77,13 +46,13 @@ namespace XenoAtom.Interop
                 
                 public override string ToString() => Value.ToString();
                 
-                public static implicit operator FixedArray34<nuint> (musl.aarch64.elf_gregset_t from) => from.Value;
-                
-                public static implicit operator musl.aarch64.elf_gregset_t (FixedArray34<nuint> from) => new musl.aarch64.elf_gregset_t(from);
-                
                 public static bool operator ==(elf_gregset_t left, elf_gregset_t right) => left.Equals(right);
                 
                 public static bool operator !=(elf_gregset_t left, elf_gregset_t right) => !left.Equals(right);
+                
+                public static implicit operator FixedArray34<nuint> (elf_gregset_t from) => from.Value;
+                
+                public static implicit operator elf_gregset_t (FixedArray34<nuint> from) => new (from);
             }
             
             public partial struct user_fpsimd_struct

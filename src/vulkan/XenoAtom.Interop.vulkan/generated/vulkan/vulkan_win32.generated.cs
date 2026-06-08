@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -104,27 +105,11 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_KHR_win32_surface</para>
         /// </remarks>
-        public readonly partial struct VkWin32SurfaceCreateFlagsKHR : IEquatable<vulkan.VkWin32SurfaceCreateFlagsKHR>
+        public readonly partial record struct VkWin32SurfaceCreateFlagsKHR(vulkan.VkFlags Value)
         {
-            public VkWin32SurfaceCreateFlagsKHR(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkWin32SurfaceCreateFlagsKHR from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkWin32SurfaceCreateFlagsKHR other && Equals(other);
-            
-            public bool Equals(VkWin32SurfaceCreateFlagsKHR other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkWin32SurfaceCreateFlagsKHR from) => from.Value;
-            
-            public static implicit operator vulkan.VkWin32SurfaceCreateFlagsKHR (vulkan.VkFlags from) => new vulkan.VkWin32SurfaceCreateFlagsKHR(from);
-            
-            public static bool operator ==(VkWin32SurfaceCreateFlagsKHR left, VkWin32SurfaceCreateFlagsKHR right) => left.Equals(right);
-            
-            public static bool operator !=(VkWin32SurfaceCreateFlagsKHR left, VkWin32SurfaceCreateFlagsKHR right) => !left.Equals(right);
+            public static implicit operator VkWin32SurfaceCreateFlagsKHR (vulkan.VkFlags from) => new (from);
         }
         
         /// <summary>
@@ -279,7 +264,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A pointer to an array of mutex key values to wait for prior to beginning the submitted work. Entries refer to the keyed mutex associated with the corresponding entries in <see cref="M:pAcquireSyncs"/>.
             /// </summary>
-            public ulong* pAcquireKeys;
+            public nuint* pAcquireKeys;
             
             /// <summary>
             /// A pointer to an array of timeout values, in millisecond units, for each acquire specified in <see cref="M:pAcquireKeys"/>.
@@ -299,7 +284,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A pointer to an array of mutex key values to set when the submitted work has completed. Entries refer to the keyed mutex associated with the corresponding entries in <see cref="M:pReleaseSyncs"/>.
             /// </summary>
-            public ulong* pReleaseKeys;
+            public nuint* pReleaseKeys;
         }
         
         /// <summary>
@@ -406,7 +391,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A pointer to an array of <see cref="M:waitSemaphoreValuesCount"/> values for the corresponding semaphores in <see cref="T:VkSubmitInfo.pWaitSemaphores"/> to wait for.
             /// </summary>
-            public ulong* pWaitSemaphoreValues;
+            public nuint* pWaitSemaphoreValues;
             
             /// <summary>
             /// The number of semaphore signal values specified in <see cref="M:pSignalSemaphoreValues"/>.
@@ -416,7 +401,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A pointer to an array of <see cref="M:signalSemaphoreValuesCount"/> values for the corresponding semaphores in <see cref="T:VkSubmitInfo.pSignalSemaphores"/> to set when signaled.
             /// </summary>
-            public ulong* pSignalSemaphoreValues;
+            public nuint* pSignalSemaphoreValues;
         }
         
         /// <summary>
@@ -638,7 +623,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A pointer to an array of mutex key values to wait for prior to beginning the submitted work. Entries refer to the keyed mutex associated with the corresponding entries in <see cref="M:pAcquireSyncs"/>.
             /// </summary>
-            public ulong* pAcquireKeys;
+            public nuint* pAcquireKeys;
             
             /// <summary>
             /// A pointer to an array of timeout values, in millisecond units, for each acquire specified in <see cref="M:pAcquireKeys"/>.
@@ -658,7 +643,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// A pointer to an array of mutex key values to set when the submitted work has completed. Entries refer to the keyed mutex associated with the corresponding entries in <see cref="M:pReleaseSyncs"/>.
             /// </summary>
-            public ulong* pReleaseKeys;
+            public nuint* pReleaseKeys;
         }
         
         /// <summary>
@@ -730,7 +715,7 @@ namespace XenoAtom.Interop
             public nint hmonitor;
         }
         
-        public readonly partial struct PFN_vkCreateWin32SurfaceKHR : IEquatable<vulkan.PFN_vkCreateWin32SurfaceKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateWin32SurfaceKHR>
+        public readonly partial struct PFN_vkCreateWin32SurfaceKHR : IEquatable<PFN_vkCreateWin32SurfaceKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateWin32SurfaceKHR>
         {
             public PFN_vkCreateWin32SurfaceKHR(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkWin32SurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -744,13 +729,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkWin32SurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateWin32SurfaceKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateWin32SurfaceKHR (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkWin32SurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateWin32SurfaceKHR(from);
-            
             public static bool operator ==(PFN_vkCreateWin32SurfaceKHR left, PFN_vkCreateWin32SurfaceKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateWin32SurfaceKHR left, PFN_vkCreateWin32SurfaceKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkWin32SurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateWin32SurfaceKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateWin32SurfaceKHR (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkWin32SurfaceCreateInfoKHR*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateWin32SurfaceKHR`.
@@ -806,7 +791,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR : IEquatable<vulkan.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR>
+        public readonly partial struct PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR : IEquatable<PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR>
         {
             public PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkBool32> value) => this.Value = value;
             
@@ -820,13 +805,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkBool32> (vulkan.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkBool32> from) => new vulkan.PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR(from);
-            
             public static bool operator ==(PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR left, PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR left, PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkBool32> (PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkBool32> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceWin32PresentationSupportKHR`.
@@ -851,7 +836,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetMemoryWin32HandleKHR : IEquatable<vulkan.PFN_vkGetMemoryWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryWin32HandleKHR>
+        public readonly partial struct PFN_vkGetMemoryWin32HandleKHR : IEquatable<PFN_vkGetMemoryWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryWin32HandleKHR>
         {
             public PFN_vkGetMemoryWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -865,13 +850,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> (vulkan.PFN_vkGetMemoryWin32HandleKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetMemoryWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> from) => new vulkan.PFN_vkGetMemoryWin32HandleKHR(from);
-            
             public static bool operator ==(PFN_vkGetMemoryWin32HandleKHR left, PFN_vkGetMemoryWin32HandleKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetMemoryWin32HandleKHR left, PFN_vkGetMemoryWin32HandleKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> (PFN_vkGetMemoryWin32HandleKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkGetMemoryWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryWin32HandleKHR`.
@@ -925,7 +910,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetMemoryWin32HandlePropertiesKHR : IEquatable<vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR>
+        public readonly partial struct PFN_vkGetMemoryWin32HandlePropertiesKHR : IEquatable<PFN_vkGetMemoryWin32HandlePropertiesKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR>
         {
             public PFN_vkGetMemoryWin32HandlePropertiesKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -939,13 +924,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> (vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkGetMemoryWin32HandlePropertiesKHR(from);
-            
             public static bool operator ==(PFN_vkGetMemoryWin32HandlePropertiesKHR left, PFN_vkGetMemoryWin32HandlePropertiesKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetMemoryWin32HandlePropertiesKHR left, PFN_vkGetMemoryWin32HandlePropertiesKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> (PFN_vkGetMemoryWin32HandlePropertiesKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkGetMemoryWin32HandlePropertiesKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, nint, vulkan.VkMemoryWin32HandlePropertiesKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryWin32HandlePropertiesKHR`.
@@ -1000,7 +985,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkImportSemaphoreWin32HandleKHR : IEquatable<vulkan.PFN_vkImportSemaphoreWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkImportSemaphoreWin32HandleKHR>
+        public readonly partial struct PFN_vkImportSemaphoreWin32HandleKHR : IEquatable<PFN_vkImportSemaphoreWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkImportSemaphoreWin32HandleKHR>
         {
             public PFN_vkImportSemaphoreWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportSemaphoreWin32HandleInfoKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1014,13 +999,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportSemaphoreWin32HandleInfoKHR*, vulkan.VkResult> (vulkan.PFN_vkImportSemaphoreWin32HandleKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkImportSemaphoreWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportSemaphoreWin32HandleInfoKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkImportSemaphoreWin32HandleKHR(from);
-            
             public static bool operator ==(PFN_vkImportSemaphoreWin32HandleKHR left, PFN_vkImportSemaphoreWin32HandleKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkImportSemaphoreWin32HandleKHR left, PFN_vkImportSemaphoreWin32HandleKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportSemaphoreWin32HandleInfoKHR*, vulkan.VkResult> (PFN_vkImportSemaphoreWin32HandleKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkImportSemaphoreWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportSemaphoreWin32HandleInfoKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkImportSemaphoreWin32HandleKHR`.
@@ -1071,7 +1056,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetSemaphoreWin32HandleKHR : IEquatable<vulkan.PFN_vkGetSemaphoreWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetSemaphoreWin32HandleKHR>
+        public readonly partial struct PFN_vkGetSemaphoreWin32HandleKHR : IEquatable<PFN_vkGetSemaphoreWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetSemaphoreWin32HandleKHR>
         {
             public PFN_vkGetSemaphoreWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSemaphoreGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1085,13 +1070,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSemaphoreGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> (vulkan.PFN_vkGetSemaphoreWin32HandleKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetSemaphoreWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSemaphoreGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> from) => new vulkan.PFN_vkGetSemaphoreWin32HandleKHR(from);
-            
             public static bool operator ==(PFN_vkGetSemaphoreWin32HandleKHR left, PFN_vkGetSemaphoreWin32HandleKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetSemaphoreWin32HandleKHR left, PFN_vkGetSemaphoreWin32HandleKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSemaphoreGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> (PFN_vkGetSemaphoreWin32HandleKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkGetSemaphoreWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSemaphoreGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetSemaphoreWin32HandleKHR`.
@@ -1145,7 +1130,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkImportFenceWin32HandleKHR : IEquatable<vulkan.PFN_vkImportFenceWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkImportFenceWin32HandleKHR>
+        public readonly partial struct PFN_vkImportFenceWin32HandleKHR : IEquatable<PFN_vkImportFenceWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkImportFenceWin32HandleKHR>
         {
             public PFN_vkImportFenceWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportFenceWin32HandleInfoKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1159,13 +1144,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportFenceWin32HandleInfoKHR*, vulkan.VkResult> (vulkan.PFN_vkImportFenceWin32HandleKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkImportFenceWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportFenceWin32HandleInfoKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkImportFenceWin32HandleKHR(from);
-            
             public static bool operator ==(PFN_vkImportFenceWin32HandleKHR left, PFN_vkImportFenceWin32HandleKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkImportFenceWin32HandleKHR left, PFN_vkImportFenceWin32HandleKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportFenceWin32HandleInfoKHR*, vulkan.VkResult> (PFN_vkImportFenceWin32HandleKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkImportFenceWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkImportFenceWin32HandleInfoKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkImportFenceWin32HandleKHR`.
@@ -1216,7 +1201,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetFenceWin32HandleKHR : IEquatable<vulkan.PFN_vkGetFenceWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetFenceWin32HandleKHR>
+        public readonly partial struct PFN_vkGetFenceWin32HandleKHR : IEquatable<PFN_vkGetFenceWin32HandleKHR>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetFenceWin32HandleKHR>
         {
             public PFN_vkGetFenceWin32HandleKHR(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkFenceGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1230,13 +1215,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkFenceGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> (vulkan.PFN_vkGetFenceWin32HandleKHR from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetFenceWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkFenceGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> from) => new vulkan.PFN_vkGetFenceWin32HandleKHR(from);
-            
             public static bool operator ==(PFN_vkGetFenceWin32HandleKHR left, PFN_vkGetFenceWin32HandleKHR right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetFenceWin32HandleKHR left, PFN_vkGetFenceWin32HandleKHR right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkFenceGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> (PFN_vkGetFenceWin32HandleKHR from) => from.Value;
+            
+            public static implicit operator PFN_vkGetFenceWin32HandleKHR (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkFenceGetWin32HandleInfoKHR*, nint*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetFenceWin32HandleKHR`.
@@ -1290,7 +1275,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetMemoryWin32HandleNV : IEquatable<vulkan.PFN_vkGetMemoryWin32HandleNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryWin32HandleNV>
+        public readonly partial struct PFN_vkGetMemoryWin32HandleNV : IEquatable<PFN_vkGetMemoryWin32HandleNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryWin32HandleNV>
         {
             public PFN_vkGetMemoryWin32HandleNV(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkDeviceMemory, vulkan.VkExternalMemoryHandleTypeFlagsNV, nint*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1304,13 +1289,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkDeviceMemory, vulkan.VkExternalMemoryHandleTypeFlagsNV, nint*, vulkan.VkResult> (vulkan.PFN_vkGetMemoryWin32HandleNV from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetMemoryWin32HandleNV (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkDeviceMemory, vulkan.VkExternalMemoryHandleTypeFlagsNV, nint*, vulkan.VkResult> from) => new vulkan.PFN_vkGetMemoryWin32HandleNV(from);
-            
             public static bool operator ==(PFN_vkGetMemoryWin32HandleNV left, PFN_vkGetMemoryWin32HandleNV right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetMemoryWin32HandleNV left, PFN_vkGetMemoryWin32HandleNV right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkDeviceMemory, vulkan.VkExternalMemoryHandleTypeFlagsNV, nint*, vulkan.VkResult> (PFN_vkGetMemoryWin32HandleNV from) => from.Value;
+            
+            public static implicit operator PFN_vkGetMemoryWin32HandleNV (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkDeviceMemory, vulkan.VkExternalMemoryHandleTypeFlagsNV, nint*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetMemoryWin32HandleNV`.
@@ -1365,7 +1350,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT : IEquatable<vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>
+        public readonly partial struct PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT : IEquatable<PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT>
         {
             public PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, uint*, vulkan.VkPresentModeKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1379,13 +1364,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, uint*, vulkan.VkPresentModeKHR*, vulkan.VkResult> (vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, uint*, vulkan.VkPresentModeKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT(from);
-            
             public static bool operator ==(PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT left, PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT left, PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, uint*, vulkan.VkPresentModeKHR*, vulkan.VkResult> (PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT from) => from.Value;
+            
+            public static implicit operator PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, uint*, vulkan.VkPresentModeKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetPhysicalDeviceSurfacePresentModes2EXT`.
@@ -1466,7 +1451,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkAcquireFullScreenExclusiveModeEXT : IEquatable<vulkan.PFN_vkAcquireFullScreenExclusiveModeEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkAcquireFullScreenExclusiveModeEXT>
+        public readonly partial struct PFN_vkAcquireFullScreenExclusiveModeEXT : IEquatable<PFN_vkAcquireFullScreenExclusiveModeEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkAcquireFullScreenExclusiveModeEXT>
         {
             public PFN_vkAcquireFullScreenExclusiveModeEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -1480,13 +1465,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> (vulkan.PFN_vkAcquireFullScreenExclusiveModeEXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkAcquireFullScreenExclusiveModeEXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> from) => new vulkan.PFN_vkAcquireFullScreenExclusiveModeEXT(from);
-            
             public static bool operator ==(PFN_vkAcquireFullScreenExclusiveModeEXT left, PFN_vkAcquireFullScreenExclusiveModeEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkAcquireFullScreenExclusiveModeEXT left, PFN_vkAcquireFullScreenExclusiveModeEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> (PFN_vkAcquireFullScreenExclusiveModeEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkAcquireFullScreenExclusiveModeEXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkAcquireFullScreenExclusiveModeEXT`.
@@ -1517,7 +1502,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkReleaseFullScreenExclusiveModeEXT : IEquatable<vulkan.PFN_vkReleaseFullScreenExclusiveModeEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkReleaseFullScreenExclusiveModeEXT>
+        public readonly partial struct PFN_vkReleaseFullScreenExclusiveModeEXT : IEquatable<PFN_vkReleaseFullScreenExclusiveModeEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkReleaseFullScreenExclusiveModeEXT>
         {
             public PFN_vkReleaseFullScreenExclusiveModeEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -1531,13 +1516,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> (vulkan.PFN_vkReleaseFullScreenExclusiveModeEXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkReleaseFullScreenExclusiveModeEXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> from) => new vulkan.PFN_vkReleaseFullScreenExclusiveModeEXT(from);
-            
             public static bool operator ==(PFN_vkReleaseFullScreenExclusiveModeEXT left, PFN_vkReleaseFullScreenExclusiveModeEXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkReleaseFullScreenExclusiveModeEXT left, PFN_vkReleaseFullScreenExclusiveModeEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> (PFN_vkReleaseFullScreenExclusiveModeEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkReleaseFullScreenExclusiveModeEXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkSwapchainKHR, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkReleaseFullScreenExclusiveModeEXT`.
@@ -1568,7 +1553,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetDeviceGroupSurfacePresentModes2EXT : IEquatable<vulkan.PFN_vkGetDeviceGroupSurfacePresentModes2EXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetDeviceGroupSurfacePresentModes2EXT>
+        public readonly partial struct PFN_vkGetDeviceGroupSurfacePresentModes2EXT : IEquatable<PFN_vkGetDeviceGroupSurfacePresentModes2EXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetDeviceGroupSurfacePresentModes2EXT>
         {
             public PFN_vkGetDeviceGroupSurfacePresentModes2EXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, vulkan.VkDeviceGroupPresentModeFlagsKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1582,13 +1567,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, vulkan.VkDeviceGroupPresentModeFlagsKHR*, vulkan.VkResult> (vulkan.PFN_vkGetDeviceGroupSurfacePresentModes2EXT from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetDeviceGroupSurfacePresentModes2EXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, vulkan.VkDeviceGroupPresentModeFlagsKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkGetDeviceGroupSurfacePresentModes2EXT(from);
-            
             public static bool operator ==(PFN_vkGetDeviceGroupSurfacePresentModes2EXT left, PFN_vkGetDeviceGroupSurfacePresentModes2EXT right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetDeviceGroupSurfacePresentModes2EXT left, PFN_vkGetDeviceGroupSurfacePresentModes2EXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, vulkan.VkDeviceGroupPresentModeFlagsKHR*, vulkan.VkResult> (PFN_vkGetDeviceGroupSurfacePresentModes2EXT from) => from.Value;
+            
+            public static implicit operator PFN_vkGetDeviceGroupSurfacePresentModes2EXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPhysicalDeviceSurfaceInfo2KHR*, vulkan.VkDeviceGroupPresentModeFlagsKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetDeviceGroupSurfacePresentModes2EXT`.
@@ -1641,7 +1626,7 @@ namespace XenoAtom.Interop
             }
         }
         
-        public readonly partial struct PFN_vkAcquireWinrtDisplayNV : IEquatable<vulkan.PFN_vkAcquireWinrtDisplayNV>, IvkInstanceFunctionPointer<vulkan.PFN_vkAcquireWinrtDisplayNV>
+        public readonly partial struct PFN_vkAcquireWinrtDisplayNV : IEquatable<PFN_vkAcquireWinrtDisplayNV>, IvkInstanceFunctionPointer<vulkan.PFN_vkAcquireWinrtDisplayNV>
         {
             public PFN_vkAcquireWinrtDisplayNV(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkDisplayKHR, vulkan.VkResult> value) => this.Value = value;
             
@@ -1655,13 +1640,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkDisplayKHR, vulkan.VkResult> (vulkan.PFN_vkAcquireWinrtDisplayNV from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkAcquireWinrtDisplayNV (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkDisplayKHR, vulkan.VkResult> from) => new vulkan.PFN_vkAcquireWinrtDisplayNV(from);
-            
             public static bool operator ==(PFN_vkAcquireWinrtDisplayNV left, PFN_vkAcquireWinrtDisplayNV right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkAcquireWinrtDisplayNV left, PFN_vkAcquireWinrtDisplayNV right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkDisplayKHR, vulkan.VkResult> (PFN_vkAcquireWinrtDisplayNV from) => from.Value;
+            
+            public static implicit operator PFN_vkAcquireWinrtDisplayNV (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, vulkan.VkDisplayKHR, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkAcquireWinrtDisplayNV`.
@@ -1692,7 +1677,7 @@ namespace XenoAtom.Interop
             public bool IsNull => (nint)Value == 0;
         }
         
-        public readonly partial struct PFN_vkGetWinrtDisplayNV : IEquatable<vulkan.PFN_vkGetWinrtDisplayNV>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetWinrtDisplayNV>
+        public readonly partial struct PFN_vkGetWinrtDisplayNV : IEquatable<PFN_vkGetWinrtDisplayNV>, IvkInstanceFunctionPointer<vulkan.PFN_vkGetWinrtDisplayNV>
         {
             public PFN_vkGetWinrtDisplayNV(delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkDisplayKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -1706,13 +1691,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkDisplayKHR*, vulkan.VkResult> (vulkan.PFN_vkGetWinrtDisplayNV from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkGetWinrtDisplayNV (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkDisplayKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkGetWinrtDisplayNV(from);
-            
             public static bool operator ==(PFN_vkGetWinrtDisplayNV left, PFN_vkGetWinrtDisplayNV right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkGetWinrtDisplayNV left, PFN_vkGetWinrtDisplayNV right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkDisplayKHR*, vulkan.VkResult> (PFN_vkGetWinrtDisplayNV from) => from.Value;
+            
+            public static implicit operator PFN_vkGetWinrtDisplayNV (delegate*unmanaged[Stdcall]<vulkan.VkPhysicalDevice, uint, vulkan.VkDisplayKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkGetWinrtDisplayNV`.

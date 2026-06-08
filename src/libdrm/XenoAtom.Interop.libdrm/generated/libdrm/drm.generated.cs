@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -1026,27 +1027,11 @@ namespace XenoAtom.Interop
             public libdrm.drm_ctx_flags flags;
         }
         
-        public readonly partial struct drm_context_t : IEquatable<libdrm.drm_context_t>
+        public readonly partial record struct drm_context_t(uint Value)
         {
-            public drm_context_t(uint value) => this.Value = value;
+            public static implicit operator uint (drm_context_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is drm_context_t other && Equals(other);
-            
-            public bool Equals(drm_context_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (libdrm.drm_context_t from) => from.Value;
-            
-            public static implicit operator libdrm.drm_context_t (uint from) => new libdrm.drm_context_t(from);
-            
-            public static bool operator ==(drm_context_t left, drm_context_t right) => left.Equals(right);
-            
-            public static bool operator !=(drm_context_t left, drm_context_t right) => !left.Equals(right);
+            public static implicit operator drm_context_t (uint from) => new (from);
         }
         
         /// <summary>
@@ -1067,27 +1052,11 @@ namespace XenoAtom.Interop
             public libdrm.drm_drawable_t handle;
         }
         
-        public readonly partial struct drm_drawable_t : IEquatable<libdrm.drm_drawable_t>
+        public readonly partial record struct drm_drawable_t(uint Value)
         {
-            public drm_drawable_t(uint value) => this.Value = value;
+            public static implicit operator uint (drm_drawable_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is drm_drawable_t other && Equals(other);
-            
-            public bool Equals(drm_drawable_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (libdrm.drm_drawable_t from) => from.Value;
-            
-            public static implicit operator libdrm.drm_drawable_t (uint from) => new libdrm.drm_drawable_t(from);
-            
-            public static bool operator ==(drm_drawable_t left, drm_drawable_t right) => left.Equals(right);
-            
-            public static bool operator !=(drm_drawable_t left, drm_drawable_t right) => !left.Equals(right);
+            public static implicit operator drm_drawable_t (uint from) => new (from);
         }
         
         public partial struct drm_update_draw
@@ -1109,27 +1078,11 @@ namespace XenoAtom.Interop
             public libdrm.drm_magic_t magic;
         }
         
-        public readonly partial struct drm_magic_t : IEquatable<libdrm.drm_magic_t>
+        public readonly partial record struct drm_magic_t(uint Value)
         {
-            public drm_magic_t(uint value) => this.Value = value;
+            public static implicit operator uint (drm_magic_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is drm_magic_t other && Equals(other);
-            
-            public bool Equals(drm_magic_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (libdrm.drm_magic_t from) => from.Value;
-            
-            public static implicit operator libdrm.drm_magic_t (uint from) => new libdrm.drm_magic_t(from);
-            
-            public static bool operator ==(drm_magic_t left, drm_magic_t right) => left.Equals(right);
-            
-            public static bool operator !=(drm_magic_t left, drm_magic_t right) => !left.Equals(right);
+            public static implicit operator drm_magic_t (uint from) => new (from);
         }
         
         /// <summary>
@@ -1670,27 +1623,11 @@ namespace XenoAtom.Interop
             public ulong sequence;
         }
         
-        public readonly partial struct drm_handle_t : IEquatable<libdrm.drm_handle_t>
+        public readonly partial record struct drm_handle_t(uint Value)
         {
-            public drm_handle_t(uint value) => this.Value = value;
+            public static implicit operator uint (drm_handle_t from) => from.Value;
             
-            public uint Value { get; }
-            
-            public override bool Equals(object obj) => obj is drm_handle_t other && Equals(other);
-            
-            public bool Equals(drm_handle_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator uint (libdrm.drm_handle_t from) => from.Value;
-            
-            public static implicit operator libdrm.drm_handle_t (uint from) => new libdrm.drm_handle_t(from);
-            
-            public static bool operator ==(drm_handle_t left, drm_handle_t right) => left.Equals(right);
-            
-            public static bool operator !=(drm_handle_t left, drm_handle_t right) => !left.Equals(right);
+            public static implicit operator drm_handle_t (uint from) => new (from);
         }
         
         public const int DRM_CAP_DUMB_BUFFER = 1;

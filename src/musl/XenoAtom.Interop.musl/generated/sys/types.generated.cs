@@ -9,11 +9,12 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class musl
     {
-        public readonly partial struct caddr_t : IEquatable<musl.caddr_t>
+        public readonly partial struct caddr_t : IEquatable<caddr_t>
         {
             public caddr_t(byte* value) => this.Value = value;
             
@@ -27,59 +28,27 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator byte* (musl.caddr_t from) => from.Value;
-            
-            public static implicit operator musl.caddr_t (byte* from) => new musl.caddr_t(from);
-            
             public static bool operator ==(caddr_t left, caddr_t right) => left.Equals(right);
             
             public static bool operator !=(caddr_t left, caddr_t right) => !left.Equals(right);
+            
+            public static implicit operator byte* (caddr_t from) => from.Value;
+            
+            public static implicit operator caddr_t (byte* from) => new (from);
         }
         
-        public readonly partial struct quad_t : IEquatable<musl.quad_t>
+        public readonly partial record struct quad_t(long Value)
         {
-            public quad_t(long value) => this.Value = value;
+            public static implicit operator long (quad_t from) => from.Value;
             
-            public long Value { get; }
-            
-            public override bool Equals(object obj) => obj is quad_t other && Equals(other);
-            
-            public bool Equals(quad_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator long (musl.quad_t from) => from.Value;
-            
-            public static implicit operator musl.quad_t (long from) => new musl.quad_t(from);
-            
-            public static bool operator ==(quad_t left, quad_t right) => left.Equals(right);
-            
-            public static bool operator !=(quad_t left, quad_t right) => !left.Equals(right);
+            public static implicit operator quad_t (long from) => new (from);
         }
         
-        public readonly partial struct u_quad_t : IEquatable<musl.u_quad_t>
+        public readonly partial record struct u_quad_t(ulong Value)
         {
-            public u_quad_t(ulong value) => this.Value = value;
+            public static implicit operator ulong (u_quad_t from) => from.Value;
             
-            public ulong Value { get; }
-            
-            public override bool Equals(object obj) => obj is u_quad_t other && Equals(other);
-            
-            public bool Equals(u_quad_t other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator ulong (musl.u_quad_t from) => from.Value;
-            
-            public static implicit operator musl.u_quad_t (ulong from) => new musl.u_quad_t(from);
-            
-            public static bool operator ==(u_quad_t left, u_quad_t right) => left.Equals(right);
-            
-            public static bool operator !=(u_quad_t left, u_quad_t right) => !left.Equals(right);
+            public static implicit operator u_quad_t (ulong from) => new (from);
         }
     }
 }

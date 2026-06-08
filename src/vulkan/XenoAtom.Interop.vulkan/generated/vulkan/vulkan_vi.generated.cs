@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -49,30 +50,14 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_NN_vi_surface</para>
         /// </remarks>
-        public readonly partial struct VkViSurfaceCreateFlagsNN : IEquatable<vulkan.VkViSurfaceCreateFlagsNN>
+        public readonly partial record struct VkViSurfaceCreateFlagsNN(vulkan.VkFlags Value)
         {
-            public VkViSurfaceCreateFlagsNN(vulkan.VkFlags value) => this.Value = value;
+            public static implicit operator vulkan.VkFlags (VkViSurfaceCreateFlagsNN from) => from.Value;
             
-            public vulkan.VkFlags Value { get; }
-            
-            public override bool Equals(object obj) => obj is VkViSurfaceCreateFlagsNN other && Equals(other);
-            
-            public bool Equals(VkViSurfaceCreateFlagsNN other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator vulkan.VkFlags (vulkan.VkViSurfaceCreateFlagsNN from) => from.Value;
-            
-            public static implicit operator vulkan.VkViSurfaceCreateFlagsNN (vulkan.VkFlags from) => new vulkan.VkViSurfaceCreateFlagsNN(from);
-            
-            public static bool operator ==(VkViSurfaceCreateFlagsNN left, VkViSurfaceCreateFlagsNN right) => left.Equals(right);
-            
-            public static bool operator !=(VkViSurfaceCreateFlagsNN left, VkViSurfaceCreateFlagsNN right) => !left.Equals(right);
+            public static implicit operator VkViSurfaceCreateFlagsNN (vulkan.VkFlags from) => new (from);
         }
         
-        public readonly partial struct PFN_vkCreateViSurfaceNN : IEquatable<vulkan.PFN_vkCreateViSurfaceNN>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateViSurfaceNN>
+        public readonly partial struct PFN_vkCreateViSurfaceNN : IEquatable<PFN_vkCreateViSurfaceNN>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateViSurfaceNN>
         {
             public PFN_vkCreateViSurfaceNN(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkViSurfaceCreateInfoNN*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
             
@@ -86,13 +71,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkViSurfaceCreateInfoNN*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (vulkan.PFN_vkCreateViSurfaceNN from) => from.Value;
-            
-            public static implicit operator vulkan.PFN_vkCreateViSurfaceNN (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkViSurfaceCreateInfoNN*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new vulkan.PFN_vkCreateViSurfaceNN(from);
-            
             public static bool operator ==(PFN_vkCreateViSurfaceNN left, PFN_vkCreateViSurfaceNN right) => left.Equals(right);
             
             public static bool operator !=(PFN_vkCreateViSurfaceNN left, PFN_vkCreateViSurfaceNN right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkViSurfaceCreateInfoNN*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> (PFN_vkCreateViSurfaceNN from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateViSurfaceNN (delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkViSurfaceCreateInfoNN*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCreateViSurfaceNN`.

@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/00-general/">
+    <File Path="dotnet-releaser.toml" />
+  </Folder>
+  <Project Path="XenoAtom.Interop.libkmod.Tests/XenoAtom.Interop.libkmod.Tests.csproj" />
+  <Project Path="XenoAtom.Interop.libkmod/XenoAtom.Interop.libkmod.csproj" />
+</Solution>

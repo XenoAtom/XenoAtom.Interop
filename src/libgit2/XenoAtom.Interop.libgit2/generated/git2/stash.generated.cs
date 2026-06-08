@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -249,7 +250,7 @@ namespace XenoAtom.Interop
         /// Return 0 to continue processing, or a negative value to
         /// abort the stash application.
         /// </summary>
-        public readonly partial struct git_stash_apply_progress_cb : IEquatable<libgit2.git_stash_apply_progress_cb>
+        public readonly partial struct git_stash_apply_progress_cb : IEquatable<git_stash_apply_progress_cb>
         {
             public git_stash_apply_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> value) => this.Value = value;
             
@@ -263,13 +264,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> (libgit2.git_stash_apply_progress_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_stash_apply_progress_cb (delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> from) => new libgit2.git_stash_apply_progress_cb(from);
-            
             public static bool operator ==(git_stash_apply_progress_cb left, git_stash_apply_progress_cb right) => left.Equals(right);
             
             public static bool operator !=(git_stash_apply_progress_cb left, git_stash_apply_progress_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> (git_stash_apply_progress_cb from) => from.Value;
+            
+            public static implicit operator git_stash_apply_progress_cb (delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> from) => new (from);
         }
         
         /// <summary>
@@ -282,7 +283,7 @@ namespace XenoAtom.Interop
         /// <param name="stash_id">The commit oid of the stashed state.</param>
         /// <param name="payload">Extra parameter to callback function.</param>
         /// <returns>0 to continue iterating or non-zero to stop.</returns>
-        public readonly partial struct git_stash_cb : IEquatable<libgit2.git_stash_cb>
+        public readonly partial struct git_stash_cb : IEquatable<git_stash_cb>
         {
             public git_stash_cb(delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> value) => this.Value = value;
             
@@ -296,13 +297,13 @@ namespace XenoAtom.Interop
             
             public override string ToString() => ((nint)(void*)Value).ToString();
             
-            public static implicit operator delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> (libgit2.git_stash_cb from) => from.Value;
-            
-            public static implicit operator libgit2.git_stash_cb (delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> from) => new libgit2.git_stash_cb(from);
-            
             public static bool operator ==(git_stash_cb left, git_stash_cb right) => left.Equals(right);
             
             public static bool operator !=(git_stash_cb left, git_stash_cb right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> (git_stash_cb from) => from.Value;
+            
+            public static implicit operator git_stash_cb (delegate*unmanaged[Cdecl]<nuint, byte*, libgit2.git_oid*, void*, int> from) => new (from);
         }
         
         public const uint GIT_STASH_SAVE_OPTIONS_VERSION = 1;

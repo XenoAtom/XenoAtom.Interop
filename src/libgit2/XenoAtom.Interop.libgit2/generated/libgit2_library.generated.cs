@@ -9,114 +9,23 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
     
     public static unsafe partial class libgit2
     {
-        public readonly partial struct _LIBSSH2_SESSION : IEquatable<libgit2._LIBSSH2_SESSION>
-        {
-            public _LIBSSH2_SESSION(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(_LIBSSH2_SESSION other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is _LIBSSH2_SESSION other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
-            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(_LIBSSH2_SESSION left, _LIBSSH2_SESSION right) => left.Equals(right);
-            
-            public static bool operator !=(_LIBSSH2_SESSION left, _LIBSSH2_SESSION right) => !left.Equals(right);
-        }
-        
-        public readonly partial struct _LIBSSH2_USERAUTH_KBDINT_PROMPT : IEquatable<libgit2._LIBSSH2_USERAUTH_KBDINT_PROMPT>
-        {
-            public _LIBSSH2_USERAUTH_KBDINT_PROMPT(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(_LIBSSH2_USERAUTH_KBDINT_PROMPT other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is _LIBSSH2_USERAUTH_KBDINT_PROMPT other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
-            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(_LIBSSH2_USERAUTH_KBDINT_PROMPT left, _LIBSSH2_USERAUTH_KBDINT_PROMPT right) => left.Equals(right);
-            
-            public static bool operator !=(_LIBSSH2_USERAUTH_KBDINT_PROMPT left, _LIBSSH2_USERAUTH_KBDINT_PROMPT right) => !left.Equals(right);
-        }
-        
-        public readonly partial struct _LIBSSH2_USERAUTH_KBDINT_RESPONSE : IEquatable<libgit2._LIBSSH2_USERAUTH_KBDINT_RESPONSE>
-        {
-            public _LIBSSH2_USERAUTH_KBDINT_RESPONSE(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(_LIBSSH2_USERAUTH_KBDINT_RESPONSE other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is _LIBSSH2_USERAUTH_KBDINT_RESPONSE other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
-            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(_LIBSSH2_USERAUTH_KBDINT_RESPONSE left, _LIBSSH2_USERAUTH_KBDINT_RESPONSE right) => left.Equals(right);
-            
-            public static bool operator !=(_LIBSSH2_USERAUTH_KBDINT_RESPONSE left, _LIBSSH2_USERAUTH_KBDINT_RESPONSE right) => !left.Equals(right);
-        }
-        
-        public readonly partial struct git_iterator : IEquatable<libgit2.git_iterator>
-        {
-            public git_iterator(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_iterator other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_iterator other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
-            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_iterator left, git_iterator right) => left.Equals(right);
-            
-            public static bool operator !=(git_iterator left, git_iterator right) => !left.Equals(right);
-        }
-        
         /// <summary>
         /// A result integer from a git function. 0 if successful, 
         /// &lt;
         /// 0 if an error.
         /// </summary>
-        public readonly partial struct git_result : IEquatable<libgit2.git_result>
+        public readonly partial record struct git_result(int Value)
         {
-            public git_result(int value) => this.Value = value;
+            public static implicit operator int (git_result from) => from.Value;
             
-            public int Value { get; }
-            
-            public override bool Equals(object obj) => obj is git_result other && Equals(other);
-            
-            public bool Equals(git_result other) => Value.Equals(other.Value);
-            
-            public override int GetHashCode() => Value.GetHashCode();
-            
-            public override string ToString() => Value.ToString();
-            
-            public static implicit operator int (libgit2.git_result from) => from.Value;
-            
-            public static implicit operator libgit2.git_result (int from) => new libgit2.git_result(from);
-            
-            public static bool operator ==(git_result left, git_result right) => left.Equals(right);
-            
-            public static bool operator !=(git_result left, git_result right) => !left.Equals(right);
+            public static implicit operator git_result (int from) => new (from);
         }
     }
 }

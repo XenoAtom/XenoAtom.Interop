@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/00-general/">
+    <File Path="../../.github/workflows/ci_build_codegen.yml" />
+  </Folder>
+  <Project Path="XenoAtom.Interop.CodeGen/XenoAtom.Interop.CodeGen.csproj" />
+</Solution>

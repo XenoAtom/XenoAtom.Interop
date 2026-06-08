@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -210,6 +211,52 @@ namespace XenoAtom.Interop
         public const libkmod.kmod_module_initstate KMOD_MODULE_COMING = kmod_module_initstate.KMOD_MODULE_COMING;
         
         public const libkmod.kmod_module_initstate KMOD_MODULE_GOING = kmod_module_initstate.KMOD_MODULE_GOING;
+        
+        /// <summary>
+        /// kmod_ctx
+        /// </summary>
+        /// <remarks>
+        /// library user context - reads the config and system
+        /// environment, user variables, allows custom logging
+        /// </remarks>
+        public readonly partial record struct kmod_ctx(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
+        /// <summary>
+        /// kmod_list
+        /// </summary>
+        /// <remarks>
+        /// access to kmod generated lists
+        /// </remarks>
+        public readonly partial record struct kmod_list(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
+        /// <summary>
+        /// kmod_config_iter
+        /// </summary>
+        /// <remarks>
+        /// access to configuration lists - it allows to get each configuration's
+        /// key/value stored by kmod
+        /// </remarks>
+        public readonly partial record struct kmod_config_iter(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
+        /// <summary>
+        /// kmod_module
+        /// </summary>
+        /// <remarks>
+        /// Operate on kernel modules
+        /// </remarks>
+        public readonly partial record struct kmod_module(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

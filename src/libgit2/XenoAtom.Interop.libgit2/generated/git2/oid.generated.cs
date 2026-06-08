@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     using System.Runtime.InteropServices;
@@ -47,23 +48,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// OID Shortener object
         /// </summary>
-        public readonly partial struct git_oid_shorten : IEquatable<libgit2.git_oid_shorten>
+        public readonly partial record struct git_oid_shorten(nint Handle)
         {
-            public git_oid_shorten(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(git_oid_shorten other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is git_oid_shorten other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(git_oid_shorten left, git_oid_shorten right) => left.Equals(right);
-            
-            public static bool operator !=(git_oid_shorten left, git_oid_shorten right) => !left.Equals(right);
         }
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstr")]

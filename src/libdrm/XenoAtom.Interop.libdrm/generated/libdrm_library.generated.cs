@@ -9,6 +9,7 @@
 
 
 using System;
+using System.Runtime.InteropServices;
 namespace XenoAtom.Interop
 {
     public static unsafe partial class libdrm
@@ -760,24 +761,5 @@ namespace XenoAtom.Interop
         public const libdrm.drm_mode_atomic_flags DRM_MODE_ATOMIC_ALLOW_MODESET = drm_mode_atomic_flags.DRM_MODE_ATOMIC_ALLOW_MODESET;
         
         public const libdrm.drm_mode_atomic_flags DRM_MODE_ATOMIC_FLAGS = drm_mode_atomic_flags.DRM_MODE_ATOMIC_FLAGS;
-        
-        public readonly partial struct drmModeAtomicReq : IEquatable<libdrm.drmModeAtomicReq>
-        {
-            public drmModeAtomicReq(nint handle) => Handle = handle;
-            
-            public nint Handle { get; }
-            
-            public bool Equals(drmModeAtomicReq other) => Handle.Equals(other.Handle);
-            
-            public override bool Equals(object obj) => obj is drmModeAtomicReq other && Equals(other);
-            
-            public override int GetHashCode() => Handle.GetHashCode();
-            
-            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
-            
-            public static bool operator ==(drmModeAtomicReq left, drmModeAtomicReq right) => left.Equals(right);
-            
-            public static bool operator !=(drmModeAtomicReq left, drmModeAtomicReq right) => !left.Equals(right);
-        }
     }
 }
