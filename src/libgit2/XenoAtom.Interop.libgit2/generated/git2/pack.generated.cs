@@ -33,8 +33,13 @@ namespace XenoAtom.Interop
         public const libgit2.git_packbuilder_stage_t GIT_PACKBUILDER_DELTAFICATION = git_packbuilder_stage_t.GIT_PACKBUILDER_DELTAFICATION;
         
         /// <summary>
-        /// Packbuilder progress notification function
+        /// Packbuilder progress notification function.
         /// </summary>
+        /// <param name="stage">the stage of the packbuilder</param>
+        /// <param name="current">the current object</param>
+        /// <param name="total">the total number of objects</param>
+        /// <param name="payload">the callback payload</param>
+        /// <returns>0 on success or an error code</returns>
         public readonly partial struct git_packbuilder_progress : IEquatable<git_packbuilder_progress>
         {
             public git_packbuilder_progress(delegate*unmanaged[Cdecl]<int, uint, uint, void*, int> value) => this.Value = value;
@@ -314,7 +319,10 @@ namespace XenoAtom.Interop
         /// <param name="pb">The packbuilder object</param>
         /// <param name="progress_cb">Function to call with progress information during
         /// pack building. Be aware that this is called inline with pack building
-        /// operations, so performance may be affected.</param>
+        /// operations, so performance may be affected.
+        /// When progress_cb returns an error, the pack building process will be
+        /// aborted and the error will be returned from the invoked function.
+        /// `pb` must then be freed.</param>
         /// <param name="progress_cb_payload">Payload for progress callback.</param>
         /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_packbuilder_set_callbacks")]

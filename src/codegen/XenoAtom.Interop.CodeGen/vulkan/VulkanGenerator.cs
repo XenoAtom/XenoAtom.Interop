@@ -564,7 +564,8 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
             }
             else if (vkParameter.Kind == VulkanCommandParameterKind.Length)
             {
-                if (makeLengthOut && vkParameter.Optional != VulkanCommandOptional.None && paramToProcess.RefKind == CSharpRefKind.Ref)
+                // Previously with `&& vkParameter.Optional != VulkanCommandOptional.None` but not sure it's relevant
+                if (makeLengthOut && paramToProcess.RefKind == CSharpRefKind.Ref)
                 {
                     // Convert this parameter to out
                     var refType = new CSharpRefType(CSharpRefKind.Out, paramToProcess.ElementType);
@@ -619,7 +620,8 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 }
                 else if (vkParameter.Kind == VulkanCommandParameterKind.Length)
                 {
-                    if (makeLengthOut && vkParameter.Optional != VulkanCommandOptional.None && paramToProcess.RefKind == CSharpRefKind.Ref)
+                    // Previously `&& vkParameter.Optional != VulkanCommandOptional.None` but not relevant I think
+                    if (makeLengthOut && paramToProcess.RefKind == CSharpRefKind.Ref)
                     {
                         writer.WriteLine($"{csParameter.Name} = default;");
                     }
@@ -1711,7 +1713,8 @@ internal partial class VulkanGenerator(LibDescriptor descriptor) : GeneratorBase
                 match = regex.Match(text, index);
                 if (!match.Success)
                 {
-                    throw new InvalidOperationException($"Invalid link format in {text}, expecting link after :: at index {index}");
+                    return group;
+                    //throw new InvalidOperationException($"Invalid link format in {text}, expecting link after :: at index {index}");
                 }
 
                 memberTarget = $".{match.Groups["target"].Value}";

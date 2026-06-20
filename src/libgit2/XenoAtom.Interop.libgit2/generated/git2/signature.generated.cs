@@ -85,6 +85,35 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_signature_now(out libgit2.git_signature* @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> email);
         
         /// <summary>
+        /// Create a new author and/or committer signatures with default
+        /// information based on the configuration and environment variables.
+        /// </summary>
+        /// <param name="author_out">pointer to set the author signature, or NULL</param>
+        /// <param name="committer_out">pointer to set the committer signature, or NULL</param>
+        /// <param name="repo">repository pointer</param>
+        /// <returns>0 on success, GIT_ENOTFOUND if config is missing, or error code</returns>
+        /// <remarks>
+        /// If `author_out` is set, it will be populated with the author
+        /// information. The `GIT_AUTHOR_NAME` and `GIT_AUTHOR_EMAIL`
+        /// environment variables will be honored, and `user.name` and
+        /// `user.email` configuration options will be honored if the
+        /// environment variables are unset. For timestamps, `GIT_AUTHOR_DATE`
+        /// will be used, otherwise the current time will be used.If `committer_out` is set, it will be populated with the
+        /// committer information. The `GIT_COMMITTER_NAME` and
+        /// `GIT_COMMITTER_EMAIL` environment variables will be honored,
+        /// and `user.name` and `user.email` configuration options will
+        /// be honored if the environment variables are unset. For timestamps,
+        /// `GIT_COMMITTER_DATE` will be used, otherwise the current time will
+        /// be used.If neither `GIT_AUTHOR_DATE` nor `GIT_COMMITTER_DATE` are set,
+        /// both timestamps will be set to the same time.It will return `GIT_ENOTFOUND` if either the `user.name` or
+        /// `user.email` are not set and there is no fallback from an environment
+        /// variable. One of `author_out` or `committer_out` must be set.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_signature_default_from_env")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int git_signature_default_from_env(ref libgit2.git_signature* author_out, ref libgit2.git_signature* committer_out, libgit2.git_repository repo);
+        
+        /// <summary>
         /// Create a new action signature with default user and now timestamp.
         /// </summary>
         /// <param name="out">new signature</param>
@@ -94,7 +123,9 @@ namespace XenoAtom.Interop
         /// This looks up the user.name and user.email from the configuration and
         /// uses the current time as the timestamp, and creates a new signature
         /// based on that information.  It will return GIT_ENOTFOUND if either the
-        /// user.name or user.email are not set.
+        /// user.name or user.email are not set.Note that these do not examine environment variables, only the
+        /// configuration files. Use `git_signature_default_from_env` to
+        /// consider the environment variables.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_signature_default")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

@@ -100,7 +100,7 @@ namespace XenoAtom.Interop
             GIT_REMOTE_UPDATE_FETCHHEAD = unchecked((uint)1),
             
             /// <summary>
-            /// Report unchanged tips in the update_tips callback.
+            /// Report unchanged tips in the update_refs callback.
             /// </summary>
             GIT_REMOTE_UPDATE_REPORT_UNCHANGED = unchecked((uint)2),
         }
@@ -111,7 +111,7 @@ namespace XenoAtom.Interop
         public const libgit2.git_remote_update_flags GIT_REMOTE_UPDATE_FETCHHEAD = git_remote_update_flags.GIT_REMOTE_UPDATE_FETCHHEAD;
         
         /// <summary>
-        /// Report unchanged tips in the update_tips callback.
+        /// Report unchanged tips in the update_refs callback.
         /// </summary>
         public const libgit2.git_remote_update_flags GIT_REMOTE_UPDATE_REPORT_UNCHANGED = git_remote_update_flags.GIT_REMOTE_UPDATE_REPORT_UNCHANGED;
         
@@ -195,7 +195,7 @@ namespace XenoAtom.Interop
             GIT_REMOTE_DOWNLOAD_TAGS_NONE = unchecked((uint)2),
             
             /// <summary>
-            /// Ask for the all the tags.
+            /// Ask for all the tags.
             /// </summary>
             GIT_REMOTE_DOWNLOAD_TAGS_ALL = unchecked((uint)3),
         }
@@ -217,7 +217,7 @@ namespace XenoAtom.Interop
         public const libgit2.git_remote_autotag_option_t GIT_REMOTE_DOWNLOAD_TAGS_NONE = git_remote_autotag_option_t.GIT_REMOTE_DOWNLOAD_TAGS_NONE;
         
         /// <summary>
-        /// Ask for the all the tags.
+        /// Ask for all the tags.
         /// </summary>
         public const libgit2.git_remote_autotag_option_t GIT_REMOTE_DOWNLOAD_TAGS_ALL = git_remote_autotag_option_t.GIT_REMOTE_DOWNLOAD_TAGS_ALL;
         
@@ -285,9 +285,8 @@ namespace XenoAtom.Interop
             public libgit2.git_credential_acquire_cb credentials;
             
             /// <summary>
-            /// If cert verification fails, this will be called to let the
-            /// user make the final decision of whether to allow the
-            /// connection to proceed. Returns 0 to allow the connection
+            /// This will be called to let the user make the final decision of whether
+            /// to allow the connection to proceed. Returns 0 to allow the connection
             /// or a negative value to indicate an error.
             /// </summary>
             public libgit2.git_transport_certificate_check_cb certificate_check;
@@ -299,11 +298,7 @@ namespace XenoAtom.Interop
             /// </summary>
             public libgit2.git_indexer_progress_cb transfer_progress;
             
-            /// <summary>
-            /// Each time a reference is updated locally, this function
-            /// will be called with information about it.
-            /// </summary>
-            public delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, libgit2.git_oid*, void*, int> update_tips;
+            public void* reserved_update_tips;
             
             /// <summary>
             /// Function to call with progress information during pack
@@ -349,11 +344,24 @@ namespace XenoAtom.Interop
             public void* payload;
             
             public void* reserved;
+            
+            /// <summary>
+            /// Each time a reference is updated locally, this function
+            /// will be called with information about it. This should be
+            /// preferred over the `update_tips` callback in this
+            /// structure.
+            /// </summary>
+            public delegate*unmanaged[Cdecl]<byte*, libgit2.git_oid*, libgit2.git_oid*, libgit2.git_refspec, void*, int> update_refs;
         }
         
         /// <summary>
-        /// Push network progress notification function
+        /// Push network progress notification callback.
         /// </summary>
+        /// <param name="current">The number of objects pushed so far</param>
+        /// <param name="total">The total number of objects to push</param>
+        /// <param name="bytes">The number of bytes pushed</param>
+        /// <param name="payload">The user-specified payload callback</param>
+        /// <returns>0 or an error code to stop the transfer</returns>
         public readonly partial struct git_push_transfer_progress_cb : IEquatable<git_push_transfer_progress_cb>
         {
             public git_push_transfer_progress_cb(delegate*unmanaged[Cdecl]<uint, uint, nuint, void*, int> value) => this.Value = value;
@@ -445,6 +453,7 @@ namespace XenoAtom.Interop
         /// as commands to the destination.</param>
         /// <param name="len">number of elements in `updates`</param>
         /// <param name="payload">Payload provided by the caller</param>
+        /// <returns>0 or an error code to stop the push</returns>
         public readonly partial struct git_push_negotiation : IEquatable<git_push_negotiation>
         {
             public git_push_negotiation(delegate*unmanaged[Cdecl]<libgit2.git_push_update**, nuint, void*, int> value) => this.Value = value;
@@ -922,9 +931,9 @@ namespace XenoAtom.Interop
         /// <param name="remote">the remote</param>
         /// <returns>a pointer to the url</returns>
         /// <remarks>
-        /// If url.*.insteadOf has been configured for this URL, it will
-        /// return the modified URL.  If `git_remote_set_instance_pushurl`
-        /// has been called for this remote, then that URL will be returned.
+        /// If url.*.insteadOf has been configured for this URL, it will return
+        /// the modified URL. This function does not consider if a push url has
+        /// been configured for this remote (use `git_remote_pushurl` if needed).
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -936,9 +945,9 @@ namespace XenoAtom.Interop
         /// <param name="remote">the remote</param>
         /// <returns>a pointer to the url</returns>
         /// <remarks>
-        /// If url.*.insteadOf has been configured for this URL, it will
-        /// return the modified URL.  If `git_remote_set_instance_pushurl`
-        /// has been called for this remote, then that URL will be returned.
+        /// If url.*.insteadOf has been configured for this URL, it will return
+        /// the modified URL. This function does not consider if a push url has
+        /// been configured for this remote (use `git_remote_pushurl` if needed).
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_url")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -1219,6 +1228,21 @@ namespace XenoAtom.Interop
         public static partial int git_remote_connected(libgit2.git_remote remote);
         
         /// <summary>
+        /// Get the remote repository's object format.
+        /// </summary>
+        /// <param name="out">the resulting object format type</param>
+        /// <param name="remote">the remote</param>
+        /// <returns>0 on success, or an error code</returns>
+        /// <remarks>
+        /// The remote (or more exactly its transport) must have connected to
+        /// the remote repository. This format is available as soon as the
+        /// connection to the remote is initiated and stays connected.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_oid_type")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int git_remote_oid_type(out libgit2.git_oid_t @out, libgit2.git_remote remote);
+        
+        /// <summary>
         /// Cancel the operation
         /// </summary>
         /// <param name="remote">the remote</param>
@@ -1404,16 +1428,16 @@ namespace XenoAtom.Interop
         /// Update the tips to the new state.
         /// </summary>
         /// <param name="remote">the remote to update</param>
+        /// <param name="callbacks">pointer to the callback structure to use or NULL</param>
+        /// <param name="update_flags">the git_remote_update_flags for these tips.</param>
+        /// <param name="download_tags">what the behaviour for downloading tags is for this fetch. This is
+        /// ignored for push. This must be the same value passed to `git_remote_download()`.</param>
         /// <param name="reflog_message">The message to insert into the reflogs. If
         /// NULL and fetching, the default is "fetch &lt;name&gt;", where 
         /// &lt;name
         /// &gt; is
         /// the name of the remote (or its url, for in-memory remotes). This
         /// parameter is ignored when pushing.</param>
-        /// <param name="callbacks">pointer to the callback structure to use or NULL</param>
-        /// <param name="update_flags">the git_remote_update_flags for these tips.</param>
-        /// <param name="download_tags">what the behaviour for downloading tags is for this fetch. This is
-        /// ignored for push. This must be the same value passed to `git_remote_download()`.</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If callbacks are not specified then the callbacks specified to
@@ -1427,16 +1451,16 @@ namespace XenoAtom.Interop
         /// Update the tips to the new state.
         /// </summary>
         /// <param name="remote">the remote to update</param>
+        /// <param name="callbacks">pointer to the callback structure to use or NULL</param>
+        /// <param name="update_flags">the git_remote_update_flags for these tips.</param>
+        /// <param name="download_tags">what the behaviour for downloading tags is for this fetch. This is
+        /// ignored for push. This must be the same value passed to `git_remote_download()`.</param>
         /// <param name="reflog_message">The message to insert into the reflogs. If
         /// NULL and fetching, the default is "fetch &lt;name&gt;", where 
         /// &lt;name
         /// &gt; is
         /// the name of the remote (or its url, for in-memory remotes). This
         /// parameter is ignored when pushing.</param>
-        /// <param name="callbacks">pointer to the callback structure to use or NULL</param>
-        /// <param name="update_flags">the git_remote_update_flags for these tips.</param>
-        /// <param name="download_tags">what the behaviour for downloading tags is for this fetch. This is
-        /// ignored for push. This must be the same value passed to `git_remote_download()`.</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// If callbacks are not specified then the callbacks specified to
@@ -1520,6 +1544,8 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Get the statistics structure that is filled in by the fetch operation.
         /// </summary>
+        /// <param name="remote">the remote to get statistics for</param>
+        /// <returns>the git_indexer_progress for the remote</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_remote_stats")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_indexer_progress* git_remote_stats(libgit2.git_remote remote);

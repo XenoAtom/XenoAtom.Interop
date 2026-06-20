@@ -139,6 +139,32 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
+        /// get console size and cursor position
+        /// </summary>
+        public partial struct vt_consizecsrpos
+        {
+            /// <summary>
+            /// number of console rows
+            /// </summary>
+            public ushort con_rows;
+            
+            /// <summary>
+            /// number of console columns
+            /// </summary>
+            public ushort con_cols;
+            
+            /// <summary>
+            /// current cursor's row
+            /// </summary>
+            public ushort csr_row;
+            
+            /// <summary>
+            /// current cursor's column
+            /// </summary>
+            public ushort csr_col;
+        }
+        
+        /// <summary>
         /// find available vt
         /// </summary>
         /// <summary>
@@ -385,5 +411,25 @@ namespace XenoAtom.Interop
         /// Activate and set the mode of a console
         /// </summary>
         public const ushort VT_SETACTIVATE = 22031;
+        
+        /// <summary>
+        /// Get console size and cursor position.
+        /// argp
+        /// points to a
+        /// 
+        /// +4n
+        /// 
+        /// struct vt_consizecsrpos {
+        ///     __u16 con_rows;  /* number of console rows */
+        ///     __u16 con_cols;  /* number of console columns */
+        ///     __u16 csr_row;   /* current cursor's row */
+        ///     __u16 csr_col;   /* current cursor's column */
+        /// };
+        /// 
+        /// 
+        /// 
+        /// (Since Linux 6.16.)
+        /// </summary>
+        public const ushort VT_GETCONSIZECSRPOS = 22032;
     }
 }

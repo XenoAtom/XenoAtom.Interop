@@ -626,13 +626,35 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Create new commit in the repository using a variable argument list.
         /// </summary>
+        /// <param name="id">Pointer in which to store the OID of the newly created commit</param>
+        /// <param name="repo">Repository where to store the commit</param>
+        /// <param name="update_ref">If not NULL, name of the reference that
+        /// will be updated to point to this commit. If the reference
+        /// is not direct, it will be resolved to a direct reference.
+        /// Use "HEAD" to update the HEAD of the current branch and
+        /// make it point to this commit. If the reference doesn't
+        /// exist yet, it will be created. If it does exist, the first
+        /// parent must be the tip of this branch.</param>
+        /// <param name="author">Signature with author and author time of commit</param>
+        /// <param name="committer">Signature with committer and * commit time of commit</param>
+        /// <param name="message_encoding">The encoding for the message in the
+        /// commit, represented with a standard encoding name.
+        /// E.g. "UTF-8". If NULL, no encoding header is written and
+        /// UTF-8 is assumed.</param>
+        /// <param name="message">Full message for this commit</param>
+        /// <param name="tree">An instance of a `git_tree` object that will
+        /// be used as the tree for the commit. This tree object must
+        /// also be owned by the given `repo`.</param>
+        /// <param name="parent_count">Number of parents for this commit</param>
+        /// <returns>@return 0 or an error code
+        /// The created commit will be written to the Object Database and
+        /// the given reference will be updated to point to it</returns>
         /// <remarks>
         /// The message will **not** be cleaned up automatically. You can do that
         /// with the `git_message_prettify()` function.The parents for the commit are specified as a variable list of pointers
         /// to `const git_commit *`. Note that this is a convenience method which may
         /// not be safe to export for certain languages or compilersAll other parameters remain the same as `git_commit_create()`.
         /// </remarks>
-        /// <seealso cref="git_commit_create"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_create_v")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_commit_create_v(out libgit2.git_oid id, libgit2.git_repository repo, byte* update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, byte* message_encoding, byte* message, libgit2.git_tree tree, nuint parent_count);
@@ -640,13 +662,35 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Create new commit in the repository using a variable argument list.
         /// </summary>
+        /// <param name="id">Pointer in which to store the OID of the newly created commit</param>
+        /// <param name="repo">Repository where to store the commit</param>
+        /// <param name="update_ref">If not NULL, name of the reference that
+        /// will be updated to point to this commit. If the reference
+        /// is not direct, it will be resolved to a direct reference.
+        /// Use "HEAD" to update the HEAD of the current branch and
+        /// make it point to this commit. If the reference doesn't
+        /// exist yet, it will be created. If it does exist, the first
+        /// parent must be the tip of this branch.</param>
+        /// <param name="author">Signature with author and author time of commit</param>
+        /// <param name="committer">Signature with committer and * commit time of commit</param>
+        /// <param name="message_encoding">The encoding for the message in the
+        /// commit, represented with a standard encoding name.
+        /// E.g. "UTF-8". If NULL, no encoding header is written and
+        /// UTF-8 is assumed.</param>
+        /// <param name="message">Full message for this commit</param>
+        /// <param name="tree">An instance of a `git_tree` object that will
+        /// be used as the tree for the commit. This tree object must
+        /// also be owned by the given `repo`.</param>
+        /// <param name="parent_count">Number of parents for this commit</param>
+        /// <returns>@return 0 or an error code
+        /// The created commit will be written to the Object Database and
+        /// the given reference will be updated to point to it</returns>
         /// <remarks>
         /// The message will **not** be cleaned up automatically. You can do that
         /// with the `git_message_prettify()` function.The parents for the commit are specified as a variable list of pointers
         /// to `const git_commit *`. Note that this is a convenience method which may
         /// not be safe to export for certain languages or compilersAll other parameters remain the same as `git_commit_create()`.
         /// </remarks>
-        /// <seealso cref="git_commit_create"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_create_v")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_commit_create_v(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree, nuint parent_count);
@@ -686,6 +730,28 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Amend an existing commit by replacing only non-NULL values.
         /// </summary>
+        /// <param name="id">Pointer in which to store the OID of the newly created commit</param>
+        /// <param name="commit_to_amend">The commit to amend</param>
+        /// <param name="update_ref">If not NULL, name of the reference that
+        /// will be updated to point to this commit. If the reference
+        /// is not direct, it will be resolved to a direct reference.
+        /// Use "HEAD" to update the HEAD of the current branch and
+        /// make it point to this commit. If the reference doesn't
+        /// exist yet, it will be created. If it does exist, the first
+        /// parent must be the tip of this branch.</param>
+        /// <param name="author">Signature with author and author time of commit</param>
+        /// <param name="committer">Signature with committer and * commit time of commit</param>
+        /// <param name="message_encoding">The encoding for the message in the
+        /// commit, represented with a standard encoding name.
+        /// E.g. "UTF-8". If NULL, no encoding header is written and
+        /// UTF-8 is assumed.</param>
+        /// <param name="message">Full message for this commit</param>
+        /// <param name="tree">An instance of a `git_tree` object that will
+        /// be used as the tree for the commit. This tree object must
+        /// also be owned by the given `repo`.</param>
+        /// <returns>@return 0 or an error code
+        /// The created commit will be written to the Object Database and
+        /// the given reference will be updated to point to it</returns>
         /// <remarks>
         /// This creates a new commit that is exactly the same as the old commit,
         /// except that any non-NULL values will be updated.  The new commit has
@@ -697,7 +763,6 @@ namespace XenoAtom.Interop
         /// `message_encoding`, and `tree` parameters can be NULL in which case this
         /// will use the values from the original `commit_to_amend`.All parameters have the same meanings as in `git_commit_create()`.
         /// </remarks>
-        /// <seealso cref="git_commit_create"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_amend")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_commit_amend(out libgit2.git_oid id, libgit2.git_commit commit_to_amend, byte* update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, byte* message_encoding, byte* message, libgit2.git_tree tree);
@@ -705,6 +770,28 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Amend an existing commit by replacing only non-NULL values.
         /// </summary>
+        /// <param name="id">Pointer in which to store the OID of the newly created commit</param>
+        /// <param name="commit_to_amend">The commit to amend</param>
+        /// <param name="update_ref">If not NULL, name of the reference that
+        /// will be updated to point to this commit. If the reference
+        /// is not direct, it will be resolved to a direct reference.
+        /// Use "HEAD" to update the HEAD of the current branch and
+        /// make it point to this commit. If the reference doesn't
+        /// exist yet, it will be created. If it does exist, the first
+        /// parent must be the tip of this branch.</param>
+        /// <param name="author">Signature with author and author time of commit</param>
+        /// <param name="committer">Signature with committer and * commit time of commit</param>
+        /// <param name="message_encoding">The encoding for the message in the
+        /// commit, represented with a standard encoding name.
+        /// E.g. "UTF-8". If NULL, no encoding header is written and
+        /// UTF-8 is assumed.</param>
+        /// <param name="message">Full message for this commit</param>
+        /// <param name="tree">An instance of a `git_tree` object that will
+        /// be used as the tree for the commit. This tree object must
+        /// also be owned by the given `repo`.</param>
+        /// <returns>@return 0 or an error code
+        /// The created commit will be written to the Object Database and
+        /// the given reference will be updated to point to it</returns>
         /// <remarks>
         /// This creates a new commit that is exactly the same as the old commit,
         /// except that any non-NULL values will be updated.  The new commit has
@@ -716,7 +803,6 @@ namespace XenoAtom.Interop
         /// `message_encoding`, and `tree` parameters can be NULL in which case this
         /// will use the values from the original `commit_to_amend`.All parameters have the same meanings as in `git_commit_create()`.
         /// </remarks>
-        /// <seealso cref="git_commit_create"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_commit_amend")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_commit_amend(out libgit2.git_oid id, libgit2.git_commit commit_to_amend, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> update_ref, in libgit2.git_signature author, in libgit2.git_signature committer, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message_encoding, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> message, libgit2.git_tree tree);

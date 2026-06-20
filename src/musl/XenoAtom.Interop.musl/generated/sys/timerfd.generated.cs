@@ -18,71 +18,12 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        /// <summary>
-        /// Set the
-        /// O_NONBLOCK
-        /// file status flag on the open file description (see
-        /// open (2))
-        /// referred to by the new file descriptor.
-        /// Using this flag saves extra calls to
-        /// fcntl (2)
-        /// to achieve the same result.
-        /// </summary>
         public const int TFD_NONBLOCK = 2048;
         
-        /// <summary>
-        /// Set the close-on-exec
-        /// ( FD_CLOEXEC )
-        /// flag on the new file descriptor.
-        /// See the description of the
-        /// O_CLOEXEC
-        /// flag in
-        /// open (2)
-        /// for reasons why this may be useful.
-        /// 
-        /// In Linux versions up to and including 2.6.26,
-        /// flags
-        /// must be specified as zero.
-        /// </summary>
         public const int TFD_CLOEXEC = 524288;
         
-        /// <summary>
-        /// Interpret
-        /// new_value.it_value
-        /// as an absolute value on the timer's clock.
-        /// The timer will expire when the value of the timer's
-        /// clock reaches the value specified in
-        /// new_value.it_value .
-        /// </summary>
         public const int TFD_TIMER_ABSTIME = 1;
         
-        /// <summary>
-        /// If this flag is specified along with
-        /// TFD_TIMER_ABSTIME
-        /// and the clock for this timer is
-        /// CLOCK_REALTIME
-        /// or
-        /// CLOCK_REALTIME_ALARM ,
-        /// then mark this timer as cancelable if the real-time clock
-        /// undergoes a discontinuous change
-        /// ( settimeofday (2),
-        /// clock_settime (2),
-        /// or similar).
-        /// When such changes occur, a current or future
-        /// read (2)
-        /// from the file descriptor will fail with the error
-        /// ECANCELED .
-        /// 
-        /// If the
-        /// old_value
-        /// argument is not NULL, then the
-        /// itimerspec
-        /// structure that it points to is used to return the setting of the timer
-        /// that was current at the time of the call;
-        /// see the description of
-        /// timerfd_gettime ()
-        /// following.
-        /// </summary>
         public const int TFD_TIMER_CANCEL_ON_SET = 2;
         
         /// <summary>

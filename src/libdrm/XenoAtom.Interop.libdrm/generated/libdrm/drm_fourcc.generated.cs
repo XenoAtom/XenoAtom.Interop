@@ -307,6 +307,16 @@ namespace XenoAtom.Interop
         public const uint DRM_FORMAT_BGRA1010102 = 808665410;
         
         /// <summary>
+        /// [47:0] R:G:B 16:16:16 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_RGB161616 = 942950226;
+        
+        /// <summary>
+        /// [47:0] B:G:R 16:16:16 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_BGR161616 = 942950210;
+        
+        /// <summary>
         /// [63:0] x:R:G:B 16:16:16:16 little endian
         /// </summary>
         public const uint DRM_FORMAT_XRGB16161616 = 942953048;
@@ -345,6 +355,41 @@ namespace XenoAtom.Interop
         /// [63:0] A:B:G:R 16:16:16:16 little endian
         /// </summary>
         public const uint DRM_FORMAT_ABGR16161616F = 1211384385;
+        
+        /// <summary>
+        /// [15:0] R 16 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_R16F = 1210064978;
+        
+        /// <summary>
+        /// [31:0] G:R 16:16 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_GR1616F = 1210077767;
+        
+        /// <summary>
+        /// [47:0] B:G:R 16:16:16 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_BGR161616F = 1213351746;
+        
+        /// <summary>
+        /// [31:0] R 32 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_R32F = 1176510546;
+        
+        /// <summary>
+        /// [63:0] G:R 32:32 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_GR3232F = 1176523335;
+        
+        /// <summary>
+        /// [95:0] B:G:R 32:32:32 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_BGR323232F = 1179797314;
+        
+        /// <summary>
+        /// [127:0] A:B:G:R 32:32:32:32 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_ABGR32323232F = 1178092097;
         
         /// <summary>
         /// [63:0] A:x:B:x:G:x:R:x 10:6:10:6:10:6:10:6 little endian
@@ -400,6 +445,11 @@ namespace XenoAtom.Interop
         /// Y followed by U then V, 10:10:10. Non-linear modifier only
         /// </summary>
         public const uint DRM_FORMAT_VUY101010 = 808670550;
+        
+        /// <summary>
+        /// [31:0] x:Cr:Cb:Y 2:10:10:10 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_XVUY2101010 = 808671576;
         
         /// <summary>
         /// [63:0] Cr0:0:Y1:0:Cb0:0:Y0:0 10:6:10:6:10:6:10:6 little endian per 2 Y pixels
@@ -544,9 +594,61 @@ namespace XenoAtom.Interop
         /// </summary>
         public const uint DRM_FORMAT_P030 = 808661072;
         
+        /// <summary>
+        /// 2x1 subsampled Cr:Cb plane 10 bits per channel packed
+        /// </summary>
+        public const uint DRM_FORMAT_P230 = 808661584;
+        
         public const uint DRM_FORMAT_Q410 = 808531025;
         
         public const uint DRM_FORMAT_Q401 = 825242705;
+        
+        public const uint DRM_FORMAT_T430 = 808662100;
+        
+        /// <summary>
+        /// 2x2 subsampled Cb (1) and Cr (2) planes 10 bits per channel
+        /// </summary>
+        public const uint DRM_FORMAT_S010 = 808530003;
+        
+        /// <summary>
+        /// 2x1 subsampled Cb (1) and Cr (2) planes 10 bits per channel
+        /// </summary>
+        public const uint DRM_FORMAT_S210 = 808530515;
+        
+        /// <summary>
+        /// non-subsampled Cb (1) and Cr (2) planes 10 bits per channel
+        /// </summary>
+        public const uint DRM_FORMAT_S410 = 808531027;
+        
+        /// <summary>
+        /// 2x2 subsampled Cb (1) and Cr (2) planes 12 bits per channel
+        /// </summary>
+        public const uint DRM_FORMAT_S012 = 842084435;
+        
+        /// <summary>
+        /// 2x1 subsampled Cb (1) and Cr (2) planes 12 bits per channel
+        /// </summary>
+        public const uint DRM_FORMAT_S212 = 842084947;
+        
+        /// <summary>
+        /// non-subsampled Cb (1) and Cr (2) planes 12 bits per channel
+        /// </summary>
+        public const uint DRM_FORMAT_S412 = 842085459;
+        
+        /// <summary>
+        /// 2x2 subsampled Cb (1) and Cr (2) planes 16 bits per channel
+        /// </summary>
+        public const uint DRM_FORMAT_S016 = 909193299;
+        
+        /// <summary>
+        /// 2x1 subsampled Cb (1) and Cr (2) planes 16 bits per channel
+        /// </summary>
+        public const uint DRM_FORMAT_S216 = 909193811;
+        
+        /// <summary>
+        /// non-subsampled Cb (1) and Cr (2) planes 16 bits per channel
+        /// </summary>
+        public const uint DRM_FORMAT_S416 = 909194323;
         
         /// <summary>
         /// 4x4 subsampled Cb (1) and Cr (2) planes
@@ -598,6 +700,16 @@ namespace XenoAtom.Interop
         /// </summary>
         public const uint DRM_FORMAT_YVU444 = 875714137;
         
+        /// <summary>
+        /// 8-bit Y-only
+        /// </summary>
+        public const uint DRM_FORMAT_Y8 = 1497715271;
+        
+        /// <summary>
+        /// [31:0] x:Y2:Y1:Y0 2:10:10:10 little endian
+        /// </summary>
+        public const uint DRM_FORMAT_XYYY2101010 = 876695641;
+        
         public const ulong DRM_FORMAT_MOD_VENDOR_NONE = 0;
         
         public const ulong DRM_FORMAT_MOD_VENDOR_INTEL = 1;
@@ -619,6 +731,10 @@ namespace XenoAtom.Interop
         public const ulong DRM_FORMAT_MOD_VENDOR_ALLWINNER = 9;
         
         public const ulong DRM_FORMAT_MOD_VENDOR_AMLOGIC = 10;
+        
+        public const ulong DRM_FORMAT_MOD_VENDOR_MTK = 11;
+        
+        public const ulong DRM_FORMAT_MOD_VENDOR_APPLE = 12;
         
         public const ulong DRM_FORMAT_MOD_GENERIC_16_16_TILE = 288230376151711746;
         
@@ -657,6 +773,10 @@ namespace XenoAtom.Interop
         public const ulong I915_FORMAT_MOD_4_TILED_MTL_MC_CCS = 72057594037927950;
         
         public const ulong I915_FORMAT_MOD_4_TILED_MTL_RC_CCS_CC = 72057594037927951;
+        
+        public const ulong I915_FORMAT_MOD_4_TILED_LNL_CCS = 72057594037927952;
+        
+        public const ulong I915_FORMAT_MOD_4_TILED_BMG_CCS = 72057594037927953;
         
         public const ulong DRM_FORMAT_MOD_SAMSUNG_64_32_TILE = 288230376151711745;
         
@@ -764,6 +884,8 @@ namespace XenoAtom.Interop
         
         public const ulong DRM_FORMAT_MOD_ARM_16X16_BLOCK_U_INTERLEAVED = 580964351930793985;
         
+        public const ulong DRM_FORMAT_MOD_ARM_INTERLEAVED_64K = 580964351930793986;
+        
         public const ulong DRM_FORMAT_MOD_ALLWINNER_TILED = 648518346341351425;
         
         public const int AMLOGIC_FBC_LAYOUT_BASIC = 1;
@@ -771,6 +893,12 @@ namespace XenoAtom.Interop
         public const int AMLOGIC_FBC_LAYOUT_SCATTER = 2;
         
         public const int AMLOGIC_FBC_OPTION_MEM_SAVING = 1;
+        
+        public const ulong DRM_FORMAT_MOD_MTK_16L_32S_TILE = 792633534417207297;
+        
+        public const ulong DRM_FORMAT_MOD_APPLE_GPU_TILED = 864691128455135233;
+        
+        public const ulong DRM_FORMAT_MOD_APPLE_GPU_TILED_COMPRESSED = 864691128455135234;
         
         public const int AMD_FMT_MOD_TILE_VER_GFX9 = 1;
         
@@ -786,6 +914,8 @@ namespace XenoAtom.Interop
         
         public const int AMD_FMT_MOD_TILE_GFX9_64K_D = 10;
         
+        public const int AMD_FMT_MOD_TILE_GFX9_4K_D_X = 22;
+        
         public const int AMD_FMT_MOD_TILE_GFX9_64K_S_X = 25;
         
         public const int AMD_FMT_MOD_TILE_GFX9_64K_D_X = 26;
@@ -793,6 +923,10 @@ namespace XenoAtom.Interop
         public const int AMD_FMT_MOD_TILE_GFX9_64K_R_X = 27;
         
         public const int AMD_FMT_MOD_TILE_GFX11_256K_R_X = 31;
+        
+        public const int AMD_FMT_MOD_TILE_GFX12_256B_2D = 1;
+        
+        public const int AMD_FMT_MOD_TILE_GFX12_4K_2D = 2;
         
         public const int AMD_FMT_MOD_TILE_GFX12_64K_2D = 3;
         
@@ -835,13 +969,6 @@ namespace XenoAtom.Interop
         public const int AMD_FMT_MOD_DCC_MAX_COMPRESSED_BLOCK_SHIFT = 18;
         
         public const int AMD_FMT_MOD_DCC_MAX_COMPRESSED_BLOCK_MASK = 3;
-        
-        public const int AMD_FMT_MOD_GFX12_DCC_MAX_COMPRESSED_BLOCK_SHIFT = 3;
-        
-        /// <summary>
-        /// 0:64B, 1:128B, 2:256B
-        /// </summary>
-        public const int AMD_FMT_MOD_GFX12_DCC_MAX_COMPRESSED_BLOCK_MASK = 3;
         
         public const int AMD_FMT_MOD_DCC_CONSTANT_ENCODE_SHIFT = 20;
         

@@ -30,6 +30,8 @@ namespace XenoAtom.Interop
         
         public const int RWF_APPEND = 16;
         
+        public const int RWF_NOAPPEND = 32;
+        
         /// <summary>
         /// readv, writev, preadv, pwritev, preadv2, pwritev2 \-
         /// </summary>

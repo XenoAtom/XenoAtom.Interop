@@ -74,10 +74,70 @@ namespace XenoAtom.Interop
         /// </summary>
         public const int O_RDWR = 2;
         
+        /// <summary>
+        /// On input to this call,
+        /// lock
+        /// describes an open file description lock we would like to place on the file.
+        /// If the lock could be placed,
+        /// fcntl ()
+        /// does not actually place it, but returns
+        /// F_UNLCK
+        /// in the
+        /// l_type
+        /// field of
+        /// lock
+        /// and leaves the other fields of the structure unchanged.
+        /// If one or more incompatible locks would prevent this lock being placed,
+        /// then details about one of these locks are returned via
+        /// lock ,
+        /// as described above for
+        /// F_GETLK .
+        /// 
+        /// In the current implementation,
+        /// commit 57b65325fe34ec4c917bc4e555144b4a94d9e1f7
+        /// no deadlock detection is performed for open file description locks.
+        /// (This contrasts with process-associated record locks,
+        /// for which the kernel does perform deadlock detection.)
+        /// </summary>
         public const int F_OFD_GETLK = 36;
         
+        /// <summary>
+        /// Acquire an open file description lock (when
+        /// l_type
+        /// is
+        /// F_RDLCK
+        /// or
+        /// F_WRLCK )
+        /// or release an open file description lock (when
+        /// l_type
+        /// is
+        /// F_UNLCK )
+        /// on the bytes specified by the
+        /// l_whence ", " l_start ", and " l_len
+        /// fields of
+        /// lock .
+        /// If a conflicting lock is held by another process,
+        /// this call returns \-1 and sets
+        /// errno
+        /// to
+        /// EAGAIN .
+        /// </summary>
         public const int F_OFD_SETLK = 37;
         
+        /// <summary>
+        /// As for
+        /// F_OFD_SETLK ,
+        /// but if a conflicting lock is held on the file, then wait for that lock to be
+        /// released.
+        /// If a signal is caught while waiting, then the call is interrupted
+        /// and (after the signal handler has returned) returns immediately
+        /// (with return value \-1 and
+        /// errno
+        /// set to
+        /// EINTR ;
+        /// see
+        /// signal (7)).
+        /// </summary>
         public const int F_OFD_SETLKW = 38;
         
         public const int F_DUPFD_CLOEXEC = 1030;
@@ -92,7 +152,7 @@ namespace XenoAtom.Interop
         
         /// <summary>
         /// If
-        /// pathname
+        /// path
         /// is a symbolic link, do not dereference it:
         /// instead return information about the link itself.
         /// 
@@ -103,26 +163,6 @@ namespace XenoAtom.Interop
         /// </summary>
         public const int AT_SYMLINK_NOFOLLOW = 256;
         
-        /// <summary>
-        /// By default,
-        /// unlinkat ()
-        /// performs the equivalent of
-        /// unlink ()
-        /// on
-        /// pathname .
-        /// If the
-        /// AT_REMOVEDIR
-        /// flag is specified, it
-        /// performs the equivalent of
-        /// rmdir (2)
-        /// on
-        /// pathname .
-        /// 
-        /// See
-        /// openat (2)
-        /// for an explanation of the need for
-        /// unlinkat ().
-        /// </summary>
         public const int AT_REMOVEDIR = 512;
         
         public const int AT_SYMLINK_FOLLOW = 1024;
@@ -136,77 +176,16 @@ namespace XenoAtom.Interop
         /// </summary>
         public const int AT_EACCESS = 512;
         
-        /// <summary>
-        /// Indicates that the application has no advice to give about its access
-        /// pattern for the specified data.
-        /// If no advice is given for an open file,
-        /// this is the default assumption.
-        /// </summary>
         public const int POSIX_FADV_NORMAL = 0;
         
-        /// <summary>
-        /// The specified data will be accessed in random order.
-        /// </summary>
         public const int POSIX_FADV_RANDOM = 1;
         
-        /// <summary>
-        /// The application expects to access the specified data sequentially (with
-        /// lower offsets read before higher ones).
-        /// </summary>
         public const int POSIX_FADV_SEQUENTIAL = 2;
         
-        /// <summary>
-        /// The specified data will be accessed in the near future.
-        /// 
-        /// \fBPOSIX_FADV_WILLNEED\fP initiates a
-        /// nonblocking read of the specified region into the page cache.
-        /// The amount of data read may be decreased by the kernel depending
-        /// on virtual memory load.
-        /// (A few megabytes will usually be fully satisfied,
-        /// and more is rarely useful.)
-        /// </summary>
         public const int POSIX_FADV_WILLNEED = 3;
         
-        /// <summary>
-        /// The specified data will not be accessed in the near future.
-        /// 
-        /// \fBPOSIX_FADV_DONTNEED\fP attempts to free cached pages associated with
-        /// the specified region.
-        /// This is useful, for example, while streaming large
-        /// files.
-        /// A program may periodically request the kernel to free cached data
-        /// that has already been used, so that more useful cached pages are not
-        /// discarded instead.
-        /// 
-        /// Requests to discard partial pages are ignored.
-        /// It is preferable to preserve needed data than discard unneeded data.
-        /// If the application requires that data be considered for discarding, then
-        /// offset
-        /// and
-        /// len
-        /// must be page-aligned.
-        /// 
-        /// The implementation
-        /// may
-        /// attempt to write back dirty pages in the specified region,
-        /// but this is not guaranteed.
-        /// Any unwritten dirty pages will not be freed.
-        /// If the application wishes to ensure that dirty pages will be released,
-        /// it should call
-        /// fsync (2)
-        /// or
-        /// fdatasync (2)
-        /// first.
-        /// </summary>
         public const int POSIX_FADV_DONTNEED = 4;
         
-        /// <summary>
-        /// The specified data will be accessed only once.
-        /// 
-        /// Before Linux 2.6.18, \fBPOSIX_FADV_NOREUSE\fP had the
-        /// same semantics as \fBPOSIX_FADV_WILLNEED\fP.
-        /// This was probably a bug; since Linux 2.6.18, this flag is a no-op.
-        /// </summary>
         public const int POSIX_FADV_NOREUSE = 5;
         
         /// <summary>
@@ -274,18 +253,11 @@ namespace XenoAtom.Interop
         /// attr
         /// argument of
         /// mount_setattr ()
-        /// is a structure of the following form:
-        /// 
-        /// +4n
-        /// 
-        /// struct mount_attr {
-        ///     __u64 attr_set;     /* Mount properties to set */
-        ///     __u64 attr_clr;     /* Mount properties to clear */
-        ///     __u64 propagation;  /* Mount propagation type */
-        ///     __u64 userns_fd;    /* User namespace file descriptor */
-        /// };
-        /// 
-        /// 
+        /// is a pointer to a
+        /// mount_attr
+        /// structure,
+        /// described in
+        /// mount_attr (2type).
         /// 
         /// The
         /// attr_set
@@ -343,7 +315,9 @@ namespace XenoAtom.Interop
         /// 
         /// As a result of this change, the mount or mount tree (a) is read-only;
         /// (b) blocks the execution of set-user-ID and set-group-ID programs;
-        /// (c) allows execution of programs; and (d) allows access to devices.
+        /// (c) allows execution of programs;
+        /// and
+        /// (d) allows access to devices.
         /// 
         /// Multiple changes with the same set of flags requested
         /// in
@@ -362,7 +336,7 @@ namespace XenoAtom.Interop
         
         /// <summary>
         /// If
-        /// pathname
+        /// path
         /// is an empty string, operate on the file referred to by
         /// dirfd
         /// (which may have been obtained using the
@@ -374,82 +348,10 @@ namespace XenoAtom.Interop
         
         public const int AT_STATX_SYNC_TYPE = 24576;
         
-        /// <summary>
-        /// Do whatever
-        /// stat (2)
-        /// does.
-        /// This is the default and is very much filesystem-specific.
-        /// </summary>
         public const int AT_STATX_SYNC_AS_STAT = 0;
         
-        /// <summary>
-        /// Force the attributes to be synchronized with the server.
-        /// This may require that
-        /// a network filesystem perform a data writeback to get the timestamps correct.
-        /// </summary>
         public const int AT_STATX_FORCE_SYNC = 8192;
         
-        /// <summary>
-        /// Don't synchronize anything, but rather just take whatever
-        /// the system has cached if possible.
-        /// This may mean that the information returned is approximate, but,
-        /// on a network filesystem, it may not involve a round trip to the server - even
-        /// if no lease is held.
-        /// 
-        /// The
-        /// mask
-        /// argument to
-        /// statx ()
-        /// is used to tell the kernel which fields the caller is interested in.
-        /// mask
-        /// is an ORed combination of the following constants:
-        /// 
-        /// +4n
-        /// 
-        /// lB l.
-        /// STATX_TYPE	Want stx_mode &amp; S_IFMT
-        /// STATX_MODE	Want stx_mode &amp; \[ti]S_IFMT
-        /// STATX_NLINK	Want stx_nlink
-        /// STATX_UID	Want stx_uid
-        /// STATX_GID	Want stx_gid
-        /// STATX_ATIME	Want stx_atime
-        /// STATX_MTIME	Want stx_mtime
-        /// STATX_CTIME	Want stx_ctime
-        /// STATX_INO	Want stx_ino
-        /// STATX_SIZE	Want stx_size
-        /// STATX_BLOCKS	Want stx_blocks
-        /// STATX_BASIC_STATS	[All of the above]
-        /// STATX_BTIME	Want stx_btime
-        /// STATX_ALL	The same as STATX_BASIC_STATS | STATX_BTIME.
-        /// 	It is deprecated and should not be used.
-        /// STATX_MNT_ID	Want stx_mnt_id (since Linux 5.8)
-        /// STATX_DIOALIGN	Want stx_dio_mem_align and stx_dio_offset_align
-        /// 	(since Linux 6.1; support varies by filesystem)
-        /// 
-        /// 
-        /// 
-        /// Note that, in general, the kernel does
-        /// not
-        /// reject values in
-        /// mask
-        /// other than the above.
-        /// (For an exception, see
-        /// EINVAL
-        /// in errors.)
-        /// Instead, it simply informs the caller which values are supported
-        /// by this kernel and filesystem via the
-        /// statx.stx_mask
-        /// field.
-        /// Therefore,
-        /// "do not"
-        /// simply set
-        /// mask
-        /// to
-        /// UINT_MAX
-        /// (all bits set),
-        /// as one or more bits may, in the future, be used to specify an
-        /// extension to the buffer.
-        /// </summary>
         public const int AT_STATX_DONT_SYNC = 16384;
         
         /// <summary>
@@ -465,49 +367,16 @@ namespace XenoAtom.Interop
         
         public const int X_OK = 1;
         
-        /// <summary>
-        /// Unlock the indicated section of the file.
-        /// This may cause a locked section to be split into two locked sections.
-        /// </summary>
         public const int F_ULOCK = 0;
         
-        /// <summary>
-        /// Set an exclusive lock on the specified section of the file.
-        /// If (part of) this section is already locked, the call
-        /// blocks until the previous lock is released.
-        /// If this section overlaps an earlier locked section,
-        /// both are merged.
-        /// File locks are released as soon as the process holding the locks
-        /// closes some file descriptor for the file.
-        /// A child process does not inherit these locks.
-        /// </summary>
         public const int F_LOCK = 1;
         
-        /// <summary>
-        /// Same as
-        /// F_LOCK
-        /// but the call never blocks and returns an error instead if the file is
-        /// already locked.
-        /// </summary>
         public const int F_TLOCK = 2;
         
-        /// <summary>
-        /// Test the lock: return 0 if the specified section
-        /// is unlocked or locked by this process; return \-1, set
-        /// errno
-        /// to
-        /// EAGAIN
-        /// ( EACCES
-        /// on some other systems),
-        /// if another process holds a lock.
-        /// </summary>
         public const int F_TEST = 3;
         
         public const int F_SETLEASE = 1024;
         
-        /// <summary>
-        /// Type of lease held on file descriptor.
-        /// </summary>
         public const int F_GETLEASE = 1025;
         
         public const int F_NOTIFY = 1026;
@@ -516,109 +385,18 @@ namespace XenoAtom.Interop
         
         public const int F_SETPIPE_SZ = 1031;
         
-        /// <summary>
-        /// F_SETPIPE_SZ
-        /// The pipe capacity.
-        /// </summary>
         public const int F_GETPIPE_SZ = 1032;
         
         public const int F_ADD_SEALS = 1033;
         
-        /// <summary>
-        /// A bit mask identifying the seals that have been set
-        /// for the inode referred to by
-        /// fd .
-        /// </summary>
         public const int F_GET_SEALS = 1034;
         
-        /// <summary>
-        /// If this seal is set, any further call to
-        /// fcntl ()
-        /// with
-        /// F_ADD_SEALS
-        /// fails with the error
-        /// EPERM .
-        /// Therefore, this seal prevents any modifications to the set of seals itself.
-        /// If the initial set of seals of a file includes
-        /// F_SEAL_SEAL ,
-        /// then this effectively causes the set of seals to be constant and locked.
-        /// </summary>
         public const int F_SEAL_SEAL = 1;
         
-        /// <summary>
-        /// If this seal is set, the file in question cannot be reduced in size.
-        /// This affects
-        /// open (2)
-        /// with the
-        /// O_TRUNC
-        /// flag as well as
-        /// truncate (2)
-        /// and
-        /// ftruncate (2).
-        /// Those calls fail with
-        /// EPERM
-        /// if you try to shrink the file in question.
-        /// Increasing the file size is still possible.
-        /// </summary>
         public const int F_SEAL_SHRINK = 2;
         
-        /// <summary>
-        /// If this seal is set, the size of the file in question cannot be increased.
-        /// This affects
-        /// write (2)
-        /// beyond the end of the file,
-        /// truncate (2),
-        /// ftruncate (2),
-        /// and
-        /// fallocate (2).
-        /// These calls fail with
-        /// EPERM
-        /// if you use them to increase the file size.
-        /// If you keep the size or shrink it, those calls still work as expected.
-        /// </summary>
         public const int F_SEAL_GROW = 4;
         
-        /// <summary>
-        /// If this seal is set, you cannot modify the contents of the file.
-        /// Note that shrinking or growing the size of the file is
-        /// still possible and allowed.
-        /// One or more other seals are typically used with F_SEAL_WRITE
-        /// because, given a file with the F_SEAL_WRITE seal set, then,
-        /// while it would no longer be possible to (say) write zeros into
-        /// the last 100 bytes of a file, it would still be possible
-        /// to (say) shrink the file by 100 bytes using ftruncate(), and
-        /// then increase the file size by 100 bytes, which would have
-        /// the effect of replacing the last hundred bytes by zeros.
-        /// 
-        /// Thus, this seal is normally used in combination with one of the other seals.
-        /// This seal affects
-        /// write (2)
-        /// and
-        /// fallocate (2)
-        /// (only in combination with the
-        /// FALLOC_FL_PUNCH_HOLE
-        /// flag).
-        /// Those calls fail with
-        /// EPERM
-        /// if this seal is set.
-        /// Furthermore, trying to create new shared, writable memory-mappings via
-        /// mmap (2)
-        /// will also fail with
-        /// EPERM .
-        /// 
-        /// Using the
-        /// F_ADD_SEALS
-        /// operation to set the
-        /// F_SEAL_WRITE
-        /// seal fails with
-        /// EBUSY
-        /// if any writable, shared mapping exists.
-        /// Such mappings must be unmapped before you can add this seal.
-        /// Furthermore, if there are any asynchronous I/O operations
-        /// ( io_submit (2))
-        /// pending on the file,
-        /// all outstanding writes will be discarded.
-        /// </summary>
         public const int F_SEAL_WRITE = 8;
         
         public const int F_SEAL_FUTURE_WRITE = 16;
@@ -633,42 +411,14 @@ namespace XenoAtom.Interop
         
         public const int RWF_WRITE_LIFE_NOT_SET = 0;
         
-        /// <summary>
-        /// No specific write lifetime is associated with this file or inode.
-        /// </summary>
         public const int RWH_WRITE_LIFE_NONE = 1;
         
-        /// <summary>
-        /// Data written to this inode or via this open file description
-        /// is expected to have a short lifetime.
-        /// </summary>
         public const int RWH_WRITE_LIFE_SHORT = 2;
         
-        /// <summary>
-        /// Data written to this inode or via this open file description
-        /// is expected to have a lifetime longer than
-        /// data written with
-        /// RWH_WRITE_LIFE_SHORT .
-        /// </summary>
         public const int RWH_WRITE_LIFE_MEDIUM = 3;
         
-        /// <summary>
-        /// Data written to this inode or via this open file description
-        /// is expected to have a lifetime longer than
-        /// data written with
-        /// RWH_WRITE_LIFE_MEDIUM .
-        /// </summary>
         public const int RWH_WRITE_LIFE_LONG = 4;
         
-        /// <summary>
-        /// Data written to this inode or via this open file description
-        /// is expected to have a lifetime longer than
-        /// data written with
-        /// RWH_WRITE_LIFE_LONG .
-        /// 
-        /// All the write-specific hints are relative to each other,
-        /// and no individual absolute meaning should be attributed to them.
-        /// </summary>
         public const int RWH_WRITE_LIFE_EXTREME = 5;
         
         public const int DN_ACCESS = 1;

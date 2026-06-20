@@ -76,17 +76,31 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <remarks>
         /// Initialize with `GIT_BLOB_FILTER_OPTIONS_INIT`. Alternatively, you can
-        /// use `git_blob_filter_options_init`.
+        /// use `git_blob_filter_options_init`.@options [version] GIT_BLOB_FILTER_OPTIONS_VERSION
+        /// @options [init_macro] GIT_BLOB_FILTER_OPTIONS_INIT
+        /// @options [init_function] git_blob_filter_options_init
         /// </remarks>
         public partial struct git_blob_filter_options
         {
+            /// <summary>
+            /// Version number of the options structure.
+            /// </summary>
             public int version;
             
             /// <summary>
-            /// Flags to control the filtering process, see `git_blob_filter_flag_t` above
+            /// Flags to control the filtering process, see `git_blob_filter_flag_t` above.
             /// </summary>
+            /// <remarks>
+            /// [flags] git_blob_filter_flag_t
+            /// </remarks>
             public libgit2.git_blob_filter_flag_t flags;
             
+            /// <summary>
+            /// Unused and reserved for ABI compatibility.
+            /// </summary>
+            /// <deprecated>
+            /// this value should not be set
+            /// </deprecated>
             public void* reserved;
             
             /// <summary>
@@ -158,7 +172,7 @@ namespace XenoAtom.Interop
         /// Get a read-only buffer with the raw content of a blob.
         /// </summary>
         /// <param name="blob">pointer to the blob</param>
-        /// <returns>the pointer, or NULL on error</returns>
+        /// <returns>@type `unsigned char *` the pointer, or NULL on error</returns>
         /// <remarks>
         /// A pointer to the raw content of a blob is returned;
         /// this pointer is owned internally by the object and shall
@@ -173,7 +187,7 @@ namespace XenoAtom.Interop
         /// Get the size in bytes of the contents of a blob
         /// </summary>
         /// <param name="blob">pointer to the blob</param>
-        /// <returns>size on bytes</returns>
+        /// <returns>size in bytes</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blob_rawsize")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_object_size_t git_blob_rawsize(libgit2.git_blob blob);
@@ -182,7 +196,7 @@ namespace XenoAtom.Interop
         /// Initialize git_blob_filter_options structure
         /// </summary>
         /// <param name="opts">The `git_blob_filter_options` struct to initialize.</param>
-        /// <param name="version">The struct version; pass `GIT_BLOB_FILTER_OPTIONS_VERSION`.</param>
+        /// <param name="version">The struct version; pass GIT_BLOB_FILTER_OPTIONS_VERSION</param>
         /// <returns>Zero on success; -1 on failure.</returns>
         /// <remarks>
         /// Initializes a `git_blob_filter_options` with default values. Equivalent
@@ -199,12 +213,12 @@ namespace XenoAtom.Interop
         /// <param name="blob">Pointer to the blob</param>
         /// <param name="as_path">Path used for file attribute lookups, etc.</param>
         /// <param name="opts">Options to use for filtering the blob</param>
-        /// <returns>0 on success or an error code</returns>
+        /// <returns>@type [enum] git_error_code 0 on success or an error code</returns>
         /// <remarks>
         /// This applies filters as if the blob was being checked out to the
         /// working directory under the specified filename.  This may apply
         /// CRLF filtering or other types of changes depending on the file
-        /// attributes set for the blob and the content detected in it.The output is written into a `git_buf` which the caller must free
+        /// attributes set for the blob and the content detected in it.The output is written into a `git_buf` which the caller must dispose
         /// when done (via `git_buf_dispose`).If no filters need to be applied, then the `out` buffer will just
         /// be populated with a pointer to the raw content of the blob.  In
         /// that case, be careful to *not* free the blob until done with the
@@ -221,12 +235,12 @@ namespace XenoAtom.Interop
         /// <param name="blob">Pointer to the blob</param>
         /// <param name="as_path">Path used for file attribute lookups, etc.</param>
         /// <param name="opts">Options to use for filtering the blob</param>
-        /// <returns>0 on success or an error code</returns>
+        /// <returns>@type [enum] git_error_code 0 on success or an error code</returns>
         /// <remarks>
         /// This applies filters as if the blob was being checked out to the
         /// working directory under the specified filename.  This may apply
         /// CRLF filtering or other types of changes depending on the file
-        /// attributes set for the blob and the content detected in it.The output is written into a `git_buf` which the caller must free
+        /// attributes set for the blob and the content detected in it.The output is written into a `git_buf` which the caller must dispose
         /// when done (via `git_buf_dispose`).If no filters need to be applied, then the `out` buffer will just
         /// be populated with a pointer to the raw content of the blob.  In
         /// that case, be careful to *not* free the blob until done with the
@@ -237,8 +251,8 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blob_filter(out libgit2.git_buf @out, libgit2.git_blob blob, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> as_path, ref libgit2.git_blob_filter_options opts);
         
         /// <summary>
-        /// Read a file from the working folder of a repository
-        /// and write it to the Object Database as a loose blob
+        /// Read a file from the working folder of a repository and write it
+        /// to the object database.
         /// </summary>
         /// <param name="id">return the id of the written blob</param>
         /// <param name="repo">repository where the blob will be written.
@@ -251,8 +265,8 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blob_create_from_workdir(out libgit2.git_oid id, libgit2.git_repository repo, byte* relative_path);
         
         /// <summary>
-        /// Read a file from the working folder of a repository
-        /// and write it to the Object Database as a loose blob
+        /// Read a file from the working folder of a repository and write it
+        /// to the object database.
         /// </summary>
         /// <param name="id">return the id of the written blob</param>
         /// <param name="repo">repository where the blob will be written.
@@ -265,8 +279,9 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blob_create_from_workdir(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> relative_path);
         
         /// <summary>
-        /// Read a file from the filesystem and write its content
-        /// to the Object Database as a loose blob
+        /// Read a file from the filesystem (not necessarily inside the
+        /// working folder of the repository) and write it to the object
+        /// database.
         /// </summary>
         /// <param name="id">return the id of the written blob</param>
         /// <param name="repo">repository where the blob will be written.
@@ -278,8 +293,9 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blob_create_from_disk(out libgit2.git_oid id, libgit2.git_repository repo, byte* path);
         
         /// <summary>
-        /// Read a file from the filesystem and write its content
-        /// to the Object Database as a loose blob
+        /// Read a file from the filesystem (not necessarily inside the
+        /// working folder of the repository) and write it to the object
+        /// database.
         /// </summary>
         /// <param name="id">return the id of the written blob</param>
         /// <param name="repo">repository where the blob will be written.
@@ -291,7 +307,7 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blob_create_from_disk(out libgit2.git_oid id, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path);
         
         /// <summary>
-        /// Create a stream to write a new blob into the object db
+        /// Create a stream to write a new blob into the object database.
         /// </summary>
         /// <param name="out">the stream into which to write</param>
         /// <param name="repo">Repository where the blob will be written.
@@ -316,7 +332,7 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blob_create_from_stream(out libgit2.git_writestream* @out, libgit2.git_repository repo, byte* hintpath);
         
         /// <summary>
-        /// Create a stream to write a new blob into the object db
+        /// Create a stream to write a new blob into the object database.
         /// </summary>
         /// <param name="out">the stream into which to write</param>
         /// <param name="repo">Repository where the blob will be written.
@@ -341,7 +357,7 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blob_create_from_stream(out libgit2.git_writestream* @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> hintpath);
         
         /// <summary>
-        /// Close the stream and write the blob to the object db
+        /// Close the stream and finalize writing the blob to the object database.
         /// </summary>
         /// <param name="out">the id of the new blob</param>
         /// <param name="stream">the stream to close</param>
@@ -354,7 +370,7 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blob_create_from_stream_commit(out libgit2.git_oid @out, ref libgit2.git_writestream stream);
         
         /// <summary>
-        /// Write an in-memory buffer to the ODB as a blob
+        /// Write an in-memory buffer to the object database as a blob.
         /// </summary>
         /// <param name="id">return the id of the written blob</param>
         /// <param name="repo">repository where the blob will be written</param>
@@ -366,10 +382,10 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blob_create_from_buffer(out libgit2.git_oid id, libgit2.git_repository repo, void* buffer, nuint len);
         
         /// <summary>
-        /// Determine if the blob content is most certainly binary or not.
+        /// Determine if the blob content is most likely binary or not.
         /// </summary>
         /// <param name="blob">The blob which content should be analyzed</param>
-        /// <returns>@return 1 if the content of the blob is detected
+        /// <returns>@return @type bool 1 if the content of the blob is detected
         /// as binary; 0 otherwise.</returns>
         /// <remarks>
         /// The heuristic used to guess if a file is binary is taken from core git:

@@ -101,7 +101,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_directfb_surface</para>
             /// </remarks>
@@ -126,7 +126,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_directfb_surface</para>
             /// </remarks>

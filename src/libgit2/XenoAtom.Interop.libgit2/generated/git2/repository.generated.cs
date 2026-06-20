@@ -529,7 +529,9 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// The 'path' argument must point to either a git repository
         /// folder, or an existing work dir.The method will automatically detect if 'path' is a normal
-        /// or bare repository or fail is 'path' is neither.
+        /// or bare repository or fail is 'path' is neither.Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -544,7 +546,9 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// The 'path' argument must point to either a git repository
         /// folder, or an existing work dir.The method will automatically detect if 'path' is a normal
-        /// or bare repository or fail is 'path' is neither.
+        /// or bare repository or fail is 'path' is neither.Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -564,6 +568,17 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_repository_open_from_worktree(out libgit2.git_repository @out, libgit2.git_worktree wt);
         
+        /// <summary>
+        /// Create a "fake" repository to wrap an object database
+        /// </summary>
+        /// <param name="out">pointer to the repo</param>
+        /// <param name="odb">the object database to wrap</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// Create a repository object to wrap an object database to be used
+        /// with the API when all you have is an object database. This doesn't
+        /// have any paths associated with it, so use with care.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_wrap_odb")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_repository_wrap_odb(out libgit2.git_repository @out, libgit2.git_odb odb);
@@ -588,7 +603,9 @@ namespace XenoAtom.Interop
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The method will automatically detect if the repository is bare
-        /// (if there is a repository).
+        /// (if there is a repository).Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_discover")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -614,7 +631,9 @@ namespace XenoAtom.Interop
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// The method will automatically detect if the repository is bare
-        /// (if there is a repository).
+        /// (if there is a repository).Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_discover")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -637,6 +656,11 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success, GIT_ENOTFOUND if no repository could be found,
         /// or -1 if there was a repository but open failed for some reason
         /// (such as repo corruption or system errors).</returns>
+        /// <remarks>
+        /// Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_repository_open_ext(out libgit2.git_repository @out, byte* path, libgit2.git_repository_open_flag_t flags, byte* ceiling_dirs);
@@ -658,6 +682,11 @@ namespace XenoAtom.Interop
         /// <returns>@return 0 on success, GIT_ENOTFOUND if no repository could be found,
         /// or -1 if there was a repository but open failed for some reason
         /// (such as repo corruption or system errors).</returns>
+        /// <remarks>
+        /// Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_repository_open_ext(out libgit2.git_repository @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_repository_open_flag_t flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> ceiling_dirs);
@@ -671,7 +700,9 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// This is a fast open for bare repositories that will come in handy
         /// if you're e.g. hosting git repositories and need to access them
-        /// efficiently
+        /// efficientlyNote that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open_bare")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -686,7 +717,9 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// This is a fast open for bare repositories that will come in handy
         /// if you're e.g. hosting git repositories and need to access them
-        /// efficiently
+        /// efficientlyNote that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_open_bare")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -719,7 +752,9 @@ namespace XenoAtom.Interop
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// TODO:
-        /// - Reinit the repository
+        /// - Reinit the repositoryNote that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -737,7 +772,9 @@ namespace XenoAtom.Interop
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// TODO:
-        /// - Reinit the repository
+        /// - Reinit the repositoryNote that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_init")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -768,7 +805,9 @@ namespace XenoAtom.Interop
         /// This will initialize a new git repository (creating the repo_path
         /// if requested by flags) and working directory as needed.  It will
         /// auto-detect the case sensitivity of the file system and if the
-        /// file system supports file mode bits correctly.
+        /// file system supports file mode bits correctly.Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_init_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -785,7 +824,9 @@ namespace XenoAtom.Interop
         /// This will initialize a new git repository (creating the repo_path
         /// if requested by flags) and working directory as needed.  It will
         /// auto-detect the case sensitivity of the file system and if the
-        /// file system supports file mode bits correctly.
+        /// file system supports file mode bits correctly.Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_init_ext")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -1320,13 +1361,15 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Make the repository HEAD directly point to the Commit.
         /// </summary>
+        /// <param name="repo">Repository pointer</param>
+        /// <param name="committish">annotated commit to point HEAD to</param>
+        /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// This behaves like `git_repository_set_head_detached()` but takes an
         /// annotated commit, which lets you specify which extended sha syntax
         /// string was specified by a user, allowing for more exact reflog
         /// messages.See the documentation for `git_repository_set_head_detached()`.
         /// </remarks>
-        /// <seealso cref="git_repository_set_head_detached"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_repository_set_head_detached_from_annotated")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_repository_set_head_detached_from_annotated(libgit2.git_repository repo, libgit2.git_annotated_commit committish);

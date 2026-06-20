@@ -108,7 +108,7 @@ partial class Program
             CppDescription = "SQLite is a small and fast SQL database engine.",
             Url = "https://www.sqlite.org/",
             UrlDocumentation = "https://www.sqlite.org/docs.html",
-            NativeNuGets = [new("SQLitePCLRaw.lib.e_sqlite3", "2.1.8")],
+            NativeNuGets = [new("SourceGear.sqlite3", "3.5.4.5")],
             Generator = desc => new SqliteGenerator(desc),
             ApkDeps = ["sqlite-dev"],
             UsageInCSharp =

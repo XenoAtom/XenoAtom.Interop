@@ -26,11 +26,9 @@ namespace XenoAtom.Interop
         /// to match a target tree.  Unlike git checkout, it does not move the HEAD
         /// commit for you - use `git_repository_set_head` or the like to do that.Checkout looks at (up to) four things: the "target" tree you want to
         /// check out, the "baseline" tree of what was checked out previously, the
-        /// working directory for actual files, and the index for staged changes.You give checkout one of three strategies for update:- `GIT_CHECKOUT_NONE` is a dry-run strategy that checks for conflicts,
-        /// etc., but doesn't make any actual changes.- `GIT_CHECKOUT_FORCE` is at the opposite extreme, taking any action to
-        /// make the working directory match the target (including potentially
-        /// discarding modified files).- `GIT_CHECKOUT_SAFE` is between these two options, it will only make
-        /// modifications that will not lose changes.|  target == baseline   |  target != baseline  |
+        /// working directory for actual files, and the index for staged changes.You give checkout one of two strategies for update:- `GIT_CHECKOUT_SAFE` is the default, and similar to git's default,
+        /// which will make modifications that will not lose changes in the
+        /// working directory.|  target == baseline   |  target != baseline  |
         /// ---------------------|-----------------------|----------------------|
         /// workdir == baseline |       no action       |  create, update, or  |
         /// |                       |     delete file      |
@@ -40,12 +38,15 @@ namespace XenoAtom.Interop
         /// ---------------------|-----------------------|----------------------|
         /// workdir missing,   | notify dirty DELETED  |     create file      |
         /// baseline present   |                       |                      |
-        /// ---------------------|-----------------------|----------------------|To emulate `git checkout`, use `GIT_CHECKOUT_SAFE` with a checkout
+        /// ---------------------|-----------------------|----------------------|- `GIT_CHECKOUT_FORCE` will take any action to make the working
+        /// directory match the target (including potentially discarding
+        /// modified files).To emulate `git checkout`, use `GIT_CHECKOUT_SAFE` with a checkout
         /// notification callback (see below) that displays information about dirty
         /// files.  The default behavior will cancel checkout on conflicts.To emulate `git checkout-index`, use `GIT_CHECKOUT_SAFE` with a
         /// notification callback that cancels the operation if a dirty-but-existing
         /// file is found in the working directory.  This core git command isn't
-        /// quite "force" but is sensitive about some types of changes.To emulate `git checkout -f`, use `GIT_CHECKOUT_FORCE`.There are some additional flags to modify the behavior of checkout:- GIT_CHECKOUT_ALLOW_CONFLICTS makes SAFE mode apply safe file updates
+        /// quite "force" but is sensitive about some types of changes.To emulate `git checkout -f`, use `GIT_CHECKOUT_FORCE`.There are some additional flags to modify the behavior of checkout:- `GIT_CHECKOUT_DRY_RUN` is a dry-run strategy that checks for conflicts,
+        /// etc., but doesn't make any actual changes.- GIT_CHECKOUT_ALLOW_CONFLICTS makes SAFE mode apply safe file updates
         /// even if there are conflicts (instead of cancelling the checkout).- GIT_CHECKOUT_REMOVE_UNTRACKED means remove untracked files (i.e. not
         /// in target, baseline, or index, and not ignored) from the working dir.- GIT_CHECKOUT_REMOVE_IGNORED means remove ignored files (that are also
         /// untracked) from the working directory as well.- GIT_CHECKOUT_UPDATE_ONLY means to only update the content of files that
@@ -67,28 +68,17 @@ namespace XenoAtom.Interop
         public enum git_checkout_strategy_t : uint
         {
             /// <summary>
-            /// default is a dry run, no actual updates
-            /// </summary>
-            GIT_CHECKOUT_NONE = unchecked((uint)0),
-            
-            /// <summary>
             /// Allow safe updates that cannot overwrite uncommitted data.
-            /// If the uncommitted changes don't conflict with the checked out files,
-            /// the checkout will still proceed, leaving the changes intact.
+            /// If the uncommitted changes don't conflict with the checked
+            /// out files, the checkout will still proceed, leaving the
+            /// changes intact.
             /// </summary>
-            /// <remarks>
-            /// Mutually exclusive with GIT_CHECKOUT_FORCE.
-            /// GIT_CHECKOUT_FORCE takes precedence over GIT_CHECKOUT_SAFE.
-            /// </remarks>
-            GIT_CHECKOUT_SAFE = unchecked((uint)1),
+            GIT_CHECKOUT_SAFE = unchecked((uint)0),
             
             /// <summary>
-            /// Allow all updates to force working directory to look like index.
+            /// Allow all updates to force working directory to look like
+            /// the index, potentially losing data in the process.
             /// </summary>
-            /// <remarks>
-            /// Mutually exclusive with GIT_CHECKOUT_SAFE.
-            /// GIT_CHECKOUT_FORCE takes precedence over GIT_CHECKOUT_SAFE.
-            /// </remarks>
             GIT_CHECKOUT_FORCE = unchecked((uint)2),
             
             /// <summary>
@@ -178,8 +168,9 @@ namespace XenoAtom.Interop
             GIT_CHECKOUT_DONT_WRITE_INDEX = unchecked((uint)8388608),
             
             /// <summary>
-            /// Show what would be done by a checkout.  Stop after sending
-            /// notifications; don't update the working directory or index.
+            /// Perform a "dry run", reporting what _would_ be done but
+            /// without actually making changes in the working directory
+            /// or the index.
             /// </summary>
             GIT_CHECKOUT_DRY_RUN = unchecked((uint)16777216),
             
@@ -187,6 +178,14 @@ namespace XenoAtom.Interop
             /// Include common ancestor data in zdiff3 format for conflicts
             /// </summary>
             GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3 = unchecked((uint)33554432),
+            
+            /// <summary>
+            /// Do not do a checkout and do not fire callbacks; this is primarily
+            /// useful only for internal functions that will perform the
+            /// checkout themselves but need to pass checkout options into
+            /// another function, for example, `git_clone`.
+            /// </summary>
+            GIT_CHECKOUT_NONE = unchecked((uint)1073741824),
             
             /// <summary>
             /// Recursively checkout submodules with same options (NOT IMPLEMENTED)
@@ -200,28 +199,17 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// default is a dry run, no actual updates
-        /// </summary>
-        public const libgit2.git_checkout_strategy_t GIT_CHECKOUT_NONE = git_checkout_strategy_t.GIT_CHECKOUT_NONE;
-        
-        /// <summary>
         /// Allow safe updates that cannot overwrite uncommitted data.
-        /// If the uncommitted changes don't conflict with the checked out files,
-        /// the checkout will still proceed, leaving the changes intact.
+        /// If the uncommitted changes don't conflict with the checked
+        /// out files, the checkout will still proceed, leaving the
+        /// changes intact.
         /// </summary>
-        /// <remarks>
-        /// Mutually exclusive with GIT_CHECKOUT_FORCE.
-        /// GIT_CHECKOUT_FORCE takes precedence over GIT_CHECKOUT_SAFE.
-        /// </remarks>
         public const libgit2.git_checkout_strategy_t GIT_CHECKOUT_SAFE = git_checkout_strategy_t.GIT_CHECKOUT_SAFE;
         
         /// <summary>
-        /// Allow all updates to force working directory to look like index.
+        /// Allow all updates to force working directory to look like
+        /// the index, potentially losing data in the process.
         /// </summary>
-        /// <remarks>
-        /// Mutually exclusive with GIT_CHECKOUT_SAFE.
-        /// GIT_CHECKOUT_FORCE takes precedence over GIT_CHECKOUT_SAFE.
-        /// </remarks>
         public const libgit2.git_checkout_strategy_t GIT_CHECKOUT_FORCE = git_checkout_strategy_t.GIT_CHECKOUT_FORCE;
         
         /// <summary>
@@ -311,8 +299,9 @@ namespace XenoAtom.Interop
         public const libgit2.git_checkout_strategy_t GIT_CHECKOUT_DONT_WRITE_INDEX = git_checkout_strategy_t.GIT_CHECKOUT_DONT_WRITE_INDEX;
         
         /// <summary>
-        /// Show what would be done by a checkout.  Stop after sending
-        /// notifications; don't update the working directory or index.
+        /// Perform a "dry run", reporting what _would_ be done but
+        /// without actually making changes in the working directory
+        /// or the index.
         /// </summary>
         public const libgit2.git_checkout_strategy_t GIT_CHECKOUT_DRY_RUN = git_checkout_strategy_t.GIT_CHECKOUT_DRY_RUN;
         
@@ -320,6 +309,14 @@ namespace XenoAtom.Interop
         /// Include common ancestor data in zdiff3 format for conflicts
         /// </summary>
         public const libgit2.git_checkout_strategy_t GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3 = git_checkout_strategy_t.GIT_CHECKOUT_CONFLICT_STYLE_ZDIFF3;
+        
+        /// <summary>
+        /// Do not do a checkout and do not fire callbacks; this is primarily
+        /// useful only for internal functions that will perform the
+        /// checkout themselves but need to pass checkout options into
+        /// another function, for example, `git_clone`.
+        /// </summary>
+        public const libgit2.git_checkout_strategy_t GIT_CHECKOUT_NONE = git_checkout_strategy_t.GIT_CHECKOUT_NONE;
         
         /// <summary>
         /// Recursively checkout submodules with same options (NOT IMPLEMENTED)
@@ -431,7 +428,9 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <remarks>
         /// Initialize with `GIT_CHECKOUT_OPTIONS_INIT`. Alternatively, you can
-        /// use `git_checkout_options_init`.
+        /// use `git_checkout_options_init`.@options [version] GIT_CHECKOUT_OPTIONS_VERSION
+        /// @options [init_macro] GIT_CHECKOUT_OPTIONS_INIT
+        /// @options [init_function] git_checkout_options_init
         /// </remarks>
         public partial struct git_checkout_options
         {
@@ -466,8 +465,12 @@ namespace XenoAtom.Interop
             public int file_open_flags;
             
             /// <summary>
-            /// see `git_checkout_notify_t` above
+            /// Checkout notification flags specify what operations the notify
+            /// callback is invoked for.
             /// </summary>
+            /// <remarks>
+            /// [flags] git_checkout_notify_t
+            /// </remarks>
             public libgit2.git_checkout_notify_t notify_flags;
             
             /// <summary>
@@ -548,8 +551,15 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Checkout notification callback function
+        /// Checkout notification callback function.
         /// </summary>
+        /// <param name="why">the notification reason</param>
+        /// <param name="path">the path to the file being checked out</param>
+        /// <param name="baseline">the baseline's diff file information</param>
+        /// <param name="target">the checkout target diff file information</param>
+        /// <param name="workdir">the working directory diff file information</param>
+        /// <param name="payload">the user-supplied callback payload</param>
+        /// <returns>0 on success, or an error code</returns>
         public readonly partial struct git_checkout_notify_cb : IEquatable<git_checkout_notify_cb>
         {
             public git_checkout_notify_cb(delegate*unmanaged[Cdecl]<libgit2.git_checkout_notify_t, byte*, libgit2.git_diff_file*, libgit2.git_diff_file*, libgit2.git_diff_file*, void*, int> value) => this.Value = value;
@@ -574,8 +584,12 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Checkout progress notification function
+        /// Checkout progress notification function.
         /// </summary>
+        /// <param name="path">the path to the file being checked out</param>
+        /// <param name="completed_steps">number of checkout steps completed</param>
+        /// <param name="total_steps">number of total steps in the checkout process</param>
+        /// <param name="payload">the user-supplied callback payload</param>
         public readonly partial struct git_checkout_progress_cb : IEquatable<git_checkout_progress_cb>
         {
             public git_checkout_progress_cb(delegate*unmanaged[Cdecl]<byte*, nuint, nuint, void*, void> value) => this.Value = value;
@@ -600,8 +614,10 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Checkout perfdata notification function
+        /// Checkout performance data reporting function.
         /// </summary>
+        /// <param name="payload">the user-supplied callback payload</param>
+        /// <param name="perfdata">the performance data for the checkout</param>
         public readonly partial struct git_checkout_perfdata_cb : IEquatable<git_checkout_perfdata_cb>
         {
             public git_checkout_perfdata_cb(delegate*unmanaged[Cdecl]<libgit2.git_checkout_perfdata*, void*, void> value) => this.Value = value;

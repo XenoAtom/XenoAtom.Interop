@@ -379,7 +379,7 @@ namespace XenoAtom.Interop
         /// *
         /// * The context in which an SQL function executes is stored in an
         /// * sqlite3_context object.  ^A pointer to an sqlite3_context object
-        /// * is always first parameter to [application-defined SQL functions].
+        /// * is always the first parameter to [application-defined SQL functions].
         /// * The application-defined SQL function implementation will pass this
         /// * pointer through into calls to [sqlite3_result_int | sqlite3_result()],
         /// * [sqlite3_aggregate_context()], [sqlite3_user_data()],
@@ -571,7 +571,7 @@ namespace XenoAtom.Interop
         /// * virtual table and might not be checked again by the byte code.)^ ^(The
         /// * aConstraintUsage[].omit flag is an optimization hint. When the omit flag
         /// * is left in its default setting of false, the constraint will always be
-        /// * checked separately in byte code.  If the omit flag is change to true, then
+        /// * checked separately in byte code.  If the omit flag is changed to true, then
         /// * the constraint may or may not be checked in byte code.  In other words,
         /// * when the omit flag is true there is no guarantee that the constraint will
         /// * not be checked again using byte code.)^
@@ -597,7 +597,7 @@ namespace XenoAtom.Interop
         /// * The xBestIndex method may optionally populate the idxFlags field with a
         /// * mask of SQLITE_INDEX_SCAN_* flags. One such flag is
         /// * [SQLITE_INDEX_SCAN_HEX], which if set causes the [EXPLAIN QUERY PLAN]
-        /// * output to show the idxNum has hex instead of as decimal.  Another flag is
+        /// * output to show the idxNum as hex instead of as decimal.  Another flag is
         /// * SQLITE_INDEX_SCAN_UNIQUE, which if set indicates that the query plan will
         /// * return at most one row.
         /// *
@@ -1851,11 +1851,17 @@ namespace XenoAtom.Interop
             public static implicit operator sqlite3_destructor_type (delegate*unmanaged[Cdecl]<void*, void> from) => new (from);
         }
         
-        public const string SQLITE_VERSION = "3.48.0";
+        public const string SQLITE_VERSION = "3.53.2";
         
-        public const int SQLITE_VERSION_NUMBER = 3048000;
+        public const int SQLITE_VERSION_NUMBER = 3053002;
         
-        public const string SQLITE_SOURCE_ID = "2025-01-14 11:05:00 d2fe6b05f38d9d7cd78c5d252e99ac59f1aea071d669830c1ffe4e8966e84010";
+        public const string SQLITE_SOURCE_ID = "2026-06-03 19:12:13 d6e03d8c777cfa2d35e3b60d8ec3e0187f3e9f99d8e2ee9cac695fd6fcdf1a24";
+        
+        public const string SQLITE_SCM_BRANCH = "branch-3.53";
+        
+        public const string SQLITE_SCM_TAGS = "release version-3.53.2";
+        
+        public const string SQLITE_SCM_DATETIME = "2026-06-03T19:12:13.350Z";
         
         /// <summary>
         /// Successful result
@@ -2018,6 +2024,12 @@ namespace XenoAtom.Interop
         
         public const int SQLITE_ERROR_SNAPSHOT = 769;
         
+        public const int SQLITE_ERROR_RESERVESIZE = 1025;
+        
+        public const int SQLITE_ERROR_KEY = 1281;
+        
+        public const int SQLITE_ERROR_UNABLE = 1537;
+        
         public const int SQLITE_IOERR_READ = 266;
         
         public const int SQLITE_IOERR_SHORT_READ = 522;
@@ -2085,6 +2097,10 @@ namespace XenoAtom.Interop
         public const int SQLITE_IOERR_CORRUPTFS = 8458;
         
         public const int SQLITE_IOERR_IN_PAGE = 8714;
+        
+        public const int SQLITE_IOERR_BADKEY = 8970;
+        
+        public const int SQLITE_IOERR_CODEC = 9226;
         
         public const int SQLITE_LOCKED_SHAREDCACHE = 262;
         
@@ -2168,7 +2184,7 @@ namespace XenoAtom.Interop
         public const int SQLITE_OK_LOAD_PERMANENTLY = 256;
         
         /// <summary>
-        /// internal use only
+        /// internal only
         /// </summary>
         public const int SQLITE_OK_SYMLINK = 512;
         
@@ -2433,6 +2449,10 @@ namespace XenoAtom.Interop
         public const int SQLITE_FCNTL_RESET_CACHE = 42;
         
         public const int SQLITE_FCNTL_NULL_IO = 43;
+        
+        public const int SQLITE_FCNTL_BLOCK_ON_CONNECT = 44;
+        
+        public const int SQLITE_FCNTL_FILESTAT = 45;
         
         public const int SQLITE_GET_LOCKPROXYFILE = 2;
         
@@ -2708,9 +2728,31 @@ namespace XenoAtom.Interop
         public const int SQLITE_DBCONFIG_REVERSE_SCANORDER = 1019;
         
         /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_ENABLE_ATTACH_CREATE = 1020;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_ENABLE_ATTACH_WRITE = 1021;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_ENABLE_COMMENTS = 1022;
+        
+        /// <summary>
+        /// int int*
+        /// </summary>
+        public const int SQLITE_DBCONFIG_FP_DIGITS = 1023;
+        
+        /// <summary>
         /// Largest DBCONFIG
         /// </summary>
-        public const int SQLITE_DBCONFIG_MAX = 1019;
+        public const int SQLITE_DBCONFIG_MAX = 1023;
+        
+        public const int SQLITE_SETLK_BLOCK_ON_CONNECT = 1;
         
         /// <summary>
         /// Abort the SQL statement with an error
@@ -2924,6 +2966,8 @@ namespace XenoAtom.Interop
         
         public const int SQLITE_LIMIT_WORKER_THREADS = 11;
         
+        public const int SQLITE_LIMIT_PARSER_DEPTH = 12;
+        
         public const int SQLITE_PREPARE_PERSISTENT = 1;
         
         public const int SQLITE_PREPARE_NORMALIZE = 2;
@@ -2931,6 +2975,8 @@ namespace XenoAtom.Interop
         public const int SQLITE_PREPARE_NO_VTAB = 4;
         
         public const int SQLITE_PREPARE_DONT_LOG = 16;
+        
+        public const int SQLITE_PREPARE_FROM_DDL = 32;
         
         public const int SQLITE_INTEGER = 1;
         
@@ -2971,6 +3017,11 @@ namespace XenoAtom.Interop
         /// sqlite3_create_collation only
         /// </summary>
         public const int SQLITE_UTF16_ALIGNED = 8;
+        
+        /// <summary>
+        /// Zero-terminated UTF8
+        /// </summary>
+        public const int SQLITE_UTF8_ZT = 16;
         
         public const int SQLITE_DETERMINISTIC = 2048;
         
@@ -3201,6 +3252,8 @@ namespace XenoAtom.Interop
         /// </summary>
         public const int SQLITE_TESTCTRL_USELONGDOUBLE = 34;
         
+        public const int SQLITE_TESTCTRL_ATOF = 34;
+        
         /// <summary>
         /// Largest TESTCTRL
         /// </summary>
@@ -3261,10 +3314,12 @@ namespace XenoAtom.Interop
         
         public const int SQLITE_DBSTATUS_CACHE_SPILL = 12;
         
+        public const int SQLITE_DBSTATUS_TEMPBUF_SPILL = 13;
+        
         /// <summary>
         /// Largest defined DBSTATUS
         /// </summary>
-        public const int SQLITE_DBSTATUS_MAX = 12;
+        public const int SQLITE_DBSTATUS_MAX = 13;
         
         public const int SQLITE_STMTSTATUS_FULLSCAN_STEP = 1;
         
@@ -3283,6 +3338,11 @@ namespace XenoAtom.Interop
         public const int SQLITE_STMTSTATUS_FILTER_HIT = 8;
         
         public const int SQLITE_STMTSTATUS_MEMUSED = 99;
+        
+        /// <summary>
+        /// Do no work at all
+        /// </summary>
+        public const int SQLITE_CHECKPOINT_NOOP = -1;
         
         /// <summary>
         /// Do as much as possible w/o blocking
@@ -3355,6 +3415,31 @@ namespace XenoAtom.Interop
         /// Database is read-only
         /// </summary>
         public const int SQLITE_DESERIALIZE_READONLY = 4;
+        
+        /// <summary>
+        /// Data is 32-bit signed integers
+        /// </summary>
+        public const int SQLITE_CARRAY_INT32 = 0;
+        
+        /// <summary>
+        /// Data is 64-bit signed integers
+        /// </summary>
+        public const int SQLITE_CARRAY_INT64 = 1;
+        
+        /// <summary>
+        /// Data is doubles
+        /// </summary>
+        public const int SQLITE_CARRAY_DOUBLE = 2;
+        
+        /// <summary>
+        /// Data is char*
+        /// </summary>
+        public const int SQLITE_CARRAY_TEXT = 3;
+        
+        /// <summary>
+        /// Data is struct iovec
+        /// </summary>
+        public const int SQLITE_CARRAY_BLOB = 4;
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_libversion")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -3491,7 +3576,7 @@ namespace XenoAtom.Interop
         /// * without having to use a lot of C code.
         /// *
         /// * ^The sqlite3_exec() interface runs zero or more UTF-8 encoded,
-        /// * semicolon-separate SQL statements passed into its 2nd argument,
+        /// * semicolon-separated SQL statements passed into its 2nd argument,
         /// * in the context of the [database connection] passed in as its 1st
         /// * argument.  ^If the callback function of the 3rd argument to
         /// * sqlite3_exec() is not NULL, then it is invoked for each result row
@@ -3524,7 +3609,7 @@ namespace XenoAtom.Interop
         /// * result row is NULL then the corresponding string pointer for the
         /// * sqlite3_exec() callback is a NULL pointer.  ^The 4th argument to the
         /// * sqlite3_exec() callback is an array of pointers to strings where each
-        /// * entry represents the name of corresponding result column as obtained
+        /// * entry represents the name of a corresponding result column as obtained
         /// * from [sqlite3_column_name()].
         /// *
         /// * ^If the 2nd parameter to sqlite3_exec() is a NULL pointer, a pointer
@@ -3558,7 +3643,7 @@ namespace XenoAtom.Interop
         /// * without having to use a lot of C code.
         /// *
         /// * ^The sqlite3_exec() interface runs zero or more UTF-8 encoded,
-        /// * semicolon-separate SQL statements passed into its 2nd argument,
+        /// * semicolon-separated SQL statements passed into its 2nd argument,
         /// * in the context of the [database connection] passed in as its 1st
         /// * argument.  ^If the callback function of the 3rd argument to
         /// * sqlite3_exec() is not NULL, then it is invoked for each result row
@@ -3591,7 +3676,7 @@ namespace XenoAtom.Interop
         /// * result row is NULL then the corresponding string pointer for the
         /// * sqlite3_exec() callback is a NULL pointer.  ^The 4th argument to the
         /// * sqlite3_exec() callback is an array of pointers to strings where each
-        /// * entry represents the name of corresponding result column as obtained
+        /// * entry represents the name of a corresponding result column as obtained
         /// * from [sqlite3_column_name()].
         /// *
         /// * ^If the 2nd parameter to sqlite3_exec() is a NULL pointer, a pointer
@@ -3656,7 +3741,7 @@ namespace XenoAtom.Interop
         /// * SQLite interfaces so that an application usually does not need to
         /// * invoke sqlite3_initialize() directly.  For example, [sqlite3_open()]
         /// * calls sqlite3_initialize() so the SQLite library will be automatically
-        /// * initialized when [sqlite3_open()] is called if it has not be initialized
+        /// * initialized when [sqlite3_open()] is called if it has not been initialized
         /// * already.  ^However, if SQLite is compiled with the [SQLITE_OMIT_AUTOINIT]
         /// * compile-time option, then the automatic calls to sqlite3_initialize()
         /// * are omitted and the application must call sqlite3_initialize() directly
@@ -3731,7 +3816,8 @@ namespace XenoAtom.Interop
         /// * are called "anytime configuration options".
         /// * ^If sqlite3_config() is called after [sqlite3_initialize()] and before
         /// * [sqlite3_shutdown()] with a first argument that is not an anytime
-        /// * configuration option, then the sqlite3_config() call will return SQLITE_MISUSE.
+        /// * configuration option, then the sqlite3_config() call will
+        /// * return SQLITE_MISUSE.
         /// * Note, however, that ^sqlite3_config() can be called as part of the
         /// * implementation of an application-defined [sqlite3_os_init()].
         /// *
@@ -4031,7 +4117,7 @@ namespace XenoAtom.Interop
         /// * ^These routines return 0 if the statement is incomplete.  ^If a
         /// * memory allocation fails, then SQLITE_NOMEM is returned.
         /// *
-        /// * ^These routines do not parse the SQL statements thus
+        /// * ^These routines do not parse the SQL statements and thus
         /// * will not detect syntactically incorrect SQL.
         /// *
         /// * ^(If SQLite has not been initialized using [sqlite3_initialize()] prior
@@ -4068,7 +4154,7 @@ namespace XenoAtom.Interop
         /// * ^These routines return 0 if the statement is incomplete.  ^If a
         /// * memory allocation fails, then SQLITE_NOMEM is returned.
         /// *
-        /// * ^These routines do not parse the SQL statements thus
+        /// * ^These routines do not parse the SQL statements and thus
         /// * will not detect syntactically incorrect SQL.
         /// *
         /// * ^(If SQLite has not been initialized using [sqlite3_initialize()] prior
@@ -4184,13 +4270,48 @@ namespace XenoAtom.Interop
         public static partial int sqlite3_busy_timeout(sqlite.sqlite3 arg0, int ms);
         
         /// <summary>
+        /// * CAPI3REF: Set the Setlk Timeout
+        /// * METHOD: sqlite3
+        /// *
+        /// * This routine is only useful in SQLITE_ENABLE_SETLK_TIMEOUT builds. If
+        /// * the VFS supports blocking locks, it sets the timeout in ms used by
+        /// * eligible locks taken on wal mode databases by the specified database
+        /// * handle. In non-SQLITE_ENABLE_SETLK_TIMEOUT builds, or if the VFS does
+        /// * not support blocking locks, this function is a no-op.
+        /// *
+        /// * Passing 0 to this function disables blocking locks altogether. Passing
+        /// * -1 to this function requests that the VFS blocks for a long time -
+        /// * indefinitely if possible. The results of passing any other negative value
+        /// * are undefined.
+        /// *
+        /// * Internally, each SQLite database handle stores two timeout values - the
+        /// * busy-timeout (used for rollback mode databases, or if the VFS does not
+        /// * support blocking locks) and the setlk-timeout (used for blocking locks
+        /// * on wal-mode databases). The sqlite3_busy_timeout() method sets both
+        /// * values, this function sets only the setlk-timeout value. Therefore,
+        /// * to configure separate busy-timeout and setlk-timeout values for a single
+        /// * database handle, call sqlite3_busy_timeout() followed by this function.
+        /// *
+        /// * Whenever the number of connections to a wal mode database falls from
+        /// * 1 to 0, the last connection takes an exclusive lock on the database,
+        /// * then checkpoints and deletes the wal file. While it is doing this, any
+        /// * new connection that tries to read from the database fails with an
+        /// * SQLITE_BUSY error. Or, if the SQLITE_SETLK_BLOCK_ON_CONNECT flag is
+        /// * passed to this API, the new connection blocks until the exclusive lock
+        /// * has been released.
+        /// </summary>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_setlk_timeout")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int sqlite3_setlk_timeout(sqlite.sqlite3 arg0, int ms, int flags);
+        
+        /// <summary>
         /// * CAPI3REF: Convenience Routines For Running Queries
         /// * METHOD: sqlite3
         /// *
         /// * This is a legacy interface that is preserved for backwards compatibility.
         /// * Use of this interface is not recommended.
         /// *
-        /// * Definition: A &lt;b&gt;result table&lt;/b&gt;is memory data structure created by the
+        /// * Definition: A &lt;b&gt;result table&lt;/b&gt;is a memory data structure created by the
         /// * [sqlite3_get_table()] interface.  A result table records the
         /// * complete query results from one or more queries.
         /// *
@@ -4280,7 +4401,7 @@ namespace XenoAtom.Interop
         /// * This is a legacy interface that is preserved for backwards compatibility.
         /// * Use of this interface is not recommended.
         /// *
-        /// * Definition: A &lt;b&gt;result table&lt;/b&gt;is memory data structure created by the
+        /// * Definition: A &lt;b&gt;result table&lt;/b&gt;is a memory data structure created by the
         /// * [sqlite3_get_table()] interface.  A result table records the
         /// * complete query results from one or more queries.
         /// *
@@ -4389,7 +4510,7 @@ namespace XenoAtom.Interop
         /// * ^Calling sqlite3_free() with a pointer previously returned
         /// * by sqlite3_malloc() or sqlite3_realloc() releases that memory so
         /// * that it might be reused.  ^The sqlite3_free() routine is
-        /// * a no-op if is called with a NULL pointer.  Passing a NULL pointer
+        /// * a no-op if it is called with a NULL pointer.  Passing a NULL pointer
         /// * to sqlite3_free() is harmless.  After being freed, memory
         /// * should neither be read nor written.  Even reading previously freed
         /// * memory might result in a segmentation fault or other severe error.
@@ -4407,13 +4528,13 @@ namespace XenoAtom.Interop
         /// * sqlite3_free(X).
         /// * ^sqlite3_realloc(X,N) returns a pointer to a memory allocation
         /// * of at least N bytes in size or NULL if insufficient memory is available.
-        /// * ^If M is the size of the prior allocation, then min(N,M) bytes
-        /// * of the prior allocation are copied into the beginning of buffer returned
+        /// * ^If M is the size of the prior allocation, then min(N,M) bytes of the
+        /// * prior allocation are copied into the beginning of the buffer returned
         /// * by sqlite3_realloc(X,N) and the prior allocation is freed.
         /// * ^If sqlite3_realloc(X,N) returns NULL and N is positive, then the
         /// * prior allocation is not freed.
         /// *
-        /// * ^The sqlite3_realloc64(X,N) interfaces works the same as
+        /// * ^The sqlite3_realloc64(X,N) interface works the same as
         /// * sqlite3_realloc(X,N) except that N is a 64-bit unsigned integer instead
         /// * of a 32-bit signed integer.
         /// *
@@ -4480,7 +4601,7 @@ namespace XenoAtom.Interop
         /// * was last reset.  ^The values returned by [sqlite3_memory_used()] and
         /// * [sqlite3_memory_highwater()] include any overhead
         /// * added by SQLite in its implementation of [sqlite3_malloc()],
-        /// * but not overhead added by the any underlying system library
+        /// * but not overhead added by any underlying system library
         /// * routines that [sqlite3_malloc()] may call.
         /// *
         /// * ^The memory high-water mark is reset to the current value of
@@ -4801,14 +4922,14 @@ namespace XenoAtom.Interop
         /// * (Mutexes will block any actual concurrency, but in this mode
         /// * there is no harm in trying.)
         /// *
-        /// * ^(&lt;dt&gt;[SQLITE_OPEN_SHAREDCACHE]&lt;/dt&gt;* &lt;dd&gt;The database is opened [shared cache] enabled, overriding
+        /// * ^(&lt;dt&gt;[SQLITE_OPEN_SHAREDCACHE]&lt;/dt&gt;* &lt;dd&gt;The database is opened with [shared cache] enabled, overriding
         /// * the default shared cache setting provided by
         /// * [sqlite3_enable_shared_cache()].)^
         /// * The [use of shared cache mode is discouraged] and hence shared cache
         /// * capabilities may be omitted from many builds of SQLite.  In such cases,
         /// * this option is a no-op.
         /// *
-        /// * ^(&lt;dt&gt;[SQLITE_OPEN_PRIVATECACHE]&lt;/dt&gt;* &lt;dd&gt;The database is opened [shared cache] disabled, overriding
+        /// * ^(&lt;dt&gt;[SQLITE_OPEN_PRIVATECACHE]&lt;/dt&gt;* &lt;dd&gt;The database is opened with [shared cache] disabled, overriding
         /// * the default shared cache setting provided by
         /// * [sqlite3_enable_shared_cache()].)^
         /// *
@@ -5055,14 +5176,14 @@ namespace XenoAtom.Interop
         /// * (Mutexes will block any actual concurrency, but in this mode
         /// * there is no harm in trying.)
         /// *
-        /// * ^(&lt;dt&gt;[SQLITE_OPEN_SHAREDCACHE]&lt;/dt&gt;* &lt;dd&gt;The database is opened [shared cache] enabled, overriding
+        /// * ^(&lt;dt&gt;[SQLITE_OPEN_SHAREDCACHE]&lt;/dt&gt;* &lt;dd&gt;The database is opened with [shared cache] enabled, overriding
         /// * the default shared cache setting provided by
         /// * [sqlite3_enable_shared_cache()].)^
         /// * The [use of shared cache mode is discouraged] and hence shared cache
         /// * capabilities may be omitted from many builds of SQLite.  In such cases,
         /// * this option is a no-op.
         /// *
-        /// * ^(&lt;dt&gt;[SQLITE_OPEN_PRIVATECACHE]&lt;/dt&gt;* &lt;dd&gt;The database is opened [shared cache] disabled, overriding
+        /// * ^(&lt;dt&gt;[SQLITE_OPEN_PRIVATECACHE]&lt;/dt&gt;* &lt;dd&gt;The database is opened with [shared cache] disabled, overriding
         /// * the default shared cache setting provided by
         /// * [sqlite3_enable_shared_cache()].)^
         /// *
@@ -5550,7 +5671,7 @@ namespace XenoAtom.Interop
         /// *
         /// * The sqlite3_create_filename(D,J,W,N,P) allocates memory to hold a version of
         /// * database filename D with corresponding journal file J and WAL file W and
-        /// * with N URI parameters key/values pairs in the array P.  The result from
+        /// * an array P of N URI Key/Value pairs.  The result from
         /// * sqlite3_create_filename(D,J,W,N,P) is a pointer to a database filename that
         /// * is safe to pass to routines like:
         /// * &lt;ul&gt;* &lt;li&gt;[sqlite3_uri_parameter()],
@@ -5597,7 +5718,7 @@ namespace XenoAtom.Interop
         /// *
         /// * The sqlite3_create_filename(D,J,W,N,P) allocates memory to hold a version of
         /// * database filename D with corresponding journal file J and WAL file W and
-        /// * with N URI parameters key/values pairs in the array P.  The result from
+        /// * an array P of N URI Key/Value pairs.  The result from
         /// * sqlite3_create_filename(D,J,W,N,P) is a pointer to a database filename that
         /// * is safe to pass to routines like:
         /// * &lt;ul&gt;* &lt;li&gt;[sqlite3_uri_parameter()],
@@ -5664,6 +5785,7 @@ namespace XenoAtom.Interop
         /// * &lt;li&gt;sqlite3_errmsg()
         /// * &lt;li&gt;sqlite3_errmsg16()
         /// * &lt;li&gt;sqlite3_error_offset()
+        /// * &lt;li&gt;sqlite3_db_handle()
         /// * &lt;/ul&gt;*
         /// * ^The sqlite3_errmsg() and sqlite3_errmsg16() return English-language
         /// * text that describes the error, as either UTF-8 or UTF-16 respectively,
@@ -5675,7 +5797,7 @@ namespace XenoAtom.Interop
         /// * subsequent calls to other SQLite interface functions.)^
         /// *
         /// * ^The sqlite3_errstr(E) interface returns the English-language text
-        /// * that describes the [result code] E, as UTF-8, or NULL if E is not an
+        /// * that describes the [result code] E, as UTF-8, or NULL if E is not a
         /// * result code for which a text error message is available.
         /// * ^(Memory to hold the error message string is managed internally
         /// * and must not be freed by the application)^.
@@ -5683,7 +5805,7 @@ namespace XenoAtom.Interop
         /// * ^If the most recent error references a specific token in the input
         /// * SQL, the sqlite3_error_offset() interface returns the byte offset
         /// * of the start of that token.  ^The byte offset returned by
-        /// * sqlite3_error_offset() assumes that the input SQL is UTF8.
+        /// * sqlite3_error_offset() assumes that the input SQL is UTF-8.
         /// * ^If the most recent error does not reference a specific token in the input
         /// * SQL, then the sqlite3_error_offset() function returns -1.
         /// *
@@ -5741,6 +5863,66 @@ namespace XenoAtom.Interop
         public static partial int sqlite3_error_offset(sqlite.sqlite3 db);
         
         /// <summary>
+        /// * CAPI3REF: Set Error Code And Message
+        /// * METHOD: sqlite3
+        /// *
+        /// * Set the error code of the database handle passed as the first argument
+        /// * to errcode, and the error message to a copy of nul-terminated string
+        /// * zErrMsg. If zErrMsg is passed NULL, then the error message is set to
+        /// * the default message associated with the supplied error code.  Subsequent
+        /// * calls to [sqlite3_errcode()] and [sqlite3_errmsg()] and similar will
+        /// * return the values set by this routine in place of what was previously
+        /// * set by SQLite itself.
+        /// *
+        /// * This function returns SQLITE_OK if the error code and error message are
+        /// * successfully set, SQLITE_NOMEM if an OOM occurs, and SQLITE_MISUSE if
+        /// * the database handle is NULL or invalid.
+        /// *
+        /// * The error code and message set by this routine remains in effect until
+        /// * they are changed, either by another call to this routine or until they are
+        /// * changed to by SQLite itself to reflect the result of some subsquent
+        /// * API call.
+        /// *
+        /// * This function is intended for use by SQLite extensions or wrappers.  The
+        /// * idea is that an extension or wrapper can use this routine to set error
+        /// * messages and error codes and thus behave more like a core SQLite
+        /// * feature from the point of view of an application.
+        /// </summary>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_set_errmsg")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int sqlite3_set_errmsg(sqlite.sqlite3 db, int errcode, byte* zErrMsg);
+        
+        /// <summary>
+        /// * CAPI3REF: Set Error Code And Message
+        /// * METHOD: sqlite3
+        /// *
+        /// * Set the error code of the database handle passed as the first argument
+        /// * to errcode, and the error message to a copy of nul-terminated string
+        /// * zErrMsg. If zErrMsg is passed NULL, then the error message is set to
+        /// * the default message associated with the supplied error code.  Subsequent
+        /// * calls to [sqlite3_errcode()] and [sqlite3_errmsg()] and similar will
+        /// * return the values set by this routine in place of what was previously
+        /// * set by SQLite itself.
+        /// *
+        /// * This function returns SQLITE_OK if the error code and error message are
+        /// * successfully set, SQLITE_NOMEM if an OOM occurs, and SQLITE_MISUSE if
+        /// * the database handle is NULL or invalid.
+        /// *
+        /// * The error code and message set by this routine remains in effect until
+        /// * they are changed, either by another call to this routine or until they are
+        /// * changed to by SQLite itself to reflect the result of some subsquent
+        /// * API call.
+        /// *
+        /// * This function is intended for use by SQLite extensions or wrappers.  The
+        /// * idea is that an extension or wrapper can use this routine to set error
+        /// * messages and error codes and thus behave more like a core SQLite
+        /// * feature from the point of view of an application.
+        /// </summary>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_set_errmsg")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int sqlite3_set_errmsg(sqlite.sqlite3 db, int errcode, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> zErrMsg);
+        
+        /// <summary>
         /// * CAPI3REF: Run-time Limits
         /// * METHOD: sqlite3
         /// *
@@ -5796,8 +5978,9 @@ namespace XenoAtom.Interop
         /// *
         /// * The preferred routine to use is [sqlite3_prepare_v2()].  The
         /// * [sqlite3_prepare()] interface is legacy and should be avoided.
-        /// * [sqlite3_prepare_v3()] has an extra "prepFlags" option that is used
-        /// * for special purposes.
+        /// * [sqlite3_prepare_v3()] has an extra
+        /// * [SQLITE_PREPARE_FROM_DDL|"prepFlags" option] that is sometimes
+        /// * needed for special purpose or to pass along security restrictions.
         /// *
         /// * The use of the UTF-8 interfaces is preferred, as SQLite currently
         /// * does all parsing using UTF-8.  The UTF-16 interfaces are provided
@@ -5823,7 +6006,7 @@ namespace XenoAtom.Interop
         /// * If the caller knows that the supplied string is nul-terminated, then
         /// * there is a small performance advantage to passing an nByte parameter that
         /// * is the number of bytes in the input string &lt;i&gt;including&lt;/i&gt;* the nul-terminator.
-        /// * Note that nByte measure the length of the input in bytes, not
+        /// * Note that nByte measures the length of the input in bytes, not
         /// * characters, even for the UTF-16 interfaces.
         /// *
         /// * ^If pzTail is not NULL then *pzTail is made to point to the first byte
@@ -5895,8 +6078,9 @@ namespace XenoAtom.Interop
         /// *
         /// * The preferred routine to use is [sqlite3_prepare_v2()].  The
         /// * [sqlite3_prepare()] interface is legacy and should be avoided.
-        /// * [sqlite3_prepare_v3()] has an extra "prepFlags" option that is used
-        /// * for special purposes.
+        /// * [sqlite3_prepare_v3()] has an extra
+        /// * [SQLITE_PREPARE_FROM_DDL|"prepFlags" option] that is sometimes
+        /// * needed for special purpose or to pass along security restrictions.
         /// *
         /// * The use of the UTF-8 interfaces is preferred, as SQLite currently
         /// * does all parsing using UTF-8.  The UTF-16 interfaces are provided
@@ -5922,7 +6106,7 @@ namespace XenoAtom.Interop
         /// * If the caller knows that the supplied string is nul-terminated, then
         /// * there is a small performance advantage to passing an nByte parameter that
         /// * is the number of bytes in the input string &lt;i&gt;including&lt;/i&gt;* the nul-terminator.
-        /// * Note that nByte measure the length of the input in bytes, not
+        /// * Note that nByte measures the length of the input in bytes, not
         /// * characters, even for the UTF-16 interfaces.
         /// *
         /// * ^If pzTail is not NULL then *pzTail is made to point to the first byte
@@ -6047,7 +6231,7 @@ namespace XenoAtom.Interop
         /// *
         /// * ^The sqlite3_expanded_sql() interface returns NULL if insufficient memory
         /// * is available to hold the result, or if the result would exceed the
-        /// * the maximum string length determined by the [SQLITE_LIMIT_LENGTH].
+        /// * maximum string length determined by the [SQLITE_LIMIT_LENGTH].
         /// *
         /// * ^The [SQLITE_TRACE_SIZE_LIMIT] compile-time option limits the size of
         /// * bound parameter expansions.  ^The [SQLITE_OMIT_TRACE] compile-time
@@ -6092,7 +6276,7 @@ namespace XenoAtom.Interop
         /// *
         /// * ^The sqlite3_expanded_sql() interface returns NULL if insufficient memory
         /// * is available to hold the result, or if the result would exceed the
-        /// * the maximum string length determined by the [SQLITE_LIMIT_LENGTH].
+        /// * maximum string length determined by the [SQLITE_LIMIT_LENGTH].
         /// *
         /// * ^The [SQLITE_TRACE_SIZE_LIMIT] compile-time option limits the size of
         /// * bound parameter expansions.  ^The [SQLITE_OMIT_TRACE] compile-time
@@ -6247,7 +6431,7 @@ namespace XenoAtom.Interop
         /// * METHOD: sqlite3_stmt
         /// *
         /// * ^(In the SQL statement text input to [sqlite3_prepare_v2()] and its variants,
-        /// * literals may be replaced by a [parameter] that matches one of following
+        /// * literals may be replaced by a [parameter] that matches one of the following
         /// * templates:
         /// *
         /// * &lt;ul&gt;* &lt;li&gt;?
@@ -6284,12 +6468,12 @@ namespace XenoAtom.Interop
         /// * it should be a pointer to well-formed UTF16 text.
         /// * ^If the third parameter to sqlite3_bind_text64() is not NULL, then
         /// * it should be a pointer to a well-formed unicode string that is
-        /// * either UTF8 if the sixth parameter is SQLITE_UTF8, or UTF16
-        /// * otherwise.
+        /// * either UTF8 if the sixth parameter is SQLITE_UTF8 or SQLITE_UTF8_ZT,
+        /// * or UTF16 otherwise.
         /// *
         /// * [[byte-order determination rules]] ^The byte-order of
         /// * UTF16 input text is determined by the byte-order mark (BOM, U+FEFF)
-        /// * found in first character, which is removed, or in the absence of a BOM
+        /// * found in the first character, which is removed, or in the absence of a BOM
         /// * the byte order is the native byte order of the host
         /// * machine for sqlite3_bind_text16() or the byte order specified in
         /// * the 6th parameter for sqlite3_bind_text64().)^
@@ -6309,7 +6493,7 @@ namespace XenoAtom.Interop
         /// * or sqlite3_bind_text16() or sqlite3_bind_text64() then
         /// * that parameter must be the byte offset
         /// * where the NUL terminator would occur assuming the string were NUL
-        /// * terminated.  If any NUL characters occurs at byte offsets less than
+        /// * terminated.  If any NUL characters occur at byte offsets less than
         /// * the value of the fourth parameter then the resulting string value will
         /// * contain embedded NULs.  The result of expressions involving strings
         /// * with embedded NULs is undefined.
@@ -6331,10 +6515,19 @@ namespace XenoAtom.Interop
         /// * object and pointer to it must remain valid until then. ^SQLite will then
         /// * manage the lifetime of its private copy.
         /// *
-        /// * ^The sixth argument to sqlite3_bind_text64() must be one of
-        /// * [SQLITE_UTF8], [SQLITE_UTF16], [SQLITE_UTF16BE], or [SQLITE_UTF16LE]
-        /// * to specify the encoding of the text in the third parameter.  If
-        /// * the sixth argument to sqlite3_bind_text64() is not one of the
+        /// * ^The sixth argument (the E argument)
+        /// * to sqlite3_bind_text64(S,K,Z,N,D,E) must be one of
+        /// * [SQLITE_UTF8], [SQLITE_UTF8_ZT], [SQLITE_UTF16], [SQLITE_UTF16BE],
+        /// * or [SQLITE_UTF16LE] to specify the encoding of the text in the
+        /// * third parameter, Z.  The special value [SQLITE_UTF8_ZT] means that the
+        /// * string argument is both UTF-8 encoded and is zero-terminated.  In other
+        /// * words, SQLITE_UTF8_ZT means that the Z array is allocated to hold at
+        /// * least N+1 bytes and that the Z
+        /// [
+        /// N
+        /// ]
+        /// byte is zero.  If
+        /// * the E argument to sqlite3_bind_text64(S,K,Z,N,D,E) is not one of the
         /// * allowed values shown above, or if the text encoding is different
         /// * from the encoding specified by the sixth parameter, then the behavior
         /// * is undefined.
@@ -6352,9 +6545,11 @@ namespace XenoAtom.Interop
         /// * associated with the pointer P of type T.  ^D is either a NULL pointer or
         /// * a pointer to a destructor function for P. ^SQLite will invoke the
         /// * destructor D with a single argument of P when it is finished using
-        /// * P.  The T parameter should be a static string, preferably a string
-        /// * literal. The sqlite3_bind_pointer() routine is part of the
-        /// * [pointer passing interface] added for SQLite 3.20.0.
+        /// * P, even if the call to sqlite3_bind_pointer() fails.  Due to a
+        /// * historical design quirk, results are undefined if D is
+        /// * SQLITE_TRANSIENT. The T parameter should be a static string,
+        /// * preferably a string literal. The sqlite3_bind_pointer() routine is
+        /// * part of the [pointer passing interface] added for SQLite 3.20.0.
         /// *
         /// * ^If any of the sqlite3_bind_*() routines are called with a NULL pointer
         /// * for the [prepared statement] or with a prepared statement for which
@@ -6676,7 +6871,7 @@ namespace XenoAtom.Interop
         /// * METHOD: sqlite3_stmt
         /// *
         /// * ^These routines provide a means to determine the database, table, and
-        /// * table column that is the origin of a particular result column in
+        /// * table column that is the origin of a particular result column in a
         /// * [SELECT] statement.
         /// * ^The name of the database or table or column can be returned as
         /// * either a UTF-8 or UTF-16 string.  ^The _database_ routines return
@@ -6722,7 +6917,7 @@ namespace XenoAtom.Interop
         /// * METHOD: sqlite3_stmt
         /// *
         /// * ^These routines provide a means to determine the database, table, and
-        /// * table column that is the origin of a particular result column in
+        /// * table column that is the origin of a particular result column in a
         /// * [SELECT] statement.
         /// * ^The name of the database or table or column can be returned as
         /// * either a UTF-8 or UTF-16 string.  ^The _database_ routines return
@@ -6948,7 +7143,7 @@ namespace XenoAtom.Interop
         /// * other than [SQLITE_ROW] before any subsequent invocation of
         /// * sqlite3_step().  Failure to reset the prepared statement using
         /// * [sqlite3_reset()] would result in an [SQLITE_MISUSE] return from
-        /// * sqlite3_step().  But after [version 3.6.23.1] ([dateof:3.6.23.1],
+        /// * sqlite3_step().  But after [version 3.6.23.1] ([dateof:3.6.23.1]),
         /// * sqlite3_step() began
         /// * calling [sqlite3_reset()] automatically in this circumstance rather
         /// * than returning [SQLITE_MISUSE].  This is not considered a compatibility
@@ -7242,7 +7437,7 @@ namespace XenoAtom.Interop
         /// *
         /// * ^The sqlite3_finalize() function is called to delete a [prepared statement].
         /// * ^If the most recent evaluation of the statement encountered no errors
-        /// * or if the statement is never been evaluated, then sqlite3_finalize() returns
+        /// * or if the statement has never been evaluated, then sqlite3_finalize() returns
         /// * SQLITE_OK.  ^If the most recent evaluation of statement S failed, then
         /// * sqlite3_finalize(S) returns the appropriate [error code] or
         /// * [extended error code].
@@ -7370,8 +7565,8 @@ namespace XenoAtom.Interop
         /// *
         /// * For best security, the [SQLITE_DIRECTONLY] flag is recommended for
         /// * all application-defined SQL functions that do not need to be
-        /// * used inside of triggers, view, CHECK constraints, or other elements of
-        /// * the database schema.  This flags is especially recommended for SQL
+        /// * used inside of triggers, views, CHECK constraints, or other elements of
+        /// * the database schema.  This flag is especially recommended for SQL
         /// * functions that have side effects or reveal internal application state.
         /// * Without this flag, an attacker might be able to modify the schema of
         /// * a database file to include invocations of the function with parameters
@@ -7402,7 +7597,7 @@ namespace XenoAtom.Interop
         /// * [user-defined window functions|available here].
         /// *
         /// * ^(If the final parameter to sqlite3_create_function_v2() or
-        /// * sqlite3_create_window_function() is not NULL, then it is destructor for
+        /// * sqlite3_create_window_function() is not NULL, then it is the destructor for
         /// * the application data pointer. The destructor is invoked when the function
         /// * is deleted, either by being overloaded or when the database connection
         /// * closes.)^ ^The destructor is also invoked if the call to
@@ -7497,8 +7692,8 @@ namespace XenoAtom.Interop
         /// *
         /// * For best security, the [SQLITE_DIRECTONLY] flag is recommended for
         /// * all application-defined SQL functions that do not need to be
-        /// * used inside of triggers, view, CHECK constraints, or other elements of
-        /// * the database schema.  This flags is especially recommended for SQL
+        /// * used inside of triggers, views, CHECK constraints, or other elements of
+        /// * the database schema.  This flag is especially recommended for SQL
         /// * functions that have side effects or reveal internal application state.
         /// * Without this flag, an attacker might be able to modify the schema of
         /// * a database file to include invocations of the function with parameters
@@ -7529,7 +7724,7 @@ namespace XenoAtom.Interop
         /// * [user-defined window functions|available here].
         /// *
         /// * ^(If the final parameter to sqlite3_create_function_v2() or
-        /// * sqlite3_create_window_function() is not NULL, then it is destructor for
+        /// * sqlite3_create_window_function() is not NULL, then it is the destructor for
         /// * the application data pointer. The destructor is invoked when the function
         /// * is deleted, either by being overloaded or when the database connection
         /// * closes.)^ ^The destructor is also invoked if the call to
@@ -7692,7 +7887,7 @@ namespace XenoAtom.Interop
         /// * sqlite3_value_nochange(X) interface returns true if and only if
         /// * the column corresponding to X is unchanged by the UPDATE operation
         /// * that the xUpdate method call was invoked to implement and if
-        /// * and the prior [xColumn] method call that was invoked to extracted
+        /// * the prior [xColumn] method call that was invoked to extract
         /// * the value for that column returned without setting a result (probably
         /// * because it queried [sqlite3_vtab_nochange()] and found that the column
         /// * was unchanging).  ^Within an [xUpdate] method, any value for which
@@ -7716,24 +7911,26 @@ namespace XenoAtom.Interop
         /// * the SQL function that supplied the [sqlite3_value*] parameters.
         /// *
         /// * As long as the input parameter is correct, these routines can only
-        /// * fail if an out-of-memory error occurs during a format conversion.
-        /// * Only the following subset of interfaces are subject to out-of-memory
-        /// * errors:
-        /// *
-        /// * &lt;ul&gt;* &lt;li&gt;sqlite3_value_blob()
-        /// * &lt;li&gt;sqlite3_value_text()
-        /// * &lt;li&gt;sqlite3_value_text16()
-        /// * &lt;li&gt;sqlite3_value_text16le()
-        /// * &lt;li&gt;sqlite3_value_text16be()
-        /// * &lt;li&gt;sqlite3_value_bytes()
-        /// * &lt;li&gt;sqlite3_value_bytes16()
-        /// * &lt;/ul&gt;*
+        /// * fail if an out-of-memory error occurs while trying to do a
+        /// * UTF8
+        /// →
+        /// UTF16 or UTF16
+        /// →
+        /// UTF8 conversion.
         /// * If an out-of-memory error occurs, then the return value from these
         /// * routines is the same as if the column had contained an SQL NULL value.
-        /// * Valid SQL NULL returns can be distinguished from out-of-memory errors
-        /// * by invoking the [sqlite3_errcode()] immediately after the suspect
+        /// * If the input sqlite3_value was not obtained from [sqlite3_value_dup()],
+        /// * then valid SQL NULL returns can also be distinguished from
+        /// * out-of-memory errors after extracting the value
+        /// * by invoking the [sqlite3_errcode()] immediately after the suspicious
         /// * return value is obtained and before any
         /// * other SQLite interface is called on the same [database connection].
+        /// * If the input sqlite3_value was obtained from sqlite3_value_dup() then
+        /// * it is disconnected from the database connection and so sqlite3_errcode()
+        /// * will not work.
+        /// * In that case, the only way to distinguish an out-of-memory
+        /// * condition from a true SQL NULL is to invoke sqlite3_value_type() on the
+        /// * input to see if it is NULL prior to trying to extract the value.
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_value_blob")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -7823,7 +8020,8 @@ namespace XenoAtom.Interop
         /// * of the value X, assuming that X has type TEXT.)^  If sqlite3_value_type(X)
         /// * returns something other than SQLITE_TEXT, then the return value from
         /// * sqlite3_value_encoding(X) is meaningless.  ^Calls to
-        /// * [sqlite3_value_text(X)], [sqlite3_value_text16(X)], [sqlite3_value_text16be(X)],
+        /// * [sqlite3_value_text(X)], [sqlite3_value_text16(X)],
+        /// * [sqlite3_value_text16be(X)],
         /// * [sqlite3_value_text16le(X)], [sqlite3_value_bytes(X)], or
         /// * [sqlite3_value_bytes16(X)] might change the encoding of the value X and
         /// * thus change the return from subsequent calls to sqlite3_value_encoding(X).
@@ -7863,7 +8061,7 @@ namespace XenoAtom.Interop
         /// * METHOD: sqlite3_value
         /// *
         /// * ^The sqlite3_value_dup(V) interface makes a copy of the [sqlite3_value]
-        /// * object D and returns a pointer to that copy.  ^The [sqlite3_value] returned
+        /// * object V and returns a pointer to that copy.  ^The [sqlite3_value] returned
         /// * is a [protected sqlite3_value] object even if the input is not.
         /// * ^The sqlite3_value_dup(V) interface returns NULL if V is NULL or if a
         /// * memory allocation fails. ^If V is a [pointer value], then the result
@@ -7906,7 +8104,7 @@ namespace XenoAtom.Interop
         /// * allocation error occurs.
         /// *
         /// * ^(The amount of space allocated by sqlite3_aggregate_context(C,N) is
-        /// * determined by the N parameter on first successful call.  Changing the
+        /// * determined by the N parameter on the first successful call.  Changing the
         /// * value of N in any subsequent call to sqlite3_aggregate_context() within
         /// * the same aggregate function instance will not resize the memory
         /// * allocation.)^  Within the xFinal callback, it is customary to set
@@ -7969,17 +8167,17 @@ namespace XenoAtom.Interop
         /// * query execution, under some circumstances the associated auxiliary data
         /// * might be preserved.  An example of where this might be useful is in a
         /// * regular-expression matching function. The compiled version of the regular
-        /// * expression can be stored as auxiliary data associated with the pattern string.
-        /// * Then as long as the pattern string remains the same,
+        /// * expression can be stored as auxiliary data associated with the pattern
+        /// * string. Then as long as the pattern string remains the same,
         /// * the compiled regular expression can be reused on multiple
         /// * invocations of the same function.
         /// *
-        /// * ^The sqlite3_get_auxdata(C,N) interface returns a pointer to the auxiliary data
-        /// * associated by the sqlite3_set_auxdata(C,N,P,X) function with the Nth argument
-        /// * value to the application-defined function.  ^N is zero for the left-most
-        /// * function argument.  ^If there is no auxiliary data
-        /// * associated with the function argument, the sqlite3_get_auxdata(C,N) interface
-        /// * returns a NULL pointer.
+        /// * ^The sqlite3_get_auxdata(C,N) interface returns a pointer to the auxiliary
+        /// * data associated by the sqlite3_set_auxdata(C,N,P,X) function with the
+        /// * Nth argument value to the application-defined function.  ^N is zero
+        /// * for the left-most function argument.  ^If there is no auxiliary data
+        /// * associated with the function argument, the sqlite3_get_auxdata(C,N)
+        /// * interface returns a NULL pointer.
         /// *
         /// * ^The sqlite3_set_auxdata(C,N,P,X) interface saves P as auxiliary data for the
         /// * N-th argument of the application-defined function.  ^Subsequent
@@ -8044,6 +8242,7 @@ namespace XenoAtom.Interop
         /// * or a NULL pointer if there were no prior calls to
         /// * sqlite3_set_clientdata() with the same values of D and N.
         /// * Names are compared using strcmp() and are thus case sensitive.
+        /// * It returns 0 on success and SQLITE_NOMEM on allocation failure.
         /// *
         /// * If P and X are both non-NULL, then the destructor X is invoked with
         /// * argument P on the first of the following occurrences:
@@ -8063,10 +8262,14 @@ namespace XenoAtom.Interop
         /// *
         /// * There is no limit (other than available memory) on the number of different
         /// * client data pointers (with different names) that can be attached to a
-        /// * single database connection.  However, the implementation is optimized
-        /// * for the case of having only one or two different client data names.
-        /// * Applications and wrapper libraries are discouraged from using more than
-        /// * one client data name each.
+        /// * single database connection.  However, the current implementation stores
+        /// * the content on a linked list.  Insert and retrieval performance will
+        /// * be proportional to the number of entries.  The design use case, and
+        /// * the use case for which the implementation is optimized, is
+        /// * that an application will store only small number of client data names,
+        /// * typically just one or two.  This interface is not intended to be a
+        /// * generalized key/value store for thousands or millions of keys.  It
+        /// * will work for that, but performance might be disappointing.
         /// *
         /// * There is no way to enumerate the client data pointers
         /// * associated with a database connection.  The N parameter can be thought
@@ -8075,7 +8278,7 @@ namespace XenoAtom.Interop
         /// *
         /// * Security Warning:  These interfaces should not be exposed in scripting
         /// * languages or in other circumstances where it might be possible for an
-        /// * an attacker to invoke them.  Any agent that can invoke these interfaces
+        /// * attacker to invoke them.  Any agent that can invoke these interfaces
         /// * can probably also take control of the process.
         /// *
         /// * Database connection client data is only available for SQLite
@@ -8099,6 +8302,7 @@ namespace XenoAtom.Interop
         /// * or a NULL pointer if there were no prior calls to
         /// * sqlite3_set_clientdata() with the same values of D and N.
         /// * Names are compared using strcmp() and are thus case sensitive.
+        /// * It returns 0 on success and SQLITE_NOMEM on allocation failure.
         /// *
         /// * If P and X are both non-NULL, then the destructor X is invoked with
         /// * argument P on the first of the following occurrences:
@@ -8118,10 +8322,14 @@ namespace XenoAtom.Interop
         /// *
         /// * There is no limit (other than available memory) on the number of different
         /// * client data pointers (with different names) that can be attached to a
-        /// * single database connection.  However, the implementation is optimized
-        /// * for the case of having only one or two different client data names.
-        /// * Applications and wrapper libraries are discouraged from using more than
-        /// * one client data name each.
+        /// * single database connection.  However, the current implementation stores
+        /// * the content on a linked list.  Insert and retrieval performance will
+        /// * be proportional to the number of entries.  The design use case, and
+        /// * the use case for which the implementation is optimized, is
+        /// * that an application will store only small number of client data names,
+        /// * typically just one or two.  This interface is not intended to be a
+        /// * generalized key/value store for thousands or millions of keys.  It
+        /// * will work for that, but performance might be disappointing.
         /// *
         /// * There is no way to enumerate the client data pointers
         /// * associated with a database connection.  The N parameter can be thought
@@ -8130,7 +8338,7 @@ namespace XenoAtom.Interop
         /// *
         /// * Security Warning:  These interfaces should not be exposed in scripting
         /// * languages or in other circumstances where it might be possible for an
-        /// * an attacker to invoke them.  Any agent that can invoke these interfaces
+        /// * attacker to invoke them.  Any agent that can invoke these interfaces
         /// * can probably also take control of the process.
         /// *
         /// * Database connection client data is only available for SQLite
@@ -8220,10 +8428,18 @@ namespace XenoAtom.Interop
         /// * set the return value of the application-defined function to be
         /// * a text string which is represented as UTF-8, UTF-16 native byte order,
         /// * UTF-16 little endian, or UTF-16 big endian, respectively.
-        /// * ^The sqlite3_result_text64() interface sets the return value of an
+        /// * ^The sqlite3_result_text64(C,Z,N,D,E) interface sets the return value of an
         /// * application-defined function to be a text string in an encoding
-        /// * specified by the fifth (and last) parameter, which must be one
-        /// * of [SQLITE_UTF8], [SQLITE_UTF16], [SQLITE_UTF16BE], or [SQLITE_UTF16LE].
+        /// * specified the E parameter, which must be one
+        /// * of [SQLITE_UTF8], [SQLITE_UTF8_ZT], [SQLITE_UTF16], [SQLITE_UTF16BE],
+        /// * or [SQLITE_UTF16LE].  ^The special value [SQLITE_UTF8_ZT] means that
+        /// * the result text is both UTF-8 and zero-terminated.  In other words,
+        /// * SQLITE_UTF8_ZT means that the Z array holds at least N+1 bytes and that
+        /// * the Z
+        /// [
+        /// N
+        /// ]
+        /// is zero.
         /// * ^SQLite takes the text result from the application from
         /// * the 2nd parameter of the sqlite3_result_text* interfaces.
         /// * ^If the 3rd parameter to any of the sqlite3_result_text* interfaces
@@ -8235,7 +8451,7 @@ namespace XenoAtom.Interop
         /// * pointed to by the 2nd parameter are taken as the application-defined
         /// * function result.  If the 3rd parameter is non-negative, then it
         /// * must be the byte offset into the string where the NUL terminator would
-        /// * appear if the string where NUL terminated.  If any NUL characters occur
+        /// * appear if the string were NUL terminated.  If any NUL characters occur
         /// * in the string at a byte offset that is less than the value of the 3rd
         /// * parameter, then the resulting string will contain embedded NULs and the
         /// * result of expressions operating on strings with embedded NULs is undefined.
@@ -8293,7 +8509,7 @@ namespace XenoAtom.Interop
         /// * string and preferably a string literal. The sqlite3_result_pointer()
         /// * routine is part of the [pointer passing interface] added for SQLite 3.20.0.
         /// *
-        /// * If these routines are called from within the different thread
+        /// * If these routines are called from within a different thread
         /// * than the one containing the application-defined function that received
         /// * the [sqlite3_context] pointer, the results are undefined.
         /// </summary>
@@ -8359,11 +8575,11 @@ namespace XenoAtom.Interop
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_result_text64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void sqlite3_result_text64(sqlite.sqlite3_context arg0, byte* arg1, ulong arg2, delegate*unmanaged[Cdecl]<void*, void> arg3, byte encoding);
+        public static partial void sqlite3_result_text64(sqlite.sqlite3_context arg0, byte* z, ulong n, delegate*unmanaged[Cdecl]<void*, void> arg3, byte encoding);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_result_text64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void sqlite3_result_text64(sqlite.sqlite3_context arg0, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> arg1, ulong arg2, delegate*unmanaged[Cdecl]<void*, void> arg3, byte encoding);
+        public static partial void sqlite3_result_text64(sqlite.sqlite3_context arg0, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> z, ulong n, delegate*unmanaged[Cdecl]<void*, void> arg3, byte encoding);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_result_text16")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -8787,7 +9003,7 @@ namespace XenoAtom.Interop
         /// * METHOD: sqlite3
         /// *
         /// * ^The sqlite3_db_name(D,N) interface returns a pointer to the schema name
-        /// * for the N-th database on database connection D, or a NULL pointer of N is
+        /// * for the N-th database on database connection D, or a NULL pointer if N is
         /// * out of range.  An N value of 0 means the main database file.  An N of 1 is
         /// * the "temp" schema.  Larger values of N correspond to various ATTACH-ed
         /// * databases.
@@ -8811,7 +9027,7 @@ namespace XenoAtom.Interop
         /// * METHOD: sqlite3
         /// *
         /// * ^The sqlite3_db_name(D,N) interface returns a pointer to the schema name
-        /// * for the N-th database on database connection D, or a NULL pointer of N is
+        /// * for the N-th database on database connection D, or a NULL pointer if N is
         /// * out of range.  An N value of 0 means the main database file.  An N of 1 is
         /// * the "temp" schema.  Larger values of N correspond to various ATTACH-ed
         /// * databases.
@@ -9113,6 +9329,8 @@ namespace XenoAtom.Interop
         /// *
         /// * ^The second argument is a pointer to the function to invoke when a
         /// * row is updated, inserted or deleted in a rowid table.
+        /// * ^The update hook is disabled by invoking sqlite3_update_hook()
+        /// * with a NULL pointer as the second parameter.
         /// * ^The first argument to the callback is a copy of the third argument
         /// * to sqlite3_update_hook().
         /// * ^The second callback argument is one of [SQLITE_INSERT], [SQLITE_DELETE],
@@ -9245,7 +9463,7 @@ namespace XenoAtom.Interop
         /// * CAPI3REF: Impose A Limit On Heap Size
         /// *
         /// * These interfaces impose limits on the amount of heap memory that will be
-        /// * by all database connections within a single process.
+        /// * used by all database connections within a single process.
         /// *
         /// * ^The sqlite3_soft_heap_limit64() interface sets and/or queries the
         /// * soft limit on the amount of heap memory that may be allocated by SQLite.
@@ -9302,7 +9520,7 @@ namespace XenoAtom.Interop
         /// * &lt;/ul&gt;)^
         /// *
         /// * The circumstances under which SQLite will enforce the heap limits may
-        /// * changes in future releases of SQLite.
+        /// * change in future releases of SQLite.
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_soft_heap_limit64")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -9472,7 +9690,7 @@ namespace XenoAtom.Interop
         /// * ^The sqlite3_load_extension() interface attempts to load an
         /// * [SQLite extension] library contained in the file zFile.  If
         /// * the file cannot be loaded directly, attempts are made to load
-        /// * with various operating-system specific extensions added.
+        /// * with various operating-system specific filename extensions added.
         /// * So for example, if "samplelib" cannot be loaded, then names like
         /// * "samplelib.so" or "samplelib.dylib" or "samplelib.dll" might
         /// * be tried also.
@@ -9480,10 +9698,10 @@ namespace XenoAtom.Interop
         /// * ^The entry point is zProc.
         /// * ^(zProc may be 0, in which case SQLite will try to come up with an
         /// * entry point name on its own.  It first tries "sqlite3_extension_init".
-        /// * If that does not work, it constructs a name "sqlite3_X_init" where the
-        /// * X is consists of the lower-case equivalent of all ASCII alphabetic
-        /// * characters in the filename from the last "/" to the first following
-        /// * "." and omitting any initial "lib".)^
+        /// * If that does not work, it tries names of the form "sqlite3_X_init"
+        /// * where X consists of the lower-case equivalent of all ASCII alphabetic
+        /// * characters or all ASCII alphanumeric characters in the filename from
+        /// * the last "/" to the first following "." and omitting any initial "lib".)^
         /// * ^The sqlite3_load_extension() interface returns
         /// * [SQLITE_OK] on success and [SQLITE_ERROR] if something goes wrong.
         /// * ^If an error occurs and pzErrMsg is not 0, then the
@@ -9520,7 +9738,7 @@ namespace XenoAtom.Interop
         /// * ^The sqlite3_load_extension() interface attempts to load an
         /// * [SQLite extension] library contained in the file zFile.  If
         /// * the file cannot be loaded directly, attempts are made to load
-        /// * with various operating-system specific extensions added.
+        /// * with various operating-system specific filename extensions added.
         /// * So for example, if "samplelib" cannot be loaded, then names like
         /// * "samplelib.so" or "samplelib.dylib" or "samplelib.dll" might
         /// * be tried also.
@@ -9528,10 +9746,10 @@ namespace XenoAtom.Interop
         /// * ^The entry point is zProc.
         /// * ^(zProc may be 0, in which case SQLite will try to come up with an
         /// * entry point name on its own.  It first tries "sqlite3_extension_init".
-        /// * If that does not work, it constructs a name "sqlite3_X_init" where the
-        /// * X is consists of the lower-case equivalent of all ASCII alphabetic
-        /// * characters in the filename from the last "/" to the first following
-        /// * "." and omitting any initial "lib".)^
+        /// * If that does not work, it tries names of the form "sqlite3_X_init"
+        /// * where X consists of the lower-case equivalent of all ASCII alphabetic
+        /// * characters or all ASCII alphanumeric characters in the filename from
+        /// * the last "/" to the first following "." and omitting any initial "lib".)^
         /// * ^The sqlite3_load_extension() interface returns
         /// * [SQLITE_OK] on success and [SQLITE_ERROR] if something goes wrong.
         /// * ^If an error occurs and pzErrMsg is not 0, then the
@@ -9599,14 +9817,14 @@ namespace XenoAtom.Interop
         /// * ^(Even though the function prototype shows that xEntryPoint() takes
         /// * no arguments and returns void, SQLite invokes xEntryPoint() with three
         /// * arguments and expects an integer result as if the signature of the
-        /// * entry point where as follows:
+        /// * entry point were as follows:
         /// *
         /// * &lt;blockquote&gt;&lt;pre&gt;* 
         /// int xEntryPoint(
         /// * 
         /// sqlite3 *db,
         /// * 
-        /// const char **pzErrMsg,
+        /// char **pzErrMsg,
         /// * 
         /// const struct sqlite3_api_routines *pThunk
         /// * 
@@ -9671,7 +9889,7 @@ namespace XenoAtom.Interop
         /// * the implementation of the [virtual table module].   ^The fourth
         /// * parameter is an arbitrary client data pointer that is passed through
         /// * into the [xCreate] and [xConnect] methods of the virtual table module
-        /// * when a new virtual table is be being created or reinitialized.
+        /// * when a new virtual table is being created or reinitialized.
         /// *
         /// * ^The sqlite3_create_module_v2() interface has a fifth parameter which
         /// * is a pointer to a destructor for the pClientData.  ^SQLite will
@@ -9707,7 +9925,7 @@ namespace XenoAtom.Interop
         /// * the implementation of the [virtual table module].   ^The fourth
         /// * parameter is an arbitrary client data pointer that is passed through
         /// * into the [xCreate] and [xConnect] methods of the virtual table module
-        /// * when a new virtual table is be being created or reinitialized.
+        /// * when a new virtual table is being created or reinitialized.
         /// *
         /// * ^The sqlite3_create_module_v2() interface has a fifth parameter which
         /// * is a pointer to a destructor for the pClientData.  ^SQLite will
@@ -9844,7 +10062,7 @@ namespace XenoAtom.Interop
         /// * in *ppBlob. Otherwise an [error code] is returned and, unless the error
         /// * code is SQLITE_MISUSE, *ppBlob is set to NULL.)^ ^This means that, provided
         /// * the API is not misused, it is always safe to call [sqlite3_blob_close()]
-        /// * on *ppBlob after this function it returns.
+        /// * on *ppBlob after this function returns.
         /// *
         /// * This function fails with SQLITE_ERROR if any of the following are true:
         /// * &lt;ul&gt;*   &lt;li&gt;^(Database zDb does not exist)^,
@@ -9928,7 +10146,7 @@ namespace XenoAtom.Interop
         /// * in *ppBlob. Otherwise an [error code] is returned and, unless the error
         /// * code is SQLITE_MISUSE, *ppBlob is set to NULL.)^ ^This means that, provided
         /// * the API is not misused, it is always safe to call [sqlite3_blob_close()]
-        /// * on *ppBlob after this function it returns.
+        /// * on *ppBlob after this function returns.
         /// *
         /// * This function fails with SQLITE_ERROR if any of the following are true:
         /// * &lt;ul&gt;*   &lt;li&gt;^(Database zDb does not exist)^,
@@ -10044,7 +10262,7 @@ namespace XenoAtom.Interop
         /// *
         /// * ^Returns the size in bytes of the BLOB accessible via the
         /// * successfully opened [BLOB handle] in its only argument.  ^The
-        /// * incremental blob I/O routines can only read or overwriting existing
+        /// * incremental blob I/O routines can only read or overwrite existing
         /// * blob content; they cannot change the size of a blob.
         /// *
         /// * This routine only works on a [BLOB handle] which has been created
@@ -10228,18 +10446,11 @@ namespace XenoAtom.Interop
         /// * SQLITE_MUTEX_W32 implementations are appropriate for use on Unix
         /// * and Windows.
         /// *
-        /// * If SQLite is compiled with the SQLITE_MUTEX_APPDEF preprocessor
-        /// * macro defined (with "-DSQLITE_MUTEX_APPDEF=1"), then no mutex
-        /// * implementation is included with the library. In this case the
-        /// * application must supply a custom mutex implementation using the
-        /// * [SQLITE_CONFIG_MUTEX] option of the sqlite3_config() function
-        /// * before calling sqlite3_initialize() or any other public sqlite3_
-        /// * function that calls sqlite3_initialize().
         /// *
         /// * ^The sqlite3_mutex_alloc() routine allocates a new
         /// * mutex and returns a pointer to it. ^The sqlite3_mutex_alloc()
         /// * routine returns NULL if it is unable to allocate the requested
-        /// * mutex.  The argument to sqlite3_mutex_alloc() must one of these
+        /// * mutex.  The argument to sqlite3_mutex_alloc() must be one of these
         /// * integer constants:
         /// *
         /// * &lt;ul&gt;* &lt;li&gt;SQLITE_MUTEX_FAST
@@ -10349,7 +10560,7 @@ namespace XenoAtom.Interop
         /// * CAPI3REF: Retrieve the mutex for a database connection
         /// * METHOD: sqlite3
         /// *
-        /// * ^This interface returns a pointer the [sqlite3_mutex] object that
+        /// * ^This interface returns a pointer to the [sqlite3_mutex] object that
         /// * serializes access to the [database connection] given in the argument
         /// * when the [threading mode] is Serialized.
         /// * ^If the [threading mode] is Single-thread or Multi-thread then this
@@ -10474,7 +10685,7 @@ namespace XenoAtom.Interop
         /// * CAPI3REF: SQL Keyword Checking
         /// *
         /// * These routines provide access to the set of SQL language keywords
-        /// * recognized by SQLite.  Applications can uses these routines to determine
+        /// * recognized by SQLite.  Applications can use these routines to determine
         /// * whether or not a specific identifier needs to be escaped (for example,
         /// * by enclosing in double-quotes) so as not to confuse the parser.
         /// *
@@ -10574,12 +10785,20 @@ namespace XenoAtom.Interop
         /// * pass the returned value to [sqlite3_free()] to avoid a memory leak.
         /// * ^The [sqlite3_str_finish(X)] interface may return a NULL pointer if any
         /// * errors were encountered during construction of the string.  ^The
-        /// * [sqlite3_str_finish(X)] interface will also return a NULL pointer if the
+        /// * [sqlite3_str_finish(X)] interface might also return a NULL pointer if the
         /// * string in [sqlite3_str] object X is zero bytes long.
+        /// *
+        /// * ^The [sqlite3_str_free(X)] interface destroys both the sqlite3_str object
+        /// * X and the string content it contains.  Calling sqlite3_str_free(X) is
+        /// * the equivalent of calling [sqlite3_free](sqlite3_str_finish(X)).
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_str_finish")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* sqlite3_str_finish(sqlite.sqlite3_str arg0);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_str_free")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void sqlite3_str_free(sqlite.sqlite3_str arg0);
         
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_str_append")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -10605,6 +10824,10 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial void sqlite3_str_reset(sqlite.sqlite3_str arg0);
         
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_str_truncate")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void sqlite3_str_truncate(sqlite.sqlite3_str arg0, int N);
+        
         /// <summary>
         /// * CAPI3REF: Status Of A Dynamic String
         /// * METHOD: sqlite3_str
@@ -10627,7 +10850,7 @@ namespace XenoAtom.Interop
         /// * content of the dynamic string under construction in X.  The value
         /// * returned by [sqlite3_str_value(X)] is managed by the sqlite3_str object X
         /// * and might be freed or altered by any subsequent method on the same
-        /// * [sqlite3_str] object.  Applications must not used the pointer returned
+        /// * [sqlite3_str] object.  Applications must not use the pointer returned by
         /// * [sqlite3_str_value(X)] after any subsequent method call on the same
         /// * object.  ^Applications may change the content of the string returned
         /// * by [sqlite3_str_value(X)] as long as they do not write into any bytes
@@ -10701,11 +10924,23 @@ namespace XenoAtom.Interop
         /// * ^The sqlite3_db_status() routine returns SQLITE_OK on success and a
         /// * non-zero [error code] on failure.
         /// *
+        /// * ^The sqlite3_db_status64(D,O,C,H,R) routine works exactly the same
+        /// * way as sqlite3_db_status(D,O,C,H,R) routine except that the C and H
+        /// * parameters are pointer to 64-bit integers (type: sqlite3_int64) instead
+        /// * of pointers to 32-bit integers, which allows larger status values
+        /// * to be returned.  If a status value exceeds 2,147,483,647 then
+        /// * sqlite3_db_status() will truncate the value whereas sqlite3_db_status64()
+        /// * will return the full value.
+        /// *
         /// * See also: [sqlite3_status()] and [sqlite3_stmt_status()].
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_db_status")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int sqlite3_db_status(sqlite.sqlite3 arg0, int op, out int pCur, out int pHiwtr, int resetFlg);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_db_status64")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int sqlite3_db_status64(sqlite.sqlite3 arg0, int arg1, ref long arg2, ref long arg3, int arg4);
         
         /// <summary>
         /// * CAPI3REF: Prepared Statement Status
@@ -10844,7 +11079,7 @@ namespace XenoAtom.Interop
         /// * external process or via a database connection other than the one being
         /// * used by the backup operation, then the backup will be automatically
         /// * restarted by the next call to sqlite3_backup_step(). ^If the source
-        /// * database is modified by the using the same database connection as is used
+        /// * database is modified by using the same database connection as is used
         /// * by the backup operation, then the backup database is automatically
         /// * updated at the same time.
         /// *
@@ -10860,7 +11095,7 @@ namespace XenoAtom.Interop
         /// * and may not be used following a call to sqlite3_backup_finish().
         /// *
         /// * ^The value returned by sqlite3_backup_finish is [SQLITE_OK] if no
-        /// * sqlite3_backup_step() errors occurred, regardless or whether or not
+        /// * sqlite3_backup_step() errors occurred, regardless of whether or not
         /// * sqlite3_backup_step() completed.
         /// * ^If an out-of-memory condition or IO error occurred during any prior
         /// * sqlite3_backup_step() call on the same [sqlite3_backup] object, then
@@ -11035,7 +11270,7 @@ namespace XenoAtom.Interop
         /// * external process or via a database connection other than the one being
         /// * used by the backup operation, then the backup will be automatically
         /// * restarted by the next call to sqlite3_backup_step(). ^If the source
-        /// * database is modified by the using the same database connection as is used
+        /// * database is modified by using the same database connection as is used
         /// * by the backup operation, then the backup database is automatically
         /// * updated at the same time.
         /// *
@@ -11051,7 +11286,7 @@ namespace XenoAtom.Interop
         /// * and may not be used following a call to sqlite3_backup_finish().
         /// *
         /// * ^The value returned by sqlite3_backup_finish is [SQLITE_OK] if no
-        /// * sqlite3_backup_step() errors occurred, regardless or whether or not
+        /// * sqlite3_backup_step() errors occurred, regardless of whether or not
         /// * sqlite3_backup_step() completed.
         /// * ^If an out-of-memory condition or IO error occurred during any prior
         /// * sqlite3_backup_step() call on the same [sqlite3_backup] object, then
@@ -11158,7 +11393,7 @@ namespace XenoAtom.Interop
         /// * application receives an SQLITE_LOCKED error, it may call the
         /// * sqlite3_unlock_notify() method with the blocked connection handle as
         /// * the first argument to register for a callback that will be invoked
-        /// * when the blocking connections current transaction is concluded. ^The
+        /// * when the blocking connection's current transaction is concluded. ^The
         /// * callback is invoked from within the [sqlite3_step] or [sqlite3_close]
         /// * call that concludes the blocking connection's transaction.
         /// *
@@ -11178,7 +11413,7 @@ namespace XenoAtom.Interop
         /// * blocked connection already has a registered unlock-notify callback,
         /// * then the new callback replaces the old.)^ ^If sqlite3_unlock_notify() is
         /// * called with a NULL pointer as its second argument, then any existing
-        /// * unlock-notify callback is canceled. ^The blocked connections
+        /// * unlock-notify callback is canceled. ^The blocked connection's
         /// * unlock-notify callback may also be canceled by closing the blocked
         /// * connection using [sqlite3_close()].
         /// *
@@ -11442,7 +11677,7 @@ namespace XenoAtom.Interop
         /// * is the number of pages currently in the write-ahead log file,
         /// * including those that were just committed.
         /// *
-        /// * The callback function should normally return [SQLITE_OK].  ^If an error
+        /// * ^The callback function should normally return [SQLITE_OK].  ^If an error
         /// * code is returned, that error will propagate back up through the
         /// * SQLite code base to cause the statement that provoked the callback
         /// * to report an error, though the commit will have still occurred. If the
@@ -11450,13 +11685,26 @@ namespace XenoAtom.Interop
         /// * that does not correspond to any valid SQLite error code, the results
         /// * are undefined.
         /// *
-        /// * A single database handle may have at most a single write-ahead log callback
-        /// * registered at one time. ^Calling [sqlite3_wal_hook()] replaces any
-        /// * previously registered write-ahead log callback. ^The return value is
-        /// * a copy of the third parameter from the previous call, if any, or 0.
-        /// * ^Note that the [sqlite3_wal_autocheckpoint()] interface and the
-        /// * [wal_autocheckpoint pragma] both invoke [sqlite3_wal_hook()] and will
-        /// * overwrite any prior [sqlite3_wal_hook()] settings.
+        /// * ^A single database handle may have at most a single write-ahead log
+        /// * callback registered at one time. ^Calling [sqlite3_wal_hook()]
+        /// * replaces the default behavior or previously registered write-ahead
+        /// * log callback.
+        /// *
+        /// * ^The return value is a copy of the third parameter from the
+        /// * previous call, if any, or 0.
+        /// *
+        /// * ^The [sqlite3_wal_autocheckpoint()] interface and the
+        /// * [wal_autocheckpoint pragma] both invoke [sqlite3_wal_hook()] and
+        /// * will overwrite any prior [sqlite3_wal_hook()] settings.
+        /// *
+        /// * ^If a write-ahead log callback is set using this function then
+        /// * [sqlite3_wal_checkpoint_v2()] or [PRAGMA wal_checkpoint]
+        /// * should be invoked periodically to keep the write-ahead log file
+        /// * from growing without bound.
+        /// *
+        /// * ^Passing a NULL pointer for the callback disables automatic
+        /// * checkpointing entirely. To re-enable the default behavior, call
+        /// * sqlite3_wal_autocheckpoint(db,1000) or use [PRAGMA wal_checkpoint].
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_wal_hook")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -11471,7 +11719,7 @@ namespace XenoAtom.Interop
         /// * to automatically [checkpoint]
         /// * after committing a transaction if there are N or
         /// * more frames in the [write-ahead log] file.  ^Passing zero or
-        /// * a negative value as the nFrame parameter disables automatic
+        /// * a negative value as the N parameter disables automatic
         /// * checkpoints entirely.
         /// *
         /// * ^The callback registered by this function replaces any existing callback
@@ -11487,9 +11735,10 @@ namespace XenoAtom.Interop
         /// *
         /// * ^Every new [database connection] defaults to having the auto-checkpoint
         /// * enabled with a threshold of 1000 or [SQLITE_DEFAULT_WAL_AUTOCHECKPOINT]
-        /// * pages.  The use of this interface
-        /// * is only necessary if the default setting is found to be suboptimal
-        /// * for a particular application.
+        /// * pages.
+        /// *
+        /// * ^The use of this interface is only necessary if the default setting
+        /// * is found to be suboptimal for a particular application.
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_wal_autocheckpoint")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -11577,6 +11826,10 @@ namespace XenoAtom.Interop
         /// * &lt;dt&gt;SQLITE_CHECKPOINT_TRUNCATE&lt;dd&gt;*   ^This mode works the same way as SQLITE_CHECKPOINT_RESTART with the
         /// *   addition that it also truncates the log file to zero bytes just prior
         /// *   to a successful return.
+        /// *
+        /// * &lt;dt&gt;SQLITE_CHECKPOINT_NOOP&lt;dd&gt;*   ^This mode always checkpoints zero frames. The only reason to invoke
+        /// *   a NOOP checkpoint is to access the values returned by
+        /// *   sqlite3_wal_checkpoint_v2() via output parameters *pnLog and *pnCkpt.
         /// * &lt;/dl&gt;*
         /// * ^If pnLog is not NULL, then *pnLog is set to the total number of frames in
         /// * the log file or to -1 if the checkpoint could not run because
@@ -11667,6 +11920,10 @@ namespace XenoAtom.Interop
         /// * &lt;dt&gt;SQLITE_CHECKPOINT_TRUNCATE&lt;dd&gt;*   ^This mode works the same way as SQLITE_CHECKPOINT_RESTART with the
         /// *   addition that it also truncates the log file to zero bytes just prior
         /// *   to a successful return.
+        /// *
+        /// * &lt;dt&gt;SQLITE_CHECKPOINT_NOOP&lt;dd&gt;*   ^This mode always checkpoints zero frames. The only reason to invoke
+        /// *   a NOOP checkpoint is to access the values returned by
+        /// *   sqlite3_wal_checkpoint_v2() via output parameters *pnLog and *pnCkpt.
         /// * &lt;/dl&gt;*
         /// * ^If pnLog is not NULL, then *pnLog is set to the total number of frames in
         /// * the log file or to -1 if the checkpoint could not run because
@@ -11917,7 +12174,8 @@ namespace XenoAtom.Interop
         /// * &lt;table border=""&gt;1 cellspacing=0 cellpadding=10 width="90%"&gt;
         /// * &lt;tr&gt;* &lt;td valign="top"&gt;sqlite3_vtab_distinct() return value
         /// * &lt;td valign="top"&gt;Rows are returned in aOrderBy order
-        /// * &lt;td valign="top"&gt;Rows with the same value in all aOrderBy columns are adjacent
+        /// * &lt;td valign="top"&gt;Rows with the same value in all aOrderBy columns are
+        /// *                  adjacent
         /// * &lt;td valign="top"&gt;Duplicates over all colUsed columns may be omitted
         /// * &lt;tr&gt;&lt;td&gt;0&lt;td&gt;yes&lt;td&gt;yes&lt;td&gt;no
         /// * &lt;tr&gt;&lt;td&gt;1&lt;td&gt;no&lt;td&gt;yes&lt;td&gt;no
@@ -11925,8 +12183,8 @@ namespace XenoAtom.Interop
         /// * &lt;tr&gt;&lt;td&gt;3&lt;td&gt;yes&lt;td&gt;yes&lt;td&gt;yes
         /// * &lt;/table&gt;*
         /// * ^For the purposes of comparing virtual table output values to see if the
-        /// * values are same value for sorting purposes, two NULL values are considered
-        /// * to be the same.  In other words, the comparison operator is "IS"
+        /// * values are the same value for sorting purposes, two NULL values are
+        /// * considered to be the same.  In other words, the comparison operator is "IS"
         /// * (or "IS NOT DISTINCT FROM") and not "==".
         /// *
         /// * If a virtual table implementation is unable to meet the requirements
@@ -11935,7 +12193,7 @@ namespace XenoAtom.Interop
         /// *
         /// * ^A virtual table implementation is always free to return rows in any order
         /// * it wants, as long as the "orderByConsumed" flag is not set.  ^When the
-        /// * the "orderByConsumed" flag is unset, the query planner will add extra
+        /// * "orderByConsumed" flag is unset, the query planner will add extra
         /// * [bytecode] to ensure that the final results returned by the SQL query are
         /// * ordered correctly.  The use of the "orderByConsumed" flag and the
         /// * sqlite3_vtab_distinct() interface is merely an optimization.  ^Careful
@@ -12031,7 +12289,7 @@ namespace XenoAtom.Interop
         /// * sqlite3_vtab_in_next(X,P) should be one of the parameters to the
         /// * xFilter method which invokes these routines, and specifically
         /// * a parameter that was previously selected for all-at-once IN constraint
-        /// * processing use the [sqlite3_vtab_in()] interface in the
+        /// * processing using the [sqlite3_vtab_in()] interface in the
         /// * [xBestIndex|xBestIndex method].  ^(If the X parameter is not
         /// * an xFilter argument that was selected for all-at-once IN constraint
         /// * processing, then these routines return [SQLITE_ERROR].)^
@@ -12059,7 +12317,7 @@ namespace XenoAtom.Interop
         /// * 
         /// }
         /// * 
-        /// if( rc!=SQLITE_OK ){
+        /// if( rc!=SQLITE_DONE ){
         /// * 
         /// // an error has occurred
         /// * 
@@ -12106,7 +12364,7 @@ namespace XenoAtom.Interop
         /// * and only if *V is set to a value.  ^The sqlite3_vtab_rhs_value(P,J,V)
         /// * inteface returns SQLITE_NOTFOUND if the right-hand side of the J-th
         /// * constraint is not available.  ^The sqlite3_vtab_rhs_value() interface
-        /// * can return an result code other than SQLITE_OK or SQLITE_NOTFOUND if
+        /// * can return a result code other than SQLITE_OK or SQLITE_NOTFOUND if
         /// * something goes wrong.
         /// *
         /// * The sqlite3_vtab_rhs_value() interface is usually only successful if
@@ -12150,9 +12408,9 @@ namespace XenoAtom.Interop
         /// * a variable pointed to by the "pOut" parameter.
         /// *
         /// * The "flags" parameter must be passed a mask of flags. At present only
-        /// * one flag is defined - SQLITE_SCANSTAT_COMPLEX. If SQLITE_SCANSTAT_COMPLEX
+        /// * one flag is defined - [SQLITE_SCANSTAT_COMPLEX]. If SQLITE_SCANSTAT_COMPLEX
         /// * is specified, then status information is available for all elements
-        /// * of a query plan that are reported by "EXPLAIN QUERY PLAN" output. If
+        /// * of a query plan that are reported by "[EXPLAIN QUERY PLAN]" output. If
         /// * SQLITE_SCANSTAT_COMPLEX is not specified, then only query plan elements
         /// * that correspond to query loops (the "SCAN..." and "SEARCH..." elements of
         /// * the EXPLAIN QUERY PLAN output) are available. Invoking API
@@ -12160,13 +12418,14 @@ namespace XenoAtom.Interop
         /// * sqlite3_stmt_scanstatus_v2() with a zeroed flags parameter.
         /// *
         /// * Parameter "idx" identifies the specific query element to retrieve statistics
-        /// * for. Query elements are numbered starting from zero. A value of -1 may be
-        /// * to query for statistics regarding the entire query. ^If idx is out of range
+        /// * for. Query elements are numbered starting from zero. A value of -1 may
+        /// * retrieve statistics for the entire query. ^If idx is out of range
         /// * - less than -1 or greater than or equal to the total number of query
         /// * elements used to implement the statement - a non-zero value is returned and
         /// * the variable that pOut points to is unchanged.
         /// *
-        /// * See also: [sqlite3_stmt_scanstatus_reset()]
+        /// * See also: [sqlite3_stmt_scanstatus_reset()] and the
+        /// * [nexec and ncycle] columns of the [bytecode virtual table].
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_stmt_scanstatus")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -12194,7 +12453,7 @@ namespace XenoAtom.Interop
         /// * METHOD: sqlite3
         /// *
         /// * ^If a write-transaction is open on [database connection] D when the
-        /// * [sqlite3_db_cacheflush(D)] interface invoked, any dirty
+        /// * [sqlite3_db_cacheflush(D)] interface is invoked, any dirty
         /// * pages in the pager-cache that are not currently in use are written out
         /// * to disk. A dirty page may be in use if a database cursor created by an
         /// * active SQL statement is reading from it, or if it is page 1 of a database
@@ -12540,15 +12799,16 @@ namespace XenoAtom.Interop
         /// <summary>
         /// * CAPI3REF: Serialize a database
         /// *
-        /// * The sqlite3_serialize(D,S,P,F) interface returns a pointer to memory
-        /// * that is a serialization of the S database on [database connection] D.
+        /// * The sqlite3_serialize(D,S,P,F) interface returns a pointer to
+        /// * memory that is a serialization of the S database on
+        /// * [database connection] D.  If S is a NULL pointer, the main database is used.
         /// * If P is not a NULL pointer, then the size of the database in bytes
         /// * is written into *P.
         /// *
         /// * For an ordinary on-disk database file, the serialization is just a
         /// * copy of the disk file.  For an in-memory database or a "TEMP" database,
         /// * the serialization is the same sequence of bytes which would be written
-        /// * to disk if that database where backed up to disk.
+        /// * to disk if that database were backed up to disk.
         /// *
         /// * The usual case is that sqlite3_serialize() copies the serialization of
         /// * the database into memory obtained from [sqlite3_malloc64()] and returns
@@ -12557,7 +12817,7 @@ namespace XenoAtom.Interop
         /// * contains the SQLITE_SERIALIZE_NOCOPY bit, then no memory allocations
         /// * are made, and the sqlite3_serialize() function will return a pointer
         /// * to the contiguous memory representation of the database that SQLite
-        /// * is currently using for that database, or NULL if the no such contiguous
+        /// * is currently using for that database, or NULL if no such contiguous
         /// * memory representation of the database exists.  A contiguous memory
         /// * representation of the database will usually only exist if there has
         /// * been a prior call to [sqlite3_deserialize(D,S,...)] with the same
@@ -12587,15 +12847,16 @@ namespace XenoAtom.Interop
         /// <summary>
         /// * CAPI3REF: Serialize a database
         /// *
-        /// * The sqlite3_serialize(D,S,P,F) interface returns a pointer to memory
-        /// * that is a serialization of the S database on [database connection] D.
+        /// * The sqlite3_serialize(D,S,P,F) interface returns a pointer to
+        /// * memory that is a serialization of the S database on
+        /// * [database connection] D.  If S is a NULL pointer, the main database is used.
         /// * If P is not a NULL pointer, then the size of the database in bytes
         /// * is written into *P.
         /// *
         /// * For an ordinary on-disk database file, the serialization is just a
         /// * copy of the disk file.  For an in-memory database or a "TEMP" database,
         /// * the serialization is the same sequence of bytes which would be written
-        /// * to disk if that database where backed up to disk.
+        /// * to disk if that database were backed up to disk.
         /// *
         /// * The usual case is that sqlite3_serialize() copies the serialization of
         /// * the database into memory obtained from [sqlite3_malloc64()] and returns
@@ -12604,7 +12865,7 @@ namespace XenoAtom.Interop
         /// * contains the SQLITE_SERIALIZE_NOCOPY bit, then no memory allocations
         /// * are made, and the sqlite3_serialize() function will return a pointer
         /// * to the contiguous memory representation of the database that SQLite
-        /// * is currently using for that database, or NULL if the no such contiguous
+        /// * is currently using for that database, or NULL if no such contiguous
         /// * memory representation of the database exists.  A contiguous memory
         /// * representation of the database will usually only exist if there has
         /// * been a prior call to [sqlite3_deserialize(D,S,...)] with the same
@@ -12636,12 +12897,13 @@ namespace XenoAtom.Interop
         /// *
         /// * The sqlite3_deserialize(D,S,P,N,M,F) interface causes the
         /// * [database connection] D to disconnect from database S and then
-        /// * reopen S as an in-memory database based on the serialization contained
-        /// * in P.  The serialized database P is N bytes in size.  M is the size of
-        /// * the buffer P, which might be larger than N.  If M is larger than N, and
-        /// * the SQLITE_DESERIALIZE_READONLY bit is not set in F, then SQLite is
-        /// * permitted to add content to the in-memory database as long as the total
-        /// * size does not exceed M bytes.
+        /// * reopen S as an in-memory database based on the serialization
+        /// * contained in P.  If S is a NULL pointer, the main database is
+        /// * used. The serialized database P is N bytes in size.  M is the size
+        /// * of the buffer P, which might be larger than N.  If M is larger than
+        /// * N, and the SQLITE_DESERIALIZE_READONLY bit is not set in F, then
+        /// * SQLite is permitted to add content to the in-memory database as
+        /// * long as the total size does not exceed M bytes.
         /// *
         /// * If the SQLITE_DESERIALIZE_FREEONCLOSE bit is set in F, then SQLite will
         /// * invoke sqlite3_free() on the serialization buffer when the database
@@ -12656,7 +12918,7 @@ namespace XenoAtom.Interop
         /// * database is currently in a read transaction or is involved in a backup
         /// * operation.
         /// *
-        /// * It is not possible to deserialized into the TEMP database.  If the
+        /// * It is not possible to deserialize into the TEMP database.  If the
         /// * S argument to sqlite3_deserialize(D,S,P,N,M,F) is "temp" then the
         /// * function returns SQLITE_ERROR.
         /// *
@@ -12683,12 +12945,13 @@ namespace XenoAtom.Interop
         /// *
         /// * The sqlite3_deserialize(D,S,P,N,M,F) interface causes the
         /// * [database connection] D to disconnect from database S and then
-        /// * reopen S as an in-memory database based on the serialization contained
-        /// * in P.  The serialized database P is N bytes in size.  M is the size of
-        /// * the buffer P, which might be larger than N.  If M is larger than N, and
-        /// * the SQLITE_DESERIALIZE_READONLY bit is not set in F, then SQLite is
-        /// * permitted to add content to the in-memory database as long as the total
-        /// * size does not exceed M bytes.
+        /// * reopen S as an in-memory database based on the serialization
+        /// * contained in P.  If S is a NULL pointer, the main database is
+        /// * used. The serialized database P is N bytes in size.  M is the size
+        /// * of the buffer P, which might be larger than N.  If M is larger than
+        /// * N, and the SQLITE_DESERIALIZE_READONLY bit is not set in F, then
+        /// * SQLite is permitted to add content to the in-memory database as
+        /// * long as the total size does not exceed M bytes.
         /// *
         /// * If the SQLITE_DESERIALIZE_FREEONCLOSE bit is set in F, then SQLite will
         /// * invoke sqlite3_free() on the serialization buffer when the database
@@ -12703,7 +12966,7 @@ namespace XenoAtom.Interop
         /// * database is currently in a read transaction or is involved in a backup
         /// * operation.
         /// *
-        /// * It is not possible to deserialized into the TEMP database.  If the
+        /// * It is not possible to deserialize into the TEMP database.  If the
         /// * S argument to sqlite3_deserialize(D,S,P,N,M,F) is "temp" then the
         /// * function returns SQLITE_ERROR.
         /// *
@@ -12724,6 +12987,44 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_deserialize")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int sqlite3_deserialize(sqlite.sqlite3 db, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> zSchema, byte* pData, long szDb, long szBuf, uint mFlags);
+        
+        /// <summary>
+        /// * CAPI3REF: Bind array values to the CARRAY table-valued function
+        /// *
+        /// * The sqlite3_carray_bind_v2(S,I,P,N,F,X,D) interface binds an array value to
+        /// * parameter that is the first argument of the [carray() table-valued function].
+        /// * The S parameter is a pointer to the [prepared statement] that uses the
+        /// * carray() functions.  I is the parameter index to be bound.  I must be the
+        /// * index of the parameter that is the first argument to the carray()
+        /// * table-valued function. P is a pointer to the array to be bound, and N
+        /// * is the number of elements in the array.  The F argument is one of
+        /// * constants [SQLITE_CARRAY_INT32], [SQLITE_CARRAY_INT64],
+        /// * [SQLITE_CARRAY_DOUBLE], [SQLITE_CARRAY_TEXT],
+        /// * or [SQLITE_CARRAY_BLOB] to indicate the datatype of the array P.
+        /// *
+        /// * If the X argument is not a NULL pointer or one of the special
+        /// * values [SQLITE_STATIC] or [SQLITE_TRANSIENT], then SQLite will invoke
+        /// * the function X with argument D when it is finished using the data in P.
+        /// * The call to X(D) is a destructor for the array P. The destructor X(D)
+        /// * is invoked even if the call to sqlite3_carray_bind_v2() fails. If the X
+        /// * parameter is the special-case value [SQLITE_STATIC], then SQLite assumes
+        /// * that the data static and the destructor is never invoked.  If the X
+        /// * parameter is the special-case value [SQLITE_TRANSIENT], then
+        /// * sqlite3_carray_bind_v2() makes its own private copy of the data prior
+        /// * to returning and never invokes the destructor X.
+        /// *
+        /// * The sqlite3_carray_bind() function works the same as sqlite3_carray_bind_v2()
+        /// * with a D parameter set to P.  In other words,
+        /// * sqlite3_carray_bind(S,I,P,N,F,X) is same as
+        /// * sqlite3_carray_bind_v2(S,I,P,N,F,X,P).
+        /// </summary>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_carray_bind_v2")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int sqlite3_carray_bind_v2(sqlite.sqlite3_stmt pStmt, int i, void* aData, int nData, int mFlags, delegate*unmanaged[Cdecl]<void*, void> xDel, void* pDel);
+        
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "sqlite3_carray_bind")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int sqlite3_carray_bind(sqlite.sqlite3_stmt pStmt, int i, void* aData, int nData, int mFlags, delegate*unmanaged[Cdecl]<void*, void> xDel);
         
         /// <summary>
         /// * Register a geometry callback named zGeom that can be used as part of an

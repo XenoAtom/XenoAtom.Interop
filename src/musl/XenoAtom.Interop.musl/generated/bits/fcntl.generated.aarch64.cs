@@ -16,10 +16,23 @@ namespace XenoAtom.Interop
     {
         public static unsafe partial class aarch64
         {
+            /// <summary>
+            /// O_NOATIME
+            /// 
+            /// O_PATH
+            /// 
+            /// O_TMPFILE
+            /// Linux.
+            /// </summary>
             public const int O_DIRECT = 65536;
             
             /// <summary>
-            /// If \fIpathname\fP is not a directory, cause the open to fail.
+            /// If
+            /// path
+            /// is not a directory,
+            /// cause
+            /// open ()
+            /// to fail.
             /// But see the following and its replies:
             /// http://marc.theaimsgroup.com/?t=112748702800001&amp;r=1&amp;w=2
             /// [PATCH] open: O_DIRECTORY and O_CREAT together should fail
@@ -43,7 +56,7 @@ namespace XenoAtom.Interop
             
             /// <summary>
             /// If the trailing component (i.e., basename) of
-            /// pathname
+            /// path
             /// is a symbolic link, then the open fails, with the error
             /// ELOOP .
             /// Symbolic links in earlier components of the pathname will still be
@@ -52,7 +65,7 @@ namespace XenoAtom.Interop
             /// ELOOP
             /// error that can occur in this case is indistinguishable from the case where
             /// an open fails because there are too many symbolic links found
-            /// while resolving components in the prefix part of the pathname.)
+            /// while resolving components in the path prefix of the pathname.)
             /// 
             /// This flag is a FreeBSD extension, which was added in Linux 2.1.126,
             /// and has subsequently been standardized in POSIX.1-2008.
@@ -61,8 +74,8 @@ namespace XenoAtom.Interop
             /// O_PATH
             /// below.
             /// The headers from glibc 2.0.100 and later include a
-            /// definition of this flag; \fIkernels before Linux 2.1.126 will ignore it if
-            /// used\fP.
+            /// definition of this flag; \f[I]kernels before Linux 2.1.126 will ignore it if
+            /// used\f[].
             /// </summary>
             public const int O_NOFOLLOW = 32768;
             

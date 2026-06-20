@@ -65,35 +65,8 @@ namespace XenoAtom.Interop
             public fixed byte __pad[28];
         }
         
-        /// <summary>
-        /// Set the close-on-exec
-        /// ( FD_CLOEXEC )
-        /// flag on the new file descriptor.
-        /// See the description of the
-        /// O_CLOEXEC
-        /// flag in
-        /// open (2)
-        /// for reasons why this may be useful.
-        /// 
-        /// Up to Linux 2.6.26, the
-        /// flags
-        /// argument is unused, and must be specified as zero.
-        /// 
-        /// signalfd ()
-        /// returns a file descriptor that supports the following operations:
-        /// </summary>
         public const int SFD_CLOEXEC = 524288;
         
-        /// <summary>
-        /// Set the
-        /// O_NONBLOCK
-        /// file status flag on the open file description (see
-        /// open (2))
-        /// referred to by the new file descriptor.
-        /// Using this flag saves extra calls to
-        /// fcntl (2)
-        /// to achieve the same result.
-        /// </summary>
         public const int SFD_NONBLOCK = 2048;
         
         /// <summary>

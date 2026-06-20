@@ -32,7 +32,7 @@ namespace XenoAtom.Interop
                 
                 public musl.dev_t st_rdev;
                 
-                public nuint __pad;
+                public ulong __pad;
                 
                 public musl.off_t st_size;
                 

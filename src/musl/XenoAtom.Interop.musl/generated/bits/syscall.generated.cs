@@ -52,11 +52,15 @@ namespace XenoAtom.Interop
         
         public const int SYS_mount_setattr = 442;
         
+        public const int SYS_quotactl_fd = 443;
+        
         public const int SYS_landlock_create_ruleset = 444;
         
         public const int SYS_landlock_add_rule = 445;
         
         public const int SYS_landlock_restrict_self = 446;
+        
+        public const int SYS_memfd_secret = 447;
         
         public const int SYS_process_mrelease = 448;
         
@@ -67,5 +71,41 @@ namespace XenoAtom.Interop
         public const int SYS_cachestat = 451;
         
         public const int SYS_fchmodat2 = 452;
+        
+        public const int SYS_map_shadow_stack = 453;
+        
+        public const int SYS_futex_wake = 454;
+        
+        public const int SYS_futex_wait = 455;
+        
+        public const int SYS_futex_requeue = 456;
+        
+        public const int SYS_statmount = 457;
+        
+        public const int SYS_listmount = 458;
+        
+        public const int SYS_lsm_get_self_attr = 459;
+        
+        public const int SYS_lsm_set_self_attr = 460;
+        
+        public const int SYS_lsm_list_modules = 461;
+        
+        public const int SYS_mseal = 462;
+        
+        public const int SYS_setxattrat = 463;
+        
+        public const int SYS_getxattrat = 464;
+        
+        public const int SYS_listxattrat = 465;
+        
+        public const int SYS_removexattrat = 466;
+        
+        public const int SYS_open_tree_attr = 467;
+        
+        public const int SYS_file_getattr = 468;
+        
+        public const int SYS_file_setattr = 469;
+        
+        public const int SYS_listns = 470;
     }
 }

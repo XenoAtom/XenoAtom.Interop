@@ -188,16 +188,16 @@ namespace XenoAtom.Interop
         /// The filesystem object to be marked is determined by the file descriptor
         /// dirfd
         /// and the pathname specified in
-        /// pathname :
+        /// path :
         /// \[bu] 3
         /// If
-        /// pathname
+        /// path
         /// is NULL,
         /// dirfd
         /// defines the filesystem object to be marked.
         /// \[bu]
         /// If
-        /// pathname
+        /// path
         /// is NULL, and
         /// dirfd
         /// takes the special value
@@ -205,30 +205,30 @@ namespace XenoAtom.Interop
         /// the current working directory is to be marked.
         /// \[bu]
         /// If
-        /// pathname
+        /// path
         /// is absolute, it defines the filesystem object to be marked, and
         /// dirfd
         /// is ignored.
         /// \[bu]
         /// If
-        /// pathname
+        /// path
         /// is relative, and
         /// dirfd
         /// does not have the value
         /// AT_FDCWD ,
         /// then the filesystem object to be marked is determined by interpreting
-        /// pathname
+        /// path
         /// relative the directory referred to by
         /// dirfd .
         /// \[bu]
         /// If
-        /// pathname
+        /// path
         /// is relative, and
         /// dirfd
         /// has the value
         /// AT_FDCWD ,
         /// then the filesystem object to be marked is determined by interpreting
-        /// pathname
+        /// path
         /// relative to the current working directory.
         /// (See
         /// openat (2)
@@ -297,8 +297,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// This value allows the receipt of events notifying that a file has been
         /// accessed and events for permission decisions if a file may be accessed.
-        /// It is intended for event listeners that need to access files before they
-        /// contain their final data.
+        /// It is intended for event listeners
+        /// that may need to write data to files
+        /// before their final data can be accessed.
         /// This notification class might be used by hierarchical storage managers,
         /// for example.
         /// Use of this flag requires the
@@ -373,13 +374,13 @@ namespace XenoAtom.Interop
         
         /// <summary>
         /// If
-        /// pathname
+        /// path
         /// is a symbolic link, mark the link itself, rather than the file to which it
         /// refers.
         /// (By default,
         /// fanotify_mark ()
         /// dereferences
-        /// pathname
+        /// path
         /// if it is a symbolic link.)
         /// </summary>
         public const int FAN_MARK_DONT_FOLLOW = 4;
@@ -478,7 +479,8 @@ namespace XenoAtom.Interop
         /// all marks for filesystems are removed from the group.
         /// Otherwise, all marks for directories and files are removed.
         /// No flag other than, and at most one of, the flags
-        /// FAN_MARK_MOUNT
+        /// FAN_MARK_MNTNS ,
+        /// FAN_MARK_MOUNT ,
         /// or
         /// FAN_MARK_FILESYSTEM
         /// can be used in conjunction with
@@ -500,11 +502,11 @@ namespace XenoAtom.Interop
         
         /// <summary>
         /// Mark the mount specified by
-        /// pathname .
+        /// path .
         /// If
-        /// pathname
+        /// path
         /// is not itself a mount point, the mount containing
-        /// pathname
+        /// path
         /// will be marked.
         /// All directories, subdirectories, and the contained files of the mount
         /// will be monitored.

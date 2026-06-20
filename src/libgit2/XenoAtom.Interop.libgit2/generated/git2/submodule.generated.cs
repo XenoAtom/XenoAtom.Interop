@@ -116,10 +116,8 @@ namespace XenoAtom.Interop
             
             /// <summary>
             /// These options are passed to the checkout step. To disable
-            /// checkout, set the `checkout_strategy` to
-            /// `GIT_CHECKOUT_NONE`. Generally you will want the use
-            /// GIT_CHECKOUT_SAFE to update files in the working
-            /// directory.
+            /// checkout, set the `checkout_strategy` to `GIT_CHECKOUT_NONE`
+            /// or `GIT_CHECKOUT_DRY_RUN`.
             /// </summary>
             public libgit2.git_checkout_options checkout_opts;
             
@@ -711,7 +709,8 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Read the fetchRecurseSubmodules rule for a submodule.
         /// </summary>
-        /// <returns>0 if fetchRecurseSubmodules is false, 1 if true</returns>
+        /// <param name="submodule">the submodule to examine</param>
+        /// <returns>the submodule recursion configuration</returns>
         /// <remarks>
         /// This accesses the submodule.
         /// &lt;name
@@ -728,7 +727,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">the repository to affect</param>
         /// <param name="name">the submodule to configure</param>
-        /// <param name="fetch_recurse_submodules">Boolean value</param>
+        /// <param name="fetch_recurse_submodules">the submodule recursion configuration</param>
         /// <returns>old value for fetchRecurseSubmodules</returns>
         /// <remarks>
         /// This setting won't affect any existing instances.
@@ -742,7 +741,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">the repository to affect</param>
         /// <param name="name">the submodule to configure</param>
-        /// <param name="fetch_recurse_submodules">Boolean value</param>
+        /// <param name="fetch_recurse_submodules">the submodule recursion configuration</param>
         /// <returns>old value for fetchRecurseSubmodules</returns>
         /// <remarks>
         /// This setting won't affect any existing instances.

@@ -229,9 +229,6 @@ namespace XenoAtom.Interop
             public vulkan.VkIcdSurfaceBase @base;
         }
         
-        /// <summary>
-        /// Typedef for use in the interfaces below
-        /// </summary>
         public readonly partial struct PFN_GetPhysicalDeviceProcAddr : IEquatable<PFN_GetPhysicalDeviceProcAddr>
         {
             public PFN_GetPhysicalDeviceProcAddr(delegate*unmanaged[Stdcall]<vulkan.VkInstance, byte*, vulkan.PFN_vkVoidFunction> value) => this.Value = value;

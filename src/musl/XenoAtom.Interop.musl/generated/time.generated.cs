@@ -123,6 +123,9 @@ namespace XenoAtom.Interop
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string ctime(ref musl.time_t timep);
         
+        /// <summary>
+        /// timespec_get,
+        /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "timespec_get")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int timespec_get(ref musl.timespec arg0, int arg1);

@@ -69,7 +69,23 @@ namespace XenoAtom.Interop
             
             public uint stx_dev_minor;
             
-            public fixed ulong __pad1[14];
+            public ulong stx_mnt_id;
+            
+            public uint stx_dio_mem_align;
+            
+            public uint stx_dio_offset_align;
+            
+            public ulong stx_subvol;
+            
+            public uint stx_atomic_write_unit_min;
+            
+            public uint stx_atomic_write_unit_max;
+            
+            public uint stx_atomic_write_segments_max;
+            
+            public fixed uint __pad1[1];
+            
+            public fixed ulong __pad2[9];
         }
         
         public const int S_IFMT = 61440;

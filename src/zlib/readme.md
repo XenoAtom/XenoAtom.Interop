@@ -56,9 +56,9 @@ The following packages were tested and are compatible with **XenoAtom.Interop.zl
 
 > This package is based on the following header version:
 > 
-> - zlib C include headers: [`zlib-dev`](https://pkgs.alpinelinux.org/package/v3.21/main/x86_64/zlib-dev)
+> - zlib C include headers: [`zlib-dev`](https://pkgs.alpinelinux.org/package/v3.24/main/x86_64/zlib-dev)
 > - Version: `1.3.2-r0`
-> - Distribution: AlpineLinux `v3.21`
+> - Distribution: AlpineLinux `v3.24`
 
 The following API were automatically generated from the C/C++ code:
 

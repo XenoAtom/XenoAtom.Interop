@@ -95,52 +95,18 @@ namespace XenoAtom.Interop
         
         public const int SHUT_RDWR = 2;
         
-        /// <summary>
-        /// Provides sequenced, reliable, two-way, connection-based byte streams.
-        /// An out-of-band data transmission mechanism may be supported.
-        /// </summary>
         public const int SOCK_STREAM = 1;
         
-        /// <summary>
-        /// Supports datagrams (connectionless, unreliable messages of a fixed
-        /// maximum length).
-        /// </summary>
         public const int SOCK_DGRAM = 2;
         
-        /// <summary>
-        /// Provides raw network protocol access.
-        /// </summary>
         public const int SOCK_RAW = 3;
         
-        /// <summary>
-        /// Provides a reliable datagram layer that does not guarantee ordering.
-        /// </summary>
         public const int SOCK_RDM = 4;
         
-        /// <summary>
-        /// Provides a sequenced, reliable, two-way connection-based data
-        /// transmission path for datagrams of fixed maximum length; a consumer is
-        /// required to read an entire packet with each input system call.
-        /// </summary>
         public const int SOCK_SEQPACKET = 5;
         
         public const int SOCK_DCCP = 6;
         
-        /// <summary>
-        /// Obsolete and should not be used in new programs;
-        /// see
-        /// packet (7).
-        /// 
-        /// Some socket types may not be implemented by all protocol families.
-        /// 
-        /// Since Linux 2.6.27, the
-        /// type
-        /// argument serves a second purpose:
-        /// in addition to specifying a socket type,
-        /// it may include the bitwise OR of any of the following values,
-        /// to modify the behavior of
-        /// socket ():
-        /// </summary>
         public const int SOCK_PACKET = 10;
         
         /// <summary>
@@ -273,12 +239,6 @@ namespace XenoAtom.Interop
         
         public const int AF_FILE = 1;
         
-        /// <summary>
-        /// The
-        /// name
-        /// argument points to a dotted-quad IPv4 address or a name
-        /// of an IPv4 network host.
-        /// </summary>
         public const int AF_INET = 2;
         
         public const int AF_AX25 = 3;
@@ -295,21 +255,6 @@ namespace XenoAtom.Interop
         
         public const int AF_X25 = 9;
         
-        /// <summary>
-        /// The
-        /// name
-        /// argument points to a hexadecimal IPv6 address or a name
-        /// of an IPv6 network host.
-        /// 
-        /// The
-        /// flags
-        /// argument specifies additional options.
-        /// More than one option can be specified by bitwise OR-ing
-        /// them together.
-        /// flags
-        /// should be set to 0
-        /// if no options are desired.
-        /// </summary>
         public const int AF_INET6 = 10;
         
         public const int AF_ROSE = 11;
@@ -586,55 +531,20 @@ namespace XenoAtom.Interop
         
         public const int SOMAXCONN = 128;
         
-        /// <summary>
-        /// This flag requests receipt of out-of-band data that would not be received
-        /// in the normal data stream.
-        /// Some protocols place expedited data
-        /// at the head of the normal data queue, and thus this flag cannot
-        /// be used with such protocols.
-        /// </summary>
         public const int MSG_OOB = 1;
         
-        /// <summary>
-        /// This flag causes the receive operation to
-        /// return data from the beginning of the
-        /// receive queue without removing that data from the queue.
-        /// Thus, a
-        /// subsequent receive call will return the same data.
-        /// </summary>
         public const int MSG_PEEK = 2;
         
-        /// <summary>
-        /// Don't use a gateway to send out the packet, send to hosts only on
-        /// directly connected networks.
-        /// This is usually used only
-        /// by diagnostic or routing programs.
-        /// This is defined only for protocol
-        /// families that route; packet sockets don't.
-        /// </summary>
         public const int MSG_DONTROUTE = 4;
         
-        /// <summary>
-        /// indicates that some control data was discarded due to lack of space in the
-        /// buffer for ancillary data.
-        /// </summary>
         public const int MSG_CTRUNC = 8;
         
         public const int MSG_PROXY = 16;
         
-        /// <summary>
-        /// indicates that the trailing portion of a datagram was discarded because the
-        /// datagram was larger than the buffer supplied.
-        /// </summary>
         public const int MSG_TRUNC = 32;
         
         public const int MSG_DONTWAIT = 64;
         
-        /// <summary>
-        /// indicates end-of-record; the data returned completed a record (generally
-        /// used with sockets of type
-        /// SOCK_SEQPACKET ).
-        /// </summary>
         public const int MSG_EOR = 128;
         
         public const int MSG_WAITALL = 256;
@@ -647,10 +557,6 @@ namespace XenoAtom.Interop
         
         public const int MSG_RST = 4096;
         
-        /// <summary>
-        /// indicates that no data was received but an extended error from the socket
-        /// error queue.
-        /// </summary>
         public const int MSG_ERRQUEUE = 8192;
         
         public const int MSG_NOSIGNAL = 16384;

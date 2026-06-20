@@ -19,64 +19,136 @@ namespace XenoAtom.Interop
     public static unsafe partial class libgit2
     {
         /// <summary>
-        /// Combinations of these values describe the features with which libgit2
-        /// was compiled
+        /// Configurable features of libgit2; either optional settings (like
+        /// threading), or features that can be enabled by one of a number of
+        /// different backend "providers" (like HTTPS, which can be provided by
+        /// OpenSSL, mbedTLS, or system libraries).
         /// </summary>
         [Flags]
         public enum git_feature_t : uint
         {
             /// <summary>
-            /// If set, libgit2 was built thread-aware and can be safely used from multiple
-            /// threads.
+            /// libgit2 is thread-aware and can be used from multiple threads
+            /// (as described in the documentation).
             /// </summary>
             GIT_FEATURE_THREADS = unchecked((uint)1),
             
             /// <summary>
-            /// If set, libgit2 was built with and linked against a TLS implementation.
-            /// Custom TLS streams may still be added by the user to support HTTPS
-            /// regardless of this.
+            /// HTTPS remotes
             /// </summary>
             GIT_FEATURE_HTTPS = unchecked((uint)2),
             
             /// <summary>
-            /// If set, libgit2 was built with and linked against libssh2. A custom
-            /// transport may still be added by the user to support libssh2 regardless of
-            /// this.
+            /// SSH remotes
             /// </summary>
             GIT_FEATURE_SSH = unchecked((uint)4),
             
             /// <summary>
-            /// If set, libgit2 was built with support for sub-second resolution in file
-            /// modification times.
+            /// Sub-second resolution in index timestamps
             /// </summary>
             GIT_FEATURE_NSEC = unchecked((uint)8),
+            
+            /// <summary>
+            /// HTTP parsing; always available
+            /// </summary>
+            GIT_FEATURE_HTTP_PARSER = unchecked((uint)16),
+            
+            /// <summary>
+            /// Regular expression support; always available
+            /// </summary>
+            GIT_FEATURE_REGEX = unchecked((uint)32),
+            
+            /// <summary>
+            /// Internationalization support for filename translation
+            /// </summary>
+            GIT_FEATURE_I18N = unchecked((uint)64),
+            
+            /// <summary>
+            /// NTLM support over HTTPS
+            /// </summary>
+            GIT_FEATURE_AUTH_NTLM = unchecked((uint)128),
+            
+            /// <summary>
+            /// Kerberos (SPNEGO) authentication support over HTTPS
+            /// </summary>
+            GIT_FEATURE_AUTH_NEGOTIATE = unchecked((uint)256),
+            
+            /// <summary>
+            /// zlib support; always available
+            /// </summary>
+            GIT_FEATURE_COMPRESSION = unchecked((uint)512),
+            
+            /// <summary>
+            /// SHA1 object support; always available
+            /// </summary>
+            GIT_FEATURE_SHA1 = unchecked((uint)1024),
+            
+            /// <summary>
+            /// SHA256 object support
+            /// </summary>
+            GIT_FEATURE_SHA256 = unchecked((uint)2048),
         }
         
         /// <summary>
-        /// If set, libgit2 was built thread-aware and can be safely used from multiple
-        /// threads.
+        /// libgit2 is thread-aware and can be used from multiple threads
+        /// (as described in the documentation).
         /// </summary>
         public const libgit2.git_feature_t GIT_FEATURE_THREADS = git_feature_t.GIT_FEATURE_THREADS;
         
         /// <summary>
-        /// If set, libgit2 was built with and linked against a TLS implementation.
-        /// Custom TLS streams may still be added by the user to support HTTPS
-        /// regardless of this.
+        /// HTTPS remotes
         /// </summary>
         public const libgit2.git_feature_t GIT_FEATURE_HTTPS = git_feature_t.GIT_FEATURE_HTTPS;
         
         /// <summary>
-        /// If set, libgit2 was built with and linked against libssh2. A custom
-        /// transport may still be added by the user to support libssh2 regardless of
-        /// this.
+        /// SSH remotes
         /// </summary>
         public const libgit2.git_feature_t GIT_FEATURE_SSH = git_feature_t.GIT_FEATURE_SSH;
         
         /// <summary>
-        /// If set, libgit2 was built with support for sub-second resolution in file
-        /// modification times.
+        /// Sub-second resolution in index timestamps
         /// </summary>
         public const libgit2.git_feature_t GIT_FEATURE_NSEC = git_feature_t.GIT_FEATURE_NSEC;
+        
+        /// <summary>
+        /// HTTP parsing; always available
+        /// </summary>
+        public const libgit2.git_feature_t GIT_FEATURE_HTTP_PARSER = git_feature_t.GIT_FEATURE_HTTP_PARSER;
+        
+        /// <summary>
+        /// Regular expression support; always available
+        /// </summary>
+        public const libgit2.git_feature_t GIT_FEATURE_REGEX = git_feature_t.GIT_FEATURE_REGEX;
+        
+        /// <summary>
+        /// Internationalization support for filename translation
+        /// </summary>
+        public const libgit2.git_feature_t GIT_FEATURE_I18N = git_feature_t.GIT_FEATURE_I18N;
+        
+        /// <summary>
+        /// NTLM support over HTTPS
+        /// </summary>
+        public const libgit2.git_feature_t GIT_FEATURE_AUTH_NTLM = git_feature_t.GIT_FEATURE_AUTH_NTLM;
+        
+        /// <summary>
+        /// Kerberos (SPNEGO) authentication support over HTTPS
+        /// </summary>
+        public const libgit2.git_feature_t GIT_FEATURE_AUTH_NEGOTIATE = git_feature_t.GIT_FEATURE_AUTH_NEGOTIATE;
+        
+        /// <summary>
+        /// zlib support; always available
+        /// </summary>
+        public const libgit2.git_feature_t GIT_FEATURE_COMPRESSION = git_feature_t.GIT_FEATURE_COMPRESSION;
+        
+        /// <summary>
+        /// SHA1 object support; always available
+        /// </summary>
+        public const libgit2.git_feature_t GIT_FEATURE_SHA1 = git_feature_t.GIT_FEATURE_SHA1;
+        
+        /// <summary>
+        /// SHA256 object support
+        /// </summary>
+        public const libgit2.git_feature_t GIT_FEATURE_SHA256 = git_feature_t.GIT_FEATURE_SHA256;
         
         /// <summary>
         /// Global library options
@@ -176,6 +248,8 @@ namespace XenoAtom.Interop
             GIT_OPT_SET_USER_AGENT_PRODUCT = unchecked((uint)43),
             
             GIT_OPT_GET_USER_AGENT_PRODUCT = unchecked((uint)44),
+            
+            GIT_OPT_ADD_SSL_X509_CERT = unchecked((uint)45),
         }
         
         public const libgit2.git_libgit2_opt_t GIT_OPT_GET_MWINDOW_SIZE = git_libgit2_opt_t.GIT_OPT_GET_MWINDOW_SIZE;
@@ -268,6 +342,8 @@ namespace XenoAtom.Interop
         
         public const libgit2.git_libgit2_opt_t GIT_OPT_GET_USER_AGENT_PRODUCT = git_libgit2_opt_t.GIT_OPT_GET_USER_AGENT_PRODUCT;
         
+        public const libgit2.git_libgit2_opt_t GIT_OPT_ADD_SSL_X509_CERT = git_libgit2_opt_t.GIT_OPT_ADD_SSL_X509_CERT;
+        
         /// <summary>
         /// Return the version of the libgit2 library
         /// being currently used.
@@ -309,19 +385,47 @@ namespace XenoAtom.Interop
         /// Query compile time options for libgit2.
         /// </summary>
         /// <returns>A combination of GIT_FEATURE_* values.</returns>
-        /// <remarks>
-        /// - GIT_FEATURE_THREADS
-        /// Libgit2 was compiled with thread support. Note that thread support is
-        /// still to be seen as a 'work in progress' - basic object lookups are
-        /// believed to be threadsafe, but other operations may not be.- GIT_FEATURE_HTTPS
-        /// Libgit2 supports the https:// protocol. This requires the openssl
-        /// library to be found when compiling libgit2.- GIT_FEATURE_SSH
-        /// Libgit2 supports the SSH protocol for network operations. This requires
-        /// the libssh2 library to be found when compiling libgit2- GIT_FEATURE_NSEC
-        /// Libgit2 supports the sub-second resolution in file modification times.
-        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_features")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_feature_t git_libgit2_features();
+        
+        /// <summary>
+        /// Query the backend details for the compile-time feature in libgit2.
+        /// </summary>
+        /// <param name="feature">the feature to query details for</param>
+        /// <returns>the provider details, or NULL if the feature is not supported</returns>
+        /// <remarks>
+        /// This will return the "backend" for the feature, which is useful for
+        /// things like HTTPS or SSH support, that can have multiple backends
+        /// that could be compiled in.For example, when libgit2 is compiled with dynamic OpenSSL support,
+        /// the feature backend will be `openssl-dynamic`. The feature backend
+        /// names reflect the compilation options specified to the build system
+        /// (though in all lower case). The backend _may_ be "builtin" for
+        /// features that are provided by libgit2 itself.If the feature is not supported by the library, this API returns
+        /// `NULL`.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_feature_backend")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial byte* git_libgit2_feature_backend_(libgit2.git_feature_t feature);
+        
+        /// <summary>
+        /// Query the backend details for the compile-time feature in libgit2.
+        /// </summary>
+        /// <param name="feature">the feature to query details for</param>
+        /// <returns>the provider details, or NULL if the feature is not supported</returns>
+        /// <remarks>
+        /// This will return the "backend" for the feature, which is useful for
+        /// things like HTTPS or SSH support, that can have multiple backends
+        /// that could be compiled in.For example, when libgit2 is compiled with dynamic OpenSSL support,
+        /// the feature backend will be `openssl-dynamic`. The feature backend
+        /// names reflect the compilation options specified to the build system
+        /// (though in all lower case). The backend _may_ be "builtin" for
+        /// features that are provided by libgit2 itself.If the feature is not supported by the library, this API returns
+        /// `NULL`.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_libgit2_feature_backend")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
+        public static partial string git_libgit2_feature_backend(libgit2.git_feature_t feature);
     }
 }

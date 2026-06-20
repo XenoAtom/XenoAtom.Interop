@@ -175,26 +175,78 @@ namespace XenoAtom.Interop
         
         public const uint GIT_ODB_BACKEND_LOOSE_OPTIONS_VERSION = 1;
         
+        /// <summary>
+        /// Create a backend for a directory containing packfiles.
+        /// </summary>
+        /// <param name="out">location to store the odb backend pointer</param>
+        /// <param name="objects_dir">the Git repository's objects directory</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_pack")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_odb_backend_pack(out libgit2.git_odb_backend @out, byte* objects_dir);
         
+        /// <summary>
+        /// Create a backend for a directory containing packfiles.
+        /// </summary>
+        /// <param name="out">location to store the odb backend pointer</param>
+        /// <param name="objects_dir">the Git repository's objects directory</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_pack")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_odb_backend_pack(out libgit2.git_odb_backend @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> objects_dir);
         
+        /// <summary>
+        /// Create a backend out of a single packfile
+        /// </summary>
+        /// <param name="out">location to store the odb backend pointer</param>
+        /// <param name="index_file">path to the packfile's .idx file</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// This can be useful for inspecting the contents of a single
+        /// packfile.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_one_pack")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_odb_backend_one_pack(out libgit2.git_odb_backend @out, byte* index_file);
         
+        /// <summary>
+        /// Create a backend out of a single packfile
+        /// </summary>
+        /// <param name="out">location to store the odb backend pointer</param>
+        /// <param name="index_file">path to the packfile's .idx file</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// This can be useful for inspecting the contents of a single
+        /// packfile.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_one_pack")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_odb_backend_one_pack(out libgit2.git_odb_backend @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> index_file);
         
+        /// <summary>
+        /// Create a backend for loose objects
+        /// </summary>
+        /// <param name="out">location to store the odb backend pointer</param>
+        /// <param name="objects_dir">the Git repository's objects directory</param>
+        /// <param name="compression_level">zlib compression level (0-9), or -1 for the default</param>
+        /// <param name="do_fsync">if non-zero, perform an fsync on write</param>
+        /// <param name="dir_mode">permission to use when creating directories, or 0 for default</param>
+        /// <param name="file_mode">permission to use when creating directories, or 0 for default</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_loose")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_odb_backend_loose(out libgit2.git_odb_backend @out, byte* objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode);
         
+        /// <summary>
+        /// Create a backend for loose objects
+        /// </summary>
+        /// <param name="out">location to store the odb backend pointer</param>
+        /// <param name="objects_dir">the Git repository's objects directory</param>
+        /// <param name="compression_level">zlib compression level (0-9), or -1 for the default</param>
+        /// <param name="do_fsync">if non-zero, perform an fsync on write</param>
+        /// <param name="dir_mode">permission to use when creating directories, or 0 for default</param>
+        /// <param name="file_mode">permission to use when creating directories, or 0 for default</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_backend_loose")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_odb_backend_loose(out libgit2.git_odb_backend @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode);

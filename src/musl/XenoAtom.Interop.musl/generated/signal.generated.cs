@@ -232,11 +232,6 @@ namespace XenoAtom.Interop
             public static implicit operator sig_t (delegate*unmanaged[Cdecl]<int, void> from) => new (from);
         }
         
-        /// <summary>
-        /// GNU.
-        /// POSIX.1 uses the same type but without a
-        /// typedef .
-        /// </summary>
         public readonly partial struct sighandler_t : IEquatable<sighandler_t>
         {
             public sighandler_t(delegate*unmanaged[Cdecl]<int, void> value) => this.Value = value;

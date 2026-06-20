@@ -334,7 +334,8 @@ namespace XenoAtom.Interop
         public const libgit2.git_submodule_recurse_t GIT_SUBMODULE_RECURSE_ONDEMAND = git_submodule_recurse_t.GIT_SUBMODULE_RECURSE_ONDEMAND;
         
         /// <summary>
-        /// An open object database handle.
+        /// An object database stores the objects (commit, trees, blobs, tags,
+        /// etc) for a repository.
         /// </summary>
         public readonly partial record struct git_odb(nint Handle)
         {
@@ -350,7 +351,7 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// An object read from the ODB
+        /// A "raw" object read from the object database.
         /// </summary>
         public readonly partial record struct git_odb_object(nint Handle)
         {
@@ -634,8 +635,18 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Annotated commits, the input to merge and rebase.
+        /// Annotated commits are commits with additional metadata about how the
+        /// commit was resolved, which can be used for maintaining the user's
+        /// "intent" through commands like merge and rebase.
         /// </summary>
+        /// <remarks>
+        /// For example, if a user wants to conceptually "merge `HEAD`", then the
+        /// commit portion of an annotated commit will point to the `HEAD` commit,
+        /// but the _annotation_ will denote the ref `HEAD`. This allows git to
+        /// perform the internal bookkeeping so that the system knows both the
+        /// content of what is being merged but also how the content was looked up
+        /// so that it can be recorded in the reflog appropriately.
+        /// </remarks>
         public readonly partial record struct git_annotated_commit(nint Handle)
         {
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));

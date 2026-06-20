@@ -95,6 +95,12 @@ namespace XenoAtom.Interop
             shaderc_env_version_vulkan_1_3 = unchecked((uint)4206592),
             
             /// <summary>
+            /// For Vulkan, use Vulkan's mapping of version numbers to integers.
+            /// See vulkan.h
+            /// </summary>
+            shaderc_env_version_vulkan_1_4 = unchecked((uint)4210688),
+            
+            /// <summary>
             /// For OpenGL, use the number from #version in shaders.
             /// TODO(dneto): Currently no difference between OpenGL 4.5 and 4.6.
             /// See glslang/Standalone/Standalone.cpp
@@ -131,6 +137,12 @@ namespace XenoAtom.Interop
         /// See vulkan.h
         /// </summary>
         public const libshaderc.shaderc_env_version shaderc_env_version_vulkan_1_3 = shaderc_env_version.shaderc_env_version_vulkan_1_3;
+        
+        /// <summary>
+        /// For Vulkan, use Vulkan's mapping of version numbers to integers.
+        /// See vulkan.h
+        /// </summary>
+        public const libshaderc.shaderc_env_version shaderc_env_version_vulkan_1_4 = shaderc_env_version.shaderc_env_version_vulkan_1_4;
         
         /// <summary>
         /// For OpenGL, use the number from #version in shaders.

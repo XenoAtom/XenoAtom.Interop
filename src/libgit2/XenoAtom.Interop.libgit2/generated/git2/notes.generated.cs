@@ -26,12 +26,10 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Callback for git_note_foreach.
         /// </summary>
-        /// <remarks>
-        /// Receives:
-        /// - blob_id: Oid of the blob containing the message
-        /// - annotated_object_id: Oid of the git object being annotated
-        /// - payload: Payload data passed to `git_note_foreach`
-        /// </remarks>
+        /// <param name="blob_id">object id of the blob containing the message</param>
+        /// <param name="annotated_object_id">the id of the object being annotated</param>
+        /// <param name="payload">user-specified data to the foreach function</param>
+        /// <returns>0 on success, or a negative number on failure</returns>
         public readonly partial struct git_note_foreach_cb : IEquatable<git_note_foreach_cb>
         {
             public git_note_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, libgit2.git_oid*, void*, int> value) => this.Value = value;

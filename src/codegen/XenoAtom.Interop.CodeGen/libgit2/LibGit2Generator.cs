@@ -195,6 +195,8 @@ typedef int git_result;
                 e => e.Map<CppParameter>("git_odb_stream_finalize_write::stream").NoByRef(),
                 e => e.Map<CppParameter>("git_odb_stream_read::stream").NoByRef(),
                 e => e.Map<CppParameter>("git_odb_stream_free::stream").NoByRef(),
+                e => e.Map<CppParameter>("git_odb_hash::oid").ByRef(CSharpRefKind.Out),
+                e => e.Map<CppParameter>("git_odb_hashfile::oid").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_odb_open_rstream::len").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_odb_open_rstream::type").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("git_odb_object_dup::dest").ByRef(CSharpRefKind.Out),

@@ -25,32 +25,32 @@ namespace XenoAtom.Interop
         public enum VkExportMetalObjectTypeFlagsEXT : uint
         {
             /// <summary>
-            /// Indicates a Metal <c>MTLDevice</c> may be exported.
+            /// Specifies that a Metal <c>MTLDevice</c> may be exported.
             /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = unchecked((uint)1),
             
             /// <summary>
-            /// Indicates a Metal <c>MTLCommandQueue</c> may be exported.
+            /// Specifies that a Metal <c>MTLCommandQueue</c> may be exported.
             /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = unchecked((uint)2),
             
             /// <summary>
-            /// Indicates a Metal <c>MTLBuffer</c> may be exported.
+            /// Specifies that a Metal <c>MTLBuffer</c> may be exported.
             /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT = unchecked((uint)4),
             
             /// <summary>
-            /// Indicates a Metal <c>MTLTexture</c> may be exported.
+            /// Specifies that a Metal <c>MTLTexture</c> may be exported.
             /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT = unchecked((uint)8),
             
             /// <summary>
-            /// Indicates a Metal <c>IOSurface</c> may be exported.
+            /// Specifies that a Metal <c>IOSurface</c> may be exported.
             /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT = unchecked((uint)16),
             
             /// <summary>
-            /// Indicates a Metal <c>MTLSharedEvent</c> may be exported.
+            /// Specifies that a Metal <c>MTLSharedEvent</c> may be exported.
             /// </summary>
             VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT = unchecked((uint)32),
             
@@ -58,32 +58,32 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Indicates a Metal <c>MTLDevice</c> may be exported.
+        /// Specifies that a Metal <c>MTLDevice</c> may be exported.
         /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_DEVICE_BIT_EXT;
         
         /// <summary>
-        /// Indicates a Metal <c>MTLCommandQueue</c> may be exported.
+        /// Specifies that a Metal <c>MTLCommandQueue</c> may be exported.
         /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_COMMAND_QUEUE_BIT_EXT;
         
         /// <summary>
-        /// Indicates a Metal <c>MTLBuffer</c> may be exported.
+        /// Specifies that a Metal <c>MTLBuffer</c> may be exported.
         /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_BUFFER_BIT_EXT;
         
         /// <summary>
-        /// Indicates a Metal <c>MTLTexture</c> may be exported.
+        /// Specifies that a Metal <c>MTLTexture</c> may be exported.
         /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_TEXTURE_BIT_EXT;
         
         /// <summary>
-        /// Indicates a Metal <c>IOSurface</c> may be exported.
+        /// Specifies that a Metal <c>IOSurface</c> may be exported.
         /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_IOSURFACE_BIT_EXT;
         
         /// <summary>
-        /// Indicates a Metal <c>MTLSharedEvent</c> may be exported.
+        /// Specifies that a Metal <c>MTLSharedEvent</c> may be exported.
         /// </summary>
         public const vulkan.VkExportMetalObjectTypeFlagsEXT VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT = VkExportMetalObjectTypeFlagsEXT.VK_EXPORT_METAL_OBJECT_TYPE_METAL_SHARED_EVENT_BIT_EXT;
         
@@ -394,7 +394,7 @@ namespace XenoAtom.Interop
             public vulkan.VkBufferView bufferView;
             
             /// <summary>
-            /// Indicates the plane of a multi-planar <see cref="T:VkImage"/> or <see cref="T:VkImageView"/>.
+            /// Specifies the plane of a multi-planar <see cref="T:VkImage"/> or <see cref="T:VkImageView"/>.
             /// </summary>
             public vulkan.VkImageAspectFlags plane;
             
@@ -449,7 +449,7 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// Indicates the plane of the <see cref="T:VkImage"/> that the `id&lt;MTLTexture&gt;` object should be attached to.
+            /// Specifies the plane of the <see cref="T:VkImage"/> that the `id&lt;MTLTexture&gt;` object should be attached to.
             /// </summary>
             public vulkan.VkImageAspectFlags plane;
             
@@ -619,6 +619,88 @@ namespace XenoAtom.Interop
             public vulkan.MTLSharedEvent_id mtlSharedEvent;
         }
         
+        /// <summary>
+        /// Import Metal memory created on the same physical device
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_external_memory_metal</para>
+        /// </remarks>
+        public partial struct VkImportMemoryMetalHandleInfoEXT()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_METAL_HANDLE_INFO_EXT;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
+            public void* pNext;
+            
+            /// <summary>
+            /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of <see cref="M:handle"/> or <see cref="M:name"/>.
+            /// </summary>
+            public vulkan.VkExternalMemoryHandleTypeFlags handleType;
+            
+            /// <summary>
+            /// `NULL` or the external handle to import.
+            /// </summary>
+            public void* handle;
+        }
+        
+        /// <summary>
+        /// Properties of External Memory Metal Handles
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_external_memory_metal</para>
+        /// </remarks>
+        public partial struct VkMemoryMetalHandlePropertiesEXT()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_METAL_HANDLE_PROPERTIES_EXT;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
+            public void* pNext;
+            
+            /// <summary>
+            /// A bitmask containing one bit set for every memory type which the specified Metal handle can: be imported as.
+            /// </summary>
+            public uint memoryTypeBits;
+        }
+        
+        /// <summary>
+        /// Structure describing a Metal handle memory export operation
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_EXT_external_memory_metal</para>
+        /// </remarks>
+        public partial struct VkMemoryGetMetalHandleInfoEXT()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_MEMORY_GET_METAL_HANDLE_INFO_EXT;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
+            public void* pNext;
+            
+            /// <summary>
+            /// The memory object from which the handle will be exported.
+            /// </summary>
+            public vulkan.VkDeviceMemory memory;
+            
+            /// <summary>
+            /// A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of handle requested.
+            /// </summary>
+            public vulkan.VkExternalMemoryHandleTypeFlags handleType;
+        }
+        
         public readonly partial struct PFN_vkCreateMetalSurfaceEXT : IEquatable<PFN_vkCreateMetalSurfaceEXT>, IvkInstanceFunctionPointer<vulkan.PFN_vkCreateMetalSurfaceEXT>
         {
             public PFN_vkCreateMetalSurfaceEXT(delegate*unmanaged[Stdcall]<vulkan.VkInstance, vulkan.VkMetalSurfaceCreateInfoEXT*, vulkan.VkAllocationCallbacks*, vulkan.VkSurfaceKHR*, vulkan.VkResult> value) => this.Value = value;
@@ -658,7 +740,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_metal_surface</para>
             /// </remarks>
@@ -683,7 +765,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_NATIVE_WINDOW_IN_USE_KHR</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_metal_surface</para>
             /// </remarks>
@@ -754,6 +836,155 @@ namespace XenoAtom.Interop
             }
         }
         
+        public readonly partial struct PFN_vkGetMemoryMetalHandleEXT : IEquatable<PFN_vkGetMemoryMetalHandleEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryMetalHandleEXT>
+        {
+            public PFN_vkGetMemoryMetalHandleEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetMetalHandleInfoEXT*, void**, vulkan.VkResult> value) => this.Value = value;
+            
+            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetMetalHandleInfoEXT*, void**, vulkan.VkResult> Value { get; }
+            
+            public override bool Equals(object obj) => obj is PFN_vkGetMemoryMetalHandleEXT other && Equals(other);
+            
+            public bool Equals(PFN_vkGetMemoryMetalHandleEXT other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static bool operator ==(PFN_vkGetMemoryMetalHandleEXT left, PFN_vkGetMemoryMetalHandleEXT right) => left.Equals(right);
+            
+            public static bool operator !=(PFN_vkGetMemoryMetalHandleEXT left, PFN_vkGetMemoryMetalHandleEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetMetalHandleInfoEXT*, void**, vulkan.VkResult> (PFN_vkGetMemoryMetalHandleEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkGetMemoryMetalHandleEXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkMemoryGetMetalHandleInfoEXT*, void**, vulkan.VkResult> from) => new (from);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetMemoryMetalHandleEXT`.
+            /// </summary>
+            public static ReadOnlyMemoryUtf8 Name => "vkGetMemoryMetalHandleEXT"u8;
+            
+            /// <summary>
+            /// Get a Metal handle for a memory object
+            /// </summary>
+            /// <param name="device">The logical device that created the device memory being exported.</param>
+            /// <param name="pGetMetalHandleInfo">A pointer to a <see cref="T:VkMemoryGetMetalHandleInfoEXT"/> structure containing parameters of the export operation.</param>
+            /// <param name="pHandle">Will return the Metal handle representing the payload of the device memory object.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
+            /// </list>
+            /// <para>Extension: VK_EXT_external_memory_metal</para>
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkMemoryGetMetalHandleInfoEXT* pGetMetalHandleInfo, void** pHandle)
+            {
+                return Value(device, pGetMetalHandleInfo, pHandle);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Get a Metal handle for a memory object
+            /// </summary>
+            /// <param name="device">The logical device that created the device memory being exported.</param>
+            /// <param name="pGetMetalHandleInfo">A pointer to a <see cref="T:VkMemoryGetMetalHandleInfoEXT"/> structure containing parameters of the export operation.</param>
+            /// <param name="pHandle">Will return the Metal handle representing the payload of the device memory object.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
+            /// </list>
+            /// <para>Extension: VK_EXT_external_memory_metal</para>
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkMemoryGetMetalHandleInfoEXT pGetMetalHandleInfo, out void* pHandle)
+            {
+                fixed (vulkan.VkMemoryGetMetalHandleInfoEXT* __pGetMetalHandleInfo_local = &pGetMetalHandleInfo)
+                fixed (void** __pHandle_local = &pHandle)
+                return this.Invoke(device, __pGetMetalHandleInfo_local, __pHandle_local);
+            }
+        }
+        
+        public readonly partial struct PFN_vkGetMemoryMetalHandlePropertiesEXT : IEquatable<PFN_vkGetMemoryMetalHandlePropertiesEXT>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetMemoryMetalHandlePropertiesEXT>
+        {
+            public PFN_vkGetMemoryMetalHandlePropertiesEXT(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, void*, vulkan.VkMemoryMetalHandlePropertiesEXT*, vulkan.VkResult> value) => this.Value = value;
+            
+            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, void*, vulkan.VkMemoryMetalHandlePropertiesEXT*, vulkan.VkResult> Value { get; }
+            
+            public override bool Equals(object obj) => obj is PFN_vkGetMemoryMetalHandlePropertiesEXT other && Equals(other);
+            
+            public bool Equals(PFN_vkGetMemoryMetalHandlePropertiesEXT other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static bool operator ==(PFN_vkGetMemoryMetalHandlePropertiesEXT left, PFN_vkGetMemoryMetalHandlePropertiesEXT right) => left.Equals(right);
+            
+            public static bool operator !=(PFN_vkGetMemoryMetalHandlePropertiesEXT left, PFN_vkGetMemoryMetalHandlePropertiesEXT right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, void*, vulkan.VkMemoryMetalHandlePropertiesEXT*, vulkan.VkResult> (PFN_vkGetMemoryMetalHandlePropertiesEXT from) => from.Value;
+            
+            public static implicit operator PFN_vkGetMemoryMetalHandlePropertiesEXT (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkExternalMemoryHandleTypeFlags, void*, vulkan.VkMemoryMetalHandlePropertiesEXT*, vulkan.VkResult> from) => new (from);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetMemoryMetalHandlePropertiesEXT`.
+            /// </summary>
+            public static ReadOnlyMemoryUtf8 Name => "vkGetMemoryMetalHandlePropertiesEXT"u8;
+            
+            /// <summary>
+            /// Get Properties of External Memory Metal Handles
+            /// </summary>
+            /// <param name="device">The logical device that will be importing <paramref name="pHandle"/>.</param>
+            /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of the handle <paramref name="pHandle"/>.</param>
+            /// <param name="pHandle">The handle which will be imported.</param>
+            /// <param name="pMemoryMetalHandleProperties">A pointer to a <see cref="T:VkMemoryMetalHandlePropertiesEXT"/> structure in which properties of <paramref name="pHandle"/> are returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
+            /// </list>
+            /// <para>Extension: VK_EXT_external_memory_metal</para>
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlags handleType, void* pHandle, vulkan.VkMemoryMetalHandlePropertiesEXT* pMemoryMetalHandleProperties)
+            {
+                return Value(device, handleType, pHandle, pMemoryMetalHandleProperties);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Get Properties of External Memory Metal Handles
+            /// </summary>
+            /// <param name="device">The logical device that will be importing <paramref name="pHandle"/>.</param>
+            /// <param name="handleType">A <see cref="T:VkExternalMemoryHandleTypeFlagBits"/> value specifying the type of the handle <paramref name="pHandle"/>.</param>
+            /// <param name="pHandle">The handle which will be imported.</param>
+            /// <param name="pMemoryMetalHandleProperties">A pointer to a <see cref="T:VkMemoryMetalHandlePropertiesEXT"/> structure in which properties of <paramref name="pHandle"/> are returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
+            /// </list>
+            /// <para>Extension: VK_EXT_external_memory_metal</para>
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkExternalMemoryHandleTypeFlags handleType, void* pHandle, ref vulkan.VkMemoryMetalHandlePropertiesEXT pMemoryMetalHandleProperties)
+            {
+                fixed (vulkan.VkMemoryMetalHandlePropertiesEXT* __pMemoryMetalHandleProperties_local = &pMemoryMetalHandleProperties)
+                return this.Invoke(device, handleType, pHandle, __pMemoryMetalHandleProperties_local);
+            }
+        }
+        
         public const int VK_EXT_metal_surface = 1;
         
         public const int VK_EXT_METAL_SURFACE_SPEC_VERSION = 1;
@@ -765,5 +996,11 @@ namespace XenoAtom.Interop
         public const int VK_EXT_METAL_OBJECTS_SPEC_VERSION = 2;
         
         public static ReadOnlyMemoryUtf8 VK_EXT_METAL_OBJECTS_EXTENSION_NAME => "VK_EXT_metal_objects"u8;
+        
+        public const int VK_EXT_external_memory_metal = 1;
+        
+        public const int VK_EXT_EXTERNAL_MEMORY_METAL_SPEC_VERSION = 1;
+        
+        public static ReadOnlyMemoryUtf8 VK_EXT_EXTERNAL_MEMORY_METAL_EXTENSION_NAME => "VK_EXT_external_memory_metal"u8;
     }
 }

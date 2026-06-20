@@ -502,6 +502,9 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial musl.pid_t fork();
         
+        /// <summary>
+        /// Create a child process
+        /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "_Fork")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial musl.pid_t _Fork();
@@ -762,14 +765,14 @@ namespace XenoAtom.Interop
         public static partial string ctermid(byte* s);
         
         /// <summary>
-        /// getopt, getopt_long, getopt_long_only,
+        /// getopt,
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "getopt")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int getopt(int argc, byte** argv, byte* optstring);
         
         /// <summary>
-        /// getopt, getopt_long, getopt_long_only,
+        /// getopt,
         /// </summary>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "getopt")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

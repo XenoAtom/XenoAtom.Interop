@@ -113,43 +113,12 @@ namespace XenoAtom.Interop
         
         /// <summary>
         /// Create a diff for a commit in mbox format for sending via email.
-        /// </summary>
-        /// <param name="out">buffer to store the e-mail patch in</param>
-        /// <param name="diff">the changes to include in the email</param>
-        /// <param name="patch_idx">the patch index</param>
-        /// <param name="patch_count">the total number of patches that will be included</param>
-        /// <param name="commit_id">the commit id for this change</param>
-        /// <param name="summary">the commit message for this change</param>
-        /// <param name="body">optional text to include above the diffstat</param>
-        /// <param name="author">the person who authored this commit</param>
-        /// <param name="opts">email creation options</param>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_email_create_from_diff")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_email_create_from_diff(out libgit2.git_buf @out, libgit2.git_diff diff, nuint patch_idx, nuint patch_count, in libgit2.git_oid commit_id, byte* summary, byte* body, in libgit2.git_signature author, in libgit2.git_email_create_options opts);
-        
-        /// <summary>
-        /// Create a diff for a commit in mbox format for sending via email.
-        /// </summary>
-        /// <param name="out">buffer to store the e-mail patch in</param>
-        /// <param name="diff">the changes to include in the email</param>
-        /// <param name="patch_idx">the patch index</param>
-        /// <param name="patch_count">the total number of patches that will be included</param>
-        /// <param name="commit_id">the commit id for this change</param>
-        /// <param name="summary">the commit message for this change</param>
-        /// <param name="body">optional text to include above the diffstat</param>
-        /// <param name="author">the person who authored this commit</param>
-        /// <param name="opts">email creation options</param>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_email_create_from_diff")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_email_create_from_diff(out libgit2.git_buf @out, libgit2.git_diff diff, nuint patch_idx, nuint patch_count, in libgit2.git_oid commit_id, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> summary, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> body, in libgit2.git_signature author, in libgit2.git_email_create_options opts);
-        
-        /// <summary>
-        /// Create a diff for a commit in mbox format for sending via email.
         /// The commit must not be a merge commit.
         /// </summary>
         /// <param name="out">buffer to store the e-mail patch in</param>
         /// <param name="commit">commit to create a patch for</param>
         /// <param name="opts">email creation options</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_email_create_from_commit")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_email_create_from_commit(out libgit2.git_buf @out, libgit2.git_commit commit, in libgit2.git_email_create_options opts);

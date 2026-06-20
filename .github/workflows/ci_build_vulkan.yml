@@ -13,6 +13,10 @@ on:
 
 jobs:
   build:
+    permissions:
+      id-token: write
+      actions: write
+      contents: write
     runs-on: 'ubuntu-latest'
     steps:
       - name: Set up vulkan dependencies
@@ -22,9 +26,14 @@ jobs:
             mesa-vulkan-drivers \
             libvulkan1 \
             vulkan-tools
+      - name: NuGet Login
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: xoofx
       - name: "Build, Test and Pack vulkan"
         uses: xoofx/.github/.github/actions/dotnet-releaser-action@main   
         with:
           dotnet-releaser-path: 'src/vulkan/dotnet-releaser.toml'
-          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+          NUGET_TOKEN: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
 #GITHUB_ACTION_POST_STEP

@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildThisFileDirectory)../../TestsShared.props" />
 
   <ItemGroup>
-    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" />
+    <PackageReference Include="SourceGear.sqlite3" />
   </ItemGroup>
 
   <ItemGroup>

@@ -223,6 +223,13 @@ namespace XenoAtom.Interop
             public libgit2.git_signature* final_signature;
             
             /// <summary>
+            /// The committer of `final_commit_id`. If `GIT_BLAME_USE_MAILMAP` has
+            /// been specified, it will contain the canonical real name and email
+            /// address.
+            /// </summary>
+            public libgit2.git_signature* final_committer;
+            
+            /// <summary>
             /// The OID of the commit where this hunk was found.
             /// This will usually be the same as `final_commit_id`, except when
             /// `GIT_BLAME_TRACK_COPIES_ANY_COMMIT_COPIES` has been specified.
@@ -248,10 +255,32 @@ namespace XenoAtom.Interop
             public libgit2.git_signature* orig_signature;
             
             /// <summary>
+            /// The committer of `orig_commit_id`. If `GIT_BLAME_USE_MAILMAP` has
+            /// been specified, it will contain the canonical real name and email
+            /// address.
+            /// </summary>
+            public libgit2.git_signature* orig_committer;
+            
+            /// <summary>
+            /// The summary of the commit.
+            /// </summary>
+            public byte* summary;
+            
+            /// <summary>
             /// The 1 iff the hunk has been tracked to a boundary commit (the root,
             /// or the commit specified in git_blame_options.oldest_commit)
             /// </summary>
             public byte boundary;
+        }
+        
+        /// <summary>
+        /// Structure that represents a line in a blamed file.
+        /// </summary>
+        public partial struct git_blame_line
+        {
+            public byte* ptr;
+            
+            public nuint len;
         }
         
         /// <summary>
@@ -279,13 +308,22 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_result git_blame_options_init(ref libgit2.git_blame_options opts, uint version);
         
         /// <summary>
+        /// Gets the number of lines that exist in the blame structure.
+        /// </summary>
+        /// <param name="blame">The blame structure to query.</param>
+        /// <returns>The number of line.</returns>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_linecount")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial nuint git_blame_linecount(libgit2.git_blame blame);
+        
+        /// <summary>
         /// Gets the number of hunks that exist in the blame structure.
         /// </summary>
         /// <param name="blame">The blame structure to query.</param>
         /// <returns>The number of hunks.</returns>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_get_hunk_count")]
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_hunkcount")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial uint git_blame_get_hunk_count(libgit2.git_blame blame);
+        public static partial nuint git_blame_hunkcount(libgit2.git_blame blame);
         
         /// <summary>
         /// Gets the blame hunk at the given index.
@@ -293,89 +331,128 @@ namespace XenoAtom.Interop
         /// <param name="blame">the blame structure to query</param>
         /// <param name="index">index of the hunk to retrieve</param>
         /// <returns>the hunk at the given index, or NULL on error</returns>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_get_hunk_byindex")]
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_hunk_byindex")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_blame_hunk* git_blame_get_hunk_byindex(libgit2.git_blame blame, uint index);
+        public static partial libgit2.git_blame_hunk* git_blame_hunk_byindex(libgit2.git_blame blame, nuint index);
         
         /// <summary>
-        /// Gets the hunk that relates to the given line number in the newest commit.
+        /// Gets the hunk that relates to the given line number in the newest
+        /// commit.
         /// </summary>
         /// <param name="blame">the blame structure to query</param>
         /// <param name="lineno">the (1-based) line number to find a hunk for</param>
         /// <returns>the hunk that contains the given line, or NULL on error</returns>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_get_hunk_byline")]
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_hunk_byline")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_blame_hunk* git_blame_get_hunk_byline(libgit2.git_blame blame, nuint lineno);
+        public static partial libgit2.git_blame_hunk* git_blame_hunk_byline(libgit2.git_blame blame, nuint lineno);
         
         /// <summary>
-        /// Get the blame for a single file.
+        /// Gets the information about the line in the blame.
+        /// </summary>
+        /// <param name="blame">the blame structure to query</param>
+        /// <param name="idx">the (1-based) line number</param>
+        /// <returns>the blamed line, or NULL on error</returns>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_line_byindex")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial libgit2.git_blame_line* git_blame_line_byindex(libgit2.git_blame blame, nuint idx);
+        
+        /// <summary>
+        /// Get the blame for a single file in the repository.
         /// </summary>
         /// <param name="out">pointer that will receive the blame object</param>
         /// <param name="repo">repository whose history is to be walked</param>
         /// <param name="path">path to file to consider</param>
-        /// <param name="options">options for the blame operation.  If NULL, this is treated as
-        /// though GIT_BLAME_OPTIONS_INIT were passed.</param>
-        /// <returns>@return 0 on success, or an error code. (use git_error_last for information
-        /// about the error.)</returns>
+        /// <param name="options">options for the blame operation or NULL</param>
+        /// <returns>0 on success, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_blame_file(out libgit2.git_blame @out, libgit2.git_repository repo, byte* path, ref libgit2.git_blame_options options);
         
         /// <summary>
-        /// Get the blame for a single file.
+        /// Get the blame for a single file in the repository.
         /// </summary>
         /// <param name="out">pointer that will receive the blame object</param>
         /// <param name="repo">repository whose history is to be walked</param>
         /// <param name="path">path to file to consider</param>
-        /// <param name="options">options for the blame operation.  If NULL, this is treated as
-        /// though GIT_BLAME_OPTIONS_INIT were passed.</param>
-        /// <returns>@return 0 on success, or an error code. (use git_error_last for information
-        /// about the error.)</returns>
+        /// <param name="options">options for the blame operation or NULL</param>
+        /// <returns>0 on success, or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_file")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_blame_file(out libgit2.git_blame @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, ref libgit2.git_blame_options options);
         
         /// <summary>
-        /// Get blame data for a file that has been modified in memory. The `reference`
-        /// parameter is a pre-calculated blame for the in-odb history of the file. This
-        /// means that once a file blame is completed (which can be expensive), updating
-        /// the buffer blame is very fast.
+        /// Get the blame for a single file in the repository, using the specified
+        /// buffer contents as the uncommitted changes of the file (the working
+        /// directory contents).
         /// </summary>
-        /// <param name="out">pointer that will receive the resulting blame data</param>
-        /// <param name="reference">cached blame from the history of the file (usually the output
-        /// from git_blame_file)</param>
-        /// <param name="buffer">the (possibly) modified contents of the file</param>
-        /// <param name="buffer_len">number of valid bytes in the buffer</param>
-        /// <returns>@return 0 on success, or an error code. (use git_error_last for information
-        /// about the error)</returns>
-        /// <remarks>
-        /// Lines that differ between the buffer and the committed version are marked as
-        /// having a zero OID for their final_commit_id.
-        /// </remarks>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_buffer")]
+        /// <param name="out">pointer that will receive the blame object</param>
+        /// <param name="repo">repository whose history is to be walked</param>
+        /// <param name="path">path to file to consider</param>
+        /// <param name="contents">the uncommitted changes</param>
+        /// <param name="contents_len">the length of the changes buffer</param>
+        /// <param name="options">options for the blame operation or NULL</param>
+        /// <returns>0 on success, or an error code</returns>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_file_from_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_blame_buffer(out libgit2.git_blame @out, libgit2.git_blame reference, byte* buffer, nuint buffer_len);
+        public static partial int git_blame_file_from_buffer(out libgit2.git_blame @out, libgit2.git_repository repo, byte* path, byte* contents, nuint contents_len, ref libgit2.git_blame_options options);
         
         /// <summary>
-        /// Get blame data for a file that has been modified in memory. The `reference`
-        /// parameter is a pre-calculated blame for the in-odb history of the file. This
-        /// means that once a file blame is completed (which can be expensive), updating
-        /// the buffer blame is very fast.
+        /// Get the blame for a single file in the repository, using the specified
+        /// buffer contents as the uncommitted changes of the file (the working
+        /// directory contents).
+        /// </summary>
+        /// <param name="out">pointer that will receive the blame object</param>
+        /// <param name="repo">repository whose history is to be walked</param>
+        /// <param name="path">path to file to consider</param>
+        /// <param name="contents">the uncommitted changes</param>
+        /// <param name="contents_len">the length of the changes buffer</param>
+        /// <param name="options">options for the blame operation or NULL</param>
+        /// <returns>0 on success, or an error code</returns>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_file_from_buffer")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int git_blame_file_from_buffer(out libgit2.git_blame @out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> contents, nuint contents_len, ref libgit2.git_blame_options options);
+        
+        /// <summary>
+        /// Get blame data for a file that has been modified in memory. The `blame`
+        /// parameter is a pre-calculated blame for the in-odb history of the file.
+        /// This means that once a file blame is completed (which can be expensive),
+        /// updating the buffer blame is very fast.
         /// </summary>
         /// <param name="out">pointer that will receive the resulting blame data</param>
-        /// <param name="reference">cached blame from the history of the file (usually the output
+        /// <param name="base">cached blame from the history of the file (usually the output
         /// from git_blame_file)</param>
         /// <param name="buffer">the (possibly) modified contents of the file</param>
         /// <param name="buffer_len">number of valid bytes in the buffer</param>
         /// <returns>@return 0 on success, or an error code. (use git_error_last for information
         /// about the error)</returns>
         /// <remarks>
-        /// Lines that differ between the buffer and the committed version are marked as
-        /// having a zero OID for their final_commit_id.
+        /// Lines that differ between the buffer and the committed version are
+        /// marked as having a zero OID for their final_commit_id.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_buffer")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_blame_buffer(out libgit2.git_blame @out, libgit2.git_blame reference, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> buffer, nuint buffer_len);
+        public static partial libgit2.git_result git_blame_buffer(out libgit2.git_blame @out, libgit2.git_blame @base, byte* buffer, nuint buffer_len);
+        
+        /// <summary>
+        /// Get blame data for a file that has been modified in memory. The `blame`
+        /// parameter is a pre-calculated blame for the in-odb history of the file.
+        /// This means that once a file blame is completed (which can be expensive),
+        /// updating the buffer blame is very fast.
+        /// </summary>
+        /// <param name="out">pointer that will receive the resulting blame data</param>
+        /// <param name="base">cached blame from the history of the file (usually the output
+        /// from git_blame_file)</param>
+        /// <param name="buffer">the (possibly) modified contents of the file</param>
+        /// <param name="buffer_len">number of valid bytes in the buffer</param>
+        /// <returns>@return 0 on success, or an error code. (use git_error_last for information
+        /// about the error)</returns>
+        /// <remarks>
+        /// Lines that differ between the buffer and the committed version are
+        /// marked as having a zero OID for their final_commit_id.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_blame_buffer")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial libgit2.git_result git_blame_buffer(out libgit2.git_blame @out, libgit2.git_blame @base, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> buffer, nuint buffer_len);
         
         /// <summary>
         /// Free memory allocated by git_blame_file or git_blame_buffer.

@@ -24,8 +24,6 @@ namespace XenoAtom.Interop
             
             public ushort millitm;
             
-            public short timezone;
-            
             public short dstflag;
         }
         

@@ -48,6 +48,17 @@ namespace XenoAtom.Interop
             public static implicit operator epoll_data_t (musl.epoll_data from) => new (from);
         }
         
+        public partial struct epoll_params
+        {
+            public uint busy_poll_usecs;
+            
+            public ushort busy_poll_budget;
+            
+            public byte prefer_busy_poll;
+            
+            public byte __pad;
+        }
+        
         /// <summary>
         /// The associated file is available for
         /// read (2)
@@ -89,7 +100,8 @@ namespace XenoAtom.Interop
         /// has been closed.
         /// 
         /// epoll_wait (2)
-        /// will always report for this event; it is not necessary to set it in
+        /// will always report for this event;
+        /// it is not necessary to set it in
         /// events
         /// when calling
         /// epoll_ctl ().
@@ -100,7 +112,8 @@ namespace XenoAtom.Interop
         /// Hang up happened on the associated file descriptor.
         /// 
         /// epoll_wait (2)
-        /// will always wait for this event; it is not necessary to set it in
+        /// will always wait for this event;
+        /// it is not necessary to set it in
         /// events
         /// when calling
         /// epoll_ctl ().
@@ -133,6 +146,28 @@ namespace XenoAtom.Interop
         /// level-triggered notification.
         /// </summary>
         public const int EPOLLET = -2147483648;
+        
+        /// <summary>
+        /// Set the
+        /// epoll_params
+        /// structure to configure the operation of epoll.
+        /// Refer to the structure description below
+        /// to learn what configuration is supported.
+        /// </summary>
+        public const int EPIOCSPARAMS = 1074301441;
+        
+        /// <summary>
+        /// Get the current
+        /// epoll_params
+        /// configuration settings.
+        /// 
+        /// All operations documented above must be performed on an epoll file descriptor,
+        /// which can be obtained with a call to
+        /// epoll_create (2)
+        /// or
+        /// epoll_create1 (2).
+        /// </summary>
+        public const int EPIOCGPARAMS = -2146924030;
         
         /// <summary>
         /// Open an epoll file descriptor

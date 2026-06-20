@@ -47,40 +47,16 @@ namespace XenoAtom.Interop
             public fixed int __reserved[5];
         }
         
-        /// <summary>
-        /// This filesystem is mounted read-only.
-        /// </summary>
         public const int ST_RDONLY = 1;
         
-        /// <summary>
-        /// The set-user-ID and set-group-ID bits are ignored by
-        /// exec (3)
-        /// for executable files on this filesystem
-        /// </summary>
         public const int ST_NOSUID = 2;
         
-        /// <summary>
-        /// Disallow access to device special files on this filesystem.
-        /// </summary>
         public const int ST_NODEV = 4;
         
-        /// <summary>
-        /// Execution of programs is disallowed on this filesystem.
-        /// </summary>
         public const int ST_NOEXEC = 8;
         
-        /// <summary>
-        /// Writes are synched to the filesystem immediately (see the description of
-        /// O_SYNC
-        /// in
-        /// open (2)).
-        /// </summary>
         public const int ST_SYNCHRONOUS = 16;
         
-        /// <summary>
-        /// Mandatory locking is permitted on the filesystem (see
-        /// fcntl (2)).
-        /// </summary>
         public const int ST_MANDLOCK = 64;
         
         public const int ST_WRITE = 128;
@@ -89,22 +65,10 @@ namespace XenoAtom.Interop
         
         public const int ST_IMMUTABLE = 512;
         
-        /// <summary>
-        /// Do not update access times; see
-        /// mount (2).
-        /// </summary>
         public const int ST_NOATIME = 1024;
         
-        /// <summary>
-        /// Do not update directory access times; see
-        /// mount (2).
-        /// </summary>
         public const int ST_NODIRATIME = 2048;
         
-        /// <summary>
-        /// Update atime relative to mtime/ctime; see
-        /// mount (2).
-        /// </summary>
         public const int ST_RELATIME = 4096;
         
         /// <summary>

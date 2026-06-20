@@ -15,7 +15,7 @@ For more information, see the official documentation at https://github.com/kmod-
 
 ## 📦 Compatible Native Binaries
 
-This library does not provide C native binaries but only P/Invoke .NET bindings to `libkmod` `33-r2`.
+This library does not provide C native binaries but only P/Invoke .NET bindings to `libkmod` `34.2-r1`.
 
 If the native library is already installed on your system, check the version installed. If you are using this library on Alpine Linux, see the compatible version in the [Supported API](#supported-api) section below.
 Other OS might require a different setup.
@@ -25,9 +25,9 @@ Other OS might require a different setup.
 
 > This package is based on the following header version:
 > 
-> - libkmod C include headers: [`kmod-dev`](https://pkgs.alpinelinux.org/package/v3.21/main/x86_64/kmod-dev)
-> - Version: `33-r2`
-> - Distribution: AlpineLinux `v3.21`
+> - libkmod C include headers: [`kmod-dev`](https://pkgs.alpinelinux.org/package/v3.24/main/x86_64/kmod-dev)
+> - Version: `34.2-r1`
+> - Distribution: AlpineLinux `v3.24`
 
 The following API were automatically generated from the C/C++ code:
 

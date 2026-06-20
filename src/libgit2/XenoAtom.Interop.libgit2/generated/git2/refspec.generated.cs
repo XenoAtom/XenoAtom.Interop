@@ -124,6 +124,26 @@ namespace XenoAtom.Interop
         public static partial libgit2.git_direction git_refspec_direction(libgit2.git_refspec spec);
         
         /// <summary>
+        /// Check if a refspec's source descriptor matches a negative reference
+        /// </summary>
+        /// <param name="refspec">the refspec</param>
+        /// <param name="refname">the name of the reference to check</param>
+        /// <returns>1 if the refspec matches, 0 otherwise</returns>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_src_matches_negative")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int git_refspec_src_matches_negative(libgit2.git_refspec refspec, byte* refname);
+        
+        /// <summary>
+        /// Check if a refspec's source descriptor matches a negative reference
+        /// </summary>
+        /// <param name="refspec">the refspec</param>
+        /// <param name="refname">the name of the reference to check</param>
+        /// <returns>1 if the refspec matches, 0 otherwise</returns>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_refspec_src_matches_negative")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int git_refspec_src_matches_negative(libgit2.git_refspec refspec, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> refname);
+        
+        /// <summary>
         /// Check if a refspec's source descriptor matches a reference
         /// </summary>
         /// <param name="refspec">the refspec</param>

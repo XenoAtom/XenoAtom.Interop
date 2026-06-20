@@ -464,6 +464,7 @@ namespace XenoAtom.Interop
         /// <param name="repo">Repository</param>
         /// <param name="callback">Callback function</param>
         /// <param name="payload">Pointer to callback data (optional)</param>
+        /// <returns>0 on success or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_tag_foreach")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_tag_foreach(libgit2.git_repository repo, libgit2.git_tag_foreach_cb callback, void* payload);

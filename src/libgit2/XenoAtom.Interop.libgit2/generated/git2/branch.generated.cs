@@ -77,28 +77,44 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Create a new branch pointing at a target commit
         /// </summary>
+        /// <param name="ref_out">Pointer where to store the underlying reference.</param>
+        /// <param name="repo">the repository to create the branch in.</param>
+        /// <param name="branch_name">Name for the branch; this name is
+        /// validated for consistency. It should also not conflict with
+        /// an already existing branch name.</param>
+        /// <param name="target">Annotated commit to which this branch should point. This
+        /// object must belong to the given `repo`.</param>
+        /// <param name="force">Overwrite existing branch.</param>
+        /// <returns>0, GIT_EINVALIDSPEC or an error code.</returns>
         /// <remarks>
         /// This behaves like `git_branch_create()` but takes an annotated
         /// commit, which lets you specify which extended sha syntax string was
-        /// specified by a user, allowing for more exact reflog messages.See the documentation for `git_branch_create()`.
+        /// specified by a user, allowing for more exact reflog messages.
         /// </remarks>
-        /// <seealso cref="git_branch_create"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_create_from_annotated")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_branch_create_from_annotated(ref libgit2.git_reference ref_out, libgit2.git_repository repository, byte* branch_name, libgit2.git_annotated_commit commit, int force);
+        public static partial int git_branch_create_from_annotated(ref libgit2.git_reference ref_out, libgit2.git_repository repo, byte* branch_name, libgit2.git_annotated_commit target, int force);
         
         /// <summary>
         /// Create a new branch pointing at a target commit
         /// </summary>
+        /// <param name="ref_out">Pointer where to store the underlying reference.</param>
+        /// <param name="repo">the repository to create the branch in.</param>
+        /// <param name="branch_name">Name for the branch; this name is
+        /// validated for consistency. It should also not conflict with
+        /// an already existing branch name.</param>
+        /// <param name="target">Annotated commit to which this branch should point. This
+        /// object must belong to the given `repo`.</param>
+        /// <param name="force">Overwrite existing branch.</param>
+        /// <returns>0, GIT_EINVALIDSPEC or an error code.</returns>
         /// <remarks>
         /// This behaves like `git_branch_create()` but takes an annotated
         /// commit, which lets you specify which extended sha syntax string was
-        /// specified by a user, allowing for more exact reflog messages.See the documentation for `git_branch_create()`.
+        /// specified by a user, allowing for more exact reflog messages.
         /// </remarks>
-        /// <seealso cref="git_branch_create"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_branch_create_from_annotated")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_branch_create_from_annotated(ref libgit2.git_reference ref_out, libgit2.git_repository repository, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> branch_name, libgit2.git_annotated_commit commit, int force);
+        public static partial int git_branch_create_from_annotated(ref libgit2.git_reference ref_out, libgit2.git_repository repo, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> branch_name, libgit2.git_annotated_commit target, int force);
         
         /// <summary>
         /// Delete an existing branch reference.
@@ -262,7 +278,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="branch">the branch to configure</param>
         /// <param name="branch_name">remote-tracking or local branch to set as upstream.</param>
-        /// <returns>@return 0 on success; GIT_ENOTFOUND if there's no branch named `branch_name`
+        /// <returns>@return @type git_error_t 0 on success; GIT_ENOTFOUND if there's no branch named `branch_name`
         /// or an error code</returns>
         /// <remarks>
         /// This will update the configuration to set the branch named `branch_name` as the upstream of `branch`.
@@ -281,7 +297,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="branch">the branch to configure</param>
         /// <param name="branch_name">remote-tracking or local branch to set as upstream.</param>
-        /// <returns>@return 0 on success; GIT_ENOTFOUND if there's no branch named `branch_name`
+        /// <returns>@return @type git_error_t 0 on success; GIT_ENOTFOUND if there's no branch named `branch_name`
         /// or an error code</returns>
         /// <remarks>
         /// This will update the configuration to set the branch named `branch_name` as the upstream of `branch`.

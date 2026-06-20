@@ -19,8 +19,17 @@ namespace XenoAtom.Interop
     public static unsafe partial class libgit2
     {
         /// <summary>
-        /// Flags controlling the behavior of git_apply
+        /// Flags controlling the behavior of `git_apply`.
         /// </summary>
+        /// <remarks>
+        /// When the callback:
+        /// - returns 
+        /// &lt;
+        /// 0, the apply process will be aborted.
+        /// - returns &gt; 0, the hunk will not be applied, but the apply process
+        /// continues
+        /// - returns 0, the hunk is applied, and the apply process continues.
+        /// </remarks>
         [Flags]
         public enum git_apply_flags_t : uint
         {
@@ -80,13 +89,20 @@ namespace XenoAtom.Interop
         public const libgit2.git_apply_location_t GIT_APPLY_LOCATION_BOTH = git_apply_location_t.GIT_APPLY_LOCATION_BOTH;
         
         /// <summary>
-        /// Apply options structure
+        /// Apply options structure.
         /// </summary>
         /// <remarks>
-        /// Initialize with `GIT_APPLY_OPTIONS_INIT`. Alternatively, you can
+        /// When the callback:
+        /// - returns 
+        /// &lt;
+        /// 0, the apply process will be aborted.
+        /// - returns &gt; 0, the hunk will not be applied, but the apply process
+        /// continues
+        /// - returns 0, the hunk is applied, and the apply process continues.Initialize with `GIT_APPLY_OPTIONS_INIT`. Alternatively, you can
         /// use `git_apply_options_init`.
         /// </remarks>
-        /// <seealso cref="git_apply_to_tree, git_apply"/>
+        /// <seealso cref="git_apply_to_tree"/>
+        /// <seealso cref="git_apply"/>
         public partial struct git_apply_options
         {
             /// <summary>
@@ -105,14 +121,14 @@ namespace XenoAtom.Interop
             public libgit2.git_apply_hunk_cb hunk_cb;
             
             /// <summary>
-            /// Payload passed to both delta_cb 
+            /// Payload passed to both `delta_cb` 
             /// &amp;
-            /// hunk_cb.
+            /// `hunk_cb`.
             /// </summary>
             public void* payload;
             
             /// <summary>
-            /// Bitmask of git_apply_flags_t
+            /// Bitmask of `git_apply_flags_t`
             /// </summary>
             public libgit2.git_apply_flags_t flags;
         }

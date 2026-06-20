@@ -24,7 +24,7 @@ namespace XenoAtom.Interop
         public enum VkDisplacementMicromapFormatNV : uint
         {
             /// <summary>
-            /// Indicates that the given micromap format encodes 64 micro-triangles worth of displacements in 64 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV"/> indicates that the given micromap format encodes 256 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV"/> indicates that the given micromap format encodes 1024 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding.
+            /// Specifies that the given micromap format encodes 64 micro-triangles worth of displacements in 64 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV"/> specifies that the given micromap format encodes 256 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV"/> specifies that the given micromap format encodes 1024 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding.
             /// </summary>
             VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = unchecked((uint)1),
             
@@ -36,7 +36,7 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Indicates that the given micromap format encodes 64 micro-triangles worth of displacements in 64 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV"/> indicates that the given micromap format encodes 256 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV"/> indicates that the given micromap format encodes 1024 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding.
+        /// Specifies that the given micromap format encodes 64 micro-triangles worth of displacements in 64 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV"/> specifies that the given micromap format encodes 256 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding. * <see cref="T:VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV"/> specifies that the given micromap format encodes 1024 micro-triangles worth of displacements in 128 bytes as described in Displacement Micromap Encoding.
         /// </summary>
         public const vulkan.VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = VkDisplacementMicromapFormatNV.VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV;
         
@@ -45,6 +45,26 @@ namespace XenoAtom.Interop
         public const vulkan.VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV = VkDisplacementMicromapFormatNV.VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV;
         
         public const vulkan.VkDisplacementMicromapFormatNV VK_DISPLACEMENT_MICROMAP_FORMAT_MAX_ENUM_NV = VkDisplacementMicromapFormatNV.VK_DISPLACEMENT_MICROMAP_FORMAT_MAX_ENUM_NV;
+        
+        /// <summary>
+        /// Available compressed triangle formats
+        /// </summary>
+        public enum VkCompressedTriangleFormatAMDX : uint
+        {
+            /// <summary>
+            /// Specifies that the compressed triangle data is in Dense Geometry Format, version 1, consisting of an array of 128B DGF blocks.
+            /// </summary>
+            VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX = unchecked((uint)0),
+            
+            VK_COMPRESSED_TRIANGLE_FORMAT_MAX_ENUM_AMDX = unchecked((uint)2147483647),
+        }
+        
+        /// <summary>
+        /// Specifies that the compressed triangle data is in Dense Geometry Format, version 1, consisting of an array of 128B DGF blocks.
+        /// </summary>
+        public const vulkan.VkCompressedTriangleFormatAMDX VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX = VkCompressedTriangleFormatAMDX.VK_COMPRESSED_TRIANGLE_FORMAT_DGF1_AMDX;
+        
+        public const vulkan.VkCompressedTriangleFormatAMDX VK_COMPRESSED_TRIANGLE_FORMAT_MAX_ENUM_AMDX = VkCompressedTriangleFormatAMDX.VK_COMPRESSED_TRIANGLE_FORMAT_MAX_ENUM_AMDX;
         
         /// <summary>
         /// Structure describing the features that may not be supported by an implementation of the Vulkan 1.0 Portability Subset
@@ -60,7 +80,7 @@ namespace XenoAtom.Interop
             public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PORTABILITY_SUBSET_FEATURES_KHR;
             
             /// <summary>
-            /// `NULL` or a pointer to a structure extending this structure. * [[features-constantAlphaColorBlendFactors]] <see cref="M:constantAlphaColorBlendFactors"/> indicates whether this implementation supports constant _alpha_ or a different number of bits in each component, than the texel format of the underlying <see cref="T:VkImage"/>. * [[features-imageViewFormatSwizzle]] <see cref="M:imageViewFormatSwizzle"/> indicates whether this implementation supports remapping format components using <see cref="T:VkImageViewCreateInfo.components"/>. * [[features-imageView2DOn3DImage]] <see cref="M:imageView2DOn3DImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created with the <see cref="T:VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT"/> flag set, permitting a 2D or 2D array image view to be created on a 3D <see cref="T:VkImage"/>. * [[features-multisampleArrayImage]] <see cref="M:multisampleArrayImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created as a 2D array with multiple samples per texel. * [[features-mutableComparisonSamplers]] <see cref="M:mutableComparisonSamplers"/> indicates whether this implementation allows descriptors with comparison samplers to be &lt;&lt;descriptorsets-updates, updated. * [[features-pointPolygons]] <see cref="M:pointPolygons"/> indicates whether this implementation supports mipmap LOD bias value when creating a sampler. * [[features-separateStencilMaskRef]] <see cref="M:separateStencilMaskRef"/> indicates whether this implementation supports separate front and back <c>InterpolationFunction</c> capability and the extended instructions `InterpolateAtCentroid`, `InterpolateAtOffset`, and `InterpolateAtSample` from the `GLSL.std.450` extended instruction set. This member is only meaningful if the <see cref="M:sampleRateShading"/> feature is supported. * [[features-tessellationIsolines]] <see cref="M:tessellationIsolines"/> indicates whether this implementation supports isoline output from the <see cref="M:tessellationShader"/> are supported. * [[features-tessellationPointMode]] <see cref="M:tessellationPointMode"/> indicates whether this implementation supports point output from the <see cref="M:tessellationShader"/> are supported. * [[features-triangleFans]] <see cref="M:triangleFans"/> indicates whether this implementation supports &lt;&lt;drawing-triangle-fans&gt;&gt; primitive topology. * [[features-vertexAttributeAccessBeyondStride]] <see cref="M:vertexAttributeAccessBeyondStride"/> indicates whether this implementation supports accessing a vertex input attribute beyond the stride of the corresponding vertex input binding.
+            /// `NULL` or a pointer to a structure extending this structure. * [[features-constantAlphaColorBlendFactors]] <see cref="M:constantAlphaColorBlendFactors"/> indicates whether this implementation supports constant _alpha_ or a different number of bits in each component, than the texel format of the underlying <see cref="T:VkImage"/>. * [[features-imageViewFormatSwizzle]] <see cref="M:imageViewFormatSwizzle"/> indicates whether this implementation supports remapping format components using <see cref="T:VkImageViewCreateInfo.components"/>. * [[features-imageView2DOn3DImage]] <see cref="M:imageView2DOn3DImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created with the <see cref="T:VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT"/> flag set, permitting a 2D or 2D array image view to be created on a 3D <see cref="T:VkImage"/>. * [[features-multisampleArrayImage]] <see cref="M:multisampleArrayImage"/> indicates whether this implementation supports a <see cref="T:VkImage"/> being created as a 2D array with multiple samples per texel. * [[features-mutableComparisonSamplers]] <see cref="M:mutableComparisonSamplers"/> indicates whether this implementation allows descriptors with comparison samplers to be &lt;&lt;descriptors-sets-updates, updated. * [[features-pointPolygons]] <see cref="M:pointPolygons"/> indicates whether this implementation supports mipmap LOD bias value when creating a sampler. * [[features-separateStencilMaskRef]] <see cref="M:separateStencilMaskRef"/> indicates whether this implementation supports separate front and back <c>InterpolationFunction</c> capability and the extended instructions `InterpolateAtCentroid`, `InterpolateAtOffset`, and `InterpolateAtSample` from the `GLSL.std.450` extended instruction set. This member is only meaningful if the <see cref="M:sampleRateShading"/> feature is supported. * [[features-tessellationIsolines]] <see cref="M:tessellationIsolines"/> indicates whether this implementation supports isoline output from the <see cref="M:tessellationShader"/> feature is supported. * [[features-tessellationPointMode]] <see cref="M:tessellationPointMode"/> indicates whether this implementation supports point output from the <see cref="M:tessellationShader"/> feature is supported. * [[features-triangleFans]] <see cref="M:triangleFans"/> indicates whether this implementation supports &lt;&lt;drawing-triangle-fans&gt;&gt; primitive topology. * [[features-vertexAttributeAccessBeyondStride]] <see cref="M:vertexAttributeAccessBeyondStride"/> indicates whether this implementation supports accessing a vertex input attribute beyond the stride of the corresponding vertex input binding.
             /// </summary>
             public void* pNext;
             
@@ -129,6 +149,8 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             public vulkan.VkBool32 shaderEnqueue;
+            
+            public vulkan.VkBool32 shaderMeshEnqueue;
         }
         
         /// <summary>
@@ -137,7 +159,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// <para>Extension: VK_AMDX_shader_enqueue</para>
         /// </remarks>
-        public partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX()
+        public unsafe partial struct VkPhysicalDeviceShaderEnqueuePropertiesAMDX()
         {
             /// <summary>
             /// A <see cref="T:VkStructureType"/> value identifying this structure.
@@ -145,7 +167,7 @@ namespace XenoAtom.Interop
             public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ENQUEUE_PROPERTIES_AMDX;
             
             /// <summary>
-            /// `NULL` or a pointer to a structure extending this structure. * [[limits-maxExecutionGraphDepth]] <see cref="M:maxExecutionGraphDepth"/> defines the maximum node chain depth in the graph. The dispatched node is at depth 1 and the node enqueued by it is at depth 2, and so on. If a node enqueues itself, each recursive enqueue increases the depth by 1 as well. * [[limits-maxExecutionGraphShaderOutputNodes]] <see cref="M:maxExecutionGraphShaderOutputNodes"/> specifies the maximum number of unique nodes that can be dispatched from a single shader, and must: be at least 256. * [[limits-maxExecutionGraphShaderPayloadSize]] <see cref="M:maxExecutionGraphShaderPayloadSize"/> specifies the maximum total size of payload declarations in a shader. For any payload declarations that share resources, indicated by <c>NodeSharesPayloadLimitsWithAMDX</c> decorations, the maximum size of each set of shared payload declarations is taken. The sum of each shared set's maximum size and the size of each unshared payload is counted against this limit. * [[limits-maxExecutionGraphShaderPayloadCount]] <see cref="M:maxExecutionGraphShaderPayloadCount"/> specifies the maximum number of output payloads that can be initialized in a single workgroup. * [[limits-executionGraphDispatchAddressAlignment]] <see cref="M:executionGraphDispatchAddressAlignment"/> specifies the alignment of non-scratch basetype:VkDeviceAddress arguments consumed by graph dispatch commands.
+            /// `NULL` or a pointer to a structure extending this structure. * [[limits-maxExecutionGraphDepth]] <see cref="M:maxExecutionGraphDepth"/> defines the maximum node chain depth in the graph. The dispatched node is at depth 1 and the node enqueued by it is at depth 2, and so on. If a node enqueues itself, each recursive enqueue increases the depth by 1 as well. * [[limits-maxExecutionGraphShaderOutputNodes]] <see cref="M:maxExecutionGraphShaderOutputNodes"/> specifies the maximum number of unique nodes that can be dispatched from a single shader, and must: be at least 256. * [[limits-maxExecutionGraphShaderPayloadSize]] <see cref="M:maxExecutionGraphShaderPayloadSize"/> specifies the maximum total size of payload declarations in a shader. For any payload declarations that share resources, indicated by <c>NodeSharesPayloadLimitsWithAMDX</c> decorations, the maximum size of each set of shared payload declarations is taken. The sum of each shared set's maximum size and the size of each unshared payload is counted against this limit. * [[limits-maxExecutionGraphShaderPayloadCount]] <see cref="M:maxExecutionGraphShaderPayloadCount"/> specifies the maximum number of output payloads that can be initialized in a single workgroup. * [[limits-executionGraphDispatchAddressAlignment]] <see cref="M:executionGraphDispatchAddressAlignment"/> specifies the alignment of non-scratch basetype:VkDeviceAddress arguments consumed by graph dispatch commands. * [[limits-maxExecutionGraphWorkgroupCount]] <see cref="M:maxExecutionGraphWorkgroupCount"/>[3] is the maximum number of local workgroups that a shader can: be dispatched with in X, Y, and Z dimensions, respectively. * [[limits-maxExecutionGraphWorkgroups]] <see cref="M:maxExecutionGraphWorkgroups"/> is the total number of local workgroups that a shader can: be dispatched with.
             /// </summary>
             public void* pNext;
             
@@ -158,6 +180,10 @@ namespace XenoAtom.Interop
             public uint maxExecutionGraphShaderPayloadCount;
             
             public uint executionGraphDispatchAddressAlignment;
+            
+            public fixed uint maxExecutionGraphWorkgroupCount[3];
+            
+            public uint maxExecutionGraphWorkgroups;
         }
         
         /// <summary>
@@ -179,9 +205,19 @@ namespace XenoAtom.Interop
             public void* pNext;
             
             /// <summary>
-            /// Indicates the scratch space required for dispatch the queried execution graph.
+            /// Indicates the minimum scratch space required for dispatching the queried execution graph.
             /// </summary>
-            public vulkan.VkDeviceSize size;
+            public vulkan.VkDeviceSize minSize;
+            
+            /// <summary>
+            /// Indicates the maximum scratch space that can be used for dispatching the queried execution graph.
+            /// </summary>
+            public vulkan.VkDeviceSize maxSize;
+            
+            /// <summary>
+            /// Indicates the granularity at which the scratch space can be increased from <see cref="M:minSize"/>.
+            /// </summary>
+            public vulkan.VkDeviceSize sizeGranularity;
         }
         
         /// <summary>
@@ -223,7 +259,7 @@ namespace XenoAtom.Interop
             public vulkan.VkPipelineLibraryCreateInfoKHR* pLibraryInfo;
             
             /// <summary>
-            /// The description of binding locations used by both the pipeline and descriptor sets used with the pipeline.
+            /// The description of binding locations used by both the pipeline and descriptor sets used with the pipeline. The implementation must: not access this object outside of the duration of the command this structure is passed to.
             /// </summary>
             public vulkan.VkPipelineLayout layout;
             
@@ -342,6 +378,237 @@ namespace XenoAtom.Interop
             public uint index;
         }
         
+        public readonly partial record struct VkCudaModuleNV_T(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
+        public readonly partial record struct VkCudaFunctionNV_T(nint Handle)
+        {
+            public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
+        }
+        
+        /// <summary>
+        /// Structure specifying the parameters to create a CUDA Module
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+        /// </remarks>
+        public partial struct VkCudaModuleCreateInfoNV()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_CUDA_MODULE_CREATE_INFO_NV;
+            
+            /// <summary>
+            /// May: be `NULL` or may: be a pointer to a structure extending this structure.
+            /// </summary>
+            public void* pNext;
+            
+            /// <summary>
+            /// The length of the <see cref="M:pData"/> array.
+            /// </summary>
+            public nuint dataSize;
+            
+            /// <summary>
+            /// A pointer to CUDA code
+            /// </summary>
+            public void* pData;
+        }
+        
+        /// <summary>
+        /// Structure specifying the parameters to create a CUDA Function
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+        /// </remarks>
+        public partial struct VkCudaFunctionCreateInfoNV()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_CUDA_FUNCTION_CREATE_INFO_NV;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
+            public void* pNext;
+            
+            /// <summary>
+            /// The CUDA <see cref="T:VkCudaModuleNV"/> module in which the function resides.
+            /// </summary>
+            public vulkan.VkCudaModuleNV module;
+            
+            /// <summary>
+            /// A null-terminated UTF-8 string containing the name of the shader entry point for this stage.
+            /// </summary>
+            public byte* pName;
+        }
+        
+        /// <remarks>
+        /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+        /// </remarks>
+        public readonly partial struct VkCudaModuleNV : IEquatable<VkCudaModuleNV>
+        {
+            public VkCudaModuleNV(vulkan.VkCudaModuleNV_T value) => this.Value = value;
+            
+            public vulkan.VkCudaModuleNV_T Value { get; }
+            
+            public override bool Equals(object obj) => obj is VkCudaModuleNV other && Equals(other);
+            
+            public bool Equals(VkCudaModuleNV other) => Value.Equals(other.Value);
+            
+            public override int GetHashCode() => Value.GetHashCode();
+            
+            public override string ToString() => Value.ToString();
+            
+            public static bool operator ==(VkCudaModuleNV left, VkCudaModuleNV right) => left.Equals(right);
+            
+            public static bool operator !=(VkCudaModuleNV left, VkCudaModuleNV right) => !left.Equals(right);
+            
+            public static implicit operator vulkan.VkCudaModuleNV_T (VkCudaModuleNV from) => from.Value;
+            
+            public static implicit operator VkCudaModuleNV (vulkan.VkCudaModuleNV_T from) => new (from);
+        }
+        
+        /// <summary>
+        /// Structure specifying the parameters to launch a CUDA kernel
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+        /// </remarks>
+        public partial struct VkCudaLaunchInfoNV()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_CUDA_LAUNCH_INFO_NV;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
+            public void* pNext;
+            
+            /// <summary>
+            /// The CUDA-Driver handle to the function being launched.
+            /// </summary>
+            public vulkan.VkCudaFunctionNV function;
+            
+            /// <summary>
+            /// The number of local workgroups to dispatch in the X dimension. It must: be less than or equal to <see cref="T:VkPhysicalDeviceLimits.maxComputeWorkGroupCount"/>[0]
+            /// </summary>
+            public uint gridDimX;
+            
+            /// <summary>
+            /// The number of local workgroups to dispatch in the Y dimension. It must: be less than or equal to <see cref="T:VkPhysicalDeviceLimits.maxComputeWorkGroupCount"/>[1]
+            /// </summary>
+            public uint gridDimY;
+            
+            /// <summary>
+            /// The number of local workgroups to dispatch in the Z dimension. It must: be less than or equal to <see cref="T:VkPhysicalDeviceLimits.maxComputeWorkGroupCount"/>[2]
+            /// </summary>
+            public uint gridDimZ;
+            
+            /// <summary>
+            /// Block size in the X dimension.
+            /// </summary>
+            public uint blockDimX;
+            
+            /// <summary>
+            /// Block size in the Y dimension.
+            /// </summary>
+            public uint blockDimY;
+            
+            /// <summary>
+            /// Block size in the Z dimension.
+            /// </summary>
+            public uint blockDimZ;
+            
+            /// <summary>
+            /// The dynamic shared-memory size per thread block in bytes.
+            /// </summary>
+            public uint sharedMemBytes;
+            
+            /// <summary>
+            /// The length of the <see cref="M:pParams"/> table.
+            /// </summary>
+            public nuint paramCount;
+            
+            /// <summary>
+            /// A pointer to an array of <see cref="M:paramCount"/> pointers, corresponding to the arguments of <see cref="M:function"/>.
+            /// </summary>
+            public void** pParams;
+            
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
+            public nuint extraCount;
+            
+            /// <summary>
+            /// Reserved for future use.
+            /// </summary>
+            public void** pExtras;
+        }
+        
+        /// <remarks>
+        /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+        /// </remarks>
+        public readonly partial struct VkCudaFunctionNV : IEquatable<VkCudaFunctionNV>
+        {
+            public VkCudaFunctionNV(vulkan.VkCudaFunctionNV_T value) => this.Value = value;
+            
+            public vulkan.VkCudaFunctionNV_T Value { get; }
+            
+            public override bool Equals(object obj) => obj is VkCudaFunctionNV other && Equals(other);
+            
+            public bool Equals(VkCudaFunctionNV other) => Value.Equals(other.Value);
+            
+            public override int GetHashCode() => Value.GetHashCode();
+            
+            public override string ToString() => Value.ToString();
+            
+            public static bool operator ==(VkCudaFunctionNV left, VkCudaFunctionNV right) => left.Equals(right);
+            
+            public static bool operator !=(VkCudaFunctionNV left, VkCudaFunctionNV right) => !left.Equals(right);
+            
+            public static implicit operator vulkan.VkCudaFunctionNV_T (VkCudaFunctionNV from) => from.Value;
+            
+            public static implicit operator VkCudaFunctionNV (vulkan.VkCudaFunctionNV_T from) => new (from);
+        }
+        
+        /// <summary>
+        /// Structure describing whether cuda kernel launch is supported by the implementation
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+        /// </remarks>
+        public partial struct VkPhysicalDeviceCudaKernelLaunchFeaturesNV()
+        {
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV;
+            
+            public void* pNext;
+            
+            public vulkan.VkBool32 cudaKernelLaunchFeatures;
+        }
+        
+        /// <summary>
+        /// Structure describing the compute capability version available
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+        /// </remarks>
+        public partial struct VkPhysicalDeviceCudaKernelLaunchPropertiesNV()
+        {
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV;
+            
+            public void* pNext;
+            
+            public uint computeCapabilityMinor;
+            
+            public uint computeCapabilityMajor;
+        }
+        
         /// <summary>
         /// Structure describing the ray tracing displacement micromap features that can be supported by an implementation
         /// </summary>
@@ -451,7 +718,7 @@ namespace XenoAtom.Interop
             public vulkan.VkIndexType indexType;
             
             /// <summary>
-            /// The address containing the triangle indices.
+            /// A device or host address of memory containing the triangle indices. When <see cref="M:indexType"/> is <see cref="T:VK_INDEX_TYPE_NONE_KHR"/> it must: be `NULL`.
             /// </summary>
             public vulkan.VkDeviceOrHostAddressConstKHR indexBuffer;
             
@@ -486,6 +753,81 @@ namespace XenoAtom.Interop
             public vulkan.VkMicromapEXT micromap;
         }
         
+        /// <summary>
+        /// Structure describing dense geometry format features that can be supported by an implementation
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_dense_geometry_format</para>
+        /// </remarks>
+        public partial struct VkPhysicalDeviceDenseGeometryFormatFeaturesAMDX()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DENSE_GEOMETRY_FORMAT_FEATURES_AMDX;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure. * [[features-denseGeometryFormat]] <see cref="M:denseGeometryFormat"/> specifies whether the implementation supports DGF1 compressed geometry data.
+            /// </summary>
+            public void* pNext;
+            
+            public vulkan.VkBool32 denseGeometryFormat;
+        }
+        
+        /// <summary>
+        /// Structure specifying acceleration structure DGF compressed triangle data
+        /// </summary>
+        /// <remarks>
+        /// <para>Extension: VK_AMDX_dense_geometry_format</para>
+        /// </remarks>
+        public partial struct VkAccelerationStructureDenseGeometryFormatTrianglesDataAMDX()
+        {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
+            public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_DENSE_GEOMETRY_FORMAT_TRIANGLES_DATA_AMDX;
+            
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
+            public void* pNext;
+            
+            /// <summary>
+            /// Specifies the base address of the compressed data.
+            /// </summary>
+            public vulkan.VkDeviceOrHostAddressConstKHR compressedData;
+            
+            /// <summary>
+            /// Specifies the size of the compressed data.
+            /// </summary>
+            public vulkan.VkDeviceSize dataSize;
+            
+            /// <summary>
+            /// Specifies the total number of triangles encoded in the compressed data.
+            /// </summary>
+            public uint numTriangles;
+            
+            /// <summary>
+            /// Specifies the number of vertices in the compressed data.
+            /// </summary>
+            public uint numVertices;
+            
+            /// <summary>
+            /// Specifies the maximum primitive index encoded in the compressed data.
+            /// </summary>
+            public uint maxPrimitiveIndex;
+            
+            /// <summary>
+            /// Specifies the maximum geometry index encoded in the compressed data.
+            /// </summary>
+            public uint maxGeometryIndex;
+            
+            /// <summary>
+            /// Specifies the <see cref="T:VkCompressedTriangleFormatAMDX"/> format of the compressed data.
+            /// </summary>
+            public vulkan.VkCompressedTriangleFormatAMDX format;
+        }
+        
         public readonly partial struct PFN_vkCreateExecutionGraphPipelinesAMDX : IEquatable<PFN_vkCreateExecutionGraphPipelinesAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCreateExecutionGraphPipelinesAMDX>
         {
             public PFN_vkCreateExecutionGraphPipelinesAMDX(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkPipelineCache, uint, vulkan.VkExecutionGraphPipelineCreateInfoAMDX*, vulkan.VkAllocationCallbacks*, vulkan.VkPipeline*, vulkan.VkResult> value) => this.Value = value;
@@ -517,7 +859,7 @@ namespace XenoAtom.Interop
             /// Creates a new execution graph pipeline object
             /// </summary>
             /// <param name="device">The logical device that creates the execution graph pipelines.</param>
-            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command. This parameter is optional.</param>
+            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command. The implementation must: not access this object outside of the duration of this command. This parameter is optional.</param>
             /// <param name="createInfoCount">The length of the <paramref name="pCreateInfos"/> and <paramref name="pPipelines"/> arrays.</param>
             /// <param name="pCreateInfos">A pointer to an array of <see cref="T:VkExecutionGraphPipelineCreateInfoAMDX"/> structures.</param>
             /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
@@ -527,7 +869,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_PIPELINE_COMPILE_REQUIRED_EXT</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
@@ -544,7 +886,7 @@ namespace XenoAtom.Interop
             /// Creates a new execution graph pipeline object
             /// </summary>
             /// <param name="device">The logical device that creates the execution graph pipelines.</param>
-            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command. This parameter is optional.</param>
+            /// <param name="pipelineCache">Either dlink:VK_NULL_HANDLE, indicating that pipeline caching is disabled; or the handle of a valid pipeline cache object, in which case use of that cache is enabled for the duration of the command. The implementation must: not access this object outside of the duration of this command. This parameter is optional.</param>
             /// <param name="createInfoCount">The length of the <paramref name="pCreateInfos"/> and <paramref name="pPipelines"/> arrays.</param>
             /// <param name="pCreateInfos">A pointer to an array of <see cref="T:VkExecutionGraphPipelineCreateInfoAMDX"/> structures.</param>
             /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
@@ -554,7 +896,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_PIPELINE_COMPILE_REQUIRED_EXT</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
@@ -597,7 +939,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Query scratch space required to dispatch an execution graph
             /// </summary>
-            /// <param name="device">The that <paramref name="executionGraph"/> was created on.</param>
+            /// <param name="device">The logical device that <paramref name="executionGraph"/> was created on.</param>
             /// <param name="executionGraph">The execution graph pipeline to query the scratch space for.</param>
             /// <param name="pSizeInfo">A pointer to a <see cref="T:VkExecutionGraphPipelineScratchSizeAMDX"/> structure that will contain the required scratch size.</param>
             /// <remarks>
@@ -605,7 +947,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
@@ -621,7 +963,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Query scratch space required to dispatch an execution graph
             /// </summary>
-            /// <param name="device">The that <paramref name="executionGraph"/> was created on.</param>
+            /// <param name="device">The logical device that <paramref name="executionGraph"/> was created on.</param>
             /// <param name="executionGraph">The execution graph pipeline to query the scratch space for.</param>
             /// <param name="pSizeInfo">A pointer to a <see cref="T:VkExecutionGraphPipelineScratchSizeAMDX"/> structure that will contain the required scratch size.</param>
             /// <remarks>
@@ -629,7 +971,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
@@ -670,7 +1012,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Query internal id of a node in an execution graph
             /// </summary>
-            /// <param name="device">The that <paramref name="executionGraph"/> was created on.</param>
+            /// <param name="device">The logical device that <paramref name="executionGraph"/> was created on.</param>
             /// <param name="executionGraph">The execution graph pipeline to query the internal node index for.</param>
             /// <param name="pNodeInfo">A pointer to a <see cref="T:VkPipelineShaderStageNodeCreateInfoAMDX"/> structure identifying the name and index of the node to query.</param>
             /// <param name="pNodeIndex">The returned internal node index of the identified node.</param>
@@ -679,7 +1021,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
@@ -695,7 +1037,7 @@ namespace XenoAtom.Interop
             /// <summary>
             /// Query internal id of a node in an execution graph
             /// </summary>
-            /// <param name="device">The that <paramref name="executionGraph"/> was created on.</param>
+            /// <param name="device">The logical device that <paramref name="executionGraph"/> was created on.</param>
             /// <param name="executionGraph">The execution graph pipeline to query the internal node index for.</param>
             /// <param name="pNodeInfo">A pointer to a <see cref="T:VkPipelineShaderStageNodeCreateInfoAMDX"/> structure identifying the name and index of the node to query.</param>
             /// <param name="pNodeIndex">The returned internal node index of the identified node.</param>
@@ -704,7 +1046,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
@@ -718,9 +1060,9 @@ namespace XenoAtom.Interop
         
         public readonly partial struct PFN_vkCmdInitializeGraphScratchMemoryAMDX : IEquatable<PFN_vkCmdInitializeGraphScratchMemoryAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdInitializeGraphScratchMemoryAMDX>
         {
-            public PFN_vkCmdInitializeGraphScratchMemoryAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> value) => this.Value = value;
+            public PFN_vkCmdInitializeGraphScratchMemoryAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkPipeline, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, void> value) => this.Value = value;
             
-            public delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> Value { get; }
+            public delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkPipeline, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, void> Value { get; }
             
             public override bool Equals(object obj) => obj is PFN_vkCmdInitializeGraphScratchMemoryAMDX other && Equals(other);
             
@@ -734,9 +1076,9 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCmdInitializeGraphScratchMemoryAMDX left, PFN_vkCmdInitializeGraphScratchMemoryAMDX right) => !left.Equals(right);
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> (PFN_vkCmdInitializeGraphScratchMemoryAMDX from) => from.Value;
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkPipeline, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, void> (PFN_vkCmdInitializeGraphScratchMemoryAMDX from) => from.Value;
             
-            public static implicit operator PFN_vkCmdInitializeGraphScratchMemoryAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, void> from) => new (from);
+            public static implicit operator PFN_vkCmdInitializeGraphScratchMemoryAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkPipeline, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, void> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCmdInitializeGraphScratchMemoryAMDX`.
@@ -747,13 +1089,15 @@ namespace XenoAtom.Interop
             /// Initialize scratch memory for an execution graph
             /// </summary>
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
-            /// <param name="scratch">A pointer to the scratch memory to be initialized.</param>
+            /// <param name="executionGraph">The execution graph pipeline to initialize the scratch memory for.</param>
+            /// <param name="scratch">The address of scratch memory to be initialized.</param>
+            /// <param name="scratchSize">A range in bytes of scratch memory to be initialized.</param>
             /// <remarks>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
-            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch)
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkPipeline executionGraph, vulkan.VkDeviceAddress scratch, vulkan.VkDeviceSize scratchSize)
             {
-                Value(commandBuffer, scratch);
+                Value(commandBuffer, executionGraph, scratch, scratchSize);
             }
             
             public nint Pointer => (nint)Value;
@@ -763,9 +1107,9 @@ namespace XenoAtom.Interop
         
         public readonly partial struct PFN_vkCmdDispatchGraphAMDX : IEquatable<PFN_vkCmdDispatchGraphAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphAMDX>
         {
-            public PFN_vkCmdDispatchGraphAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
+            public PFN_vkCmdDispatchGraphAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
             
-            public delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> Value { get; }
+            public delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDispatchGraphCountInfoAMDX*, void> Value { get; }
             
             public override bool Equals(object obj) => obj is PFN_vkCmdDispatchGraphAMDX other && Equals(other);
             
@@ -779,9 +1123,9 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCmdDispatchGraphAMDX left, PFN_vkCmdDispatchGraphAMDX right) => !left.Equals(right);
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> (PFN_vkCmdDispatchGraphAMDX from) => from.Value;
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDispatchGraphCountInfoAMDX*, void> (PFN_vkCmdDispatchGraphAMDX from) => from.Value;
             
-            public static implicit operator PFN_vkCmdDispatchGraphAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> from) => new (from);
+            public static implicit operator PFN_vkCmdDispatchGraphAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDispatchGraphCountInfoAMDX*, void> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCmdDispatchGraphAMDX`.
@@ -792,14 +1136,15 @@ namespace XenoAtom.Interop
             /// Dispatch an execution graph
             /// </summary>
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
-            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="scratch">The address of scratch memory to be used.</param>
+            /// <param name="scratchSize">A range in bytes of scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
             /// <remarks>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
-            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDispatchGraphCountInfoAMDX* pCountInfo)
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDeviceSize scratchSize, vulkan.VkDispatchGraphCountInfoAMDX* pCountInfo)
             {
-                Value(commandBuffer, scratch, pCountInfo);
+                Value(commandBuffer, scratch, scratchSize, pCountInfo);
             }
             
             public nint Pointer => (nint)Value;
@@ -810,23 +1155,24 @@ namespace XenoAtom.Interop
             /// Dispatch an execution graph
             /// </summary>
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
-            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="scratch">The address of scratch memory to be used.</param>
+            /// <param name="scratchSize">A range in bytes of scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
             /// <remarks>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
-            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDeviceSize scratchSize, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
             {
                 fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo_local = &pCountInfo)
-                this.Invoke(commandBuffer, scratch, __pCountInfo_local);
+                this.Invoke(commandBuffer, scratch, scratchSize, __pCountInfo_local);
             }
         }
         
         public readonly partial struct PFN_vkCmdDispatchGraphIndirectAMDX : IEquatable<PFN_vkCmdDispatchGraphIndirectAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectAMDX>
         {
-            public PFN_vkCmdDispatchGraphIndirectAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
+            public PFN_vkCmdDispatchGraphIndirectAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDispatchGraphCountInfoAMDX*, void> value) => this.Value = value;
             
-            public delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> Value { get; }
+            public delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDispatchGraphCountInfoAMDX*, void> Value { get; }
             
             public override bool Equals(object obj) => obj is PFN_vkCmdDispatchGraphIndirectAMDX other && Equals(other);
             
@@ -840,9 +1186,9 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCmdDispatchGraphIndirectAMDX left, PFN_vkCmdDispatchGraphIndirectAMDX right) => !left.Equals(right);
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> (PFN_vkCmdDispatchGraphIndirectAMDX from) => from.Value;
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDispatchGraphCountInfoAMDX*, void> (PFN_vkCmdDispatchGraphIndirectAMDX from) => from.Value;
             
-            public static implicit operator PFN_vkCmdDispatchGraphIndirectAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDispatchGraphCountInfoAMDX*, void> from) => new (from);
+            public static implicit operator PFN_vkCmdDispatchGraphIndirectAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDispatchGraphCountInfoAMDX*, void> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCmdDispatchGraphIndirectAMDX`.
@@ -853,14 +1199,15 @@ namespace XenoAtom.Interop
             /// Dispatch an execution graph with node and payload parameters read on the device
             /// </summary>
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
-            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="scratch">The address of scratch memory to be used.</param>
+            /// <param name="scratchSize">A range in bytes of scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
             /// <remarks>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
-            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDispatchGraphCountInfoAMDX* pCountInfo)
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDeviceSize scratchSize, vulkan.VkDispatchGraphCountInfoAMDX* pCountInfo)
             {
-                Value(commandBuffer, scratch, pCountInfo);
+                Value(commandBuffer, scratch, scratchSize, pCountInfo);
             }
             
             public nint Pointer => (nint)Value;
@@ -871,23 +1218,24 @@ namespace XenoAtom.Interop
             /// Dispatch an execution graph with node and payload parameters read on the device
             /// </summary>
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
-            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="scratch">The address of scratch memory to be used.</param>
+            /// <param name="scratchSize">A range in bytes of scratch memory to be used.</param>
             /// <param name="pCountInfo">A host pointer to a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
             /// <remarks>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
-            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDeviceSize scratchSize, in vulkan.VkDispatchGraphCountInfoAMDX pCountInfo)
             {
                 fixed (vulkan.VkDispatchGraphCountInfoAMDX* __pCountInfo_local = &pCountInfo)
-                this.Invoke(commandBuffer, scratch, __pCountInfo_local);
+                this.Invoke(commandBuffer, scratch, scratchSize, __pCountInfo_local);
             }
         }
         
         public readonly partial struct PFN_vkCmdDispatchGraphIndirectCountAMDX : IEquatable<PFN_vkCmdDispatchGraphIndirectCountAMDX>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdDispatchGraphIndirectCountAMDX>
         {
-            public PFN_vkCmdDispatchGraphIndirectCountAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> value) => this.Value = value;
+            public PFN_vkCmdDispatchGraphIndirectCountAMDX(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDeviceAddress, void> value) => this.Value = value;
             
-            public delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> Value { get; }
+            public delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDeviceAddress, void> Value { get; }
             
             public override bool Equals(object obj) => obj is PFN_vkCmdDispatchGraphIndirectCountAMDX other && Equals(other);
             
@@ -901,9 +1249,9 @@ namespace XenoAtom.Interop
             
             public static bool operator !=(PFN_vkCmdDispatchGraphIndirectCountAMDX left, PFN_vkCmdDispatchGraphIndirectCountAMDX right) => !left.Equals(right);
             
-            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> (PFN_vkCmdDispatchGraphIndirectCountAMDX from) => from.Value;
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDeviceAddress, void> (PFN_vkCmdDispatchGraphIndirectCountAMDX from) => from.Value;
             
-            public static implicit operator PFN_vkCmdDispatchGraphIndirectCountAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceAddress, void> from) => new (from);
+            public static implicit operator PFN_vkCmdDispatchGraphIndirectCountAMDX (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkDeviceAddress, vulkan.VkDeviceSize, vulkan.VkDeviceAddress, void> from) => new (from);
             
             /// <summary>
             /// Gets the prototype of the function `vkCmdDispatchGraphIndirectCountAMDX`.
@@ -914,19 +1262,376 @@ namespace XenoAtom.Interop
             /// Dispatch an execution graph with all parameters read on the device
             /// </summary>
             /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
-            /// <param name="scratch">A pointer to the scratch memory to be used.</param>
+            /// <param name="scratch">The address of scratch memory to be used.</param>
+            /// <param name="scratchSize">A range in bytes of scratch memory to be used.</param>
             /// <param name="countInfo">A device address of a <see cref="T:VkDispatchGraphCountInfoAMDX"/> structure defining the nodes which will be initially executed.</param>
             /// <remarks>
             /// <para>Extension: VK_AMDX_shader_enqueue</para>
             /// </remarks>
-            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDeviceAddress countInfo)
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkDeviceAddress scratch, vulkan.VkDeviceSize scratchSize, vulkan.VkDeviceAddress countInfo)
             {
-                Value(commandBuffer, scratch, countInfo);
+                Value(commandBuffer, scratch, scratchSize, countInfo);
             }
             
             public nint Pointer => (nint)Value;
             
             public bool IsNull => (nint)Value == 0;
+        }
+        
+        public readonly partial struct PFN_vkCreateCudaModuleNV : IEquatable<PFN_vkCreateCudaModuleNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkCreateCudaModuleNV>
+        {
+            public PFN_vkCreateCudaModuleNV(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleCreateInfoNV*, vulkan.VkAllocationCallbacks*, vulkan.VkCudaModuleNV*, vulkan.VkResult> value) => this.Value = value;
+            
+            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleCreateInfoNV*, vulkan.VkAllocationCallbacks*, vulkan.VkCudaModuleNV*, vulkan.VkResult> Value { get; }
+            
+            public override bool Equals(object obj) => obj is PFN_vkCreateCudaModuleNV other && Equals(other);
+            
+            public bool Equals(PFN_vkCreateCudaModuleNV other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static bool operator ==(PFN_vkCreateCudaModuleNV left, PFN_vkCreateCudaModuleNV right) => left.Equals(right);
+            
+            public static bool operator !=(PFN_vkCreateCudaModuleNV left, PFN_vkCreateCudaModuleNV right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleCreateInfoNV*, vulkan.VkAllocationCallbacks*, vulkan.VkCudaModuleNV*, vulkan.VkResult> (PFN_vkCreateCudaModuleNV from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateCudaModuleNV (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleCreateInfoNV*, vulkan.VkAllocationCallbacks*, vulkan.VkCudaModuleNV*, vulkan.VkResult> from) => new (from);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateCudaModuleNV`.
+            /// </summary>
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateCudaModuleNV"u8;
+            
+            /// <summary>
+            /// Creates a new CUDA module object
+            /// </summary>
+            /// <param name="device">The logical device that creates the shader module.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkCudaModuleCreateInfoNV"/> structure.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
+            /// <param name="pModule">A pointer to a <see cref="T:VkCudaModuleNV"/> handle in which the resulting CUDA module object is returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
+            /// </list>
+            /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkCudaModuleCreateInfoNV* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkCudaModuleNV* pModule)
+            {
+                return Value(device, pCreateInfo, pAllocator, pModule);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Creates a new CUDA module object
+            /// </summary>
+            /// <param name="device">The logical device that creates the shader module.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkCudaModuleCreateInfoNV"/> structure.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
+            /// <param name="pModule">A pointer to a <see cref="T:VkCudaModuleNV"/> handle in which the resulting CUDA module object is returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
+            /// </list>
+            /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkCudaModuleCreateInfoNV pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkCudaModuleNV pModule)
+            {
+                fixed (vulkan.VkCudaModuleCreateInfoNV* __pCreateInfo_local = &pCreateInfo)
+                fixed (vulkan.VkCudaModuleNV* __pModule_local = &pModule)
+                return this.Invoke(device, __pCreateInfo_local, pAllocator, __pModule_local);
+            }
+        }
+        
+        public readonly partial struct PFN_vkGetCudaModuleCacheNV : IEquatable<PFN_vkGetCudaModuleCacheNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkGetCudaModuleCacheNV>
+        {
+            public PFN_vkGetCudaModuleCacheNV(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleNV, nuint*, void*, vulkan.VkResult> value) => this.Value = value;
+            
+            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleNV, nuint*, void*, vulkan.VkResult> Value { get; }
+            
+            public override bool Equals(object obj) => obj is PFN_vkGetCudaModuleCacheNV other && Equals(other);
+            
+            public bool Equals(PFN_vkGetCudaModuleCacheNV other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static bool operator ==(PFN_vkGetCudaModuleCacheNV left, PFN_vkGetCudaModuleCacheNV right) => left.Equals(right);
+            
+            public static bool operator !=(PFN_vkGetCudaModuleCacheNV left, PFN_vkGetCudaModuleCacheNV right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleNV, nuint*, void*, vulkan.VkResult> (PFN_vkGetCudaModuleCacheNV from) => from.Value;
+            
+            public static implicit operator PFN_vkGetCudaModuleCacheNV (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleNV, nuint*, void*, vulkan.VkResult> from) => new (from);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkGetCudaModuleCacheNV`.
+            /// </summary>
+            public static ReadOnlyMemoryUtf8 Name => "vkGetCudaModuleCacheNV"u8;
+            
+            /// <summary>
+            /// Get CUDA module cache
+            /// </summary>
+            /// <param name="device">The logical device that destroys the Function.</param>
+            /// <param name="module">The CUDA module.</param>
+            /// <param name="pCacheSize">A pointer containing the amount of bytes to be copied in <paramref name="pCacheData"/></param>
+            /// <param name="pCacheData">A pointer to a buffer in which to copy the binary cache This parameter is optional.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_INCOMPLETE</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
+            /// </list>
+            /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkCudaModuleNV module, nuint* pCacheSize, void* pCacheData)
+            {
+                return Value(device, module, pCacheSize, pCacheData);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
+        }
+        
+        public readonly partial struct PFN_vkCreateCudaFunctionNV : IEquatable<PFN_vkCreateCudaFunctionNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkCreateCudaFunctionNV>
+        {
+            public PFN_vkCreateCudaFunctionNV(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaFunctionCreateInfoNV*, vulkan.VkAllocationCallbacks*, vulkan.VkCudaFunctionNV*, vulkan.VkResult> value) => this.Value = value;
+            
+            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaFunctionCreateInfoNV*, vulkan.VkAllocationCallbacks*, vulkan.VkCudaFunctionNV*, vulkan.VkResult> Value { get; }
+            
+            public override bool Equals(object obj) => obj is PFN_vkCreateCudaFunctionNV other && Equals(other);
+            
+            public bool Equals(PFN_vkCreateCudaFunctionNV other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static bool operator ==(PFN_vkCreateCudaFunctionNV left, PFN_vkCreateCudaFunctionNV right) => left.Equals(right);
+            
+            public static bool operator !=(PFN_vkCreateCudaFunctionNV left, PFN_vkCreateCudaFunctionNV right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaFunctionCreateInfoNV*, vulkan.VkAllocationCallbacks*, vulkan.VkCudaFunctionNV*, vulkan.VkResult> (PFN_vkCreateCudaFunctionNV from) => from.Value;
+            
+            public static implicit operator PFN_vkCreateCudaFunctionNV (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaFunctionCreateInfoNV*, vulkan.VkAllocationCallbacks*, vulkan.VkCudaFunctionNV*, vulkan.VkResult> from) => new (from);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCreateCudaFunctionNV`.
+            /// </summary>
+            public static ReadOnlyMemoryUtf8 Name => "vkCreateCudaFunctionNV"u8;
+            
+            /// <summary>
+            /// Creates a new CUDA function object
+            /// </summary>
+            /// <param name="device">The logical device that creates the shader module.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkCudaFunctionCreateInfoNV"/> structure.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
+            /// <param name="pFunction">A pointer to a <see cref="T:VkCudaFunctionNV"/> handle in which the resulting CUDA function object is returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
+            /// </list>
+            /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, vulkan.VkCudaFunctionCreateInfoNV* pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, vulkan.VkCudaFunctionNV* pFunction)
+            {
+                return Value(device, pCreateInfo, pAllocator, pFunction);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Creates a new CUDA function object
+            /// </summary>
+            /// <param name="device">The logical device that creates the shader module.</param>
+            /// <param name="pCreateInfo">A pointer to a <see cref="T:VkCudaFunctionCreateInfoNV"/> structure.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
+            /// <param name="pFunction">A pointer to a <see cref="T:VkCudaFunctionNV"/> handle in which the resulting CUDA function object is returned.</param>
+            /// <remarks>
+            /// <list type="bullet">
+            /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
+            /// </list>
+            /// <list type="bullet">
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
+            /// </list>
+            /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+            /// </remarks>
+            public vulkan.VkResult Invoke(vulkan.VkDevice device, in vulkan.VkCudaFunctionCreateInfoNV pCreateInfo, vulkan.VkAllocationCallbacks* pAllocator, out vulkan.VkCudaFunctionNV pFunction)
+            {
+                fixed (vulkan.VkCudaFunctionCreateInfoNV* __pCreateInfo_local = &pCreateInfo)
+                fixed (vulkan.VkCudaFunctionNV* __pFunction_local = &pFunction)
+                return this.Invoke(device, __pCreateInfo_local, pAllocator, __pFunction_local);
+            }
+        }
+        
+        public readonly partial struct PFN_vkDestroyCudaModuleNV : IEquatable<PFN_vkDestroyCudaModuleNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkDestroyCudaModuleNV>
+        {
+            public PFN_vkDestroyCudaModuleNV(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleNV, vulkan.VkAllocationCallbacks*, void> value) => this.Value = value;
+            
+            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleNV, vulkan.VkAllocationCallbacks*, void> Value { get; }
+            
+            public override bool Equals(object obj) => obj is PFN_vkDestroyCudaModuleNV other && Equals(other);
+            
+            public bool Equals(PFN_vkDestroyCudaModuleNV other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static bool operator ==(PFN_vkDestroyCudaModuleNV left, PFN_vkDestroyCudaModuleNV right) => left.Equals(right);
+            
+            public static bool operator !=(PFN_vkDestroyCudaModuleNV left, PFN_vkDestroyCudaModuleNV right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleNV, vulkan.VkAllocationCallbacks*, void> (PFN_vkDestroyCudaModuleNV from) => from.Value;
+            
+            public static implicit operator PFN_vkDestroyCudaModuleNV (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaModuleNV, vulkan.VkAllocationCallbacks*, void> from) => new (from);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkDestroyCudaModuleNV`.
+            /// </summary>
+            public static ReadOnlyMemoryUtf8 Name => "vkDestroyCudaModuleNV"u8;
+            
+            /// <summary>
+            /// Destroy a CUDA module
+            /// </summary>
+            /// <param name="device">The logical device that destroys the shader module.</param>
+            /// <param name="module">The handle of the CUDA module to destroy.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
+            /// <remarks>
+            /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+            /// </remarks>
+            public void Invoke(vulkan.VkDevice device, vulkan.VkCudaModuleNV module, vulkan.VkAllocationCallbacks* pAllocator)
+            {
+                Value(device, module, pAllocator);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
+        }
+        
+        public readonly partial struct PFN_vkDestroyCudaFunctionNV : IEquatable<PFN_vkDestroyCudaFunctionNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkDestroyCudaFunctionNV>
+        {
+            public PFN_vkDestroyCudaFunctionNV(delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaFunctionNV, vulkan.VkAllocationCallbacks*, void> value) => this.Value = value;
+            
+            public delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaFunctionNV, vulkan.VkAllocationCallbacks*, void> Value { get; }
+            
+            public override bool Equals(object obj) => obj is PFN_vkDestroyCudaFunctionNV other && Equals(other);
+            
+            public bool Equals(PFN_vkDestroyCudaFunctionNV other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static bool operator ==(PFN_vkDestroyCudaFunctionNV left, PFN_vkDestroyCudaFunctionNV right) => left.Equals(right);
+            
+            public static bool operator !=(PFN_vkDestroyCudaFunctionNV left, PFN_vkDestroyCudaFunctionNV right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaFunctionNV, vulkan.VkAllocationCallbacks*, void> (PFN_vkDestroyCudaFunctionNV from) => from.Value;
+            
+            public static implicit operator PFN_vkDestroyCudaFunctionNV (delegate*unmanaged[Stdcall]<vulkan.VkDevice, vulkan.VkCudaFunctionNV, vulkan.VkAllocationCallbacks*, void> from) => new (from);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkDestroyCudaFunctionNV`.
+            /// </summary>
+            public static ReadOnlyMemoryUtf8 Name => "vkDestroyCudaFunctionNV"u8;
+            
+            /// <summary>
+            /// Destroy a CUDA function
+            /// </summary>
+            /// <param name="device">The logical device that destroys the Function.</param>
+            /// <param name="function">The handle of the CUDA function to destroy.</param>
+            /// <param name="pAllocator">Controls host memory allocation as described in the Memory Allocation chapter. This parameter is optional.</param>
+            /// <remarks>
+            /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+            /// </remarks>
+            public void Invoke(vulkan.VkDevice device, vulkan.VkCudaFunctionNV function, vulkan.VkAllocationCallbacks* pAllocator)
+            {
+                Value(device, function, pAllocator);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
+        }
+        
+        public readonly partial struct PFN_vkCmdCudaLaunchKernelNV : IEquatable<PFN_vkCmdCudaLaunchKernelNV>, IvkDeviceFunctionPointer<vulkan.PFN_vkCmdCudaLaunchKernelNV>
+        {
+            public PFN_vkCmdCudaLaunchKernelNV(delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkCudaLaunchInfoNV*, void> value) => this.Value = value;
+            
+            public delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkCudaLaunchInfoNV*, void> Value { get; }
+            
+            public override bool Equals(object obj) => obj is PFN_vkCmdCudaLaunchKernelNV other && Equals(other);
+            
+            public bool Equals(PFN_vkCmdCudaLaunchKernelNV other) => Value == other.Value;
+            
+            public override int GetHashCode() => ((nint)(void*)Value).GetHashCode();
+            
+            public override string ToString() => ((nint)(void*)Value).ToString();
+            
+            public static bool operator ==(PFN_vkCmdCudaLaunchKernelNV left, PFN_vkCmdCudaLaunchKernelNV right) => left.Equals(right);
+            
+            public static bool operator !=(PFN_vkCmdCudaLaunchKernelNV left, PFN_vkCmdCudaLaunchKernelNV right) => !left.Equals(right);
+            
+            public static implicit operator delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkCudaLaunchInfoNV*, void> (PFN_vkCmdCudaLaunchKernelNV from) => from.Value;
+            
+            public static implicit operator PFN_vkCmdCudaLaunchKernelNV (delegate*unmanaged[Stdcall]<vulkan.VkCommandBuffer, vulkan.VkCudaLaunchInfoNV*, void> from) => new (from);
+            
+            /// <summary>
+            /// Gets the prototype of the function `vkCmdCudaLaunchKernelNV`.
+            /// </summary>
+            public static ReadOnlyMemoryUtf8 Name => "vkCmdCudaLaunchKernelNV"u8;
+            
+            /// <summary>
+            /// Dispatch compute work items
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
+            /// <param name="pLaunchInfo">A pointer to a <see cref="T:VkCudaLaunchInfoNV"/> structure in which the grid (similar to workgroup) dimension, function handle and related arguments are defined.</param>
+            /// <remarks>
+            /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+            /// </remarks>
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, vulkan.VkCudaLaunchInfoNV* pLaunchInfo)
+            {
+                Value(commandBuffer, pLaunchInfo);
+            }
+            
+            public nint Pointer => (nint)Value;
+            
+            public bool IsNull => (nint)Value == 0;
+            
+            /// <summary>
+            /// Dispatch compute work items
+            /// </summary>
+            /// <param name="commandBuffer">The command buffer into which the command will be recorded.</param>
+            /// <param name="pLaunchInfo">A pointer to a <see cref="T:VkCudaLaunchInfoNV"/> structure in which the grid (similar to workgroup) dimension, function handle and related arguments are defined.</param>
+            /// <remarks>
+            /// <para>Extension: VK_NV_cuda_kernel_launch</para>
+            /// </remarks>
+            public void Invoke(vulkan.VkCommandBuffer commandBuffer, in vulkan.VkCudaLaunchInfoNV pLaunchInfo)
+            {
+                fixed (vulkan.VkCudaLaunchInfoNV* __pLaunchInfo_local = &pLaunchInfo)
+                this.Invoke(commandBuffer, __pLaunchInfo_local);
+            }
         }
         
         public const int VK_KHR_portability_subset = 1;
@@ -937,16 +1642,28 @@ namespace XenoAtom.Interop
         
         public const int VK_AMDX_shader_enqueue = 1;
         
-        public const int VK_AMDX_SHADER_ENQUEUE_SPEC_VERSION = 1;
+        public const int VK_AMDX_SHADER_ENQUEUE_SPEC_VERSION = 2;
         
         public static ReadOnlyMemoryUtf8 VK_AMDX_SHADER_ENQUEUE_EXTENSION_NAME => "VK_AMDX_shader_enqueue"u8;
         
         public const uint VK_SHADER_INDEX_UNUSED_AMDX = 4294967295;
+        
+        public const int VK_NV_cuda_kernel_launch = 1;
+        
+        public const int VK_NV_CUDA_KERNEL_LAUNCH_SPEC_VERSION = 2;
+        
+        public static ReadOnlyMemoryUtf8 VK_NV_CUDA_KERNEL_LAUNCH_EXTENSION_NAME => "VK_NV_cuda_kernel_launch"u8;
         
         public const int VK_NV_displacement_micromap = 1;
         
         public const int VK_NV_DISPLACEMENT_MICROMAP_SPEC_VERSION = 2;
         
         public static ReadOnlyMemoryUtf8 VK_NV_DISPLACEMENT_MICROMAP_EXTENSION_NAME => "VK_NV_displacement_micromap"u8;
+        
+        public const int VK_AMDX_dense_geometry_format = 1;
+        
+        public const int VK_AMDX_DENSE_GEOMETRY_FORMAT_SPEC_VERSION = 1;
+        
+        public static ReadOnlyMemoryUtf8 VK_AMDX_DENSE_GEOMETRY_FORMAT_EXTENSION_NAME => "VK_AMDX_dense_geometry_format"u8;
     }
 }

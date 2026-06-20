@@ -62,9 +62,10 @@ namespace XenoAtom.Interop
         /// addr
         /// as a hint: place the mapping at exactly that address.
         /// addr
-        /// must be suitably aligned: for most architectures a multiple of the page
-        /// size is sufficient; however, some architectures may impose additional
-        /// restrictions.
+        /// must be suitably aligned:
+        /// for most architectures a multiple of the page size is sufficient;
+        /// however,
+        /// some architectures may impose additional restrictions.
         /// If the memory region specified by
         /// addr
         /// and
@@ -130,7 +131,7 @@ namespace XenoAtom.Interop
         /// See also the discussion of the file
         /// /proc/sys/vm/overcommit_memory
         /// in
-        /// proc (5).
+        /// proc_sys_vm (5).
         /// Before Linux 2.6, this flag had effect only for
         /// private writable mappings.
         /// </summary>
@@ -140,8 +141,6 @@ namespace XenoAtom.Interop
         /// This flag is used for stacks.
         /// It indicates to the kernel virtual memory system that the mapping
         /// should extend downward in memory.
-        /// The return address is one page lower than the memory area that is
-        /// actually created in the process's virtual address space.
         /// Touching an address in the "guard" page below the mapping will cause
         /// the mapping to grow by a page.
         /// This growth can be repeated until the mapping grows to within a
@@ -164,7 +163,7 @@ namespace XenoAtom.Interop
         
         /// <summary>
         /// This flag is ignored.
-        /// Introduced in 1.1.38, removed in 1.3.24. Flag tested in proc_follow_link.
+        /// Introduced in 1.1.38, removed in 1.3.24.  Flag tested in proc_follow_link.
         /// (Long ago, it signaled that the underlying file is an executable.
         /// However, that information was not really used anywhere.)
         /// Linus talked about DOS related to MAP_EXECUTABLE, but he was thinking of
@@ -286,7 +285,7 @@ namespace XenoAtom.Interop
         /// changes the protection on the pages specified by
         /// addr
         /// and
-        /// len .
+        /// size .
         /// The
         /// pkey
         /// argument specifies the protection key (see
@@ -338,38 +337,14 @@ namespace XenoAtom.Interop
         
         public const int MCL_ONFAULT = 4;
         
-        /// <summary>
-        /// The application has no special advice regarding its memory usage patterns
-        /// for the specified address range.
-        /// This is the default behavior.
-        /// </summary>
         public const int POSIX_MADV_NORMAL = 0;
         
-        /// <summary>
-        /// The application expects to access the specified address range randomly.
-        /// Thus, read ahead may be less useful than normally.
-        /// </summary>
         public const int POSIX_MADV_RANDOM = 1;
         
-        /// <summary>
-        /// The application expects to access the specified address range sequentially,
-        /// running from lower addresses to higher addresses.
-        /// Hence, pages in this region can be aggressively read ahead,
-        /// and may be freed soon after they are accessed.
-        /// </summary>
         public const int POSIX_MADV_SEQUENTIAL = 2;
         
-        /// <summary>
-        /// The application expects to access the specified address range
-        /// in the near future.
-        /// Thus, read ahead may be beneficial.
-        /// </summary>
         public const int POSIX_MADV_WILLNEED = 3;
         
-        /// <summary>
-        /// The application expects that it will not access the specified address range
-        /// in the near future.
-        /// </summary>
         public const int POSIX_MADV_DONTNEED = 4;
         
         /// <summary>
@@ -432,10 +407,10 @@ namespace XenoAtom.Interop
         /// Such pages are typically created by device drivers that
         /// map the pages into user space.)
         /// 
-        /// Support for Huge TLB pages was added in Linux v5.18.
+        /// Support for Huge TLB pages was added in Linux 5.18.
         /// Addresses within a mapping backed by Huge TLB pages must be aligned
         /// to the underlying Huge TLB page size,
-        /// and the range length is rounded up
+        /// and the range size is rounded up
         /// to a multiple of the underlying Huge TLB page size.
         /// 
         /// ======================================================================
@@ -466,17 +441,17 @@ namespace XenoAtom.Interop
         
         public const int MADV_KEEPONFORK = 19;
         
-        /// <summary>
-        /// See
-        /// madvise (2).
-        /// </summary>
         public const int MADV_COLD = 20;
         
-        /// <summary>
-        /// See
-        /// madvise (2).
-        /// </summary>
         public const int MADV_PAGEOUT = 21;
+        
+        public const int MADV_POPULATE_READ = 22;
+        
+        public const int MADV_POPULATE_WRITE = 23;
+        
+        public const int MADV_DONTNEED_LOCKED = 24;
+        
+        public const int MADV_COLLAPSE = 25;
         
         public const int MADV_HWPOISON = 100;
         
@@ -516,7 +491,7 @@ namespace XenoAtom.Interop
         /// unlocks pages in the address range starting at
         /// addr
         /// and continuing for
-        /// len
+        /// size
         /// bytes.
         /// After this call, all pages that contain a part of the specified
         /// memory range can be moved to external swap space again by the kernel.

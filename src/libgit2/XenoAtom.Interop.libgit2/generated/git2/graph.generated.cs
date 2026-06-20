@@ -59,8 +59,8 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="commit">a previously loaded commit</param>
-        /// <param name="length">the number of commits in the provided `descendant_array`</param>
         /// <param name="descendant_array">oids of the commits</param>
+        /// <param name="length">the number of commits in the provided `descendant_array`</param>
         /// <returns>@return 1 if the given commit is an ancestor of any of the given potential
         /// descendants, 0 if not, error code otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_graph_reachable_from_any")]

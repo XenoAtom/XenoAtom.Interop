@@ -171,6 +171,17 @@ namespace XenoAtom.Interop
             public FixedArray16<nuint> __bits;
         }
         
+        public partial struct winsize
+        {
+            public ushort ws_row;
+            
+            public ushort ws_col;
+            
+            public ushort ws_xpixel;
+            
+            public ushort ws_ypixel;
+        }
+        
         public partial struct iovec
         {
             public void* iov_base;
@@ -197,17 +208,6 @@ namespace XenoAtom.Interop
             public static implicit operator ulong (fsfilcnt_t from) => from.Value;
             
             public static implicit operator fsfilcnt_t (ulong from) => new (from);
-        }
-        
-        public partial struct winsize
-        {
-            public ushort ws_row;
-            
-            public ushort ws_col;
-            
-            public ushort ws_xpixel;
-            
-            public ushort ws_ypixel;
         }
         
         public readonly partial record struct key_t(int Value)

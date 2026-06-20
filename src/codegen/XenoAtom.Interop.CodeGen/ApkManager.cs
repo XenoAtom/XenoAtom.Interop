@@ -30,7 +30,7 @@ public partial class ApkManager
 
     public ApkManager()
     {
-        Version = "v3.21";
+        Version = "v3.24";
         Repositories= ["main", "community"];
         Architectures = [DefaultArch];
         CacheRootName = "ApkCache";
@@ -376,7 +376,7 @@ public partial class ApkManager
             }
 
             var fileName = tarEntry.Name.Substring(includePrefix.Length);
-            if (string.IsNullOrEmpty(fileName) || fileName.EndsWith('/'))
+            if (string.IsNullOrEmpty(fileName) || fileName.EndsWith('/') || fileName.Contains(":"))
             {
                 continue;
             }

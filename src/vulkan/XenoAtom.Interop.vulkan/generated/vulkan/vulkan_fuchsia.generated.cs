@@ -419,10 +419,13 @@ namespace XenoAtom.Interop
             /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A pointer to a <see cref="T:VkBufferCreateInfo"/> struct describing the buffer attributes for the buffer collection
+            /// </summary>
             public vulkan.VkBufferCreateInfo createInfo;
             
             /// <summary>
-            /// Bitmask of <see cref="T:VkFormatFeatureFlagBits"/> required features of the buffers in the buffer collection
+            /// A bitmask of <see cref="T:VkFormatFeatureFlagBits"/> required features of the buffers in the buffer collection
             /// </summary>
             public vulkan.VkFormatFeatureFlags requiredFormatFeatures;
             
@@ -534,7 +537,7 @@ namespace XenoAtom.Interop
             public vulkan.VkSysmemColorSpaceFUCHSIA sysmemColorSpaceIndex;
             
             /// <summary>
-            /// A <see cref="T:VkComponentMapping"/> struct specifying the component mapping
+            /// A <see cref="T:VkComponentMapping"/> structure specifying the component mapping
             /// </summary>
             public vulkan.VkComponentMapping samplerYcbcrConversionComponents;
             
@@ -696,7 +699,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
             /// </remarks>
@@ -748,7 +751,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_FUCHSIA_external_memory</para>
             /// </remarks>
@@ -801,7 +804,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_FUCHSIA_external_memory</para>
             /// </remarks>
@@ -852,7 +855,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
             /// </remarks>
@@ -904,7 +907,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
             /// </remarks>
@@ -951,13 +954,13 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
             /// <param name="pCreateInfo">A pointer to a <see cref="T:VkBufferCollectionCreateInfoFUCHSIA"/> structure containing parameters affecting creation of the buffer collection</param>
             /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
-            /// <param name="pBufferCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
+            /// <param name="pCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
             /// <remarks>
             /// <list type="bullet">
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
             /// </remarks>
@@ -1009,7 +1012,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
             /// </remarks>
@@ -1061,7 +1064,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
             /// </remarks>
@@ -1159,7 +1162,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
             /// </remarks>
@@ -1185,7 +1188,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
         /// </remarks>
@@ -1205,7 +1208,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_imagepipe_surface</para>
         /// </remarks>
@@ -1227,7 +1230,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
@@ -1246,7 +1249,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
@@ -1269,7 +1272,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
@@ -1289,7 +1292,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_memory</para>
         /// </remarks>
@@ -1309,7 +1312,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
@@ -1327,7 +1330,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
@@ -1348,7 +1351,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
@@ -1367,7 +1370,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_external_semaphore</para>
         /// </remarks>
@@ -1384,13 +1387,13 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
         /// <param name="pCreateInfo">A pointer to a <see cref="T:VkBufferCollectionCreateInfoFUCHSIA"/> structure containing parameters affecting creation of the buffer collection</param>
         /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
-        /// <param name="pBufferCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
+        /// <param name="pCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
         /// <remarks>
         /// <list type="bullet">
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
@@ -1404,13 +1407,13 @@ namespace XenoAtom.Interop
         /// <param name="device">The logical device that creates the <see cref="T:VkBufferCollectionFUCHSIA"/></param>
         /// <param name="pCreateInfo">A pointer to a <see cref="T:VkBufferCollectionCreateInfoFUCHSIA"/> structure containing parameters affecting creation of the buffer collection</param>
         /// <param name="pAllocator">A pointer to a <see cref="T:VkAllocationCallbacks"/> structure controlling host memory allocation as described in the Memory Allocation chapter This parameter is optional.</param>
-        /// <param name="pBufferCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
+        /// <param name="pCollection">A pointer to a <see cref="T:VkBufferCollectionFUCHSIA"/> handle in which the resulting buffer collection object is returned</param>
         /// <remarks>
         /// <list type="bullet">
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
@@ -1432,7 +1435,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
@@ -1451,7 +1454,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
@@ -1472,7 +1475,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
@@ -1491,7 +1494,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_FORMAT_NOT_SUPPORTED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
@@ -1525,7 +1528,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>
@@ -1544,7 +1547,7 @@ namespace XenoAtom.Interop
         /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
         /// </list>
         /// <list type="bullet">
-        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+        /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
         /// </list>
         /// <para>Extension: VK_FUCHSIA_buffer_collection</para>
         /// </remarks>

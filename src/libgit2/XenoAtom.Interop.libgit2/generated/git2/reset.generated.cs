@@ -82,15 +82,23 @@ namespace XenoAtom.Interop
         /// Sets the current head to the specified commit oid and optionally
         /// resets the index and working tree to match.
         /// </summary>
+        /// <param name="repo">Repository where to perform the reset operation.</param>
+        /// <param name="target">Annotated commit to which the Head should be moved to.
+        /// This object must belong to the given `repo`, it will be dereferenced
+        /// to a git_commit which oid will be used as the target of the branch.</param>
+        /// <param name="reset_type">Kind of reset operation to perform.</param>
+        /// <param name="checkout_opts">Optional checkout options to be used for a HARD reset.
+        /// The checkout_strategy field will be overridden (based on reset_type).
+        /// This parameter can be used to propagate notify and progress callbacks.</param>
+        /// <returns>0 on success or an error code</returns>
         /// <remarks>
         /// This behaves like `git_reset()` but takes an annotated commit,
         /// which lets you specify which extended sha syntax string was
         /// specified by a user, allowing for more exact reflog messages.See the documentation for `git_reset()`.
         /// </remarks>
-        /// <seealso cref="git_reset"/>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_reset_from_annotated")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_reset_from_annotated(libgit2.git_repository repo, libgit2.git_annotated_commit commit, libgit2.git_reset_t reset_type, in libgit2.git_checkout_options checkout_opts);
+        public static partial int git_reset_from_annotated(libgit2.git_repository repo, libgit2.git_annotated_commit target, libgit2.git_reset_t reset_type, in libgit2.git_checkout_options checkout_opts);
         
         /// <summary>
         /// Updates some entries in the index from the target commit tree.

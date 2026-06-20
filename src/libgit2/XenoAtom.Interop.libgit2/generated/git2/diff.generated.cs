@@ -1306,6 +1306,11 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Diff notification callback function.
         /// </summary>
+        /// <param name="diff_so_far">the diff structure as it currently exists</param>
+        /// <param name="delta_to_add">the delta that is to be added</param>
+        /// <param name="matched_pathspec">the pathspec</param>
+        /// <param name="payload">the user-specified callback payload</param>
+        /// <returns>0 on success, 1 to skip this delta, or an error code</returns>
         /// <remarks>
         /// The callback will be called for each file, just before the `git_diff_delta`
         /// gets inserted into the diff.When the callback:
@@ -1346,7 +1351,8 @@ namespace XenoAtom.Interop
         /// <param name="diff_so_far">The diff being generated.</param>
         /// <param name="old_path">The path to the old file or NULL.</param>
         /// <param name="new_path">The path to the new file or NULL.</param>
-        /// <returns>Non-zero to abort the diff.</returns>
+        /// <param name="payload">the user-specified callback payload</param>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Called before each file comparison.
         /// </remarks>
@@ -1643,6 +1649,7 @@ namespace XenoAtom.Interop
         /// <param name="delta">A pointer to the delta data for the file</param>
         /// <param name="progress">Goes from 0 to 1 over the diff</param>
         /// <param name="payload">User-specified pointer from foreach function</param>
+        /// <returns>0 or an error code</returns>
         public readonly partial struct git_diff_file_cb : IEquatable<git_diff_file_cb>
         {
             public git_diff_file_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, float, void*, int> value) => this.Value = value;
@@ -1670,6 +1677,10 @@ namespace XenoAtom.Interop
         /// When iterating over a diff, callback that will be made for
         /// binary content within the diff.
         /// </summary>
+        /// <param name="delta">the delta</param>
+        /// <param name="binary">the binary content</param>
+        /// <param name="payload">the user-specified callback payload</param>
+        /// <returns>0 or an error code</returns>
         public readonly partial struct git_diff_binary_cb : IEquatable<git_diff_binary_cb>
         {
             public git_diff_binary_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_binary*, void*, int> value) => this.Value = value;
@@ -1696,6 +1707,10 @@ namespace XenoAtom.Interop
         /// <summary>
         /// When iterating over a diff, callback that will be made per hunk.
         /// </summary>
+        /// <param name="delta">the delta</param>
+        /// <param name="hunk">the hunk</param>
+        /// <param name="payload">the user-specified callback payload</param>
+        /// <returns>0 or an error code</returns>
         public readonly partial struct git_diff_hunk_cb : IEquatable<git_diff_hunk_cb>
         {
             public git_diff_hunk_cb(delegate*unmanaged[Cdecl]<libgit2.git_diff_delta*, libgit2.git_diff_hunk*, void*, int> value) => this.Value = value;
@@ -1723,6 +1738,11 @@ namespace XenoAtom.Interop
         /// When iterating over a diff, callback that will be made per text diff
         /// line. In this context, the provided range will be NULL.
         /// </summary>
+        /// <param name="delta">the delta that contains the line</param>
+        /// <param name="hunk">the hunk that contains the line</param>
+        /// <param name="line">the line in the diff</param>
+        /// <param name="payload">the user-specified callback payload</param>
+        /// <returns>0 or an error code</returns>
         /// <remarks>
         /// When printing a diff, callback that will be made to output each line
         /// of text.  This uses some extra GIT_DIFF_LINE_... constants for output

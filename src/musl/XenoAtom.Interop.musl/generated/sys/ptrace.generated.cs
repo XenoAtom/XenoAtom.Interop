@@ -98,286 +98,44 @@ namespace XenoAtom.Interop
             public uint pad;
         }
         
-        /// <summary>
-        /// Indicate that this process is to be traced by its parent.
-        /// A process probably shouldn't make this operation if its parent
-        /// isn't expecting to trace it.
-        /// ( pid ,
-        /// addr ,
-        /// and
-        /// data
-        /// are ignored.)
-        /// 
-        /// The
-        /// PTRACE_TRACEME
-        /// operation is used only by the tracee;
-        /// the remaining operations are used only by the tracer.
-        /// In the following operations,
-        /// pid
-        /// specifies the thread ID of the tracee to be acted on.
-        /// For operations other than
-        /// PTRACE_ATTACH ,
-        /// PTRACE_SEIZE ,
-        /// PTRACE_INTERRUPT ,
-        /// and
-        /// PTRACE_KILL ,
-        /// the tracee must be stopped.
-        /// </summary>
         public const int PTRACE_TRACEME = 0;
         
         public const int PT_TRACE_ME = 0;
         
-        /// <summary>
-        /// PTRACE_PEEKDATA
-        /// Read a word at the address
-        /// addr
-        /// in the tracee's memory, returning the word as the result of the
-        /// ptrace ()
-        /// call.
-        /// Linux does not have separate text and data address spaces,
-        /// so these two operations are currently equivalent.
-        /// ( data
-        /// is ignored; but see NOTES.)
-        /// </summary>
         public const int PTRACE_PEEKTEXT = 1;
         
         public const int PTRACE_PEEKDATA = 2;
         
-        /// <summary>
-        /// PTRACE_PEEKUSR in kernel source, but glibc uses PTRACE_PEEKUSER,
-        /// and that is the name that seems common on other systems.
-        /// Read a word at offset
-        /// addr
-        /// in the tracee's USER area,
-        /// which holds the registers and other information about the process
-        /// (see
-        /// &lt;sys/user.h&gt; ).
-        /// The word is returned as the result of the
-        /// ptrace ()
-        /// call.
-        /// Typically, the offset must be word-aligned, though this might vary by
-        /// architecture.
-        /// See NOTES.
-        /// ( data
-        /// is ignored; but see NOTES.)
-        /// </summary>
         public const int PTRACE_PEEKUSER = 3;
         
-        /// <summary>
-        /// PTRACE_POKEDATA
-        /// Copy the word
-        /// data
-        /// to the address
-        /// addr
-        /// in the tracee's memory.
-        /// As for
-        /// PTRACE_PEEKTEXT
-        /// and
-        /// PTRACE_PEEKDATA ,
-        /// these two operations are currently equivalent.
-        /// </summary>
         public const int PTRACE_POKETEXT = 4;
         
         public const int PTRACE_POKEDATA = 5;
         
-        /// <summary>
-        /// PTRACE_POKEUSR in kernel source, but glibc uses PTRACE_POKEUSER,
-        /// and that is the name that seems common on other systems.
-        /// Copy the word
-        /// data
-        /// to offset
-        /// addr
-        /// in the tracee's USER area.
-        /// As for
-        /// PTRACE_PEEKUSER ,
-        /// the offset must typically be word-aligned.
-        /// In order to maintain the integrity of the kernel,
-        /// some modifications to the USER area are disallowed.
-        /// FIXME In the preceding sentence, which modifications are disallowed,
-        /// and when they are disallowed, how does user space discover that fact?
-        /// </summary>
         public const int PTRACE_POKEUSER = 6;
         
-        /// <summary>
-        /// Restart the stopped tracee process.
-        /// If
-        /// data
-        /// is nonzero,
-        /// it is interpreted as the number of a signal to be delivered to the tracee;
-        /// otherwise, no signal is delivered.
-        /// Thus, for example, the tracer can control
-        /// whether a signal sent to the tracee is delivered or not.
-        /// ( addr
-        /// is ignored.)
-        /// </summary>
         public const int PTRACE_CONT = 7;
         
-        /// <summary>
-        /// Send the tracee a
-        /// SIGKILL
-        /// to terminate it.
-        /// ( addr
-        /// and
-        /// data
-        /// are ignored.)
-        /// 
-        /// This operation is deprecated; do not use it!
-        /// Instead, send a
-        /// SIGKILL
-        /// directly using
-        /// kill (2)
-        /// or
-        /// tgkill (2).
-        /// The problem with
-        /// PTRACE_KILL
-        /// is that it requires the tracee to be in signal-delivery-stop,
-        /// otherwise it may not work
-        /// (i.e., may complete successfully but won't kill the tracee).
-        /// By contrast, sending a
-        /// SIGKILL
-        /// directly has no such limitation.
-        /// [Note from Denys Vlasenko:
-        /// deprecation suggested by Oleg Nesterov. He prefers to deprecate it
-        /// instead of describing (and needing to support) PTRACE_KILL's quirks.]
-        /// </summary>
         public const int PTRACE_KILL = 8;
         
         public const int PTRACE_SINGLESTEP = 9;
         
-        /// <summary>
-        /// PTRACE_GETFPREGS
-        /// Copy the tracee's general-purpose or floating-point registers,
-        /// respectively, to the address
-        /// data
-        /// in the tracer.
-        /// See
-        /// &lt;sys/user.h&gt;
-        /// for information on the format of this data.
-        /// ( addr
-        /// is ignored.)
-        /// Note that SPARC systems have the meaning of
-        /// data
-        /// and
-        /// addr
-        /// reversed; that is,
-        /// data
-        /// is ignored and the registers are copied to the address
-        /// addr .
-        /// PTRACE_GETREGS
-        /// and
-        /// PTRACE_GETFPREGS
-        /// are not present on all architectures.
-        /// </summary>
         public const int PTRACE_GETREGS = 12;
         
-        /// <summary>
-        /// PTRACE_SETFPREGS
-        /// Modify the tracee's general-purpose or floating-point registers,
-        /// respectively, from the address
-        /// data
-        /// in the tracer.
-        /// As for
-        /// PTRACE_POKEUSER ,
-        /// some general-purpose register modifications may be disallowed.
-        /// FIXME . In the preceding sentence, which modifications are disallowed,
-        /// and when they are disallowed, how does user space discover that fact?
-        /// ( addr
-        /// is ignored.)
-        /// Note that SPARC systems have the meaning of
-        /// data
-        /// and
-        /// addr
-        /// reversed; that is,
-        /// data
-        /// is ignored and the registers are copied from the address
-        /// addr .
-        /// PTRACE_SETREGS
-        /// and
-        /// PTRACE_SETFPREGS
-        /// are not present on all architectures.
-        /// </summary>
         public const int PTRACE_SETREGS = 13;
         
         public const int PTRACE_GETFPREGS = 14;
         
         public const int PTRACE_SETFPREGS = 15;
         
-        /// <summary>
-        /// Attach to the process specified in
-        /// pid ,
-        /// making it a tracee of the calling process.
-        /// No longer true (removed by Denys Vlasenko, 2011, who remarks:
-        /// "I think it isn't true in non-ancient 2.4 and in Linux 2.6/3.x.
-        /// Basically, it's not true for any Linux in practical use.
-        /// ; the behavior of the tracee is as if it had done a
-        /// .BR PTRACE_TRACEME .
-        /// The calling process actually becomes the parent of the tracee
-        /// process for most purposes (e.g., it will receive
-        /// notification of tracee events and appears in
-        /// .BR ps (1)
-        /// output as the tracee's parent), but a
-        /// .BR getppid (2)
-        /// by the tracee will still return the PID of the original parent.
-        /// The tracee is sent a
-        /// SIGSTOP ,
-        /// but will not necessarily have stopped
-        /// by the completion of this call; use
-        /// waitpid (2)
-        /// to wait for the tracee to stop.
-        /// See the "Attaching and detaching" subsection for additional information.
-        /// ( addr
-        /// and
-        /// data
-        /// are ignored.)
-        /// 
-        /// Permission to perform a
-        /// PTRACE_ATTACH
-        /// is governed by a ptrace access mode
-        /// PTRACE_MODE_ATTACH_REALCREDS
-        /// check; see below.
-        /// </summary>
         public const int PTRACE_ATTACH = 16;
         
-        /// <summary>
-        /// Restart the stopped tracee as for
-        /// PTRACE_CONT ,
-        /// but first detach from it.
-        /// Under Linux, a tracee can be detached in this way regardless
-        /// of which method was used to initiate tracing.
-        /// ( addr
-        /// is ignored.)
-        /// </summary>
         public const int PTRACE_DETACH = 17;
         
         public const int PTRACE_GETFPXREGS = 18;
         
         public const int PTRACE_SETFPXREGS = 19;
         
-        /// <summary>
-        /// PTRACE_SINGLESTEP
-        /// Restart the stopped tracee as for
-        /// PTRACE_CONT ,
-        /// but arrange for the tracee to be stopped at
-        /// the next entry to or exit from a system call,
-        /// or after execution of a single instruction, respectively.
-        /// (The tracee will also, as usual, be stopped upon receipt of a signal.)
-        /// From the tracer's perspective, the tracee will appear to have been
-        /// stopped by receipt of a
-        /// SIGTRAP .
-        /// So, for
-        /// PTRACE_SYSCALL ,
-        /// for example, the idea is to inspect
-        /// the arguments to the system call at the first stop,
-        /// then do another
-        /// PTRACE_SYSCALL
-        /// and inspect the return value of the system call at the second stop.
-        /// The
-        /// data
-        /// argument is treated as for
-        /// PTRACE_CONT .
-        /// ( addr
-        /// is ignored.)
-        /// </summary>
         public const int PTRACE_SYSCALL = 24;
         
         public const int PTRACE_SETOPTIONS = 16896;
@@ -478,116 +236,20 @@ namespace XenoAtom.Interop
         
         public const int PTRACE_O_MASK = 3145983;
         
-        /// <summary>
-        /// Stop before return from
-        /// fork (2)
-        /// or
-        /// clone (2)
-        /// with the exit signal set to
-        /// SIGCHLD .
-        /// </summary>
         public const int PTRACE_EVENT_FORK = 1;
         
-        /// <summary>
-        /// Stop before return from
-        /// vfork (2)
-        /// or
-        /// clone (2)
-        /// with the
-        /// CLONE_VFORK
-        /// flag.
-        /// When the tracee is continued after this stop, it will wait for child to
-        /// exit/exec before continuing its execution
-        /// (in other words, the usual behavior on
-        /// vfork (2)).
-        /// </summary>
         public const int PTRACE_EVENT_VFORK = 2;
         
-        /// <summary>
-        /// Stop before return from
-        /// clone (2).
-        /// </summary>
         public const int PTRACE_EVENT_CLONE = 3;
         
-        /// <summary>
-        /// Stop before return from
-        /// execve (2).
-        /// Since Linux 3.0,
-        /// PTRACE_GETEVENTMSG
-        /// returns the former thread ID.
-        /// </summary>
         public const int PTRACE_EVENT_EXEC = 4;
         
-        /// <summary>
-        /// Stop before return from
-        /// vfork (2)
-        /// or
-        /// clone (2)
-        /// with the
-        /// CLONE_VFORK
-        /// flag,
-        /// but after the child unblocked this tracee by exiting or execing.
-        /// 
-        /// For all four stops described above,
-        /// the stop occurs in the parent (i.e., the tracee),
-        /// not in the newly created thread.
-        /// PTRACE_GETEVENTMSG
-        /// can be used to retrieve the new thread's ID.
-        /// </summary>
         public const int PTRACE_EVENT_VFORK_DONE = 5;
         
-        /// <summary>
-        /// Stop before exit (including death from
-        /// exit_group (2)),
-        /// signal death, or exit caused by
-        /// execve (2)
-        /// in a multithreaded process.
-        /// PTRACE_GETEVENTMSG
-        /// returns the exit status.
-        /// Registers can be examined
-        /// (unlike when "real" exit happens).
-        /// The tracee is still alive; it needs to be
-        /// PTRACE_CONT ed
-        /// or
-        /// PTRACE_DETACH ed
-        /// to finish exiting.
-        /// </summary>
         public const int PTRACE_EVENT_EXIT = 6;
         
-        /// <summary>
-        /// Stop triggered by a
-        /// seccomp (2)
-        /// rule on tracee syscall entry when
-        /// PTRACE_O_TRACESECCOMP
-        /// has been set by the tracer.
-        /// The seccomp event message data (from the
-        /// SECCOMP_RET_DATA
-        /// portion of the seccomp filter rule) can be retrieved with
-        /// PTRACE_GETEVENTMSG .
-        /// The semantics of this stop are described in
-        /// detail in a separate section below.
-        /// 
-        /// PTRACE_GETSIGINFO
-        /// on
-        /// PTRACE_EVENT
-        /// stops returns
-        /// SIGTRAP
-        /// in
-        /// si_signo ,
-        /// with
-        /// si_code
-        /// set to
-        /// "(event&lt;&lt;8)\ |\ SIGTRAP" .
-        /// </summary>
         public const int PTRACE_EVENT_SECCOMP = 7;
         
-        /// <summary>
-        /// Stop induced by
-        /// PTRACE_INTERRUPT
-        /// command, or group-stop, or initial ptrace-stop when a new child is attached
-        /// (only if attached using
-        /// PTRACE_SEIZE ).
-        /// </summary>
         public const int PTRACE_EVENT_STOP = 128;
         
         public const int PTRACE_PEEKSIGINFO_SHARED = 1;

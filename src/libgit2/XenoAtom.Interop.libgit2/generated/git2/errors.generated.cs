@@ -24,32 +24,32 @@ namespace XenoAtom.Interop
         public enum git_error_code : int
         {
             /// <summary>
-            /// No error
+            /// No error occurred; the call was successful.
             /// </summary>
             GIT_OK = unchecked((int)0),
             
             /// <summary>
-            /// Generic error
+            /// An error occurred; call `git_error_last` for more information.
             /// </summary>
             GIT_ERROR = unchecked((int)-1),
             
             /// <summary>
-            /// Requested object could not be found
+            /// Requested object could not be found.
             /// </summary>
             GIT_ENOTFOUND = unchecked((int)-3),
             
             /// <summary>
-            /// Object exists preventing operation
+            /// Object exists preventing operation.
             /// </summary>
             GIT_EEXISTS = unchecked((int)-4),
             
             /// <summary>
-            /// More than one object matches
+            /// More than one object matches.
             /// </summary>
             GIT_EAMBIGUOUS = unchecked((int)-5),
             
             /// <summary>
-            /// Output buffer too short to hold data
+            /// Output buffer too short to hold data.
             /// </summary>
             GIT_EBUFS = unchecked((int)-6),
             
@@ -61,12 +61,12 @@ namespace XenoAtom.Interop
             GIT_EUSER = unchecked((int)-7),
             
             /// <summary>
-            /// Operation not allowed on bare repository
+            /// Operation not allowed on bare repository.
             /// </summary>
             GIT_EBAREREPO = unchecked((int)-8),
             
             /// <summary>
-            /// HEAD refers to branch with no commits
+            /// HEAD refers to branch with no commits.
             /// </summary>
             GIT_EUNBORNBRANCH = unchecked((int)-9),
             
@@ -202,32 +202,32 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// No error
+        /// No error occurred; the call was successful.
         /// </summary>
         public const libgit2.git_error_code GIT_OK = git_error_code.GIT_OK;
         
         /// <summary>
-        /// Generic error
+        /// An error occurred; call `git_error_last` for more information.
         /// </summary>
         public const libgit2.git_error_code GIT_ERROR = git_error_code.GIT_ERROR;
         
         /// <summary>
-        /// Requested object could not be found
+        /// Requested object could not be found.
         /// </summary>
         public const libgit2.git_error_code GIT_ENOTFOUND = git_error_code.GIT_ENOTFOUND;
         
         /// <summary>
-        /// Object exists preventing operation
+        /// Object exists preventing operation.
         /// </summary>
         public const libgit2.git_error_code GIT_EEXISTS = git_error_code.GIT_EEXISTS;
         
         /// <summary>
-        /// More than one object matches
+        /// More than one object matches.
         /// </summary>
         public const libgit2.git_error_code GIT_EAMBIGUOUS = git_error_code.GIT_EAMBIGUOUS;
         
         /// <summary>
-        /// Output buffer too short to hold data
+        /// Output buffer too short to hold data.
         /// </summary>
         public const libgit2.git_error_code GIT_EBUFS = git_error_code.GIT_EBUFS;
         
@@ -239,12 +239,12 @@ namespace XenoAtom.Interop
         public const libgit2.git_error_code GIT_EUSER = git_error_code.GIT_EUSER;
         
         /// <summary>
-        /// Operation not allowed on bare repository
+        /// Operation not allowed on bare repository.
         /// </summary>
         public const libgit2.git_error_code GIT_EBAREREPO = git_error_code.GIT_EBAREREPO;
         
         /// <summary>
-        /// HEAD refers to branch with no commits
+        /// HEAD refers to branch with no commits.
         /// </summary>
         public const libgit2.git_error_code GIT_EUNBORNBRANCH = git_error_code.GIT_EUNBORNBRANCH;
         
@@ -379,7 +379,8 @@ namespace XenoAtom.Interop
         public const libgit2.git_error_code GIT_EREADONLY = git_error_code.GIT_EREADONLY;
         
         /// <summary>
-        /// Error classes
+        /// Error classes are the category of error. They reflect the area of the
+        /// code where an error occurred.
         /// </summary>
         public enum git_error_t : uint
         {
@@ -541,8 +542,14 @@ namespace XenoAtom.Interop
         /// </remarks>
         public partial struct git_error
         {
+            /// <summary>
+            /// The error message for the last error.
+            /// </summary>
             public byte* message;
             
+            /// <summary>
+            /// The category of the last error. @type git_error_t
+            /// </summary>
             public int klass;
         }
         
@@ -550,7 +557,7 @@ namespace XenoAtom.Interop
         /// Return the last `git_error` object that was generated for the
         /// current thread.
         /// </summary>
-        /// <returns>A git_error object.</returns>
+        /// <returns>A pointer to a `git_error` object that describes the error.</returns>
         /// <remarks>
         /// This function will never return NULL.Callers should not rely on this to determine whether an error has
         /// occurred. For error checking, callers should examine the return

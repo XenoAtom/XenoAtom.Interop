@@ -43,10 +43,12 @@ internal partial class SqliteGenerator(LibDescriptor descriptor) : GeneratorBase
 
             MappingRules =
             {
-                e => e.MapMacroToConst("SQLITE_(?!EXTERN|API|CDECL|APICALL|STDCALL|CALLBACK|SYSAPI|DEPRECATED|EXPERIMENTAL|VERSION|VERSION_NUMBER|SOURCE_ID|STATIC|TRANSIENT)\\w+", "int"),
+                e => e.Map<CppField>("sqlite3_version|sqlite3_temp_directory|sqlite3_data_directory").Discard(),
+                e => e.MapMacroToConst("SQLITE_(?!EXTERN|API|CDECL|APICALL|STDCALL|CALLBACK|SYSAPI|DEPRECATED|EXPERIMENTAL|SCM|VERSION|VERSION_NUMBER|SOURCE_ID|STATIC|TRANSIENT)\\w+", "int"),
                 e => e.MapMacroToConst("SQLITE_VERSION", "char*"),
                 e => e.MapMacroToConst("SQLITE_SOURCE_ID", "char*"),
                 e => e.MapMacroToConst("SQLITE_VERSION_NUMBER", "int"),
+                e => e.MapMacroToConst("SQLITE_SCM_.*", "char*"),
                 e => e.Map<CppClass>("__va_list_tag").Discard(), // discard __va_list_tag
                 e => e.Map<CppParameter>(".*::ppStmt").ByRef(CSharpRefKind.Out),
                 e => e.Map<CppParameter>("sqlite3_prepare.*::pzTail").ByRef(CSharpRefKind.Out),

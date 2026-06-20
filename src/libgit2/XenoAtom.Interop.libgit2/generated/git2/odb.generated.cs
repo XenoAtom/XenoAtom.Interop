@@ -85,6 +85,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Function type for callbacks from git_odb_foreach.
         /// </summary>
+        /// <param name="id">an id of an object in the object database</param>
+        /// <param name="payload">the payload from the initial call to git_odb_foreach</param>
+        /// <returns>0 on success, or an error code</returns>
         public readonly partial struct git_odb_foreach_cb : IEquatable<git_odb_foreach_cb>
         {
             public git_odb_foreach_cb(delegate*unmanaged[Cdecl]<libgit2.git_oid*, void*, int> value) => this.Value = value;
@@ -110,17 +113,54 @@ namespace XenoAtom.Interop
         
         public const uint GIT_ODB_OPTIONS_VERSION = 1;
         
+        /// <summary>
+        /// Create a new object database with no backends.
+        /// </summary>
+        /// <param name="odb">location to store the database pointer, if opened.</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// Before the ODB can be used for read/writing, a custom database
+        /// backend must be manually added using `git_odb_add_backend()`
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_new(out libgit2.git_odb @out);
+        public static partial int git_odb_new(ref libgit2.git_odb odb);
         
+        /// <summary>
+        /// Create a new object database and automatically add
+        /// the two default backends:
+        /// </summary>
+        /// <param name="odb_out">location to store the database pointer, if opened.
+        /// Set to NULL if the open failed.</param>
+        /// <param name="objects_dir">path of the backends' "objects" directory.</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// - git_odb_backend_loose: read and write loose object files
+        /// from disk, assuming `objects_dir` as the Objects folder- git_odb_backend_pack: read objects from packfiles,
+        /// assuming `objects_dir` as the Objects folder which
+        /// contains a 'pack/' folder with the corresponding data
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_open(out libgit2.git_odb @out, byte* objects_dir);
+        public static partial int git_odb_open(ref libgit2.git_odb odb_out, byte* objects_dir);
         
+        /// <summary>
+        /// Create a new object database and automatically add
+        /// the two default backends:
+        /// </summary>
+        /// <param name="odb_out">location to store the database pointer, if opened.
+        /// Set to NULL if the open failed.</param>
+        /// <param name="objects_dir">path of the backends' "objects" directory.</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// - git_odb_backend_loose: read and write loose object files
+        /// from disk, assuming `objects_dir` as the Objects folder- git_odb_backend_pack: read objects from packfiles,
+        /// assuming `objects_dir` as the Objects folder which
+        /// contains a 'pack/' folder with the corresponding data
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_odb_open(out libgit2.git_odb @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> objects_dir);
+        public static partial int git_odb_open(ref libgit2.git_odb odb_out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> objects_dir);
         
         /// <summary>
         /// Add an on-disk alternate to an existing Object DB.
@@ -163,7 +203,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Read an object from the database.
         /// </summary>
-        /// <param name="out">pointer where to store the read object</param>
+        /// <param name="obj">pointer where to store the read object</param>
         /// <param name="db">database to search for the object in.</param>
         /// <param name="id">identity of the object to read.</param>
         /// <returns>@return 0 if the object was read, GIT_ENOTFOUND if the object is
@@ -176,13 +216,13 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_read")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_read(out libgit2.git_odb_object @out, libgit2.git_odb db, in libgit2.git_oid id);
+        public static partial libgit2.git_result git_odb_read(ref libgit2.git_odb_object obj, libgit2.git_odb db, in libgit2.git_oid id);
         
         /// <summary>
         /// Read an object from the database, given a prefix
         /// of its identifier.
         /// </summary>
-        /// <param name="out">pointer where to store the read object</param>
+        /// <param name="obj">pointer where to store the read object</param>
         /// <param name="db">database to search for the object in.</param>
         /// <param name="short_id">a prefix of the id of the object to read.</param>
         /// <param name="len">the length of the prefix</param>
@@ -204,7 +244,7 @@ namespace XenoAtom.Interop
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_read_prefix")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_read_prefix(out libgit2.git_odb_object @out, libgit2.git_odb db, in libgit2.git_oid short_id, nuint len);
+        public static partial libgit2.git_result git_odb_read_prefix(ref libgit2.git_odb_object obj, libgit2.git_odb db, in libgit2.git_oid short_id, nuint len);
         
         /// <summary>
         /// Read the header of an object from the database, without
@@ -324,7 +364,7 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <param name="out">pointer to store the OID result of the write</param>
         /// <param name="odb">object database where to store the object</param>
-        /// <param name="data">buffer with the data to store</param>
+        /// <param name="data">`const unsigned char *` buffer with the data to store</param>
         /// <param name="len">size of the buffer</param>
         /// <param name="type">type of the data to store</param>
         /// <returns>0 or an error code</returns>
@@ -395,7 +435,7 @@ namespace XenoAtom.Interop
         /// <param name="stream">the stream</param>
         /// <param name="buffer">a user-allocated buffer to store the data in.</param>
         /// <param name="len">the buffer's length</param>
-        /// <returns>0 if the read succeeded, error code otherwise</returns>
+        /// <returns>the number of bytes read if succeeded, error code otherwise</returns>
         /// <remarks>
         /// Most backends don't implement streaming reads
         /// </remarks>
@@ -470,17 +510,53 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_odb_write_multi_pack_index(libgit2.git_odb db);
         
+        /// <summary>
+        /// Determine the object-ID (sha1 or sha256 hash) of a data buffer
+        /// </summary>
+        /// <param name="oid">the resulting object-ID.</param>
+        /// <param name="data">data to hash</param>
+        /// <param name="len">size of the data</param>
+        /// <param name="object_type">of the data to hash</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// The resulting OID will be the identifier for the data buffer as if
+        /// the data buffer it were to written to the ODB.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_hash")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_hash(out libgit2.git_oid @out, void* data, nuint len, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_odb_hash(out libgit2.git_oid oid, void* data, nuint len, libgit2.git_object_t object_type);
         
+        /// <summary>
+        /// Read a file from disk and fill a git_oid with the object id
+        /// that the file would have if it were written to the Object
+        /// Database as an object of the given type (w/o applying filters).
+        /// Similar functionality to git.git's `git hash-object` without
+        /// the `-w` flag, however, with the --no-filters flag.
+        /// If you need filters, see git_repository_hashfile.
+        /// </summary>
+        /// <param name="oid">oid structure the result is written into.</param>
+        /// <param name="path">file to read and determine object id for</param>
+        /// <param name="object_type">of the data to hash</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_hashfile")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_hashfile(out libgit2.git_oid @out, byte* path, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_odb_hashfile(out libgit2.git_oid oid, byte* path, libgit2.git_object_t object_type);
         
+        /// <summary>
+        /// Read a file from disk and fill a git_oid with the object id
+        /// that the file would have if it were written to the Object
+        /// Database as an object of the given type (w/o applying filters).
+        /// Similar functionality to git.git's `git hash-object` without
+        /// the `-w` flag, however, with the --no-filters flag.
+        /// If you need filters, see git_repository_hashfile.
+        /// </summary>
+        /// <param name="oid">oid structure the result is written into.</param>
+        /// <param name="path">file to read and determine object id for</param>
+        /// <param name="object_type">of the data to hash</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_odb_hashfile")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libgit2.git_result git_odb_hashfile(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_object_t type);
+        public static partial libgit2.git_result git_odb_hashfile(out libgit2.git_oid oid, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, libgit2.git_object_t object_type);
         
         /// <summary>
         /// Create a copy of an odb_object
@@ -526,7 +602,7 @@ namespace XenoAtom.Interop
         /// Return the data of an ODB object
         /// </summary>
         /// <param name="object">the object</param>
-        /// <returns>a pointer to the data</returns>
+        /// <returns>@type `const unsigned char *` a pointer to the data</returns>
         /// <remarks>
         /// This is the uncompressed, raw data as read from the ODB,
         /// without the leading header.This pointer is owned by the object and shall not be free'd.

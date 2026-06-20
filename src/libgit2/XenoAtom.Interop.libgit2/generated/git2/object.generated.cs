@@ -51,14 +51,14 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// The object obtained will be so that its identifier
         /// matches the first 'len' hexadecimal characters
-        /// (packets of 4 bits) of the given 'id'.
-        /// 'len' must be at least GIT_OID_MINPREFIXLEN, and
-        /// long enough to identify a unique object matching
-        /// the prefix; otherwise the method will fail.The generated reference is owned by the repository and
+        /// (packets of 4 bits) of the given `id`. `len` must be
+        /// at least `GIT_OID_MINPREFIXLEN`, and long enough to
+        /// identify a unique object matching the prefix; otherwise
+        /// the method will fail.The generated reference is owned by the repository and
         /// should be closed with the `git_object_free` method
-        /// instead of free'd manually.The 'type' parameter must match the type of the object
+        /// instead of free'd manually.The `type` parameter must match the type of the object
         /// in the odb; the method will fail otherwise.
-        /// The special value 'GIT_OBJECT_ANY' may be passed to let
+        /// The special value `GIT_OBJECT_ANY` may be passed to let
         /// the method guess the object's type.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_object_lookup_prefix")]

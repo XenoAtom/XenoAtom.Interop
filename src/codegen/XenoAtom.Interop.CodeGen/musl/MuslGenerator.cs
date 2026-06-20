@@ -1,6 +1,8 @@
 // Copyright (c) Alexandre Mutel. All rights reserved.
 // Licensed under the BSD-Clause 2 license.
 // See license.txt file in the project root for full license information.
+using CppAst;
+using CppAst.CodeGen.CSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,8 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using CppAst;
-using CppAst.CodeGen.CSharp;
+using System.Xml.Linq;
 using Zio;
 
 namespace XenoAtom.Interop.CodeGen.musl;
@@ -133,6 +134,24 @@ internal partial class MuslGenerator : GeneratorBase
 
                     // Discard these functions that are not supported (clone) or have more suitable equivalent (exec)
                     e => e.Map<CppFunction>("(clone|execl|execle|execlp)").Discard(),
+
+                    // Discard extern fields (time.h)
+                    e => e.Map<CppField>("daylight").Discard(),
+                    e => e.Map<CppField>("timezone").Discard(),
+                    e => e.Map<CppField>("getdate_err").Discard(),
+                    e => e.Map<CppField>("tzname").Discard(),
+                    
+                    // Discard extern fields (unistd.h)
+                    e => e.Map<CppField>("optarg").Discard(),
+                    e => e.Map<CppField>("optind").Discard(),
+                    e => e.Map<CppField>("opterr").Discard(),
+                    e => e.Map<CppField>("optopt").Discard(),
+                    e => e.Map<CppField>("optreset").Discard(),
+                    e => e.Map<CppField>("environ").Discard(),
+
+                    // Discard extern fields (errno.h)
+                    e => e.Map<CppField>("program_invocation_short_name").Discard(),
+                    e => e.Map<CppField>("program_invocation_name").Discard(),
 
                     // limits.h (constants)
                     e => e.MapMacroToConst("PATH_MAX", "int"),

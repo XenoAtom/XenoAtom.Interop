@@ -637,6 +637,8 @@ namespace XenoAtom.Interop
             
             DRM_MODE_OBJECT_PLANE = unchecked((uint)-286331154),
             
+            DRM_MODE_OBJECT_COLOROP = unchecked((uint)-84215046),
+            
             DRM_MODE_OBJECT_ANY = unchecked((uint)0),
         }
         
@@ -655,6 +657,8 @@ namespace XenoAtom.Interop
         public const libdrm.drm_mode_object DRM_MODE_OBJECT_BLOB = drm_mode_object.DRM_MODE_OBJECT_BLOB;
         
         public const libdrm.drm_mode_object DRM_MODE_OBJECT_PLANE = drm_mode_object.DRM_MODE_OBJECT_PLANE;
+        
+        public const libdrm.drm_mode_object DRM_MODE_OBJECT_COLOROP = drm_mode_object.DRM_MODE_OBJECT_COLOROP;
         
         public const libdrm.drm_mode_object DRM_MODE_OBJECT_ANY = drm_mode_object.DRM_MODE_OBJECT_ANY;
         

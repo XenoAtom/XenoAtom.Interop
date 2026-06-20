@@ -32,92 +32,106 @@ namespace XenoAtom.Interop
         /// `git_config_set_writeorder`.git_config_open_default() and git_repository_config() honor those
         /// priority levels as well.
         /// </remarks>
+        /// <seealso cref="git_config_open_default"/>
+        /// <seealso cref="git_repository_config"/>
         public enum git_config_level_t : int
         {
             /// <summary>
-            /// System-wide on Windows, for compatibility with portable git
+            /// System-wide on Windows, for compatibility with "Portable Git".
             /// </summary>
             GIT_CONFIG_LEVEL_PROGRAMDATA = unchecked((int)1),
             
             /// <summary>
-            /// System-wide configuration file; /etc/gitconfig on Linux systems
+            /// System-wide configuration file; `/etc/gitconfig` on Linux.
             /// </summary>
             GIT_CONFIG_LEVEL_SYSTEM = unchecked((int)2),
             
             /// <summary>
-            /// XDG compatible configuration file; typically ~/.config/git/config
+            /// XDG compatible configuration file; typically
+            /// `~/.config/git/config`.
             /// </summary>
             GIT_CONFIG_LEVEL_XDG = unchecked((int)3),
             
             /// <summary>
-            /// User-specific configuration file (also called Global configuration
-            /// file); typically ~/.gitconfig
+            /// Global configuration file is the user-specific configuration;
+            /// typically `~/.gitconfig`.
             /// </summary>
             GIT_CONFIG_LEVEL_GLOBAL = unchecked((int)4),
             
             /// <summary>
-            /// Repository specific configuration file; $WORK_DIR/.git/config on
-            /// non-bare repos
+            /// Local configuration, the repository-specific configuration file;
+            /// typically `$GIT_DIR/config`.
             /// </summary>
             GIT_CONFIG_LEVEL_LOCAL = unchecked((int)5),
             
             /// <summary>
-            /// Worktree specific configuration file; $GIT_DIR/config.worktree
+            /// Worktree-specific configuration; typically
+            /// `$GIT_DIR/config.worktree`.
             /// </summary>
             GIT_CONFIG_LEVEL_WORKTREE = unchecked((int)6),
             
             /// <summary>
-            /// Application specific configuration file; freely defined by applications
+            /// Application-specific configuration file. Callers into libgit2
+            /// can add their own configuration beginning at this level.
             /// </summary>
             GIT_CONFIG_LEVEL_APP = unchecked((int)7),
             
             /// <summary>
-            /// Represents the highest level available config file (i.e. the most
-            /// specific config file available that actually is loaded)
+            /// Not a configuration level; callers can use this value when
+            /// querying configuration levels to specify that they want to
+            /// have data from the highest-level currently configuration.
+            /// This can be used to indicate that callers want the most
+            /// specific config file available that actually is loaded.
             /// </summary>
             GIT_CONFIG_HIGHEST_LEVEL = unchecked((int)-1),
         }
         
         /// <summary>
-        /// System-wide on Windows, for compatibility with portable git
+        /// System-wide on Windows, for compatibility with "Portable Git".
         /// </summary>
         public const libgit2.git_config_level_t GIT_CONFIG_LEVEL_PROGRAMDATA = git_config_level_t.GIT_CONFIG_LEVEL_PROGRAMDATA;
         
         /// <summary>
-        /// System-wide configuration file; /etc/gitconfig on Linux systems
+        /// System-wide configuration file; `/etc/gitconfig` on Linux.
         /// </summary>
         public const libgit2.git_config_level_t GIT_CONFIG_LEVEL_SYSTEM = git_config_level_t.GIT_CONFIG_LEVEL_SYSTEM;
         
         /// <summary>
-        /// XDG compatible configuration file; typically ~/.config/git/config
+        /// XDG compatible configuration file; typically
+        /// `~/.config/git/config`.
         /// </summary>
         public const libgit2.git_config_level_t GIT_CONFIG_LEVEL_XDG = git_config_level_t.GIT_CONFIG_LEVEL_XDG;
         
         /// <summary>
-        /// User-specific configuration file (also called Global configuration
-        /// file); typically ~/.gitconfig
+        /// Global configuration file is the user-specific configuration;
+        /// typically `~/.gitconfig`.
         /// </summary>
         public const libgit2.git_config_level_t GIT_CONFIG_LEVEL_GLOBAL = git_config_level_t.GIT_CONFIG_LEVEL_GLOBAL;
         
         /// <summary>
-        /// Repository specific configuration file; $WORK_DIR/.git/config on
-        /// non-bare repos
+        /// Local configuration, the repository-specific configuration file;
+        /// typically `$GIT_DIR/config`.
         /// </summary>
         public const libgit2.git_config_level_t GIT_CONFIG_LEVEL_LOCAL = git_config_level_t.GIT_CONFIG_LEVEL_LOCAL;
         
         /// <summary>
-        /// Worktree specific configuration file; $GIT_DIR/config.worktree
+        /// Worktree-specific configuration; typically
+        /// `$GIT_DIR/config.worktree`.
         /// </summary>
         public const libgit2.git_config_level_t GIT_CONFIG_LEVEL_WORKTREE = git_config_level_t.GIT_CONFIG_LEVEL_WORKTREE;
         
         /// <summary>
-        /// Application specific configuration file; freely defined by applications
+        /// Application-specific configuration file. Callers into libgit2
+        /// can add their own configuration beginning at this level.
         /// </summary>
         public const libgit2.git_config_level_t GIT_CONFIG_LEVEL_APP = git_config_level_t.GIT_CONFIG_LEVEL_APP;
         
         /// <summary>
-        /// Represents the highest level available config file (i.e. the most
-        /// specific config file available that actually is loaded)
+        /// Not a configuration level; callers can use this value when
+        /// querying configuration levels to specify that they want to
+        /// have data from the highest-level currently configuration.
+        /// This can be used to indicate that callers want the most
+        /// specific config file available that actually is loaded.
         /// </summary>
         public const libgit2.git_config_level_t GIT_CONFIG_HIGHEST_LEVEL = git_config_level_t.GIT_CONFIG_HIGHEST_LEVEL;
         
@@ -149,17 +163,17 @@ namespace XenoAtom.Interop
         public partial struct git_config_entry
         {
             /// <summary>
-            /// Name of the configuration entry (normalized)
+            /// Name of the configuration entry (normalized).
             /// </summary>
             public byte* name;
             
             /// <summary>
-            /// Literal (string) value of the entry
+            /// Literal (string) value of the entry.
             /// </summary>
             public byte* value;
             
             /// <summary>
-            /// The type of backend that this entry exists in (eg, "file")
+            /// The type of backend that this entry exists in (eg, "file").
             /// </summary>
             public byte* backend_type;
             
@@ -170,24 +184,18 @@ namespace XenoAtom.Interop
             public byte* origin_path;
             
             /// <summary>
-            /// Depth of includes where this variable was found
+            /// Depth of includes where this variable was found.
             /// </summary>
             public uint include_depth;
             
             /// <summary>
-            /// Configuration level for the file this was found in
+            /// Configuration level for the file this was found in.
             /// </summary>
             public libgit2.git_config_level_t level;
-            
-            /// <summary>
-            /// Free function for this entry; for internal purposes. Callers
-            /// should call `git_config_entry_free` to free data.
-            /// </summary>
-            public delegate*unmanaged[Cdecl]<libgit2.git_config_entry*, void> free;
         }
         
         /// <summary>
-        /// An opaque structure for a configuration iterator
+        /// An opaque structure for a configuration iterator.
         /// </summary>
         public readonly partial record struct git_config_iterator(nint Handle)
         {
@@ -207,7 +215,7 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// A config enumeration callback
+        /// A config enumeration callback.
         /// </summary>
         /// <param name="entry">the entry currently being enumerated</param>
         /// <param name="payload">a user-specified pointer</param>
@@ -236,7 +244,7 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Free a config entry
+        /// Free a config entry.
         /// </summary>
         /// <param name="entry">The entry to free.</param>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_entry_free")]
@@ -337,9 +345,9 @@ namespace XenoAtom.Interop
         /// <param name="cfg">the configuration to add the file to</param>
         /// <param name="path">path to the configuration file to add</param>
         /// <param name="level">the priority level of the backend</param>
-        /// <param name="force">replace config file at the given priority level</param>
         /// <param name="repo">optional repository to allow parsing of
         /// conditional includes</param>
+        /// <param name="force">replace config file at the given priority level</param>
         /// <returns>@return 0 on success, GIT_EEXISTS when adding more than one file
         /// for a given priority level (and force_replace set to 0),
         /// GIT_ENOTFOUND when the file doesn't exist or error code</returns>
@@ -362,9 +370,9 @@ namespace XenoAtom.Interop
         /// <param name="cfg">the configuration to add the file to</param>
         /// <param name="path">path to the configuration file to add</param>
         /// <param name="level">the priority level of the backend</param>
-        /// <param name="force">replace config file at the given priority level</param>
         /// <param name="repo">optional repository to allow parsing of
         /// conditional includes</param>
+        /// <param name="force">replace config file at the given priority level</param>
         /// <returns>@return 0 on success, GIT_EEXISTS when adding more than one file
         /// for a given priority level (and force_replace set to 0),
         /// GIT_ENOTFOUND when the file doesn't exist or error code</returns>
@@ -448,6 +456,16 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_config_open_global(out libgit2.git_config @out, libgit2.git_config config);
         
+        /// <summary>
+        /// Set the write order for configuration backends. By default, the
+        /// write ordering does not match the read ordering; for example, the
+        /// worktree configuration is a high-priority for reading, but is not
+        /// written to unless explicitly chosen.
+        /// </summary>
+        /// <param name="cfg">the configuration to change write order of</param>
+        /// <param name="levels">the ordering of levels for writing</param>
+        /// <param name="len">the length of the levels array</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_config_set_writeorder")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_config_set_writeorder(libgit2.git_config cfg, ref libgit2.git_config_level_t levels, nuint len);

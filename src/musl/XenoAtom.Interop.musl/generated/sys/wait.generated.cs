@@ -37,70 +37,22 @@ namespace XenoAtom.Interop
         
         public const musl.idtype_t P_PIDFD = idtype_t.P_PIDFD;
         
-        /// <summary>
-        /// return immediately if no child has exited.
-        /// </summary>
         public const int WNOHANG = 1;
         
-        /// <summary>
-        /// also return if a child has stopped
-        /// (but not traced via
-        /// ptrace (2)).
-        /// Status for
-        /// traced
-        /// children which have stopped is provided
-        /// even if this option is not specified.
-        /// </summary>
         public const int WUNTRACED = 2;
         
-        /// <summary>
-        /// Wait for children that have been stopped by delivery of a signal.
-        /// </summary>
         public const int WSTOPPED = 2;
         
-        /// <summary>
-        /// Wait for children that have terminated.
-        /// </summary>
         public const int WEXITED = 4;
         
-        /// <summary>
-        /// Wait for (previously stopped) children that have been
-        /// resumed by delivery of
-        /// SIGCONT .
-        /// 
-        /// The following flags may additionally be ORed in
-        /// options :
-        /// </summary>
         public const int WCONTINUED = 8;
         
-        /// <summary>
-        /// Leave the child in a waitable state; a later wait call
-        /// can be used to again retrieve the child status information.
-        /// 
-        /// Upon successful return,
-        /// waitid ()
-        /// fills in the following fields of the
-        /// siginfo_t
-        /// structure pointed to by
-        /// infop :
-        /// </summary>
         public const int WNOWAIT = 16777216;
         
         public const int __WNOTHREAD = 536870912;
         
         public const int __WALL = 1073741824;
         
-        /// <summary>
-        /// since 0.99pl10
-        /// Wait for "clone" children only.
-        /// If omitted, then wait for "non-clone" children only.
-        /// (A "clone" child is one which delivers no signal, or a signal other than
-        /// SIGCHLD
-        /// to its parent upon termination.)
-        /// This option is ignored if
-        /// __WALL
-        /// is also specified.
-        /// </summary>
         public const int __WCLONE = -2147483648;
         
         /// <summary>

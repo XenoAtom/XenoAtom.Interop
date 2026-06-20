@@ -24,22 +24,22 @@ namespace XenoAtom.Interop
         public enum VkFullScreenExclusiveEXT : uint
         {
             /// <summary>
-            /// Indicates the implementation should: determine the appropriate full-screen method by whatever means it deems appropriate.
+            /// Specifies that the implementation should: determine the appropriate full-screen method by whatever means it deems appropriate.
             /// </summary>
             VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT = unchecked((uint)0),
             
             /// <summary>
-            /// Indicates the implementation may: use full-screen exclusive mechanisms when available. Such mechanisms may: result in better performance and/or the availability of different presentation capabilities, but may: require a more disruptive transition during swapchain initialization, first presentation and/or destruction.
+            /// Specifies that the implementation may: use full-screen exclusive mechanisms when available. Such mechanisms may: result in better performance and/or the availability of different presentation capabilities, but may: require a more disruptive transition during swapchain initialization, first presentation and/or destruction.
             /// </summary>
             VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT = unchecked((uint)1),
             
             /// <summary>
-            /// Indicates the implementation should: avoid using full-screen mechanisms which rely on disruptive transitions.
+            /// Specifies that the implementation should: avoid using full-screen mechanisms which rely on disruptive transitions.
             /// </summary>
             VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT = unchecked((uint)2),
             
             /// <summary>
-            /// Indicates the application will manage full-screen exclusive mode by using the <see cref="M:vkAcquireFullScreenExclusiveModeEXT"/> and <see cref="M:vkReleaseFullScreenExclusiveModeEXT"/> commands.
+            /// Specifies that the application will manage full-screen exclusive mode by using the <see cref="M:vkAcquireFullScreenExclusiveModeEXT"/> and <see cref="M:vkReleaseFullScreenExclusiveModeEXT"/> commands.
             /// </summary>
             VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT = unchecked((uint)3),
             
@@ -47,22 +47,22 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Indicates the implementation should: determine the appropriate full-screen method by whatever means it deems appropriate.
+        /// Specifies that the implementation should: determine the appropriate full-screen method by whatever means it deems appropriate.
         /// </summary>
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT;
         
         /// <summary>
-        /// Indicates the implementation may: use full-screen exclusive mechanisms when available. Such mechanisms may: result in better performance and/or the availability of different presentation capabilities, but may: require a more disruptive transition during swapchain initialization, first presentation and/or destruction.
+        /// Specifies that the implementation may: use full-screen exclusive mechanisms when available. Such mechanisms may: result in better performance and/or the availability of different presentation capabilities, but may: require a more disruptive transition during swapchain initialization, first presentation and/or destruction.
         /// </summary>
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT;
         
         /// <summary>
-        /// Indicates the implementation should: avoid using full-screen mechanisms which rely on disruptive transitions.
+        /// Specifies that the implementation should: avoid using full-screen mechanisms which rely on disruptive transitions.
         /// </summary>
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_DISALLOWED_EXT;
         
         /// <summary>
-        /// Indicates the application will manage full-screen exclusive mode by using the <see cref="M:vkAcquireFullScreenExclusiveModeEXT"/> and <see cref="M:vkReleaseFullScreenExclusiveModeEXT"/> commands.
+        /// Specifies that the application will manage full-screen exclusive mode by using the <see cref="M:vkAcquireFullScreenExclusiveModeEXT"/> and <see cref="M:vkReleaseFullScreenExclusiveModeEXT"/> commands.
         /// </summary>
         public const vulkan.VkFullScreenExclusiveEXT VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT = VkFullScreenExclusiveEXT.VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT;
         
@@ -606,8 +606,14 @@ namespace XenoAtom.Interop
         /// </remarks>
         public partial struct VkWin32KeyedMutexAcquireReleaseInfoNV()
         {
+            /// <summary>
+            /// A <see cref="T:VkStructureType"/> value identifying this structure.
+            /// </summary>
             public vulkan.VkStructureType sType = VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV;
             
+            /// <summary>
+            /// `NULL` or a pointer to a structure extending this structure.
+            /// </summary>
             public void* pNext;
             
             /// <summary>
@@ -688,6 +694,9 @@ namespace XenoAtom.Interop
             /// </summary>
             public void* pNext;
             
+            /// <summary>
+            /// A boolean describing whether the surface is able to make use of exclusive full-screen access.
+            /// </summary>
             public vulkan.VkBool32 fullScreenExclusiveSupported;
         }
         
@@ -754,7 +763,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_win32_surface</para>
             /// </remarks>
@@ -779,7 +788,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_win32_surface</para>
             /// </remarks>
@@ -874,7 +883,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
@@ -898,7 +907,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
@@ -949,7 +958,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
@@ -974,7 +983,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_memory_win32</para>
             /// </remarks>
@@ -1022,7 +1031,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_semaphore_win32</para>
             /// </remarks>
@@ -1045,7 +1054,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_semaphore_win32</para>
             /// </remarks>
@@ -1094,7 +1103,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_semaphore_win32</para>
             /// </remarks>
@@ -1118,7 +1127,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_semaphore_win32</para>
             /// </remarks>
@@ -1167,7 +1176,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_fence_win32</para>
             /// </remarks>
@@ -1190,7 +1199,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_INVALID_EXTERNAL_HANDLE</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_fence_win32</para>
             /// </remarks>
@@ -1239,7 +1248,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_fence_win32</para>
             /// </remarks>
@@ -1263,7 +1272,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_KHR_external_fence_win32</para>
             /// </remarks>
@@ -1308,13 +1317,13 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that owns the memory.</param>
             /// <param name="memory">The <see cref="T:VkDeviceMemory"/> object.</param>
             /// <param name="handleType">A bitmask of <see cref="T:VkExternalMemoryHandleTypeFlagBitsNV"/> containing a single bit specifying the type of handle requested.</param>
-            /// <param name="handle">A pointer to a Windows <c>HANDLE</c> in which the handle is returned.</param>
+            /// <param name="pHandle">A pointer to a Windows <c>HANDLE</c> in which the handle is returned.</param>
             /// <remarks>
             /// <list type="bullet">
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_NV_external_memory_win32</para>
             /// </remarks>
@@ -1333,13 +1342,13 @@ namespace XenoAtom.Interop
             /// <param name="device">The logical device that owns the memory.</param>
             /// <param name="memory">The <see cref="T:VkDeviceMemory"/> object.</param>
             /// <param name="handleType">A bitmask of <see cref="T:VkExternalMemoryHandleTypeFlagBitsNV"/> containing a single bit specifying the type of handle requested.</param>
-            /// <param name="handle">A pointer to a Windows <c>HANDLE</c> in which the handle is returned.</param>
+            /// <param name="pHandle">A pointer to a Windows <c>HANDLE</c> in which the handle is returned.</param>
             /// <remarks>
             /// <list type="bullet">
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_TOO_MANY_OBJECTS</c></description></item><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_NV_external_memory_win32</para>
             /// </remarks>
@@ -1389,7 +1398,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_INCOMPLETE</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
@@ -1414,7 +1423,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_INCOMPLETE</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
@@ -1438,7 +1447,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item><item><description><c>VK_INCOMPLETE</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
@@ -1488,7 +1497,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
@@ -1539,7 +1548,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
@@ -1591,7 +1600,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
@@ -1615,7 +1624,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_OUT_OF_DEVICE_MEMORY</c></description></item><item><description><c>VK_ERROR_SURFACE_LOST_KHR</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_EXT_full_screen_exclusive</para>
             /// </remarks>
@@ -1663,7 +1672,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_NV_acquire_winrt_display</para>
             /// </remarks>
@@ -1715,7 +1724,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_NV_acquire_winrt_display</para>
             /// </remarks>
@@ -1739,7 +1748,7 @@ namespace XenoAtom.Interop
             /// <listheader><description>On success, this command returns: </description></listheader><item><description><c>VK_SUCCESS</c></description></item>
             /// </list>
             /// <list type="bullet">
-            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item>
+            /// <listheader><description>On failure, this command returns: </description></listheader><item><description><c>VK_ERROR_OUT_OF_HOST_MEMORY</c></description></item><item><description><c>VK_ERROR_DEVICE_LOST</c></description></item><item><description><c>VK_ERROR_INITIALIZATION_FAILED</c></description></item><item><description><c>VK_ERROR_UNKNOWN</c></description></item><item><description><c>VK_ERROR_VALIDATION_FAILED</c></description></item>
             /// </list>
             /// <para>Extension: VK_NV_acquire_winrt_display</para>
             /// </remarks>

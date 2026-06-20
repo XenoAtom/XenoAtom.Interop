@@ -20,6 +20,7 @@ namespace XenoAtom.Interop
         /// <param name="str">The message from the transport</param>
         /// <param name="len">The length of the message</param>
         /// <param name="payload">Payload provided by the caller</param>
+        /// <returns>0 on success or an error code</returns>
         /// <remarks>
         /// Return a negative value to cancel the network operation.
         /// </remarks>
@@ -47,8 +48,12 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Signature of a function which creates a transport
+        /// Signature of a function which creates a transport.
         /// </summary>
+        /// <param name="out">the transport generate</param>
+        /// <param name="owner">the owner for the transport</param>
+        /// <param name="param">the param to the transport creation</param>
+        /// <returns>0 on success or an error code</returns>
         public readonly partial struct git_transport_cb : IEquatable<git_transport_cb>
         {
             public git_transport_cb(delegate*unmanaged[Cdecl]<libgit2.git_transport*, libgit2.git_remote, void*, int> value) => this.Value = value;

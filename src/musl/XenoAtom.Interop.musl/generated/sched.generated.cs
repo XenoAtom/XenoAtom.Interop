@@ -41,83 +41,16 @@ namespace XenoAtom.Interop
             public FixedArray16<nuint> __bits;
         }
         
-        /// <summary>
-        /// the standard round-robin time-sharing policy;
-        /// In the 2.6 kernel sources, SCHED_OTHER is actually called
-        /// SCHED_NORMAL.
-        /// </summary>
         public const int SCHED_OTHER = 0;
         
-        /// <summary>
-        /// a first-in, first-out policy; and
-        /// </summary>
         public const int SCHED_FIFO = 1;
         
-        /// <summary>
-        /// a round-robin policy.
-        /// 
-        /// Linux also provides the following policy:
-        /// </summary>
         public const int SCHED_RR = 2;
         
-        /// <summary>
-        /// for "batch" style execution of processes; and
-        /// </summary>
         public const int SCHED_BATCH = 3;
         
-        /// <summary>
-        /// for running
-        /// very
-        /// low priority background jobs.
-        /// 
-        /// Various "real-time" policies are also supported,
-        /// for special time-critical applications that need precise control over
-        /// the way in which runnable threads are selected for execution.
-        /// For the rules governing when a process may use these policies, see
-        /// sched (7).
-        /// The real-time policies that may be specified in
-        /// policy
-        /// are:
-        /// </summary>
         public const int SCHED_IDLE = 5;
         
-        /// <summary>
-        /// a deadline scheduling policy; see
-        /// sched (7)
-        /// for details.
-        /// 
-        /// The
-        /// attr
-        /// argument is a pointer to a structure that defines
-        /// the new scheduling policy and attributes for the specified thread.
-        /// This structure has the following form:
-        /// 
-        /// +4n
-        /// 
-        /// struct sched_attr {
-        ///     u32 size;              /* Size of this structure */
-        ///     u32 sched_policy;      /* Policy (SCHED_*) */
-        ///     u64 sched_flags;       /* Flags */
-        ///     s32 sched_nice;        /* Nice value (SCHED_OTHER,
-        ///                               SCHED_BATCH) */
-        ///     u32 sched_priority;    /* Static priority (SCHED_FIFO,
-        ///                               SCHED_RR) */
-        ///     /* For SCHED_DEADLINE */
-        ///     u64 sched_runtime;
-        ///     u64 sched_deadline;
-        ///     u64 sched_period;
-        /// \&amp;
-        ///     /* Utilization hints */
-        ///     u32 sched_util_min;
-        ///     u32 sched_util_max;
-        /// };
-        /// 
-        /// 
-        /// 
-        /// The fields of the
-        /// sched_attr
-        /// structure are as follows:
-        /// </summary>
         public const int SCHED_DEADLINE = 6;
         
         public const int SCHED_RESET_ON_FORK = 1073741824;
@@ -126,30 +59,8 @@ namespace XenoAtom.Interop
         
         public const int CLONE_VM = 256;
         
-        /// <summary>
-        /// Reverse the effect of the
-        /// clone (2)
-        /// CLONE_FS
-        /// flag.
-        /// Unshare filesystem attributes, so that the calling process
-        /// no longer shares its root directory
-        /// ( chroot (2)),
-        /// current directory
-        /// ( chdir (2)),
-        /// or umask
-        /// ( umask (2))
-        /// attributes with any other process.
-        /// </summary>
         public const int CLONE_FS = 512;
         
-        /// <summary>
-        /// Reverse the effect of the
-        /// clone (2)
-        /// CLONE_FILES
-        /// flag.
-        /// Unshare the file descriptor table, so that the calling process
-        /// no longer shares its file descriptors with any other process.
-        /// </summary>
         public const int CLONE_FILES = 1024;
         
         public const int CLONE_SIGHAND = 2048;
@@ -164,29 +75,6 @@ namespace XenoAtom.Interop
         
         public const int CLONE_THREAD = 65536;
         
-        /// <summary>
-        /// These flag name are inconsistent:
-        /// CLONE_NEWNS does the same thing in clone(), but CLONE_VM,
-        /// CLONE_FS, and CLONE_FILES reverse the action of the clone()
-        /// flags of the same name.
-        /// This flag has the same effect as the
-        /// clone (2)
-        /// CLONE_NEWNS
-        /// flag.
-        /// Unshare the mount namespace,
-        /// so that the calling process has a private copy of
-        /// its namespace which is not shared with any other process.
-        /// Specifying this flag automatically implies
-        /// CLONE_FS
-        /// as well.
-        /// Use of
-        /// CLONE_NEWNS
-        /// requires the
-        /// CAP_SYS_ADMIN
-        /// capability.
-        /// For further information, see
-        /// mount_namespaces (7).
-        /// </summary>
         public const int CLONE_NEWNS = 131072;
         
         public const int CLONE_SYSVSEM = 262144;
@@ -249,9 +137,10 @@ namespace XenoAtom.Interop
         /// For security reasons,
         /// commit e66eded8309ebf679d3d3c1f5820d1f2ca332c71
         /// https://lwn.net/Articles/543273/
-        /// The fix actually went into Linux 3.9 and into Linux 3.8.3. However, user namespaces
-        /// were, for practical purposes, unusable in earlier Linux 3.8.x because of the
-        /// various filesystems that didn't support userns.
+        /// The fix actually went into Linux 3.9 and into Linux 3.8.3.
+        /// However, user namespaces were, for practical purposes,
+        /// unusable in earlier Linux 3.8.x because of the various filesystems
+        /// that didn't support userns.
         /// CLONE_NEWUSER
         /// cannot be specified in conjunction with
         /// CLONE_FS .
@@ -332,13 +221,6 @@ namespace XenoAtom.Interop
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "setns")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int setns(int fd, int nstype);
-        
-        /// <summary>
-        /// Copy memory area
-        /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "memcpy")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* memcpy(void* dest, void* src, nuint n);
         
         /// <summary>
         /// Compare memory areas

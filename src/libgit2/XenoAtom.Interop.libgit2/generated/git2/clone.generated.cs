@@ -78,7 +78,9 @@ namespace XenoAtom.Interop
         /// </summary>
         /// <remarks>
         /// Initialize with `GIT_CLONE_OPTIONS_INIT`. Alternatively, you can
-        /// use `git_clone_options_init`.
+        /// use `git_clone_options_init`.@options [version] GIT_CLONE_OPTIONS_VERSION
+        /// @options [init_macro] GIT_CLONE_OPTIONS_INIT
+        /// @options [init_function] git_clone_options_init
         /// </remarks>
         public partial struct git_clone_options
         {
@@ -86,8 +88,8 @@ namespace XenoAtom.Interop
             
             /// <summary>
             /// These options are passed to the checkout step. To disable
-            /// checkout, set the `checkout_strategy` to
-            /// `GIT_CHECKOUT_NONE`.
+            /// checkout, set the `checkout_strategy` to `GIT_CHECKOUT_NONE`
+            /// or `GIT_CHECKOUT_DRY_RUN`.
             /// </summary>
             public libgit2.git_checkout_options checkout_opts;
             
@@ -249,7 +251,9 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// By default this creates its repository and initial remote to match
         /// git's defaults. You can use the options in the callback to
-        /// customize how these are created.
+        /// customize how these are created.Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_clone")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
@@ -269,7 +273,9 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// By default this creates its repository and initial remote to match
         /// git's defaults. You can use the options in the callback to
-        /// customize how these are created.
+        /// customize how these are created.Note that the libgit2 library _must_ be initialized using
+        /// `git_libgit2_init` before any APIs can be called, including
+        /// this one.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_clone")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

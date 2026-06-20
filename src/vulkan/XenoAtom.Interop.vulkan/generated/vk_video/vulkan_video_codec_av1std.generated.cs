@@ -299,7 +299,7 @@ namespace XenoAtom.Interop
         {
             STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709 = unchecked((uint)1),
             
-            STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED = unchecked((uint)2),
+            STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED = unchecked((uint)2),
             
             STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M = unchecked((uint)4),
             
@@ -323,12 +323,20 @@ namespace XenoAtom.Interop
             
             STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID = unchecked((uint)2147483647),
             
+            /// <summary>
+            /// STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED is a legacy alias
+            /// </summary>
+            STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED = unchecked((uint)2),
+            
+            /// <summary>
+            /// STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED is a legacy alias
+            /// </summary>
             STD_VIDEO_AV1_COLOR_PRIMARIES_MAX_ENUM = unchecked((uint)2147483647),
         }
         
         public const vulkan.StdVideoAV1ColorPrimaries STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709 = StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709;
         
-        public const vulkan.StdVideoAV1ColorPrimaries STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED = StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED;
+        public const vulkan.StdVideoAV1ColorPrimaries STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED = StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED;
         
         public const vulkan.StdVideoAV1ColorPrimaries STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M = StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_BT_470_M;
         
@@ -352,6 +360,14 @@ namespace XenoAtom.Interop
         
         public const vulkan.StdVideoAV1ColorPrimaries STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID = StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_INVALID;
         
+        /// <summary>
+        /// STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED is a legacy alias
+        /// </summary>
+        public const vulkan.StdVideoAV1ColorPrimaries STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED = StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED;
+        
+        /// <summary>
+        /// STD_VIDEO_AV1_COLOR_PRIMARIES_BT_UNSPECIFIED is a legacy alias
+        /// </summary>
         public const vulkan.StdVideoAV1ColorPrimaries STD_VIDEO_AV1_COLOR_PRIMARIES_MAX_ENUM = StdVideoAV1ColorPrimaries.STD_VIDEO_AV1_COLOR_PRIMARIES_MAX_ENUM;
         
         public enum StdVideoAV1TransferCharacteristics : uint

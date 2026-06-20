@@ -16,7 +16,7 @@ namespace XenoAtom.Interop
     {
         /// <summary>
         /// If
-        /// pathname
+        /// path
         /// does not exist, create it as a regular file.
         /// 
         /// The owner (user ID) of the new file is set to the effective user ID
@@ -72,10 +72,11 @@ namespace XenoAtom.Interop
         /// Note that
         /// mode
         /// applies only to future accesses of the
-        /// newly created file; the
+        /// newly created file;
+        /// the
         /// open ()
-        /// call that creates a read-only file may well return a read/write
-        /// file descriptor.
+        /// call that creates a read-only file
+        /// may well return a read/write file descriptor.
         /// 
         /// The following symbolic constants are provided for
         /// mode :
@@ -125,7 +126,7 @@ namespace XenoAtom.Interop
         /// if this flag is specified in conjunction with
         /// O_CREAT ,
         /// and
-        /// pathname
+        /// path
         /// already exists, then
         /// open ()
         /// fails with the error
@@ -134,7 +135,7 @@ namespace XenoAtom.Interop
         /// When these two flags are specified, symbolic links are not followed:
         /// POSIX.1-2001 explicitly requires this behavior.
         /// if
-        /// pathname
+        /// path
         /// is a symbolic link, then
         /// open ()
         /// fails regardless of where the symbolic link points.
@@ -148,7 +149,7 @@ namespace XenoAtom.Interop
         /// can be used without
         /// O_CREAT
         /// if
-        /// pathname
+        /// path
         /// refers to a block device.
         /// If the block device is in use by the system (e.g., mounted),
         /// open ()
@@ -181,7 +182,7 @@ namespace XenoAtom.Interop
         
         /// <summary>
         /// If
-        /// pathname
+        /// path
         /// refers to a terminal device\[em]see
         /// tty (4)\[em]it
         /// will not become the process's controlling terminal even if the
@@ -227,15 +228,6 @@ namespace XenoAtom.Interop
         /// </summary>
         public const int O_APPEND = 1024;
         
-        /// <summary>
-        /// Set the
-        /// O_NONBLOCK
-        /// file status flag on the open file descriptions
-        /// referred to by the new file descriptors.
-        /// Using this flag saves extra calls to
-        /// fcntl (2)
-        /// to achieve the same result.
-        /// </summary>
         public const int O_NONBLOCK = 2048;
         
         /// <summary>
@@ -254,7 +246,7 @@ namespace XenoAtom.Interop
         /// write (2)
         /// was followed by a call to
         /// fdatasync (2)).
-        /// "See NOTES below" .
+        /// See VERSIONS.
         /// </summary>
         public const int O_DSYNC = 4096;
         
@@ -279,19 +271,17 @@ namespace XenoAtom.Interop
         /// write (2)
         /// was followed by a call to
         /// fsync (2)).
-        /// "See NOTES below" .
+        /// See VERSIONS.
         /// </summary>
         public const int O_SYNC = 1052672;
         
         public const int O_RSYNC = 1052672;
         
         /// <summary>
-        /// Set the close-on-exec
-        /// ( FD_CLOEXEC )
-        /// flag on the two new file descriptors.
-        /// See the description of the same flag in
-        /// open (2)
-        /// for reasons why this may be useful.
+        /// O_DIRECTORY
+        /// 
+        /// O_NOFOLLOW
+        /// POSIX.1-2008.
         /// </summary>
         public const int O_CLOEXEC = 524288;
         
@@ -317,46 +307,176 @@ namespace XenoAtom.Interop
         
         public const int O_NDELAY = 2048;
         
-        /// <summary>
-        /// The new file descriptor.
-        /// </summary>
         public const int F_DUPFD = 0;
         
-        /// <summary>
-        /// Value of file descriptor flags.
-        /// </summary>
         public const int F_GETFD = 1;
         
         public const int F_SETFD = 2;
         
-        /// <summary>
-        /// Value of file status flags.
-        /// </summary>
         public const int F_GETFL = 3;
         
         public const int F_SETFL = 4;
         
         public const int F_SETOWN = 8;
         
-        /// <summary>
-        /// Value of file descriptor owner.
-        /// </summary>
         public const int F_GETOWN = 9;
         
         public const int F_SETSIG = 10;
         
-        /// <summary>
-        /// Value of signal sent when read or write becomes possible, or zero
-        /// for traditional
-        /// SIGIO
-        /// behavior.
-        /// </summary>
         public const int F_GETSIG = 11;
         
+        /// <summary>
+        /// On input to this call,
+        /// lock
+        /// describes a lock we would like to place on the file.
+        /// If the lock could be placed,
+        /// fcntl ()
+        /// does not actually place it, but returns
+        /// F_UNLCK
+        /// in the
+        /// l_type
+        /// field of
+        /// lock
+        /// and leaves the other fields of the structure unchanged.
+        /// 
+        /// If one or more incompatible locks would prevent
+        /// this lock being placed, then
+        /// fcntl ()
+        /// returns details about one of those locks in the
+        /// l_type ", " l_whence ", " l_start ", and " l_len
+        /// fields of
+        /// lock .
+        /// If the conflicting lock is a traditional (process-associated) record lock,
+        /// then the
+        /// l_pid
+        /// field is set to the PID of the process holding that lock.
+        /// If the conflicting lock is an open file description lock, then
+        /// l_pid
+        /// is set to \-1.
+        /// Note that the returned information
+        /// may already be out of date by the time the caller inspects it.
+        /// 
+        /// In order to place a read lock,
+        /// fd
+        /// must be open for reading.
+        /// In order to place a write lock,
+        /// fd
+        /// must be open for writing.
+        /// To place both types of lock, open a file read-write.
+        /// 
+        /// When placing locks with
+        /// F_SETLKW ,
+        /// the kernel detects
+        /// deadlocks ,
+        /// whereby two or more processes have their
+        /// lock requests mutually blocked by locks held by the other processes.
+        /// For example, suppose process A holds a write lock on byte 100 of a file,
+        /// and process B holds a write lock on byte 200.
+        /// If each process then attempts to lock the byte already
+        /// locked by the other process using
+        /// F_SETLKW ,
+        /// then, without deadlock detection,
+        /// both processes would remain blocked indefinitely.
+        /// When the kernel detects such deadlocks,
+        /// it causes one of the blocking lock requests to immediately fail with the error
+        /// EDEADLK ;
+        /// an application that encounters such an error should release
+        /// some of its locks to allow other applications to proceed before
+        /// attempting regain the locks that it requires.
+        /// Circular deadlocks involving more than two processes are also detected.
+        /// Note, however, that there are limitations to the kernel's
+        /// deadlock-detection algorithm;
+        /// see BUGS.
+        /// 
+        /// As well as being removed by an explicit
+        /// F_UNLCK ,
+        /// record locks are automatically released when the process terminates.
+        /// 
+        /// Record locks are not inherited by a child created via
+        /// fork (2),
+        /// but are preserved across an
+        /// execve (2).
+        /// 
+        /// Because of the buffering performed by the
+        /// stdio (3)
+        /// library, the use of record locking with routines in that package
+        /// should be avoided;
+        /// use
+        /// read (2)
+        /// and
+        /// write (2)
+        /// instead.
+        /// 
+        /// The record locks described above are associated with the process
+        /// (unlike the open file description locks described below).
+        /// This has some unfortunate consequences:
+        /// \[bu] 3
+        /// If a process closes
+        /// any
+        /// file descriptor referring to a file,
+        /// then all of the process's locks on that file are released,
+        /// regardless of the file descriptor(s) on which the locks were obtained.
+        /// (Additional file descriptors referring to the same file
+        /// may have been obtained by calls to
+        /// .BR open "(2), " dup "(2), " dup2 "(2), or " fcntl ().)
+        /// This is bad: it means that a process can lose its locks on
+        /// a file such as
+        /// /etc/passwd
+        /// or
+        /// /etc/mtab
+        /// when for some reason a library function decides to open, read,
+        /// and close the same file.
+        /// \[bu]
+        /// The threads in a process share locks.
+        /// In other words,
+        /// a multithreaded program can't use record locking to ensure
+        /// that threads don't simultaneously access the same region of a file.
+        /// 
+        /// Open file description locks solve both of these problems.
+        /// </summary>
         public const int F_GETLK = 5;
         
+        /// <summary>
+        /// Acquire a lock (when
+        /// l_type
+        /// is
+        /// F_RDLCK
+        /// or
+        /// F_WRLCK )
+        /// or release a lock (when
+        /// l_type
+        /// is
+        /// F_UNLCK )
+        /// on the bytes specified by the
+        /// l_whence ", " l_start ", and " l_len
+        /// fields of
+        /// lock .
+        /// If a conflicting lock is held by another process,
+        /// this call returns \-1 and sets
+        /// errno
+        /// to
+        /// EACCES
+        /// or
+        /// EAGAIN .
+        /// (The error returned in this case differs across implementations,
+        /// so POSIX requires a portable application to check for both errors.)
+        /// </summary>
         public const int F_SETLK = 6;
         
+        /// <summary>
+        /// As for
+        /// F_SETLK ,
+        /// but if a conflicting lock is held on the file, then wait for that
+        /// lock to be released.
+        /// If a signal is caught while waiting, then the call is interrupted
+        /// and (after the signal handler has returned)
+        /// returns immediately (with return value \-1 and
+        /// errno
+        /// set to
+        /// EINTR ;
+        /// see
+        /// signal (7)).
+        /// </summary>
         public const int F_SETLKW = 7;
         
         public const int F_SETOWN_EX = 15;

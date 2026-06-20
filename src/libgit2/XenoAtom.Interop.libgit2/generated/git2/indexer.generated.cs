@@ -66,8 +66,9 @@ namespace XenoAtom.Interop
         /// Type for progress callbacks during indexing.  Return a value less
         /// than zero to cancel the indexing or download.
         /// </summary>
-        /// <param name="payload">Payload provided by caller</param>
         /// <param name="stats">Structure containing information about the state of the transfer</param>
+        /// <param name="payload">Payload provided by caller</param>
+        /// <returns>0 on success or an error code</returns>
         public readonly partial struct git_indexer_progress_cb : IEquatable<git_indexer_progress_cb>
         {
             public git_indexer_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_indexer_progress*, void*, int> value) => this.Value = value;

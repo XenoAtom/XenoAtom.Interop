@@ -11,12 +11,21 @@ on:
 
 jobs:
   build:
+    permissions:
+      id-token: write
+      actions: write
+      contents: write
     runs-on: 'ubuntu-latest'
     steps:
 #GITHUB_ACTION_PRE_STEP
+      - name: NuGet Login
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: xoofx
       - name: "Build, Test and Publish libkmod"
         uses: xoofx/.github/.github/actions/dotnet-releaser-action@main   
         with:
           dotnet-releaser-path: 'src/libkmod/dotnet-releaser.toml'
-          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+          NUGET_TOKEN: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
 #GITHUB_ACTION_POST_STEP

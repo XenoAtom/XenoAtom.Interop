@@ -18,9 +18,6 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        /// <summary>
-        /// POSIX.1-2001.
-        /// </summary>
         public unsafe partial struct fd_set
         {
             public fixed int fds_bits[32];

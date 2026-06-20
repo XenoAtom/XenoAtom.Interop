@@ -99,6 +99,9 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Callback for git_treebuilder_filter
         /// </summary>
+        /// <param name="entry">the tree entry for the callback to examine</param>
+        /// <param name="payload">the payload from the caller</param>
+        /// <returns>0 to do nothing, non-zero to remove the entry</returns>
         /// <remarks>
         /// The return value is treated as a boolean, with zero indicating that the
         /// entry should be left alone and any non-zero value meaning that the
@@ -128,8 +131,12 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// Callback for the tree traversal method
+        /// Callback for the tree traversal method.
         /// </summary>
+        /// <param name="root">the current (relative) root to the entry</param>
+        /// <param name="entry">the tree entry</param>
+        /// <param name="payload">the caller-provided callback payload</param>
+        /// <returns>a positive value to skip the entry, a negative value to stop the walk</returns>
         public readonly partial struct git_treewalk_cb : IEquatable<git_treewalk_cb>
         {
             public git_treewalk_cb(delegate*unmanaged[Cdecl]<byte*, libgit2.git_tree_entry, void*, int> value) => this.Value = value;

@@ -238,6 +238,17 @@ namespace XenoAtom.Interop
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
         }
         
+        /// <summary>
+        /// Callback for interactive SSH credentials.
+        /// </summary>
+        /// <param name="name">the name</param>
+        /// <param name="name_len">the length of the name</param>
+        /// <param name="instruction">the authentication instruction</param>
+        /// <param name="instruction_len">the length of the instruction</param>
+        /// <param name="num_prompts">the number of prompts</param>
+        /// <param name="prompts">the prompts</param>
+        /// <param name="responses">the responses</param>
+        /// <param name="abstract">the abstract</param>
         public readonly partial struct git_credential_ssh_interactive_cb : IEquatable<git_credential_ssh_interactive_cb>
         {
             public git_credential_ssh_interactive_cb(delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2.LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2.LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> value) => this.Value = value;
@@ -261,6 +272,19 @@ namespace XenoAtom.Interop
             public static implicit operator git_credential_ssh_interactive_cb (delegate*unmanaged[Cdecl]<byte*, int, byte*, int, int, libgit2.LIBSSH2_USERAUTH_KBDINT_PROMPT, libgit2.LIBSSH2_USERAUTH_KBDINT_RESPONSE, void**, void> from) => new (from);
         }
         
+        /// <summary>
+        /// Callback for credential signing.
+        /// </summary>
+        /// <param name="session">the libssh2 session</param>
+        /// <param name="sig">the signature</param>
+        /// <param name="sig_len">the length of the signature</param>
+        /// <param name="data">the data</param>
+        /// <param name="data_len">the length of the data</param>
+        /// <param name="abstract">the abstract</param>
+        /// <returns>@return 0 for success, 
+        /// &lt;
+        /// 0 to indicate an error, &gt; 0 to indicate
+        /// no credential was acquired</returns>
         public readonly partial struct git_credential_sign_cb : IEquatable<git_credential_sign_cb>
         {
             public git_credential_sign_cb(delegate*unmanaged[Cdecl]<libgit2.LIBSSH2_SESSION, byte**, nuint*, byte*, nuint, void**, int> value) => this.Value = value;

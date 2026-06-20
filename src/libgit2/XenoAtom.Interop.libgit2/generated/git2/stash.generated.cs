@@ -250,6 +250,9 @@ namespace XenoAtom.Interop
         /// Return 0 to continue processing, or a negative value to
         /// abort the stash application.
         /// </summary>
+        /// <param name="progress">the progress information</param>
+        /// <param name="payload">the user-specified payload to the apply function</param>
+        /// <returns>0 on success, -1 on error</returns>
         public readonly partial struct git_stash_apply_progress_cb : IEquatable<git_stash_apply_progress_cb>
         {
             public git_stash_apply_progress_cb(delegate*unmanaged[Cdecl]<libgit2.git_stash_apply_progress_t, void*, int> value) => this.Value = value;
@@ -400,7 +403,7 @@ namespace XenoAtom.Interop
         /// then those files will remain in the working directory.If passing the GIT_STASH_APPLY_REINSTATE_INDEX flag and there would be
         /// conflicts when reinstating the index, the function will return
         /// GIT_EMERGECONFLICT and both the working directory and index will be left
-        /// unmodified.Note that a minimum checkout strategy of `GIT_CHECKOUT_SAFE` is implied.
+        /// unmodified.
         /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_stash_apply")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

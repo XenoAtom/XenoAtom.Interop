@@ -298,8 +298,6 @@ namespace XenoAtom.Interop
             
             public const int SYS_memfd_create = 319;
             
-            public const int SYS_memfd_secret = 447;
-            
             public const int SYS_migrate_pages = 256;
             
             public const int SYS_mincore = 27;
@@ -659,6 +657,10 @@ namespace XenoAtom.Interop
             public const int SYS_unlinkat = 263;
             
             public const int SYS_unshare = 272;
+            
+            public const int SYS_uprobe = 336;
+            
+            public const int SYS_uretprobe = 335;
             
             public const int SYS_uselib = 134;
             

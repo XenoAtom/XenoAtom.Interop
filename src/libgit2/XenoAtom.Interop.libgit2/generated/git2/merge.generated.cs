@@ -682,6 +682,29 @@ namespace XenoAtom.Interop
         /// <param name="length">The number of commits in the provided `input_array`</param>
         /// <param name="input_array">oids of the commits</param>
         /// <returns>Zero on success; GIT_ENOTFOUND or -1 on failure.</returns>
+        /// <remarks>
+        /// This behaves similar to [`git merge-base`](https://git-scm.com/docs/git-merge-base#_discussion).Given three commits `a`, `b`, and `c`, `merge_base_many`
+        /// will compute a hypothetical commit `m`, which is a merge between `b`
+        /// and `c`.For example, with the following topology:
+        /// ```text
+        /// o---o---o---o---C
+        /// /
+        /// /   o---o---o---B
+        /// /   /
+        /// ---2---1---o---o---o---A
+        /// ```the result of `merge_base_many` given `a`, `b`, and `c` is 1. This is
+        /// because the equivalent topology with the imaginary merge commit `m`
+        /// between `b` and `c` is:
+        /// ```text
+        /// o---o---o---o---o
+        /// /                 
+        /// \
+        /// /   o---o---o---o---M
+        /// /   /
+        /// ---2---1---o---o---o---A
+        /// ```and the result of `merge_base_many` given `a` and `m` is 1.If you're looking to recieve the common ancestor between all the
+        /// given commits, use `merge_base_octopus`.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_bases_many")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_bases_many(out libgit2.git_oidarray @out, libgit2.git_repository repo, nuint length, libgit2.git_oid* input_array);
@@ -721,8 +744,8 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Merge two files as they exist in the index, using the given common
         /// ancestor as the baseline, producing a `git_merge_file_result` that
-        /// reflects the merge result.  The `git_merge_file_result` must be freed with
-        /// `git_merge_file_result_free`.
+        /// reflects the merge result.  The `git_merge_file_result` must be
+        /// freed with `git_merge_file_result_free`.
         /// </summary>
         /// <param name="out">The git_merge_file_result to be filled in</param>
         /// <param name="repo">The repository</param>
@@ -731,6 +754,9 @@ namespace XenoAtom.Interop
         /// <param name="theirs">The index entry for their file (stage level 3)</param>
         /// <param name="opts">The merge file options or NULL</param>
         /// <returns>0 on success or error code</returns>
+        /// <remarks>
+        /// At least one of `ancestor`, `ours`, or `theirs` must be non-null.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_merge_file_from_index")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libgit2.git_result git_merge_file_from_index(out libgit2.git_merge_file_result @out, libgit2.git_repository repo, in libgit2.git_index_entry ancestor, in libgit2.git_index_entry ours, in libgit2.git_index_entry theirs, in libgit2.git_merge_file_options opts);

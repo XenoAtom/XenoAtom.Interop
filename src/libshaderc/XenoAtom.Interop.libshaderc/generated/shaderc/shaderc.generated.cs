@@ -1645,6 +1645,10 @@ namespace XenoAtom.Interop
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
         public static partial void shaderc_compile_options_set_preserve_bindings(libshaderc.shaderc_compile_options_t options, [global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.U1)] bool preserve_bindings);
         
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "shaderc_compile_options_set_max_id_bound")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvStdcall) })]
+        public static partial void shaderc_compile_options_set_max_id_bound(libshaderc.shaderc_compile_options_t options, uint max_id_bound);
+        
         /// <summary>
         /// Sets whether the compiler should automatically assign locations to
         /// uniform variables that don't have explicit locations in the shader source.

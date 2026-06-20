@@ -72,74 +72,10 @@ namespace XenoAtom.Interop
         
         public const int SUBCMDSHIFT = 8;
         
-        /// <summary>
-        /// Update the on-disk copy of quota usages for a filesystem.
-        /// If
-        /// special
-        /// is NULL, then all filesystems with active quotas are sync'ed.
-        /// The
-        /// addr
-        /// and
-        /// id
-        /// arguments are ignored.
-        /// </summary>
         public const int Q_SYNC = 8388609;
         
-        /// <summary>
-        /// Turn on quotas for a filesystem.
-        /// The
-        /// id
-        /// argument is the identification number of the quota format to be used.
-        /// Currently, there are three supported quota formats:
-        /// QFMT_VFS_OLD
-        /// The original quota format.
-        /// QFMT_VFS_V0
-        /// The standard VFS v0 quota format, which can handle 32-bit UIDs and GIDs
-        /// and quota limits up to 2\[ha]42 bytes and 2\[ha]32 inodes.
-        /// QFMT_VFS_V1
-        /// A quota format that can handle 32-bit UIDs and GIDs
-        /// and quota limits of 2\[ha]63 \- 1 bytes and 2\[ha]63 \- 1 inodes.
-        /// 
-        /// The
-        /// addr
-        /// argument points to the pathname of a file containing the quotas for
-        /// the filesystem.
-        /// The quota file must exist; it is normally created with the
-        /// quotacheck (8)
-        /// program
-        /// 
-        /// Quota information can be also stored in hidden system inodes
-        /// for ext4, XFS, and other filesystems if the filesystem is configured so.
-        /// In this case, there are no visible quota files and there is no need to
-        /// use
-        /// quotacheck (8).
-        /// Quota information is always kept consistent by the filesystem and the
-        /// Q_QUOTAON
-        /// operation serves only to enable enforcement of quota limits.
-        /// The presence of hidden
-        /// system inodes with quota information is indicated by the
-        /// DQF_SYS_FILE
-        /// flag in the
-        /// dqi_flags
-        /// field returned by the
-        /// Q_GETINFO
-        /// operation.
-        /// 
-        /// This operation requires privilege
-        /// ( CAP_SYS_ADMIN ).
-        /// </summary>
         public const int Q_QUOTAON = 8388610;
         
-        /// <summary>
-        /// Turn off quotas for a filesystem.
-        /// The
-        /// addr
-        /// and
-        /// id
-        /// arguments are ignored.
-        /// This operation requires privilege
-        /// ( CAP_SYS_ADMIN ).
-        /// </summary>
         public const int Q_QUOTAOFF = 8388611;
         
         public const int Q_GETFMT = 8388612;
@@ -148,95 +84,8 @@ namespace XenoAtom.Interop
         
         public const int Q_SETINFO = 8388614;
         
-        /// <summary>
-        /// Get disk quota limits and current usage for user or group
-        /// id .
-        /// The
-        /// addr
-        /// argument is a pointer to a
-        /// dqblk
-        /// structure defined in
-        /// &lt;sys/quota.h&gt;
-        /// as follows:
-        /// 
-        /// +4n
-        /// 
-        /// /* uint64_t is an unsigned 64\-bit integer;
-        ///    uint32_t is an unsigned 32\-bit integer */
-        /// \&amp;
-        /// struct dqblk {      /* Definition since Linux 2.4.22 */
-        ///     uint64_t dqb_bhardlimit;  /* Absolute limit on disk
-        ///                                  quota blocks alloc */
-        ///     uint64_t dqb_bsoftlimit;  /* Preferred limit on
-        ///                                  disk quota blocks */
-        ///     uint64_t dqb_curspace;    /* Current occupied space
-        ///                                  (in bytes) */
-        ///     uint64_t dqb_ihardlimit;  /* Maximum number of
-        ///                                  allocated inodes */
-        ///     uint64_t dqb_isoftlimit;  /* Preferred inode limit */
-        ///     uint64_t dqb_curinodes;   /* Current number of
-        ///                                  allocated inodes */
-        ///     uint64_t dqb_btime;       /* Time limit for excessive
-        ///                                  disk use */
-        ///     uint64_t dqb_itime;       /* Time limit for excessive
-        ///                                  files */
-        ///     uint32_t dqb_valid;       /* Bit mask of QIF_*
-        ///                                  constants */
-        /// };
-        /// \&amp;
-        /// /* Flags in dqb_valid that indicate which fields in
-        ///    dqblk structure are valid. */
-        /// \&amp;
-        /// #define QIF_BLIMITS   1
-        /// #define QIF_SPACE     2
-        /// #define QIF_ILIMITS   4
-        /// #define QIF_INODES    8
-        /// #define QIF_BTIME     16
-        /// #define QIF_ITIME     32
-        /// #define QIF_LIMITS    (QIF_BLIMITS | QIF_ILIMITS)
-        /// #define QIF_USAGE     (QIF_SPACE | QIF_INODES)
-        /// #define QIF_TIMES     (QIF_BTIME | QIF_ITIME)
-        /// #define QIF_ALL       (QIF_LIMITS | QIF_USAGE | QIF_TIMES)
-        /// 
-        /// 
-        /// 
-        /// The
-        /// dqb_valid
-        /// field is a bit mask that is set to indicate the entries in the
-        /// dqblk
-        /// structure that are valid.
-        /// Currently, the kernel fills in all entries of the
-        /// dqblk
-        /// structure and marks them as valid in the
-        /// dqb_valid
-        /// field.
-        /// Unprivileged users may retrieve only their own quotas;
-        /// a privileged user
-        /// ( CAP_SYS_ADMIN )
-        /// can retrieve the quotas of any user.
-        /// </summary>
         public const int Q_GETQUOTA = 8388615;
         
-        /// <summary>
-        /// Set quota information for user or group
-        /// id ,
-        /// using the information supplied in the
-        /// dqblk
-        /// structure pointed to by
-        /// addr .
-        /// The
-        /// dqb_valid
-        /// field of the
-        /// dqblk
-        /// structure indicates which entries in the structure have been set by the caller.
-        /// This operation supersedes the
-        /// Q_SETQLIM
-        /// and
-        /// Q_SETUSE
-        /// operations in the previous quota interfaces.
-        /// This operation requires privilege
-        /// ( CAP_SYS_ADMIN ).
-        /// </summary>
         public const int Q_SETQUOTA = 8388616;
         
         public const int QFMT_VFS_OLD = 1;

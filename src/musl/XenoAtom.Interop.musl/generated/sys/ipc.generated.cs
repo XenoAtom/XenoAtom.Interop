@@ -18,21 +18,8 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class musl
     {
-        /// <summary>
-        /// Create a new segment.
-        /// If this flag is not used, then
-        /// shmget ()
-        /// will find the segment associated with \fIkey\fP and check to see if
-        /// the user has permission to access the segment.
-        /// </summary>
         public const int IPC_CREAT = 512;
         
-        /// <summary>
-        /// This flag is used with
-        /// IPC_CREAT
-        /// to ensure that this call creates the segment.
-        /// If the segment already exists, the call fails.
-        /// </summary>
         public const int IPC_EXCL = 1024;
         
         /// <summary>
@@ -91,16 +78,6 @@ namespace XenoAtom.Interop
         /// </summary>
         public const int IPC_SET = 1;
         
-        /// <summary>
-        /// the index of the highest used entry in the
-        /// kernel's internal array recording information about all
-        /// semaphore sets.
-        /// (This information can be used with repeated
-        /// SEM_STAT
-        /// or
-        /// SEM_STAT_ANY
-        /// operations to obtain information about all semaphore sets on the system.)
-        /// </summary>
         public const int IPC_INFO = 3;
         
         public const int IPC_PRIVATE = 0;

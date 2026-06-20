@@ -1281,53 +1281,78 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// DRM_IOCTL_GEM_CLOSE ioctl argument type
+        /// struct drm_gem_close - Argument for 
+        /// &amp;DRM
+        /// _IOCTL_GEM_CLOSE ioctl.
+        /// @handle : Handle of the object to be closed.
         /// </summary>
+        /// <remarks>
+        /// Releases the handle to an mm object.
+        /// </remarks>
+        /// <par>
+        /// : Padding.
+        /// </par>
         public partial struct drm_gem_close
         {
-            /// <summary>
-            /// Handle of the object to be closed.
-            /// </summary>
             public uint handle;
             
             public uint pad;
         }
         
         /// <summary>
-        /// DRM_IOCTL_GEM_FLINK ioctl argument type
+        /// struct drm_gem_flink - Argument for 
+        /// &amp;DRM
+        /// _IOCTL_GEM_FLINK ioctl.
+        /// @handle : Handle for the object being named.
         /// </summary>
+        /// <remarks>
+        /// : Returned global name.Create a global name for an object, returning the name.Note that the name does not hold a reference; when the object
+        /// is freed, the name goes away.
+        /// </remarks>
         public partial struct drm_gem_flink
         {
-            /// <summary>
-            /// Handle for the object being named
-            /// </summary>
             public uint handle;
             
-            /// <summary>
-            /// Returned global name
-            /// </summary>
             public uint name;
         }
         
         /// <summary>
-        /// DRM_IOCTL_GEM_OPEN ioctl argument type
+        /// struct drm_gem_open - Argument for 
+        /// &amp;DRM
+        /// _IOCTL_GEM_OPEN ioctl.
         /// </summary>
+        /// <remarks>
+        /// : Name of object being opened.@handle : Returned handle for the object.
+        /// @size : Returned size of the objectOpen an object using the global name, returning a handle and the size.This handle (of course) holds a reference to the object, so the object
+        /// will not go away until the handle is deleted.
+        /// </remarks>
         public partial struct drm_gem_open
         {
-            /// <summary>
-            /// Name of object being opened
-            /// </summary>
             public uint name;
             
-            /// <summary>
-            /// Returned handle for the object
-            /// </summary>
             public uint handle;
             
-            /// <summary>
-            /// Returned size of the object
-            /// </summary>
             public ulong size;
+        }
+        
+        /// <summary>
+        /// struct drm_gem_change_handle - Argument for 
+        /// &amp;DRM
+        /// _IOCTL_GEM_CHANGE_HANDLE ioctl.
+        /// @handle : The handle of a gem object.
+        /// @new _handle: An available gem handle.
+        /// </summary>
+        /// <remarks>
+        /// This ioctl changes the handle of a GEM object to the specified one.
+        /// The new handle must be unused. On success the old handle is closed
+        /// and all further IOCTL should refer to the new handle only.
+        /// Calls to DRM_IOCTL_PRIME_FD_TO_HANDLE will return the new handle.
+        /// </remarks>
+        public partial struct drm_gem_change_handle
+        {
+            public uint handle;
+            
+            public uint new_handle;
         }
         
         /// <summary>
@@ -1388,6 +1413,8 @@ namespace XenoAtom.Interop
             public int fd;
             
             public uint pad;
+            
+            public ulong point;
         }
         
         public partial struct drm_syncobj_transfer
@@ -1565,6 +1592,13 @@ namespace XenoAtom.Interop
             public ulong user_data;
         }
         
+        public partial struct drm_set_client_name
+        {
+            public ulong name_len;
+            
+            public ulong name;
+        }
+        
         /// <summary>
         /// struct drm_event - Header for DRM events
         /// @type : event type.
@@ -1671,6 +1705,8 @@ namespace XenoAtom.Interop
         public const int DRM_CLIENT_CAP_WRITEBACK_CONNECTORS = 5;
         
         public const int DRM_CLIENT_CAP_CURSOR_PLANE_HOTSPOT = 6;
+        
+        public const int DRM_CLIENT_CAP_PLANE_COLOR_PIPELINE = 7;
         
         public const nuint DRM_IOCTL_BASE = 100;
         
@@ -1864,9 +1900,9 @@ namespace XenoAtom.Interop
         
         public const nuint DRM_IOCTL_SYNCOBJ_DESTROY = 3221775552;
         
-        public const nuint DRM_IOCTL_SYNCOBJ_HANDLE_TO_FD = 3222299841;
+        public const nuint DRM_IOCTL_SYNCOBJ_HANDLE_TO_FD = 3222824129;
         
-        public const nuint DRM_IOCTL_SYNCOBJ_FD_TO_HANDLE = 3222299842;
+        public const nuint DRM_IOCTL_SYNCOBJ_FD_TO_HANDLE = 3222824130;
         
         public const nuint DRM_IOCTL_SYNCOBJ_WAIT = 3223872707;
         
@@ -1895,5 +1931,9 @@ namespace XenoAtom.Interop
         public const nuint DRM_IOCTL_SYNCOBJ_EVENTFD = 3222824143;
         
         public const nuint DRM_IOCTL_MODE_CLOSEFB = 3221775568;
+        
+        public const nuint DRM_IOCTL_SET_CLIENT_NAME = 3222299857;
+        
+        public const nuint DRM_IOCTL_GEM_CHANGE_HANDLE = 3221775570;
     }
 }

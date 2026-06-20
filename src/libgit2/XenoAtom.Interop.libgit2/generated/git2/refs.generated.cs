@@ -703,6 +703,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Rename an existing reference.
         /// </summary>
+        /// <param name="new_ref">The new reference</param>
         /// <param name="ref">The reference to rename</param>
         /// <param name="new_name">The new name for the reference</param>
         /// <param name="force">Overwrite an existing reference</param>
@@ -723,6 +724,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Rename an existing reference.
         /// </summary>
+        /// <param name="new_ref">The new reference</param>
         /// <param name="ref">The reference to rename</param>
         /// <param name="new_name">The new name for the reference</param>
         /// <param name="force">Overwrite an existing reference</param>
@@ -758,6 +760,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Delete an existing reference by name
         /// </summary>
+        /// <param name="repo">The repository to remove the reference from</param>
         /// <param name="name">The reference to remove</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -771,6 +774,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Delete an existing reference by name
         /// </summary>
+        /// <param name="repo">The repository to remove the reference from</param>
         /// <param name="name">The reference to remove</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>

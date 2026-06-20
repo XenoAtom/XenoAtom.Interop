@@ -18,6 +18,18 @@ namespace XenoAtom.Interop
     
     public static unsafe partial class libkmod
     {
+        /// <summary>
+        /// kmod_resources:
+        /// @KMOD _RESOURCES_OK: resources are valid
+        /// @KMOD _RESOURCES_MUST_RELOAD: resources are not valid; to resolve call
+        /// kmod_unload_resources() and kmod_load_resources()
+        /// @KMOD _RESOURCES_MUST_RECREATE: resources are not valid; to resolve @ctx must
+        /// be re-created.
+        /// </summary>
+        /// <remarks>
+        /// The validity state of the current libkmod resources, returned by
+        /// kmod_validate_resources().
+        /// </remarks>
         public enum kmod_resources : uint
         {
             KMOD_RESOURCES_OK = unchecked((uint)0),
@@ -33,6 +45,19 @@ namespace XenoAtom.Interop
         
         public const libkmod.kmod_resources KMOD_RESOURCES_MUST_RECREATE = kmod_resources.KMOD_RESOURCES_MUST_RECREATE;
         
+        /// <summary>
+        /// kmod_index:
+        /// @KMOD _INDEX_MODULES_DEP: index of module dependencies
+        /// @KMOD _INDEX_MODULES_ALIAS: index of module aliases
+        /// @KMOD _INDEX_MODULES_SYMBOL: index of symbol aliases
+        /// @KMOD _INDEX_MODULES_BUILTIN_ALIAS: index of builtin module aliases
+        /// @KMOD _INDEX_MODULES_BUILTIN: index of builtin module
+        /// @
+        /// _KMOD_INDEX_PAD: DO NOT USE; padding to make sure enum is not mapped to char
+        /// </summary>
+        /// <remarks>
+        /// The (module) index type, used by kmod_dump_index().
+        /// </remarks>
         [Flags]
         public enum kmod_index : uint
         {
@@ -46,9 +71,6 @@ namespace XenoAtom.Interop
             
             KMOD_INDEX_MODULES_BUILTIN = unchecked((uint)4),
             
-            /// <summary>
-            /// Padding to make sure enum is not mapped to char
-            /// </summary>
             _KMOD_INDEX_PAD = unchecked((uint)-2147483648),
         }
         
@@ -62,45 +84,16 @@ namespace XenoAtom.Interop
         
         public const libkmod.kmod_index KMOD_INDEX_MODULES_BUILTIN = kmod_index.KMOD_INDEX_MODULES_BUILTIN;
         
-        /// <summary>
-        /// Padding to make sure enum is not mapped to char
-        /// </summary>
         public const libkmod.kmod_index _KMOD_INDEX_PAD = kmod_index._KMOD_INDEX_PAD;
         
         /// <summary>
-        /// Removal flags
+        /// kmod_insert:
+        /// @KMOD _INSERT_FORCE_VERMAGIC: ignore kernel version magic
+        /// @KMOD _INSERT_FORCE_MODVERSION: ignore symbol version hashes
         /// </summary>
-        [Flags]
-        public enum kmod_remove : uint
-        {
-            KMOD_REMOVE_FORCE = unchecked((uint)512),
-            
-            /// <summary>
-            /// always set
-            /// </summary>
-            KMOD_REMOVE_NOWAIT = unchecked((uint)2048),
-            
-            /// <summary>
-            /// libkmod-only defines, not passed to kernel
-            /// </summary>
-            KMOD_REMOVE_NOLOG = unchecked((uint)1),
-        }
-        
-        public const libkmod.kmod_remove KMOD_REMOVE_FORCE = kmod_remove.KMOD_REMOVE_FORCE;
-        
-        /// <summary>
-        /// always set
-        /// </summary>
-        public const libkmod.kmod_remove KMOD_REMOVE_NOWAIT = kmod_remove.KMOD_REMOVE_NOWAIT;
-        
-        /// <summary>
-        /// libkmod-only defines, not passed to kernel
-        /// </summary>
-        public const libkmod.kmod_remove KMOD_REMOVE_NOLOG = kmod_remove.KMOD_REMOVE_NOLOG;
-        
-        /// <summary>
-        /// Insertion flags
-        /// </summary>
+        /// <remarks>
+        /// Insertion flags, used by kmod_module_insert_module().
+        /// </remarks>
         [Flags]
         public enum kmod_insert : uint
         {
@@ -114,8 +107,29 @@ namespace XenoAtom.Interop
         public const libkmod.kmod_insert KMOD_INSERT_FORCE_MODVERSION = kmod_insert.KMOD_INSERT_FORCE_MODVERSION;
         
         /// <summary>
-        /// Flags to kmod_module_probe_insert_module()
+        /// kmod_probe:
+        /// @KMOD _PROBE_FORCE_VERMAGIC: ignore kernel version magic
+        /// @KMOD _PROBE_FORCE_MODVERSION: ignore symbol version hashes
+        /// @KMOD _PROBE_IGNORE_COMMAND: ignore install commands and softdeps configured
+        /// in the system
+        /// @KMOD _PROBE_IGNORE_LOADED: do not check whether the module is already
+        /// live in the kernel or not
+        /// @KMOD _PROBE_DRY_RUN: dry run, do not insert module, just call the
+        /// associated callback function
+        /// @KMOD _PROBE_FAIL_ON_LOADED: probe will fail if KMOD_PROBE_IGNORE_LOADED is
+        /// not specified and the module is already live in the kernel
+        /// @KMOD _PROBE_APPLY_BLACKLIST_ALL: prior to probe, apply KMOD_FILTER_BLACKLIST
+        /// filter to this module and its dependencies. If any of them are blacklisted
+        /// and the blacklisted module is not live in the kernel, the function returns
+        /// early with thus enum
+        /// @KMOD _PROBE_APPLY_BLACKLIST: probe will return early with this enum, if the
+        /// module is blacklisted
+        /// @KMOD _PROBE_APPLY_BLACKLIST_ALIAS_ONLY: probe will return early with this
+        /// enum, if the module is an alias and is blacklisted
         /// </summary>
+        /// <remarks>
+        /// Bitmask which defines the behaviour of kmod_module_probe_insert_module().
+        /// </remarks>
         [Flags]
         public enum kmod_probe : uint
         {
@@ -175,8 +189,41 @@ namespace XenoAtom.Interop
         public const libkmod.kmod_probe KMOD_PROBE_APPLY_BLACKLIST_ALIAS_ONLY = kmod_probe.KMOD_PROBE_APPLY_BLACKLIST_ALIAS_ONLY;
         
         /// <summary>
-        /// Flags to kmod_module_apply_filter()
+        /// kmod_remove:
+        /// @KMOD _REMOVE_FORCE: force remove module regardless if it's still in
+        /// use by a kernel subsystem or other process; passed directly to the kernel
+        /// @KMOD _REMOVE_NOWAIT: always set, pass O_NONBLOCK to delete_module(2);
+        /// passed directly to the kernel
+        /// @KMOD _REMOVE_NOLOG: when module removal fails, do not log anything; not
+        /// passed to the kernel
         /// </summary>
+        /// <remarks>
+        /// Removal flags, used by kmod_module_remove_module().
+        /// </remarks>
+        [Flags]
+        public enum kmod_remove : uint
+        {
+            KMOD_REMOVE_FORCE = unchecked((uint)512),
+            
+            KMOD_REMOVE_NOWAIT = unchecked((uint)2048),
+            
+            KMOD_REMOVE_NOLOG = unchecked((uint)1),
+        }
+        
+        public const libkmod.kmod_remove KMOD_REMOVE_FORCE = kmod_remove.KMOD_REMOVE_FORCE;
+        
+        public const libkmod.kmod_remove KMOD_REMOVE_NOWAIT = kmod_remove.KMOD_REMOVE_NOWAIT;
+        
+        public const libkmod.kmod_remove KMOD_REMOVE_NOLOG = kmod_remove.KMOD_REMOVE_NOLOG;
+        
+        /// <summary>
+        /// kmod_filter:
+        /// @KMOD _FILTER_BLACKLIST: filter modules in blacklist out
+        /// @KMOD _FILTER_BUILTIN: filter builtin modules out
+        /// </summary>
+        /// <remarks>
+        /// Bitmask defining what gets filtered out, used by kmod_module_apply_filter().
+        /// </remarks>
         [Flags]
         public enum kmod_filter : uint
         {
@@ -190,9 +237,18 @@ namespace XenoAtom.Interop
         public const libkmod.kmod_filter KMOD_FILTER_BUILTIN = kmod_filter.KMOD_FILTER_BUILTIN;
         
         /// <summary>
-        /// Information regarding "live information" from module's state, as returned
-        /// by kernel
+        /// kmod_module_initstate:
+        /// @KMOD _MODULE_BUILTIN: module is builtin
+        /// @KMOD _MODULE_LIVE: module is live in the kernel
+        /// @KMOD _MODULE_COMING: module is being loaded
+        /// @KMOD _MODULE_GOING: module is being unloaded
+        /// @
+        /// _KMOD_MODULE_PAD: DO NOT USE; padding to make sure enum is not mapped to char
         /// </summary>
+        /// <remarks>
+        /// The module "live information" as reported by the kernel, see
+        /// kmod_module_get_initstate().
+        /// </remarks>
         public enum kmod_module_initstate : uint
         {
             KMOD_MODULE_BUILTIN = unchecked((uint)0),
@@ -213,11 +269,10 @@ namespace XenoAtom.Interop
         public const libkmod.kmod_module_initstate KMOD_MODULE_GOING = kmod_module_initstate.KMOD_MODULE_GOING;
         
         /// <summary>
-        /// kmod_ctx
+        /// kmod_ctx:
         /// </summary>
         /// <remarks>
-        /// library user context - reads the config and system
-        /// environment, user variables, allows custom logging
+        /// Opaque object representing the library context.
         /// </remarks>
         public readonly partial record struct kmod_ctx(nint Handle)
         {
@@ -225,10 +280,10 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// kmod_list
+        /// kmod_list:
         /// </summary>
         /// <remarks>
-        /// access to kmod generated lists
+        /// Opaque object for a circular (doubly linked) list.
         /// </remarks>
         public readonly partial record struct kmod_list(nint Handle)
         {
@@ -236,11 +291,10 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// kmod_config_iter
+        /// kmod_config_iter:
         /// </summary>
         /// <remarks>
-        /// access to configuration lists - it allows to get each configuration's
-        /// key/value stored by kmod
+        /// Opaque object for iterating and retrieving configuration information.
         /// </remarks>
         public readonly partial record struct kmod_config_iter(nint Handle)
         {
@@ -248,424 +302,1521 @@ namespace XenoAtom.Interop
         }
         
         /// <summary>
-        /// kmod_module
+        /// kmod_module:
         /// </summary>
         /// <remarks>
-        /// Operate on kernel modules
+        /// Opaque object representing a module.
         /// </remarks>
         public readonly partial record struct kmod_module(nint Handle)
         {
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
         }
         
+        /// <summary>
+        /// kmod_new:
+        /// @dirname : what to consider as linux module's directory, if NULL
+        /// defaults to $MODULE_DIRECTORY/`uname -r`. If it's relative,
+        /// it's treated as relative to the current working directory.
+        /// Otherwise, give an absolute dirname.
+        /// @config _paths: ordered array of paths (directories or files) where
+        /// to load from user-defined configuration parameters such as
+        /// alias, blacklists, commands (install, remove). If NULL
+        /// defaults to /etc/modprobe.d, /run/modprobe.d,
+        /// /usr/local/lib/modprobe.d, DISTCONFDIR/modprobe.d, and
+        /// /lib/modprobe.d. Give an empty vector if configuration should
+        /// not be read. This array must be null terminated.
+        /// </summary>
+        /// <remarks>
+        /// Create kmod library context. This reads the kmod configuration
+        /// and fills in the default values.The initial refcount is 1, and needs to be decremented to
+        /// release the resources of the kmod library context.Returns: a new kmod library contextSince: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_ctx kmod_new(byte* dirname, byte** config_paths);
         
+        /// <summary>
+        /// kmod_new:
+        /// @dirname : what to consider as linux module's directory, if NULL
+        /// defaults to $MODULE_DIRECTORY/`uname -r`. If it's relative,
+        /// it's treated as relative to the current working directory.
+        /// Otherwise, give an absolute dirname.
+        /// @config _paths: ordered array of paths (directories or files) where
+        /// to load from user-defined configuration parameters such as
+        /// alias, blacklists, commands (install, remove). If NULL
+        /// defaults to /etc/modprobe.d, /run/modprobe.d,
+        /// /usr/local/lib/modprobe.d, DISTCONFDIR/modprobe.d, and
+        /// /lib/modprobe.d. Give an empty vector if configuration should
+        /// not be read. This array must be null terminated.
+        /// </summary>
+        /// <remarks>
+        /// Create kmod library context. This reads the kmod configuration
+        /// and fills in the default values.The initial refcount is 1, and needs to be decremented to
+        /// release the resources of the kmod library context.Returns: a new kmod library contextSince: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_ctx kmod_new([global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> dirname, byte** config_paths);
         
+        /// <summary>
+        /// kmod_ref:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Take a reference of the kmod library context.Returns: the passed kmod library contextSince: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_ctx kmod_ref(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_unref:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Drop a reference of the kmod library context. If the refcount
+        /// reaches zero, the resources of the context will be released.Returns: the passed kmod library context or NULL if it's freedSince: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_unref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_ctx kmod_unref(libkmod.kmod_ctx ctx);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_set_log_fn")]
+        /// <summary>
+        /// kmod_load_resources:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Load indexes and keep them open in @ctx . This way it's faster to lookup
+        /// information within the indexes. If this function is not called before a
+        /// search, the necessary index is always opened and closed.If user will do more than one or two lookups, insertions, deletions, most
+        /// likely it's good to call this function first. Particularly in a daemon like
+        /// udev that on boot issues hundreds of calls to lookup the index, calling
+        /// this function will speedup the searches.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_load_resources")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void kmod_set_log_fn(libkmod.kmod_ctx ctx, nint log_fn, void* data);
+        public static partial int kmod_load_resources(libkmod.kmod_ctx ctx);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_get_log_priority")]
+        /// <summary>
+        /// kmod_unload_resources:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Unload all the indexes. This will free the resources to maintain the index
+        /// open and all subsequent searches will need to open and close the index.User is free to call kmod_load_resources() and kmod_unload_resources() as
+        /// many times as wanted during the lifecycle of @ctx . For example, if a daemon
+        /// knows that when starting up it will lookup a lot of modules, it could call
+        /// kmod_load_resources() and after the first burst of searches is gone, it
+        /// could free the resources by calling kmod_unload_resources().Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_unload_resources")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_get_log_priority(libkmod.kmod_ctx ctx);
+        public static partial void kmod_unload_resources(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_validate_resources:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Check if indexes and configuration files changed on disk and the current
+        /// context is not valid anymore.Returns: the resources state, valid states are #kmod_resources.Since: 3
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_validate_resources")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial libkmod.kmod_resources kmod_validate_resources(libkmod.kmod_ctx ctx);
+        
+        /// <summary>
+        /// kmod_dump_index:
+        /// @ctx : kmod library context
+        /// @type : index to dump, valid indexes are #kmod_index
+        /// @fd : file descriptor to dump index to
+        /// </summary>
+        /// <remarks>
+        /// Dump index to file descriptor. Note that this function doesn't use stdio.h
+        /// so call fflush() before calling this function to be sure data is written in
+        /// order.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise.Since: 4
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_dump_index")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_dump_index(libkmod.kmod_ctx ctx, libkmod.kmod_index type, int fd);
+        
+        /// <summary>
+        /// kmod_set_log_priority:
+        /// @ctx : kmod library context
+        /// @priority : the new logging priority
+        /// </summary>
+        /// <remarks>
+        /// Set the current logging priority, as defined in syslog.h(0P). The value
+        /// controls which messages are logged.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_set_log_priority")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial void kmod_set_log_priority(libkmod.kmod_ctx ctx, int priority);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_get_userdata")]
+        /// <summary>
+        /// kmod_get_log_priority:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Get the current logging priority, as defined in syslog.h(0P).Returns: the current logging prioritySince: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_get_log_priority")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void* kmod_get_userdata(libkmod.kmod_ctx ctx);
+        public static partial int kmod_get_log_priority(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_set_log_fn:
+        /// @ctx : kmod library context
+        /// @log _fn: function to be called for logging messages
+        /// </summary>
+        /// <remarks>
+        /// The built-in logging writes to stderr. It can be
+        /// overridden by a custom function, to plug log messages
+        /// into the user's logging functionality.Since: 1
+        /// </remarks>
+        /// <date>
+        /// : data to pass to log function
+        /// </date>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_set_log_fn")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void kmod_set_log_fn(libkmod.kmod_ctx ctx, nint log_fn, void* data);
+        
+        /// <summary>
+        /// kmod_set_userdata:
+        /// @ctx : kmod library context
+        /// @userdata : data pointer
+        /// </summary>
+        /// <remarks>
+        /// Store custom @userdata in the library context.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_set_userdata")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial void kmod_set_userdata(libkmod.kmod_ctx ctx, void* userdata);
         
+        /// <summary>
+        /// kmod_get_userdata:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve stored data pointer from library context. This might be useful
+        /// to access from callbacks.Returns: stored userdataSince: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_get_userdata")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void* kmod_get_userdata(libkmod.kmod_ctx ctx);
+        
+        /// <summary>
+        /// kmod_get_dirname:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the absolute path used for linux modules in this context. The path
+        /// is computed from the arguments to kmod_new().Since: 22
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_get_dirname")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* kmod_get_dirname_(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_get_dirname:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the absolute path used for linux modules in this context. The path
+        /// is computed from the arguments to kmod_new().Since: 22
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_get_dirname")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string kmod_get_dirname(libkmod.kmod_ctx ctx);
         
         /// <summary>
-        /// Management of libkmod's resources
+        /// kmod_list_last:
+        /// @list : the head of the list
         /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_load_resources")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_load_resources(libkmod.kmod_ctx ctx);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_unload_resources")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void kmod_unload_resources(libkmod.kmod_ctx ctx);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_validate_resources")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libkmod.kmod_resources kmod_validate_resources(libkmod.kmod_ctx ctx);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_dump_index")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_dump_index(libkmod.kmod_ctx ctx, libkmod.kmod_index type, int fd);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_list_next")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libkmod.kmod_list kmod_list_next(libkmod.kmod_list list, libkmod.kmod_list curr);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_list_prev")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libkmod.kmod_list kmod_list_prev(libkmod.kmod_list list, libkmod.kmod_list curr);
-        
+        /// <remarks>
+        /// Get the last element of the @list . As @list is a circular list,
+        /// this is a cheap operation O(1) with the last element being the
+        /// previous element.If the list has a single element it will return the list itself (as
+        /// expected, and this is what differentiates from kmod_list_prev()).Returns: last node at @list or NULL if the list is empty.Since: 2
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_list_last")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_list kmod_list_last(libkmod.kmod_list list);
         
+        /// <summary>
+        /// kmod_list_next:
+        /// @list : the head of the list
+        /// @curr : the current node in the list
+        /// </summary>
+        /// <remarks>
+        /// Get the next node in @list relative to @curr as if @list was not a circular
+        /// list. I.e. calling this function in the last node of the list returns
+        /// NULL.. It can be used to iterate a list by checking for NULL return to know
+        /// when all elements were iterated.Returns: node next to @curr or NULL if either this node is the last of or
+        /// list is empty.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_list_next")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial libkmod.kmod_list kmod_list_next(libkmod.kmod_list list, libkmod.kmod_list curr);
+        
+        /// <summary>
+        /// kmod_list_prev:
+        /// @list : the head of the list
+        /// @curr : the current node in the list
+        /// </summary>
+        /// <remarks>
+        /// Get the previous node in @list relative to @curr as if @list was not a
+        /// circular list. I.e.: the previous of the head is NULL. It can be used to
+        /// iterate a list by checking for NULL return to know when all elements were
+        /// iterated.Returns: node previous to @curr or NULL if either this node is the head of
+        /// the list or the list is empty.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_list_prev")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial libkmod.kmod_list kmod_list_prev(libkmod.kmod_list list, libkmod.kmod_list curr);
+        
+        /// <summary>
+        /// kmod_config_get_blacklists:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve an iterator to deal with the blacklist maintained inside the
+        /// library. See kmod_config_iter_get_key(), kmod_config_iter_get_value() and
+        /// kmod_config_iter_next(). At least one call to kmod_config_iter_next() must
+        /// be made to initialize the iterator and check if it's valid.Returns: a new iterator over the blacklists or NULL on failure. Free it
+        /// with kmod_config_iter_free_iter().Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_get_blacklists")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_config_iter kmod_config_get_blacklists(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_config_get_install_commands:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve an iterator to deal with the install commands maintained inside the
+        /// library. See kmod_config_iter_get_key(), kmod_config_iter_get_value() and
+        /// kmod_config_iter_next(). At least one call to kmod_config_iter_next() must
+        /// be made to initialize the iterator and check if it's valid.Returns: a new iterator over the install commands or NULL on failure. Free
+        /// it with kmod_config_iter_free_iter().Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_get_install_commands")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_config_iter kmod_config_get_install_commands(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_config_get_remove_commands:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve an iterator to deal with the remove commands maintained inside the
+        /// library. See kmod_config_iter_get_key(), kmod_config_iter_get_value() and
+        /// kmod_config_iter_next(). At least one call to kmod_config_iter_next() must
+        /// be made to initialize the iterator and check if it's valid.Returns: a new iterator over the remove commands or NULL on failure. Free
+        /// it with kmod_config_iter_free_iter().Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_get_remove_commands")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_config_iter kmod_config_get_remove_commands(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_config_get_aliases:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve an iterator to deal with the aliases maintained inside the
+        /// library. See kmod_config_iter_get_key(), kmod_config_iter_get_value() and
+        /// kmod_config_iter_next(). At least one call to kmod_config_iter_next() must
+        /// be made to initialize the iterator and check if it's valid.Returns: a new iterator over the aliases or NULL on failure. Free it with
+        /// kmod_config_iter_free_iter().Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_get_aliases")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_config_iter kmod_config_get_aliases(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_config_get_options:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve an iterator to deal with the options maintained inside the
+        /// library. See kmod_config_iter_get_key(), kmod_config_iter_get_value() and
+        /// kmod_config_iter_next(). At least one call to kmod_config_iter_next() must
+        /// be made to initialize the iterator and check if it's valid.Returns: a new iterator over the options or NULL on failure. Free it with
+        /// kmod_config_iter_free_iter().Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_get_options")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_config_iter kmod_config_get_options(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_config_get_softdeps:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve an iterator to deal with the softdeps maintained inside the
+        /// library. See kmod_config_iter_get_key(), kmod_config_iter_get_value() and
+        /// kmod_config_iter_next(). At least one call to kmod_config_iter_next() must
+        /// be made to initialize the iterator and check if it's valid.Returns: a new iterator over the softdeps or NULL on failure. Free it with
+        /// kmod_config_iter_free_iter().Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_get_softdeps")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_config_iter kmod_config_get_softdeps(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_config_get_weakdeps:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// Retrieve an iterator to deal with the weakdeps maintained inside the
+        /// library. See kmod_config_iter_get_key(), kmod_config_iter_get_value() and
+        /// kmod_config_iter_next(). At least one call to kmod_config_iter_next() must
+        /// be made to initialize the iterator and check if it's valid.Returns: a new iterator over the weakdeps or NULL on failure. Free it with
+        /// kmod_config_iter_free_iter().Since: 33
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_get_weakdeps")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_config_iter kmod_config_get_weakdeps(libkmod.kmod_ctx ctx);
         
+        /// <summary>
+        /// kmod_config_iter_get_key:
+        /// @iter : iterator over a certain configuration
+        /// </summary>
+        /// <remarks>
+        /// When using a new allocated iterator, user must perform a call to
+        /// kmod_config_iter_next() to initialize iterator's position and check if it's
+        /// valid.Returns: the key of the current configuration pointed by @iter .Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_iter_get_key")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* kmod_config_iter_get_key_(libkmod.kmod_config_iter iter);
         
+        /// <summary>
+        /// kmod_config_iter_get_key:
+        /// @iter : iterator over a certain configuration
+        /// </summary>
+        /// <remarks>
+        /// When using a new allocated iterator, user must perform a call to
+        /// kmod_config_iter_next() to initialize iterator's position and check if it's
+        /// valid.Returns: the key of the current configuration pointed by @iter .Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_iter_get_key")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string kmod_config_iter_get_key(libkmod.kmod_config_iter iter);
         
+        /// <summary>
+        /// kmod_config_iter_get_value:
+        /// @iter : iterator over a certain configuration
+        /// </summary>
+        /// <remarks>
+        /// When using a new allocated iterator, user must perform a call to
+        /// kmod_config_iter_next() to initialize iterator's position and check if it's
+        /// valid.Returns: the value of the current configuration pointed by @iter .Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_iter_get_value")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* kmod_config_iter_get_value_(libkmod.kmod_config_iter iter);
         
+        /// <summary>
+        /// kmod_config_iter_get_value:
+        /// @iter : iterator over a certain configuration
+        /// </summary>
+        /// <remarks>
+        /// When using a new allocated iterator, user must perform a call to
+        /// kmod_config_iter_next() to initialize iterator's position and check if it's
+        /// valid.Returns: the value of the current configuration pointed by @iter .Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_iter_get_value")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string kmod_config_iter_get_value(libkmod.kmod_config_iter iter);
         
+        /// <summary>
+        /// kmod_config_iter_next:
+        /// @iter : iterator over a certain configuration
+        /// </summary>
+        /// <remarks>
+        /// Make @iter point to the next item of a certain configuration. It's an
+        /// automatically recycling iterator. When it reaches the end, false is
+        /// returned; then if user wants to iterate again, it's sufficient to call this
+        /// function once more.Returns: true if next position of @iter is valid or false if its end is
+        /// reached.Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_iter_next")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.MarshalAs(UnmanagedType.U1)]
         public static partial bool kmod_config_iter_next(libkmod.kmod_config_iter iter);
         
+        /// <summary>
+        /// kmod_config_iter_free_iter:
+        /// @iter : iterator over a certain configuration
+        /// </summary>
+        /// <remarks>
+        /// Free resources used by the iterator.Since: 4
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_config_iter_free_iter")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial void kmod_config_iter_free_iter(libkmod.kmod_config_iter iter);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_name")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_new_from_name(libkmod.kmod_ctx ctx, byte* name, out libkmod.kmod_module mod);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_name")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_new_from_name(libkmod.kmod_ctx ctx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, out libkmod.kmod_module mod);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_path")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_new_from_path(libkmod.kmod_ctx ctx, byte* path, out libkmod.kmod_module mod);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_path")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_new_from_path(libkmod.kmod_ctx ctx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, out libkmod.kmod_module mod);
-        
+        /// <summary>
+        /// kmod_module_new_from_lookup:
+        /// @ctx : kmod library context
+        /// @given _alias: alias to look for
+        /// @list : an empty list where to save the list of modules matching
+        /// @given _alias
+        /// </summary>
+        /// <remarks>
+        /// Create a new list of kmod modules using an alias or module name and lookup
+        /// libkmod's configuration files and indexes in order to find the module.
+        /// Once it's found in one of the places, it stops searching and create the
+        /// list of modules that is saved in @list .The search order is: 1. aliases in configuration file; 2. module names in
+        /// modules.dep index; 3. symbol aliases in modules.symbols index; 4. aliases
+        /// from install commands; 5. builtin indexes from kernel.The initial refcount is 1, and needs to be decremented to release the
+        /// resources of the kmod_module. The returned @list must be released by
+        /// calling kmod_module_unref_list(). Since libkmod keeps track of all
+        /// kmod_modules created, they are all released upon @ctx destruction too. Do
+        /// not unref @ctx before all the desired operations with the returned list are
+        /// completed.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. It fails if any of the lookup
+        /// methods failed, which is basically due to memory allocation fail. If module
+        /// is not found, it still returns 0, but @list is an empty list.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_new_from_lookup(libkmod.kmod_ctx ctx, byte* given_alias, out libkmod.kmod_list list);
         
+        /// <summary>
+        /// kmod_module_new_from_lookup:
+        /// @ctx : kmod library context
+        /// @given _alias: alias to look for
+        /// @list : an empty list where to save the list of modules matching
+        /// @given _alias
+        /// </summary>
+        /// <remarks>
+        /// Create a new list of kmod modules using an alias or module name and lookup
+        /// libkmod's configuration files and indexes in order to find the module.
+        /// Once it's found in one of the places, it stops searching and create the
+        /// list of modules that is saved in @list .The search order is: 1. aliases in configuration file; 2. module names in
+        /// modules.dep index; 3. symbol aliases in modules.symbols index; 4. aliases
+        /// from install commands; 5. builtin indexes from kernel.The initial refcount is 1, and needs to be decremented to release the
+        /// resources of the kmod_module. The returned @list must be released by
+        /// calling kmod_module_unref_list(). Since libkmod keeps track of all
+        /// kmod_modules created, they are all released upon @ctx destruction too. Do
+        /// not unref @ctx before all the desired operations with the returned list are
+        /// completed.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. It fails if any of the lookup
+        /// methods failed, which is basically due to memory allocation fail. If module
+        /// is not found, it still returns 0, but @list is an empty list.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_new_from_lookup(libkmod.kmod_ctx ctx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> given_alias, out libkmod.kmod_list list);
         
+        /// <summary>
+        /// kmod_module_new_from_name_lookup:
+        /// @ctx : kmod library context
+        /// @modname : module name to look for
+        /// @mod : returned module on success
+        /// </summary>
+        /// <remarks>
+        /// Lookup by module name, without considering possible aliases. This is similar
+        /// to kmod_module_new_from_lookup(), but don't consider as source indexes and
+        /// configurations that work with aliases. When successful, this always resolves
+        /// to one and only one module.The search order is: 1. module names in modules.dep index;
+        /// 2. builtin indexes from kernel.The initial refcount is 1, and needs to be decremented to release the
+        /// resources of the kmod_module. Since libkmod keeps track of all
+        /// kmod_modules created, they are all released upon @ctx destruction too. Do
+        /// not unref @ctx before all the desired operations with the returned list are
+        /// completed.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. It fails if any of the lookup
+        /// methods failed, which is basically due to memory allocation failure. If
+        /// module is not found, it still returns 0, but @mod is left untouched.Since: 30
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_name_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_new_from_name_lookup(libkmod.kmod_ctx ctx, byte* modname, out libkmod.kmod_module mod);
         
+        /// <summary>
+        /// kmod_module_new_from_name_lookup:
+        /// @ctx : kmod library context
+        /// @modname : module name to look for
+        /// @mod : returned module on success
+        /// </summary>
+        /// <remarks>
+        /// Lookup by module name, without considering possible aliases. This is similar
+        /// to kmod_module_new_from_lookup(), but don't consider as source indexes and
+        /// configurations that work with aliases. When successful, this always resolves
+        /// to one and only one module.The search order is: 1. module names in modules.dep index;
+        /// 2. builtin indexes from kernel.The initial refcount is 1, and needs to be decremented to release the
+        /// resources of the kmod_module. Since libkmod keeps track of all
+        /// kmod_modules created, they are all released upon @ctx destruction too. Do
+        /// not unref @ctx before all the desired operations with the returned list are
+        /// completed.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. It fails if any of the lookup
+        /// methods failed, which is basically due to memory allocation failure. If
+        /// module is not found, it still returns 0, but @mod is left untouched.Since: 30
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_name_lookup")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_new_from_name_lookup(libkmod.kmod_ctx ctx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> modname, out libkmod.kmod_module mod);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_loaded")]
+        /// <summary>
+        /// kmod_module_new_from_name:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// : name of the module: where to save the created struct kmod_moduleCreate a new struct kmod_module using the module name. can not be analias, file name or anything else; it must be a module name. There's no
+        /// check if the module exists in the system.This function is also used internally by many others that return a new
+        /// struct kmod_module or a new list of modules.The initial refcount is 1, and needs to be decremented to release the
+        /// resources of the kmod_module. Since libkmod keeps track of all
+        /// kmod_modules created, they are all released upon @ctx destruction too. Do
+        /// not unref @ctx before all the desired operations with the returned
+        /// kmod_module are done.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. It fails if name is not a valid
+        /// module name or if memory allocation failed.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_new_from_loaded(libkmod.kmod_ctx ctx, out libkmod.kmod_list list);
+        public static partial int kmod_module_new_from_name(libkmod.kmod_ctx ctx, byte* name, out libkmod.kmod_module mod);
         
+        /// <summary>
+        /// kmod_module_new_from_name:
+        /// @ctx : kmod library context
+        /// </summary>
+        /// <remarks>
+        /// : name of the module: where to save the created struct kmod_moduleCreate a new struct kmod_module using the module name. can not be analias, file name or anything else; it must be a module name. There's no
+        /// check if the module exists in the system.This function is also used internally by many others that return a new
+        /// struct kmod_module or a new list of modules.The initial refcount is 1, and needs to be decremented to release the
+        /// resources of the kmod_module. Since libkmod keeps track of all
+        /// kmod_modules created, they are all released upon @ctx destruction too. Do
+        /// not unref @ctx before all the desired operations with the returned
+        /// kmod_module are done.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. It fails if name is not a valid
+        /// module name or if memory allocation failed.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_name")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_new_from_name(libkmod.kmod_ctx ctx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> name, out libkmod.kmod_module mod);
+        
+        /// <summary>
+        /// kmod_module_new_from_path:
+        /// @ctx : kmod library context
+        /// @path : path where to find the given module
+        /// @mod : where to save the created struct kmod_module
+        /// </summary>
+        /// <remarks>
+        /// Create a new struct kmod_module using the module path. @path must be an
+        /// existent file within the filesystem and must be accessible to libkmod.The initial refcount is 1, and needs to be decremented to release the
+        /// resources of the kmod_module. Since libkmod keeps track of all
+        /// kmod_modules created, they are all released upon @ctx destruction too. Do
+        /// not unref @ctx before all the desired operations with the returned
+        /// kmod_module are done.If @path is relative, it's treated as relative to the current working
+        /// directory. Otherwise, give an absolute path.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. It fails if file does not exist, if
+        /// it's not a valid file for a kmod_module or if memory allocation failed.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_path")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_new_from_path(libkmod.kmod_ctx ctx, byte* path, out libkmod.kmod_module mod);
+        
+        /// <summary>
+        /// kmod_module_new_from_path:
+        /// @ctx : kmod library context
+        /// @path : path where to find the given module
+        /// @mod : where to save the created struct kmod_module
+        /// </summary>
+        /// <remarks>
+        /// Create a new struct kmod_module using the module path. @path must be an
+        /// existent file within the filesystem and must be accessible to libkmod.The initial refcount is 1, and needs to be decremented to release the
+        /// resources of the kmod_module. Since libkmod keeps track of all
+        /// kmod_modules created, they are all released upon @ctx destruction too. Do
+        /// not unref @ctx before all the desired operations with the returned
+        /// kmod_module are done.If @path is relative, it's treated as relative to the current working
+        /// directory. Otherwise, give an absolute path.Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. It fails if file does not exist, if
+        /// it's not a valid file for a kmod_module or if memory allocation failed.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_path")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_new_from_path(libkmod.kmod_ctx ctx, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> path, out libkmod.kmod_module mod);
+        
+        /// <summary>
+        /// kmod_module_ref:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Take a reference of the kmod module, incrementing its refcount.Returns: the passed @module with its refcount incremented.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_ref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_module kmod_module_ref(libkmod.kmod_module mod);
         
+        /// <summary>
+        /// kmod_module_unref:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Drop a reference of the kmod module. If the refcount reaches zero, its
+        /// resources are released.Returns: NULL if @mod is NULL or if the module was released. Otherwise it
+        /// returns the passed @mod with its refcount decremented.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_unref")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial libkmod.kmod_module kmod_module_unref(libkmod.kmod_module mod);
         
+        /// <summary>
+        /// kmod_module_unref_list:
+        /// @list : list of kmod modules
+        /// </summary>
+        /// <remarks>
+        /// Drop a reference of each kmod module in @list and releases the resources
+        /// taken by the list itself.Returns: 0Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_unref_list")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_unref_list(libkmod.kmod_list list);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_module")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libkmod.kmod_module kmod_module_get_module(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_remove_module")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_remove_module(libkmod.kmod_module mod, libkmod.kmod_remove flags);
-        
+        /// <summary>
+        /// kmod_module_insert_module:
+        /// @mod : kmod module
+        /// @flags : flags are not passed to the kernel, but instead they dictate the
+        /// behavior of this function, valid flags #kmod_insert
+        /// @options : module's options to pass to the kernel.
+        /// </summary>
+        /// <remarks>
+        /// Insert a module in the kernel. It opens the file pointed by @mod ,
+        /// mmap'ing it and passing to kernel.Returns: 0 on success or 
+        /// &lt;
+        /// 0 on failure. If module is already loaded it
+        /// returns -EEXIST.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_insert_module")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_insert_module(libkmod.kmod_module mod, libkmod.kmod_insert flags, byte* options);
         
+        /// <summary>
+        /// kmod_module_insert_module:
+        /// @mod : kmod module
+        /// @flags : flags are not passed to the kernel, but instead they dictate the
+        /// behavior of this function, valid flags #kmod_insert
+        /// @options : module's options to pass to the kernel.
+        /// </summary>
+        /// <remarks>
+        /// Insert a module in the kernel. It opens the file pointed by @mod ,
+        /// mmap'ing it and passing to kernel.Returns: 0 on success or 
+        /// &lt;
+        /// 0 on failure. If module is already loaded it
+        /// returns -EEXIST.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_insert_module")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_insert_module(libkmod.kmod_module mod, libkmod.kmod_insert flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> options);
         
+        /// <summary>
+        /// kmod_module_probe_insert_module:
+        /// @mod : kmod module
+        /// @flags : flags are not passed to the kernel, but instead they dictate the
+        /// behavior of this function, valid flags are #kmod_probe
+        /// @extra _options: module's options to pass to the kernel. It applies only
+        /// to @mod , not to its dependencies.
+        /// @run _install: function to run when @mod is backed by an install command.
+        /// </summary>
+        /// <remarks>
+        /// Insert a module in the kernel resolving dependencies, soft dependencies,
+        /// install commands and applying blacklist.If @run _install is NULL, this function will fork and exec by calling
+        /// system(3). Don't pass a NULL argument in @run _install if your binary is
+        /// setuid/setgid (see warning in system(3)). If you need control over the
+        /// execution of an install command, give a callback function instead.Returns: 0 on success, &gt; 0 if stopped by a reason given in @flags or 
+        /// &lt;
+        /// 0 on
+        /// failure.Since: 3
+        /// </remarks>
+        /// <date>
+        /// @date : data to give back to @run _install callback
+        /// @print _action: function to call with the action being taken (install or
+        /// insmod). It's useful for tools like modprobe when running with verbose
+        /// output or in dry-run mode.
+        /// </date>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_probe_insert_module")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_probe_insert_module(libkmod.kmod_module mod, libkmod.kmod_probe flags, byte* extra_options, delegate*unmanaged[Cdecl]<libkmod.kmod_module, byte*, void*, int> run_install, void* data, delegate*unmanaged[Cdecl]<libkmod.kmod_module, bool, byte*, void> print_action);
         
+        /// <summary>
+        /// kmod_module_probe_insert_module:
+        /// @mod : kmod module
+        /// @flags : flags are not passed to the kernel, but instead they dictate the
+        /// behavior of this function, valid flags are #kmod_probe
+        /// @extra _options: module's options to pass to the kernel. It applies only
+        /// to @mod , not to its dependencies.
+        /// @run _install: function to run when @mod is backed by an install command.
+        /// </summary>
+        /// <remarks>
+        /// Insert a module in the kernel resolving dependencies, soft dependencies,
+        /// install commands and applying blacklist.If @run _install is NULL, this function will fork and exec by calling
+        /// system(3). Don't pass a NULL argument in @run _install if your binary is
+        /// setuid/setgid (see warning in system(3)). If you need control over the
+        /// execution of an install command, give a callback function instead.Returns: 0 on success, &gt; 0 if stopped by a reason given in @flags or 
+        /// &lt;
+        /// 0 on
+        /// failure.Since: 3
+        /// </remarks>
+        /// <date>
+        /// @date : data to give back to @run _install callback
+        /// @print _action: function to call with the action being taken (install or
+        /// insmod). It's useful for tools like modprobe when running with verbose
+        /// output or in dry-run mode.
+        /// </date>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_probe_insert_module")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_probe_insert_module(libkmod.kmod_module mod, libkmod.kmod_probe flags, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> extra_options, delegate*unmanaged[Cdecl]<libkmod.kmod_module, byte*, void*, int> run_install, void* data, delegate*unmanaged[Cdecl]<libkmod.kmod_module, bool, byte*, void> print_action);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_name")]
+        /// <summary>
+        /// kmod_module_remove_module:
+        /// @mod : kmod module
+        /// @flags : flags used when removing the module, valid flags are #kmod_remove
+        /// </summary>
+        /// <remarks>
+        /// Remove a module from the kernel.Returns: 0 on success or 
+        /// &lt;
+        /// 0 on failure.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_remove_module")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* kmod_module_get_name_(libkmod.kmod_module mod);
+        public static partial int kmod_module_remove_module(libkmod.kmod_module mod, libkmod.kmod_remove flags);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_name")]
+        /// <summary>
+        /// kmod_module_get_module:
+        /// @entry : an entry in a list of kmod modules.
+        /// </summary>
+        /// <remarks>
+        /// Get the kmod module of this @entry in the list, increasing its refcount.
+        /// After it's used, unref it. Since the refcount is incremented upon return,
+        /// you still have to call kmod_module_unref_list() to release the list of kmod
+        /// modules.Returns: NULL on failure or the kmod_module contained in this list entry
+        /// with its refcount incremented.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_module")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string kmod_module_get_name(libkmod.kmod_module mod);
+        public static partial libkmod.kmod_module kmod_module_get_module(libkmod.kmod_list entry);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_path")]
+        /// <summary>
+        /// kmod_module_get_dependencies:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Search the modules.dep index to find the dependencies of the given @mod .
+        /// The result is cached in @mod , so subsequent calls to this function will
+        /// return the already searched list of modules.Returns: NULL on failure. Otherwise it returns a list of kmod modules
+        /// that can be released by calling kmod_module_unref_list().Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_dependencies")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* kmod_module_get_path_(libkmod.kmod_module mod);
+        public static partial libkmod.kmod_list kmod_module_get_dependencies(libkmod.kmod_module mod);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_path")]
+        /// <summary>
+        /// kmod_module_get_softdeps:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get soft dependencies for this kmod module. Soft dependencies come
+        /// from configuration file and are not cached in @mod because it may include
+        /// dependency cycles that would make we leak kmod_module. Any call
+        /// to this function will search for this module in configuration, allocate a
+        /// list and return the result.BothReturns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise.Since: 2
+        /// </remarks>
+        /// <pre>
+        /// : where to save the list of preceding soft dependencies.
+        /// </pre>
+        /// <post>
+        /// : where to save the list of post soft dependencies.
+        /// </post>
+        /// <pre>
+        /// and
+        /// </pre>
+        /// <post>
+        /// @post are newly created list of kmod_module and
+        /// should be unreferenced with kmod_module_unref_list().
+        /// </post>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_softdeps")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string kmod_module_get_path(libkmod.kmod_module mod);
+        public static partial int kmod_module_get_softdeps(libkmod.kmod_module mod, out libkmod.kmod_list pre, out libkmod.kmod_list post);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_options")]
+        /// <summary>
+        /// kmod_module_get_weakdeps:
+        /// @mod : kmod module
+        /// @weak : where to save the list of weak dependencies.
+        /// </summary>
+        /// <remarks>
+        /// Get weak dependencies for this kmod module. Weak dependencies come
+        /// from configuration file and are not cached in @mod because it may include
+        /// dependency cycles that would make we leak kmod_module. Any call
+        /// to this function will search for this module in configuration, allocate a
+        /// list and return the result.@weak is newly created list of kmod_module and
+        /// should be unreferenced with kmod_module_unref_list().Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise.Since: 33
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_weakdeps")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* kmod_module_get_options_(libkmod.kmod_module mod);
+        public static partial int kmod_module_get_weakdeps(libkmod.kmod_module mod, out libkmod.kmod_list weak);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_options")]
+        /// <summary>
+        /// kmod_module_apply_filter:
+        /// @ctx : kmod library context
+        /// @filter _type: bitmask to filter modules out, valid types are #kmod_filter
+        /// @input : list of kmod_module to be filtered
+        /// @output : where to save the new list
+        /// </summary>
+        /// <remarks>
+        /// Given a list @input , this function filter it out by the filter mask
+        /// and save it in @output .Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. @output is saved with the updated
+        /// list.Since: 6
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_apply_filter")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string kmod_module_get_options(libkmod.kmod_module mod);
+        public static partial int kmod_module_apply_filter(libkmod.kmod_ctx ctx, libkmod.kmod_filter filter_type, libkmod.kmod_list input, out libkmod.kmod_list output);
         
+        /// <summary>
+        /// kmod_module_get_filtered_blacklist:
+        /// @ctx : kmod library context
+        /// @input : list of kmod_module to be filtered with blacklist
+        /// @output : where to save the new list
+        /// </summary>
+        /// <remarks>
+        /// This function should not be used. Use kmod_module_apply_filter instead.Given a list @input , this function filter it out with config's blacklist
+        /// and save it in @output .Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise. @output is saved with the updated
+        /// list.Since: 1
+        /// Deprecated: 6: Use #kmod_module_apply_filter instead.
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_filtered_blacklist")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_get_filtered_blacklist(libkmod.kmod_ctx ctx, libkmod.kmod_list input, out libkmod.kmod_list output);
+        
+        /// <summary>
+        /// kmod_module_get_install_commands:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get install commands for this kmod module. Install commands come from the
+        /// configuration file and are cached in @mod . The first call to this function
+        /// will search for this module in configuration and subsequent calls return
+        /// the cached string. The install commands are returned as they were in the
+        /// configuration, concatenated by ';'. No other processing is made in this
+        /// string.Returns: a string with all install commands separated by semicolons. This
+        /// string is owned by @mod , do not free it.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_install_commands")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* kmod_module_get_install_commands_(libkmod.kmod_module mod);
         
+        /// <summary>
+        /// kmod_module_get_install_commands:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get install commands for this kmod module. Install commands come from the
+        /// configuration file and are cached in @mod . The first call to this function
+        /// will search for this module in configuration and subsequent calls return
+        /// the cached string. The install commands are returned as they were in the
+        /// configuration, concatenated by ';'. No other processing is made in this
+        /// string.Returns: a string with all install commands separated by semicolons. This
+        /// string is owned by @mod , do not free it.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_install_commands")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string kmod_module_get_install_commands(libkmod.kmod_module mod);
         
+        /// <summary>
+        /// kmod_module_get_remove_commands:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get remove commands for this kmod module. Remove commands come from the
+        /// configuration file and are cached in @mod . The first call to this function
+        /// will search for this module in configuration and subsequent calls return
+        /// the cached string. The remove commands are returned as they were in the
+        /// configuration, concatenated by ';'. No other processing is made in this
+        /// string.Returns: a string with all remove commands separated by semicolons. This
+        /// string is owned by @mod , do not free it.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_remove_commands")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* kmod_module_get_remove_commands_(libkmod.kmod_module mod);
         
+        /// <summary>
+        /// kmod_module_get_remove_commands:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get remove commands for this kmod module. Remove commands come from the
+        /// configuration file and are cached in @mod . The first call to this function
+        /// will search for this module in configuration and subsequent calls return
+        /// the cached string. The remove commands are returned as they were in the
+        /// configuration, concatenated by ';'. No other processing is made in this
+        /// string.Returns: a string with all remove commands separated by semicolons. This
+        /// string is owned by @mod , do not free it.Since: 1
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_remove_commands")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string kmod_module_get_remove_commands(libkmod.kmod_module mod);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_dependencies")]
+        /// <summary>
+        /// kmod_module_get_name:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get the name of this kmod module. Name is always available, independently
+        /// if it was created by kmod_module_new_from_name() or another function and
+        /// it's always normalized (dashes are replaced with underscores).Returns: the name of this kmod module.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libkmod.kmod_list kmod_module_get_dependencies(libkmod.kmod_module mod);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_softdeps")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_get_softdeps(libkmod.kmod_module mod, out libkmod.kmod_list pre, out libkmod.kmod_list post);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_weakdeps")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_get_weakdeps(libkmod.kmod_module mod, out libkmod.kmod_list weak);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_filtered_blacklist")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_get_filtered_blacklist(libkmod.kmod_ctx ctx, libkmod.kmod_list input, out libkmod.kmod_list output);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_apply_filter")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_apply_filter(libkmod.kmod_ctx ctx, libkmod.kmod_filter filter_type, libkmod.kmod_list input, out libkmod.kmod_list output);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_initstate_str")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* kmod_module_initstate_str_(libkmod.kmod_module_initstate state);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_initstate_str")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string kmod_module_initstate_str(libkmod.kmod_module_initstate state);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_initstate")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_get_initstate(libkmod.kmod_module mod);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_refcnt")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_get_refcnt(libkmod.kmod_module mod);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_holders")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libkmod.kmod_list kmod_module_get_holders(libkmod.kmod_module mod);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_sections")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial libkmod.kmod_list kmod_module_get_sections(libkmod.kmod_module mod);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_section_get_name")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* kmod_module_section_get_name_(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_section_get_name")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string kmod_module_section_get_name(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_section_get_address")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial nuint kmod_module_section_get_address(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_section_free_list")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void kmod_module_section_free_list(libkmod.kmod_list list);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_size")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial nint kmod_module_get_size(libkmod.kmod_module mod);
+        public static partial byte* kmod_module_get_name_(libkmod.kmod_module mod);
         
         /// <summary>
-        /// Information retrieved from ELF headers and sections
+        /// kmod_module_get_name:
+        /// @mod : kmod module
         /// </summary>
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_info")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_get_info(libkmod.kmod_module mod, out libkmod.kmod_list list);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_get_key")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* kmod_module_info_get_key_(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_get_key")]
+        /// <remarks>
+        /// Get the name of this kmod module. Name is always available, independently
+        /// if it was created by kmod_module_new_from_name() or another function and
+        /// it's always normalized (dashes are replaced with underscores).Returns: the name of this kmod module.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_name")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string kmod_module_info_get_key(libkmod.kmod_list entry);
+        public static partial string kmod_module_get_name(libkmod.kmod_module mod);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_get_value")]
+        /// <summary>
+        /// kmod_module_get_options:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get options of this kmod module. Options come from the configuration file
+        /// and are cached in @mod . The first call to this function will search for
+        /// this module in configuration and subsequent calls return the cached string.Returns: a string with all the options separated by spaces. This string is
+        /// owned by @mod , do not free it.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_options")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* kmod_module_info_get_value_(libkmod.kmod_list entry);
+        public static partial byte* kmod_module_get_options_(libkmod.kmod_module mod);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_get_value")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string kmod_module_info_get_value(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_free_list")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void kmod_module_info_free_list(libkmod.kmod_list list);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_versions")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_get_versions(libkmod.kmod_module mod, out libkmod.kmod_list list);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_version_get_symbol")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* kmod_module_version_get_symbol_(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_version_get_symbol")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string kmod_module_version_get_symbol(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_version_get_crc")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial ulong kmod_module_version_get_crc(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_versions_free_list")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void kmod_module_versions_free_list(libkmod.kmod_list list);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_symbols")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_get_symbols(libkmod.kmod_module mod, out libkmod.kmod_list list);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_symbol_get_symbol")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial byte* kmod_module_symbol_get_symbol_(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_symbol_get_symbol")]
+        /// <summary>
+        /// kmod_module_get_options:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get options of this kmod module. Options come from the configuration file
+        /// and are cached in @mod . The first call to this function will search for
+        /// this module in configuration and subsequent calls return the cached string.Returns: a string with all the options separated by spaces. This string is
+        /// owned by @mod , do not free it.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_options")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
-        public static partial string kmod_module_symbol_get_symbol(libkmod.kmod_list entry);
+        public static partial string kmod_module_get_options(libkmod.kmod_module mod);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_symbol_get_crc")]
+        /// <summary>
+        /// kmod_module_get_path:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get the path of this kmod module. If this kmod module was not created by
+        /// path, it can search the modules.dep index in order to find out the module
+        /// under context's dirname.Returns: the path of this kmod module or NULL if such information is not
+        /// available.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial ulong kmod_module_symbol_get_crc(libkmod.kmod_list entry);
+        public static partial byte* kmod_module_get_path_(libkmod.kmod_module mod);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_symbols_free_list")]
+        /// <summary>
+        /// kmod_module_get_path:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get the path of this kmod module. If this kmod module was not created by
+        /// path, it can search the modules.dep index in order to find out the module
+        /// under context's dirname.Returns: the path of this kmod module or NULL if such information is not
+        /// available.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_path")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial void kmod_module_symbols_free_list(libkmod.kmod_list list);
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
+        public static partial string kmod_module_get_path(libkmod.kmod_module mod);
         
+        /// <summary>
+        /// kmod_module_get_dependency_symbols:
+        /// @mod : kmod module
+        /// @list : where to return list of module dependency_symbols
+        /// </summary>
+        /// <remarks>
+        /// Get a list of entries in ELF section ".symtab" or "__ksymtab_strings".The structure contained in this list is internal to libkmod and its fields
+        /// can be obtainsed by calling kmod_module_dependency_symbol_get_crc() and
+        /// kmod_module_dependency_symbol_get_symbol().After use, free the @list by calling
+        /// kmod_module_dependency_symbols_free_list().Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise.Since: 3
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_dependency_symbols")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int kmod_module_get_dependency_symbols(libkmod.kmod_module mod, out libkmod.kmod_list list);
         
+        /// <summary>
+        /// kmod_module_dependency_symbol_get_bind:
+        /// @entry : a list entry representing a kmod module dependency_symbol
+        /// </summary>
+        /// <remarks>
+        /// Get the bind type of a kmod module dependency_symbol.Returns: the bind of this kmod module dependency_symbol on success,
+        /// or 
+        /// &lt;
+        /// 0 on failure. Valid bind types are #kmod_symbol_bind.Since: 3
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_dependency_symbol_get_bind")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_dependency_symbol_get_bind(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_dependency_symbol_get_crc:
+        /// @entry : a list entry representing a kmod module dependency_symbol
+        /// </summary>
+        /// <remarks>
+        /// Get the crc of a kmod module dependency_symbol.Returns: the crc of this kmod module dependency_symbol if available, otherwise default to 0.Since: 3
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_dependency_symbol_get_crc")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial ulong kmod_module_dependency_symbol_get_crc(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_dependency_symbol_get_symbol:
+        /// @entry : a list entry representing a kmod module dependency_symbols
+        /// </summary>
+        /// <remarks>
+        /// Get the dependency symbol of a kmod moduleReturns: the symbol of this kmod module dependency_symbols on success or NULL
+        /// on failure. The string is owned by the dependency_symbols, do not free it.Since: 3
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_dependency_symbol_get_symbol")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial byte* kmod_module_dependency_symbol_get_symbol_(libkmod.kmod_list entry);
         
+        /// <summary>
+        /// kmod_module_dependency_symbol_get_symbol:
+        /// @entry : a list entry representing a kmod module dependency_symbols
+        /// </summary>
+        /// <remarks>
+        /// Get the dependency symbol of a kmod moduleReturns: the symbol of this kmod module dependency_symbols on success or NULL
+        /// on failure. The string is owned by the dependency_symbols, do not free it.Since: 3
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_dependency_symbol_get_symbol")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
         public static partial string kmod_module_dependency_symbol_get_symbol(libkmod.kmod_list entry);
         
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_dependency_symbol_get_bind")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int kmod_module_dependency_symbol_get_bind(libkmod.kmod_list entry);
-        
-        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_dependency_symbol_get_crc")]
-        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial ulong kmod_module_dependency_symbol_get_crc(libkmod.kmod_list entry);
-        
+        /// <summary>
+        /// kmod_module_dependency_symbols_free_list:
+        /// @list : kmod module dependency_symbols list
+        /// </summary>
+        /// <remarks>
+        /// Release the resources taken by @listSince: 3
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_dependency_symbols_free_list")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial void kmod_module_dependency_symbols_free_list(libkmod.kmod_list list);
+        
+        /// <summary>
+        /// kmod_module_get_sections:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get a list of kmod sections of this @mod , as returned by the kernel.The structure contained in this list is internal to libkmod and its fields
+        /// can be obtained by calling kmod_module_section_get_name() and
+        /// kmod_module_section_get_address().After use, free the @list by calling kmod_module_section_free_list().Returns: a new list of kmod module sections on success or NULL on failure.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_sections")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial libkmod.kmod_list kmod_module_get_sections(libkmod.kmod_module mod);
+        
+        /// <summary>
+        /// kmod_module_section_get_address:
+        /// @entry : a list entry representing a kmod module section
+        /// </summary>
+        /// <remarks>
+        /// Get the address of a kmod module section.Returns: the address of this kmod module section on success or ULONG_MAX
+        /// on failure.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_section_get_address")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial nuint kmod_module_section_get_address(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_section_get_name:
+        /// @entry : a list entry representing a kmod module section
+        /// </summary>
+        /// <remarks>
+        /// Get the name of a kmod module section.Returns: the name of this kmod module section on success or NULL on
+        /// failure. The string is owned by the section, do not free it.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_section_get_name")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial byte* kmod_module_section_get_name_(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_section_get_name:
+        /// @entry : a list entry representing a kmod module section
+        /// </summary>
+        /// <remarks>
+        /// Get the name of a kmod module section.Returns: the name of this kmod module section on success or NULL on
+        /// failure. The string is owned by the section, do not free it.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_section_get_name")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
+        public static partial string kmod_module_section_get_name(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_section_free_list:
+        /// @list : kmod module section list
+        /// </summary>
+        /// <remarks>
+        /// Release the resources taken by @listSince: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_section_free_list")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void kmod_module_section_free_list(libkmod.kmod_list list);
+        
+        /// <summary>
+        /// kmod_module_get_symbols:
+        /// @mod : kmod module
+        /// @list : where to return list of module symbols
+        /// </summary>
+        /// <remarks>
+        /// Get a list of entries in ELF section ".symtab" or "__ksymtab_strings".The structure contained in this list is internal to libkmod and its fields
+        /// can be obtainsed by calling kmod_module_symbol_get_crc() and
+        /// kmod_module_symbol_get_symbol().After use, free the @list by calling kmod_module_symbols_free_list().Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise.Since: 3
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_symbols")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_get_symbols(libkmod.kmod_module mod, out libkmod.kmod_list list);
+        
+        /// <summary>
+        /// kmod_module_symbol_get_crc:
+        /// @entry : a list entry representing a kmod module symbol
+        /// </summary>
+        /// <remarks>
+        /// Get the crc of a kmod module symbol.Returns: the crc of this kmod module symbol if available, otherwise default to 0.Since: 3
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_symbol_get_crc")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial ulong kmod_module_symbol_get_crc(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_symbol_get_symbol:
+        /// @entry : a list entry representing a kmod module symbols
+        /// </summary>
+        /// <remarks>
+        /// Get the symbol of a kmod module symbols.Returns: the symbol of this kmod module symbols on success or NULL
+        /// on failure. The string is owned by the symbols, do not free it.Since: 3
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_symbol_get_symbol")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial byte* kmod_module_symbol_get_symbol_(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_symbol_get_symbol:
+        /// @entry : a list entry representing a kmod module symbols
+        /// </summary>
+        /// <remarks>
+        /// Get the symbol of a kmod module symbols.Returns: the symbol of this kmod module symbols on success or NULL
+        /// on failure. The string is owned by the symbols, do not free it.Since: 3
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_symbol_get_symbol")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
+        public static partial string kmod_module_symbol_get_symbol(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_symbols_free_list:
+        /// @list : kmod module symbols list
+        /// </summary>
+        /// <remarks>
+        /// Release the resources taken by @listSince: 3
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_symbols_free_list")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void kmod_module_symbols_free_list(libkmod.kmod_list list);
+        
+        /// <summary>
+        /// kmod_module_get_versions:
+        /// @mod : kmod module
+        /// @list : where to return list of module versions
+        /// </summary>
+        /// <remarks>
+        /// Get a list of entries in ELF section "__versions".The structure contained in this list is internal to libkmod and its fields
+        /// can be obtainsed by calling kmod_module_version_get_crc() and
+        /// kmod_module_version_get_symbol().After use, free the @list by calling kmod_module_versions_free_list().Returns: 0 on success or 
+        /// &lt;
+        /// 0 otherwise.Since: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_versions")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_get_versions(libkmod.kmod_module mod, out libkmod.kmod_list list);
+        
+        /// <summary>
+        /// kmod_module_version_get_crc:
+        /// @entry : a list entry representing a kmod module version
+        /// </summary>
+        /// <remarks>
+        /// Get the crc of a kmod module version.Returns: the crc of this kmod module version if available, otherwise default to 0.Since: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_version_get_crc")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial ulong kmod_module_version_get_crc(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_version_get_symbol:
+        /// @entry : a list entry representing a kmod module versions
+        /// </summary>
+        /// <remarks>
+        /// Get the symbol of a kmod module versions.Returns: the symbol of this kmod module versions on success or NULL
+        /// on failure. The string is owned by the versions, do not free it.Since: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_version_get_symbol")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial byte* kmod_module_version_get_symbol_(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_version_get_symbol:
+        /// @entry : a list entry representing a kmod module versions
+        /// </summary>
+        /// <remarks>
+        /// Get the symbol of a kmod module versions.Returns: the symbol of this kmod module versions on success or NULL
+        /// on failure. The string is owned by the versions, do not free it.Since: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_version_get_symbol")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
+        public static partial string kmod_module_version_get_symbol(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_versions_free_list:
+        /// @list : kmod module versions list
+        /// </summary>
+        /// <remarks>
+        /// Release the resources taken by @listSince: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_versions_free_list")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void kmod_module_versions_free_list(libkmod.kmod_list list);
+        
+        /// <summary>
+        /// kmod_module_get_info:
+        /// @mod : kmod module
+        /// @list : where to return list of module information
+        /// </summary>
+        /// <remarks>
+        /// Get a list of entries in ELF section ".modinfo", these contain
+        /// alias, license, depends, vermagic and other keys with respective
+        /// values. If the module is signed (CONFIG_MODULE_SIG), information
+        /// about the module signature is included as well: signer,
+        /// sig_key and sig_hashalgo.The structure contained in this list is internal to libkmod and its fields
+        /// can be obtainsed by calling kmod_module_info_get_key() and
+        /// kmod_module_info_get_value().After use, free the @list by calling kmod_module_info_free_list().Returns: number of entries in @list on success or 
+        /// &lt;
+        /// 0 otherwise.Since: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_info")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_get_info(libkmod.kmod_module mod, out libkmod.kmod_list list);
+        
+        /// <summary>
+        /// kmod_module_info_get_key:
+        /// @entry : a list entry representing a kmod module info
+        /// </summary>
+        /// <remarks>
+        /// Get the key of a kmod module info.Returns: the key of this kmod module info on success or NULL on
+        /// failure. The string is owned by the info, do not free it.Since: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_get_key")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial byte* kmod_module_info_get_key_(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_info_get_key:
+        /// @entry : a list entry representing a kmod module info
+        /// </summary>
+        /// <remarks>
+        /// Get the key of a kmod module info.Returns: the key of this kmod module info on success or NULL on
+        /// failure. The string is owned by the info, do not free it.Since: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_get_key")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
+        public static partial string kmod_module_info_get_key(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_info_get_value:
+        /// @entry : a list entry representing a kmod module info
+        /// </summary>
+        /// <remarks>
+        /// Get the value of a kmod module info.Returns: the value of this kmod module info on success or NULL on
+        /// failure. The string is owned by the info, do not free it.Since: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_get_value")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial byte* kmod_module_info_get_value_(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_info_get_value:
+        /// @entry : a list entry representing a kmod module info
+        /// </summary>
+        /// <remarks>
+        /// Get the value of a kmod module info.Returns: the value of this kmod module info on success or NULL on
+        /// failure. The string is owned by the info, do not free it.Since: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_get_value")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
+        public static partial string kmod_module_info_get_value(libkmod.kmod_list entry);
+        
+        /// <summary>
+        /// kmod_module_info_free_list:
+        /// @list : kmod module info list
+        /// </summary>
+        /// <remarks>
+        /// Release the resources taken by @listSince: 2
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_info_free_list")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial void kmod_module_info_free_list(libkmod.kmod_list list);
+        
+        /// <summary>
+        /// kmod_module_new_from_loaded:
+        /// @ctx : kmod library context
+        /// @list : where to save the list of loaded modules
+        /// </summary>
+        /// <remarks>
+        /// Create a new list of kmod modules with all modules currently loaded in
+        /// kernel. It uses /proc/modules to get the names of loaded modules and to
+        /// create kmod modules by calling kmod_module_new_from_name() in each of them.
+        /// They are put in @list in no particular order.The initial refcount is 1, and needs to be decremented to release the
+        /// resources of the kmod_module. The returned @list must be released by
+        /// calling kmod_module_unref_list(). Since libkmod keeps track of all
+        /// kmod_modules created, they are all released upon @ctx destruction too. Do
+        /// not unref @ctx before all the desired operations with the returned list are
+        /// completed.Returns: 0 on success or 
+        /// &lt;
+        /// 0 on error.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_new_from_loaded")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_new_from_loaded(libkmod.kmod_ctx ctx, out libkmod.kmod_list list);
+        
+        /// <summary>
+        /// kmod_module_get_initstate:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get the initstate of this @mod , as returned by the kernel, by reading
+        /// /sys filesystem.Returns: 
+        /// &lt;
+        /// 0 on error or module state if module is found in the kernel, valid
+        /// states are #kmod_module_initstate.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_initstate")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_get_initstate(libkmod.kmod_module mod);
+        
+        /// <summary>
+        /// kmod_module_initstate_str:
+        /// @state : the state as returned by kmod_module_get_initstate()
+        /// </summary>
+        /// <remarks>
+        /// Translate a initstate to a string.Returns: the string associated to the @state . This string is statically
+        /// allocated, do not free it.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_initstate_str")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial byte* kmod_module_initstate_str_(libkmod.kmod_module_initstate state);
+        
+        /// <summary>
+        /// kmod_module_initstate_str:
+        /// @state : the state as returned by kmod_module_get_initstate()
+        /// </summary>
+        /// <remarks>
+        /// Translate a initstate to a string.Returns: the string associated to the @state . This string is statically
+        /// allocated, do not free it.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_initstate_str")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        [return:global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))]
+        public static partial string kmod_module_initstate_str(libkmod.kmod_module_initstate state);
+        
+        /// <summary>
+        /// kmod_module_get_size:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get the size of this kmod module as returned by the kernel. If supported,
+        /// the size is read from the coresize attribute in /sys/module. For older
+        /// kernels, this falls back on /proc/modules and searches for the specified
+        /// module to get its size.Returns: the size of this kmod module.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_size")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial nint kmod_module_get_size(libkmod.kmod_module mod);
+        
+        /// <summary>
+        /// kmod_module_get_refcnt:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get the ref count of this @mod , as returned by the kernel, by reading
+        /// /sys filesystem.Returns: the reference count on success or 
+        /// &lt;
+        /// 0 on failure.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_refcnt")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial int kmod_module_get_refcnt(libkmod.kmod_module mod);
+        
+        /// <summary>
+        /// kmod_module_get_holders:
+        /// @mod : kmod module
+        /// </summary>
+        /// <remarks>
+        /// Get a list of kmod modules that are holding this @mod , as returned by Linux
+        /// Kernel. After use, free the @list by calling kmod_module_unref_list().Returns: a new list of kmod modules on success or NULL on failure.Since: 1
+        /// </remarks>
+        [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "kmod_module_get_holders")]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
+        public static partial libkmod.kmod_list kmod_module_get_holders(libkmod.kmod_module mod);
     }
 }

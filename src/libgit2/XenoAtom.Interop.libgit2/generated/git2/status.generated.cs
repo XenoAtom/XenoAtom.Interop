@@ -436,9 +436,10 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Function pointer to receive status on individual files
         /// </summary>
-        /// <remarks>
-        /// `path` is the relative path to the file from the root of the repository.`status_flags` is a combination of `git_status_t` values that apply.`payload` is the value you passed to the foreach function as payload.
-        /// </remarks>
+        /// <param name="path">is the path to the file</param>
+        /// <param name="status_flags">the `git_status_t` values for file's status</param>
+        /// <param name="payload">the user-specified payload to the foreach function</param>
+        /// <returns>0 on success, or a negative number on failure</returns>
         public readonly partial struct git_status_cb : IEquatable<git_status_cb>
         {
             public git_status_cb(delegate*unmanaged[Cdecl]<byte*, uint, void*, int> value) => this.Value = value;

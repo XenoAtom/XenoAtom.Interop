@@ -876,6 +876,11 @@ namespace XenoAtom.Interop
             public byte** compatible;
         }
         
+        public unsafe partial struct drmFauxBusInfo
+        {
+            public fixed byte name[512];
+        }
+        
         public partial struct drmDevice
         {
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
@@ -892,6 +897,9 @@ namespace XenoAtom.Interop
                 
                 [FieldOffset(0)]
                 public libdrm.drmHost1xBusInfo* host1x;
+                
+                [FieldOffset(0)]
+                public libdrm.drmFauxBusInfo* faux;
             }
             
             [global::System.Runtime.InteropServices.StructLayout(LayoutKind.Explicit)]
@@ -967,6 +975,8 @@ namespace XenoAtom.Interop
         public const int DRM_BUS_PLATFORM = 2;
         
         public const int DRM_BUS_HOST1X = 3;
+        
+        public const int DRM_BUS_FAUX = 4;
         
         public const int DRM_DEVICE_GET_PCI_REVISION = 1;
         

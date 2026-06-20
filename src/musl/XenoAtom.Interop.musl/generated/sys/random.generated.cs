@@ -55,7 +55,7 @@ namespace XenoAtom.Interop
         /// If the number of available bytes in the
         /// random
         /// source is less than requested in
-        /// buflen ,
+        /// size ,
         /// the call returns just the available random bytes.
         /// If no random bytes are available, the behavior depends on the presence of
         /// GRND_NONBLOCK

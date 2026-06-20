@@ -53,30 +53,98 @@ namespace XenoAtom.Interop
             public override string ToString() => "0x" + (nint.Size == 8 ? Handle.ToString("X16") : Handle.ToString("X8"));
         }
         
+        /// <summary>
+        /// Parse a hex formatted object id into a git_oid.
+        /// </summary>
+        /// <param name="out">oid structure the result is written into.</param>
+        /// <param name="str">input hex string; must be pointing at the start of
+        /// the hex sequence and have at least the number of bytes
+        /// needed for an oid encoded in hex (40 bytes for sha1,
+        /// 256 bytes for sha256).</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// The appropriate number of bytes for the given object ID type will
+        /// be read from the string - 40 bytes for SHA1, 64 bytes for SHA256.
+        /// The given string need not be NUL terminated.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstr")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_fromstr(out libgit2.git_oid @out, byte* str);
         
+        /// <summary>
+        /// Parse a hex formatted object id into a git_oid.
+        /// </summary>
+        /// <param name="out">oid structure the result is written into.</param>
+        /// <param name="str">input hex string; must be pointing at the start of
+        /// the hex sequence and have at least the number of bytes
+        /// needed for an oid encoded in hex (40 bytes for sha1,
+        /// 256 bytes for sha256).</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// The appropriate number of bytes for the given object ID type will
+        /// be read from the string - 40 bytes for SHA1, 64 bytes for SHA256.
+        /// The given string need not be NUL terminated.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstr")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_fromstr(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str);
         
+        /// <summary>
+        /// Parse a hex formatted NUL-terminated string into a git_oid.
+        /// </summary>
+        /// <param name="out">oid structure the result is written into.</param>
+        /// <param name="str">input hex string; must be null-terminated.</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstrp")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_fromstrp(out libgit2.git_oid @out, byte* str);
         
+        /// <summary>
+        /// Parse a hex formatted NUL-terminated string into a git_oid.
+        /// </summary>
+        /// <param name="out">oid structure the result is written into.</param>
+        /// <param name="str">input hex string; must be null-terminated.</param>
+        /// <returns>0 or an error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstrp")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_fromstrp(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str);
         
+        /// <summary>
+        /// Parse N characters of a hex formatted object id into a git_oid.
+        /// </summary>
+        /// <param name="out">oid structure the result is written into.</param>
+        /// <param name="str">input hex string of at least size `length`</param>
+        /// <param name="length">length of the input string</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// If N is odd, the last byte's high nibble will be read in and the
+        /// low nibble set to zero.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstrn")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_fromstrn(out libgit2.git_oid @out, byte* str, nuint length);
         
+        /// <summary>
+        /// Parse N characters of a hex formatted object id into a git_oid.
+        /// </summary>
+        /// <param name="out">oid structure the result is written into.</param>
+        /// <param name="str">input hex string of at least size `length`</param>
+        /// <param name="length">length of the input string</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// If N is odd, the last byte's high nibble will be read in and the
+        /// low nibble set to zero.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromstrn")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_fromstrn(out libgit2.git_oid @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> str, nuint length);
         
+        /// <summary>
+        /// Copy an already raw oid into a git_oid structure.
+        /// </summary>
+        /// <param name="out">oid structure the result is written into.</param>
+        /// <param name="raw">the raw input bytes to be copied.</param>
+        /// <returns>0 on success or error code</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_fromraw")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
         public static partial int git_oid_fromraw(out libgit2.git_oid @out, byte* raw);
@@ -264,6 +332,7 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Check is an oid is all zeros.
         /// </summary>
+        /// <param name="id">the object ID to check</param>
         /// <returns>1 if all zeros, 0 otherwise.</returns>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_oid_is_zero")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]

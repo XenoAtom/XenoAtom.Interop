@@ -175,7 +175,8 @@ namespace XenoAtom.Interop
         /// 
         /// Since Linux 2.6.23,
         /// this limit also determines the amount of space used for the process's
-        /// command-line arguments and environment variables; for details, see
+        /// command-line arguments and environment variables;
+        /// for details, see
         /// execve (2).
         /// </summary>
         public const int RLIMIT_STACK = 3;
@@ -313,7 +314,10 @@ namespace XenoAtom.Interop
         /// that kills the process if no alternate stack
         /// has been made available via
         /// sigaltstack (2)).
-        /// Since the value is a \fIlong\fP, on machines with a 32-bit \fIlong\fP
+        /// Since the value is a
+        /// long ,
+        /// on machines with a 32-bit
+        /// long
         /// either this limit is at most 2\ GiB, or this resource is unlimited.
         /// </summary>
         public const int RLIMIT_AS = 9;

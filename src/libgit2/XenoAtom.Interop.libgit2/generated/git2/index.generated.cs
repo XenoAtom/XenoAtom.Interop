@@ -193,7 +193,7 @@ namespace XenoAtom.Interop
         /// <remarks>
         /// This is a public structure that represents a file entry in the index.
         /// The meaning of the fields corresponds to core Git's documentation (in
-        /// "Documentation/technical/index-format.txt").The `flags` field consists of a number of bit fields which can be
+        /// "Documentation/gitformat-index.adoc").The `flags` field consists of a number of bit fields which can be
         /// accessed via the first set of `GIT_INDEX_ENTRY_...` bitmasks below.
         /// These flags are all read from and persisted to disk.The `flags_extended` field also has a number of bit fields which can be
         /// accessed via the later `GIT_INDEX_ENTRY_...` bitmasks below.  Some of
@@ -233,6 +233,10 @@ namespace XenoAtom.Interop
         /// <summary>
         /// Callback for APIs that add/remove/update files matching pathspec
         /// </summary>
+        /// <param name="path">the path</param>
+        /// <param name="matched_pathspec">the given pathspec</param>
+        /// <param name="payload">the user-specified payload</param>
+        /// <returns>0 to continue with the index operation, positive number to         skip this file for the index operation, negative number on failure</returns>
         public readonly partial struct git_index_matched_path_cb : IEquatable<git_index_matched_path_cb>
         {
             public git_index_matched_path_cb(delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> value) => this.Value = value;
@@ -256,17 +260,54 @@ namespace XenoAtom.Interop
             public static implicit operator git_index_matched_path_cb (delegate*unmanaged[Cdecl]<byte*, byte*, void*, int> from) => new (from);
         }
         
+        /// <summary>
+        /// Create a new bare Git index object as a memory representation
+        /// of the Git index file in 'index_path', without a repository
+        /// to back it.
+        /// </summary>
+        /// <param name="index_out">the pointer for the new index</param>
+        /// <param name="index_path">the path to the index file in disk</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// Since there is no ODB or working directory behind this index,
+        /// any Index methods which rely on these (e.g. index_add_bypath)
+        /// will fail with the GIT_ERROR error code.If you need to access the index of an actual repository,
+        /// use the `git_repository_index` wrapper.The index must be freed once it's no longer in use.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_index_open(out libgit2.git_index @out, byte* index_path);
+        public static partial int git_index_open(ref libgit2.git_index index_out, byte* index_path);
         
+        /// <summary>
+        /// Create a new bare Git index object as a memory representation
+        /// of the Git index file in 'index_path', without a repository
+        /// to back it.
+        /// </summary>
+        /// <param name="index_out">the pointer for the new index</param>
+        /// <param name="index_path">the path to the index file in disk</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// Since there is no ODB or working directory behind this index,
+        /// any Index methods which rely on these (e.g. index_add_bypath)
+        /// will fail with the GIT_ERROR error code.If you need to access the index of an actual repository,
+        /// use the `git_repository_index` wrapper.The index must be freed once it's no longer in use.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_open")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_index_open(out libgit2.git_index @out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> index_path);
+        public static partial int git_index_open(ref libgit2.git_index index_out, [global::System.Runtime.InteropServices.Marshalling.MarshalUsing(typeof(Utf8CustomMarshaller))] ReadOnlySpan<char> index_path);
         
+        /// <summary>
+        /// Create an in-memory index object.
+        /// </summary>
+        /// <param name="index_out">the pointer for the new index</param>
+        /// <returns>0 or an error code</returns>
+        /// <remarks>
+        /// This index object cannot be read/written to the filesystem,
+        /// but may be used to perform in-memory index operations.The index must be freed once it's no longer in use.
+        /// </remarks>
         [global::System.Runtime.InteropServices.LibraryImport(LibraryName, EntryPoint = "git_index_new")]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(CallConvCdecl) })]
-        public static partial int git_index_new(out libgit2.git_index @out);
+        public static partial int git_index_new(ref libgit2.git_index index_out);
         
         /// <summary>
         /// Free an existing index object.

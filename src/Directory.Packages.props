@@ -12,8 +12,8 @@
     <PackageVersion Include="elskom.zlib.redist.win" Version="1.2.13" />
     <PackageVersion Include="LibGit2Sharp.NativeBinaries" Version="2.0.323" />
     <PackageVersion Include="Silk.NET.Shaderc.Native" Version="2.23.0" />
-    <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.11" />
+    <PackageVersion Include="SourceGear.sqlite3" Version="3.50.4.5" />
     <PackageVersion Include="MSTest" Version="4.2.3" />
-    <PackageVersion Include="CppAst.CodeGen" Version="0.28.0" />
+    <PackageVersion Include="CppAst.CodeGen" Version="0.28.2" />
   </ItemGroup>
 </Project>
